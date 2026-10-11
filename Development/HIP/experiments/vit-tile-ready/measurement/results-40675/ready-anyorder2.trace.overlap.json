@@ -1,0 +1,9 @@
+{
+  "valid": true,
+  "producer_last_publication": 15540454773126,
+  "consumers_entered_before_last_publication": 151,
+  "consumers_work_started_before_last_publication": 107,
+  "maximum_observed_overlap_ticks": 156,
+  "useful_overlap_observed": true,
+  "scope": "instrumented scheduling evidence only; not numerical gold or performance"
+}

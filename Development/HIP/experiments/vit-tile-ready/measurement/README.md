@@ -20,4 +20,4 @@ A subsequent short ABBA must keep the same full71/MP1/AE0/historyoff/style/seed/
 
 ## Timestamp parser schema
 
-`check_overlap.py report.json` expects `clock_scope: gpu_global_realtime`, `clock_units`, `clock_source`, `wait_timeouts: 0`, `producers: [{id,start,published}]`, and `consumers: [{id,enter,work_start,end}]`. Counts are checked against `expected_producers`/`expected_consumers`. `work_start` is after all required acquire operations and the WG barrier. The caller must certify that this timestamp directly precedes useful QKV math. Counter wrap is not supported: bounded captures spanning wrap are invalid.
+`check_overlap.py report.json` expects `clock_scope: gpu_global_realtime`, `clock_units` (or caller field `units`), `clock_source`, `wait_timeouts: 0`, `producers: [{id,start,published}]`, and `consumers: [{id,enter,work_start,end}]`. Counts are checked against `expected_producers`/`expected_consumers`. `work_start` is after all required acquire operations and the WG barrier. The caller must certify that this timestamp directly precedes useful QKV math. Counter wrap is not supported: bounded captures spanning wrap are invalid.

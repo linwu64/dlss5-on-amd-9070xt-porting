@@ -9,7 +9,7 @@ p.add_argument('report', type=Path)
 a = p.parse_args()
 r = json.loads(a.report.read_text())
 errors = []
-if r.get('clock_scope') != 'gpu_global_realtime' or not r.get('clock_units') or not r.get('clock_source'):
+if r.get('clock_scope') != 'gpu_global_realtime' or not (r.get('clock_units') or r.get('units')) or not r.get('clock_source'):
     errors.append('missing shared GPU-global clock contract')
 if r.get('wait_timeouts') != 0:
     errors.append('timeout status is missing or nonzero')

@@ -1,0 +1,49 @@
+{
+  "actual_handle": 40675,
+  "actual_exit_code": 0,
+  "raw_files": {
+    "ready-anyorder.trace.json": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/pair-gate/ready-anyorder.trace.json",
+      "bytes": 102763,
+      "sha256": "013bff210ca661d18e8e25b7b81092b33362dcb1bcf19a5ad46054a52d6d51cd"
+    },
+    "ready-anyorder2.trace.json": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/pair-gate/ready-anyorder2.trace.json",
+      "bytes": 102763,
+      "sha256": "5a9eb83106110c970da4c3289ffcae0fbb7fc6f5aeed0c448ba675f248b63fb0"
+    },
+    "stdout.log": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/pair-gate/stdout.log",
+      "bytes": 1017,
+      "sha256": "6c3445740133b14df523f377720342aa8e59d5961e7bab8d846fcf02c9264d5b"
+    },
+    "stderr.log": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/pair-gate/stderr.log",
+      "bytes": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "ready-ordered.trace.json": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/pair-gate/ready-ordered.trace.json",
+      "bytes": 102763,
+      "sha256": "30758edfe2e3ff6ed867fe6833b71c801ea432eb595445e8e1849a77c2accfa5"
+    },
+    "result-files.json": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/pair-gate/result-files.json",
+      "bytes": 2588,
+      "sha256": "3860ee570c2fb1622a8d6afffde529088e319c7dc79b432398fedaeca02a2c39"
+    }
+  },
+  "normalization": "derived parser input added clock_units from raw units; original unchanged",
+  "numerical_log": "all five modes contract_diff=0 qkv_diff=0 nonfinite=0 counter_bad=0 timeouts=0; independent audit owns byte proof",
+  "work_marker_scope": "post acquire and WG barrier, before original F8_FETCH; not proof of first completed WMMA",
+  "publication_marker_scope": "before producer release RMW; conservative lower bound on publication completion",
+  "performance_claim": false,
+  "diagnostic_gpu_ms": {
+    "original1": 0.093000002,
+    "original2": 0.123400003,
+    "ready-ordered": 0.079499997,
+    "ready-anyorder": 0.643180013,
+    "ready-anyorder2": 0.089910001
+  },
+  "next_authorized_gate": "one first-WMMA-done diagnostic, then uninstrumented pair ABBA warm10 measure20, necessary synchronization initialization charged, stop negative mean/tail; fullFrame not yet measured"
+}
