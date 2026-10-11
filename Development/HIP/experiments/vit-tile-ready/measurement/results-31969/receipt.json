@@ -1,0 +1,20 @@
+{
+  "actual_handle": 31969,
+  "actual_exit_code": 0,
+  "decision": "STOP: negative pair GPU mean and wall mean; no fullFrame test, no retry, no deployment",
+  "timing_source_sha256": "6e05c7e1dc6fc0c06ac3d228ef130cf22910f09aee686a2a4aac3690ec8f068d",
+  "scope": "one 640-token isolated contract-QKV pair, symmetric out-of-window status readback, reset charged; not production PulseAuto fullFrame",
+  "files": {
+    "samples.csv": "226cea49009e9e506807bff6df7290921891555878dc47ee17a886884c0647c2",
+    "stdout.log": "cded566e25177675bcf0fc8a637eda89b8bc437d7bb661cf921e2014dbfb201a",
+    "stderr.log": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+    "fair-manifest.json": "932494cf029daa8bfb554c7e0e2740bd366f58389dd99e8b02acb6dc427b1695",
+    "statistics.json": "6462012894d327618a7749fcfd35d6a45535d0c419f11b91add3123669afd035"
+  },
+  "eight_edge_gold_zero": true,
+  "total_rows": 120,
+  "measured_rows": 80,
+  "cold_upload_readback_excluded": true,
+  "candidate_ready_and_status_reset_inside_gpu_and_wall": true,
+  "trace_disabled": true
+}

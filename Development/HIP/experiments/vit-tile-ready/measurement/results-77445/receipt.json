@@ -1,0 +1,38 @@
+{
+  "actual_handle": 77445,
+  "actual_exit_code": 0,
+  "marker": "after first WMMA result volatile-bit store and waitstore0, global realtime; publication preRMW lower bound",
+  "performance_claim": false,
+  "files": {
+    "ready-anyorder.trace.json": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/math-diag/pair-gate/ready-anyorder.trace.json",
+      "sha256": "454d0cf821839ca03b9d6077666a18a607e3074c6b0984898d486eaf2ba13e43",
+      "bytes": 102763
+    },
+    "ready-anyorder2.trace.json": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/math-diag/pair-gate/ready-anyorder2.trace.json",
+      "sha256": "3c55894dae651939b9bcaa9bef1f2672032b65b6d46fe2d3db95c6848cd4020c",
+      "bytes": 102763
+    },
+    "stdout.log": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/math-diag/pair-gate/stdout.log",
+      "sha256": "5c0b40ae3974dbcdf5740c3aecdbf4624910dd3d95056f0e7118006ea0e97859",
+      "bytes": 1017
+    },
+    "stderr.log": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/math-diag/pair-gate/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    "ready-ordered.trace.json": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/math-diag/pair-gate/ready-ordered.trace.json",
+      "sha256": "977f6dba2e3cd6ab6e5c466f4bbd33b9d3ff605565b62a69c5b12985dede933d",
+      "bytes": 102763
+    },
+    "result-files.json": {
+      "path": "/home/lmxxf/work/dlss5-vit-tile-ready-build/math-diag/pair-gate/result-files.json",
+      "sha256": "b5a32215a2c7c5ed3e6995214e99d70d4947bf456bab4c0956dee2166753626f",
+      "bytes": 2588
+    }
+  }
+}
