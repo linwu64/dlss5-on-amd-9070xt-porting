@@ -1,0 +1,14 @@
+DEVICE name=AMD Radeon RX 9070 XT
+EDGE slot=0 frame=0 Cdiff=0 Qdiff=0 nonfinite=0
+EDGE slot=0 frame=29 Cdiff=0 Qdiff=0 nonfinite=0
+SLOT_COMPLETE slot=0 variant=original warm=10 measured=20 trace=0 reset_in_gpu_window=0
+EDGE slot=1 frame=0 Cdiff=0 Qdiff=0 nonfinite=0
+EDGE slot=1 frame=29 Cdiff=0 Qdiff=0 nonfinite=0
+SLOT_COMPLETE slot=1 variant=anyorder warm=10 measured=20 trace=0 reset_in_gpu_window=1
+EDGE slot=2 frame=0 Cdiff=0 Qdiff=0 nonfinite=0
+EDGE slot=2 frame=29 Cdiff=0 Qdiff=0 nonfinite=0
+SLOT_COMPLETE slot=2 variant=anyorder warm=10 measured=20 trace=0 reset_in_gpu_window=1
+EDGE slot=3 frame=0 Cdiff=0 Qdiff=0 nonfinite=0
+EDGE slot=3 frame=29 Cdiff=0 Qdiff=0 nonfinite=0
+SLOT_COMPLETE slot=3 variant=original warm=10 measured=20 trace=0 reset_in_gpu_window=0
+

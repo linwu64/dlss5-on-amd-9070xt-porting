@@ -1,0 +1,63 @@
+{
+  "files": [
+    {
+      "file": "pair.exe",
+      "bytes": 2555163,
+      "sha256": "b0d1b4a0463a79a79a4c3b93aa457af317d6f417d1c8356b0d11ee8d3e892a75",
+      "local_source": "/home/lmxxf/work/dlss5-vit-tile-ready-build/timing/pair.exe"
+    },
+    {
+      "file": "candidate.hsaco",
+      "bytes": 674064,
+      "sha256": "7fdb9ea973cf0e875ac85b8037406019a2ea3babc8971b01b726327a3f648512",
+      "local_source": "/home/lmxxf/work/dlss5-vit-tile-ready-build/timing/candidate.hsaco"
+    },
+    {
+      "file": "canonical.hsaco",
+      "bytes": 658952,
+      "sha256": "877eaf122f827af6e00824582f5ca918b5d61499d4ad7c7cde7ab6e422516a57",
+      "local_source": "/home/lmxxf/work/dlss5-dx12-recovery/vit/qkv-inputs/canonical-vit-stream-fast.hsaco"
+    },
+    {
+      "file": "input.bin",
+      "bytes": 2621440,
+      "sha256": "4f48d3e261e92b62ed7ad51f131b342c4b4b96df690de016f93f559abeb0647c",
+      "local_source": "/home/lmxxf/work/dlss5-dx12-recovery/vit/linear-inputs/vit_stream_contract_frag_bout-arg0.bin"
+    },
+    {
+      "file": "contract-w.bin",
+      "bytes": 16781312,
+      "sha256": "f53f976c6bb9e2be87c361c45503e2fe63106202baf104a8dcaa06973c0800e3",
+      "local_source": "/home/lmxxf/work/dlss5-dx12-recovery/vit/linear-inputs/vit_stream_contract_frag_bout-arg1.bin"
+    },
+    {
+      "file": "skip.bin",
+      "bytes": 2621440,
+      "sha256": "4afe82b76575a1560610c2a01c9c2384681a26ef7b13a95dbdb2cd106fd468c9",
+      "local_source": "/home/lmxxf/work/dlss5-dx12-recovery/vit/linear-inputs/vit_stream_contract_frag_bout-arg2.bin"
+    },
+    {
+      "file": "qkv-w.bin",
+      "bytes": 3145856,
+      "sha256": "af4388159cafcbe09d7309fd05c3f0d5f5d9fe3886bf89d2d9496f6363471d40",
+      "local_source": "/home/lmxxf/work/dlss5-dx12-recovery/vit/qkv-inputs/weights.bin"
+    },
+    {
+      "file": "contract-gold.bin",
+      "bytes": 655360,
+      "sha256": "72f2dceb664db4cb962652231790e1fcffa3cd732b151ecada76b92ac1069c64",
+      "local_source": "/home/lmxxf/work/dlss5-dx12-recovery/vit/linear-inputs/vit_stream_contract_frag_bout-arg3.bin"
+    },
+    {
+      "file": "expected-c.bin",
+      "bytes": 655360,
+      "sha256": "72F2DCEB664DB4CB962652231790E1FCFFA3CD732B151ECADA76B92AC1069C64"
+    },
+    {
+      "file": "expected-q.bin",
+      "bytes": 1966080,
+      "sha256": "845725AF3275EA6E820EB6F18DB71DC72A1C6A7F71B63F889E028ED5977348D7"
+    }
+  ],
+  "canonical_expected": "877eaf122f827af6e00824582f5ca918b5d61499d4ad7c7cde7ab6e422516a57"
+}

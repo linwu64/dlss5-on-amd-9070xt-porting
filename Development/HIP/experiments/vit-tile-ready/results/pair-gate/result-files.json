@@ -1,0 +1,77 @@
+[
+    {
+        "file":  "original1.contract.bin",
+        "bytes":  655360,
+        "sha256":  "72F2DCEB664DB4CB962652231790E1FCFFA3CD732B151ECADA76B92AC1069C64"
+    },
+    {
+        "file":  "original1.qkv.bin",
+        "bytes":  1966080,
+        "sha256":  "845725AF3275EA6E820EB6F18DB71DC72A1C6A7F71B63F889E028ED5977348D7"
+    },
+    {
+        "file":  "original2.contract.bin",
+        "bytes":  655360,
+        "sha256":  "72F2DCEB664DB4CB962652231790E1FCFFA3CD732B151ECADA76B92AC1069C64"
+    },
+    {
+        "file":  "original2.qkv.bin",
+        "bytes":  1966080,
+        "sha256":  "845725AF3275EA6E820EB6F18DB71DC72A1C6A7F71B63F889E028ED5977348D7"
+    },
+    {
+        "file":  "ready-ordered.contract.bin",
+        "bytes":  655360,
+        "sha256":  "72F2DCEB664DB4CB962652231790E1FCFFA3CD732B151ECADA76B92AC1069C64"
+    },
+    {
+        "file":  "ready-ordered.qkv.bin",
+        "bytes":  1966080,
+        "sha256":  "845725AF3275EA6E820EB6F18DB71DC72A1C6A7F71B63F889E028ED5977348D7"
+    },
+    {
+        "file":  "ready-ordered.trace.json",
+        "bytes":  102763,
+        "sha256":  "30758EDFE2E3FF6ED867FE6833B71C801EA432EB595445E8E1849A77C2ACCFA5"
+    },
+    {
+        "file":  "ready-anyorder.contract.bin",
+        "bytes":  655360,
+        "sha256":  "72F2DCEB664DB4CB962652231790E1FCFFA3CD732B151ECADA76B92AC1069C64"
+    },
+    {
+        "file":  "ready-anyorder.qkv.bin",
+        "bytes":  1966080,
+        "sha256":  "845725AF3275EA6E820EB6F18DB71DC72A1C6A7F71B63F889E028ED5977348D7"
+    },
+    {
+        "file":  "ready-anyorder.trace.json",
+        "bytes":  102763,
+        "sha256":  "013BFF210CA661D18E8E25B7B81092B33362DCB1BCF19A5AD46054A52D6D51CD"
+    },
+    {
+        "file":  "ready-anyorder2.contract.bin",
+        "bytes":  655360,
+        "sha256":  "72F2DCEB664DB4CB962652231790E1FCFFA3CD732B151ECADA76B92AC1069C64"
+    },
+    {
+        "file":  "ready-anyorder2.qkv.bin",
+        "bytes":  1966080,
+        "sha256":  "845725AF3275EA6E820EB6F18DB71DC72A1C6A7F71B63F889E028ED5977348D7"
+    },
+    {
+        "file":  "ready-anyorder2.trace.json",
+        "bytes":  102763,
+        "sha256":  "5A9EB83106110C970DA4C3289FFCAE0FBB7FC6F5AEED0C448BA675F248B63FB0"
+    },
+    {
+        "file":  "stdout.log",
+        "bytes":  1017,
+        "sha256":  "6C3445740133B14DF523F377720342AA8E59D5961E7BAB8D846FCF02C9264D5B"
+    },
+    {
+        "file":  "stderr.log",
+        "bytes":  2,
+        "sha256":  "7EB70257593DA06F682A3DDDA54A9D260D4FC514F645237F5CA74B08F8DA61A6"
+    }
+]

@@ -1,0 +1,20 @@
+{
+  "base": "30040d4c81d486d66b588da0dcb5ac67a67b5c41",
+  "row": "vit-stream-fast",
+  "compiler": "",
+  "defines": [
+    "HIP_ISA_HALF 1",
+    "VIT_CONTRACT_BYTE_EDGE 1",
+    "HIP_PREPACKED_WEIGHTS 1",
+    "HIP_BRANCHLESS_F 1",
+    "HIP_VIT_STREAM_KERNELS 1",
+    "HIP_VIT_QKV_W5 1",
+    "VIT_CONTRACT_OCC_LDS 4096",
+    "VIT_QKV_F8W 1",
+    "VIT_FAST_NUM 4"
+  ],
+  "opts": [],
+  "sha256": "619fe5abdf269f57715364db38fddaf0aaa115ac972fbd8a27be4900b56aeb8a",
+  "counter": "fresh uint per 16 tokens, target16; all RMW acq_rel; bounded acquire load",
+  "trace": "u64 producer[tokens][start,end], consumer[96*ceil(tokens/80)][enter,ready,end]; gfx12 MSG_RTN_GET_REALTIME=131"
+}

@@ -1,12 +1,11 @@
-# ViT contract → QKV tile-ready bounded experiment
+# Current state: STOP, bounded negative result
 
-Base: production 30040d4c81d486d66b588da0dcb5ac67a67b5c41; branch vit-tile-ready.
-Status: CPU implementation; no GPU launched, no candidate accepted.
+Base30040d4c; isolated /home/lmxxf/work/dlss5-vit-tile-ready, branch vit-tile-ready.
 
-First gate: real 640-token pair, identical original math/AoS/weights; explicit any-order consumer launch, bounded acquire wait, timestamps proving overlap and producer progress. Original independent HIP pair is reference. Compare full contract and QKV byte/finite outputs. Fail/timeout stops this case; preserve logs.
+- 40675/PID2592 exit0/released: independent double-original, ordered-ready and double-anyorder all C655360/Q1966080 byte0/finite0/counters16/status0.
+- 77445/PID25032 exit0/released: first-MMA-completed marker proves useful overlap36/157WG vs ordered0; math/layout unchanged.
+- 72359/PID3856 exit0/released: original asymmetric readback timing preserved, excluded as fair evidence.
+- 31969/PID23052 exit0/released: symmetric readback, trace-off pair ABBA10warm20×4slots; all edge gold0. GPU70.043→95.770µs, wall106.475→141.603µs; both candidate slots slower than both controls.
+- Decision: no whole-frame test, no more variants, no deployment/push/default change. All experiment/compiler processes terminal and atomic lock released.
 
-Producer: original 32-thread contract WG writes 16 tokens ×64 columns. Agent-release completion per WG contributes one of 16 column blocks to a token-tile counter. Consumer: existing five-wave QKV WG waits for each live wave's 16-token tile, agent acquire after publication, then uniform WG barrier before original weight/MMA math. No butterfly stores or precision changes.
-
-Fresh flags and owned diagnostics per pair; no pooled reuse until fence/sync. Tail guard requires a multiple-of-16 token count not divisible by80. Waiting consumers must not prevent producer completion; bounded failure and device/game watchdog required.
-
-Only if pair correctness and measured scheduling evidence show potential: short same-production whole-frame ABBA. No deployment/push/driver changes. Pair timings are not whole-network performance.
+See README, results/{terminals,artifacts}.json, actual CSV/logs and independent audit/measurement. Large frozen artifacts remain in persistent -build and named D:\DLSSNR-Lab experiment directories. Initial unsupported-clock compile and diagnostic0.643ms sample retained; no timeout case was restarted.

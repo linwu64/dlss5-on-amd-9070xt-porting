@@ -1,0 +1,26 @@
+{
+  "/home/lmxxf/work/dlss5-vit-tile-ready-build/candidate.hsaco": {
+    "bytes": 674192,
+    "sha256": "f78cf2b0762c0e9edc1b3e02233e4c7449b086b0cf1d38a7d459b86ec4d37eca"
+  },
+  "/home/lmxxf/work/dlss5-vit-tile-ready-build/math-diag/candidate.hsaco": {
+    "bytes": 674320,
+    "sha256": "48055b5a69fc172b36eca9cbb065866b456ecd148a12736b8714f43f2f7e97e4"
+  },
+  "/home/lmxxf/work/dlss5-vit-tile-ready-build/timing/candidate.hsaco": {
+    "bytes": 674064,
+    "sha256": "7fdb9ea973cf0e875ac85b8037406019a2ea3babc8971b01b726327a3f648512"
+  },
+  "/home/lmxxf/work/dlss5-vit-tile-ready-build/pair.exe": {
+    "bytes": 2561456,
+    "sha256": "9c6942fefb74bac2bb30ff1e3150a937356dd9c35aae33dda8fcb313fbd56c6c"
+  },
+  "/home/lmxxf/work/dlss5-vit-tile-ready-build/timing/pair.exe": {
+    "bytes": 2555163,
+    "sha256": "b0d1b4a0463a79a79a4c3b93aa457af317d6f417d1c8356b0d11ee8d3e892a75"
+  },
+  "/home/lmxxf/work/dlss5-vit-tile-ready-build/timing/pair-fair.exe": {
+    "bytes": 2555108,
+    "sha256": "12a3fed1dadf580c6a7fd60cde4ad5fa24ecc6ea93c7f9e6911b806060cb13bf"
+  }
+}

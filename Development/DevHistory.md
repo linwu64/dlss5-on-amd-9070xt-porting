@@ -377,3 +377,10 @@ APP -DCOMPARE_HLSL私有caller21603CPU过，源57NNshader匹配旧manifest、8co
 ### 2026-10-11 剑星恢复普通MODE0作帧率对照
 
 用户感到MODE3帧率约54，要求恢复默认再试。a14232实际配置操作exit0/LOCK_RELEASED，写时游戏已退出，无需代kill。只将custom-config.txt的DLSS5_TEMPORAL_MODE=3改为0（本地before/after SHA证明仅1字节），default/native配置SHA不变；有效MP1/PRED0/FAST_HISTORY0/旧history实验0保持。增强强度1保留，MODE0不执行增强。DLL9413682f、全部内核和玩家AE/基础strength/几何不改，鬼武者不动；未执行任何GPU/帧率实验或发布。实际帧率待用户启动反馈，不把54归因为本次已测差值。完整小receipt与回滚路径见results/stellar-mode0-restore-20261011；远端备份D:\DLSSNR-Lab\stellar-mode0-restore-20261011\backups\20261011-144303。
+
+
+## 2026-10-12 ViT contract→QKV tile-ready：矩阵重叠成立，短 pair 净负，止
+
+隔离 `vit-tile-ready` 从30040d4c派生，不改生产数学/AoS/权重/默认路径。每16token的16个contract列块agent release/acq_rel发布，QKV真实hipExtAnyOrderLaunch消费；fresh counters、agent acquire、统一WG失败合流、boundedwait。40675固定640token独立双原参考/顺序ready/双anyorder完整contract655360B与QKV1966080B均byte0/finite0/status0。77445用firstWMMA结果实际store完成后全局realtime标记，两anyorder有36/157WG在producer尾发布前已完成第一MMA，ordered为0，证明有效重叠。
+
+traceoff pair ABBA10warm+20measure/slot：原72359因窗外D2H不对称仅保原证；唯一公平修正31969两variant共同小读回、候选必需reset计入GPU/wall，8边缘gold0。GPU均值70.043→95.770µs（+25.727µs/+36.7%），wall106.475→141.603µs；两B均慢于两A，控制漂移−13.198µs不足改变方向。样本仅40/variant，不据p99作稳态尾结论。不拆分归因reset/原子/缓存失效/等待成本。STOP，不进整Frame、不追加变体、不装机/push。初始不支持旧时钟builtin的编译失败与0.643ms诊断值保留。源码、终态、SHA、原CSV及独立审见 `HIP/experiments/vit-tile-ready/README.md`；仅实验文件及研究文档进入main，无发行功能变化。

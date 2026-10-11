@@ -1,0 +1,7 @@
+DEVICE name=AMD Radeon RX 9070 XT
+PAIR mode=original1 tokens=640 anyorder=0 gridC=640 gridQ=768 counter_bad=0 timeouts=0 contract_diff=0 qkv_diff=0 nonfinite=0 gpu_ms=0.089800000 wall_ms=0.501500000 diagnostic_not_benchmark=1
+PAIR mode=original2 tokens=640 anyorder=0 gridC=640 gridQ=768 counter_bad=0 timeouts=0 contract_diff=0 qkv_diff=0 nonfinite=0 gpu_ms=0.074199997 wall_ms=0.158800000 diagnostic_not_benchmark=1
+PAIR mode=ready-ordered tokens=640 anyorder=0 gridC=640 gridQ=768 counter_bad=0 timeouts=0 contract_diff=0 qkv_diff=0 nonfinite=0 gpu_ms=0.080300003 wall_ms=0.289700000 diagnostic_not_benchmark=1
+PAIR mode=ready-anyorder tokens=640 anyorder=1 gridC=640 gridQ=768 counter_bad=0 timeouts=0 contract_diff=0 qkv_diff=0 nonfinite=0 gpu_ms=0.107790001 wall_ms=0.176100000 diagnostic_not_benchmark=1
+PAIR mode=ready-anyorder2 tokens=640 anyorder=1 gridC=640 gridQ=768 counter_bad=0 timeouts=0 contract_diff=0 qkv_diff=0 nonfinite=0 gpu_ms=0.280999988 wall_ms=0.365500000 diagnostic_not_benchmark=1
+

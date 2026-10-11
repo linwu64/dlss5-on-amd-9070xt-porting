@@ -1,0 +1,36 @@
+{
+  "base": "30040d4c81d486d66b588da0dcb5ac67a67b5c41",
+  "hardware": "RX9070XT",
+  "cases": [
+    {
+      "handle": 40675,
+      "pid": 2592,
+      "kind": "preload-marker pair",
+      "exit": 0,
+      "lock_released": true
+    },
+    {
+      "handle": 77445,
+      "pid": 25032,
+      "kind": "firstMMA-completed pair",
+      "exit": 0,
+      "lock_released": true
+    },
+    {
+      "handle": 72359,
+      "pid": 3856,
+      "kind": "asymmetric-D2H pair ABBA; not fair performance evidence",
+      "exit": 0,
+      "lock_released": true
+    },
+    {
+      "handle": 31969,
+      "pid": 23052,
+      "kind": "symmetric-D2H pair ABBA",
+      "exit": 0,
+      "lock_released": true
+    }
+  ],
+  "decision": "STOP; no whole-frame timing/deployment",
+  "note": "All numerical pair modes and eight edges per timing case exact. Global timestamp is gfx12 MSG_RTN_GET_REALTIME131, not CU clock."
+}

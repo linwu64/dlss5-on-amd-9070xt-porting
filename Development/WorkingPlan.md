@@ -12,6 +12,11 @@
 - 性能使用连续 TimingOnly、首尾读回，中间不扫描图像；坏事件负值批隔离。微核与 DUP 边际不相加当整网或 FPS。
 - 默认不变、配置逐字保留；安装前备份、安装后 readback 与 exact 快照同步。短记录后及时提交，不 push、不改外层仓、不擅发布。
 
+## 最新有界研究结论（2026-10-12）
+
+- ViT contract→QKV tile-ready 已完成并止：真实any-order矩阵工作重叠成立，固定640token完整pair逐byte0；公平traceoff短ABBA GPU70.043→95.770µs，wall106.475→141.603µs，两候选槽均慢于两控制槽。协议在此实现净负，不进入整帧、不续扫变体。详见 `HIP/experiments/vit-tile-ready/README.md`。
+- 本轮仅保存实验源码/数值与测量证据、独立审及研究结论；生产执行路径、配置、游戏DLL、驱动、发行包不变。全部实验已终态并释放gpu.lock，无待运行任务。
+
 ## 已完成的发布与当前安装
 
 - 0.40 基线 tag 为 c81a88bc。0.41 已构建、三包验证并交付；台账提交 523723fd，二进制源码标记 ab8e3e82。正式 annotated tag `0.41` 指向 523723fdb3fa5b322beb1cc9dcfd3f8183eaf334，已仅推该 tag。
