@@ -82,7 +82,7 @@ try {
   if($slot.StartsWith('compact')){if($count -ne 8 -or $c -match 'COMPACT_WEIGHT[^\r\n]*legacy_key_present=[1-9]' -or $c -notmatch 'allocation_capacity=4194304'){throw 'actual8compact allocations gate'}}else{if($count -ne 0){throw 'baseline compact unexpectedly active'}}
  }
  Get-ChildItem "$base\modules-current" -Filter '*.hsaco' -File|ForEach-Object{[pscustomobject]@{file=$_.Name;bytes=$_.Length;sha256=(Get-FileHash $_.FullName).Hash}}|ConvertTo-Json|Set-Content "$case\modules-after.json"
- $before=@(Get-Content "$case\modules-preflight.json" -Raw|ConvertFrom-Json);$after=@(Get-Content "$case\modules-after.json" -Raw|ConvertFrom-Json)
+ $before=Get-Content "$case\modules-preflight.json" -Raw|ConvertFrom-Json;$after=Get-Content "$case\modules-after.json" -Raw|ConvertFrom-Json
  if($before.Count -ne $after.Count){throw 'module count changed'}
  foreach($x in $before){$y=@($after|Where-Object {$_.file -eq $x.file});if($y.Count -ne 1 -or $y[0].sha256 -ne $x.sha256){throw 'module source changed'}}
  'FRAME_ABBA_COMPLETED_ALL8RAW_GOLD_NOT_GAME_FPS_NO_FORMAL_ACCEPTANCE'

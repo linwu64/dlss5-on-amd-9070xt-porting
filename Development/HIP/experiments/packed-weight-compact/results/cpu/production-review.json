@@ -1,0 +1,17 @@
+{
+  "proposed_default_macro": 1,
+  "shared_header_modified": false,
+  "source_function_sha256": "8a664a3f7c106ab49fc48157dfff3603fb49489856eaf0d93e125d72826518bc",
+  "production_diff_sha256": "24a545ff5d2dc3fa4713b654144f401e1e222c667e8e48324c4909574e757f26",
+  "selection_fixture_sha256": "8e26d86c019e9839c29062ecc049c6e1ac988294a780b7b3f14bba45bae00b44",
+  "actual_function_included_not_predicate_reimplementation": true,
+  "cpu_macro0": "PASS",
+  "cpu_macro1": "PASS",
+  "mock_scope": "selection/cache/upload-size only; no quantization or GPU proof",
+  "win64_syntax_handle": 76250,
+  "win64_syntax_exit": 0,
+  "unknown_selector_fallback": true,
+  "existing_legacy_pointer_return_without_new_allocation": true,
+  "no_new_malformed_shape_exception": true,
+  "no_new_gpu_case": true
+}

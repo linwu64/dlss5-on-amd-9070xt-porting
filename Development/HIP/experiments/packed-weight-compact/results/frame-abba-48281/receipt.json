@@ -1,0 +1,42 @@
+{
+  "actual_handle": 48281,
+  "original_wrapper_exit_code": 1,
+  "original_wrapper_failure": "final module comparison incorrectly wrapped ConvertFrom-Json array in @(...), giving nested System.Object[] of count1 instead of43",
+  "actual_child_exit_codes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "actual_pids": [
+    8580,
+    24700,
+    27656,
+    7760
+  ],
+  "lock_released": true,
+  "no_gpu_rerun": true,
+  "readonly_cpu_closure": {
+    "raw_json_exact_equality": true,
+    "relative_name_byte_size_sha43_equal": true,
+    "added_deleted_changed_files": 0,
+    "powershell_original_before_count": 1,
+    "powershell_original_first_object_type": "System.Object[]",
+    "powershell_original_file_property_count": 43,
+    "powershell_original_where_match_count": 0,
+    "powershell_flat_before_after_count": [
+      43,
+      43
+    ],
+    "powershell_flat_actual_differences": 0
+  },
+  "corrected_wrapper_scope": "only assignment flattening; syntax/read-only checked; not new GPU evidence",
+  "stats_file": "statistics.json",
+  "performance_claim": "no stable gain: mean+1.642us/p99+4.840us, control mean drift+21.267us; memory96MiB independent",
+  "source_sha256": {
+    "wrapper_original": "75d9a9f33ad8fb0efd7e5b524a3c6d4157f2464060f5f6d74f25dbbd94eaf627",
+    "wrapper_corrected": "caa362695e02be39a90ed09465e6f7b8bf5e08aeac2f2f8fb3f0f94885c2fabf"
+  },
+  "resource_scope": "184owned weight cache keys, only8expand keys changed; no old allocation aliases; not resident peak",
+  "measured_scope": "same fullNativeGameFrame wall, actualAuto2record320 each, requestedPDL1/calls0, HIP_MEMORY0, no shader change"
+}

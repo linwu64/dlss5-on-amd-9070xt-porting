@@ -1,0 +1,127 @@
+{
+  "scope": "complete frozen HDR NativeGameFrame ProcessSubmittedFrame plus submission completion wall; not pure GPU, game frame FPS, resident peak or formal multi-round acceptance",
+  "discard_per_slot": 80,
+  "measured_per_slot": 240,
+  "slots": [
+    {
+      "slot": "baseline-A1",
+      "variant": "baseline",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.622416666666668,
+        "median_ms": 9.6275,
+        "sd_ms": 0.09791073411506619,
+        "p90_ms": 9.7402,
+        "p95_ms": 9.77815,
+        "p99_ms": 9.82166,
+        "max_ms": 9.961
+      },
+      "actual_pulse_records": 320,
+      "actual_pdl_calls": 0,
+      "raw_edges_same_gold": true
+    },
+    {
+      "slot": "compact-B1",
+      "variant": "compact",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.638512500000001,
+        "median_ms": 9.642,
+        "sd_ms": 0.09439182031658157,
+        "p90_ms": 9.7534,
+        "p95_ms": 9.7765,
+        "p99_ms": 9.85986,
+        "max_ms": 9.943
+      },
+      "actual_pulse_records": 320,
+      "actual_pdl_calls": 0,
+      "raw_edges_same_gold": true
+    },
+    {
+      "slot": "compact-B2",
+      "variant": "compact",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.630870833333331,
+        "median_ms": 9.618,
+        "sd_ms": 0.0982270232661107,
+        "p90_ms": 9.767,
+        "p95_ms": 9.78815,
+        "p99_ms": 9.838,
+        "max_ms": 9.869
+      },
+      "actual_pulse_records": 320,
+      "actual_pdl_calls": 0,
+      "raw_edges_same_gold": true
+    },
+    {
+      "slot": "baseline-A2",
+      "variant": "baseline",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.643683333333335,
+        "median_ms": 9.6435,
+        "sd_ms": 0.10280614924979155,
+        "p90_ms": 9.777,
+        "p95_ms": 9.805349999999999,
+        "p99_ms": 9.84544,
+        "max_ms": 9.882
+      },
+      "actual_pulse_records": 320,
+      "actual_pdl_calls": 0,
+      "raw_edges_same_gold": true
+    }
+  ],
+  "sources": {
+    "baseline-A1/out.csv": "19616abc9b24584cf8c317ba4a8eda7ec951e69b0eec7324386368d516ba82ff",
+    "baseline-A1/stdout.log": "33dbbf43d583a5a19c513433e6050677d2a7e5b971a78c9e372be6b0d3a72778",
+    "baseline-A1/stderr.log": "7542ae44e5937e9923bd3c0b2d0df8303d0916050e628a57c7ae2c4d9ebfeca2",
+    "baseline-A1/raw-sha.json": "04156c263514b52627149274815ccd0bdeb35944d0e60ff990d855939198736b",
+    "compact-B1/out.csv": "4c6c257a479c4ac48813977443a29993ed068f2f7fecdca27ca73186c72ad2bf",
+    "compact-B1/stdout.log": "0777ade4c72b66f1dc8add37a4312ae53b28f3dedfb122478fe12d43f0a31854",
+    "compact-B1/stderr.log": "b49e7a106d3be4d8daa569f947cbc392be4fbcca0af1a4a45e38e09d948cbb05",
+    "compact-B1/raw-sha.json": "4d7b51ac85681702b537eaf28454a9d40d3d2a157db3600f8f5ec1ca5345d8c5",
+    "compact-B2/out.csv": "2a8f25d8cf3cd82cd72ac95bebe1d09dd1e51aa102f4ada1b6c08a2f220575fb",
+    "compact-B2/stdout.log": "9184d9592634cc9506fbb5acd9c09e6659c979bc83dbc9c2cb8ae56530bbf0cf",
+    "compact-B2/stderr.log": "b49e7a106d3be4d8daa569f947cbc392be4fbcca0af1a4a45e38e09d948cbb05",
+    "compact-B2/raw-sha.json": "ffe64a5d4b3b281216f9190b8f12647fa40cf863247879e5d856b5dde149b8ef",
+    "baseline-A2/out.csv": "6b9f19c1066ccb53f07524aa7a23e9c032b89e1ba58c2234f095de689c39a3a8",
+    "baseline-A2/stdout.log": "b144486be1204fc825e1578955940e7001fda2c16ca4a2b4d7e2e7e535892a1d",
+    "baseline-A2/stderr.log": "7542ae44e5937e9923bd3c0b2d0df8303d0916050e628a57c7ae2c4d9ebfeca2",
+    "baseline-A2/raw-sha.json": "854e536c0fede4ddd433a737bb56919eb4b0f88e66f5963ba79df810b69462e2"
+  },
+  "merged": {
+    "baseline": {
+      "n": 480,
+      "mean_ms": 9.63305,
+      "median_ms": 9.6365,
+      "sd_ms": 0.10084677809110702,
+      "p90_ms": 9.7681,
+      "p95_ms": 9.793,
+      "p99_ms": 9.840629999999999,
+      "max_ms": 9.961
+    },
+    "compact": {
+      "n": 480,
+      "mean_ms": 9.634691666666667,
+      "median_ms": 9.628,
+      "sd_ms": 0.0963038897389135,
+      "p90_ms": 9.761199999999999,
+      "p95_ms": 9.78705,
+      "p99_ms": 9.845469999999999,
+      "max_ms": 9.943
+    }
+  },
+  "compact_minus_baseline": {
+    "mean_ms": 0.0016416666666660973,
+    "median_ms": -0.00849999999999973,
+    "p90_ms": -0.0069000000000016826,
+    "p95_ms": -0.0059499999999985675,
+    "p99_ms": 0.004839999999999733,
+    "max_ms": -0.018000000000000682
+  },
+  "mean_percent": 0.01704202372734276,
+  "control_drift_A2_minus_A1_mean_ms": 0.021266666666667433,
+  "candidate_drift_B2_minus_B1_mean_ms": -0.007641666666669877,
+  "resource_gate_independent": "Frame21471 actual owned weights -100663296B, pool/gather/noise unchanged. Single-operator77951 and fullFrame21471 exact. Speed and memory decisions separate."
+}

@@ -1,0 +1,55 @@
+{
+  "files": [
+    {
+      "file": "frame-baseline.exe",
+      "bytes": 4417705,
+      "sha256": "0bb78ad045c744bb1db3eeb9a68e4a2cad241d72018d700af2c7d5b78472db6e"
+    },
+    {
+      "file": "frame-compact.exe",
+      "bytes": 4418555,
+      "sha256": "b4240cda19b345eb36cd88adea4d2807c95a1cfe278e9fdc5a143efca8d5ce3a"
+    },
+    {
+      "file": "run-frame-timing.ps1",
+      "bytes": 6379,
+      "sha256": "75d9a9f33ad8fb0efd7e5b524a3c6d4157f2464060f5f6d74f25dbbd94eaf627"
+    }
+  ],
+  "private_source_identity": {
+    "baseline_source_sha256": "5034a59eee96538b90ec25636d5873fbe4ef768ec14d0b808bdd00b81777d085",
+    "candidate_private_source_sha256": "3b903edea45a2767c8d30a14b7deb27f2254da6de6c666756674de6a0fe570ba",
+    "default_macro": 0,
+    "gate": "HIP_COMPACT_VIT_EXPAND=1; only fragment expand4096x1024 no tail, original kernel unchanged",
+    "legacy_gpu_buffer_allocated": false,
+    "kernel_changes": false,
+    "quantization_changes": false,
+    "scope": "CPU generated; not numerical accepted"
+  },
+  "geometry": {
+    "input": [
+      1296,
+      720
+    ],
+    "network": [
+      1920,
+      1080
+    ],
+    "processing": [
+      1920,
+      1152
+    ],
+    "vit_tokens": 640
+  },
+  "frames_per_variant": 3,
+  "not_performance": false,
+  "macro_off": "original loader function text; exact memory logger common diagnostic only frame3",
+  "macro_on": "only8packedexpand4MiB exact bytes",
+  "module_changes": false,
+  "memory_debug_disabled_for_future_timing": true,
+  "frames_per_slot": 320,
+  "discard_per_slot": 80,
+  "steady_per_slot": 240,
+  "single_firstscreen_not_formal": true,
+  "symmetric_diagnostics": "MemoryReport off; only first/last output readback, constructor logs cold"
+}
