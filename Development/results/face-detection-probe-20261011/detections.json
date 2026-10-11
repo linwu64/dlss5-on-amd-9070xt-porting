@@ -1,0 +1,95 @@
+{
+  "model_sha256": "8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4",
+  "model_bytes": 232589,
+  "input_raw_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+  "input_raw_format": "1296x720RGBA16F old frozen menu; sameNN MODE0 decoded output",
+  "display_transform": "fixed shared exposure3.997892599151139 -> perchannelReinhard -> sRGB -> uint8RGB; BGR given to OpenCV",
+  "input_conversion_read_ms": 45.499719999497756,
+  "opencv_version": "4.11.0",
+  "platform": "Linux-6.17.0-1014-nvidia-aarch64-with-glibc2.39",
+  "machine": "aarch64",
+  "runs": [
+    {
+      "input_width": 1296,
+      "input_height": 720,
+      "scale_to_original": [
+        1.0,
+        1.0
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "score_threshold": 0.9,
+      "nms_threshold": 0.3,
+      "top_k": 5000,
+      "backend": "DNN_BACKEND_OPENCV",
+      "target": "DNN_TARGET_CPU",
+      "threads": 1,
+      "resize_ms": 0.004464003723114729,
+      "create_load_ms": 3.983236994827166,
+      "first_detect_ms": 41.73665899725165,
+      "CPU_e2e_ms": 91.22407999529969,
+      "face_count": 1,
+      "faces": [
+        {
+          "confidence": 0.9267619252204895,
+          "bbox_xywh_original": [
+            804.72216796875,
+            76.7123031616211,
+            109.84481048583984,
+            138.18739318847656
+          ],
+          "landmarks_original": {
+            "right_eye": [
+              834.4755859375,
+              131.8571319580078
+            ],
+            "left_eye": [
+              887.0806884765625,
+              134.37245178222656
+            ],
+            "nose_tip": [
+              858.862548828125,
+              161.8369140625
+            ],
+            "right_mouth_corner": [
+              836.75390625,
+              181.33358764648438
+            ],
+            "left_mouth_corner": [
+              879.1416015625,
+              183.34243774414062
+            ]
+          },
+          "detector_raw": [
+            804.72216796875,
+            76.7123031616211,
+            109.84481048583984,
+            138.18739318847656,
+            834.4755859375,
+            131.8571319580078,
+            887.0806884765625,
+            134.37245178222656,
+            858.862548828125,
+            161.8369140625,
+            836.75390625,
+            181.33358764648438,
+            879.1416015625,
+            183.34243774414062,
+            0.9267619252204895
+          ]
+        }
+      ]
+    }
+  ],
+  "selected_input_size": [
+    1296,
+    720
+  ],
+  "real_model_inference": true,
+  "manual_boxes": false,
+  "game_changed": false,
+  "GPU_used": false,
+  "scope": "one old menu CPU proof, single cold detect; not realtime/Windows9070XT performance or game-face accuracy benchmark; face box+5landmarks are not segmentation mask."
+}
