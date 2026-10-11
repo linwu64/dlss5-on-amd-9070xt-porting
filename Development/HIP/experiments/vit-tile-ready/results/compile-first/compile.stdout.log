@@ -1,0 +1,92 @@
+COMGR 3.0
+ISA amdgcn-amd-amdhsa--gfx1201
+COMGR kind5: D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:1369:28: error: '__builtin_amdgcn_s_memrealtime' needs target feature s-memrealtime
+ 1369 |  if(lane==0)trace[group*2]=__builtin_amdgcn_s_memrealtime();
+      |                            ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:1376:31: error: '__builtin_amdgcn_s_memrealtime' needs target feature s-memrealtime
+ 1376 |  if(lane==0){trace[group*2+1]=__builtin_amdgcn_s_memrealtime();
+      |                               ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:147:46: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  147 |   for(uint e=0;e<8;e++){uint j=k+gr()*8+e;if constexpr(!ByteInput)pack(x,e,in[(first+rc())*channels+j]);
+      |                                              ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:152:4: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  152 | if constexpr(ByteInput){const uint*pi=reinterpret_cast<const uint*>(in);uint off=((first+rc())*channels+k+gr()*8)/4;x={int(pi[off]),int(pi[off+1])};}
+      |    ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:400:40: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  400 |  i2 q[2]{};for(uint k=0;k<32;k+=16){if constexpr(ByteInput)__builtin_memcpy(&q[k/16],in8+(first+rc())*1024+head*32+k+gr()*8,8);else for(uint e=0;e<8;e++){uint j=k+gr()*8+e;pack(q[k/16],e,in[(first+rc())*1024+head*32+j]);}}
+      |                                        ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:404:38: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  404 |   for(uint k=0;k<32;k+=16){i2 y{};if constexpr(ByteInput)__builtin_memcpy(&y,in8+(tokens+key+rc())*1024+head*32+k+gr()*8,8);else for(uint e=0;e<8;e++){uint j=k+gr()*8+e;pack(y,e,in[(tokens+key+rc())*1024+head*32+j]);}a=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(q[k/16],y,a);}
+      |                                      ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:410:80: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  410 |   for(uint c=0;c<2;c++){i2 y{};for(uint e=0;e<8;e++){uint vkey=key+gr()*8+e;if constexpr(ByteInput){uint b=in8[(2*tokens+vkey)*1024+head*32+c*16+rc()];y[e/4]=int(uint(y[e/4])|(b<<(8*(e%4))));}else pack(y,e,in[(2*tokens+vkey)*1024+head*32+c*16+rc()]);}acc[c]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(xb,y,acc[c]);}
+      |                                                                                ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:414:48: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  414 |  for(uint c=0;c<2;c++)for(uint e=0;e<8;e++){if constexpr(ByteOut)reinterpret_cast<unsigned char*>(out)[(first+gr()*8+e)*1024+head*32+c*16+rc()]=byte_F(vit_attn_hrtz(acc[c][e]*inv[e]));else out[(first+gr()*8+e)*1024+head*32+c*16+rc()]=F(vit_attn_hrtz(acc[c][e]*inv[e]));}
+      |                                                ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:438:108: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  438 |  for(uint p=0;p<4;p++){f8 a{};if(!p)for(uint e=0;e<8;e++){uint i=(first+gr()*8+e)*1024+row+rc();float s;if constexpr(HalfSkip)s=(float)s16[i];else s=__builtin_amdgcn_cvt_f32_fp8(int(s8[i]),0);a[e]=H(s*w[1048576+row+rc()]);}a=dot8<true>(in,w,first,row,1024,p*256,(p+1)*256,a);for(uint e=0;e<8;e++)total[e]=p?total[e]+a[e]:a[e];}
+      |                                                                                                            ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:467:654: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  467 | __attribute__((device)) __attribute__((always_inline)) void decoder_project2x_h16w_body(const float*in,const float*w,const float*skip,float*out,uint iw,uint ih,uint ow,uint oh,uint inputs,uint outputs){uint first=bid()/(outputs/16)*16,row=bid()%(outputs/16)*16;if(first>=iw*ih)return;uint parts=inputs==1024?4:1;f8 total{};const _Float16*w16=reinterpret_cast<const _Float16*>(w);for(uint p=0;p<parts;p++){f8 a{};for(uint k=p*(inputs/parts);k<(p+1)*(inputs/parts);k+=16){h8 x{},y;for(uint e=0;e<8;e++){uint j=k+gr()*8+e;x[e]=(FullTile||first+rc()<iw*ih)?(_Float16)(Gin?in[vg_tinv(first+rc())*inputs+vg_cinv(j)]:in[(first+rc())*inputs+j]):(_Float16)0;}if constexpr(W8){i2 y8;__builtin_memcpy(&y8,reinterpret_cast<const unsigned char*>(w)+(row+rc())*inputs+k+gr()*8,8);a=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(dec_pack8(x),y8,a);}else{
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:488:313: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  488 |  for(uint e=0;e<8;e++){uint token=first+gr()*8+e;if(!FullTile&&token>=iw*ih)continue;float t=H(total[e]);for(uint dy=0;dy<2;dy++)for(uint dx=0;dx<2;dx++){uint x=(token%iw)*2+dx,y=(token/iw)*2+dy;if(x>=ow||y>=oh)continue;uint i=(y*ow+x)*outputs+row+rc();float merged=H(t+F(skip[i])*w[inputs*outputs+row+rc()]);if constexpr(ByteOutput)reinterpret_cast<unsigned char*>(out)[i]=static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(0?fp8_add0(merged):F(merged),0.f,0,false));else out[i]=outputs==32?merged:F(merged);}}}
+      |                                                                                                                                                                                                                                                                                                                         ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:592:248: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  592 | __attribute__((device)) __attribute__((always_inline)) f8 dot16(const float*in,const float*w,uint first,uint row,uint instride,uint kcols,uint inoff,uint woff,f8 a){for(uint k=0;k<kcols;k+=16){h8 x{},y{};for(uint e=0;e<8;e++){uint j=k+gr()*8+e;if constexpr(ByteInput)x[e]=(_Float16)__builtin_amdgcn_cvt_f32_fp8(int(reinterpret_cast<const unsigned char*>(in)[(first+rc())*instride+inoff+j]),0);else x[e]=(_Float16)in[(first+rc())*instride+inoff+j];y[e]=(_Float16)w[woff+(row+rc())*kcols+j];}a=__builtin_amdgcn_wmma_f32_16x16x16_f16_w32_gfx12(x,y,a);}return a;}
+      |                                                                                                                                                                                                                                                        ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:688:72: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  688 |   for(uint m=0;m<BM;m++){a[m]={};uint row=first+m*16;if(row<tokens){if constexpr(ByteInput){const uint*p=reinterpret_cast<const uint*>(in);uint off=((row+rc())*inputs+k+gr()*8)/4;a[m]={int(p[off]),int(p[off+1])};}else for(uint e=0;e<8;e++)pack(a[m],e,in[(row+rc())*inputs+k+gr()*8+e]);}}
+      |                                                                        ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:691:28: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  691 |   for(uint n=0;n<4;n++){if constexpr(Frag)b[n]=vit_weight_fragment_native(w,col+n*16+rc(),inputs,k);else b[n]=vit_weight_fragment<Tiled>(w,col+n*16+rc(),inputs,k);}
+      |                            ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:633:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  633 |  if constexpr(Tiled){const unsigned char*p=reinterpret_cast<const unsigned char*>(w);uint off=((row/16)*(channels/32)+k/32)*512+(k%32+gr()*8)*16+row%16;for(uint e=0;e<8;e++)b[e/4]=int(uint(b[e/4])|(uint(p[off+16*e])<<(8*(e%4))));}
+      |     ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:730:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  730 |  if constexpr(!Partial)for(uint n=0;n<4;n++)for(uint e=0;e<8;e++){uint c=col+n*16+rc();float s;if constexpr(ByteStream)s=__builtin_amdgcn_cvt_f32_fp8(int(reinterpret_cast<const unsigned char*>(skip)[(first+gr()*8+e)*1024+c]),0);else s=skip[(first+gr()*8+e)*1024+c];total[n][e]=(s*w[4194304+c]);}
+      |     ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:730:99: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  730 |  if constexpr(!Partial)for(uint n=0;n<4;n++)for(uint e=0;e<8;e++){uint c=col+n*16+rc();float s;if constexpr(ByteStream)s=__builtin_amdgcn_cvt_f32_fp8(int(reinterpret_cast<const unsigned char*>(skip)[(first+gr()*8+e)*1024+c]),0);else s=skip[(first+gr()*8+e)*1024+c];total[n][e]=(s*w[4194304+c]);}
+      |                                                                                                   ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:733:57: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  733 |    for(uint n=0;n<4;n++){uint row=col+n*16+rc();i2 b;if constexpr(Frag)b=vit_weight_fragment_native(w,row,4096,k);else b=vit_weight_fragment<Tiled>(w,row,4096,k);acc[n]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(a,b,acc[n]);}
+      |                                                         ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:735:49: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  735 |   for(uint n=0;n<4;n++)for(uint e=0;e<8;e++){if constexpr(Partial)out[(part*tokens+first+gr()*8+e)*1024+col+n*16+rc()]=acc[n][e];else total[n][e]+=acc[n][e];}
+      |                                                 ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:737:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  737 |  if constexpr(!Partial)for(uint n=0;n<4;n++)for(uint e=0;e<8;e++){uint i=(first+gr()*8+e)*1024+col+n*16+rc();if constexpr(ByteFOut)reinterpret_cast<unsigned char*>(out)[i]=vit_contract_F_byte((total[n][e]));else if constexpr(HalfOut)reinterpret_cast<_Float16*>(out)[i]=(_Float16)F((total[n][e]));else if constexpr(ByteStream)reinterpret_cast<unsigned char*>(out)[i]=byte_F(H(total[n][e]));else out[i]=F(H(total[n][e]));}
+      |     ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:737:113: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  737 |  if constexpr(!Partial)for(uint n=0;n<4;n++)for(uint e=0;e<8;e++){uint i=(first+gr()*8+e)*1024+col+n*16+rc();if constexpr(ByteFOut)reinterpret_cast<unsigned char*>(out)[i]=vit_contract_F_byte((total[n][e]));else if constexpr(HalfOut)reinterpret_cast<_Float16*>(out)[i]=(_Float16)F((total[n][e]));else if constexpr(ByteStream)reinterpret_cast<unsigned char*>(out)[i]=byte_F(H(total[n][e]));else out[i]=F(H(total[n][e]));}
+      |                                                                                                                 ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:737:216: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  737 |  if constexpr(!Partial)for(uint n=0;n<4;n++)for(uint e=0;e<8;e++){uint i=(first+gr()*8+e)*1024+col+n*16+rc();if constexpr(ByteFOut)reinterpret_cast<unsigned char*>(out)[i]=vit_contract_F_byte((total[n][e]));else if constexpr(HalfOut)reinterpret_cast<_Float16*>(out)[i]=(_Float16)F((total[n][e]));else if constexpr(ByteStream)reinterpret_cast<unsigned char*>(out)[i]=byte_F(H(total[n][e]));else out[i]=F(H(total[n][e]));}
+      |                                                                                                                                                                                                                        ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:737:305: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  737 |  if constexpr(!Partial)for(uint n=0;n<4;n++)for(uint e=0;e<8;e++){uint i=(first+gr()*8+e)*1024+col+n*16+rc();if constexpr(ByteFOut)reinterpret_cast<unsigned char*>(out)[i]=vit_contract_F_byte((total[n][e]));else if constexpr(HalfOut)reinterpret_cast<_Float16*>(out)[i]=(_Float16)F((total[n][e]));else if constexpr(ByteStream)reinterpret_cast<unsigned char*>(out)[i]=byte_F(H(total[n][e]));else out[i]=F(H(total[n][e]));}
+      |                                                                                                                                                                                                                                                                                                                 ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:662:6: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  662 |   if constexpr(TiledInput){__builtin_memcpy(&a,reinterpret_cast<const unsigned char*>(in)+vit_tile_offset(first+rc(),k+gr()*8,inputs),8);}
+      |      ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:663:11: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  663 |   else if constexpr(ByteInput){const uint*p=reinterpret_cast<const uint*>(in);uint off=((first+rc())*inputs+k+gr()*8)/4;a={int(p[off]),int(p[off+1])};}
+      |           ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:665:56: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  665 |   for(uint n=0;n<4;n++){uint row=col+n*16+rc();i2 b;if constexpr(Frag)b=vit_weight_fragment_native(w,row,inputs,k);else b=vit_weight_fragment<Tiled>(w,row,inputs,k);accum[n]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(a,b,accum[n]);}
+      |                                                        ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:855:109: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  855 |  for(uint j=0;j<4;j++)for(uint e=0;e<8;e++){uint r=first+gr()*8+e,c=row+j*16+rc();float v=F((acc[j][e]));if constexpr(W32)out[r*512+c]=v;if constexpr(F16Res)out16[r*512+c]=(_Float16)v;out8[((r/16)*16+c/32)*512+(r%16)*32+c%32]=static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(v,0.f,0,false));}
+      |                                                                                                             ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:855:141: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  855 |  for(uint j=0;j<4;j++)for(uint e=0;e<8;e++){uint r=first+gr()*8+e,c=row+j*16+rc();float v=F((acc[j][e]));if constexpr(W32)out[r*512+c]=v;if constexpr(F16Res)out16[r*512+c]=(_Float16)v;out8[((r/16)*16+c/32)*512+(r%16)*32+c%32]=static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(v,0.f,0,false));}
+      |                                                                                                                                             ^
+D:\DLSSNR-Lab\vit-tile-ready-20261012\cache\comgr-cee470\input\probe.hip:1165:51: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+ 1165 |    for(uint t=0;t<TM;t++){x[t]=i2{};if(t<live){if constexpr(ByteAv)__builtin_memcpy(&x[t],reinterpret_cast<const unsigned char*>(in)+(first+t*16+rc())*IN+k+gr()*8,8);else {for(uint e=0;e<8;e++)pack(x[t],e,in[(first+t*16+rc())*IN+k+gr()*8+e]);}}}
+      |                                                   ^
+27 warnings and 2 errors generated when compiling for gfx1201.
+
+
