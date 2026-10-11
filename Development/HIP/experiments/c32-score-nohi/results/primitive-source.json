@@ -1,0 +1,45 @@
+{
+  "base": "b93cc043",
+  "row": "c32-wave1-fast",
+  "compiler": "llvm23",
+  "defines": [
+    "HIP_ISA_HALF 1",
+    "CW_UP_FUSED 1",
+    "CW_ACT_FMED3 1",
+    "HIP_PREPACKED_WEIGHTS 1",
+    "CW_ROLL_HIDDEN 1",
+    "CW_ROLL_WINDOW 1",
+    "CW_VEC_INPUT 1",
+    "CW_PREFIX_SPLIT 1",
+    "CW_PACK8 1",
+    "HIP_FP8_SAT_MODE 3",
+    "CW_DIRECT_OUT 1",
+    "CW_RTZ_PAIR 1",
+    "CW_PACK_MODE_MASK 127",
+    "CW_PREFIX_DIRECT_OUT 1",
+    "CW_PREFIX_FULL_TILE 1",
+    "CW_FINISH_FULL_TILE 1",
+    "CW_SKIP_BYTE 1",
+    "CW_DIAG_ONLY 1",
+    "CW_INPUT_HALF 7",
+    "CW_PREFIX_HALF_SOURCE 1",
+    "CW_PREPOST_BYTE 1",
+    "CW_PREFIX_TAIL_VEC 1",
+    "CW_FINISH_TAIL_VEC 1",
+    "CW_HOIST_UP 3",
+    "CW_FAST_NUM 3"
+  ],
+  "files": [
+    "c32_fused_ffn_attention.hip",
+    "wave_owned_c32.inc"
+  ],
+  "opts": [
+    "-enable-post-misched=0",
+    "-amdgpu-sched-strategy=max-ilp"
+  ],
+  "source_sha256": "a0be21e61ba019cf80482275368364ba0a86498bd07440514af899ad9d579657",
+  "probe_sha256": "31e970d8de015719dd001e3a4b35bc34146b6f7d660018897f5966ea9137a9ac",
+  "entry": "c32_nohi_norm_primitive",
+  "required_float_mode": "0xf0",
+  "scope": "semantic primitive only, no network candidate or timing"
+}

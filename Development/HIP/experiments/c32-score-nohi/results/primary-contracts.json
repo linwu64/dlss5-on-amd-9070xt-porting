@@ -1,0 +1,12 @@
+{
+  "primary_xml_url": "https://gpuopen.com/download/machine-readable-isa/latest/",
+  "primary_index": "https://gpuopen.com/machine-readable-isa/",
+  "xml_file": "amdgpu_isa_rdna4.xml",
+  "xml_sha256": "f8a290c8471e26a1071b08b61a33e4d9efa46ec6cedcdb8e5ba57d7969b60692",
+  "rsq_description_scope": "V_RSQ_F32 described using IEEE rules, no explicit ULP number in XML",
+  "wmma_description_scope": "V_WMMA_F32_16X16X16_F16 described as fused multiply add; exact denorm exceptions not stated",
+  "llvm_rsq_bound_source": "https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/AMDGPU/AMDGPUCodeGenPrepare.cpp",
+  "local_llvm_source": "/home/lmxxf/work/llvm-project/llvm/lib/Target/AMDGPU/AMDGPUCodeGenPrepare.cpp:901",
+  "llvm_bound": "v_rsq_f32 gives 1ulp",
+  "status": "WMMA semantics hardware falsification gate authorized; not universal proof"
+}
