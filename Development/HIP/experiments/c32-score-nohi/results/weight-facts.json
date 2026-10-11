@@ -1,0 +1,102 @@
+[
+  {
+    "file": "resource-3.bin",
+    "sha256": "12bff39f1cee8c3c681ed3630dad5a3978f5258036ab2eccf6296d4c143468a3",
+    "bytes": 32900,
+    "gamma": 0.5997287631034851,
+    "bias_min": -8.8828125,
+    "bias_max": 0.0,
+    "bias_finite": true,
+    "scale_finite": true
+  },
+  {
+    "file": "resource-7.bin",
+    "sha256": "a2a3dd58abd6e26cb6208bb3bc779c92899aafdacc27419c5094d9b7d26afb1a",
+    "bytes": 32900,
+    "gamma": 0.408796101808548,
+    "bias_min": -6.77734375,
+    "bias_max": 0.0,
+    "bias_finite": true,
+    "scale_finite": true
+  },
+  {
+    "file": "resource-10.bin",
+    "sha256": "ed875d876e92ff9794c8ed2f1dbe79944ffd2aaa97f4561657cf2a36ce21f315",
+    "bytes": 32900,
+    "gamma": 3.5465824604034424,
+    "bias_min": -9.546875,
+    "bias_max": 0.0,
+    "bias_finite": true,
+    "scale_finite": true
+  },
+  {
+    "file": "resource-13.bin",
+    "sha256": "dc86b0c74f8e527abf2db90f3a47f2397d2946070fae30194fb1733e2a3bc674",
+    "bytes": 32900,
+    "gamma": 0.7775412201881409,
+    "bias_min": -6.96875,
+    "bias_max": 0.0,
+    "bias_finite": true,
+    "scale_finite": true
+  },
+  {
+    "file": "resource-16.bin",
+    "sha256": "5fdb094b7e0792717cb6e9eee7be4a9012b9b0355f0019df82dbda2b1a9e5f69",
+    "bytes": 32900,
+    "gamma": 0.5033992528915405,
+    "bias_min": -6.671875,
+    "bias_max": 0.0,
+    "bias_finite": true,
+    "scale_finite": true
+  },
+  {
+    "file": "resource-200.bin",
+    "sha256": "447272eb6a298663653c4a06a4a58f5dc84769b2c1c2036d7194e48cb5bfe8b4",
+    "bytes": 32900,
+    "gamma": 2.8809077739715576,
+    "bias_min": -8.484375,
+    "bias_max": 0.0,
+    "bias_finite": true,
+    "scale_finite": true
+  },
+  {
+    "file": "resource-202.bin",
+    "sha256": "256dbe6391c3ff98b01ca8ed61270f28c4f39f4d41a68a95974468472ed005ec",
+    "bytes": 32900,
+    "gamma": 1.8616795539855957,
+    "bias_min": -8.296875,
+    "bias_max": 0.0,
+    "bias_finite": true,
+    "scale_finite": true
+  },
+  {
+    "file": "resource-205.bin",
+    "sha256": "36f3be11aee1c6d836f9bd3ca5ea919832df9d835d41656b83f6ee2fa073a79b",
+    "bytes": 32900,
+    "gamma": 8.79464054107666,
+    "bias_min": -11.734375,
+    "bias_max": 0.0,
+    "bias_finite": true,
+    "scale_finite": true
+  },
+  {
+    "file": "resource-207.bin",
+    "sha256": "934c6c3a7561b23a9c3d3779a14329583f4651c38eaa8780c32987e9d79f2adf",
+    "bytes": 32900,
+    "gamma": 11.098261833190918,
+    "bias_min": -13.265625,
+    "bias_max": 0.0,
+    "bias_finite": true,
+    "scale_finite": true
+  },
+  {
+    "file": "resource-210.bin",
+    "sha256": "a3e75f33820bc9d1d94fff59b09d211520c4a96f80969bff5b7d2074f5f8b7d1",
+    "bytes": 32900,
+    "gamma": 9.938164710998535,
+    "bias_min": -14.9296875,
+    "bias_max": 0.0,
+    "bias_finite": true,
+    "scale_finite": true
+  }
+]

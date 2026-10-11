@@ -1,0 +1,4 @@
+inputs/
+results/stock-*-disassembly.txt
+results/*.pdf
+results/*.xml
