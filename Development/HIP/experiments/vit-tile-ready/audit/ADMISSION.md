@@ -95,3 +95,40 @@ the final producer marker. Any-order repeats: 139 and 107 markers precede it
 tail; the marker precedes weight fetching and does not prove the first WMMA has
 completed during that overlap. Main may move the marker for a separate diagnostic.
 Instrumented single-pair event times are not an accepted performance comparison.
+
+## First-MMA diagnostic admission
+
+Reviewed the new source SHA prefix `41b73590` and actual
+`math-diag/candidate.hsaco.s`: line 99608 computes the first FP8 WMMA into
+`v[9:16]`; line 99613 performs a volatile system-scope store consuming `v9`;
+line 99614 waits for the store, then line 99615 reads GPU global realtime.
+Consequently the marker depends on a completed real matrix result, unlike the
+discarded unused inline-assembly-input attempt. The temporary 32-bit diagnostic
+value is overwritten by the 64-bit clock only after completion; arithmetic,
+operand order and publication logic are unchanged. This finite fixed-640
+diagnostic is admitted. Hardware result and uninstrumented speed remain pending.
+
+Actual first-MMA diagnostic received: all five modes again report complete C/Q
+zero byte differences, zero NaNs/timeouts/bad counters. Independently executing
+the measurement parser on the two actual traces found respectively 36 and 157
+consumer groups with a **completed first WMMA** before the final producer's
+pre-publication marker (maximum conservative overlap 80/484 realtime ticks).
+Thus real arithmetic overlap exists in this sample; this is not a speed result.
+
+## Trace-off fair-screen decision
+
+Reviewed trace-off source `d6fbb0a15ea956b823c5003911ca2836df064362de82ae52ebb2bc9eb3faee41`;
+actual compiled ISA contains no realtime-message instruction. Fair `timing.cpp`
+uses four A/B/B/A slots, ten warmup and twenty measured pairs each. Candidate
+counter/status reset remains inside both GPU and wall windows. Both variants
+perform the same two small validation D2H copies outside timing; each slot's
+first/last complete C/Q outputs are compared with fixed references. The actual
+`run_timing.ps1` checks fixture/executable hashes and complete sample counts.
+This bounded screening source was admitted without further math variants.
+
+Authoritative fair session `31969` exited zero; all eight actual edge checks are
+zero-difference/finite. Root/measurement reported original GPU mean 0.070043 ms
+versus candidate 0.095770 ms, about 36.7% slower; both candidate slots are slower
+than either original slot. Decision: **STOP this candidate**. Do not promote,
+run an APP benchmark, or infer a whole-frame gain from observed arithmetic
+overlap. Production/game configurations are unchanged by this experiment.
