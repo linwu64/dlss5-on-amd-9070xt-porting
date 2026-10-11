@@ -1,0 +1,134 @@
+{
+  "ledger_sha256": "bda6c0dd6a42d78be8f30063af1429f8123a67ed43fc7282cd504e3820db175a",
+  "actual_capture_scope": "full graph50843 production profile1152/640 tokens; frozen historical input, not current livegame",
+  "weight_original_sha256": "2004475103be9c6699ec70c3162bb23cc08e67266901ec93f003c2fbc3a94876",
+  "weight_compact_sha256": "db94370cf9acc94ec303112def4da2199681cbf8d050facc33c92c93776abccf",
+  "original_bytes": 16777216,
+  "compact_bytes": 4194304,
+  "logical_capacity_recovered_per_weight": 12582912,
+  "actual_eight_distinct_weight_resources": [
+    {
+      "ordinal": 59,
+      "resource": 98,
+      "old_bytes": 16777216,
+      "new_bytes": 4194304,
+      "consumers": [
+        {
+          "ordinal": 59,
+          "function": "vit_expand_blocked_fp8_frag_bytein",
+          "arg": 1,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "ordinal": 65,
+      "resource": 102,
+      "old_bytes": 16777216,
+      "new_bytes": 4194304,
+      "consumers": [
+        {
+          "ordinal": 65,
+          "function": "vit_expand_blocked_fp8_frag_bytein",
+          "arg": 1,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "ordinal": 71,
+      "resource": 106,
+      "old_bytes": 16777216,
+      "new_bytes": 4194304,
+      "consumers": [
+        {
+          "ordinal": 71,
+          "function": "vit_expand_blocked_fp8_frag_bytein",
+          "arg": 1,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "ordinal": 77,
+      "resource": 110,
+      "old_bytes": 16777216,
+      "new_bytes": 4194304,
+      "consumers": [
+        {
+          "ordinal": 77,
+          "function": "vit_expand_blocked_fp8_frag_bytein",
+          "arg": 1,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "ordinal": 83,
+      "resource": 114,
+      "old_bytes": 16777216,
+      "new_bytes": 4194304,
+      "consumers": [
+        {
+          "ordinal": 83,
+          "function": "vit_expand_blocked_fp8_frag_bytein",
+          "arg": 1,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "ordinal": 89,
+      "resource": 118,
+      "old_bytes": 16777216,
+      "new_bytes": 4194304,
+      "consumers": [
+        {
+          "ordinal": 89,
+          "function": "vit_expand_blocked_fp8_frag_bytein",
+          "arg": 1,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "ordinal": 95,
+      "resource": 122,
+      "old_bytes": 16777216,
+      "new_bytes": 4194304,
+      "consumers": [
+        {
+          "ordinal": 95,
+          "function": "vit_expand_blocked_fp8_frag_bytein",
+          "arg": 1,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "ordinal": 101,
+      "resource": 126,
+      "old_bytes": 16777216,
+      "new_bytes": 4194304,
+      "consumers": [
+        {
+          "ordinal": 101,
+          "function": "vit_expand_blocked_fp8_frag_bytein",
+          "arg": 1,
+          "offset": 0
+        }
+      ]
+    }
+  ],
+  "family_capacity_recovered_bytes": 100663296,
+  "address_min": 0,
+  "address_max": 4194303,
+  "all_fragment_bytes_once": true,
+  "all_consumed_bytes_inverse_diff": 0,
+  "dead_tail_not_a_tensor_or_scale": true,
+  "new_gpu_allocation_count_expected": 8,
+  "old_gpu_allocation_count_expected": 0,
+  "numeric_hardware_gold_pass": false,
+  "resident_vram_measured": false,
+  "scope": "CPU byte/address/actual-resource-alias proof only; no quantization or kernel changes"
+}

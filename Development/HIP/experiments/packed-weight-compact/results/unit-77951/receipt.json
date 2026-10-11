@@ -1,0 +1,23 @@
+{
+  "actual_handle": 77951,
+  "actual_pid": 24848,
+  "actual_exit_code": 0,
+  "lock_released": true,
+  "unit_only": true,
+  "full_network_gold_pass": false,
+  "four_logical_output_bytes": 2621440,
+  "four_output_sha256": "4f48d3e261e92b62ed7ad51f131b342c4b4b96df690de016f93f559abeb0647c",
+  "capture_diff": 0,
+  "repeat_diff": 0,
+  "nonfinite": 0,
+  "output_tail_guard_diff": 0,
+  "original_weight_requested_bytes": 16777216,
+  "compact_weight_requested_bytes": 4194304,
+  "original_weight_freed_before_compact": true,
+  "held_weight_allocations_per_variant": 1,
+  "actual_driver_free_delta_original": 16777216,
+  "actual_driver_free_delta_compact": 4194304,
+  "not_resident_peak": true,
+  "no_math_kernel_module_changes": true,
+  "source_sha256": "ab5fe22ba748d8f8cdfc4f07766e6e85a197b16ba9ad7ff8c305d733debd7cd8"
+}

@@ -1,0 +1,54 @@
+{
+  "actual_handle": 21471,
+  "actual_exit_codes": {
+    "baseline": 0,
+    "compact": 0
+  },
+  "pids": {
+    "baseline": 23028,
+    "compact": 9240
+  },
+  "lock_released": true,
+  "all4firstlastraw_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+  "frames_per_variant": 3,
+  "finite_repeat_cross_byte_diff": 0,
+  "actual_weight_key_count": 184,
+  "actual_changed_keys": [
+    "block31-expand.f32@vit-frag",
+    "block32-expand.f32@vit-frag",
+    "block33-expand.f32@vit-frag",
+    "block34-expand.f32@vit-frag",
+    "block35-expand.f32@vit-frag",
+    "block36-expand.f32@vit-frag",
+    "block37-expand.f32@vit-frag",
+    "block38-expand.f32@vit-frag"
+  ],
+  "memory": {
+    "baseline": {
+      "weights_bytes": 524101416,
+      "pool_bytes": 290571128,
+      "gather_bytes": 5242880,
+      "noise_bytes": 0,
+      "driver_free_bytes": 15688937472,
+      "driver_total_bytes": 17095983104
+    },
+    "compact": {
+      "weights_bytes": 423438120,
+      "pool_bytes": 290571128,
+      "gather_bytes": 5242880,
+      "noise_bytes": 0,
+      "driver_free_bytes": 15789600768,
+      "driver_total_bytes": 17095983104
+    }
+  },
+  "weight_capacity_recovered_bytes": 100663296,
+  "weight_capacity_recovered_MiB": 96,
+  "pool_gather_noise_unchanged": true,
+  "old_compact_keys_not_simultaneously_owned": true,
+  "auto_pulse_records_per_variant": 3,
+  "pdl_requested": 1,
+  "actual_pdl_calls": 0,
+  "not_performance": true,
+  "not_resident_peak": true,
+  "scope": "real frozen1296x720 HDR fullNativeGameFrame, source1152/640 full71 MP1 AE0 Style1 seed0 Mode0 Auto2; exact memory diagnostic once frame3"
+}

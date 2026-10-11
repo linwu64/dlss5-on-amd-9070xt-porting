@@ -1,0 +1,41 @@
+{
+  "files": [
+    {
+      "file": "unit.exe",
+      "bytes": 2387582,
+      "sha256": "54fefe7ac5276329f49612663c5a23a992ab4f4644aa636d6b3619ac7547e519",
+      "local_source": "/home/lmxxf/work/dlss5-bound-and-compact-build/compact/unit.exe"
+    },
+    {
+      "file": "canonical.hsaco",
+      "bytes": 562608,
+      "sha256": "11a25ae3fea75f83763ab6d5729c4f426dabda11299d1be6092d142b810e27b8",
+      "local_source": "/home/lmxxf/work/dlss5-dx12-recovery/vit/attention-10756/canonical-deep-fast-packed-fast.hsaco"
+    },
+    {
+      "file": "input.bin",
+      "bytes": 655360,
+      "sha256": "e695eb6bae288d0fe2f6f9bd0a0a002f52a474401fc9e7cc7c254c0ec12e0e3b",
+      "local_source": "/home/lmxxf/work/dlss5-dx12-recovery/vit/linear-inputs/vit_expand_blocked_fp8_frag_bytein-arg0.bin"
+    },
+    {
+      "file": "weight.bin",
+      "bytes": 16777216,
+      "sha256": "2004475103be9c6699ec70c3162bb23cc08e67266901ec93f003c2fbc3a94876",
+      "local_source": "/home/lmxxf/work/dlss5-dx12-recovery/vit/linear-inputs/vit_expand_blocked_fp8_frag_bytein-arg1.bin"
+    },
+    {
+      "file": "gold.bin",
+      "bytes": 2621440,
+      "sha256": "4f48d3e261e92b62ed7ad51f131b342c4b4b96df690de016f93f559abeb0647c",
+      "local_source": "/home/lmxxf/work/dlss5-dx12-recovery/vit/linear-inputs/vit_expand_blocked_fp8_frag_bytein-arg2.bin"
+    },
+    {
+      "file": "run-unit.ps1",
+      "bytes": 2920,
+      "sha256": "78fdb0245ecbc53654f279d742d51376667b6dffccbceff0b9e604d0e28eb68f",
+      "local_source": "/home/lmxxf/work/dlss5-bound-and-compact/Development/HIP/experiments/packed-weight-compact/run-unit.ps1"
+    }
+  ],
+  "source_sha256": "ab5fe22ba748d8f8cdfc4f07766e6e85a197b16ba9ad7ff8c305d733debd7cd8"
+}

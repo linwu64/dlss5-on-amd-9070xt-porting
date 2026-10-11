@@ -1,0 +1,407 @@
+pid=23028 c512_m32_requested=1 c512_m32_active=1
+pid=23028 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=23028 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current
+pid=23028 swin_run_requested=1 swin_run_active=1
+pid=23028 vit_stream_requested=3 vit_stream_active=3
+pid=23028 wave_owned_requested=1 wave_owned_active=1
+pid=23028 hip_device=0
+pid=23028 multi_pass=1 multi_pass_predict=0 predict_active=0
+pid=23028 multi_pass=1 multi_pass_skin_protect=0 skin_active=0
+hip_memory device_free_before_network_MiB=16077.9 shared input_MiB=33.8 history_MiB=33.8 output_MiB=25.3
+hip_memory weights_MiB=499.8 (184) pool_MiB=277.1 (27 tensors) gather_maps_MiB=5.0 noise_MiB=0.0 owned_MiB=781.9 device_free_MiB=14962.1 total_MiB=16304.0
+hip_memory_exact weights_bytes=524101416 pool_bytes=290571128 gather_bytes=5242880 noise_bytes=0 driver_free_bytes=15688937472 driver_total_bytes=17095983104 not_resident_peak=1
+hip_weight_exact key=block0-attention.f32@c32fp8 bytes=32900 capacity=32900 owned=1 pointer=0000000a008b0000
+hip_weight_exact key=block0-ffn.f32@c32fp8 bytes=41088 capacity=41088 owned=1 pointer=0000000a008c0000
+hip_weight_exact key=block1-attention.f32@c32fp8 bytes=32900 capacity=32900 owned=1 pointer=0000000a008d0000
+hip_weight_exact key=block1-ffn.f32@c32fp8 bytes=41088 capacity=41088 owned=1 pointer=0000000a008e0000
+hip_weight_exact key=block10-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a01080000
+hip_weight_exact key=block10-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a01200000
+hip_weight_exact key=block11-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a01300000
+hip_weight_exact key=block11-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a01400000
+hip_weight_exact key=block12-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a01380000
+hip_weight_exact key=block12-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a01500000
+hip_weight_exact key=block13-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a01600000
+hip_weight_exact key=block13-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a01700000
+hip_weight_exact key=block14-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a01680000
+hip_weight_exact key=block14-ds.f32@ds-frag bytes=65536 capacity=65536 owned=1 pointer=0000000a00e50000
+hip_weight_exact key=block14-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a01800000
+hip_weight_exact key=block15-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a01a00000
+hip_weight_exact key=block15-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a02000000
+hip_weight_exact key=block16-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a02800000
+hip_weight_exact key=block16-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a02400000
+hip_weight_exact key=block17-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a02a00000
+hip_weight_exact key=block17-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a03000000
+hip_weight_exact key=block18-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a03c00000
+hip_weight_exact key=block18-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a03800000
+hip_weight_exact key=block19-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a1a3c0000
+hip_weight_exact key=block19-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a19fc0000
+hip_weight_exact key=block2-attention.f32@c32fp8 bytes=32900 capacity=32900 owned=1 pointer=0000000a008f0000
+hip_weight_exact key=block2-ffn.f32@c32fp8 bytes=41088 capacity=41088 owned=1 pointer=0000000a00e00000
+hip_weight_exact key=block20-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a1a5c0000
+hip_weight_exact key=block20-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a1abc0000
+hip_weight_exact key=block21-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a1b7c0000
+hip_weight_exact key=block21-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a1b3c0000
+hip_weight_exact key=block22-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a1bbc0000
+hip_weight_exact key=block22-ds.f32@ds-frag bytes=262144 capacity=262144 owned=1 pointer=0000000a1ba00000
+hip_weight_exact key=block22-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a1bfc0000
+hip_weight_exact key=block23-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a1f530000
+hip_weight_exact key=block23-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a1c5c0000
+hip_weight_exact key=block23-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a1c3c0000
+hip_weight_exact key=block24-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a1f980000
+hip_weight_exact key=block24-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a1c9c0000
+hip_weight_exact key=block24-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a1c7c0000
+hip_weight_exact key=block25-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a1fdd0000
+hip_weight_exact key=block25-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a1cdc0000
+hip_weight_exact key=block25-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a1cbc0000
+hip_weight_exact key=block26-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a20220000
+hip_weight_exact key=block26-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a1d1c0000
+hip_weight_exact key=block26-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a1cfc0000
+hip_weight_exact key=block27-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a20670000
+hip_weight_exact key=block27-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a1d5c0000
+hip_weight_exact key=block27-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a1d3c0000
+hip_weight_exact key=block28-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a20ac0000
+hip_weight_exact key=block28-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a1d9c0000
+hip_weight_exact key=block28-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a1d7c0000
+hip_weight_exact key=block29-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a24f10000
+hip_weight_exact key=block29-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a20f10000
+hip_weight_exact key=block29-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a03e00000
+hip_weight_exact key=block3-attention.f32@c32fp8 bytes=32900 capacity=32900 owned=1 pointer=0000000a00e10000
+hip_weight_exact key=block3-ffn.f32@c32fp8 bytes=41088 capacity=41088 owned=1 pointer=0000000a00e20000
+hip_weight_exact key=block30-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a25360000
+hip_weight_exact key=block30-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a21310000
+hip_weight_exact key=block30-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a21110000
+hip_weight_exact key=block31-contract.f32@vit-frag bytes=16781312 capacity=16781312 owned=1 pointer=0000000a267b0000
+hip_weight_exact key=block31-expand.f32@vit-frag bytes=16777216 capacity=16777216 owned=1 pointer=0000000a257b0000
+hip_weight_exact key=block31-projection.f32@vit-proj-frag bytes=4198400 capacity=4198400 owned=1 pointer=0000000a277c0000
+hip_weight_exact key=block31-qkv.f32@qkv-fp8-frag bytes=3145856 capacity=3145856 owned=1 pointer=0000000a21b10000
+hip_weight_exact key=block32-contract.f32@vit-frag bytes=16781312 capacity=16781312 owned=1 pointer=0000000a28bd0000
+hip_weight_exact key=block32-expand.f32@vit-frag bytes=16777216 capacity=16777216 owned=1 pointer=0000000a27bd0000
+hip_weight_exact key=block32-projection.f32@vit-proj-frag bytes=4198400 capacity=4198400 owned=1 pointer=0000000a29be0000
+hip_weight_exact key=block32-qkv.f32@qkv-fp8-frag bytes=3145856 capacity=3145856 owned=1 pointer=0000000a21f10000
+hip_weight_exact key=block33-contract.f32@vit-frag bytes=16781312 capacity=16781312 owned=1 pointer=0000000a2aff0000
+hip_weight_exact key=block33-expand.f32@vit-frag bytes=16777216 capacity=16777216 owned=1 pointer=0000000a29ff0000
+hip_weight_exact key=block33-projection.f32@vit-proj-frag bytes=4198400 capacity=4198400 owned=1 pointer=0000000a2c000000
+hip_weight_exact key=block33-qkv.f32@qkv-fp8-frag bytes=3145856 capacity=3145856 owned=1 pointer=0000000a22310000
+hip_weight_exact key=block34-contract.f32@vit-frag bytes=16781312 capacity=16781312 owned=1 pointer=0000000a2d410000
+hip_weight_exact key=block34-expand.f32@vit-frag bytes=16777216 capacity=16777216 owned=1 pointer=0000000a2c410000
+hip_weight_exact key=block34-projection.f32@vit-proj-frag bytes=4198400 capacity=4198400 owned=1 pointer=0000000a2e420000
+hip_weight_exact key=block34-qkv.f32@qkv-fp8-frag bytes=3145856 capacity=3145856 owned=1 pointer=0000000a22710000
+hip_weight_exact key=block35-contract.f32@vit-frag bytes=16781312 capacity=16781312 owned=1 pointer=0000000a2f830000
+hip_weight_exact key=block35-expand.f32@vit-frag bytes=16777216 capacity=16777216 owned=1 pointer=0000000a2e830000
+hip_weight_exact key=block35-projection.f32@vit-proj-frag bytes=4198400 capacity=4198400 owned=1 pointer=0000000a30840000
+hip_weight_exact key=block35-qkv.f32@qkv-fp8-frag bytes=3145856 capacity=3145856 owned=1 pointer=0000000a22b10000
+hip_weight_exact key=block36-contract.f32@vit-frag bytes=16781312 capacity=16781312 owned=1 pointer=0000000a31c50000
+hip_weight_exact key=block36-expand.f32@vit-frag bytes=16777216 capacity=16777216 owned=1 pointer=0000000a30c50000
+hip_weight_exact key=block36-projection.f32@vit-proj-frag bytes=4198400 capacity=4198400 owned=1 pointer=0000000a32c60000
+hip_weight_exact key=block36-qkv.f32@qkv-fp8-frag bytes=3145856 capacity=3145856 owned=1 pointer=0000000a22f10000
+hip_weight_exact key=block37-contract.f32@vit-frag bytes=16781312 capacity=16781312 owned=1 pointer=0000000a34070000
+hip_weight_exact key=block37-expand.f32@vit-frag bytes=16777216 capacity=16777216 owned=1 pointer=0000000a33070000
+hip_weight_exact key=block37-projection.f32@vit-proj-frag bytes=4198400 capacity=4198400 owned=1 pointer=0000000a35080000
+hip_weight_exact key=block37-qkv.f32@qkv-fp8-frag bytes=3145856 capacity=3145856 owned=1 pointer=0000000a23310000
+hip_weight_exact key=block38-contract.f32@vit-frag bytes=16781312 capacity=16781312 owned=1 pointer=0000000a36490000
+hip_weight_exact key=block38-expand.f32@vit-frag bytes=16777216 capacity=16777216 owned=1 pointer=0000000a35490000
+hip_weight_exact key=block38-projection.f32@vit-proj-frag bytes=4198400 capacity=4198400 owned=1 pointer=0000000a374a0000
+hip_weight_exact key=block38-qkv.f32@qkv-fp8-frag bytes=3145856 capacity=3145856 owned=1 pointer=0000000a23710000
+hip_weight_exact key=block4-attention.f32@c32fp8 bytes=32900 capacity=32900 owned=1 pointer=0000000a00e30000
+hip_weight_exact key=block4-ds.f32@ds-cast bytes=8192 capacity=8192 owned=1 pointer=0000000a00004000
+hip_weight_exact key=block4-ffn.f32@c32fp8 bytes=41088 capacity=41088 owned=1 pointer=0000000a00e40000
+hip_weight_exact key=block40-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a378b0000
+hip_weight_exact key=block40-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a24310000
+hip_weight_exact key=block40-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a21510000
+hip_weight_exact key=block41-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a37d00000
+hip_weight_exact key=block41-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a24710000
+hip_weight_exact key=block41-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a24510000
+hip_weight_exact key=block42-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a38150000
+hip_weight_exact key=block42-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a24b10000
+hip_weight_exact key=block42-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a24910000
+hip_weight_exact key=block43-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a3c5a0000
+hip_weight_exact key=block43-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a385a0000
+hip_weight_exact key=block43-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a24d10000
+hip_weight_exact key=block44-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a3c9f0000
+hip_weight_exact key=block44-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a389a0000
+hip_weight_exact key=block44-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a387a0000
+hip_weight_exact key=block45-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a3ce40000
+hip_weight_exact key=block45-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a38da0000
+hip_weight_exact key=block45-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a38ba0000
+hip_weight_exact key=block46-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a3d290000
+hip_weight_exact key=block46-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a391a0000
+hip_weight_exact key=block46-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a38fa0000
+hip_weight_exact key=block47-attention.f32@qkv-frag bytes=4458560 capacity=4458560 owned=1 pointer=0000000a3d6e0000
+hip_weight_exact key=block47-ffwd-projection.f32@proj-frag bytes=1050624 capacity=1050624 owned=1 pointer=0000000a395a0000
+hip_weight_exact key=block47-ffwd.f32@split-mix-fp8 bytes=2097152 capacity=2097152 owned=1 pointer=0000000a393a0000
+hip_weight_exact key=block48-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a397a0000
+hip_weight_exact key=block48-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a399a0000
+hip_weight_exact key=block48-weights.f32@decoder-f16r bytes=525312 capacity=525312 owned=1 pointer=0000000a01900000
+hip_weight_exact key=block49-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a3a1a0000
+hip_weight_exact key=block49-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a39da0000
+hip_weight_exact key=block5-attention.f32@wave-owned-frag-diag bytes=104712 capacity=104712 owned=1 pointer=0000000a00e60000
+hip_weight_exact key=block5-ffn.f32@ffn-frag bytes=147712 capacity=147712 owned=1 pointer=0000000a00e80000
+hip_weight_exact key=block50-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a3a3a0000
+hip_weight_exact key=block50-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a3a5a0000
+hip_weight_exact key=block51-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a3ada0000
+hip_weight_exact key=block51-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a3a9a0000
+hip_weight_exact key=block52-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a3afa0000
+hip_weight_exact key=block52-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a3b1a0000
+hip_weight_exact key=block53-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a3b9a0000
+hip_weight_exact key=block53-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a3b5a0000
+hip_weight_exact key=block54-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a3bba0000
+hip_weight_exact key=block54-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a3c1a0000
+hip_weight_exact key=block55-attention.f32@wave-owned-frag-diag bytes=1205280 capacity=1205280 owned=1 pointer=0000000a3db30000
+hip_weight_exact key=block55-ffn.f32@ffn-frag-w16 bytes=2360320 capacity=2360320 owned=1 pointer=0000000a3df30000
+hip_weight_exact key=block56-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a3dd30000
+hip_weight_exact key=block56-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a3de30000
+hip_weight_exact key=block56-weights.f32@decoder-f16r bytes=131584 capacity=131584 owned=1 pointer=0000000a1ba40000
+hip_weight_exact key=block57-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a3ddb0000
+hip_weight_exact key=block57-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a3e330000
+hip_weight_exact key=block58-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a3e430000
+hip_weight_exact key=block58-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a3e530000
+hip_weight_exact key=block59-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a3e4b0000
+hip_weight_exact key=block59-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a3e630000
+hip_weight_exact key=block6-attention.f32@wave-owned-frag-diag bytes=104712 capacity=104712 owned=1 pointer=0000000a00ec0000
+hip_weight_exact key=block6-ffn.f32@ffn-frag bytes=147712 capacity=147712 owned=1 pointer=0000000a00f00000
+hip_weight_exact key=block60-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a3e730000
+hip_weight_exact key=block60-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a3e830000
+hip_weight_exact key=block61-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a3e7b0000
+hip_weight_exact key=block61-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a3e930000
+hip_weight_exact key=block62-attention.f32@wave-owned-frag-diag bytes=104712 capacity=104712 owned=1 pointer=0000000a1b9e0000
+hip_weight_exact key=block62-ffn.f32@ffn-frag bytes=147712 capacity=147712 owned=1 pointer=0000000a1ba80000
+hip_weight_exact key=block62-weights.f32@decoder-f16r bytes=33024 capacity=33024 owned=1 pointer=0000000a1b9d0000
+hip_weight_exact key=block63-attention.f32@wave-owned-frag-diag bytes=104712 capacity=104712 owned=1 pointer=0000000a00fa0000
+hip_weight_exact key=block63-ffn.f32@ffn-frag bytes=147712 capacity=147712 owned=1 pointer=0000000a3ea30000
+hip_weight_exact key=block64-attention.f32@wave-owned-frag-diag bytes=104712 capacity=104712 owned=1 pointer=0000000a3ea70000
+hip_weight_exact key=block64-ffn.f32@ffn-frag bytes=147712 capacity=147712 owned=1 pointer=0000000a3eab0000
+hip_weight_exact key=block65-attention.f32@wave-owned-frag-diag bytes=104712 capacity=104712 owned=1 pointer=0000000a3ea90000
+hip_weight_exact key=block65-ffn.f32@ffn-frag bytes=147712 capacity=147712 owned=1 pointer=0000000a3eaf0000
+hip_weight_exact key=block66-attention.f32@c32fp8 bytes=32900 capacity=32900 owned=1 pointer=0000000a3eb30000
+hip_weight_exact key=block66-ffn.f32@c32fp8 bytes=41088 capacity=41088 owned=1 pointer=0000000a3eb40000
+hip_weight_exact key=block66-weights.f32@decoder-f16r bytes=8320 capacity=8320 owned=1 pointer=0000000a008ac000
+hip_weight_exact key=block67-attention.f32@c32fp8 bytes=32900 capacity=32900 owned=1 pointer=0000000a3eb50000
+hip_weight_exact key=block67-ffn.f32@c32fp8 bytes=41088 capacity=41088 owned=1 pointer=0000000a3eb60000
+hip_weight_exact key=block68-attention.f32@c32fp8 bytes=32900 capacity=32900 owned=1 pointer=0000000a3eb70000
+hip_weight_exact key=block68-ffn.f32@c32fp8 bytes=41088 capacity=41088 owned=1 pointer=0000000a3eb80000
+hip_weight_exact key=block69-attention.f32@c32fp8 bytes=32900 capacity=32900 owned=1 pointer=0000000a3eb90000
+hip_weight_exact key=block69-ffn.f32@c32fp8 bytes=41088 capacity=41088 owned=1 pointer=0000000a3eba0000
+hip_weight_exact key=block7-attention.f32@wave-owned-frag-diag bytes=104712 capacity=104712 owned=1 pointer=0000000a00ee0000
+hip_weight_exact key=block7-ffn.f32@ffn-frag bytes=147712 capacity=147712 owned=1 pointer=0000000a00f40000
+hip_weight_exact key=block8-attention.f32@wave-owned-frag-diag bytes=104712 capacity=104712 owned=1 pointer=0000000a00f80000
+hip_weight_exact key=block8-ds.f32@ds-frag bytes=16384 capacity=16384 owned=1 pointer=0000000a008a8000
+hip_weight_exact key=block8-ffn.f32@ffn-frag bytes=147712 capacity=147712 owned=1 pointer=0000000a00fc0000
+hip_weight_exact key=block9-attention.f32@wave-owned-frag-diag bytes=340496 capacity=340496 owned=1 pointer=0000000a01000000
+hip_weight_exact key=block9-ffn.f32@ffn-frag bytes=590336 capacity=590336 owned=1 pointer=0000000a01100000
+hip_weight_exact key=decoder39-weights.f32@decoder-f16r bytes=2099200 capacity=2099200 owned=1 pointer=0000000a23f10000
+hip_weight_exact key=head-matrix.f32@ds-frag bytes=1048576 capacity=1048576 owned=1 pointer=0000000a1bac0000
+hip_weight_exact key=post70-attention.f32@c32fp8 bytes=32900 capacity=32900 owned=1 pointer=0000000a3ebb0000
+hip_weight_exact key=post70-ffn.f32@c32fp8 bytes=41088 capacity=41088 owned=1 pointer=0000000a3ebc0000
+hip_weight_exact key=post70-head.f32 bytes=384 capacity=384 owned=1 pointer=0000000a00006000
+hip_weight_exact key=post70-scales.f32 bytes=256 capacity=256 owned=1 pointer=0000000a00007000
+hip_memory weight      16.00 MiB block38-contract.f32@vit-frag
+hip_memory weight      16.00 MiB block37-contract.f32@vit-frag
+hip_memory weight      16.00 MiB block36-contract.f32@vit-frag
+hip_memory weight      16.00 MiB block35-contract.f32@vit-frag
+hip_memory weight      16.00 MiB block34-contract.f32@vit-frag
+hip_memory weight      16.00 MiB block33-contract.f32@vit-frag
+hip_memory weight      16.00 MiB block32-contract.f32@vit-frag
+hip_memory weight      16.00 MiB block31-contract.f32@vit-frag
+hip_memory weight      16.00 MiB block38-expand.f32@vit-frag
+hip_memory weight      16.00 MiB block37-expand.f32@vit-frag
+hip_memory weight      16.00 MiB block36-expand.f32@vit-frag
+hip_memory weight      16.00 MiB block35-expand.f32@vit-frag
+hip_memory weight      16.00 MiB block34-expand.f32@vit-frag
+hip_memory weight      16.00 MiB block33-expand.f32@vit-frag
+hip_memory weight      16.00 MiB block32-expand.f32@vit-frag
+hip_memory weight      16.00 MiB block31-expand.f32@vit-frag
+hip_memory weight       4.25 MiB block47-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block46-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block45-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block44-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block43-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block42-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block41-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block40-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block30-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block29-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block28-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block27-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block26-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block25-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block24-attention.f32@qkv-frag
+hip_memory weight       4.25 MiB block23-attention.f32@qkv-frag
+hip_memory weight       4.00 MiB block38-projection.f32@vit-proj-frag
+hip_memory weight       4.00 MiB block37-projection.f32@vit-proj-frag
+hip_memory weight       4.00 MiB block36-projection.f32@vit-proj-frag
+hip_memory weight       4.00 MiB block35-projection.f32@vit-proj-frag
+hip_memory weight       4.00 MiB block34-projection.f32@vit-proj-frag
+hip_memory weight       4.00 MiB block33-projection.f32@vit-proj-frag
+hip_memory weight       4.00 MiB block32-projection.f32@vit-proj-frag
+hip_memory weight       4.00 MiB block31-projection.f32@vit-proj-frag
+hip_memory weight       3.00 MiB block38-qkv.f32@qkv-fp8-frag
+hip_memory weight       3.00 MiB block37-qkv.f32@qkv-fp8-frag
+hip_memory weight       3.00 MiB block36-qkv.f32@qkv-fp8-frag
+hip_memory weight       3.00 MiB block35-qkv.f32@qkv-fp8-frag
+hip_memory weight       3.00 MiB block34-qkv.f32@qkv-fp8-frag
+hip_memory weight       3.00 MiB block33-qkv.f32@qkv-fp8-frag
+hip_memory weight       3.00 MiB block32-qkv.f32@qkv-fp8-frag
+hip_memory weight       3.00 MiB block31-qkv.f32@qkv-fp8-frag
+hip_memory weight       2.25 MiB block55-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block54-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block53-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block52-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block51-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block50-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block49-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block48-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block22-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block21-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block20-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block19-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block18-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block17-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block16-ffn.f32@ffn-frag-w16
+hip_memory weight       2.25 MiB block15-ffn.f32@ffn-frag-w16
+hip_memory weight       2.00 MiB decoder39-weights.f32@decoder-f16r
+hip_memory weight       2.00 MiB block47-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block46-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block45-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block44-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block43-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block42-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block41-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block40-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block30-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block29-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block28-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block27-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block26-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block25-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block24-ffwd.f32@split-mix-fp8
+hip_memory weight       2.00 MiB block23-ffwd.f32@split-mix-fp8
+hip_memory weight       1.15 MiB block55-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block54-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block53-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block52-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block51-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block50-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block49-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block48-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block22-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block21-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block20-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block19-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block18-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block17-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block16-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.15 MiB block15-attention.f32@wave-owned-frag-diag
+hip_memory weight       1.00 MiB block47-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block46-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block45-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block44-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block43-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block42-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block41-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block40-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block30-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block29-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block28-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block27-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block26-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block25-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block24-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB block23-ffwd-projection.f32@proj-frag
+hip_memory weight       1.00 MiB head-matrix.f32@ds-frag
+hip_memory weight       0.56 MiB block9-ffn.f32@ffn-frag
+hip_memory weight       0.56 MiB block61-ffn.f32@ffn-frag
+hip_memory weight       0.56 MiB block60-ffn.f32@ffn-frag
+hip_memory weight       0.56 MiB block59-ffn.f32@ffn-frag
+hip_memory weight       0.56 MiB block58-ffn.f32@ffn-frag
+hip_memory weight       0.56 MiB block57-ffn.f32@ffn-frag
+hip_memory weight       0.56 MiB block56-ffn.f32@ffn-frag
+hip_memory weight       0.56 MiB block14-ffn.f32@ffn-frag
+hip_memory weight       0.56 MiB block13-ffn.f32@ffn-frag
+hip_memory weight       0.56 MiB block12-ffn.f32@ffn-frag
+hip_memory weight       0.56 MiB block11-ffn.f32@ffn-frag
+hip_memory weight       0.56 MiB block10-ffn.f32@ffn-frag
+hip_memory weight       0.50 MiB block48-weights.f32@decoder-f16r
+hip_memory weight       0.32 MiB block9-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.32 MiB block61-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.32 MiB block60-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.32 MiB block59-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.32 MiB block58-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.32 MiB block57-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.32 MiB block56-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.32 MiB block14-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.32 MiB block13-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.32 MiB block12-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.32 MiB block11-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.32 MiB block10-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.25 MiB block22-ds.f32@ds-frag
+hip_memory weight       0.14 MiB block8-ffn.f32@ffn-frag
+hip_memory weight       0.14 MiB block7-ffn.f32@ffn-frag
+hip_memory weight       0.14 MiB block65-ffn.f32@ffn-frag
+hip_memory weight       0.14 MiB block64-ffn.f32@ffn-frag
+hip_memory weight       0.14 MiB block63-ffn.f32@ffn-frag
+hip_memory weight       0.14 MiB block62-ffn.f32@ffn-frag
+hip_memory weight       0.14 MiB block6-ffn.f32@ffn-frag
+hip_memory weight       0.14 MiB block5-ffn.f32@ffn-frag
+hip_memory weight       0.13 MiB block56-weights.f32@decoder-f16r
+hip_memory weight       0.10 MiB block8-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.10 MiB block7-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.10 MiB block65-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.10 MiB block64-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.10 MiB block63-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.10 MiB block62-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.10 MiB block6-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.10 MiB block5-attention.f32@wave-owned-frag-diag
+hip_memory weight       0.06 MiB block14-ds.f32@ds-frag
+hip_memory weight       0.04 MiB post70-ffn.f32@c32fp8
+hip_memory weight       0.04 MiB block69-ffn.f32@c32fp8
+hip_memory weight       0.04 MiB block68-ffn.f32@c32fp8
+hip_memory weight       0.04 MiB block67-ffn.f32@c32fp8
+hip_memory weight       0.04 MiB block66-ffn.f32@c32fp8
+hip_memory weight       0.04 MiB block4-ffn.f32@c32fp8
+hip_memory weight       0.04 MiB block3-ffn.f32@c32fp8
+hip_memory weight       0.04 MiB block2-ffn.f32@c32fp8
+hip_memory weight       0.04 MiB block1-ffn.f32@c32fp8
+hip_memory weight       0.04 MiB block0-ffn.f32@c32fp8
+hip_memory weight       0.03 MiB block62-weights.f32@decoder-f16r
+hip_memory weight       0.03 MiB post70-attention.f32@c32fp8
+hip_memory weight       0.03 MiB block69-attention.f32@c32fp8
+hip_memory weight       0.03 MiB block68-attention.f32@c32fp8
+hip_memory weight       0.03 MiB block67-attention.f32@c32fp8
+hip_memory weight       0.03 MiB block66-attention.f32@c32fp8
+hip_memory weight       0.03 MiB block4-attention.f32@c32fp8
+hip_memory weight       0.03 MiB block3-attention.f32@c32fp8
+hip_memory weight       0.03 MiB block2-attention.f32@c32fp8
+hip_memory weight       0.03 MiB block1-attention.f32@c32fp8
+hip_memory weight       0.03 MiB block0-attention.f32@c32fp8
+hip_memory weight       0.02 MiB block8-ds.f32@ds-frag
+hip_memory weight       0.01 MiB block66-weights.f32@decoder-f16r
+hip_memory weight       0.01 MiB block4-ds.f32@ds-cast
+hip_memory weight       0.00 MiB post70-head.f32
+hip_memory weight       0.00 MiB post70-scales.f32
+hip_memory pool        67.50 MiB free
+hip_memory pool        34.50 MiB held
+hip_memory pool        34.50 MiB free
+hip_memory pool        34.03 MiB free
+hip_memory pool        33.75 MiB free
+hip_memory pool        16.88 MiB free
+hip_memory pool         8.44 MiB held
+hip_memory pool         4.22 MiB held
+hip_memory pool         4.22 MiB held
+hip_memory pool         4.22 MiB held
+hip_memory pool         4.22 MiB free
+hip_memory pool         4.22 MiB free
+hip_memory pool         4.22 MiB free
+hip_memory pool         4.22 MiB free
+hip_memory pool         2.11 MiB held
+hip_memory pool         2.11 MiB held
+hip_memory pool         2.11 MiB held
+hip_memory pool         2.11 MiB held
+hip_memory pool         2.11 MiB held
+hip_memory pool         2.11 MiB held
+hip_memory pool         2.11 MiB held
+hip_memory pool         1.05 MiB held
+hip_memory pool         1.05 MiB free
+hip_memory pool         1.05 MiB free
+hip_memory pool         0.03 MiB held
+hip_memory pool         0.01 MiB held
+hip_memory pool         0.01 MiB held
