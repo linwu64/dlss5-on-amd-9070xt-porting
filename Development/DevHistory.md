@@ -373,3 +373,7 @@ APP -DCOMPARE_HLSL私有caller21603CPU过，源57NNshader匹配旧manifest、8co
 ### 2026-10-11：MODE3/s1 与普通NN输出的客观图像对照
 
 复核旧真实HDR菜单的同一次NN前后、同decoder配对raw（历史30243/314c573c），当前低频host/shader、输入/codec源码逐字同，当前installed79 HIP模块逐SHA同。编码残差MAE .01868645→.02713170（约+45.2%）；共同预览映射RGB MAE约4.51/255。正常全图相近，局部脸/发更暗、边缘/衣料反差和色彩变化可辨；不证明新细节或更好画质。当前剑星NR成功/MP1日志另行确认，旧菜单不冒本次2560×1440实玩抓帧。仅CPU统计与真实图，无新GPU/游戏改动；报告与四局部图见 results/mode3-objective-20261011/README.md。
+
+### 2026-10-11 剑星恢复普通MODE0作帧率对照
+
+用户感到MODE3帧率约54，要求恢复默认再试。a14232实际配置操作exit0/LOCK_RELEASED，写时游戏已退出，无需代kill。只将custom-config.txt的DLSS5_TEMPORAL_MODE=3改为0（本地before/after SHA证明仅1字节），default/native配置SHA不变；有效MP1/PRED0/FAST_HISTORY0/旧history实验0保持。增强强度1保留，MODE0不执行增强。DLL9413682f、全部内核和玩家AE/基础strength/几何不改，鬼武者不动；未执行任何GPU/帧率实验或发布。实际帧率待用户启动反馈，不把54归因为本次已测差值。完整小receipt与回滚路径见results/stellar-mode0-restore-20261011；远端备份D:\DLSSNR-Lab\stellar-mode0-restore-20261011\backups\20261011-144303。

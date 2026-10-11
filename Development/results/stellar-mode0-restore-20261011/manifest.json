@@ -1,0 +1,20 @@
+﻿[
+    {
+        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\default-config.txt",
+        "sha256":  "181171ba5b91666227f832f28481378afd73d42c6d387b959776f6aebd444dff",
+        "backup":  "D:\\DLSSNR-Lab\\stellar-mode0-restore-20261011\\backups\\20261011-144303\\file-0",
+        "present":  true
+    },
+    {
+        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\custom-config.txt",
+        "sha256":  "4bdb8c3a056d27164dd0e575428eec2c5523dee91d7b2a74c5b1c711a5415586",
+        "backup":  "D:\\DLSSNR-Lab\\stellar-mode0-restore-20261011\\backups\\20261011-144303\\file-1",
+        "present":  true
+    },
+    {
+        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-flags.txt",
+        "sha256":  "2226f31149b25a43aac447ec53c3d68865f6080d2360275d0df11e499591b0a3",
+        "backup":  "D:\\DLSSNR-Lab\\stellar-mode0-restore-20261011\\backups\\20261011-144303\\file-2",
+        "present":  true
+    }
+]

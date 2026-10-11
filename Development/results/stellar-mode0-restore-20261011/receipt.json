@@ -1,0 +1,26 @@
+{
+  "dll_written": false,
+  "restart_required": false,
+  "rollback": "D:\\DLSSNR-Lab\\stellar-mode0-restore-20261011\\backups\\20261011-144303\\rollback.ps1",
+  "enhance_strength_preserved": "1",
+  "processes_at_write": [],
+  "backup": "D:\\DLSSNR-Lab\\stellar-mode0-restore-20261011\\backups\\20261011-144303",
+  "environment_overrides": [],
+  "addon_sha256": "9413682f3185d1e9327ce7ce76be96ee88aad794f528799152ebaa3f2a7f85f3",
+  "onimusha_written": false,
+  "multi_pass": "1",
+  "mode": "0",
+  "gpu_work": false,
+  "modules_written": false,
+  "prediction": "0",
+  "actual_command_chunk": "a14232",
+  "actual_exit_code": 0,
+  "lock_released": true,
+  "changed_config_keys": [
+    "DLSS5_TEMPORAL_MODE:3->0"
+  ],
+  "custom_only_one_byte_changed": true,
+  "default_and_native_config_byte_identity": true,
+  "addon_preserved_verified": true,
+  "no_push_or_release": true
+}

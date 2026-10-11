@@ -192,3 +192,5 @@
 ### 2026-10-11 MODE3客观对照：完成
 
 同NN/samecodec旧真实HDR菜单的CPU统计与全图/四局部/差分已归档；当前79模块及相关源码身份一致、当前剑星NR成功日志已核。结论是修正幅度增加、局部反差/色彩变化可辨，正常全图仍接近；未测当前实玩原帧、运动/闪烁/画质gold，不新增优化或部署任务。产物：Development/results/mode3-objective-20261011/README.md。
+
+- 2026-10-11 用户反馈MODE3约54fps，授权恢复普通1x对照：a14232实际exit0/锁释放，剑星已退出；仅custom-config的TEMPORAL_MODE3→0一个字节变更。有效MODE0/MP1/PRED0/FAST_HISTORY0/旧history实验0，ENHANCE_STRENGTH1保留但MODE0不用；default/native两个配置字节同，addon9413682f、模块、AE/strength/geometry与鬼武者未动。未代启/GPU测量/发布；用户可自行启动比较帧率。备份/rollback/beforeafter见results/stellar-mode0-restore-20261011。

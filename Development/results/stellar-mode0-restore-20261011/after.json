@@ -1,0 +1,14 @@
+﻿[
+    {
+        "sha256":  "181171ba5b91666227f832f28481378afd73d42c6d387b959776f6aebd444dff",
+        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\default-config.txt"
+    },
+    {
+        "sha256":  "a9513dba75659f435c535bb666442eb959a1955c2e73bc0f5434d2a5a7d23310",
+        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\custom-config.txt"
+    },
+    {
+        "sha256":  "2226f31149b25a43aac447ec53c3d68865f6080d2360275d0df11e499591b0a3",
+        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-flags.txt"
+    }
+]
