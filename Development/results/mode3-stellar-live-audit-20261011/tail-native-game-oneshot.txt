@@ -1,0 +1,140 @@
+﻿pid=33212 tick=341903390 event=every_frame detail=frames=2405700 avg_ms_per_frame=18.1
+pid=33212 tick=341905187 event=every_frame detail=frames=2405800 avg_ms_per_frame=18.0
+pid=33212 tick=341907000 event=every_frame detail=frames=2405900 avg_ms_per_frame=18.1
+pid=33212 tick=341908796 event=every_frame detail=frames=2406000 avg_ms_per_frame=18.0
+pid=33212 tick=341910609 event=every_frame detail=frames=2406100 avg_ms_per_frame=18.1
+pid=33212 tick=341912421 event=every_frame detail=frames=2406200 avg_ms_per_frame=18.1
+pid=33212 tick=341914218 event=every_frame detail=frames=2406300 avg_ms_per_frame=18.0
+pid=33212 tick=341916015 event=every_frame detail=frames=2406400 avg_ms_per_frame=18.0
+pid=33212 tick=341917828 event=every_frame detail=frames=2406500 avg_ms_per_frame=18.1
+pid=33212 tick=341919625 event=every_frame detail=frames=2406600 avg_ms_per_frame=18.0
+pid=33212 tick=341921437 event=every_frame detail=frames=2406700 avg_ms_per_frame=18.1
+pid=33212 tick=341923234 event=every_frame detail=frames=2406800 avg_ms_per_frame=18.0
+pid=33212 tick=341925046 event=every_frame detail=frames=2406900 avg_ms_per_frame=18.1
+pid=33212 tick=341926859 event=every_frame detail=frames=2407000 avg_ms_per_frame=18.1
+pid=33212 tick=341928656 event=every_frame detail=frames=2407100 avg_ms_per_frame=18.0
+pid=33212 tick=341930453 event=every_frame detail=frames=2407200 avg_ms_per_frame=18.0
+pid=33212 tick=341932265 event=every_frame detail=frames=2407300 avg_ms_per_frame=18.1
+pid=33212 tick=341934062 event=every_frame detail=frames=2407400 avg_ms_per_frame=18.0
+pid=33212 tick=341935875 event=every_frame detail=frames=2407500 avg_ms_per_frame=18.0
+pid=33212 tick=341937671 event=every_frame detail=frames=2407600 avg_ms_per_frame=18.1
+pid=33212 tick=341939484 event=every_frame detail=frames=2407700 avg_ms_per_frame=18.1
+pid=33212 tick=341941281 event=every_frame detail=frames=2407800 avg_ms_per_frame=18.0
+pid=33212 tick=341943078 event=every_frame detail=frames=2407900 avg_ms_per_frame=18.0
+pid=33212 tick=341944890 event=every_frame detail=frames=2408000 avg_ms_per_frame=18.1
+pid=33212 tick=341946703 event=every_frame detail=frames=2408100 avg_ms_per_frame=18.1
+pid=33212 tick=341948500 event=every_frame detail=frames=2408200 avg_ms_per_frame=18.0
+pid=33212 tick=341950312 event=every_frame detail=frames=2408300 avg_ms_per_frame=18.1
+pid=33212 tick=341952125 event=every_frame detail=frames=2408400 avg_ms_per_frame=18.1
+pid=33212 tick=341953937 event=every_frame detail=frames=2408500 avg_ms_per_frame=18.1
+pid=33212 tick=341955734 event=every_frame detail=frames=2408600 avg_ms_per_frame=18.0
+pid=33212 tick=341957546 event=every_frame detail=frames=2408700 avg_ms_per_frame=18.1
+pid=33212 tick=341959343 event=every_frame detail=frames=2408800 avg_ms_per_frame=18.0
+pid=33212 tick=341961156 event=every_frame detail=frames=2408900 avg_ms_per_frame=18.1
+pid=33212 tick=341962968 event=every_frame detail=frames=2409000 avg_ms_per_frame=18.1
+pid=33212 tick=341964765 event=every_frame detail=frames=2409100 avg_ms_per_frame=18.0
+pid=33212 tick=341966578 event=every_frame detail=frames=2409200 avg_ms_per_frame=18.1
+pid=33212 tick=341968390 event=every_frame detail=frames=2409300 avg_ms_per_frame=18.1
+pid=33212 tick=341970187 event=every_frame detail=frames=2409400 avg_ms_per_frame=18.0
+pid=33212 tick=341972000 event=every_frame detail=frames=2409500 avg_ms_per_frame=18.1
+pid=33212 tick=341973812 event=every_frame detail=frames=2409600 avg_ms_per_frame=18.1
+pid=33212 tick=341975625 event=every_frame detail=frames=2409700 avg_ms_per_frame=18.1
+pid=33212 tick=341977421 event=every_frame detail=frames=2409800 avg_ms_per_frame=18.0
+pid=33212 tick=341979234 event=every_frame detail=frames=2409900 avg_ms_per_frame=18.1
+pid=33212 tick=341981031 event=every_frame detail=frames=2410000 avg_ms_per_frame=18.0
+pid=33212 tick=341982859 event=every_frame detail=frames=2410100 avg_ms_per_frame=18.3
+pid=33212 tick=341984671 event=every_frame detail=frames=2410200 avg_ms_per_frame=18.1
+pid=33212 tick=341986484 event=every_frame detail=frames=2410300 avg_ms_per_frame=18.1
+pid=33212 tick=341988296 event=every_frame detail=frames=2410400 avg_ms_per_frame=18.1
+pid=33212 tick=341990109 event=every_frame detail=frames=2410500 avg_ms_per_frame=18.1
+pid=33212 tick=341991921 event=every_frame detail=frames=2410600 avg_ms_per_frame=18.1
+pid=33212 tick=341993718 event=every_frame detail=frames=2410700 avg_ms_per_frame=18.0
+pid=33212 tick=341995531 event=every_frame detail=frames=2410800 avg_ms_per_frame=18.1
+pid=33212 tick=341997328 event=every_frame detail=frames=2410900 avg_ms_per_frame=18.0
+pid=33212 tick=341999140 event=every_frame detail=frames=2411000 avg_ms_per_frame=18.1
+pid=33212 tick=342000953 event=every_frame detail=frames=2411100 avg_ms_per_frame=18.0
+pid=33212 tick=342002750 event=every_frame detail=frames=2411200 avg_ms_per_frame=18.1
+pid=33212 tick=342004562 event=every_frame detail=frames=2411300 avg_ms_per_frame=18.1
+pid=33212 tick=342006375 event=every_frame detail=frames=2411400 avg_ms_per_frame=18.1
+pid=33212 tick=342008171 event=every_frame detail=frames=2411500 avg_ms_per_frame=18.0
+pid=33212 tick=342009984 event=every_frame detail=frames=2411600 avg_ms_per_frame=18.1
+pid=33212 tick=342011828 event=every_frame detail=frames=2411700 avg_ms_per_frame=18.4
+pid=33212 tick=342013656 event=every_frame detail=frames=2411800 avg_ms_per_frame=18.3
+pid=33212 tick=342015515 event=every_frame detail=frames=2411900 avg_ms_per_frame=18.6
+pid=33212 tick=342017312 event=every_frame detail=frames=2412000 avg_ms_per_frame=18.0
+pid=33212 tick=342019125 event=every_frame detail=frames=2412100 avg_ms_per_frame=18.0
+pid=3076 tick=95859578 event=initialization_started detail=background; game output unchanged
+pid=3076 tick=95859578 event=flags_applied detail=150 layers=7 env_kept=0
+pid=3076 tick=95859578 event=build_mode detail=tiled verification; separate assets; reset-history only
+pid=3076 tick=95859578 event=temporal_config detail=temporal=1 motion=2560x1440 render=2560x1440
+pid=3076 tick=95859593 event=frame_create_step detail=encode removed=00000000
+pid=3076 tick=95859593 event=codec_step detail=inputs-checked removed=00000000
+pid=3076 tick=95859593 event=codec_step detail=output-created removed=00000000
+pid=3076 tick=95859593 event=codec_step detail=srvs removed=00000000
+pid=3076 tick=95859593 event=codec_step detail=uav removed=00000000
+pid=3076 tick=95859593 event=codec_step detail=rootsig-serialized removed=00000000
+pid=3076 tick=95859593 event=codec_step detail=rootsig removed=00000000
+pid=3076 tick=95859593 event=codec_step detail=compiled removed=00000000
+pid=3076 tick=95859609 event=frame_create_step detail=input=2560x1440 network=1920x1080 viewport=0,0,1920,1080 output=2560x1440 removed=00000000
+pid=3076 tick=95859609 event=frame_create_step detail=input removed=00000000
+pid=3076 tick=95859625 event=frame_create_step detail=network removed=00000000
+pid=3076 tick=95860093 event=frame_create_step detail=neural removed=00000000
+pid=3076 tick=95860109 event=frame_create_step detail=decode removed=00000000
+pid=3076 tick=95860109 event=codec_step detail=inputs-checked removed=00000000
+pid=3076 tick=95860109 event=codec_step detail=output-created removed=00000000
+pid=3076 tick=95860109 event=codec_step detail=srvs removed=00000000
+pid=3076 tick=95860109 event=codec_step detail=uav removed=00000000
+pid=3076 tick=95860109 event=codec_step detail=rootsig-serialized removed=00000000
+pid=3076 tick=95860109 event=codec_step detail=rootsig removed=00000000
+pid=3076 tick=95860125 event=codec_step detail=compiled removed=00000000
+pid=3076 tick=95860125 event=frame_create_step detail=ready removed=00000000
+pid=3076 tick=95860125 event=ready detail=await explicit PID/request-id; history_reset=1; not temporal acceptance
+pid=3076 tick=95861671 event=render_begin detail=seed=0 history=0 explicit diagnostic reset
+pid=3076 tick=95861671 event=strength detail=auto exe=SB-Win64-Shipping.exe -> 1,1
+pid=3076 tick=95862765 event=render_complete detail=pixels_changed; independent verification pending
+pid=3076 tick=95864437 event=every_frame detail=frames=100 avg_ms_per_frame=16.6
+pid=3076 tick=95866093 event=every_frame detail=frames=200 avg_ms_per_frame=16.6
+pid=3076 tick=95867765 event=every_frame detail=frames=300 avg_ms_per_frame=16.7
+pid=3076 tick=95898484 event=every_frame detail=frames=400 avg_ms_per_frame=307.2
+pid=3076 tick=95900593 event=every_frame detail=frames=500 avg_ms_per_frame=21.1
+pid=3076 tick=95902265 event=every_frame detail=frames=600 avg_ms_per_frame=16.7
+pid=3076 tick=95903921 event=every_frame detail=frames=700 avg_ms_per_frame=16.6
+pid=3076 tick=95905593 event=every_frame detail=frames=800 avg_ms_per_frame=16.7
+pid=3076 tick=95910250 event=every_frame detail=frames=900 avg_ms_per_frame=46.6
+pid=3076 tick=95913921 event=every_frame detail=frames=1000 avg_ms_per_frame=36.7
+pid=3076 tick=95916656 event=every_frame detail=frames=1100 avg_ms_per_frame=27.4
+pid=3076 tick=95918625 event=every_frame detail=frames=1200 avg_ms_per_frame=19.7
+pid=3076 tick=95920578 event=every_frame detail=frames=1300 avg_ms_per_frame=19.5
+pid=3076 tick=95922484 event=every_frame detail=frames=1400 avg_ms_per_frame=19.1
+pid=3076 tick=95924500 event=every_frame detail=frames=1500 avg_ms_per_frame=20.2
+pid=3076 tick=95926562 event=every_frame detail=frames=1600 avg_ms_per_frame=20.6
+pid=3076 tick=95928640 event=every_frame detail=frames=1700 avg_ms_per_frame=20.8
+pid=3076 tick=95930812 event=every_frame detail=frames=1800 avg_ms_per_frame=21.7
+pid=3076 tick=95932781 event=every_frame detail=frames=1900 avg_ms_per_frame=19.5
+pid=3076 tick=95932812 event=multi_pass_hotkey_blocked reason=active_temporal_mode_requires_MP1
+pid=3076 tick=95934750 event=every_frame detail=frames=2000 avg_ms_per_frame=19.9
+pid=3076 tick=95936265 event=multi_pass_hotkey_blocked reason=active_temporal_mode_requires_MP1
+pid=3076 tick=95936718 event=every_frame detail=frames=2100 avg_ms_per_frame=19.7
+pid=3076 tick=95938265 event=multi_pass_hotkey_blocked reason=active_temporal_mode_requires_MP1
+pid=3076 tick=95938703 event=every_frame detail=frames=2200 avg_ms_per_frame=19.9
+pid=3076 tick=95940562 event=multi_pass_hotkey_blocked reason=active_temporal_mode_requires_MP1
+pid=3076 tick=95940687 event=every_frame detail=frames=2300 avg_ms_per_frame=19.8
+pid=3076 tick=95942656 event=every_frame detail=frames=2400 avg_ms_per_frame=19.7
+pid=3076 tick=95944187 event=multi_pass_hotkey_blocked reason=active_temporal_mode_requires_MP1
+pid=3076 tick=95944640 event=every_frame detail=frames=2500 avg_ms_per_frame=19.8
+pid=3076 tick=95946750 event=every_frame detail=frames=2600 avg_ms_per_frame=21.1
+pid=3076 tick=95948734 event=every_frame detail=frames=2700 avg_ms_per_frame=19.8
+pid=3076 tick=95950640 event=every_frame detail=frames=2800 avg_ms_per_frame=19.1
+pid=3076 tick=95952500 event=every_frame detail=frames=2900 avg_ms_per_frame=18.6
+pid=3076 tick=95954375 event=every_frame detail=frames=3000 avg_ms_per_frame=18.8
+pid=3076 tick=95956250 event=every_frame detail=frames=3100 avg_ms_per_frame=18.8
+pid=3076 tick=95958125 event=every_frame detail=frames=3200 avg_ms_per_frame=18.8
+pid=3076 tick=95959984 event=every_frame detail=frames=3300 avg_ms_per_frame=18.6
+pid=3076 tick=95961796 event=every_frame detail=frames=3400 avg_ms_per_frame=18.1
+pid=3076 tick=95963625 event=every_frame detail=frames=3500 avg_ms_per_frame=18.3
+pid=3076 tick=95965437 event=every_frame detail=frames=3600 avg_ms_per_frame=18.1
+pid=3076 tick=95967250 event=every_frame detail=frames=3700 avg_ms_per_frame=18.1
+pid=3076 tick=95969406 event=every_frame detail=frames=3800 avg_ms_per_frame=21.6
+pid=3076 tick=95971406 event=every_frame detail=frames=3900 avg_ms_per_frame=20.0
+pid=3076 tick=95973406 event=every_frame detail=frames=4000 avg_ms_per_frame=20.0
+pid=3076 tick=95975343 event=every_frame detail=frames=4100 avg_ms_per_frame=19.4

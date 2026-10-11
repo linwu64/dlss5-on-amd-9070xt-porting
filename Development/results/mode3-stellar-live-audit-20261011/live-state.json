@@ -1,0 +1,68 @@
+﻿{
+    "game_root":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64",
+    "processes":  [
+
+                  ],
+    "log_files":  [
+                      {
+                          "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\logs\\.keep",
+                          "name":  ".keep",
+                          "bytes":  0,
+                          "last_write":  "2026-09-18T10:01:00.0000000Z"
+                      },
+                      {
+                          "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\logs\\frame-stats.txt",
+                          "name":  "frame-stats.txt",
+                          "bytes":  1566350,
+                          "last_write":  "2026-10-11T05:28:30.8464062Z"
+                      },
+                      {
+                          "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\logs\\frame-stats.txt.204329.old",
+                          "name":  "frame-stats.txt.204329.old",
+                          "bytes":  72920,
+                          "last_write":  "2026-10-02T11:30:03.8743940Z"
+                      },
+                      {
+                          "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\logs\\native-dred.txt",
+                          "name":  "native-dred.txt",
+                          "bytes":  536,
+                          "last_write":  "2026-10-08T03:25:15.5597671Z"
+                      },
+                      {
+                          "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\logs\\native-game-oneshot.txt",
+                          "name":  "native-game-oneshot.txt",
+                          "bytes":  2496866,
+                          "last_write":  "2026-10-11T05:28:31.0661025Z"
+                      },
+                      {
+                          "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\logs\\native-game-probe.txt.204329.old",
+                          "name":  "native-game-probe.txt.204329.old",
+                          "bytes":  17810,
+                          "last_write":  "2026-10-02T11:30:06.5433103Z"
+                      },
+                      {
+                          "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\logs\\native-hip-device.txt",
+                          "name":  "native-hip-device.txt",
+                          "bytes":  12290,
+                          "last_write":  "2026-10-11T05:26:35.7040814Z"
+                      },
+                      {
+                          "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\logs\\native-hip.txt",
+                          "name":  "native-hip.txt",
+                          "bytes":  60321,
+                          "last_write":  "2026-10-11T05:26:35.7045822Z"
+                      },
+                      {
+                          "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\logs\\native-pre-upscale.txt",
+                          "name":  "native-pre-upscale.txt",
+                          "bytes":  4801940,
+                          "last_write":  "2026-10-11T05:28:31.0300074Z"
+                      },
+                      {
+                          "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\logs\\native-submission-order.txt",
+                          "name":  "native-submission-order.txt",
+                          "bytes":  52584414,
+                          "last_write":  "2026-10-11T05:28:33.6638910Z"
+                      }
+                  ]
+}

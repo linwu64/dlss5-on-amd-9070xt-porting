@@ -1,0 +1,140 @@
+﻿pid=40496 wave_owned_requested=1 wave_owned_active=1
+pid=40496 hip_device=0
+pid=16596 c512_m32_requested=1 c512_m32_active=1
+pid=16596 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=16596 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=16596 swin_run_requested=1 swin_run_active=1
+pid=16596 vit_stream_requested=3 vit_stream_active=3
+pid=16596 wave_owned_requested=1 wave_owned_active=1
+pid=16596 hip_device=0
+pid=18700 c512_m32_requested=1 c512_m32_active=1
+pid=18700 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=18700 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=18700 swin_run_requested=1 swin_run_active=1
+pid=18700 vit_stream_requested=3 vit_stream_active=3
+pid=18700 wave_owned_requested=1 wave_owned_active=1
+pid=18700 hip_device=0
+pid=40284 c512_m32_requested=1 c512_m32_active=1
+pid=40284 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=40284 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=40284 swin_run_requested=1 swin_run_active=1
+pid=40284 vit_stream_requested=3 vit_stream_active=3
+pid=40284 wave_owned_requested=1 wave_owned_active=1
+pid=40284 hip_device=0
+pid=27272 c512_m32_requested=1 c512_m32_active=1
+pid=27272 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=27272 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=27272 swin_run_requested=1 swin_run_active=1
+pid=27272 vit_stream_requested=3 vit_stream_active=3
+pid=27272 wave_owned_requested=1 wave_owned_active=1
+pid=27272 hip_device=0
+pid=37972 c512_m32_requested=1 c512_m32_active=1
+pid=37972 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=37972 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=37972 swin_run_requested=1 swin_run_active=1
+pid=37972 vit_stream_requested=3 vit_stream_active=3
+pid=37972 wave_owned_requested=1 wave_owned_active=1
+pid=37972 hip_device=0
+pid=16032 c512_m32_requested=1 c512_m32_active=1
+pid=16032 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=16032 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=16032 swin_run_requested=1 swin_run_active=1
+pid=16032 vit_stream_requested=3 vit_stream_active=3
+pid=16032 wave_owned_requested=1 wave_owned_active=1
+pid=16032 hip_device=0
+pid=16612 c512_m32_requested=1 c512_m32_active=1
+pid=16612 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=16612 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=16612 swin_run_requested=1 swin_run_active=1
+pid=16612 vit_stream_requested=3 vit_stream_active=3
+pid=16612 wave_owned_requested=1 wave_owned_active=1
+pid=16612 hip_device=0
+pid=14096 c512_m32_requested=1 c512_m32_active=1
+pid=14096 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=14096 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=14096 swin_run_requested=1 swin_run_active=1
+pid=14096 vit_stream_requested=3 vit_stream_active=3
+pid=14096 wave_owned_requested=1 wave_owned_active=1
+pid=14096 hip_device=0
+pid=14096 multi_pass=3 multi_pass_predict=1 predict_active=1
+pid=3888 c512_m32_requested=1 c512_m32_active=1
+pid=3888 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=3888 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=3888 swin_run_requested=1 swin_run_active=1
+pid=3888 vit_stream_requested=3 vit_stream_active=3
+pid=3888 wave_owned_requested=1 wave_owned_active=1
+pid=3888 hip_device=0
+pid=3888 multi_pass=3 multi_pass_predict=0 predict_active=0
+pid=3888 multi_pass=3 multi_pass_skin_protect=1 skin_active=1
+pid=30644 c512_m32_requested=1 c512_m32_active=1
+pid=30644 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=30644 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=30644 swin_run_requested=1 swin_run_active=1
+pid=30644 vit_stream_requested=3 vit_stream_active=3
+pid=30644 wave_owned_requested=1 wave_owned_active=1
+pid=30644 hip_device=0
+pid=30644 multi_pass=2 multi_pass_predict=0 predict_active=0
+pid=30644 multi_pass=2 multi_pass_skin_protect=1 skin_active=1
+pid=32212 c512_m32_requested=1 c512_m32_active=1
+pid=32212 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=32212 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=32212 swin_run_requested=1 swin_run_active=1
+pid=32212 vit_stream_requested=3 vit_stream_active=3
+pid=32212 wave_owned_requested=1 wave_owned_active=1
+pid=32212 hip_device=0
+pid=32212 multi_pass=3 multi_pass_predict=0 predict_active=0
+pid=32212 multi_pass=3 multi_pass_skin_protect=0 skin_active=0
+pid=25836 c512_m32_requested=1 c512_m32_active=1
+pid=25836 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=25836 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=25836 swin_run_requested=1 swin_run_active=1
+pid=25836 vit_stream_requested=3 vit_stream_active=3
+pid=25836 wave_owned_requested=1 wave_owned_active=1
+pid=25836 hip_device=0
+pid=25836 multi_pass=3 multi_pass_predict=1 predict_active=1
+pid=25836 multi_pass=3 multi_pass_skin_protect=0 skin_active=0
+pid=17032 c512_m32_requested=1 c512_m32_active=1
+pid=17032 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=17032 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=17032 swin_run_requested=1 swin_run_active=1
+pid=17032 vit_stream_requested=3 vit_stream_active=3
+pid=17032 wave_owned_requested=1 wave_owned_active=1
+pid=17032 hip_device=0
+pid=17032 multi_pass=1 multi_pass_predict=0 predict_active=0
+pid=17032 multi_pass=1 multi_pass_skin_protect=0 skin_active=0
+pid=19700 c512_m32_requested=1 c512_m32_active=1
+pid=19700 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=19700 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=19700 swin_run_requested=1 swin_run_active=1
+pid=19700 vit_stream_requested=3 vit_stream_active=3
+pid=19700 wave_owned_requested=1 wave_owned_active=1
+pid=19700 hip_device=0
+pid=19700 multi_pass=1 multi_pass_predict=0 predict_active=0
+pid=19700 multi_pass=1 multi_pass_skin_protect=0 skin_active=0
+pid=19776 c512_m32_requested=1 c512_m32_active=1
+pid=19776 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=19776 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=19776 swin_run_requested=1 swin_run_active=1
+pid=19776 vit_stream_requested=3 vit_stream_active=3
+pid=19776 wave_owned_requested=1 wave_owned_active=1
+pid=19776 hip_device=0
+pid=19776 multi_pass=1 multi_pass_predict=0 predict_active=0
+pid=19776 multi_pass=1 multi_pass_skin_protect=0 skin_active=0
+pid=33212 c512_m32_requested=1 c512_m32_active=1
+pid=33212 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=33212 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=33212 swin_run_requested=1 swin_run_active=1
+pid=33212 vit_stream_requested=3 vit_stream_active=3
+pid=33212 wave_owned_requested=1 wave_owned_active=1
+pid=33212 hip_device=0
+pid=33212 multi_pass=1 multi_pass_predict=0 predict_active=0
+pid=33212 multi_pass=1 multi_pass_skin_protect=0 skin_active=0
+pid=3076 c512_m32_requested=1 c512_m32_active=1
+pid=3076 vit_proj_n64_requested=1 vit_proj_n64_active=1
+pid=3076 runtime=7 fast=1 packed_weights=1 packed_c32=1 fp8_normalized=1 fp8_ffn=1 fp8_av=1 fp8_deep=1 fp8_middle=1 half_c32=1 crop_c32=1 fused_qkv_norm=1 fused_mh_ffn=1 tiled_mh_ffn=1 tiled_ffn_min_c=256 mapped_c32=1 vit_blocked=1 vit_contract_blocked=1 vit_split_k=0 vit_weight_mask=1 vit_pack_input=1 elide_identity_shift=1 vit_qkv_fused=1 ffn_qkv=1 ffn_qkv_max_c=256 grouped_mh_contract=1 direct_prefix_input=1 prefix_fused=1 mh_input_mapped=1 mh_project_crop=1 vit_qkv_blocked=1 split_project_blocked=1 split_mix_blocked=1 split_ffn_fused=1 fused_ffn_project=1 post_merge_fold=1 pre_main8=1 raw_chain=1 graph=0 sparse_weights=0 processing=1920x1152 modules=C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64\DLSS5-AMD\native-game-tiled-assets\HIP
+pid=3076 swin_run_requested=1 swin_run_active=1
+pid=3076 vit_stream_requested=3 vit_stream_active=3
+pid=3076 wave_owned_requested=1 wave_owned_active=1
+pid=3076 hip_device=0
+pid=3076 multi_pass=1 multi_pass_predict=0 predict_active=0
+pid=3076 multi_pass=1 multi_pass_skin_protect=0 skin_active=0

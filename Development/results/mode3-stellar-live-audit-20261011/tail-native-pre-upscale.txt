@@ -1,0 +1,140 @@
+﻿pid=33212 frame=2410600 async=1 submit_cpu_ms=13.618 retained=0
+frame=2410700 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2410700 async=1 submit_cpu_ms=13.572 retained=0
+frame=2410800 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2410800 async=1 submit_cpu_ms=13.615 retained=0
+frame=2410900 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2410900 async=1 submit_cpu_ms=13.697 retained=0
+frame=2411000 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2411000 async=1 submit_cpu_ms=13.608 retained=0
+frame=2411100 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2411100 async=1 submit_cpu_ms=13.622 retained=0
+frame=2411200 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2411200 async=1 submit_cpu_ms=13.652 retained=0
+frame=2411300 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2411300 async=1 submit_cpu_ms=13.656 retained=0
+frame=2411400 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2411400 async=1 submit_cpu_ms=13.608 retained=0
+frame=2411500 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2411500 async=1 submit_cpu_ms=13.632 retained=0
+frame=2411600 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2411600 async=1 submit_cpu_ms=13.606 retained=0
+frame=2411700 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2411700 async=1 submit_cpu_ms=13.786 retained=0
+frame=2411800 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2411800 async=1 submit_cpu_ms=13.638 retained=0
+frame=2411900 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2411900 async=1 submit_cpu_ms=13.933 retained=0
+frame=2412000 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2412000 async=1 submit_cpu_ms=13.633 retained=0
+frame=2412100 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=33212 frame=2412100 async=1 submit_cpu_ms=13.655 retained=0
+frame=1 render=2560x1440 upscale=2560x1440 phase=0 processed=0 replay=0 history_reset=1 event=capture descriptor read
+frame=1 render=2560x1440 upscale=2560x1440 phase=0 processed=0 replay=0 history_reset=1 event=captured: experimental no-following-consumer contract
+async=auto exe=SB-Win64-Shipping.exe -> asynchronous
+frame=1 render=2560x1440 upscale=2560x1440 phase=0 processed=0 replay=0 history_reset=1 event=inputs: color fmt=10 2560x1440 motion fmt=34 depth fmt=19 exposure=yes reactive=yes tc=yes output fmt=10 mvscale=2560,1440 jitter=0,-0.166667 pre_exposure=1.20988 flags=0x0
+frame=1 render=2560x1440 upscale=2560x1440 phase=1 processed=0 replay=0 history_reset=1 event=before original FFX replay
+frame=1 render=2560x1440 upscale=2560x1440 phase=1 processed=0 replay=0 history_reset=1 event=after original FFX replay
+frame=1 render=2560x1440 upscale=2560x1440 phase=1 processed=0 replay=0 history_reset=1 event=replayed
+frame=2 render=2560x1440 upscale=2560x1440 phase=2 processed=0 replay=0 history_reset=1 event=capture descriptor read
+frame=2 render=2560x1440 upscale=2560x1440 phase=2 processed=0 replay=0 history_reset=1 event=captured: experimental no-following-consumer contract
+frame=2 render=2560x1440 upscale=2560x1440 phase=2 processed=0 replay=0 history_reset=1 event=inputs: color fmt=10 2560x1440 motion fmt=34 depth fmt=19 exposure=yes reactive=yes tc=yes output fmt=10 mvscale=2560,1440 jitter=0,-0.166667 pre_exposure=4.09957 flags=0x0
+frame=2 render=2560x1440 upscale=2560x1440 phase=4 processed=0 replay=0 history_reset=1 event=before original FFX replay
+frame=2 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=after original FFX replay
+frame=2 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+frame=3 render=2560x1440 upscale=2560x1440 phase=4 processed=0 replay=0 history_reset=1 event=capture descriptor read
+frame=3 render=2560x1440 upscale=2560x1440 phase=4 processed=0 replay=0 history_reset=1 event=captured: experimental no-following-consumer contract
+frame=3 render=2560x1440 upscale=2560x1440 phase=4 processed=0 replay=0 history_reset=1 event=before original FFX replay
+frame=3 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=after original FFX replay
+frame=3 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+frame=4 render=2560x1440 upscale=2560x1440 phase=4 processed=0 replay=0 history_reset=1 event=capture descriptor read
+frame=4 render=2560x1440 upscale=2560x1440 phase=4 processed=0 replay=0 history_reset=1 event=captured: experimental no-following-consumer contract
+frame=4 render=2560x1440 upscale=2560x1440 phase=4 processed=0 replay=0 history_reset=1 event=before original FFX replay
+frame=4 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=after original FFX replay
+frame=4 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+frame=5 render=2560x1440 upscale=2560x1440 phase=4 processed=0 replay=0 history_reset=1 event=capture descriptor read
+frame=6 render=2560x1440 upscale=2560x1440 phase=4 processed=0 replay=0 history_reset=1 event=capture descriptor read
+frame=7 render=2560x1440 upscale=2560x1440 phase=4 processed=0 replay=0 history_reset=1 event=capture descriptor read
+frame=8 render=2560x1440 upscale=2560x1440 phase=4 processed=0 replay=0 history_reset=1 event=capture descriptor read
+frame=100 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=100 async=1 submit_cpu_ms=26.273 retained=1
+frame=200 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=200 async=1 submit_cpu_ms=15.148 retained=1
+frame=300 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=300 async=1 submit_cpu_ms=15.241 retained=1
+frame=400 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=400 async=1 submit_cpu_ms=14.837 retained=0
+frame=500 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=500 async=1 submit_cpu_ms=13.302 retained=1
+frame=600 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=600 async=1 submit_cpu_ms=15.244 retained=1
+frame=700 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=700 async=1 submit_cpu_ms=15.241 retained=1
+frame=800 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=800 async=1 submit_cpu_ms=15.260 retained=1
+frame=900 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=900 async=1 submit_cpu_ms=15.105 retained=0
+frame=1000 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=1000 async=1 submit_cpu_ms=13.904 retained=0
+frame=1100 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=1100 async=1 submit_cpu_ms=13.718 retained=0
+frame=1200 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=1200 async=1 submit_cpu_ms=16.652 retained=0
+frame=1300 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=1300 async=1 submit_cpu_ms=13.573 retained=0
+frame=1400 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=1400 async=1 submit_cpu_ms=13.364 retained=0
+frame=1500 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=1500 async=1 submit_cpu_ms=13.217 retained=0
+frame=1600 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=1600 async=1 submit_cpu_ms=13.225 retained=0
+frame=1700 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=1700 async=1 submit_cpu_ms=13.302 retained=0
+frame=1800 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=1800 async=1 submit_cpu_ms=15.996 retained=1
+frame=1900 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=1900 async=1 submit_cpu_ms=16.912 retained=0
+frame=2000 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=2000 async=1 submit_cpu_ms=16.957 retained=0
+frame=2100 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=2100 async=1 submit_cpu_ms=16.949 retained=0
+frame=2200 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=2200 async=1 submit_cpu_ms=17.001 retained=0
+frame=2300 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=2300 async=1 submit_cpu_ms=17.070 retained=0
+frame=2400 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=2400 async=1 submit_cpu_ms=17.065 retained=1
+frame=2500 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=2500 async=1 submit_cpu_ms=17.064 retained=1
+frame=2600 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=2600 async=1 submit_cpu_ms=15.111 retained=0
+frame=2700 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=2700 async=1 submit_cpu_ms=13.806 retained=0
+frame=2800 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=2800 async=1 submit_cpu_ms=14.083 retained=0
+frame=2900 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=2900 async=1 submit_cpu_ms=13.823 retained=0
+frame=3000 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=3000 async=1 submit_cpu_ms=13.863 retained=0
+frame=3100 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=3100 async=1 submit_cpu_ms=13.858 retained=0
+frame=3200 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=3200 async=1 submit_cpu_ms=13.835 retained=0
+frame=3300 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=3300 async=1 submit_cpu_ms=13.744 retained=0
+frame=3400 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=3400 async=1 submit_cpu_ms=13.629 retained=0
+frame=3500 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=3500 async=1 submit_cpu_ms=13.733 retained=0
+frame=3600 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=3600 async=1 submit_cpu_ms=13.686 retained=0
+frame=3700 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=3700 async=1 submit_cpu_ms=13.690 retained=0
+frame=3800 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=3800 async=1 submit_cpu_ms=16.627 retained=0
+frame=3900 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=3900 async=1 submit_cpu_ms=17.258 retained=0
+frame=4000 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=4000 async=1 submit_cpu_ms=17.216 retained=0
+frame=4100 render=2560x1440 upscale=2560x1440 phase=4 processed=1 replay=0 history_reset=1 event=replayed
+pid=3076 frame=4100 async=1 submit_cpu_ms=14.821 retained=0
