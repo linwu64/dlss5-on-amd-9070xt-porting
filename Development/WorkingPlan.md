@@ -188,3 +188,7 @@
 - 2026-10-07 用户授权AMD低频实验及两游戏试装：统一TEMPORAL_MODE0/1/2默认0，2为独立SAOG算法编码域适配；小数学20385和Runtime实际API68326通过，mode0保旧字节；未知MV静态颜色门控不假补偿，初版同步/成本观感未知。22724已备份部署Mode2/MP1/PRED0、Addon7383/两runtime0f3c，78模块/SUMS不变；正式包/tag不动，等用户游戏反馈，不goalcomplete。证据low-frequency-temporal-20261007/lowfreq-runtime-20261007。
 
 - 2026-10-11 用户授权剑星1x高低频增强试用已部署：82751 exit0，官方O2 HIP addon9413682f（8521重编、F9 guard源与已验ea11一致），有效MODE3/增强1/MP1/PRED0；F9不能将模式1/2/3误写MP2。配置原已符合，本次三个配置字节均未变；玩家AE/strength/几何和79模块/SUMS/row保留。鬼武者/Runtime/发版/push未动。用户可自行启动体验，尚无本轮实际游戏帧/观感证据，不把部署当画质或性能通过。备份/rollback和manifest见results/mode3-stellar-1x-trial-20261011；下一收玩家反馈，不追加GPU基准。
+
+### 2026-10-11 MODE3客观对照：完成
+
+同NN/samecodec旧真实HDR菜单的CPU统计与全图/四局部/差分已归档；当前79模块及相关源码身份一致、当前剑星NR成功日志已核。结论是修正幅度增加、局部反差/色彩变化可辨，正常全图仍接近；未测当前实玩原帧、运动/闪烁/画质gold，不新增优化或部署任务。产物：Development/results/mode3-objective-20261011/README.md。

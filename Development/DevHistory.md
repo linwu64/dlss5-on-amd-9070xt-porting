@@ -369,3 +369,7 @@ APP -DCOMPARE_HLSL私有caller21603CPU过，源57NNshader匹配旧manifest、8co
 82751实际部署exit0/LOCK_RELEASED，只替换剑星dlss5-amd.addon64并对必要键做幂等写入；有效读回TEMPORAL_MODE3、TEMPORAL_ENHANCE_STRENGTH1、MULTI_PASS1、PREDICT0、FAST_HISTORY0、旧TEMPORAL_HISTORY_EXPERIMENT0。三个配置文件最终逐字节未变，因此玩家AE/基础strength/几何等原样保留；79个hsaco、SUMS与64B history row逐SHA保留，未写鬼武者或Runtime DLL。未代启游戏、未跑GPU性能/视觉实验、未发布ZIP/tag/push。Mode3已部署不等于已观察到实际处理帧或画质提升，等玩家启动反馈。
 
 备份/回滚：D:\DLSSNR-Lab\mode3-stellar-1x-trial-20261011\backups\20261011-114301\rollback.ps1（退出游戏后执行，校验原SHA并持atomic锁）。本地完整receipt/manifest/after/effective-config/modules与回滚脚本见results/mode3-stellar-1x-trial-20261011。
+
+### 2026-10-11：MODE3/s1 与普通NN输出的客观图像对照
+
+复核旧真实HDR菜单的同一次NN前后、同decoder配对raw（历史30243/314c573c），当前低频host/shader、输入/codec源码逐字同，当前installed79 HIP模块逐SHA同。编码残差MAE .01868645→.02713170（约+45.2%）；共同预览映射RGB MAE约4.51/255。正常全图相近，局部脸/发更暗、边缘/衣料反差和色彩变化可辨；不证明新细节或更好画质。当前剑星NR成功/MP1日志另行确认，旧菜单不冒本次2560×1440实玩抓帧。仅CPU统计与真实图，无新GPU/游戏改动；报告与四局部图见 results/mode3-objective-20261011/README.md。

@@ -1,0 +1,37 @@
+{
+  "production_source_commit": "e1068615",
+  "audit_commit": "cb2192fb",
+  "historical_paired_record": "314c573c",
+  "historical_algorithm_source": "e8fa0661",
+  "files": [
+    {
+      "file": "src/native_low_frequency_temporal.h",
+      "current_sha256": "a4505272ba034db40f059e2ddf3cc191c527d7b98a3311a639f86a79a80ba124",
+      "historical_sha256": "a4505272ba034db40f059e2ddf3cc191c527d7b98a3311a639f86a79a80ba124",
+      "byte_identical": true
+    },
+    {
+      "file": "src/native_low_frequency_shader.h",
+      "current_sha256": "8eaebd5982f5642369532af298f077c3203771f80306ffe4f681d33676d42ec4",
+      "historical_sha256": "8eaebd5982f5642369532af298f077c3203771f80306ffe4f681d33676d42ec4",
+      "byte_identical": true
+    },
+    {
+      "file": "src/native_game_codec.h",
+      "current_sha256": "25148509f30d7952d3550e22471eb4907cc47ad86b7c4f3af091cb781b24e2a3",
+      "historical_sha256": "25148509f30d7952d3550e22471eb4907cc47ad86b7c4f3af091cb781b24e2a3",
+      "byte_identical": true
+    },
+    {
+      "file": "src/native_game_rgb_input.h",
+      "current_sha256": "1be5f533d719d4e2ecee0a4dc5a97c2a849344f541896a14d3792b5eb0127916",
+      "historical_sha256": "1be5f533d719d4e2ecee0a4dc5a97c2a849344f541896a14d3792b5eb0127916",
+      "byte_identical": true
+    }
+  ],
+  "module_identity_evidence": "../mode3-stellar-live-audit-20261011/old-menu-vs-installed-modules.json",
+  "module_files_compared": 79,
+  "module_files_identical": 79,
+  "new_GPU_run": false,
+  "game_or_config_changed_by_this_comparison": false
+}
