@@ -1,0 +1,30 @@
+{
+  "gpu_handle": 30243,
+  "gpu_exit": 0,
+  "lock_released": true,
+  "final_cpu_handle": 1384,
+  "initial_cpu_handle": 37275,
+  "prepare_revision": "Intermediate counter hardcoded1 replaced actual FRAME_RUN_CALLS/EXTRA_DECODES counters before final1384; generator join syntaxfail preserved in dialogue, no GPU used old revision",
+  "source_base": "e8fa0661 mode3 feature, current isolated tree7ff13da4 deployment docs",
+  "host_sha256": "0f234fc9795394203501b12c7fa2afe4c1c077b16b14d9e018eca0a41dfe309a",
+  "copied_frame_sha256": "e63847c3eeab693af383bf30cadb67679c18df3394ce19da50bf0868e750620d",
+  "original_frame_sha256": "9a71aa4d3978f290f1cbecf5155de4f825c94a86fca6534baf18ea1909a6e6be",
+  "shader_sha256": "8eaebd5982f5642369532af298f077c3203771f80306ffe4f681d33676d42ec4",
+  "input": {
+    "path": "D:\\DLSSNR-Lab\\hip-backend\\live-menu-before.f16",
+    "bytes": 7464960,
+    "sha256": "fa3c18735ac5f105903614a18a9b1475966b9afd9dd4aeb0cd9cad7bc759ec9b",
+    "format": "1296x720 RGBA16F old real frozen HDR menu; not current game"
+  },
+  "profile": "Mode3 s1 MP1/PRED0/Style1/FAST1/full71/HEIGHT1080 ROWS1152 AE0 hot0 F9off graph0 pulse0; matches observed Sword1920x1152 NNgeometry, not its current source scene",
+  "actual_counter": "one Frame network.Run call, one extra same-decoder record; constructor kernel warmup outsideframe not falsely counted",
+  "scope": "same frame x encodedRGBA32F, NNbefore/after RGB32F; before+after same original decoder/source/state without another frame NN; original source only modified by final delivery",
+  "source_and_stats_audit": "mode1_audit independent read PASS; typed domains/fit/padding/alpha and same decoder owner/state passed",
+  "limits": [
+    "Not performance: readbacks and an extra decoder pass plus waits change cost",
+    "Not current gameplay; not native temporal-guide/continuity acceptance",
+    "Changes detectable in raw data but normal previews visually close; no better-quality claim",
+    "Cold single frame: spatial enhancement only; not flicker proof"
+  ],
+  "preview": "single common exposure3.997892599151139, Reinhard -> sRGB; stats raw HDR not clipped; heatmap pixelmax p99scale distinct from RGB-component quantiles"
+}

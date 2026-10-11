@@ -1,0 +1,47 @@
+{
+  "source_commit": "314c573c",
+  "original_gpu_handle": 30243,
+  "old_frozen_scene": true,
+  "current_game_capture": false,
+  "same_NN_before_after": true,
+  "same_decoder": true,
+  "frame_run_calls": 1,
+  "extra_decode_records": 1,
+  "strength": 1,
+  "prior_history": false,
+  "input_sha256": "fa3c18735ac5f105903614a18a9b1475966b9afd9dd4aeb0cd9cad7bc759ec9b",
+  "shader_sha256": "8eaebd5982f5642369532af298f077c3203771f80306ffe4f681d33676d42ec4",
+  "actual_raw_sha256": {
+    "pair-encoded-after.rgb32f": {
+      "bytes": 26542080,
+      "sha256": "a4aa5172421956ead416c5bd1c5ed17fd2a33004adbbbecad92e4cc73ff286a1"
+    },
+    "pair-encoded-input.rgba32f": {
+      "bytes": 35389440,
+      "sha256": "da5ee235437017b4a2fdc25de22b2d644747ccbf0c14b61080a255ea1e8e73d4"
+    },
+    "pair-encoded-before.rgb32f": {
+      "bytes": 26542080,
+      "sha256": "556eaad48f8ec8117cbb3b556331c316371c1a170b6837b4f21de3426ae94892"
+    },
+    "pair-decoded-before.rgba16f": {
+      "bytes": 7464960,
+      "sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a"
+    },
+    "pair-decoded-after.rgba16f": {
+      "bytes": 7464960,
+      "sha256": "a7b0ddb8ef8186bb297a2b741546903f8ae7f387d4cec7d140cafcbd123dc45f"
+    }
+  },
+  "CPU_only_this_task": true,
+  "game_files_changed": false,
+  "display_mapping": {
+    "exposure": 3.997892599151139,
+    "mapping": "same exposure -> per-channel Reinhard -> sRGB",
+    "negative_display_only_clamped_zero": true,
+    "actual_HDR_display_transform_unknown": true,
+    "weighted_Yprime": "fixed Rec709 numeric weights on display-coded RGB, not nits/JND"
+  },
+  "soft_headroom_estimation": "Not measured/captured; no quantitative causal attribution. Original shader contains compression/headroom guards.",
+  "observation": "Root inspection of shared-mapped comparison/crops: face/hair darker, eyebrows/edges and garment contrast/colors visibly changed locally; overall scene close; no evidence of newly reconstructed detail or better quality."
+}

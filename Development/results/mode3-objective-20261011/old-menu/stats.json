@@ -1,0 +1,193 @@
+{
+  "scope": "Old frozen1296x720 HDR menu captured before20261009, not current gameplay; cold spatial enhancement only, not flicker or quality gold",
+  "run_calls": 1,
+  "extra_decodes": 1,
+  "geometry": {
+    "encoded": [
+      1920,
+      1080,
+      1152
+    ],
+    "decoded": [
+      1296,
+      720
+    ],
+    "fit": [
+      0,
+      6,
+      1920,
+      1067
+    ]
+  },
+  "encoded_valid_rgb": {
+    "mae": 0.008472645947460266,
+    "rmse": 0.014443950313499978,
+    "p50": 0.0028246836009202525,
+    "p95": 0.031578043103218045,
+    "p99": 0.05751311898231504,
+    "maximum": 0.105327308177948,
+    "changed_pixel_fraction": 0.9808858989197531,
+    "signed_mean_change": -0.00564031186209553
+  },
+  "encoded_fit_rgb": {
+    "mae": 0.008555631066764591,
+    "rmse": 0.014529773286533005,
+    "p50": 0.002946704626083374,
+    "p95": 0.03185895234346389,
+    "p99": 0.057653544992208414,
+    "maximum": 0.105327308177948,
+    "changed_pixel_fraction": 0.981839659481412,
+    "signed_mean_change": -0.005729100412624193
+  },
+  "raw_decoded_HDR_rgb": {
+    "mae": 0.001980095800071117,
+    "rmse": 0.006950329409839624,
+    "p50": 0.00022602081298828125,
+    "p95": 0.010162353515625,
+    "p99": 0.0328369140625,
+    "maximum": 0.59375,
+    "changed_pixel_fraction": 0.9967956961591221,
+    "signed_mean_change": -0.0007075607904608208
+  },
+  "raw_decoded_HDR_weighted_Y": {
+    "mae": 0.0019251554743936017,
+    "rmse": 0.00654778533272028,
+    "p50": 0.0002327834606170654,
+    "p95": 0.010553717117309578,
+    "p99": 0.029735564208984232,
+    "maximum": 0.15435234375000007,
+    "changed_pixel_fraction": 0.9967956961591221,
+    "signed_mean_change": -0.0007026656123168321
+  },
+  "display_rgb": {
+    "mae": 0.017677974478709682,
+    "rmse": 0.026206228844110818,
+    "p50": 0.007617743328385666,
+    "p95": 0.057467220095890184,
+    "p99": 0.08184490607615728,
+    "maximum": 0.3129594174171386,
+    "changed_pixel_fraction": 0.9967956961591221,
+    "signed_mean_change": -0.01217753651458245
+  },
+  "display_weighted_Yprime": {
+    "mae": 0.0172286504647089,
+    "rmse": 0.025001095697940973,
+    "p50": 0.007697019899960518,
+    "p95": 0.054194428840733964,
+    "p99": 0.07508308942061384,
+    "maximum": 0.19351189104876496,
+    "changed_pixel_fraction": 0.9967956961591221,
+    "signed_mean_change": -0.011829750738506877
+  },
+  "display_max_pixel_thresholds": {
+    "1/255": 0.9082551011659808,
+    "2/255": 0.5484192815500686,
+    "4/255": 0.4469221536351166,
+    "8/255": 0.26823023834019205
+  },
+  "display_u8_changed_pixel_fraction": 0.9832658179012346,
+  "encoded_residual": {
+    "mode0_MAE_to_encoded_original": 0.018686452880501747,
+    "mode3_MAE_to_encoded_original": 0.02713169902563095,
+    "delta_MAE": 0.00847264751791954
+  },
+  "padding72rows_bit_identity": true,
+  "decoded_alpha_bit_identity": true,
+  "all_finite": true,
+  "display_mapping": {
+    "exposure": 3.997892599151139,
+    "mapping": "same exposure -> per-channel Reinhard -> sRGB",
+    "negative_display_only_clamped_zero": true,
+    "actual_HDR_display_transform_unknown": true,
+    "weighted_Yprime": "fixed Rec709 numeric weights on display-coded RGB, not nits/JND"
+  },
+  "raw": {
+    "pair-encoded-after.rgb32f": {
+      "bytes": 26542080,
+      "sha256": "a4aa5172421956ead416c5bd1c5ed17fd2a33004adbbbecad92e4cc73ff286a1"
+    },
+    "pair-encoded-input.rgba32f": {
+      "bytes": 35389440,
+      "sha256": "da5ee235437017b4a2fdc25de22b2d644747ccbf0c14b61080a255ea1e8e73d4"
+    },
+    "pair-encoded-before.rgb32f": {
+      "bytes": 26542080,
+      "sha256": "556eaad48f8ec8117cbb3b556331c316371c1a170b6837b4f21de3426ae94892"
+    },
+    "pair-decoded-before.rgba16f": {
+      "bytes": 7464960,
+      "sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a"
+    },
+    "pair-decoded-after.rgba16f": {
+      "bytes": 7464960,
+      "sha256": "a7b0ddb8ef8186bb297a2b741546903f8ae7f387d4cec7d140cafcbd123dc45f"
+    }
+  },
+  "no_PSNR_quality_claim": true,
+  "ROIs": [
+    {
+      "label": "\u8138\u90e8/\u5934\u53d1",
+      "box": [
+        730,
+        40,
+        970,
+        280
+      ],
+      "zoom": 3
+    },
+    {
+      "label": "\u8863\u6599/\u6750\u8d28",
+      "box": [
+        740,
+        300,
+        980,
+        540
+      ],
+      "zoom": 3
+    },
+    {
+      "label": "\u91d1\u5c5e/\u53cd\u5149",
+      "box": [
+        90,
+        330,
+        330,
+        570
+      ],
+      "zoom": 3
+    },
+    {
+      "label": "\u6697\u90e8/\u5730\u9762",
+      "box": [
+        350,
+        440,
+        590,
+        680
+      ],
+      "zoom": 3
+    }
+  ],
+  "difference_visualization": "signed difference in displayRGB x4 centered at gray. Not alternate exposure, not quality-error heatmap.",
+  "encoded_valid_range_counts": {
+    "before": {
+      "components": 6220800,
+      "pixels": 2073600,
+      "strict_below_zero_components": 0,
+      "strict_above_one_components": 0,
+      "outside_1e_minus6_components": 0,
+      "exact_zero_components": 58435,
+      "exact_one_components": 15
+    },
+    "after": {
+      "components": 6220800,
+      "pixels": 2073600,
+      "strict_below_zero_components": 104075,
+      "strict_above_one_components": 0,
+      "outside_1e_minus6_components": 0,
+      "exact_zero_components": 55430,
+      "exact_one_components": 17
+    },
+    "newly_at_or_beyond_zero_components": 104086,
+    "newly_at_or_beyond_one_components": 5,
+    "note": "Outcome counts, not hardware clipping/headroom gate counters. Tiny float EPS outside range is reported separately from tolerance1e-6."
+  }
+}
