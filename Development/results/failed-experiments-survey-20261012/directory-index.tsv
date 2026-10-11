@@ -1,0 +1,595 @@
+directory	document_reference	independent_scan_class	evidence_entry
+Development/results/1080-20260919	True	fragment_reference_or_alias	Development/results/1080-20260919/current-profile.md
+Development/results/9070-theoretical-20260921	False	analysis_success_or_unclassified_documented	Development/results/9070-theoretical-20260921/README.md
+Development/results/aco-isa-20260927	True	fragment_reference_or_alias	Development/results/aco-isa-20260927/README.md
+Development/results/aco-lineup-20260928	True	fragment_reference_or_alias	Development/results/aco-lineup-20260928/README.md
+Development/results/amdnr-0332-ingame-20260926	False	analysis_success_or_unclassified_documented	Development/results/amdnr-0332-ingame-20260926/README.md
+Development/results/bitexact-pm-20261001	True	fragment_reference_or_alias	Development/results/bitexact-pm-20261001/README.md
+Development/results/body22-down-local-20261006	True	fragment_reference_or_alias	Development/results/body22-down-local-20261006/README.md,Development/results/body22-down-local-20261006/register-cache-reuse-model.md
+Development/results/body22-down-ownership-review-20261006	False	analysis_success_or_unclassified_documented	Development/results/body22-down-ownership-review-20261006/README.md
+Development/results/body22-down-regcache-20261006	True	fragment_reference_or_alias	Development/results/body22-down-regcache-20261006/README.md
+Development/results/body22-down-regcache-noescape-20261006	True	fragment_reference_or_alias	Development/results/body22-down-regcache-noescape-20261006/README.md
+Development/results/body22-down-source-review-20261006	False	analysis_success_or_unclassified_documented	Development/results/body22-down-source-review-20261006/README.md
+Development/results/body22-regcache-review-20261006	True	fragment_reference_or_alias	Development/results/body22-regcache-review-20261006/README.md
+Development/results/bridge-stages-20260922	False	negative_wording_unmapped_review	Development/results/bridge-stages-20260922/README.md
+Development/results/c128-all-phase-reuse-20260921	True	negative_wording_unmapped_review	Development/results/c128-all-phase-reuse-20260921/report.md
+Development/results/c128-c64-inchain-20261001	True	fragment_reference_or_alias	Development/results/c128-c64-inchain-20261001/README.md,Development/results/c128-c64-inchain-20261001/ledger.md
+Development/results/c128-contract-buffer-20260921	False	analysis_success_or_unclassified_documented	Development/results/c128-contract-buffer-20260921/report.md
+Development/results/c128-empty-tile-20260921	False	analysis_success_or_unclassified_documented	Development/results/c128-empty-tile-20260921/report.md
+Development/results/c128-fused-row-reuse-20260921	True	fragment_reference_or_alias	Development/results/c128-fused-row-reuse-20260921/report.md
+Development/results/c128-norm-cost-20260921	False	negative_wording_unmapped_review	Development/results/c128-norm-cost-20260921/report.md
+Development/results/c128-qkv-input-reuse-20260921	True	analysis_success_or_unclassified_documented	Development/results/c128-qkv-input-reuse-20260921/report.md
+Development/results/c128-row-reuse-20260921	False	analysis_success_or_unclassified_documented	Development/results/c128-row-reuse-20260921/report.md
+Development/results/c256-fusion-20260928	True	fragment_reference_or_alias	Development/results/c256-fusion-20260928/README.md,Development/results/c256-fusion-20260928/daniel-analysis.md,Development/results/c256-fusion-20260928/history-analysis.md
+Development/results/c256-gap-20261001	True	fragment_reference_or_alias	Development/results/c256-gap-20261001/README.md
+Development/results/c256-w16-20260930	False	analysis_success_or_unclassified_documented	Development/results/c256-w16-20260930/README.md
+Development/results/c256-wide-load-20260921	False	analysis_success_or_unclassified_documented	Development/results/c256-wide-load-20260921/report.md
+Development/results/c32-aco-20260927	True	fragment_reference_or_alias	Development/results/c32-aco-20260927/README.md
+Development/results/c32-align-20260930	False	analysis_success_or_unclassified_documented	Development/results/c32-align-20260930/README.md
+Development/results/c32-byte-chain-20260923	True	analysis_success_or_unclassified_documented	Development/results/c32-byte-chain-20260923/README.md
+Development/results/c32-diag-zero-20260925	False	deployment_config_package_or_mixed	Development/results/c32-diag-zero-20260925/README.md
+Development/results/c32-direct-feature-20261006	True	fragment_reference_or_alias	Development/results/c32-direct-feature-20261006/README.md,Development/results/c32-direct-feature-20261006/independent-isa-review.md,Development/results/c32-direct-feature-20261006/residual-capture-bug.md
+Development/results/c32-edge-cost-20260921	True	analysis_success_or_unclassified_documented	Development/results/c32-edge-cost-20260921/README.md,Development/results/c32-edge-cost-20260921/tail.md,Development/results/c32-edge-cost-20260921/input.md
+Development/results/c32-fence-scope-20260922	False	analysis_success_or_unclassified_documented	Development/results/c32-fence-scope-20260922/README.md
+Development/results/c32-lds-alias-20260923	False	analysis_success_or_unclassified_documented	Development/results/c32-lds-alias-20260923/README.md
+Development/results/c32-norm-hoist-20261006	False	fragment_reference_or_alias	Development/results/c32-norm-hoist-20261006/README.md
+Development/results/c32-norm-hoist-compat-20261006	True	fragment_reference_or_alias	Development/results/c32-norm-hoist-compat-20261006/README.md
+Development/results/c32-norm-hoist-framework-20261006	True	fragment_reference_or_alias	Development/results/c32-norm-hoist-framework-20261006/README.md
+Development/results/c32-norm-hoist-stat-audit-20261006	True	fragment_reference_or_alias	Development/results/c32-norm-hoist-stat-audit-20261006/README.md
+Development/results/c32-norm-transpose-20261006	True	fragment_reference_or_alias	Development/results/c32-norm-transpose-20261006/README.md
+Development/results/c32-pair-encode-20260922	True	fragment_reference_or_alias	Development/results/c32-pair-encode-20260922/README.md
+Development/results/c32-phase-cost-20260921	False	deployment_config_package_or_mixed	Development/results/c32-phase-cost-20260921/README.md
+Development/results/c32-phase-current-20260925	False	deployment_config_package_or_mixed	Development/results/c32-phase-current-20260925/README.md
+Development/results/c32-phase-trace-20260923	True	analysis_success_or_unclassified_documented	Development/results/c32-phase-trace-20260923/README.md
+Development/results/c32-post-input-20260925	True	negative_wording_unmapped_review	Development/results/c32-post-input-20260925/README.md
+Development/results/c32-post-lds-20260921	True	negative_wording_unmapped_review	Development/results/c32-post-lds-20260921/report.md
+Development/results/c32-register-attention-20260922	True	negative_wording_unmapped_review	Development/results/c32-register-attention-20260922/README.md
+Development/results/c32-round2-20260927	True	fragment_reference_or_alias	Development/results/c32-round2-20260927/README.md
+Development/results/c32-round3-20260927	True	fragment_reference_or_alias	Development/results/c32-round3-20260927/README.md
+Development/results/c32-single-pack-20260921	False	analysis_success_or_unclassified_documented	Development/results/c32-single-pack-20260921/report.md
+Development/results/c32-small-20261004	True	fragment_reference_or_alias	Development/results/c32-small-20261004/README.md
+Development/results/c32-tail-20260926	True	negative_wording_unmapped_review	Development/results/c32-tail-20260926/README.md
+Development/results/c32-transposed-ffn-20260922	False	analysis_success_or_unclassified_documented	Development/results/c32-transposed-ffn-20260922/README.md
+Development/results/c32-transposed-tail-20260924	True	analysis_success_or_unclassified_documented	Development/results/c32-transposed-tail-20260924/README.md
+Development/results/c32-vec-stage-20260923	False	analysis_success_or_unclassified_documented	Development/results/c32-vec-stage-20260923/README.md
+Development/results/c32-wave-phase-20260926	False	analysis_success_or_unclassified_documented	Development/results/c32-wave-phase-20260926/README.md
+Development/results/c32-wave1-20260926	False	deployment_config_package_or_mixed	Development/results/c32-wave1-20260926/README.md
+Development/results/c512-activation-lut-20261004	True	fragment_reference_or_alias	Development/results/c512-activation-lut-20261004/README.md
+Development/results/c512-av-f-20260930	False	analysis_success_or_unclassified_documented	Development/results/c512-av-f-20260930/README.md
+Development/results/c512-compact-vt-20260930	True	fragment_reference_or_alias	Development/results/c512-compact-vt-20260930/README.md
+Development/results/c512-den-app-preparation-20261006	True	fragment_reference_or_alias	Development/results/c512-den-app-preparation-20261006/README.md
+Development/results/c512-den-repeat-audit-20261006	False	deployment_config_package_or_mixed	Development/results/c512-den-repeat-audit-20261006/README.md
+Development/results/c512-den-typed-basis-20261006	True	fragment_reference_or_alias	Development/results/c512-den-typed-basis-20261006/README.md
+Development/results/c512-direct-pack-20261004	True	fragment_reference_or_alias	Development/results/c512-direct-pack-20261004/README.md
+Development/results/c512-direct-whole-20261004	True	fragment_reference_or_alias	Development/results/c512-direct-whole-20261004/README.md
+Development/results/c512-ffn-20260926	True	fragment_reference_or_alias	Development/results/c512-ffn-20260926/README.md
+Development/results/c512-ffn-lds-20260930	True	fragment_reference_or_alias	Development/results/c512-ffn-lds-20260930/README.md
+Development/results/c512-fusion-20260928	True	fragment_reference_or_alias	Development/results/c512-fusion-20260928/README.md,Development/results/c512-fusion-20260928/ACCOUNT.md,Development/results/c512-fusion-20260928/buffer-evidence.md
+Development/results/c512-mix-20260927	True	fragment_reference_or_alias	Development/results/c512-mix-20260927/README.md
+Development/results/c512-proj-share-20260929	True	fragment_reference_or_alias	Development/results/c512-proj-share-20260929/README.md
+Development/results/c512-qkv-pipeline-20261001	True	fragment_reference_or_alias	Development/results/c512-qkv-pipeline-20261001/README.md
+Development/results/c512-round1-20260927	True	fragment_reference_or_alias	Development/results/c512-round1-20260927/README.md
+Development/results/c512-vit-reorg-design-20260930	True	fragment_reference_or_alias	Development/results/c512-vit-reorg-design-20260930/README.md
+Development/results/c512-wave-20260926	True	fragment_reference_or_alias	Development/results/c512-wave-20260926/README.md
+Development/results/c512-xblock-queue-20261001	True	fragment_reference_or_alias	Development/results/c512-xblock-queue-20261001/README.md
+Development/results/c64-block-fused-20260927	True	fragment_reference_or_alias	Development/results/c64-block-fused-20260927/README.md
+Development/results/c64-hand-asm-20260927	True	fragment_reference_or_alias	Development/results/c64-hand-asm-20260927/README.md
+Development/results/c64-wave2-20260926	False	analysis_success_or_unclassified_documented	Development/results/c64-wave2-20260926/README.md
+Development/results/character-mask-survey-20261011	True	deployment_config_package_or_mixed	Development/results/character-mask-survey-20261011/README.md,Development/results/character-mask-survey-20261011/full-person.md,Development/results/character-mask-survey-20261011/temporal-and-integration.md
+Development/results/clock-ledger-20260924	False	deployment_config_package_or_mixed	Development/results/clock-ledger-20260924/README.md,Development/results/clock-ledger-20260924/table.md
+Development/results/clock-observe-20260921	False	analysis_success_or_unclassified_documented	Development/results/clock-observe-20260921/report.md
+Development/results/closed-v040-20260926	False	deployment_config_package_or_mixed	Development/results/closed-v040-20260926/README.md
+Development/results/combined-vs041-20261006	False	negative_wording_unmapped_review	Development/results/combined-vs041-20261006/README.md
+Development/results/competitor-timing-20260930	False	analysis_success_or_unclassified_documented	Development/results/competitor-timing-20260930/README.md
+Development/results/compiler-sweep-20261001	True	fragment_reference_or_alias	Development/results/compiler-sweep-20261001/README.md
+Development/results/compiler-versions-20260929	True	fragment_reference_or_alias	Development/results/compiler-versions-20260929/README.md,Development/results/compiler-versions-20260929/isa-notes.md
+Development/results/composite-quant-20260930	False	analysis_success_or_unclassified_documented	Development/results/composite-quant-20260930/README.md
+Development/results/composite-quant-c512-20260930	False	analysis_success_or_unclassified_documented	Development/results/composite-quant-c512-20260930/README.md
+Development/results/config-layers-20261003	False	deployment_config_package_or_mixed	Development/results/config-layers-20261003/README.md
+Development/results/current-main-install-20261003	False	deployment_config_package_or_mixed	Development/results/current-main-install-20261003/README.md
+Development/results/d3d-hip-stall-20261004	True	fragment_reference_or_alias	Development/results/d3d-hip-stall-20261004/README.md
+Development/results/daniel-040-ingame-20260926	False	deployment_config_package_or_mixed	Development/results/daniel-040-ingame-20260926/README.md
+Development/results/daniel-050-20260928	True	fragment_reference_or_alias	Development/results/daniel-050-20260928/README.md
+Development/results/daniel-051-20260929	True	fragment_reference_or_alias	Development/results/daniel-051-20260929/README.md
+Development/results/daniel-kernels-20260928	True	fragment_reference_or_alias	Development/results/daniel-kernels-20260928/c32-cache-notes.md,Development/results/daniel-kernels-20260928/README.md,Development/results/daniel-kernels-20260928/activation-candidates.md
+Development/results/daniel-nonnative-20260929	True	fragment_reference_or_alias	Development/results/daniel-nonnative-20260929/README.md
+Development/results/deep-layers-20260929	True	fragment_reference_or_alias	Development/results/deep-layers-20260929/README.md,Development/results/deep-layers-20260929/daniel-report.md,Development/results/deep-layers-20260929/mapping.md
+Development/results/deep-tail-20260930	True	fragment_reference_or_alias	Development/results/deep-tail-20260930/README.md
+Development/results/deep-tail2-20260930	True	fragment_reference_or_alias	Development/results/deep-tail2-20260930/README.md
+Development/results/deep-transposed-epilogue-20260923	True	negative_wording_unmapped_review	Development/results/deep-transposed-epilogue-20260923/README.md
+Development/results/default-c-20261003	False	deployment_config_package_or_mixed	Development/results/default-c-20261003/README.md
+Development/results/default-swap-20261003	False	deployment_config_package_or_mixed	Development/results/default-swap-20261003/README.md
+Development/results/dispatch-sequence-20261006	False	deployment_config_package_or_mixed	Development/results/dispatch-sequence-20261006/README.md
+Development/results/f-sweep-20260930	True	fragment_reference_or_alias	Development/results/f-sweep-20260930/README.md
+Development/results/face-detection-probe-20261011	True	analysis_success_or_unclassified_documented	Development/results/face-detection-probe-20261011/README.md
+Development/results/family-ledger-wave-owned-20260926	False	deployment_config_package_or_mixed	Development/results/family-ledger-wave-owned-20260926/README.md
+Development/results/fast-numeric-option-20261003	False	deployment_config_package_or_mixed	Development/results/fast-numeric-option-20261003/README.md
+Development/results/fast-tier-20261001	True	fragment_reference_or_alias	Development/results/fast-tier-20261001/README.md
+Development/results/fast-vit-c512-20261003	True	fragment_reference_or_alias	Development/results/fast-vit-c512-20261003/README.md
+Development/results/fence-cu-size-20260922	True	analysis_success_or_unclassified_documented	Development/results/fence-cu-size-20260922/README.md
+Development/results/fence-scope-all-20260922	False	analysis_success_or_unclassified_documented	Development/results/fence-scope-all-20260922/README.md
+Development/results/ffn-expand-prefetch-20260921	False	analysis_success_or_unclassified_documented	Development/results/ffn-expand-prefetch-20260921/report.md
+Development/results/ffn-stage-cost-20260921	False	analysis_success_or_unclassified_documented	Development/results/ffn-stage-cost-20260921/report.md
+Development/results/fidelity-ngx-20260930	False	deployment_config_package_or_mixed	Development/results/fidelity-ngx-20260930/README.md
+Development/results/fill-cu-20260930	True	fragment_reference_or_alias	Development/results/fill-cu-20260930/README.md,Development/results/fill-cu-20260930/filltab.md
+Development/results/final-output-direct-20261005	True	fragment_reference_or_alias	Development/results/final-output-direct-20261005/README.md
+Development/results/float-fma-20260928	True	fragment_reference_or_alias	Development/results/float-fma-20260928/README.md
+Development/results/fma-vs-nvidia-20260928	True	fragment_reference_or_alias	Development/results/fma-vs-nvidia-20260928/README.md,Development/results/fma-vs-nvidia-20260928/isa-audit.md,Development/results/fma-vs-nvidia-20260928/geometry-audit.md
+Development/results/fmed3-ovfl-20260927	True	fragment_reference_or_alias	Development/results/fmed3-ovfl-20260927/README.md
+Development/results/fp8-sat-mode-20260927	True	fragment_reference_or_alias	Development/results/fp8-sat-mode-20260927/README.md
+Development/results/frame-breakdown-20260928	True	fragment_reference_or_alias	Development/results/frame-breakdown-20260928/README.md
+Development/results/frame-stats-20260928	True	fragment_reference_or_alias	
+Development/results/framework-single-event-20261006	True	fragment_reference_or_alias	Development/results/framework-single-event-20261006/README.md
+Development/results/framework-submit-pair-20261006	True	fragment_reference_or_alias	Development/results/framework-submit-pair-20261006/README.md
+Development/results/free-res-20261002	False	analysis_success_or_unclassified_documented	Development/results/free-res-20261002/README.md
+Development/results/fresh-mochi1088-20261006	False	analysis_success_or_unclassified_documented	Development/results/fresh-mochi1088-20261006/matrix-work-audit.md,Development/results/fresh-mochi1088-20261006/README.md,Development/results/fresh-mochi1088-20261006/graph-samework-cpu-review.md
+Development/results/fullnn-spm-20261006	False	analysis_success_or_unclassified_documented	Development/results/fullnn-spm-20261006/README.md
+Development/results/fusion-round3-20260928	True	fragment_reference_or_alias	Development/results/fusion-round3-20260928/ISA-UP.md,Development/results/fusion-round3-20260928/README.md,Development/results/fusion-round3-20260928/package-036-checklist.md
+Development/results/gap-fusion-20260930	True	fragment_reference_or_alias	Development/results/gap-fusion-20260930/README.md
+Development/results/gap-map-evening-20261001	True	fragment_reference_or_alias	Development/results/gap-map-evening-20261001/README.md,Development/results/gap-map-evening-20261001/table.md
+Development/results/geom-1088-20260930	False	analysis_success_or_unclassified_documented	Development/results/geom-1088-20260930/README.md
+Development/results/gpu-throughput-20260921	False	deployment_config_package_or_mixed	Development/results/gpu-throughput-20260921/report.md
+Development/results/graph0-app-20261006	True	fragment_reference_or_alias	Development/results/graph0-app-20261006/README.md
+Development/results/graph0-app-perf-20261006	True	fragment_reference_or_alias	Development/results/graph0-app-perf-20261006/README.md
+Development/results/graph0-app-source-review-20261006	False	analysis_success_or_unclassified_documented	Development/results/graph0-app-source-review-20261006/README.md,Development/results/graph0-app-source-review-20261006/performance-review.md,Development/results/graph0-app-source-review-20261006/warm-source-review.md
+Development/results/graph0-bounded-replay-20261006	False	deployment_config_package_or_mixed	Development/results/graph0-bounded-replay-20261006/README.md
+Development/results/graph0-perf-20261006	True	fragment_reference_or_alias	Development/results/graph0-perf-20261006/README.md
+Development/results/graph0-product-baseline-20261006	False	fragment_reference_or_alias	Development/results/graph0-product-baseline-20261006/README.md
+Development/results/graph0-product-baseline-review-20261006	True	fragment_reference_or_alias	Development/results/graph0-product-baseline-review-20261006/README.md,Development/results/graph0-product-baseline-review-20261006/quiet-performance-review.md,Development/results/graph0-product-baseline-review-20261006/replay-auto-minimal-review.md
+Development/results/graph0-product-perf-20261006	True	fragment_reference_or_alias	Development/results/graph0-product-perf-20261006/README.md
+Development/results/graph0-samework-20261006	False	deployment_config_package_or_mixed	Development/results/graph0-samework-20261006/README.md
+Development/results/graph0-samework-source-review-20261006	False	analysis_success_or_unclassified_documented	Development/results/graph0-samework-source-review-20261006/README.md,Development/results/graph0-samework-source-review-20261006/bounded-replay-review.md,Development/results/graph0-samework-source-review-20261006/performance-review.md
+Development/results/graph0-single-replay-20261006	False	deployment_config_package_or_mixed	Development/results/graph0-single-replay-20261006/README.md
+Development/results/h900-route-review-20261006	False	analysis_success_or_unclassified_documented	Development/results/h900-route-review-20261006/README.md
+Development/results/handoff-gpu-20260930	True	fragment_reference_or_alias	Development/results/handoff-gpu-20260930/README.md
+Development/results/handoff-poll-20260930	True	fragment_reference_or_alias	Development/results/handoff-poll-20260930/README.md
+Development/results/hip-graph-abi-20261006	False	analysis_success_or_unclassified_documented	Development/results/hip-graph-abi-20261006/README.md,Development/results/hip-graph-abi-20261006/app-scope-review.md,Development/results/hip-graph-abi-20261006/pulse-combination-review.md
+Development/results/hip-roofline-20260930	False	analysis_success_or_unclassified_documented	Development/results/hip-roofline-20260930/README.md
+Development/results/history-contract-20261006	True	fragment_reference_or_alias	Development/results/history-contract-20261006/README.md
+Development/results/history-trial-041a-20261006	True	fragment_reference_or_alias	Development/results/history-trial-041a-20261006/README.md
+Development/results/hoist-loads-20260930	True	fragment_reference_or_alias	Development/results/hoist-loads-20260930/README.md
+Development/results/hw-window-comparability-20261006	True	fragment_reference_or_alias	Development/results/hw-window-comparability-20261006/README.md
+Development/results/ideas-yami-ikaruga-20261002	True	fragment_reference_or_alias	Development/results/ideas-yami-ikaruga-20261002/README.md
+Development/results/infinity-cache-20260930	True	fragment_reference_or_alias	Development/results/infinity-cache-20260930/README.md
+Development/results/input-slim-20261001	True	fragment_reference_or_alias	Development/results/input-slim-20261001/README.md
+Development/results/instruction-audit-20260921	False	analysis_success_or_unclassified_documented	Development/results/instruction-audit-20260921/report.md
+Development/results/issue13-original-oracle-20261004	False	analysis_success_or_unclassified_documented	Development/results/issue13-original-oracle-20261004/README.md
+Development/results/issue13-prefix-20261004	False	analysis_success_or_unclassified_documented	Development/results/issue13-prefix-20261004/README.md
+Development/results/issue4-igpu-20261004	False	analysis_success_or_unclassified_documented	Development/results/issue4-igpu-20261004/README.md
+Development/results/kernel-bottleneck-20260921	False	fragment_reference_or_alias	Development/results/kernel-bottleneck-20260921/report.md
+Development/results/kernel-map-20260929	True	fragment_reference_or_alias	Development/results/kernel-map-20260929/README.md,Development/results/kernel-map-20260929/README-position-map.md,Development/results/kernel-map-20260929/daniel-deep-ABI.md
+Development/results/kernel-map-900-20260930	False	analysis_success_or_unclassified_documented	Development/results/kernel-map-900-20260930/README.md
+Development/results/kernel-map-inchain-20261001	False	analysis_success_or_unclassified_documented	Development/results/kernel-map-inchain-20261001/README.md,Development/results/kernel-map-inchain-20261001/table.md
+Development/results/kernel-map-v3-20260930	False	negative_wording_unmapped_review	Development/results/kernel-map-v3-20260930/README.md
+Development/results/lab-cleanup-20260930	False	analysis_success_or_unclassified_documented	Development/results/lab-cleanup-20260930/README.md
+Development/results/launch-occupancy-20260923	False	analysis_success_or_unclassified_documented	Development/results/launch-occupancy-20260923/README.md
+Development/results/llvm-fork-20260929	True	fragment_reference_or_alias	Development/results/llvm-fork-20260929/README.md,Development/results/llvm-fork-20260929/patch-candidates.md
+Development/results/llvm-patch1-20260929	True	fragment_reference_or_alias	Development/results/llvm-patch1-20260929/README.md
+Development/results/llvm23-vit-20261002	True	fragment_reference_or_alias	Development/results/llvm23-vit-20261002/README.md
+Development/results/low-frequency-temporal-20261007	False	deployment_config_package_or_mixed	Development/results/low-frequency-temporal-20261007/README.md
+Development/results/lowfreq-runtime-20261007	True	fragment_reference_or_alias	Development/results/lowfreq-runtime-20261007/deploy-manifest.json,Development/results/lowfreq-runtime-20261007/receipt.json,Development/results/lowfreq-runtime-20261007/deploy-modules-readonly.json,Development/results/lowfreq-runtime-20261007/deploy-after.json
+Development/results/m32-sweep-20260926	True	fragment_reference_or_alias	Development/results/m32-sweep-20260926/README.md
+Development/results/main-vit-reuse-20260920	True	analysis_success_or_unclassified_documented	Development/results/main-vit-reuse-20260920/report.md
+Development/results/mh-empty-tile-20260921	True	deployment_config_package_or_mixed	Development/results/mh-empty-tile-20260921/report.md
+Development/results/mh-hoist-residual-20260923	True	negative_wording_unmapped_review	Development/results/mh-hoist-residual-20260923/README.md
+Development/results/mh-phase-trace-20260923	False	fragment_reference_or_alias	Development/results/mh-phase-trace-20260923/README.md
+Development/results/mh-register-attention-20260923	False	analysis_success_or_unclassified_documented	Development/results/mh-register-attention-20260923/README.md
+Development/results/mh-register-c512-20260923	True	fragment_reference_or_alias	Development/results/mh-register-c512-20260923/README.md
+Development/results/mh-round1-20260927	True	fragment_reference_or_alias	Development/results/mh-round1-20260927/README.md
+Development/results/mh-transposed-project-20260923	True	negative_wording_unmapped_review	Development/results/mh-transposed-project-20260923/README.md
+Development/results/mhfast-batchnorm-20260923	True	negative_wording_unmapped_review	Development/results/mhfast-batchnorm-20260923/README.md
+Development/results/mhfast-line-stores-20260924	False	analysis_success_or_unclassified_documented	Development/results/mhfast-line-stores-20260924/README.md
+Development/results/mhfast-phase-trace-20260923	False	analysis_success_or_unclassified_documented	Development/results/mhfast-phase-trace-20260923/README.md
+Development/results/mhfast-tail-ablate-20260923	False	negative_wording_unmapped_review	Development/results/mhfast-tail-ablate-20260923/README.md
+Development/results/mhfast-tail-ablate2-20260923	False	analysis_success_or_unclassified_documented	Development/results/mhfast-tail-ablate2-20260923/README.md
+Development/results/mhfast-transposed-qkv-20260923	False	analysis_success_or_unclassified_documented	Development/results/mhfast-transposed-qkv-20260923/README.md
+Development/results/mhfast-vgpr-cap-20260923	True	negative_wording_unmapped_review	Development/results/mhfast-vgpr-cap-20260923/README.md
+Development/results/mhfast-wave-norm-20260923	True	negative_wording_unmapped_review	Development/results/mhfast-wave-norm-20260923/README.md
+Development/results/mhfast-wide-frag-20260923	True	negative_wording_unmapped_review	Development/results/mhfast-wide-frag-20260923/README.md
+Development/results/mochi-aco-survey-20261011	True	fragment_reference_or_alias	Development/results/mochi-aco-survey-20261011/README.md,Development/results/mochi-aco-survey-20261011/performance-evidence.md,Development/results/mochi-aco-survey-20261011/upstream.md
+Development/results/mochi-driver-cache-20261006	True	fragment_reference_or_alias	Development/results/mochi-driver-cache-20261006/README.md,Development/results/mochi-driver-cache-20261006/tr-load-main-review.md,Development/results/mochi-driver-cache-20261006/qkv-store-routing-correction.md
+Development/results/mochi-old-lock-20261006	True	fragment_reference_or_alias	Development/results/mochi-old-lock-20261006/README.md
+Development/results/mochi-spm-20261006	True	fragment_reference_or_alias	Development/results/mochi-spm-20261006/README.md
+Development/results/mochi-vit-score-control-20261006	True	fragment_reference_or_alias	Development/results/mochi-vit-score-control-20261006/README.md
+Development/results/mochizuki-022-20260928	True	fragment_reference_or_alias	Development/results/mochizuki-022-20260928/README.md
+Development/results/mochizuki-024-20260930	False	analysis_success_or_unclassified_documented	Development/results/mochizuki-024-20260930/README.md
+Development/results/mochizuki-gap-20261001	True	fragment_reference_or_alias	Development/results/mochizuki-gap-20261001/README.md
+Development/results/mochizuki-gap-audit-20261006	True	fragment_reference_or_alias	Development/results/mochizuki-gap-audit-20261006/README.md
+Development/results/mode1-assets-20261008	True	fragment_reference_or_alias	Development/results/mode1-assets-20261008/control-audit.json,Development/results/mode1-assets-20261008/receipt.json,Development/results/mode1-assets-20261008/module-audit.json,Development/results/mode1-assets-20261008/control-build-manifest.json,Development/results/mode1-assets-20261008/modules-readonly.json,Development/results/mode1-assets-20261008/after.json,Development/results/mode1-assets-20261008/manifest.json,Development/results/mode1-asset
+Development/results/mode1-static-20261008	False	analysis_success_or_unclassified_documented	Development/results/mode1-static-20261008/README.md
+Development/results/mode3-objective-20261011	True	deployment_config_package_or_mixed	Development/results/mode3-objective-20261011/README.md
+Development/results/mode3-recorded-nn-20261009	False	deployment_config_package_or_mixed	Development/results/mode3-recorded-nn-20261009/README.md
+Development/results/mode3-stellar-1x-trial-20261011	False	no_top_md_source_or_receipt_review	Development/results/mode3-stellar-1x-trial-20261011/receipt.json,Development/results/mode3-stellar-1x-trial-20261011/effective-config.json,Development/results/mode3-stellar-1x-trial-20261011/modules-readonly.json,Development/results/mode3-stellar-1x-trial-20261011/audit-before.json,Development/results/mode3-stellar-1x-trial-20261011/after.json,Development/results/mode3-stellar-1x-trial-20261011/manifest.json
+Development/results/mode3-stellar-deploy-20261008	False	no_top_md_source_or_receipt_review	Development/results/mode3-stellar-deploy-20261008/receipt.json,Development/results/mode3-stellar-deploy-20261008/modules-readonly.json,Development/results/mode3-stellar-deploy-20261008/after.json,Development/results/mode3-stellar-deploy-20261008/manifest.json
+Development/results/mode3-stellar-live-audit-20261011	True	fragment_reference_or_alias	Development/results/mode3-stellar-live-audit-20261011/README.md
+Development/results/multi-pass-20261003	False	fragment_reference_or_alias	Development/results/multi-pass-20261003/README.md
+Development/results/multi-pass-extrap-20261003	True	fragment_reference_or_alias	Development/results/multi-pass-extrap-20261003/README.md
+Development/results/multi-pass-predict-20261004	True	fragment_reference_or_alias	Development/results/multi-pass-predict-20261004/README.md
+Development/results/multi-pass-skip-20261003	True	fragment_reference_or_alias	Development/results/multi-pass-skip-20261003/README.md
+Development/results/multipass-direct-rgba-20261004	False	deployment_config_package_or_mixed	Development/results/multipass-direct-rgba-20261004/README.md
+Development/results/native-1440-optimization-20261004	True	fragment_reference_or_alias	Development/results/native-1440-optimization-20261004/README.md
+Development/results/net-timing-20261002	True	fragment_reference_or_alias	Development/results/net-timing-20261002/README.md
+Development/results/network-cost-summary-20260921	True	negative_wording_unmapped_review	Development/results/network-cost-summary-20260921/README.md
+Development/results/network-fixed-shapes-20260921	True	negative_wording_unmapped_review	Development/results/network-fixed-shapes-20260921/README.md
+Development/results/network-timeline-20260921	True	fragment_reference_or_alias	Development/results/network-timeline-20260921/report.md
+Development/results/next-candidate-20261002	False	analysis_success_or_unclassified_documented	Development/results/next-candidate-20261002/README.md
+Development/results/night-20261001	False	deployment_config_package_or_mixed	Development/results/night-20261001/README.md,Development/results/night-20261001/power-table.md
+Development/results/norm-contract-20261006	False	analysis_success_or_unclassified_documented	Development/results/norm-contract-20261006/README.md
+Development/results/nr-dx12-fourstage-20261009	True	fragment_reference_or_alias	Development/results/nr-dx12-fourstage-20261009/receipt.json,Development/results/nr-dx12-fourstage-20261009/gold-stats.json
+Development/results/nr-dx12-legacy-app-20261009	True	fragment_reference_or_alias	Development/results/nr-dx12-legacy-app-20261009/receipt.json,Development/results/nr-dx12-legacy-app-20261009/shader-manifest.json,Development/results/nr-dx12-legacy-app-20261009/app-frame-stats.json,Development/results/nr-dx12-legacy-app-20261009/app-receipt.json
+Development/results/nr-native-dx12-pure-20261009	True	fragment_reference_or_alias	Development/results/nr-native-dx12-pure-20261009/README.md
+Development/results/onimusha-presr-20260927	True	fragment_reference_or_alias	Development/results/onimusha-presr-20260927/README.md
+Development/results/outside-net-20261002	False	analysis_success_or_unclassified_documented	Development/results/outside-net-20261002/README.md
+Development/results/ovfl-census-20260927	True	fragment_reference_or_alias	Development/results/ovfl-census-20260927/README.md
+Development/results/pack8-20260927	True	fragment_reference_or_alias	Development/results/pack8-20260927/README.md
+Development/results/package-037	False	deployment_config_package_or_mixed	Development/results/package-037/checklist.md
+Development/results/package-038	False	deployment_config_package_or_mixed	Development/results/package-038/checklist.md
+Development/results/package-039-20261001	False	deployment_config_package_or_mixed	Development/results/package-039-20261001/checklist.md
+Development/results/package-041-20261005	False	deployment_config_package_or_mixed	Development/results/package-041-20261005/README.md
+Development/results/package-041a-20261006	False	deployment_config_package_or_mixed	Development/results/package-041a-20261006/README.md
+Development/results/pdl-1080-20261002	True	fragment_reference_or_alias	Development/results/pdl-1080-20261002/README.md
+Development/results/pdl-audit-20260927	True	fragment_reference_or_alias	Development/results/pdl-audit-20260927/README.md
+Development/results/pdl-c512-20260925	True	fragment_reference_or_alias	Development/results/pdl-c512-20260925/README.md
+Development/results/pdl-chain-20260925	True	fragment_reference_or_alias	Development/results/pdl-chain-20260925/README.md
+Development/results/pdl-race-20260926	True	deployment_config_package_or_mixed	Development/results/pdl-race-20260926/README.md
+Development/results/pending-review-20261003	True	fragment_reference_or_alias	Development/results/pending-review-20261003/README.md
+Development/results/pipeline-gap-20260921	False	fragment_reference_or_alias	Development/results/pipeline-gap-20260921/report.md
+Development/results/pool-coldage-20261006	True	fragment_reference_or_alias	Development/results/pool-coldage-20261006/README.md
+Development/results/pool64-byte-20261005	False	analysis_success_or_unclassified_documented	Development/results/pool64-byte-20261005/README.md
+Development/results/post-head-shared-input-20260921	False	analysis_success_or_unclassified_documented	Development/results/post-head-shared-input-20260921/report.md
+Development/results/post-history-gate-20261005	False	deployment_config_package_or_mixed	Development/results/post-history-gate-20261005/README.md
+Development/results/pr12-integration-20261007	False	deployment_config_package_or_mixed	Development/results/pr12-integration-20261007/README.md
+Development/results/pre-upscale-auto-20261003	False	analysis_success_or_unclassified_documented	Development/results/pre-upscale-auto-20261003/README.md
+Development/results/predict-default-20261004	False	analysis_success_or_unclassified_documented	Development/results/predict-default-20261004/README.md
+Development/results/prefix-noise-cache-20261006	True	fragment_reference_or_alias	Development/results/prefix-noise-cache-20261006/README.md
+Development/results/prefix-post-20260930	False	analysis_success_or_unclassified_documented	Development/results/prefix-post-20260930/README.md
+Development/results/prefix-post-arith-20260930	False	analysis_success_or_unclassified_documented	Development/results/prefix-post-arith-20260930/README.md
+Development/results/product-fmt-reload-20260930	False	negative_wording_unmapped_review	Development/results/product-fmt-reload-20260930/README.md
+Development/results/production-pulse-h-review-20261006	False	analysis_success_or_unclassified_documented	Development/results/production-pulse-h-review-20261006/README.md
+Development/results/pulse-lifecycle-review-20261006	False	deployment_config_package_or_mixed	Development/results/pulse-lifecycle-review-20261006/README.md
+Development/results/pulse-pdl-scope-20261006	False	analysis_success_or_unclassified_documented	Development/results/pulse-pdl-scope-20261006/README.md
+Development/results/pulse-production-20261006	True	fragment_reference_or_alias	Development/results/pulse-production-20261006/README.md
+Development/results/qkv-store-butterfly-20261006	True	fragment_reference_or_alias	Development/results/qkv-store-butterfly-20261006/README.md
+Development/results/ram-growth-20261001	False	analysis_success_or_unclassified_documented	Development/results/ram-growth-20261001/README.md
+Development/results/re9-runtime-flags-20260926	True	fragment_reference_or_alias	Development/results/re9-runtime-flags-20260926/README.md
+Development/results/re9-runtime-leak-20260927	True	fragment_reference_or_alias	Development/results/re9-runtime-leak-20260927/README.md
+Development/results/rebuild-baseline-20261001	True	fragment_reference_or_alias	Development/results/rebuild-baseline-20261001/README.md
+Development/results/release-027	False	deployment_config_package_or_mixed	Development/results/release-027/packages.json
+Development/results/resample-fold-20261001	True	fragment_reference_or_alias	Development/results/resample-fold-20261001/README.md
+Development/results/resident-spike-20260929	True	fragment_reference_or_alias	Development/results/resident-spike-20260929/README.md
+Development/results/same-queue-20261001	True	fragment_reference_or_alias	Development/results/same-queue-20261001/README.md
+Development/results/shift-pack-900-20260930	False	analysis_success_or_unclassified_documented	Development/results/shift-pack-900-20260930/README.md
+Development/results/skin-protect-20261004	True	analysis_success_or_unclassified_documented	Development/results/skin-protect-20261004/README.md
+Development/results/small-cuts-20260930	True	fragment_reference_or_alias	Development/results/small-cuts-20260930/README.md
+Development/results/small-wins-retest-20260930	True	fragment_reference_or_alias	Development/results/small-wins-retest-20260930/README.md
+Development/results/sp-fast-coverage-20261006	True	fragment_reference_or_alias	Development/results/sp-fast-coverage-20261006/README.md
+Development/results/sp1440-fast-20261005	False	analysis_success_or_unclassified_documented	Development/results/sp1440-fast-20261005/README.md
+Development/results/sparse-stage-20261006	False	analysis_success_or_unclassified_documented	Development/results/sparse-stage-20261006/README.md
+Development/results/stellar-mode0-restore-20261011	True	no_top_md_source_or_receipt_review	Development/results/stellar-mode0-restore-20261011/receipt.json,Development/results/stellar-mode0-restore-20261011/effective-config.json,Development/results/stellar-mode0-restore-20261011/after.json,Development/results/stellar-mode0-restore-20261011/manifest.json
+Development/results/strength-config-20261004	False	deployment_config_package_or_mixed	Development/results/strength-config-20261004/README.md
+Development/results/submission-pacing-20261006	True	fragment_reference_or_alias	Development/results/submission-pacing-20261006/README.md
+Development/results/submission-untimed-20261006	False	analysis_success_or_unclassified_documented	Development/results/submission-untimed-20261006/README.md
+Development/results/submit-boundary-audit-20261006	False	analysis_success_or_unclassified_documented	Development/results/submit-boundary-audit-20261006/README.md,Development/results/submit-boundary-audit-20261006/graph-lower-layer.md
+Development/results/swin-body-gap-20261001	True	fragment_reference_or_alias	Development/results/swin-body-gap-20261001/README.md
+Development/results/swin-persistent-20260929	True	fragment_reference_or_alias	Development/results/swin-persistent-20260929/README.md,Development/results/swin-persistent-20260929/daniel.md
+Development/results/swin-persistent-c128-c64-20260929	True	fragment_reference_or_alias	Development/results/swin-persistent-c128-c64-20260929/README.md,Development/results/swin-persistent-c128-c64-20260929/method.md
+Development/results/sync-network-gap-20261006	False	analysis_success_or_unclassified_documented	Development/results/sync-network-gap-20261006/README.md
+Development/results/sync-network-gap1080-20261006	False	analysis_success_or_unclassified_documented	Development/results/sync-network-gap1080-20261006/README.md
+Development/results/tail-c32-gap-20261001	True	fragment_reference_or_alias	Development/results/tail-c32-gap-20261001/README.md
+Development/results/tail-vec-20260930	False	analysis_success_or_unclassified_documented	Development/results/tail-vec-20260930/README.md
+Development/results/temporal-hotkey-guard-20261008	False	negative_wording_unmapped_review	Development/results/temporal-hotkey-guard-20261008/README.md
+Development/results/temporal-mode3-20261008	False	analysis_success_or_unclassified_documented	Development/results/temporal-mode3-20261008/README.md
+Development/results/temporal-package-review-20261006	False	deployment_config_package_or_mixed	Development/results/temporal-package-review-20261006/README.md
+Development/results/temporal-replay-contract-20261006	False	deployment_config_package_or_mixed	Development/results/temporal-replay-contract-20261006/README.md
+Development/results/temporal-sequence-20261005	True	fragment_reference_or_alias	Development/results/temporal-sequence-20261005/README.md
+Development/results/tier900-20260927	True	fragment_reference_or_alias	Development/results/tier900-20260927/README.md
+Development/results/transpose-persist-20260927	True	fragment_reference_or_alias	Development/results/transpose-persist-20260927/README.md
+Development/results/up48-body48-audit-20261006	True	fragment_reference_or_alias	Development/results/up48-body48-audit-20261006/README.md,Development/results/up48-body48-audit-20261006/key-domain-review.md,Development/results/up48-body48-audit-20261006/route-review.md
+Development/results/up48-body48-local-20261006	True	fragment_reference_or_alias	Development/results/up48-body48-local-20261006/README.md
+Development/results/vit-1080-gap-20261001	True	fragment_reference_or_alias	Development/results/vit-1080-gap-20261001/README.md
+Development/results/vit-attention-20260929	True	fragment_reference_or_alias	Development/results/vit-attention-20260929/README.md,Development/results/vit-attention-20260929/isa-account.md
+Development/results/vit-attn-c32-input-20260926	True	fragment_reference_or_alias	Development/results/vit-attn-c32-input-20260926/README.md
+Development/results/vit-av-trload-20261006	True	fragment_reference_or_alias	Development/results/vit-av-trload-20261006/README.md
+Development/results/vit-balanced-tile-20260922	True	negative_wording_unmapped_review	Development/results/vit-balanced-tile-20260922/README.md
+Development/results/vit-byteedge-formal-20261004	False	analysis_success_or_unclassified_documented	Development/results/vit-byteedge-formal-20261004/README.md
+Development/results/vit-bytestream-20260927	True	fragment_reference_or_alias	Development/results/vit-bytestream-20260927/README.md
+Development/results/vit-c512-aco-20260927	True	fragment_reference_or_alias	Development/results/vit-c512-aco-20260927/README.md
+Development/results/vit-column-layout-20261006	True	fragment_reference_or_alias	Development/results/vit-column-layout-20261006/README.md
+Development/results/vit-compute-density-20260922	True	negative_wording_unmapped_review	Development/results/vit-compute-density-20260922/README.md
+Development/results/vit-contract-byteedge-20261004	False	analysis_success_or_unclassified_documented	Development/results/vit-contract-byteedge-20261004/README.md
+Development/results/vit-contract960-20261005	True	fragment_reference_or_alias	Development/results/vit-contract960-20261005/README.md
+Development/results/vit-den-keyperm-20261006	True	fragment_reference_or_alias	Development/results/vit-den-keyperm-20261006/README.md
+Development/results/vit-eight-accumulators-20260922	True	negative_wording_unmapped_review	Development/results/vit-eight-accumulators-20260922/README.md
+Development/results/vit-ffn-ladder-20260921	True	analysis_success_or_unclassified_documented	Development/results/vit-ffn-ladder-20260921/README.md
+Development/results/vit-gap-controls-20260921	True	fragment_reference_or_alias	Development/results/vit-gap-controls-20260921/README.md
+Development/results/vit-group-order-20260925	True	fragment_reference_or_alias	Development/results/vit-group-order-20260925/README.md
+Development/results/vit-in-context-20260922	True	negative_wording_unmapped_review	Development/results/vit-in-context-20260922/README.md
+Development/results/vit-input-layout-20260922	True	negative_wording_unmapped_review	Development/results/vit-input-layout-20260922/README.md
+Development/results/vit-layout-feasibility-20261006	False	analysis_success_or_unclassified_documented	Development/results/vit-layout-feasibility-20261006/README.md
+Development/results/vit-m32-grid-20261006	True	fragment_reference_or_alias	Development/results/vit-m32-grid-20261006/README.md
+Development/results/vit-m32-halfmix-20261006	True	fragment_reference_or_alias	Development/results/vit-m32-halfmix-20261006/pal-comparability.md,Development/results/vit-m32-halfmix-20261006/README.md
+Development/results/vit-math-contract-20261006	False	analysis_success_or_unclassified_documented	Development/results/vit-math-contract-20261006/README.md
+Development/results/vit-math-stair-20261006	True	fragment_reference_or_alias	Development/results/vit-math-stair-20261006/README.md
+Development/results/vit-qkv-20260929	True	fragment_reference_or_alias	Development/results/vit-qkv-20260929/README.md
+Development/results/vit-register-attention-20260923	True	negative_wording_unmapped_review	Development/results/vit-register-attention-20260923/README.md
+Development/results/vit-repeat-context-20260922	True	negative_wording_unmapped_review	Development/results/vit-repeat-context-20260922/README.md
+Development/results/vit-schedule-cause-20260921	False	analysis_success_or_unclassified_documented	Development/results/vit-schedule-cause-20260921/README.md
+Development/results/vit-score-halfclamp-20261006	True	fragment_reference_or_alias	Development/results/vit-score-halfclamp-20261006/README.md
+Development/results/vit-work-scale-20260921	True	negative_wording_unmapped_review	Development/results/vit-work-scale-20260921/README.md
+Development/results/vit960-20261004	True	fragment_reference_or_alias	Development/results/vit960-20261004/README.md
+Development/results/vram-leak-20260926	True	deployment_config_package_or_mixed	Development/results/vram-leak-20260926/README.md
+Development/results/w16-c64-c128-20260930	True	fragment_reference_or_alias	Development/results/w16-c64-c128-20260930/README.md
+Development/results/wave-owned-combined-20260926	False	analysis_success_or_unclassified_documented	Development/results/wave-owned-combined-20260926/README.md
+Development/results/wave-owned-production-20260926	False	deployment_config_package_or_mixed	Development/results/wave-owned-production-20260926/README.md
+Development/results/wmma-feed-gap-20260922	False	analysis_success_or_unclassified_documented	Development/results/wmma-feed-gap-20260922/README.md
+Development/results/wmma-groups-gap-20260922	True	fragment_reference_or_alias	Development/results/wmma-groups-gap-20260922/README.md
+Development/results/wmma-page-gap-20260922	True	fragment_reference_or_alias	Development/results/wmma-page-gap-20260922/README.md
+Development/results/wmma-pitch-gap-20260922	True	fragment_reference_or_alias	Development/results/wmma-pitch-gap-20260922/README.md
+Development/results/wmma-width-gap-20260922	False	analysis_success_or_unclassified_documented	Development/results/wmma-width-gap-20260922/README.md
+Development/results/zero-copy-io-20260928	True	fragment_reference_or_alias	Development/results/zero-copy-io-20260928/README.md
+Development/HIP/experiments/aco-lineup	True	fragment_reference_or_alias	Development/HIP/experiments/aco-lineup/README.md
+Development/HIP/experiments/bitexact-pm	True	fragment_reference_or_alias	
+Development/HIP/experiments/body22-down-local-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/body22-down-regcache-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/c128-all-phase-reuse	True	negative_wording_unmapped_review	Development/HIP/experiments/c128-all-phase-reuse/README.md
+Development/HIP/experiments/c128-c64-inchain	True	fragment_reference_or_alias	
+Development/HIP/experiments/c128-contract-buffer	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/c128-contract-buffer/README.md
+Development/HIP/experiments/c128-empty-tile	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/c128-empty-tile/README.md
+Development/HIP/experiments/c128-fused-row-reuse	True	fragment_reference_or_alias	Development/HIP/experiments/c128-fused-row-reuse/README.md
+Development/HIP/experiments/c128-norm-cost	True	analysis_success_or_unclassified_documented	Development/HIP/experiments/c128-norm-cost/README.md
+Development/HIP/experiments/c128-qkv-input-reuse	True	analysis_success_or_unclassified_documented	Development/HIP/experiments/c128-qkv-input-reuse/README.md
+Development/HIP/experiments/c128-row-reuse	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/c128-row-reuse/README.md
+Development/HIP/experiments/c256-fusion	True	fragment_reference_or_alias	
+Development/HIP/experiments/c256-gap	True	fragment_reference_or_alias	
+Development/HIP/experiments/c256-w16	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c256-wide-load	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/c256-wide-load/README.md
+Development/HIP/experiments/c32-aco	True	fragment_reference_or_alias	
+Development/HIP/experiments/c32-align	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c32-byte-chain	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c32-diag-zero	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/c32-diag-zero/README.md
+Development/HIP/experiments/c32-direct-feature-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/c32-edge-cost	True	analysis_success_or_unclassified_documented	Development/HIP/experiments/c32-edge-cost/README.md
+Development/HIP/experiments/c32-fence-scope	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/c32-fence-scope/README.md
+Development/HIP/experiments/c32-lds-alias	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c32-norm-hoist-20261006	False	fragment_reference_or_alias	
+Development/HIP/experiments/c32-norm-hoist-framework-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/c32-norm-hoist-stat-audit-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/c32-norm-transpose-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/c32-pair-encode	True	fragment_reference_or_alias	Development/HIP/experiments/c32-pair-encode/README.md
+Development/HIP/experiments/c32-phase-cost	False	deployment_config_package_or_mixed	Development/HIP/experiments/c32-phase-cost/README.md
+Development/HIP/experiments/c32-phase-current	False	deployment_config_package_or_mixed	Development/HIP/experiments/c32-phase-current/README.md
+Development/HIP/experiments/c32-phase-trace	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c32-post-input	True	analysis_success_or_unclassified_documented	Development/HIP/experiments/c32-post-input/README.md
+Development/HIP/experiments/c32-post-lds	True	analysis_success_or_unclassified_documented	Development/HIP/experiments/c32-post-lds/README.md
+Development/HIP/experiments/c32-register-attention	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c32-round2	True	fragment_reference_or_alias	
+Development/HIP/experiments/c32-round3	True	fragment_reference_or_alias	
+Development/HIP/experiments/c32-single-pack	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/c32-single-pack/README.md
+Development/HIP/experiments/c32-small	True	fragment_reference_or_alias	
+Development/HIP/experiments/c32-tail	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c32-transposed-ffn	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c32-transposed-tail	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c32-vec-input	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c32-vec-stage	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c32-wave-phase	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c32-wave1	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/c32-wave1/README.md
+Development/HIP/experiments/c512-activation-lut	True	fragment_reference_or_alias	
+Development/HIP/experiments/c512-av-f	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c512-compact-vt	True	fragment_reference_or_alias	
+Development/HIP/experiments/c512-den-repeat-20261006	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/c512-direct-pack	True	fragment_reference_or_alias	
+Development/HIP/experiments/c512-direct-whole	True	fragment_reference_or_alias	
+Development/HIP/experiments/c512-ffn	True	fragment_reference_or_alias	Development/HIP/experiments/c512-ffn/README.md
+Development/HIP/experiments/c512-ffn-lds	True	fragment_reference_or_alias	
+Development/HIP/experiments/c512-fusion	True	fragment_reference_or_alias	Development/HIP/experiments/c512-fusion/WAVE16.md
+Development/HIP/experiments/c512-mix	True	fragment_reference_or_alias	
+Development/HIP/experiments/c512-proj-share	True	fragment_reference_or_alias	
+Development/HIP/experiments/c512-qkv-pipeline	True	fragment_reference_or_alias	
+Development/HIP/experiments/c512-round1	True	fragment_reference_or_alias	
+Development/HIP/experiments/c512-wave	True	fragment_reference_or_alias	Development/HIP/experiments/c512-wave/README.md
+Development/HIP/experiments/c512-xblock-queue	True	fragment_reference_or_alias	
+Development/HIP/experiments/c64-block-fused	True	fragment_reference_or_alias	
+Development/HIP/experiments/c64-hand-asm	True	fragment_reference_or_alias	
+Development/HIP/experiments/c64-wave2	False	negative_wording_unmapped_review	Development/HIP/experiments/c64-wave2/README.md
+Development/HIP/experiments/cache-forecast-study	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/clock-ledger	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/clock-observe	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/clock-observe/README.md
+Development/HIP/experiments/combined-vs041-20261006	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/competitor-timing	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/compiler-sweep	True	fragment_reference_or_alias	
+Development/HIP/experiments/composite-quant	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/composite-quant-c512	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/config-layers	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/d3d-hip-stall	True	fragment_reference_or_alias	
+Development/HIP/experiments/daniel-kernels	True	fragment_reference_or_alias	Development/HIP/experiments/daniel-kernels/README.md
+Development/HIP/experiments/deep-layers	True	fragment_reference_or_alias	Development/HIP/experiments/deep-layers/README.md
+Development/HIP/experiments/deep-tail	True	fragment_reference_or_alias	
+Development/HIP/experiments/deep-tail2	True	fragment_reference_or_alias	
+Development/HIP/experiments/deep-transposed-epilogue	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/default-c	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/default-swap	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/dispatch-sequence-20261006	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/f-sweep	True	fragment_reference_or_alias	
+Development/HIP/experiments/face-detection-probe-20261011	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/family-ledger	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/fast-numeric	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/fast-tier	True	fragment_reference_or_alias	
+Development/HIP/experiments/fast-vit	True	fragment_reference_or_alias	
+Development/HIP/experiments/fence-cu-size	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/fence-scope-all	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/fence-scope-all/README.md
+Development/HIP/experiments/ffn-expand-prefetch	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/ffn-expand-prefetch/README.md
+Development/HIP/experiments/ffn-stage-cost	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/ffn-stage-cost/README.md
+Development/HIP/experiments/fill-cu	True	fragment_reference_or_alias	
+Development/HIP/experiments/final-output-direct-20261005	True	fragment_reference_or_alias	
+Development/HIP/experiments/float-fma	True	fragment_reference_or_alias	Development/HIP/experiments/float-fma/README.md,Development/HIP/experiments/float-fma/temporal-README.md
+Development/HIP/experiments/fma-vs-nvidia	True	fragment_reference_or_alias	Development/HIP/experiments/fma-vs-nvidia/README.md
+Development/HIP/experiments/fp8-sat-mode	True	fragment_reference_or_alias	
+Development/HIP/experiments/framework-single-event-20261006	True	fragment_reference_or_alias	Development/HIP/experiments/framework-single-event-20261006/README.md
+Development/HIP/experiments/framework-submit-pair-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/free-res	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/fullnn-spm-20261006	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/fusion-round3	True	fragment_reference_or_alias	
+Development/HIP/experiments/gap-fusion	True	fragment_reference_or_alias	
+Development/HIP/experiments/gap-map-evening	True	fragment_reference_or_alias	
+Development/HIP/experiments/geom-1088	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/gpu-throughput	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/gpu-throughput/README.md
+Development/HIP/experiments/graph0-app-20261006	True	fragment_reference_or_alias	Development/HIP/experiments/graph0-app-20261006/receipt.json
+Development/HIP/experiments/graph0-app-perf-20261006	True	fragment_reference_or_alias	Development/HIP/experiments/graph0-app-perf-20261006/receipt.json
+Development/HIP/experiments/graph0-bounded-replay-20261006	False	no_top_md_source_or_receipt_review	Development/HIP/experiments/graph0-bounded-replay-20261006/receipt.json
+Development/HIP/experiments/graph0-perf-20261006	True	fragment_reference_or_alias	Development/HIP/experiments/graph0-perf-20261006/receipt.json
+Development/HIP/experiments/graph0-product-baseline-20261006	False	fragment_reference_or_alias	Development/HIP/experiments/graph0-product-baseline-20261006/receipt.json
+Development/HIP/experiments/graph0-product-perf-20261006	True	fragment_reference_or_alias	Development/HIP/experiments/graph0-product-perf-20261006/receipt.json
+Development/HIP/experiments/graph0-replay-auto-20261006	False	no_top_md_source_or_receipt_review	Development/HIP/experiments/graph0-replay-auto-20261006/receipt.json
+Development/HIP/experiments/graph0-samework-20261006	False	no_top_md_source_or_receipt_review	Development/HIP/experiments/graph0-samework-20261006/cpu-receipt.json
+Development/HIP/experiments/graph0-single-replay-20261006	False	no_top_md_source_or_receipt_review	Development/HIP/experiments/graph0-single-replay-20261006/receipt.json
+Development/HIP/experiments/handoff-poll	True	fragment_reference_or_alias	
+Development/HIP/experiments/hip-graph-abi-20261006	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/hip-roofline	False	no_top_md_source_or_receipt_review	Development/HIP/experiments/hip-roofline/roofline.json
+Development/HIP/experiments/history-contract-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/history-trial-041a	True	fragment_reference_or_alias	
+Development/HIP/experiments/hoist-loads	True	fragment_reference_or_alias	
+Development/HIP/experiments/ideas-yi	True	fragment_reference_or_alias	
+Development/HIP/experiments/infinity-cache	True	fragment_reference_or_alias	
+Development/HIP/experiments/input-slim	True	fragment_reference_or_alias	
+Development/HIP/experiments/instruction-audit	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/instruction-audit/README.md
+Development/HIP/experiments/int4-ffn-study	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/issue13-original-oracle	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/issue13-prefix	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/issue4-igpu	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/kernel-bottleneck	False	fragment_reference_or_alias	Development/HIP/experiments/kernel-bottleneck/README.md
+Development/HIP/experiments/kernel-map	True	fragment_reference_or_alias	Development/HIP/experiments/kernel-map/README.md
+Development/HIP/experiments/kernel-map-900	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/kernel-map-inchain	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/kernel-map-inchain/host.md
+Development/HIP/experiments/kernel-map-v3	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/launch-occupancy	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/llvm23-vit	True	fragment_reference_or_alias	
+Development/HIP/experiments/m32-sweep	True	fragment_reference_or_alias	Development/HIP/experiments/m32-sweep/README.md
+Development/HIP/experiments/mh-empty-tile	True	negative_wording_unmapped_review	Development/HIP/experiments/mh-empty-tile/README.md
+Development/HIP/experiments/mh-hoist-residual	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mh-phase-trace	True	fragment_reference_or_alias	
+Development/HIP/experiments/mh-register-attention	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mh-register-c512	True	fragment_reference_or_alias	
+Development/HIP/experiments/mh-round1	True	fragment_reference_or_alias	
+Development/HIP/experiments/mh-transposed-project	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mhfast-batchnorm	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mhfast-line-stores	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mhfast-phase-trace	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mhfast-tail-ablate	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mhfast-tail-ablate2	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mhfast-transposed-qkv	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mhfast-vgpr-cap	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mhfast-wave-norm	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mhfast-wide-frag	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mochi-old-lock	True	fragment_reference_or_alias	
+Development/HIP/experiments/mochi-spm-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/mochi-vit-score-control-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/mochizuki-022	True	fragment_reference_or_alias	
+Development/HIP/experiments/mochizuki-gap	True	fragment_reference_or_alias	
+Development/HIP/experiments/mode3-objective-20261011	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/mode3-real-output-20261008	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/mode3-real-output-20261008/README.md
+Development/HIP/experiments/multi-pass	True	fragment_reference_or_alias	
+Development/HIP/experiments/multi-pass-predict	True	fragment_reference_or_alias	
+Development/HIP/experiments/multi-pass-skip	True	fragment_reference_or_alias	
+Development/HIP/experiments/multipass-direct-rgba	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/native-1440	True	fragment_reference_or_alias	
+Development/HIP/experiments/net-timing	True	fragment_reference_or_alias	
+Development/HIP/experiments/net-timing-fix	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/network-fixed-shapes	True	analysis_success_or_unclassified_documented	Development/HIP/experiments/network-fixed-shapes/README.md,Development/HIP/experiments/network-fixed-shapes/audit.md
+Development/HIP/experiments/network-timeline	True	fragment_reference_or_alias	Development/HIP/experiments/network-timeline/README.md
+Development/HIP/experiments/next-candidate	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/night-20261001	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/norm-contract-20261006	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/nr-dx12-fourstage-20261009	True	fragment_reference_or_alias	Development/HIP/experiments/nr-dx12-fourstage-20261009/README.md
+Development/HIP/experiments/nr-dx12-legacy-app-20261009	True	fragment_reference_or_alias	Development/HIP/experiments/nr-dx12-legacy-app-20261009/README.md
+Development/HIP/experiments/nr-dx12-matrix-probe-20261009	False	deployment_config_package_or_mixed	Development/HIP/experiments/nr-dx12-matrix-probe-20261009/README.md
+Development/HIP/experiments/nr-native-dx12-20261009	False	fragment_reference_or_alias	Development/HIP/experiments/nr-native-dx12-20261009/README.md
+Development/HIP/experiments/outside-net	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/pack8	True	fragment_reference_or_alias	
+Development/HIP/experiments/pair-unpack	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/pdl-1080	True	fragment_reference_or_alias	
+Development/HIP/experiments/pdl-audit	True	fragment_reference_or_alias	
+Development/HIP/experiments/pdl-c512	True	fragment_reference_or_alias	
+Development/HIP/experiments/pdl-chain	True	fragment_reference_or_alias	
+Development/HIP/experiments/pdl-race	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/pending-review-20261003	True	fragment_reference_or_alias	
+Development/HIP/experiments/pipeline-gap	False	fragment_reference_or_alias	Development/HIP/experiments/pipeline-gap/README.md
+Development/HIP/experiments/pool-coldage-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/pool64-byte	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/post-head-shared-input	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/post-head-shared-input/README.md
+Development/HIP/experiments/post-history-gate	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/pre-upscale-auto-20261003	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/prefix-noise-cache	True	fragment_reference_or_alias	Development/HIP/experiments/prefix-noise-cache/README.md
+Development/HIP/experiments/prefix-post	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/prefix-post-arith	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/product-fmt	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/pulse-lifecycle-20261006	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/pulse-lifecycle-20261006/README.md
+Development/HIP/experiments/pulse-production-20261006	True	fragment_reference_or_alias	Development/HIP/experiments/pulse-production-20261006/README.md
+Development/HIP/experiments/qkv-store-butterfly-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/re9-runtime-flags	True	fragment_reference_or_alias	
+Development/HIP/experiments/re9-runtime-leak	True	fragment_reference_or_alias	
+Development/HIP/experiments/real-sequence	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/real-sequence/README.md
+Development/HIP/experiments/rebuild-baseline	True	fragment_reference_or_alias	
+Development/HIP/experiments/resample-fold	True	fragment_reference_or_alias	
+Development/HIP/experiments/rtz1080	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/same-queue	True	fragment_reference_or_alias	
+Development/HIP/experiments/shift-pack-900	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/skin-protect	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/small-wins	True	fragment_reference_or_alias	
+Development/HIP/experiments/sp1440-fast	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/sparse-ffn-study	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/sparse-stage-20261006	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/stream-overlap	False	fragment_reference_or_alias	
+Development/HIP/experiments/strength-config	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/submission-pacing-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/submission-untimed-20261006	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/submission-untimed-20261006/README.md
+Development/HIP/experiments/swin-body-gap	True	fragment_reference_or_alias	
+Development/HIP/experiments/swin-persistent	True	fragment_reference_or_alias	Development/HIP/experiments/swin-persistent/README.md
+Development/HIP/experiments/swin-small	False	negative_wording_unmapped_review	Development/HIP/experiments/swin-small/README.md
+Development/HIP/experiments/sync-network-gap-20261006	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/sync-network-gap1080-20261006	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/tail-c32-gap	True	fragment_reference_or_alias	
+Development/HIP/experiments/tail-vec	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/temporal-sequence-20261005	True	fragment_reference_or_alias	
+Development/HIP/experiments/tier900	True	fragment_reference_or_alias	
+Development/HIP/experiments/up48-body48-local-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-1080-gap	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-adaptive	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/vit-attention	True	fragment_reference_or_alias	Development/HIP/experiments/vit-attention/README.md
+Development/HIP/experiments/vit-attn-c32-input	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-av-trload-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-balanced-tile	True	negative_wording_unmapped_review	Development/HIP/experiments/vit-balanced-tile/README.md
+Development/HIP/experiments/vit-byteedge-formal	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/vit-bytestream	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-c512-aco	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-column-layout-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-compute-density	True	analysis_success_or_unclassified_documented	Development/HIP/experiments/vit-compute-density/README.md
+Development/HIP/experiments/vit-contract-byteedge	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/vit-contract960	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-den-keyperm-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-eight-accumulators	True	negative_wording_unmapped_review	Development/HIP/experiments/vit-eight-accumulators/README.md
+Development/HIP/experiments/vit-ffn-ladder	True	analysis_success_or_unclassified_documented	Development/HIP/experiments/vit-ffn-ladder/README.md
+Development/HIP/experiments/vit-gap-controls	True	fragment_reference_or_alias	Development/HIP/experiments/vit-gap-controls/README.md
+Development/HIP/experiments/vit-group-order	True	fragment_reference_or_alias	Development/HIP/experiments/vit-group-order/README.md
+Development/HIP/experiments/vit-image-overlap	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/vit-in-context	True	negative_wording_unmapped_review	Development/HIP/experiments/vit-in-context/README.md
+Development/HIP/experiments/vit-input-layout	True	negative_wording_unmapped_review	Development/HIP/experiments/vit-input-layout/README.md
+Development/HIP/experiments/vit-m32-grid-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-m32-halfmix-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-math-contract-20261006	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/vit-math-stair-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-qkv	True	fragment_reference_or_alias	Development/HIP/experiments/vit-qkv/jobs.json
+Development/HIP/experiments/vit-register-attention	True	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/vit-repeat-context	True	analysis_success_or_unclassified_documented	Development/HIP/experiments/vit-repeat-context/README.md
+Development/HIP/experiments/vit-residual	False	no_top_md_source_or_receipt_review	
+Development/HIP/experiments/vit-schedule-cause	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/vit-schedule-cause/README.md
+Development/HIP/experiments/vit-score-halfclamp-20261006	True	fragment_reference_or_alias	
+Development/HIP/experiments/vit-tile-ready	True	fragment_reference_or_alias	Development/HIP/experiments/vit-tile-ready/README.md,Development/HIP/experiments/vit-tile-ready/PROGRESS.md
+Development/HIP/experiments/vit-work-scale	True	negative_wording_unmapped_review	Development/HIP/experiments/vit-work-scale/README.md
+Development/HIP/experiments/vit960	True	fragment_reference_or_alias	
+Development/HIP/experiments/w16-c64-c128	True	fragment_reference_or_alias	
+Development/HIP/experiments/wave-owned-combined	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/wave-owned-combined/README.md
+Development/HIP/experiments/wmma-feed-gap	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/wmma-feed-gap/README.md
+Development/HIP/experiments/wmma-groups-gap	True	fragment_reference_or_alias	Development/HIP/experiments/wmma-groups-gap/README.md
+Development/HIP/experiments/wmma-page-gap	True	fragment_reference_or_alias	Development/HIP/experiments/wmma-page-gap/README.md
+Development/HIP/experiments/wmma-pitch-gap	True	fragment_reference_or_alias	Development/HIP/experiments/wmma-pitch-gap/README.md
+Development/HIP/experiments/wmma-width-gap	False	analysis_success_or_unclassified_documented	Development/HIP/experiments/wmma-width-gap/README.md

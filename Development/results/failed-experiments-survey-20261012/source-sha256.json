@@ -1,0 +1,87 @@
+[
+  {
+    "path": "Development/DevHistory.md",
+    "bytes": 56860,
+    "sha256": "5b6001b387cdac88193930590c115390d37f33e3c0b844057a92f8678ab70137"
+  },
+  {
+    "path": "Development/WorkingPlan.md",
+    "bytes": 43948,
+    "sha256": "95f00673c92a317e5dde534d6f80c2eece4f69f4efd141363f628fa35dbda076"
+  },
+  {
+    "path": "Development/history/README.md",
+    "bytes": 80011,
+    "sha256": "e5cd4de3c75a42febc39bbfe9c24d06255e59ac7c50f5f92719f398ba4e8598c"
+  },
+  {
+    "path": "Development/history/next-steps-plan-3.md",
+    "bytes": 5315,
+    "sha256": "d90bf593429c0b60fec17ff5100bd7098ad2af83323e882780bd94ddf818ae7a"
+  },
+  {
+    "path": "Development/history/fast-path-plan.md",
+    "bytes": 3184,
+    "sha256": "5c2bc1baa49badfc5d1223a0d76bd8614ab1532cd0a6005b5215c8cfe7ca8c49"
+  },
+  {
+    "path": "Development/history/next-steps-plan-2.md",
+    "bytes": 7064,
+    "sha256": "e481914510b019e72af26cc0a5d71156868baacb740fd2328892f3aaabfa2b9e"
+  },
+  {
+    "path": "Development/history/local-patch-tool.md",
+    "bytes": 2911,
+    "sha256": "503c7257acda9e1b7d3e82f29be2fce111e6824a16015cee4afc74a2d9db356e"
+  },
+  {
+    "path": "Development/history/amd-port-plan.md",
+    "bytes": 10762,
+    "sha256": "b702dfa7208f62a64881a846d764b409da2d6a77e8de20b51634127cfcabed35"
+  },
+  {
+    "path": "Development/history/optiscaler-intro.md",
+    "bytes": 6813,
+    "sha256": "e9cd421cb158eee49d0144cbd05bea1947e3e94bdf3c5c3f9322332e3084352a"
+  },
+  {
+    "path": "Development/history/DevHistory-full-20261006.md",
+    "bytes": 363263,
+    "sha256": "f1fdd75daae23df753e51d3d9d8c8e630326dde58bf83fae58cdb1d068b98427"
+  },
+  {
+    "path": "Development/history/next-steps-plan.md",
+    "bytes": 3132,
+    "sha256": "7a3eff7dd69c170fe32f40c70ac31f0dad5d8b1866bf087031df0ce89c1d63b8"
+  },
+  {
+    "path": "Development/history/reverse-engineering-notes.md",
+    "bytes": 12928,
+    "sha256": "f29ff34269fc9333e7d88e27506fbf1cfc5c297d031941efdee4e837e0d31657"
+  },
+  {
+    "path": "Development/history/DevHistory-full-20260923.md",
+    "bytes": 607193,
+    "sha256": "e98b23ffb31645b5eb9f6ec7b8438a6dda6d85184af5c2757de7d3a143358091"
+  },
+  {
+    "path": "Development/history/CURRENT-STATE.md",
+    "bytes": 109943,
+    "sha256": "a4f185293b27e1a4e291d597043a9d4037e831bb40ad6c24239962f1c49910ee"
+  },
+  {
+    "path": "Development/history/PLAN.md",
+    "bytes": 7845,
+    "sha256": "15a49fbb324da617a8a2ca1eb6992a5617b31d0ae7ad485fe8b70a6b20bc7062"
+  },
+  {
+    "path": "Development/history/porting-worklog.md",
+    "bytes": 930034,
+    "sha256": "789a2d6700a9d12640e6c274d5eea5690cc0344de06170a73e2d3059a58f74a9"
+  },
+  {
+    "path": "Development/history/native-runtime-contract.md",
+    "bytes": 3207,
+    "sha256": "13f1f0b3d57ffbaafe3c41c76707e36ea1ea82a21fcdd3025a105fbb0bd8870b"
+  }
+]
