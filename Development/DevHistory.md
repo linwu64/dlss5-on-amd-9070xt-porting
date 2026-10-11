@@ -361,3 +361,11 @@ APP -DCOMPARE_HLSL私有caller21603CPU过，源57NNshader匹配旧manifest、8co
 ### 2026-10-09 legacyD3D12完整APP首帧集成通过
 
 独立APP29430 actualexit0/LOCK_RELEASED，只一帧旧真实HDR菜单FA3C1873（1296×720 RGBA16F），358dc私有rootfixed原COMPARE_HLSL caller，actualgeometry1920×1152/valid1920×1080、Network70VitTokens参数640。完整71/MP1AE0history0Style1seed0，private5codec/input源覆盖+缺失noise补齐，source选NativeActualNetwork70而非HIP类；没有采集processmodule枚举，不伪“actualNoHIPDLLloaded”。首RGBA16F输出7464960B，SHA740c534212ce0be989d38d764608c98e520e5fa08734034f9373347a67dd004f，全finite、RGB2796326非零/2799360、range[-0,29.9375]。首wall51.414ms是冷集成数据，不作为速度、不formal/复刷。只证端到端能跑，不证画质或加速；旧HLSL数学/noise组织与当前HIP不同，主purelegacy约23.39ms/freshHIP约9.17ms不能称纯backend提升。脚本/input/raw身份及日志见results/nr-dx12-legacy-app-20261009/app-receipt.json。未安装/改游戏/执行Daniel；GPU归还主队列，原raw不入git。
+
+### 2026-10-11 剑星 1x 模式3试用与F9修复部署
+
+用户明确要求本机剑星试用1x高低频增强。只读确认游戏/RTC均退出、无GPU锁，已安装仍为旧4ceef29f；custom/native有效配置原本就是MODE3/ENHANCE1/MP1/PRED0，User/Machine/Process未发现DLSS5环境覆盖。ea11历史O2产物窄查未找到，故用生产main a9b7a521、现有third_party和正式scripts/build-addon.sh --hip重编；8521 exit0，新addon SHA9413682f3185d1e9327ce7ce76be96ee88aad794f528799152ebaa3f2a7f85f3。三个F9 guard源码SHA与已验temporal-hotkey-guard-20261008完全一致：MODE1/2/3消费F9按键边沿但在改配置前拒绝切多遍。
+
+82751实际部署exit0/LOCK_RELEASED，只替换剑星dlss5-amd.addon64并对必要键做幂等写入；有效读回TEMPORAL_MODE3、TEMPORAL_ENHANCE_STRENGTH1、MULTI_PASS1、PREDICT0、FAST_HISTORY0、旧TEMPORAL_HISTORY_EXPERIMENT0。三个配置文件最终逐字节未变，因此玩家AE/基础strength/几何等原样保留；79个hsaco、SUMS与64B history row逐SHA保留，未写鬼武者或Runtime DLL。未代启游戏、未跑GPU性能/视觉实验、未发布ZIP/tag/push。Mode3已部署不等于已观察到实际处理帧或画质提升，等玩家启动反馈。
+
+备份/回滚：D:\DLSSNR-Lab\mode3-stellar-1x-trial-20261011\backups\20261011-114301\rollback.ps1（退出游戏后执行，校验原SHA并持atomic锁）。本地完整receipt/manifest/after/effective-config/modules与回滚脚本见results/mode3-stellar-1x-trial-20261011。

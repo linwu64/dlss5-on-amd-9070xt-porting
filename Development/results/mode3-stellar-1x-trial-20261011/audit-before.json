@@ -1,0 +1,450 @@
+﻿{
+    "gpu_lock_exists":  false,
+    "game_root":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64",
+    "files":  [
+                  {
+                      "config":  null,
+                      "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\dlss5-amd.addon64",
+                      "sha256":  "4ceef29f363f52e9159e439cd9eecd52caa796a95d281b0ad07a20ce091ef833",
+                      "bytes":  4523941
+                  },
+                  {
+                      "config":  "# 每个 DLSS5_ 选项上方有中英注释（详见 CONFIGURATION.md）；以 # 开头的行会被忽略。\n# Each DLSS5_ key has a zh/en comment above it (see CONFIGURATION.md); lines starting with # are ignored.\n# 中：本文件随包发布为 default-config.txt，升级会覆盖；自己的改动写进 custom-config.txt（逐行覆盖本文件，升级不动）。\n# EN: Shipped as default-config.txt and overwritten on upgrade; put your own changes in custom-config.txt (overrides per key, never overwritten).\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_BLOCKED_C32_FFN=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_BLOCKED_FFN=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_BLOCKED_VIT=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_C32_FFN_RAW_STORE=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_CACHE_C32_INPUT=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_COALESCED_FINISH=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_COALESCED_MULTIHEAD_SHIFT=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_DIRECT_ATTENTION=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_FUSED_SHIFT=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_LOCAL_C32_ATTENTION=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_MATRIX_C128=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_MATRIX_C256=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_MATRIX_C64=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_MATRIX_SPLIT_ATTENTION=1\n# 中：实验脚本用的诊断开关，运行时代码不读取；默认 1；诊断用，保持默认\n# EN: Diagnostic switch of experiment scripts, not read at runtime; default 1; keep default\nDLSS5_TEST_MULTIHEAD_EIGHT_WAVES=1\n# 中：实验脚本用的诊断开关，运行时代码不读取；默认 1；诊断用，保持默认\n# EN: Diagnostic switch of experiment scripts, not read at runtime; default 1; keep default\nDLSS5_TEST_MULTIHEAD_FOUR_WAVES=1\n# 中：实验脚本用的诊断开关，运行时代码不读取；默认 0；诊断用，保持默认\n# EN: Diagnostic switch of experiment scripts, not read at runtime; default 0; keep default\nDLSS5_TEST_PARALLEL_MULTIHEAD_NORM=0\n# 中：实验脚本用的诊断开关，运行时代码不读取；默认 1；诊断用，保持默认\n# EN: Diagnostic switch of experiment scripts, not read at runtime; default 1; keep default\nDLSS5_TEST_PARALLEL_MULTIHEAD_SOFTMAX=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_PAD_C32_LDS=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_PAD_MULTIHEAD_LDS=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_PARALLEL_SPLIT_FFWD=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_RESIDENT_NOISE=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_RESIDENT_WAVE_VIT_EXPAND=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_RESIDENT_WEIGHTS=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_SHARED_C32=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_SHARED_C32_SCRATCH=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_SHARED_MATRIX_WORKSPACE=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_SHARED_SCRATCH=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_SPLIT_C32_ATTENTION=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_SPLIT_FFWD=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_SPLIT_PREBLOCK_FFN=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_SPLIT_PROJECTION=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_TILED_C64=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_TILED_QKV=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_VIT_EXPAND_CHUNK2=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_C128=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_C256=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_C32_AV=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_C32_FFN=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_C32_FFN_LOCAL=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_C32_PROJECTION=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_C32_QKV=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_C32_SCORES=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_C64=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_DECODER_LINEAR=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_DOWNSAMPLE=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_HEAD=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_MULTIHEAD_AV=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_PROJECT=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 0；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 0; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_SPLIT_FFWD=0\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_SPLIT_PROJECT=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_VIT_ATTENTION=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_VIT_ATTENTION_HALF=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_VIT_EXPAND=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_VIT_QKV=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TEST_WAVE_VIT_REDUCE=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_FP8_OPERANDS=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_FP8_QKV=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_FP8_HIDDEN=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_FP8_LDS=1\n# 中：时序坐标用浮点双线性（仅时序会话）；默认 1；有损：数值近似，非逐位；无实测数字；保持默认\n# EN: Float bilinear temporal passes (history sessions only); default 1; LOSSY: numeric approx; not measured\nDLSS5_FAST_TEMPORAL=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_FUSED_QKV_NORMALIZE=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_FUSED_FFN=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_FP8_ACTIVATIONS=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_FP8_QKV_NORM=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_FAST_PREFIX=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_C32_FUSED_ATTENTION=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_VIT_SPLIT_K=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_VIT_PACKED_INPUT=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 4；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 4; HIP packages do not use it. Keep default\nDLSS5_VIT_BLOCK_M=4\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_C32_MAPPED_INPUT=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_FP8_STREAM=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_SPLIT_DIRECT_ATTENTION=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_FFN_TILED_WEIGHTS=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_TILED_WEIGHTS=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_C32_FFN_FAST3=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_C32_ATTN_FAST2=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_POST70_DIRECT=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_C32_CHAIN_RAW=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_WAVE_C32_DS=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_VIT_ATTN_FP8=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_POST70_MERGE_FOLD=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_C32_ATTN_FAST3=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_INLINE_PREFIX=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 2；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 2; HIP packages do not use it. Keep default\nDLSS5_BATCH_SUBMITS=2\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_C32_ATTN_FAST4=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_VIT_QKV_FUSED=1\n# 中：输出时域平滑 \"t,s\"（仅时序会话）；默认 10,0.8；有损：跨帧复用上一帧输出；无实测数字；保持默认\n# EN: Output temporal smoothing \"t,s\" (history sessions only); default 10,0.8; LOSSY: cross-frame; not measured\nDLSS5_OUTPUT_SMOOTH=10,0.8\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_PREBLOCK_MAIN8=1\n# 中：显存紧张时网络资源的驻留优先级（high/maximum）；默认 maximum；不影响画面；保持默认\n# EN: Residency priority of network resources under VRAM pressure; default maximum; no image effect; keep default\nDLSS5_RESIDENCY_PRIORITY=maximum\n# 中：每 N 帧对网络资源 MakeResident 一次，防被换出；默认 60；不影响画面；保持默认\n# EN: MakeResident network resources every N frames; default 60; no image effect; keep default\nDLSS5_MAKE_RESIDENT_EVERY=60\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_C32_SKIP8=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 2；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 2; HIP packages do not use it. Keep default\nDLSS5_POST70_LOW_RAW=2\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_C32_HALF_STREAM=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_C32_EPILOGUE=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_C32_FUSED_FFN=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_VIT_TILED=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_SPLIT_TILED=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_DECODER_TILED=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_SPLIT_FFWD_TILED=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_SPLIT_STREAM8=1\n# 中：旧 DX12 网络路线（≤0.15）的内核开关，HIP 包不走该路线；默认 1；内部调优开关，保持默认\n# EN: Kernel switch of the old DX12 network route (\u003c=0.15); default 1; HIP packages do not use it. Keep default\nDLSS5_DECODER_OUT16=1\n# 中：跳过的网络块；默认空值 = 全 71 块都算（配合 FAST_NUMERIC=1，对 NVIDIA 47.55 dB）\n# 中：想追帧率写 42,43,46：每帧快 900 约 0.20 / 1080 约 0.32 ms，对 NVIDIA 掉约 3.3 dB（有损，结构性，每帧独立）\n# EN: Blocks to skip; default empty = all 71 blocks (with FAST_NUMERIC=1: 47.55 dB vs NVIDIA)\n# EN: For frame rate write 42,43,46: about 0.20 (900) / 0.32 (1080) ms faster, about -3.3 dB vs NVIDIA (LOSSY, structural, per frame)\nDLSS5_SKIP_BLOCKS=\n# 中：网络档位：auto 按输入选 720/900/1080；默认 auto；固定 900 有损（几何，代价未实测）；详见 CONFIGURATION.md\n# EN: Network tier: auto picks 720/900/1080 by input; default auto; fixed 900 is LOSSY (geometry, cost not measured)\nDLSS5_NETWORK_HEIGHT=auto\n# 1080 tier rows: 1152 = NVIDIA geometry (default, bit-exact); 1088 = compact, LOSSY, not NVIDIA\u0027s geometry (faster, 1080 tier only)\n# 中：1080 档行数：1152 = NVIDIA 几何，逐位；默认 1152；1088 有损（几何，对 NVIDIA 47.4→45.8 dB），快约 0.45 ms\n# EN: 1080-tier rows: 1152 = NVIDIA geometry, bit-exact; default 1152; 1088 LOSSY (geometry, 47.4-\u003e45.8 dB), ~0.45 ms faster\nDLSS5_NETWORK_1080_ROWS=1152\n# 1 = network runs on the game\u0027s own size (padded like NVIDIA) instead of snapping to the 720/900/1080 tiers; slower above 1080p, see CONFIGURATION.md\n# 中：1 = 按游戏原尺寸跑网络（不吸附档位）；默认 0；非档位尺寸输出改变（几何，更接近 NVIDIA）；更慢；详见 CONFIGURATION.md\n# EN: 1 = run at the input size instead of tiers; default 0; output changes for non-tier sizes (geometry); slower; see CONFIGURATION.md\nDLSS5_NETWORK_FREE_RES=0\n# 1 = fast numeric path (LOSSY, errors pass through all blocks; needs the -fast modules), see CONFIGURATION.md\n# 中：1 = 快速数值路径；默认 1；有损：对逐位输出最差帧 52.1 dB（数值近似，误差逐层传播）；0 = 逐位\n# 中：覆盖：C32/C64/C128 激活 f32 化 + softmax rcp；ViT attention 裸 rcp 分母 + epilogue 去半舍入；\n# 中：ViT contract/projection 与 C512 FFN 投影去 RNE 半舍入；缺 -fast 模块自动退回逐位\n# 中：选它做默认：配合全 71 块，比旧默认（跳 42,43,46）每帧只慢 900 约 0.12 / 1080 约 0.19 ms，\n# 中：对 NVIDIA 44.26→47.55 dB，运动帧偏差比跳块小约 3 dB（NVIDIA 数字为 c32/c64 版，ViT 加深后未重测）\n# EN: covers C32/C64/C128 f32 activations + rcp softmax; ViT attention bare-rcp denominator + no-half epilogue;\n# EN: ViT contract/projection and C512 FFN projection without the RNE half round trip; missing -fast falls back\n# EN: 1 = fast numeric path; default 1; LOSSY: worst frame 52.1 dB vs bit-exact (numeric, carried through blocks); 0 = bit-exact\n# EN: Default because with all 71 blocks it is only about 0.12 (900) / 0.19 (1080) ms slower than the old default\n# EN: (skip 42,43,46) for 44.26-\u003e47.55 dB vs NVIDIA (c32/c64-era numbers), ~3 dB less error than block skip on motion\nDLSS5_FAST_NUMERIC=1\n# 中：叠层：整个网络每帧跑 N 遍（1/2/3），上一遍的输出图当下一遍的输入；风格逐遍加强，网络耗时约 N 倍；默认 1\n# EN: Multi pass: run the whole network N times per frame (1/2/3), each pass fed the previous output; stronger style, ~N x network time; default 1\nDLSS5_MULTI_PASS=1\n# 中：肤色保护：叠层\u003e1时肤色区域保留第一遍，其余用最终遍；肤色启发式非分割；默认0\n# EN: Skin protect at MULTI_PASS\u003e1: skin uses pass 1, elsewhere final pass; color heuristic, not segmentation; default 0\nDLSS5_MULTI_PASS_SKIN_PROTECT=0\n# 中：第三遍预测：仅叠层=3时跑两遍再局部预测第三遍；有损实验，默认0；1/2遍不变\n# EN: Predict pass 3 locally after two real passes, only with MULTI_PASS=3; LOSSY experiment; default 0; passes 1/2 unchanged\nDLSS5_MULTI_PASS_PREDICT=0\n# 中：叠层减负：只在第 2 遍及以后跳过的块（写法同 SKIP_BLOCKS），第 1 遍永远全网；默认空；非空即有损\n# EN: Multi-pass skip: blocks skipped only in passes 2..N (same list as SKIP_BLOCKS); pass 1 always full; default empty; LOSSY if set\nDLSS5_MULTI_PASS_SKIP_BLOCKS=\n# 中：叠层热键：游戏里按一下在 1→2→3→1 间切遍数，写回 custom-config.txt，热重载生效；默认 F9，0 关；仅 add-on\n# EN: Multi-pass hotkey: cycles passes 1-\u003e2-\u003e3-\u003e1, writes custom-config.txt, applied by hot reload; default F9, 0 = off; add-on only\nDLSS5_MULTI_PASS_HOTKEY=F9\n# 中：接受不超过 1920×1080 的非档位输入尺寸（0 则只认精确档位尺寸）；默认 1；保持默认\n# EN: Accept non-tier input sizes up to 1920x1080 (0 = exact tier sizes only); default 1; keep default\nDLSS5_FIT_INPUT=1\n# 中：1 = 超过 1080p 的输入缩到 1080 档再还原（0 则回退原超分）；默认 1；缩放属几何改动，代价未实测\n# EN: 1 = inputs above 1080p are fitted onto the 1080 tier (else fall back); default 1; scaling = geometry, cost not measured\nDLSS5_FIT_LARGE=1\n# 中：编解码按 sRGB 显示图处理（Magpie 必须 1，游戏包 0）；默认 0；按包型设定，不要改\n# EN: Codec treats input as display sRGB (Magpie 1, game packages 0); default 0; set per package, do not change\nDLSS5_CODEC_SRGB=0\n# 中：1 = 左上角显示 FPS 与档位；默认 1；0 = 隐藏数字；可热重载\n# EN: 1 = show FPS and tier top-left; default 1; 0 = hide; hot-reloadable\nDLSS5_SHOW_FPS=1\n# 中：启用 HIP 生产选项组合；默认 1；内部调优开关，保持默认\n# EN: Enables the production HIP option set; default 1; internal switch, keep default\nDLSS5_HIP_FAST=1\n# 中：延迟提交（命令列表环形缓冲）；默认 1；内部调优开关，保持默认\n# EN: Deferred submission ring; default 1; internal tuning switch, keep default\nDLSS5_TEST_ASYNC_SUBMIT=1\n# 中：挂哪个超分：ffx 或 xess；默认 ffx；游戏用 XeSS 时才改\n# EN: Which upscaler to hook: ffx or xess; default ffx; Change only for XeSS titles\nDLSS5_UPSCALER=ffx\n# 中：内部调优开关（HIP 内核选择），保持默认；默认 1\n# EN: Internal tuning switch (HIP kernel selection); default 1; keep default\nDLSS5_HIP_MH_BYTE_STREAM=1\n# 中：内部调优开关（HIP 内核选择），保持默认；默认 1\n# EN: Internal tuning switch (HIP kernel selection); default 1; keep default\nDLSS5_HIP_MH_FFN_FRAG256=1\n# 中：内部调优开关（HIP 内核选择），保持默认；默认 1\n# EN: Internal tuning switch (HIP kernel selection); default 1; keep default\nDLSS5_HIP_MH_FEATURE_BYTE=1\n# auto (0.30): asynchronous submission except for titles whose FSR colour buffer is a transient aliased resource (Cyberpunk 2077), which need\n# synchronous submission or the add-on copies a stale buffer (picture only changes in tone). 1/0 force it.\n# 中：前置路线异步提交；默认 auto；auto 按游戏查表（2077 同步）；1/0 强制；不影响画面数值\n# EN: Async submission on the pre-upscale route; default auto; auto = per-title table (Cyberpunk sync); 1/0 force\nDLSS5_PRE_UPSCALE_ASYNC=auto\n# auto (0.30): transfer,colour strength per title. Cyberpunk 2077 gets 1,0 (luminance only): its colour buffer is pre-tone-map linear,\n# taking the network\u0027s hue there and running it through the game\u0027s LUT turns green neon ambient brown. Others 1,1. \"a,b\" (0..1) forces it.\n# 中：细节,颜色强度 \"a,b\"（0..1）；默认 auto；auto 按游戏查表（2077 为 1,0，其余 1,1）；可热重载\n# EN: transfer,colour strength \"a,b\" (0..1); default auto; auto = per-title table (Cyberpunk 1,0, others 1,1); hot-reloadable\nDLSS5_STRENGTH=auto\n# 中：内部调优开关（HIP 内核选择），保持默认；默认 1\n# EN: Internal tuning switch (HIP kernel selection); default 1; keep default\nDLSS5_HIP_DECODER_BYTE=1\n# 中：内部调优开关（HIP 内核选择），保持默认；默认 1\n# EN: Internal tuning switch (HIP kernel selection); default 1; keep default\nDLSS5_HIP_MH_PROJ_DIAG_FB=1\n# 中：网络接入时机：1 = FSR 超分之前（前置路线）；auto = 首帧探测，列表尾部还有后续工作则自动落后置路线；0 = 后置；默认 auto\n# EN: 1 = before the FSR upscale (pre-upscale route); auto = first-frame probe, falls back to the post route when work follows the upscaler in its list; 0 = post; default auto\nDLSS5_PRE_UPSCALE=auto\n# 中：ViT 自适应复用；默认 1；1 有损（跨帧复用，最多沿用 REUSE_PERIOD 帧），快约 5～11%；运动场景 PSNR 未实测\n# EN: ViT adaptive reuse; default 1; 1 is LOSSY (cross-frame reuse), ~5-11% faster; PSNR in motion not measured\nDLSS5_VIT_ADAPTIVE=1\n# 中：自适应复用最多沿用的帧数；默认 4；仅 VIT_ADAPTIVE=1 时生效（跨帧复用）；保持默认\n# EN: Max frames a ViT result is reused; default 4; only with VIT_ADAPTIVE=1 (cross-frame reuse); keep default\nDLSS5_VIT_REUSE_PERIOD=4\n# 中：自适应复用的全局变化阈值（启发式）；默认 0.22；仅 VIT_ADAPTIVE=1 时生效；保持默认\n# EN: Adaptive reuse global-change threshold (heuristic); default 0.22; only with VIT_ADAPTIVE=1; keep default\nDLSS5_VIT_REUSE_GLOBAL=0.22\n# 中：自适应复用的局部变化阈值（启发式）；默认 1.0；仅 VIT_ADAPTIVE=1 时生效；保持默认\n# EN: Adaptive reuse local-change threshold (heuristic); default 1.0; only with VIT_ADAPTIVE=1; keep default\nDLSS5_VIT_REUSE_LOCAL=1.0\n# 中：自适应复用的画面变化上限（启发式）；默认 0.35；仅 VIT_ADAPTIVE=1 时生效；保持默认\n# EN: Adaptive reuse image-change limit (heuristic); default 0.35; only with VIT_ADAPTIVE=1; keep default\nDLSS5_VIT_REUSE_IMAGE=0.35\n# 中：1 = F8 在复用（AE）和完整计算（EXACT）间切换，FPS 行显示当前模式；默认 1\n# EN: 1 = F8 toggles reuse (AE) / full compute (EXACT); default 1; the FPS line shows the mode\nDLSS5_VIT_REUSE_HOTKEY=1\n# 中：HIP graph 发射；默认 0；内部调优开关，保持默认（0）\n# EN: HIP graph launch; default 0; internal tuning switch, keep default (0)\nDLSS5_HIP_GRAPH=0\n# 0.30: C64/C128/C256 chain launches submitted any-order with per-tile flags (no AQL barrier); bit-exact, 900p about -1.6%.\n# 中：链式内核乱序发射 + 逐块标志等待；默认 1；逐位；900p 约 -1.6%；0 = 顺序发射\n# EN: Any-order chain launches with per-tile flags; default 1; bit-exact; 900p ~-1.6%; 0 = in-order\nDLSS5_HIP_PDL=1\n# 0.31 (2026-09-26): bit-exact faster kernels. wave-owned = one head per wave for C32/C64/C128 + C256 attention (46 blocks);\n# C512_M32 = C512 QKV/mix at 32 tokens per wave; VIT_PROJ_N64 = ViT projection 64 columns per wave. Each falls back to the 0.30 path if 0.\n# 中：每个 wave 负责一个注意力头（C32/C64/C128/C256）；默认 1；逐位；0 = 回 0.30 路径\n# EN: One head per wave (C32..C256 attention); default 1; bit-exact; 0 = 0.30 path\nDLSS5_HIP_WAVE_OWNED=1\n# 中：C512 QKV/mix 每 wave 32 token；默认 1；逐位；0 = 回 0.30 路径\n# EN: C512 QKV/mix at 32 tokens per wave; default 1; bit-exact; 0 = 0.30 path\nDLSS5_HIP_C512_M32=1\n# 中：ViT 投影每 wave 64 列；默认 1；逐位；0 = 回 0.30 路径\n# EN: ViT projection 64 columns per wave; default 1; bit-exact; 0 = 0.30 path\nDLSS5_HIP_VIT_PROJ_N64=1\n# 中：内部调优开关（HIP 内核选择），保持默认；默认 0\n# EN: Internal tuning switch (HIP kernel selection); default 0; keep default\nDLSS5_HIP_VIT_BYTE_STREAM=0\n\n# Exact typed ViT edges: FP8 AV + F16 contract (AE compatible).\n# 中：ViT 类型化边（1=FP8 AV，2=F16 contract，3=两者）；默认 3；逐位；0 = 旧 f32 路径\n# EN: ViT typed edges (1 FP8 AV, 2 F16 contract, 3 both); default 3; bit-exact; 0 = old f32 path\nDLSS5_HIP_VIT_STREAM=3\n# 2026-09-28: frame-time log. DLSS5_FRAME_STATS=\u003cseconds\u003e appends one line per window to DLSS5-AMD\\logs\\frame-stats.txt\n# (frame interval avg/p50/p99/max, 1% low, why NR did or did not run). 0 = off (no cost).\n# 中：诊断用：帧时间日志窗口秒数，写 logs\\frame-stats.txt；默认 0；0 = 关、无开销；保持默认\n# EN: Diagnostic: frame-time log window in seconds (logs\\frame-stats.txt); default 0; 0 = off; keep default\nDLSS5_FRAME_STATS=0\n# 2026-09-28: zero-copy I/O around the network (pure data movement, output bit-exact). 1 = the input pass writes the HIP network input\n# directly (no 35 MB copy); 3 = also hands the decoder output to FSR directly on the pre-upscale route (RGBA16F colour, no copy back).\n# History (temporal) sessions keep the old path automatically. 0 = previous behaviour.\n# 中：网络前后零拷贝（1=输入，3=也直交 FSR）；默认 1；纯搬运，逐位；0 = 旧路径；详见 CONFIGURATION.md\n# EN: Zero-copy I/O (1 input, 3 also output to FSR); default 1; pure data movement, bit-exact; 0 = old path\nDLSS5_DIRECT_IO=1\n\n# C256 internal-stage ready queue; bounded GPU recovery (on by default since 0.37).\n# 中：C256 内部阶段就绪队列，带超时恢复；默认 1；逐位；0 = 旧发射方式\n# EN: C256 internal-stage ready queue with bounded recovery; default 1; bit-exact; 0 = old launches\nDLSS5_HIP_SWIN_RUN=1\n\n# 0.38: colour-format fallback. Colour formats outside the original table that the GPU reads as float (R9G9B9E5 linear HDR,\n# B8G8R8X8, R10G10B10A2, R32G32B32(A32), SNORM, 5:6:5 ...) are converted into RGBA16F and take the usual route; formats that\n# worked before are untouched (bit-exact). A rejected format is logged by name. 0 = original table only.\n# 中：原表外的颜色格式转 RGBA16F 再处理；默认 1；原有格式不受影响（逐位）；0 = 只认原表\n# EN: Convert colour formats outside the original table to RGBA16F; default 1; old formats untouched (bit-exact)\nDLSS5_FORMAT_FALLBACK=1\n# 0.38: hot reload. Edits to DLSS5_STRENGTH / DLSS5_NOTICE / DLSS5_SHOW_FPS in this file apply within a second, no restart\n# (logged as event=hot_reload in logs\\native-game-oneshot.txt). All other keys still need a game restart. 0 = off.\n# 中：每秒检查本文件，STRENGTH/NOTICE/SHOW_FPS 改了即生效；默认 1；其余键仍需重启；0 = 关\n# EN: Poll this file each second; default 1; STRENGTH/NOTICE/SHOW_FPS apply live; others need restart; 0 = off\nDLSS5_HOT_RELOAD=1\n\n# Style (NVIDIA NGX Style control, 0/1/2). 1 = the style the original runtime used in Stellar Blade (default, as in every\n# package so far); 0 = NVIDIA\u0027s default and closest to its reference output; 2 = third style. Anything else falls back to 1.\n# Needs a game restart.\n# 中：NVIDIA Style 0/1/2：1 = 剑星原版风格；默认 1；0 = NVIDIA 默认、最接近参考输出；改了输出风格就变；需重启\n# EN: NVIDIA Style 0/1/2: 1 = Stellar Blade style; default 1; 0 = NVIDIA default, closest to reference; restart needed\nDLSS5_STYLE=1\n",
+                      "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\default-config.txt",
+                      "sha256":  "181171ba5b91666227f832f28481378afd73d42c6d387b959776f6aebd444dff",
+                      "bytes":  42446
+                  },
+                  {
+                      "config":  "# custom-config.txt：你自己的设置。安装和升级都不会覆盖这个文件。\n# 读取顺序：default-config.txt（随包，升级覆盖）→ custom-config.txt（本文件）→ native-game-flags.txt（旧版单文件，存在就照常生效）。\n# 后面的文件覆盖前面的同名项，没写的项沿用前面的值；系统环境变量最优先。同一文件里同一项写两次，以最后一行为准。\n# 写法：一行一个 DLSS5_名字=值，可从 default-config.txt 复制那一行过来改值。值留空（例如 DLSS5_SKIP_BLOCKS=）表示用程序内置默认。\n#\n# custom-config.txt: your own settings. Install and upgrade never overwrite this file.\n# Read order: default-config.txt (shipped, overwritten on upgrade) -\u003e custom-config.txt (this file) -\u003e native-game-flags.txt (old\n# single file, still honoured when present). A later file overrides the same key of an earlier one; keys it does not mention keep the\n# earlier value; system environment variables win over all files. Same key twice in one file: the last line wins.\n# Format: one DLSS5_NAME=value per line; copy a line from default-config.txt and change the value. An empty value\n# (e.g. DLSS5_SKIP_BLOCKS=) means the program\u0027s built-in default.\n#\n# 例 / Example (remove the leading \"# \" to use):\n# DLSS5_MULTI_PASS=2\nDLSS5_MULTI_PASS=1\nDLSS5_MULTI_PASS_PREDICT=0\nDLSS5_MULTI_PASS_SKIN_PROTECT=0\nDLSS5_TEMPORAL_MODE=3\nDLSS5_TEMPORAL_HISTORY_EXPERIMENT=0\nDLSS5_FAST_HISTORY=0\nDLSS5_TEMPORAL_ENHANCE_STRENGTH=1\n",
+                      "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\custom-config.txt",
+                      "sha256":  "4bdb8c3a056d27164dd0e575428eec2c5523dee91d7b2a74c5b1c711a5415586",
+                      "bytes":  1510
+                  },
+                  {
+                      "config":  "DLSS5_TEST_BLOCKED_C32_FFN=1\r\nDLSS5_TEST_BLOCKED_FFN=1\r\nDLSS5_TEST_BLOCKED_VIT=1\r\nDLSS5_TEST_C32_FFN_RAW_STORE=1\r\nDLSS5_TEST_CACHE_C32_INPUT=1\r\nDLSS5_TEST_COALESCED_FINISH=1\r\nDLSS5_TEST_COALESCED_MULTIHEAD_SHIFT=1\r\nDLSS5_TEST_DIRECT_ATTENTION=1\r\nDLSS5_TEST_FUSED_SHIFT=1\r\nDLSS5_TEST_LOCAL_C32_ATTENTION=1\r\nDLSS5_TEST_MATRIX_C128=1\r\nDLSS5_TEST_MATRIX_C256=1\r\nDLSS5_TEST_MATRIX_C64=1\r\nDLSS5_TEST_MATRIX_SPLIT_ATTENTION=1\r\nDLSS5_TEST_MULTIHEAD_EIGHT_WAVES=1\r\nDLSS5_TEST_MULTIHEAD_FOUR_WAVES=1\r\nDLSS5_TEST_PARALLEL_MULTIHEAD_NORM=0\r\nDLSS5_TEST_PARALLEL_MULTIHEAD_SOFTMAX=1\r\nDLSS5_TEST_PAD_C32_LDS=1\r\nDLSS5_TEST_PAD_MULTIHEAD_LDS=1\r\nDLSS5_TEST_PARALLEL_SPLIT_FFWD=1\r\nDLSS5_TEST_RESIDENT_NOISE=1\r\nDLSS5_TEST_RESIDENT_WAVE_VIT_EXPAND=1\r\nDLSS5_TEST_RESIDENT_WEIGHTS=1\r\nDLSS5_TEST_SHARED_C32=1\r\nDLSS5_TEST_SHARED_C32_SCRATCH=1\r\nDLSS5_TEST_SHARED_MATRIX_WORKSPACE=1\r\nDLSS5_TEST_SHARED_SCRATCH=1\r\nDLSS5_TEST_SPLIT_C32_ATTENTION=1\r\nDLSS5_TEST_SPLIT_FFWD=1\r\nDLSS5_TEST_SPLIT_PREBLOCK_FFN=1\r\nDLSS5_TEST_SPLIT_PROJECTION=1\r\nDLSS5_TEST_TILED_C64=1\r\nDLSS5_TEST_TILED_QKV=1\r\nDLSS5_TEST_VIT_EXPAND_CHUNK2=1\r\nDLSS5_TEST_WAVE_C128=1\r\nDLSS5_TEST_WAVE_C256=1\r\nDLSS5_TEST_WAVE_C32_AV=1\r\nDLSS5_TEST_WAVE_C32_FFN=1\r\nDLSS5_TEST_WAVE_C32_FFN_LOCAL=1\r\nDLSS5_TEST_WAVE_C32_PROJECTION=1\r\nDLSS5_TEST_WAVE_C32_QKV=1\r\nDLSS5_TEST_WAVE_C32_SCORES=1\r\nDLSS5_TEST_WAVE_C64=1\r\nDLSS5_TEST_WAVE_DECODER_LINEAR=1\r\nDLSS5_TEST_WAVE_DOWNSAMPLE=1\r\nDLSS5_TEST_WAVE_HEAD=1\r\nDLSS5_TEST_WAVE_MULTIHEAD_AV=1\r\nDLSS5_TEST_WAVE_PROJECT=1\r\nDLSS5_TEST_WAVE_SPLIT_FFWD=0\r\nDLSS5_TEST_WAVE_SPLIT_PROJECT=1\r\nDLSS5_TEST_WAVE_VIT_ATTENTION=1\r\nDLSS5_TEST_WAVE_VIT_ATTENTION_HALF=1\r\nDLSS5_TEST_WAVE_VIT_EXPAND=1\r\nDLSS5_TEST_WAVE_VIT_QKV=1\r\nDLSS5_TEST_WAVE_VIT_REDUCE=1\r\nDLSS5_FP8_OPERANDS=1\r\nDLSS5_FP8_QKV=1\r\nDLSS5_FP8_HIDDEN=1\r\nDLSS5_FP8_LDS=1\r\nDLSS5_FAST_TEMPORAL=1\r\nDLSS5_FUSED_QKV_NORMALIZE=1\r\nDLSS5_FUSED_FFN=1\r\nDLSS5_FP8_ACTIVATIONS=1\r\nDLSS5_FP8_QKV_NORM=1\r\nDLSS5_FAST_PREFIX=1\r\nDLSS5_C32_FUSED_ATTENTION=1\r\nDLSS5_VIT_SPLIT_K=1\r\nDLSS5_VIT_PACKED_INPUT=1\r\nDLSS5_VIT_BLOCK_M=4\r\nDLSS5_C32_MAPPED_INPUT=1\r\nDLSS5_FP8_STREAM=1\r\nDLSS5_SPLIT_DIRECT_ATTENTION=1\r\nDLSS5_FFN_TILED_WEIGHTS=1\r\nDLSS5_TILED_WEIGHTS=1\r\nDLSS5_C32_FFN_FAST3=1\r\nDLSS5_C32_ATTN_FAST2=1\r\nDLSS5_POST70_DIRECT=1\r\nDLSS5_C32_CHAIN_RAW=1\r\nDLSS5_WAVE_C32_DS=1\r\nDLSS5_VIT_ATTN_FP8=1\r\nDLSS5_POST70_MERGE_FOLD=1\r\nDLSS5_C32_ATTN_FAST3=1\r\nDLSS5_INLINE_PREFIX=1\r\nDLSS5_BATCH_SUBMITS=2\r\nDLSS5_C32_ATTN_FAST4=1\r\nDLSS5_VIT_QKV_FUSED=1\r\nDLSS5_OUTPUT_SMOOTH=10,0.8\r\nDLSS5_PREBLOCK_MAIN8=1\r\nDLSS5_RESIDENCY_PRIORITY=maximum\r\nDLSS5_MAKE_RESIDENT_EVERY=60\r\nDLSS5_C32_SKIP8=1\r\nDLSS5_POST70_LOW_RAW=2\r\nDLSS5_C32_HALF_STREAM=1\r\nDLSS5_C32_EPILOGUE=1\r\nDLSS5_C32_FUSED_FFN=1\r\nDLSS5_VIT_TILED=1\r\nDLSS5_SPLIT_TILED=1\r\nDLSS5_DECODER_TILED=1\r\nDLSS5_SPLIT_FFWD_TILED=1\r\nDLSS5_SPLIT_STREAM8=1\r\nDLSS5_DECODER_OUT16=1\r\nDLSS5_SKIP_BLOCKS=\r\nDLSS5_FAST_NUMERIC=1\r\nDLSS5_NETWORK_HEIGHT=auto\r\nDLSS5_FIT_INPUT=1\r\nDLSS5_FIT_LARGE=1\r\nDLSS5_CODEC_SRGB=0\r\nDLSS5_SHOW_FPS=1\r\nDLSS5_HIP_FAST=1\r\nDLSS5_TEST_ASYNC_SUBMIT=1\r\nDLSS5_UPSCALER=ffx\r\nDLSS5_HIP_MH_BYTE_STREAM=1\r\nDLSS5_HIP_MH_FFN_FRAG256=1\r\nDLSS5_HIP_MH_FEATURE_BYTE=1\r\n# auto (0.30): asynchronous submission except for titles whose FSR colour buffer is a transient aliased resource (Cyberpunk 2077), which need\r\n# synchronous submission or the add-on copies a stale buffer (picture only changes in tone). 1/0 force it.\r\nDLSS5_PRE_UPSCALE_ASYNC=auto\r\n# auto (0.30): transfer,colour strength per title. Cyberpunk 2077 gets 1,0 (luminance only): its colour buffer is pre-tone-map linear,\r\n# taking the network\u0027s hue there and running it through the game\u0027s LUT turns green neon ambient brown. Others 1,1. \"a,b\" (0..1) forces it.\r\nDLSS5_STRENGTH=auto\r\nDLSS5_HIP_DECODER_BYTE=1\r\nDLSS5_HIP_MH_PROJ_DIAG_FB=1\r\nDLSS5_PRE_UPSCALE=1\r\nDLSS5_VIT_ADAPTIVE=1\r\nDLSS5_VIT_REUSE_PERIOD=4\r\nDLSS5_VIT_REUSE_GLOBAL=0.22\r\nDLSS5_VIT_REUSE_LOCAL=1.0\r\nDLSS5_VIT_REUSE_IMAGE=0.35\r\nDLSS5_VIT_REUSE_HOTKEY=1\r\nDLSS5_HIP_GRAPH=0\r\n# 0.30: C64/C128/C256 chain launches submitted any-order with per-tile flags (no AQL barrier); bit-exact, 900p about -1.6%.\r\nDLSS5_HIP_PDL=1\r\n# 0.31 (2026-09-26): bit-exact faster kernels. wave-owned = one head per wave for C32/C64/C128 + C256 attention (46 blocks);\r\n# C512_M32 = C512 QKV/mix at 32 tokens per wave; VIT_PROJ_N64 = ViT projection 64 columns per wave. Each falls back to the 0.30 path if 0.\r\nDLSS5_HIP_WAVE_OWNED=1\r\nDLSS5_HIP_C512_M32=1\r\nDLSS5_HIP_VIT_PROJ_N64=1\r\nDLSS5_HIP_VIT_BYTE_STREAM=0\r\nDLSS5_HIP_VIT_STREAM=3\r\n# frame-time log, one line per 5 s in DLSS5-AMD\\logs\\frame-stats.txt\r\nDLSS5_FRAME_STATS=5\r\n# 2026-09-28 zero-copy I/O (3 = input + output direct; 1 = input only; 0 = previous path)\r\nDLSS5_DIRECT_IO=3\r\nDLSS5_HIP_SWIN_RUN=1\r\n# 中：叠层：整个网络每帧跑 N 遍（1/2/3），上一遍的输出图当下一遍的输入；风格逐遍加强，网络耗时约 N 倍；默认 1\r\n# EN: Multi pass: run the whole network N times per frame (1/2/3), each pass fed the previous output; stronger style, ~N x network time; default 1\r\nDLSS5_MULTI_PASS=1\r\n",
+                      "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-flags.txt",
+                      "sha256":  "2226f31149b25a43aac447ec53c3d68865f6080d2360275d0df11e499591b0a3",
+                      "bytes":  4997
+                  }
+              ],
+    "modules":  [
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\post70-history-head.f16",
+                        "sha256":  "77c745c4e1d84a6227a2224291d83c37d1e9bd18d45e95add166b1174225ce8f",
+                        "bytes":  64
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\SHA256SUMS",
+                        "sha256":  "c08125c23b6d7d523dcfae3ef4669d05bbeb25284403a993ca55c5c8de092ea1",
+                        "bytes":  7732
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\boundary-fast.hsaco",
+                        "sha256":  "40fa66062eca6bbe654e480944783c27b9bd93970696e1ffca9bbc8773ca9700",
+                        "bytes":  50904
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\boundary_reference.hsaco",
+                        "sha256":  "1b1a514743924d43542ed9ac30e4ca50ec6e84e62d2bafab1960aaf061e0adc8",
+                        "bytes":  17832
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c32-wave1-fast.hsaco",
+                        "sha256":  "9b8a8fb53a0e1251b9639b0985f78fdf2a54fed90abd9ec7fe05ee53cec3c47a",
+                        "bytes":  387336
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c32-wave1-rtz.hsaco",
+                        "sha256":  "1913abb3a6be89283f803c850dfa666bfc383ecedf22ea5e885b07c87299ec9b",
+                        "bytes":  399880
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c32-wave1.hsaco",
+                        "sha256":  "005a44dbaef4d34ac2df2c0e43b8486520fd20331d10004dfc67be9883514fa7",
+                        "bytes":  393736
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c32_fast.hsaco",
+                        "sha256":  "a639601561123594f6d8b335f884f4e229338875f460213af1396bc2f28c90ec",
+                        "bytes":  38056
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c32_fast_attention.hsaco",
+                        "sha256":  "b3abd5620764f5a5ba4d86fb439e0a57688e346afdd5945f6f1d9067da6d032c",
+                        "bytes":  29568
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c32_fused_attention.hsaco",
+                        "sha256":  "5091d35e5ac53e4a8d16de2f5fb1c8c057159c72d6605faeb5a5ca7daa65aacd",
+                        "bytes":  39472
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c32_fused_ffn_attention-packed.hsaco",
+                        "sha256":  "c85719e3a4560e197e395260aa25e80e387ca4ac424f18e9440489a9888df0aa",
+                        "bytes":  219328
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c32_fused_ffn_attention.hsaco",
+                        "sha256":  "8d9d9817b919fc49c3cbcbedf4350fbef962d94822f42de3e0a3e9136f3a535d",
+                        "bytes":  286528
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c32_prefix_reference.hsaco",
+                        "sha256":  "65103d0c3930dd22d7ec40e282e38285d68169c9c8860df7d561a7c04fef7640",
+                        "bytes":  35784
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c32_tiled.hsaco",
+                        "sha256":  "6e7db748fbd492cd566f208a1aa3b7e48a42a9c0d8b31022148469bb46d01e8f",
+                        "bytes":  31536
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c32_wmma.hsaco",
+                        "sha256":  "4d239ca134400ee2b42c60f99dc24202f9a4fd38c21a471c01a98217df04b294",
+                        "bytes":  66504
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c512-m32-deep.hsaco",
+                        "sha256":  "df76c08f2fe1f6f9fc2b51c2386ef817810adce7df2accadb896d2f89a9853b0",
+                        "bytes":  571864
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c512-m32-mh.hsaco",
+                        "sha256":  "9290b24736ff533092ad55998fb388009fc8d39ffa3ea432afbe7cf2f2a2b3c2",
+                        "bytes":  964952
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c64-wave2-fast.hsaco",
+                        "sha256":  "58dc8b4bbcccba8cb1d995b6be216dd190e370b753bb34221d024bc10747dfcc",
+                        "bytes":  1655544
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\c64-wave2.hsaco",
+                        "sha256":  "a3e1eba29a509f76a49a8752e5d9efcdff84379a57ac3f2a2e6c2d118f2f2bed",
+                        "bytes":  1695736
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\deep_fast-packed-fast.hsaco",
+                        "sha256":  "e30c80a9925383d1ef6aabd28be818f0eb5536fd2505133bd4e4eefe0039ac00",
+                        "bytes":  562608
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\deep_fast-packed.hsaco",
+                        "sha256":  "b582b7f8b87569a6a7b52c3a4aea00a7b369301108f9575941ae8a44de9627b0",
+                        "bytes":  562352
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\deep_fast.hsaco",
+                        "sha256":  "3284ad92b295cc2a4bb6e4bb8f0533b0fea9014edbe8b74e00d23928f0899a42",
+                        "bytes":  572072
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\deep_reference.hsaco",
+                        "sha256":  "0d2e3e9658a8abc53be68b6fc108ce57594784d3ed56f237bedd9766d86db895",
+                        "bytes":  70312
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\deep_wmma.hsaco",
+                        "sha256":  "b562c8986300b0517818ae54a46108e725e1ecc6c6b6c88a3b7fa14c749a5b2f",
+                        "bytes":  82616
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\multi-pass-predict.hsaco",
+                        "sha256":  "fadeee7d96a7ba5f8879b8eab2d398452140b8ea578f2531a2f1729345099cd8",
+                        "bytes":  14328
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\multi-pass-skin.hsaco",
+                        "sha256":  "1ef0a4046fa3868afdc4939584a003323f6b987e6144e699a2e456fe65e9294e",
+                        "bytes":  12888
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\multihead-fast-packed.hsaco",
+                        "sha256":  "31e258756683b9a60e455c1c315c7b22b9605d90ae784891073fb6c74ba8ead7",
+                        "bytes":  104904
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\multihead-fast-padded-wave-packed.hsaco",
+                        "sha256":  "1a7bf772b9c43c3e0121cf3c6c7366939bd1da264e0fbbeef2d448442cd6a76f",
+                        "bytes":  1140080
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\multihead-fast-padded-wave.hsaco",
+                        "sha256":  "20e8bae6ad353fc918a11c1a1d97886070fa6aa8ea45c1ab8da0ff3dee9c2ae0",
+                        "bytes":  1086112
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\multihead-fast.hsaco",
+                        "sha256":  "3493fb0ede45f233a5d09472bd7a76d7532387f1fd6b0c835d46c20c0d196c9a",
+                        "bytes":  106952
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\multihead-reference.hsaco",
+                        "sha256":  "1cfa639e9f37b7872c69d738c7332b58eaaf0539caf720cc29a844e770fc8cbe",
+                        "bytes":  66824
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\multihead-tiled.hsaco",
+                        "sha256":  "3799ae40ecec89796132bf6464a76faf1adfffe65df2f5e6406f47a86f67aa81",
+                        "bytes":  49072
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\multihead-wmma.hsaco",
+                        "sha256":  "bfc99774435fcf89985a795ea6e1c20de3335053097b40206839adf687d0e226",
+                        "bytes":  93264
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\multihead_fused_attention.hsaco",
+                        "sha256":  "f7f23560d490868eacb161d7e49c958548faaa1d61384014ea0859b5e8cef1b9",
+                        "bytes":  366880
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\prefix_fast.hsaco",
+                        "sha256":  "81b3facda5a1512af3940d7a82c5a2f6f2e5cc7a0f2428194f4420fc8b68a57c",
+                        "bytes":  77496
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\swin-persistent-fast.hsaco",
+                        "sha256":  "0563c00b9b32510a8d1bef9e75f8d7b0e37573c496a30f915d2e454dc0344a96",
+                        "bytes":  1214256
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\swin-persistent.hsaco",
+                        "sha256":  "520cd2fe89957aa3a35a75ca04c6211f95e2a46fab45b0f48161d61b19c89df3",
+                        "bytes":  1160624
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\vit-stream-fast.hsaco",
+                        "sha256":  "6adef4b3b6b44bff8f6ff8eb1d04bb6351d135043a2616cf0cb1922813c4f7f8",
+                        "bytes":  658952
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\vit-stream.hsaco",
+                        "sha256":  "fc2f4635f34d30046ce26ec56da403037f2263343a131b0eedcff983d518a9b6",
+                        "bytes":  643336
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\vit-wide-deep.hsaco",
+                        "sha256":  "862e0b10a3671e359d7af66cce9a33ab8f2877115c47d589f8066333f7b8c87b",
+                        "bytes":  580576
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1200\\wave-pointwise.hsaco",
+                        "sha256":  "5e65693da46044b697218194bb17ec8453952fa4a4a684c6ecc59df1cecf12aa",
+                        "bytes":  46704
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\boundary-fast.hsaco",
+                        "sha256":  "40fa66062eca6bbe654e480944783c27b9bd93970696e1ffca9bbc8773ca9700",
+                        "bytes":  50904
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\boundary_reference.hsaco",
+                        "sha256":  "1b1a514743924d43542ed9ac30e4ca50ec6e84e62d2bafab1960aaf061e0adc8",
+                        "bytes":  17832
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32-wave1-fast-norm900.hsaco",
+                        "sha256":  "354eaa74d117b2a1becd0795b5fae5a5c8f869907d2f33affb7f70c0189f66e4",
+                        "bytes":  421168
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32-wave1-fast.hsaco",
+                        "sha256":  "ff5b04c666fed772c72b8a0d30bb49f1bb3eacb887f211403e181caed0c9a2a7",
+                        "bytes":  426032
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32-wave1-rtz.hsaco",
+                        "sha256":  "04c98fe3177f294ba981eca2c1c74782cf965b2b47843ae72e05e9f7e904d33a",
+                        "bytes":  439856
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32-wave1.hsaco",
+                        "sha256":  "c79e9c2a83ffd93b74089e0587be6b79f1b48b98e3ac8bbcdba45c40e71b0b24",
+                        "bytes":  433456
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32_fast.hsaco",
+                        "sha256":  "a639601561123594f6d8b335f884f4e229338875f460213af1396bc2f28c90ec",
+                        "bytes":  38056
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32_fast_attention.hsaco",
+                        "sha256":  "b3abd5620764f5a5ba4d86fb439e0a57688e346afdd5945f6f1d9067da6d032c",
+                        "bytes":  29568
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32_fused_attention.hsaco",
+                        "sha256":  "5091d35e5ac53e4a8d16de2f5fb1c8c057159c72d6605faeb5a5ca7daa65aacd",
+                        "bytes":  39472
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32_fused_ffn_attention-packed.hsaco",
+                        "sha256":  "c85719e3a4560e197e395260aa25e80e387ca4ac424f18e9440489a9888df0aa",
+                        "bytes":  219328
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32_fused_ffn_attention.hsaco",
+                        "sha256":  "8d9d9817b919fc49c3cbcbedf4350fbef962d94822f42de3e0a3e9136f3a535d",
+                        "bytes":  286528
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32_prefix_reference.hsaco",
+                        "sha256":  "65103d0c3930dd22d7ec40e282e38285d68169c9c8860df7d561a7c04fef7640",
+                        "bytes":  35784
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32_tiled.hsaco",
+                        "sha256":  "6e7db748fbd492cd566f208a1aa3b7e48a42a9c0d8b31022148469bb46d01e8f",
+                        "bytes":  31536
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c32_wmma.hsaco",
+                        "sha256":  "4d239ca134400ee2b42c60f99dc24202f9a4fd38c21a471c01a98217df04b294",
+                        "bytes":  66504
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c512-m32-deep.hsaco",
+                        "sha256":  "5d4fe673b1276df2eec39c77f7747307bd02acdcafb55ced23f70a7c5d7b64cd",
+                        "bytes":  571864
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c512-m32-mh.hsaco",
+                        "sha256":  "9290b24736ff533092ad55998fb388009fc8d39ffa3ea432afbe7cf2f2a2b3c2",
+                        "bytes":  964952
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c64-wave2-fast.hsaco",
+                        "sha256":  "65848e8d21ef4e647ff9c1f995415676ca47d669610354b7c6743e745525c799",
+                        "bytes":  1655544
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\c64-wave2.hsaco",
+                        "sha256":  "eb4a486ea073d2057eb4989f2e9952221069b6262050f777243dc7feb9e84335",
+                        "bytes":  1695736
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\deep_fast-packed-fast.hsaco",
+                        "sha256":  "e30c80a9925383d1ef6aabd28be818f0eb5536fd2505133bd4e4eefe0039ac00",
+                        "bytes":  562608
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\deep_fast-packed.hsaco",
+                        "sha256":  "b582b7f8b87569a6a7b52c3a4aea00a7b369301108f9575941ae8a44de9627b0",
+                        "bytes":  562352
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\deep_fast.hsaco",
+                        "sha256":  "3284ad92b295cc2a4bb6e4bb8f0533b0fea9014edbe8b74e00d23928f0899a42",
+                        "bytes":  572072
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\deep_reference.hsaco",
+                        "sha256":  "0d2e3e9658a8abc53be68b6fc108ce57594784d3ed56f237bedd9766d86db895",
+                        "bytes":  70312
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\deep_wmma.hsaco",
+                        "sha256":  "b562c8986300b0517818ae54a46108e725e1ecc6c6b6c88a3b7fa14c749a5b2f",
+                        "bytes":  82616
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\multi-pass-predict.hsaco",
+                        "sha256":  "8b58dd685b7e4cc621f4cc5a703931c9a553f384fc08edc9f8ee480c4724d960",
+                        "bytes":  14328
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\multi-pass-skin.hsaco",
+                        "sha256":  "57f9c27b29b994895f2d3dcf30e20e0244b2fbeb6bbe4c974151d961cc5d05ed",
+                        "bytes":  12888
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\multihead-fast-packed.hsaco",
+                        "sha256":  "31e258756683b9a60e455c1c315c7b22b9605d90ae784891073fb6c74ba8ead7",
+                        "bytes":  104904
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\multihead-fast-padded-wave-packed.hsaco",
+                        "sha256":  "e452eedb7e07084431ed20e31a0187eedb5ed6630fa5f3ec03209d26e8ad6130",
+                        "bytes":  1140080
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\multihead-fast-padded-wave.hsaco",
+                        "sha256":  "20e8bae6ad353fc918a11c1a1d97886070fa6aa8ea45c1ab8da0ff3dee9c2ae0",
+                        "bytes":  1086112
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\multihead-fast.hsaco",
+                        "sha256":  "3493fb0ede45f233a5d09472bd7a76d7532387f1fd6b0c835d46c20c0d196c9a",
+                        "bytes":  106952
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\multihead-reference.hsaco",
+                        "sha256":  "1cfa639e9f37b7872c69d738c7332b58eaaf0539caf720cc29a844e770fc8cbe",
+                        "bytes":  66824
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\multihead-tiled.hsaco",
+                        "sha256":  "3799ae40ecec89796132bf6464a76faf1adfffe65df2f5e6406f47a86f67aa81",
+                        "bytes":  49072
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\multihead-wmma.hsaco",
+                        "sha256":  "bfc99774435fcf89985a795ea6e1c20de3335053097b40206839adf687d0e226",
+                        "bytes":  93264
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\multihead_fused_attention.hsaco",
+                        "sha256":  "f7f23560d490868eacb161d7e49c958548faaa1d61384014ea0859b5e8cef1b9",
+                        "bytes":  366880
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\prefix_fast.hsaco",
+                        "sha256":  "81b3facda5a1512af3940d7a82c5a2f6f2e5cc7a0f2428194f4420fc8b68a57c",
+                        "bytes":  77496
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\swin-persistent-fast.hsaco",
+                        "sha256":  "1699eca50811b9dc140f258882a1b087b5be0cb3005e81c937a5ff8bd54ae541",
+                        "bytes":  1214256
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\swin-persistent.hsaco",
+                        "sha256":  "520cd2fe89957aa3a35a75ca04c6211f95e2a46fab45b0f48161d61b19c89df3",
+                        "bytes":  1160624
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\vit-stream-fast.hsaco",
+                        "sha256":  "877eaf122f827af6e00824582f5ca918b5d61499d4ad7c7cde7ab6e422516a57",
+                        "bytes":  658952
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\vit-stream.hsaco",
+                        "sha256":  "a085694b8679aee18b169a5aa2d886b12d579809b9f2bbfd4e097d4cf692b986",
+                        "bytes":  643336
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\vit-wide-deep.hsaco",
+                        "sha256":  "862e0b10a3671e359d7af66cce9a33ab8f2877115c47d589f8066333f7b8c87b",
+                        "bytes":  580576
+                    },
+                    {
+                        "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-tiled-assets\\HIP\\gfx1201\\wave-pointwise.hsaco",
+                        "sha256":  "5e65693da46044b697218194bb17ec8453952fa4a4a684c6ecc59df1cecf12aa",
+                        "bytes":  46704
+                    }
+                ],
+    "environments":  [
+
+                     ],
+    "processes":  [
+
+                  ],
+    "candidates":  [
+                       {
+                           "path":  "D:\\DLSSNR-Lab\\mode3-stellar-deploy-20261008\\DLSS5-AMD.addon64",
+                           "sha256":  "4ceef29f363f52e9159e439cd9eecd52caa796a95d281b0ad07a20ce091ef833",
+                           "bytes":  4523941
+                       }
+                   ]
+}

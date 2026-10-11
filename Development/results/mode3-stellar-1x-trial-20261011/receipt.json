@@ -1,0 +1,48 @@
+{
+  "deployment_handle": 82751,
+  "actual_exit_code": 0,
+  "lock_released": true,
+  "target": "Stellar Blade production HIP addon only",
+  "source_commit": "a9b7a521",
+  "build_handle": 8521,
+  "build_exit": 0,
+  "build_command": "bash scripts/build-addon.sh <existing third_party/minhook> <existing third_party/reshade/include> <persistent output> --hip",
+  "addon_sha256": "9413682f3185d1e9327ce7ce76be96ee88aad794f528799152ebaa3f2a7f85f3",
+  "previous_addon_sha256": "4ceef29f363f52e9159e439cd9eecd52caa796a95d281b0ad07a20ce091ef833",
+  "historical_ea11_artifact_reused": false,
+  "source_guard_matches_validated_ea11_fixture": true,
+  "source_sha256": {
+    "src/native_hot_flags.h": "56a56d4c8c31ccbe62c1634487263d220366822d656add1aef05bf5bfdf13d45",
+    "src/native_hip_network.h": "cc52f00c3e98cd8504297db2d2be28d78aaff512c4270f30b4e12a6690a74a42",
+    "src/native_fast_history_policy.h": "77ce64956d1686711dd18a2c585e3d51abfa01a5a24972bb89a68c753be9cb3f",
+    "src/native_low_frequency_shader.h": "8eaebd5982f5642369532af298f077c3203771f80306ffe4f681d33676d42ec4",
+    "src/native_temporal_mode.h": "eada67c3b846078bbb827f0b2d5457d2be2da5168816a328abd9cdfe00e249db",
+    "scripts/build-addon.sh": "d065015fff91e0a6670e1bd3cf173cdc87107533bbdf4a10752f2c8e0f344add"
+  },
+  "effective_config": {
+    "DLSS5_TEMPORAL_MODE": "3",
+    "DLSS5_TEMPORAL_ENHANCE_STRENGTH": "1",
+    "DLSS5_MULTI_PASS": "1",
+    "DLSS5_MULTI_PASS_PREDICT": "0",
+    "DLSS5_FAST_HISTORY": "0",
+    "DLSS5_TEMPORAL_HISTORY_EXPERIMENT": "0"
+  },
+  "other_config_bytes_unchanged": {
+    "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\default-config.txt": true,
+    "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\custom-config.txt": true,
+    "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\DLSS5-AMD\\native-game-flags.txt": true
+  },
+  "preserved_hsaco_count": 79,
+  "modules_SUMS_row_all_preserved_by_deployment_readback": true,
+  "available_user_machine_process_environment_overrides": [],
+  "game_and_RTC_before_write": "not running; checked again under atomic lock and before each write",
+  "game_launched_by_agent": false,
+  "gpu_experiment_run": false,
+  "visual_or_live_frame_activation_not_tested": true,
+  "onimusha_written": false,
+  "runtime_DLL_written": false,
+  "rollback_path": "D:\\DLSSNR-Lab\\mode3-stellar-1x-trial-20261011\\backups\\20261011-114301\\rollback.ps1",
+  "remote_backup_directory": "D:\\DLSSNR-Lab\\mode3-stellar-1x-trial-20261011\\backups\\20261011-114301",
+  "formal_release_zip_tag_changed": false,
+  "push_performed": false
+}

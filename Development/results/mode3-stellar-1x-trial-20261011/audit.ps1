@@ -1,0 +1,12 @@
+$ErrorActionPreference='Stop'
+$r='D:\DLSSNR-Lab\mode3-stellar-1x-trial-20261011';New-Item -ItemType Directory -Force $r|Out-Null
+$game='C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64'
+$keys=@('DLSS5_TEMPORAL_MODE','DLSS5_TEMPORAL_ENHANCE_STRENGTH','DLSS5_FAST_HISTORY','DLSS5_TEMPORAL_HISTORY_EXPERIMENT','DLSS5_MULTI_PASS','DLSS5_MULTI_PASS_PREDICT')
+$processes=@(Get-Process|Where-Object {$_.ProcessName -match 'Shipping|SB-Win64|Onimusha|^re9$|Magpie|rtc_compile'}|Select-Object Id,ProcessName,Path)
+$envs=@();foreach($tier in @('User','Machine','Process')){$e=[Environment]::GetEnvironmentVariables($tier);foreach($k in $e.Keys|Where-Object {$_ -like 'DLSS5_*'}){$envs+=@{tier=$tier;key=[string]$k;value=[string]$e[$k]}}}
+$files=@();foreach($p in @("$game\dlss5-amd.addon64","$game\LmxxfNrRuntime.dll","$game\DLSS5-AMD\LmxxfNrRuntime.dll","$game\DLSS5-AMD\default-config.txt","$game\DLSS5-AMD\custom-config.txt","$game\DLSS5-AMD\native-game-flags.txt")){if(Test-Path $p){$files+=@{path=$p;bytes=(Get-Item $p).Length;sha256=(Get-FileHash $p).Hash.ToLower();config=$(if($p.EndsWith('.txt')){[IO.File]::ReadAllText($p)}else{$null})}}}
+$candidates=@();foreach($folder in @((Get-ChildItem D:\DLSSNR-Lab -Directory|Where-Object {$_.Name -match 'hotkey|temporal'}|Select-Object -ExpandProperty FullName)) + @('D:\DLSSNR-Lab\temporal-hotkey-guard-20261008','D:\DLSSNR-Lab\mode3-stellar-deploy-20261008','D:\DLSSNR-Lab\temporal-mode3-20261008')){if(Test-Path $folder){foreach($f in Get-ChildItem $folder -Recurse -File|Where-Object {$_.Extension -eq '.addon64'}){$candidates+=@{path=$f.FullName;bytes=$f.Length;sha256=(Get-FileHash $f.FullName).Hash.ToLower()}}}}
+$mods=@();foreach($f in Get-ChildItem "$game\DLSS5-AMD\native-game-tiled-assets" -Recurse -File|Where-Object {$_.Extension -eq '.hsaco' -or $_.Name -eq 'SHA256SUMS' -or $_.Name -eq 'post70-history-head.f16'}){$mods+=@{path=$f.FullName;bytes=$f.Length;sha256=(Get-FileHash $f.FullName).Hash.ToLower()}}
+@{game_root=$game;processes=$processes;environments=$envs;files=$files;candidates=$candidates;modules=$mods;gpu_lock_exists=(Test-Path 'D:\DLSSNR-Lab\gpu.lock')}|ConvertTo-Json -Depth 7|Set-Content -Encoding UTF8 "$r\audit-before.json"
+"AUDIT_COMPLETE processes=$($processes.Count) hsaco=$(@($mods|Where-Object {$_.path.EndsWith('.hsaco')}).Count) candidates=$($candidates.Count) gpuLock=$(Test-Path 'D:\DLSSNR-Lab\gpu.lock')"
+$processes|Format-Table; $candidates|Format-Table
