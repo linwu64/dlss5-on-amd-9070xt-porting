@@ -1,0 +1,19 @@
+{
+  "baseline_commit": "5ebd71dd",
+  "compile_sessions": [
+    34998,
+    43260
+  ],
+  "compile_exits": [
+    0,
+    0
+  ],
+  "gold_session": 26032,
+  "gold_exit": 0,
+  "LOCK_RELEASED": true,
+  "private_sources": {
+    "baseline": "318c8cbba8097f06135b94c469b210594c2dc9e60ec250ee996e3be9f2349093",
+    "candidate": "9ceeeb62cd4a9958b07d1637f8caaadb7c667f9ed939470df85a6554d5f9720b"
+  },
+  "scope": "two unusedNew moved to fallback; same private exactmemory+branch counters in both arms; actual48/0 branch proof; not performance"
+}

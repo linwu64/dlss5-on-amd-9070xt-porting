@@ -1,0 +1,26 @@
+{
+  "files": [
+    {
+      "file": "run_frame_gold.ps1",
+      "bytes": 6760,
+      "sha256": "9a6dba3409f94629a89ff4594dc1e002542e70f61af65d8a8f6d479e6ca7e47a"
+    },
+    {
+      "file": "frame-baseline.exe",
+      "bytes": 4419611,
+      "sha256": "2ba17eeca5d5cf4248b7a6533c96fa71335befc34ffb9437eada5f936defef87"
+    },
+    {
+      "file": "frame-candidate.exe",
+      "bytes": 4419611,
+      "sha256": "27303ebf770b3687ff6c0a521a9a4549675731c5a28666a1e39e9a27b05db24b"
+    }
+  ],
+  "baseline": "5ebd71dd plus identical private exactmemory and C512branchdiagnostic only",
+  "compile_baseline": 34998,
+  "compile_candidate": 43260,
+  "actual_exits": [
+    0,
+    0
+  ]
+}
