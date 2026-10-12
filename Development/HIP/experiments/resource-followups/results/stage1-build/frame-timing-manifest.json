@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "file": "frame-baseline.exe",
+      "bytes": 4418217,
+      "sha256": "56d956ecd016c1162b9c870bffe6b43bb15bfd6bea141f0e953611c95ed5a47a"
+    },
+    {
+      "file": "frame-candidate.exe",
+      "bytes": 4419711,
+      "sha256": "a5939b81ed7f40783a86f067b1e4f8167cd005b071ad5e33f08de26daa89f14d"
+    },
+    {
+      "file": "run_frame_timing.ps1",
+      "bytes": 6549,
+      "sha256": "21f1a745fb2039fa81c4e4994688e687304c9d926e0951dbd404ea626164df28"
+    }
+  ],
+  "gold_session": 43364,
+  "gold_exit": 0,
+  "scope": "current production Frame wall ABBA320/discard80; nohistory allocation only, memorydiagnostic off"
+}

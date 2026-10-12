@@ -14,6 +14,10 @@ foreach($f in $m.files){$p=Join-Path $r $f.file;if((Get-Item $p).Length -ne $f.b
 foreach($p in @("$base\base.flags","$base\input.f16","$base\assets-common\noise.f32","$base\modules-current\deep_fast-packed-fast.hsaco")){if(!(Test-Path $p)){throw "required asset $p"}}
 if((Get-Item "$base\input.f16").Length -ne 7464960 -or (Get-FileHash "$base\input.f16").Hash -ne 'fa3c18735ac5f105903614a18a9b1475966b9afd9dd4aeb0cd9cad7bc759ec9b'){throw 'HDR actual1296x720x8 SHA'}
 if((Get-FileHash "$base\modules-current\deep_fast-packed-fast.hsaco").Hash -ne '11a25ae3fea75f83763ab6d5729c4f426dabda11299d1be6092d142b810e27b8'){throw 'canonical expand module'}
+$gold=Get-Content "$r\frame-gold\modules-after.json" -Raw|ConvertFrom-Json
+if($gold.Count -ne 43){throw 'gold43module receipt'}
+foreach($x in $gold){$p=Join-Path "$base\modules-current" $x.file;if((Get-Item $p).Length -ne $x.bytes -or (Get-FileHash $p).Hash -ne $x.sha256){throw 'gold module identity mismatch'}}
+foreach($role in 'baseline','candidate'){foreach($file in 'out-first.f16','out.f16'){if((Get-FileHash "$r\frame-gold\$role\$file").Hash -ne '0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a'){throw 'gold admission'}}}
 if(Test-Path "$r\frame-abba"){throw 'existing case no retry'}
 $case=New-Item -ItemType Directory "$r\frame-abba"
 $flags=Get-Content "$base\base.flags" -Raw

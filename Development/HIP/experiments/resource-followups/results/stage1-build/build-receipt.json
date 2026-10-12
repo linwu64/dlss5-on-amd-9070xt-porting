@@ -1,0 +1,14 @@
+{
+  "baseline_commit": "ec0a2e99",
+  "baseline_bridge_with_actual_width_diagnostic_sha256": "ad651e6895a8bc90eb469e47fb44f08ec3374ec673833dbdc8900f431b449e1d",
+  "baseline_compile_session": 59953,
+  "candidate_compile_session": 53088,
+  "both_actual_exit_code": 0,
+  "superseded_candidate_compile_session": 91914,
+  "superseded_exit_code": 0,
+  "superseded_reason": "implicit generic history qualification replaced with explicit caller capability before any GPU",
+  "gpu_gold_session": 43364,
+  "gpu_abba_session": 36250,
+  "gpu_both_actual_exit_code": 0,
+  "GPU_lock_released": true
+}
