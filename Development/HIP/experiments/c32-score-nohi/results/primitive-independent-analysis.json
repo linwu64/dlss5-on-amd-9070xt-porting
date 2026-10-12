@@ -1,0 +1,16 @@
+{
+  "raw_sha256": "2dd1d8feb5f1e5bf92096a29543702fd8f0ae1740bf5e6cbd01c7fe007e05eba",
+  "outputs": 2097152,
+  "half_patterns": 65536,
+  "positions": 32,
+  "counts": {
+    "finite_bit_diff": 0,
+    "subnormal_bit_diff": 0,
+    "zero_numeric_diff": 0,
+    "infinity_bit_diff": 0,
+    "nan_class_diff": 0
+  },
+  "first_differences": [],
+  "independent_reference": "Python struct <e decode to exact F32; NaN class only and signed zero numeric only",
+  "passed": true
+}

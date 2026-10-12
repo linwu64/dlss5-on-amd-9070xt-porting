@@ -1,0 +1,36 @@
+{
+  "session": 72895,
+  "roles": {
+    "baseline": {
+      "requested": 0,
+      "certified_weights": 7,
+      "candidate_calls": 0,
+      "stock_calls": 30,
+      "auto_records": 3,
+      "auto_accepted": 3,
+      "first_last_sha256": [
+        "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+        "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a"
+      ],
+      "actual_frames": 3,
+      "finite_repeat_pass": true
+    },
+    "nohi": {
+      "requested": 1,
+      "certified_weights": 7,
+      "candidate_calls": 21,
+      "stock_calls": 9,
+      "auto_records": 3,
+      "auto_accepted": 3,
+      "first_last_sha256": [
+        "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+        "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a"
+      ],
+      "actual_frames": 3,
+      "finite_repeat_pass": true
+    }
+  },
+  "actual_exit_code": 0,
+  "lock_released": true,
+  "scope": "full HDR NativeGameFrame three raw frames per role, not performance"
+}

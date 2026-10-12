@@ -1,0 +1,30 @@
+{
+  "files": [
+    {
+      "file": "frame.exe",
+      "bytes": 4323280,
+      "sha256": "c887970219ffcd5067a09de143437811e4b38761158256e2341f7fb7a66f6bc2"
+    },
+    {
+      "file": "candidate.hsaco",
+      "bytes": 423248,
+      "sha256": "5c1817ba74d640861c071812954522ea05d4273034316eade01ab50045cf8373"
+    },
+    {
+      "file": "source-identity.json",
+      "bytes": 424,
+      "sha256": "1bb5e6d282783cad055fad389a64094d37857e945c3afde453123b42c0ecc8c3"
+    },
+    {
+      "file": "route-source.json",
+      "bytes": 1010,
+      "sha256": "0e01e1f799011123c66ad5289ce23aac5a8e576feb08f841ce4cb7e09696728f"
+    },
+    {
+      "file": "run-frame-gold.ps1",
+      "bytes": 6582,
+      "sha256": "1ee8fefe864fb07f44e07e619cb4b19ae884421299e16069ca82bbe7d6955f55"
+    }
+  ],
+  "scope": "same-exe NR0/1 actualthree NativeGameFrame frames; complete7/3 routing and raw gold gates"
+}

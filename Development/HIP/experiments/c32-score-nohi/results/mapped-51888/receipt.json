@@ -1,0 +1,11 @@
+{
+  "exec_session": 51888,
+  "pid": 11952,
+  "command": "ssh amd9070 powershell -NoProfile -ExecutionPolicy Bypass -File D:\\DLSSNR-Lab\\c32-score-nohi-mapped-20261012\\run.ps1",
+  "ssh_actual_exit_code": 0,
+  "child_actual_exit_code": 0,
+  "lock_released": true,
+  "scope": "real frozen mapped operator, double stock/double clone logical17694720",
+  "raw_file_location": "/home/lmxxf/work/dlss5-c32-score-nohi-build/mapped-run",
+  "raw_not_duplicated_in_git": true
+}

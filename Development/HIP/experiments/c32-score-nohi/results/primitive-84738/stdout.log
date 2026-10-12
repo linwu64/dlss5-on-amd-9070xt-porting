@@ -1,0 +1,4 @@
+DEVICE=AMD Radeon RX 9070 XT
+DISPATCH_BEGIN groups=65536 threads=32 positions=32 one_dispatch=1
+NORM_PRIMITIVE mode=16777456 mode_ok=1 finite_diff=0 subnormal_diff=0 zero_diff=0 infinity_diff=0 nan_class_diff=0 first_half=0 first_position=0 outputs=2097152 numeric_scope=F16_WMMA_input_semantics_not_full_network
+

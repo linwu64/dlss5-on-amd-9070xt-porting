@@ -1,0 +1,17 @@
+[
+    {
+        "file":  "norm.raw",
+        "bytes":  8388608,
+        "sha256":  "2DD1D8FEB5F1E5BF92096A29543702FD8F0AE1740BF5E6CBD01C7FE007E05EBA"
+    },
+    {
+        "file":  "stdout.log",
+        "bytes":  318,
+        "sha256":  "49BDE109AF7491A14C2888FF47F7456ED4C0C96E3F7E1CF1B6CA0EBD518DF02B"
+    },
+    {
+        "file":  "stderr.log",
+        "bytes":  2,
+        "sha256":  "7EB70257593DA06F682A3DDDA54A9D260D4FC514F645237F5CA74B08F8DA61A6"
+    }
+]

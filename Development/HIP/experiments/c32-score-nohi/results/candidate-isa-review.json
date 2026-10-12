@@ -1,0 +1,111 @@
+{
+  "module_sha256": "5c1817ba74d640861c071812954522ea05d4273034316eade01ab50045cf8373",
+  "scope": "actual ISA static count evidence; not performance",
+  "entries": [
+    {
+      "entry": "c32_wave1_prefix_b8d",
+      "stock": {
+        "instructions": 1440,
+        "upper": 32,
+        "lower": 32,
+        "half_square": 16,
+        "rsq": 16,
+        "f16_mma": 12,
+        "fp8_mma": 36
+      },
+      "candidate": {
+        "instructions": 1408,
+        "upper": 0,
+        "lower": 32,
+        "half_square": 16,
+        "rsq": 16,
+        "f16_mma": 12,
+        "fp8_mma": 36
+      }
+    },
+    {
+      "entry": "c32_wave1_mapped_b8",
+      "stock": {
+        "instructions": 982,
+        "upper": 32,
+        "lower": 32,
+        "half_square": 16,
+        "rsq": 16,
+        "f16_mma": 8,
+        "fp8_mma": 36
+      },
+      "candidate": {
+        "instructions": 1014,
+        "upper": 0,
+        "lower": 32,
+        "half_square": 16,
+        "rsq": 16,
+        "f16_mma": 8,
+        "fp8_mma": 36
+      }
+    },
+    {
+      "entry": "c32_wave1_chain",
+      "stock": {
+        "instructions": 983,
+        "upper": 32,
+        "lower": 32,
+        "half_square": 16,
+        "rsq": 16,
+        "f16_mma": 8,
+        "fp8_mma": 42
+      },
+      "candidate": {
+        "instructions": 951,
+        "upper": 0,
+        "lower": 32,
+        "half_square": 16,
+        "rsq": 16,
+        "f16_mma": 8,
+        "fp8_mma": 42
+      }
+    },
+    {
+      "entry": "c32_wave1_finish_dcrop_b8d",
+      "stock": {
+        "instructions": 1728,
+        "upper": 32,
+        "lower": 32,
+        "half_square": 16,
+        "rsq": 16,
+        "f16_mma": 8,
+        "fp8_mma": 42
+      },
+      "candidate": {
+        "instructions": 1760,
+        "upper": 0,
+        "lower": 32,
+        "half_square": 16,
+        "rsq": 16,
+        "f16_mma": 8,
+        "fp8_mma": 42
+      }
+    },
+    {
+      "entry": "c32_wave1_up_b8",
+      "stock": {
+        "instructions": 1304,
+        "upper": 32,
+        "lower": 32,
+        "half_square": 16,
+        "rsq": 16,
+        "f16_mma": 16,
+        "fp8_mma": 36
+      },
+      "candidate": {
+        "instructions": 1272,
+        "upper": 0,
+        "lower": 32,
+        "half_square": 16,
+        "rsq": 16,
+        "f16_mma": 16,
+        "fp8_mma": 36
+      }
+    }
+  ]
+}

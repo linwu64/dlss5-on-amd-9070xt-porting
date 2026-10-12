@@ -2,8 +2,8 @@
 
 Base `b93cc043`, authorized after the WorkingPlan update. No production source,
 configuration or game deployment changes. `prove.py` is CPU asset/ELF inspection
-and a conservative analytic bound, not observed activation maxima. **Not yet
-admitted for shader changes:** WMMA exceptional/denormal semantics require closure.
+and a conservative analytic bound, not observed activation maxima. Mathematics/ISA semantics, exact-weight routing and bounded hardware gates are
+recorded separately below; the single Frame ABBA is complete: STOP, no reliable performance benefit; production remains unchanged.
 
 ## Actual identity and source
 
@@ -39,8 +39,8 @@ delta=6.198883056640625e-5. For preserved subnormal HalfRNE squares,
 `h_i >= (1-2^-11)*x_i² - 2^-25`.
 Under normal F32 summation of these nonnegative half values, deliberately using
 32 rounding factors rather than the tighter count, define
-`a=(1-2^-11)*(1-32*2^-24)` and
-`b=32*2^-25*(1+32*2^-24)`. Then D>=a*S-b and
+`g32=32*2^-24/(1-32*2^-24)`,
+`a=(1-2^-11)*(1-g32)` and `b=32*2^-25*(1+g32)`. Then D>=a*S-b and
 `S/d <= (1+b/delta)/a` (split at a*S-b=delta).
 
 LLVM's AMDGPU source explicitly uses a 1-ULP contract for `v_rsq_f32`:
@@ -80,12 +80,81 @@ of a conservative bound is not a numerical counterexample.
   intermediate. A descriptor mode alone is not proof of WMMA NaN propagation
   or Half subnormal retention. If a relevant WMMA instruction unconditionally
   flushes Half subnormals, the above lower bound is invalid and **must not be
-  used**. No kernel candidate is generated until this is resolved.
+  used**. This was an initial-stage condition; the later primitive and certificate closure below resolved it.
 - Shared chain exports serve both eligible and ineligible layers. Qualification
   must be tied to complete actual weight SHA, not only function name/gamma or
   sample max. Unknown weights/variants retain the old kernel.
 
-No GPU query, shader compile, unit, Frame or performance claim has been made.
+The preceding paragraph records the initial proof stage. Subsequent actual primitive, mapped and Frame gates are recorded below.
 The next gate is independent review of these contracts. If it cannot be closed,
 record a proof failure and stop, rather than escalating to random testing and
 calling it lossless.
+
+## Closed proof domain and actual gates
+
+The norm WMMA **outputs F32**, not Half. Its Half inputs multiply exact ones;
+32 nonnegative F32 accumulation terms use the standard gamma32 error bound,
+independent of association. The stock programmed rounding/denormal modes and
+public fused-FMA instruction contract are the machine model for this proof.
+The authorized 84738 single dispatch exhausts all 65,536 Half input bit patterns
+in each of the 32 positions of the original two-K16 norm operand. It returned
+zero finite/subnormal bit differences, zero signed-infinity differences, zero
+NaN-class differences and zero numeric-zero differences. Independent Python
+Half-to-F32 decoding of all 2,097,152 downloaded results agrees; raw SHA
+`2dd1d8feb5f1e5bf92096a29543702fd8f0ae1740bf5e6cbd01c7fe007e05eba`.
+This rejects the suspected fixed-flush behavior for this instruction/mode. It
+is semantic evidence, not a random maximum-activation proof or portable ISA test.
+The alternative flush-model certificate has **zero** qualified layers and remains
+recorded to show why that premise mattered.
+
+Exception cases close under the same published FMA/format contracts:
+
+- For finite FP8 feature components and finite packed coefficients, raw Q/K
+  dot magnitudes are at most `32*448²`, hence finite F32. No raw F32 overflow is
+  possible. Half-square overflow produces positive infinity; the nonnegative
+  norm sum is infinity, IEEE native RSQ gives zero, and finite raw components
+  normalize to signed zero. The primitive confirms the Half infinity input
+  propagates through the norm WMMA.
+- A feature FP8 NaN propagates through each weighted Q/K dot, including a zero
+  coefficient, under fused-FMA NaN semantics. The raw vector and Half norm are
+  NaN. The original denominator max selects the positive floor for NaN; the
+  raw NaN remains NaN through multiplication and site3 MODE-based FP8 packing.
+  Its score dot is NaN, and the **unchanged original ternary lower max** selects
+  the lower value. Applying or removing the upper min then gives the same bits.
+  No NaN-payload identity is claimed. FP8 E4M3FN has no infinity; actual packed
+  weights are finite and the site's MODE saturation/NaN behavior is unchanged.
+- Zero/small norms use the positive floor already covered by `a*S-b`. Every
+  nonzero finite raw Q/K sum is on the FP8-product lattice (at least 2^-18 in
+  magnitude); finite norm denominators are at most `32*65504`. With the actual
+  finite nonzero scales, norm multiplications stay normal F32, so their relative
+  rounding bounds apply. Signed zeros cannot increase the bound.
+
+Main independently reviewed the formula, required the exact gamma32 expression,
+and accepted preparing a candidate only for the seven certified full-weight SHAs.
+This is a lossless statement **under the locked machine/model domain**, not an
+unqualified promise for arbitrary devices, macros, weights or FP formats.
+
+The clone changes only the score upper clamp and names new exports `_nohi`.
+Actual ISA retains Half-square/RSQ/F16 and FP8 WMMA counts and separate affine
+multiply/add; all five relevant function types lose their 32 upper comparisons.
+Static total instruction counts decrease for three types but increase for two;
+that is not a speed result. Private host routing hashes complete immutable packed
+weights once, cold-verifies selected stock `f46b8af..` and the clone, and preloads
+the clone plus five functions **before producer waits**. Run uses only cached
+function handles and certified GPU pointers; last three layers/unknown weights
+retain stock. First scope is FAST1/1920x1152/MP1/graph0/ordinary temporal mode.
+
+Actual mapped unit 51888 passed four independently poisoned runs against the
+frozen real output, all 17,694,720 bytes, no FP8 NaNs and unchanged 256-byte tails.
+Actual Frame gate 72895 passed baseline/nohi three-frame raw/finite/repeat checks;
+both first and last hashes are `0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a`.
+Actual candidate routing was 21 NoHi / 9 stock, seven certified pointers; baseline
+was 0 / 30. Both retained active persistent Swin and three actual Auto-pulse
+records/acceptances. These are numerical/dispatch gates, not performance. Main
+owns the one subsequent ABBA and its adoption decision.
+
+## Final decision — 2026-10-12
+
+Actual Frame ABBA `25355` completed with four child exits 0, eight equal first/last gold hashes and exact route counters. Mean wall delta was −5.269 µs and p99 delta −17.790 µs, while control drift was +47.546 µs and candidate drift +19.875 µs. **STOP: mathematical/correctness success, no reliable Frame speed benefit; do not enable by default.** Independent timing evidence is retained by the sibling `bound-and-compact` experiment, without duplicating raw CSVs here.
+
+These A runs used the original `b93cc043` shared header before B was merged. Both private-tree generators now reject a different header SHA or `HIP_COMPACT_VIT_EXPAND`, requiring an original-baseline checkout for reproduction. This final guard change was not rebuilt or run on the GPU; it does not change the already measured candidate.

@@ -1,0 +1,32 @@
+[
+  {
+    "entry": "c32_wave1_prefix_b8d",
+    "stock_mul_lines": 16,
+    "candidate_mul_lines": 16,
+    "affine_no_new_fma": true
+  },
+  {
+    "entry": "c32_wave1_mapped_b8",
+    "stock_mul_lines": 16,
+    "candidate_mul_lines": 16,
+    "affine_no_new_fma": true
+  },
+  {
+    "entry": "c32_wave1_chain",
+    "stock_mul_lines": 17,
+    "candidate_mul_lines": 17,
+    "affine_no_new_fma": true
+  },
+  {
+    "entry": "c32_wave1_finish_dcrop_b8d",
+    "stock_mul_lines": 16,
+    "candidate_mul_lines": 16,
+    "affine_no_new_fma": true
+  },
+  {
+    "entry": "c32_wave1_up_b8",
+    "stock_mul_lines": 16,
+    "candidate_mul_lines": 16,
+    "affine_no_new_fma": true
+  }
+]

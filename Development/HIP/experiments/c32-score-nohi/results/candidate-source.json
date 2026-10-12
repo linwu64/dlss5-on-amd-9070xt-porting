@@ -1,0 +1,72 @@
+{
+  "row": "c32-wave1-fast",
+  "compiler": "llvm23",
+  "defines": [
+    "HIP_ISA_HALF 1",
+    "CW_UP_FUSED 1",
+    "CW_ACT_FMED3 1",
+    "HIP_PREPACKED_WEIGHTS 1",
+    "CW_ROLL_HIDDEN 1",
+    "CW_ROLL_WINDOW 1",
+    "CW_VEC_INPUT 1",
+    "CW_PREFIX_SPLIT 1",
+    "CW_PACK8 1",
+    "HIP_FP8_SAT_MODE 3",
+    "CW_DIRECT_OUT 1",
+    "CW_RTZ_PAIR 1",
+    "CW_PACK_MODE_MASK 127",
+    "CW_PREFIX_DIRECT_OUT 1",
+    "CW_PREFIX_FULL_TILE 1",
+    "CW_FINISH_FULL_TILE 1",
+    "CW_SKIP_BYTE 1",
+    "CW_DIAG_ONLY 1",
+    "CW_INPUT_HALF 7",
+    "CW_PREFIX_HALF_SOURCE 1",
+    "CW_PREPOST_BYTE 1",
+    "CW_PREFIX_TAIL_VEC 1",
+    "CW_FINISH_TAIL_VEC 1",
+    "CW_HOIST_UP 3",
+    "CW_FAST_NUM 3"
+  ],
+  "opts": [
+    "-enable-post-misched=0",
+    "-amdgpu-sched-strategy=max-ilp"
+  ],
+  "source_sha256": "06714a541b83aece04ae9e9e6e82f88c3ed729dab0439577761892d8b3732f88",
+  "entries": [
+    "c32_wave1_chain",
+    "c32_wave1_mapped",
+    "c32_wave1_post",
+    "c32_wave1_post_logit",
+    "c32_wave1_prefix",
+    "c32_wave1_finish_dcrop_b8",
+    "c32_wave1_finish_dcrop_b8d",
+    "c32_wave1_prefix_b8d",
+    "c32_wave1_mapped_b8",
+    "c32_wave1_finish_b8",
+    "c32_wave1_post_b8",
+    "c32_wave1_post_b8_logit",
+    "c32_wave1_post_b8_rgba",
+    "c32_wave1_post_b8_features",
+    "c32_wave1_up_b8",
+    "c32_wave1_up",
+    "c32_wave1_up_lb",
+    "c32_wave1_up_b8_lb"
+  ],
+  "allowed_weight_sha256": [
+    "12bff39f1cee8c3c681ed3630dad5a3978f5258036ab2eccf6296d4c143468a3",
+    "a2a3dd58abd6e26cb6208bb3bc779c92899aafdacc27419c5094d9b7d26afb1a",
+    "ed875d876e92ff9794c8ed2f1dbe79944ffd2aaa97f4561657cf2a36ce21f315",
+    "dc86b0c74f8e527abf2db90f3a47f2397d2946070fae30194fb1733e2a3bc674",
+    "5fdb094b7e0792717cb6e9eee7be4a9012b9b0355f0019df82dbda2b1a9e5f69",
+    "447272eb6a298663653c4a06a4a58f5dc84769b2c1c2036d7194e48cb5bfe8b4",
+    "256dbe6391c3ff98b01ca8ed61270f28c4f39f4d41a68a95974468472ed005ec"
+  ],
+  "unproved_ordinals": [
+    158,
+    159,
+    160
+  ],
+  "profile": "FAST1 1920x1152 only first experiment; norm900 and unknown profiles stock",
+  "change": "delete score upper clamp only; keep original ternary lower max and all arithmetic order"
+}

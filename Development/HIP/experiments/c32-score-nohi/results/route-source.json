@@ -1,0 +1,18 @@
+{
+  "base": "b93cc043",
+  "header_sha256": "469b02f8a317db0e362e200e6dce98090bc14615d85a351610cb32fa4d7de373",
+  "guard_sha256": "8e20ae5f4ace474d0ecb35d13c6eb93b770e79626d77e103a0cae60494cbabab",
+  "shader_sha256": "5c1817ba74d640861c071812954522ea05d4273034316eade01ab50045cf8373",
+  "allowed_weight_sha256": [
+    "12bff39f1cee8c3c681ed3630dad5a3978f5258036ab2eccf6296d4c143468a3",
+    "a2a3dd58abd6e26cb6208bb3bc779c92899aafdacc27419c5094d9b7d26afb1a",
+    "ed875d876e92ff9794c8ed2f1dbe79944ffd2aaa97f4561657cf2a36ce21f315",
+    "dc86b0c74f8e527abf2db90f3a47f2397d2946070fae30194fb1733e2a3bc674",
+    "5fdb094b7e0792717cb6e9eee7be4a9012b9b0355f0019df82dbda2b1a9e5f69",
+    "447272eb6a298663653c4a06a4a58f5dc84769b2c1c2036d7194e48cb5bfe8b4",
+    "256dbe6391c3ff98b01ca8ed61270f28c4f39f4d41a68a95974468472ed005ec"
+  ],
+  "cold_preload": true,
+  "run_hip_load_or_getfunction": false,
+  "scope": "private experimental copy FAST1 1920x1152 only; 7 exact weight SHA and 5 permitted exports; all else original"
+}
