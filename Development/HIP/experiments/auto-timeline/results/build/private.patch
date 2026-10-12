@@ -1,0 +1,77 @@
+--- a/src/native_game_frame.h
++++ b/src/native_game_frame.h
+@@ -1,4 +1,5 @@
+ #pragma once
++#include "../Development/HIP/host_timing.h"
+ #include "native_pso.h"
+ #include "native_text_overlay.h"
+ #include "native_lab_paths.h"
+@@ -418,17 +419,17 @@
+      auto*dev=r.submit.Device();D3D12_HEAP_PROPERTIES hp{};hp.Type=D3D12_HEAP_TYPE_READBACK;D3D12_RESOURCE_DESC rd{};rd.Dimension=D3D12_RESOURCE_DIMENSION_BUFFER;rd.Width=r.black.RingBytes();rd.Height=1;rd.DepthOrArraySize=rd.MipLevels=1;rd.SampleDesc.Count=1;rd.Layout=D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
+      ID3D12Resource*rb=nullptr;if(SUCCEEDED(NativeCreateCommittedResource(dev,&hp,D3D12_HEAP_FLAG_NONE,&rd,D3D12_RESOURCE_STATE_COPY_DEST,nullptr,IID_PPV_ARGS(&rb)))){r.submit.Submit([&](ID3D12GraphicsCommandList*c){c->CopyBufferRegion(rb,0,r.black.RingSlot(bad),0,r.black.RingBytes());});r.submit.Flush();void*p=nullptr;D3D12_RANGE range{0,SIZE_T(r.black.RingBytes())},none{};if(SUCCEEDED(rb->Map(0,&range,&p))){if(FILE*f=_wfopen((prefix+L"-residual.f32").c_str(),L"wb")){fwrite(p,1,size_t(r.black.RingBytes()),f);fclose(f);}rb->Unmap(0,&none);}rb->Release();}
+      r.black.CountDump();dump_prefix=prefix;}}
+-   const auto cpu_start=std::chrono::steady_clock::now();if(r.probe_on)r.probe.Reset();
++   const auto cpu_start=std::chrono::steady_clock::now();if(r.probe_on)r.probe.Reset();auto_host_timing::Mark(1);
+    r.submit.Submit([&](ID3D12GraphicsCommandList*c){if(r.probe_on)r.probe.Mark(c,"t0");r.encode.Record(c,{source_state},NativePaperWhite());if(r.probe_on)r.probe.Mark(c,"encode");r.input.Record(c,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
+     r.fast_history.Inputs(c,r.input.PostBase(),r.network.Output(),depth_state);
+-    if(use_history){r.feed.RecordMotion(c,motion_texture);r.coordinates.Record(c);if(!r.experimental_temporal){r.sampler.Record(c);r.history_guard.Record(c);}}if(r.probe_on)r.probe.Mark(c,"t1");});
++    if(use_history){r.feed.RecordMotion(c,motion_texture);r.coordinates.Record(c);if(!r.experimental_temporal){r.sampler.Record(c);r.history_guard.Record(c);}}if(r.probe_on)r.probe.Mark(c,"t1");});auto_host_timing::Mark(2);
+    if(!dump_prefix.empty()&&(use_history||(r.temporal&&r.black.enabled))){r.submit.Flush();DumpTemporalNow(dump_prefix);{char line[160];snprintf(line,sizeof line,"black_probe dumped history=%u reset=%u motion=%u",use_history?1u:0u,reset?1u:0u,motion_texture?1u:0u);if(FILE*f=_wfopen(NativeLabPath(L"logs\\native-submission-order.txt").c_str(),L"ab")){fprintf(f,"pid=%lu %s\n",GetCurrentProcessId(),line);fclose(f);}}dump_prefix.clear();}
+-   r.network.Run(r.submit,seed,r.fast_history.enabled?fast_use:r.temporal?use_history:temporal_enabled);
++   r.network.Run(r.submit,seed,r.fast_history.enabled?fast_use:r.temporal?use_history:temporal_enabled);auto_host_timing::Mark(5);
+    if(r.experimental_temporal){r.experimental_exposure=experimental_metadata.pre_exposure;r.experimental_frame_id=experimental_metadata.frame_id;
+     r.experimental_prior_ready=experimental_active&&motion_texture&&experimental_metadata.Valid()&&experimental_metadata.motion_scale[0]==r.experimental_scale_x&&experimental_metadata.motion_scale[1]==r.experimental_scale_y;if(r.experimental_prior_ready)++r.experimental_seed;else r.experimental_seed=0;
+     static unsigned logged=0;if(logged++<8||reset||logged%100==0)if(FILE*f=_wfopen(NativeLabPath(L"logs\\temporal-history-experiment.txt").c_str(),L"ab")){fprintf(f,"frame=%u requested=1 active=%u history=%u reset=%u seed=%u pre_exposure=%.9g jitter=%.9g,%.9g mvscale=%.9g,%.9g mv_unjittered_assumed=1 depth_gate=0 reason=%s\n",experimental_metadata.frame_id,unsigned(experimental_active),unsigned(use_history),unsigned(reset),seed,experimental_metadata.pre_exposure,experimental_metadata.jitter[0],experimental_metadata.jitter[1],experimental_metadata.motion_scale[0],experimental_metadata.motion_scale[1],!experimental_active?"backend-condition-fallback":!experimental_metadata.Valid()?"missing-invalid-ffx-metadata":reset?"first-reset-or-exposure-gap":"history-eligible");fclose(f);}
+    }
+-   r.submit.Submit([&](ID3D12GraphicsCommandList*c){if(r.probe_on)r.probe.Mark(c,"t2");
++   auto_host_timing::Mark(6);r.submit.Submit([&](ID3D12GraphicsCommandList*c){if(r.probe_on)r.probe.Mark(c,"t2");
+     r.fast_history.Outputs(c,r.input.PostBase(),r.network.Output(),depth_state);
+     if(r.low_temporal.enabled)r.low_temporal.Record(c,r.input.PostBase(),r.network.Output(),r.network.DirectInput()?D3D12_RESOURCE_STATE_COMMON:D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
+     if(use_history&&!r.experimental_temporal)r.smooth.Record(c);r.black.Record(c);
+@@ -446,7 +447,7 @@
+     if(r.fps_text[0])r.fps_overlay.Draw(c,target,r.fps_text,24,96,3,target_state);
+     }
+     if(r.probe_on){r.probe.Mark(c,"t3");r.probe.Resolve(c);}
+-   });if(r.low_temporal.enabled){r.submit.Flush();r.low_temporal.Submitted(r.submit.Queue());}r.black.Submitted(r.submit.LastValue());r.fast_history.Submitted(r.submit.LastValue());
++   });auto_host_timing::Mark(7);if(r.low_temporal.enabled){r.submit.Flush();r.low_temporal.Submitted(r.submit.Queue());}r.black.Submitted(r.submit.LastValue());r.fast_history.Submitted(r.submit.LastValue());
+    /* 2026-10-01 input-slim: finer marks (encode | input(+history) | network+handoff | neural | decode | copy+overlay), per-step µs averaged per 100 frames */
+    if(r.probe_on){r.submit.Flush();std::vector<double>iv;if(r.probe.Intervals(r.submit.TimestampFrequency(),iv)&&iv.size()<=8){r.probe_parts=unsigned(iv.size());for(size_t i=0;i<iv.size();i++)r.probe_sum[i]+=iv[i];}
+     r.probe_cpu+=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-cpu_start).count();
+--- a/Development/HIP/hip_d3d12_bridge.h
++++ b/Development/HIP/hip_d3d12_bridge.h
+@@ -1,4 +1,5 @@
+ #pragma once
++#include "host_timing.h"
+ #include <algorithm>
+ #include <chrono>
+ #include <cstring>
+@@ -319,7 +320,7 @@
+        static_cast<const char*>(input.mapped)+offset*16,16,12,std::min(chunk,pixels-offset),3,network->Stream()),"HIP passthrough RGBA to RGB");
+     // Keep the normal final device-to-shared-output copy as well as both fences.
+     api.Check(api.hipMemcpyAsync(output.mapped,passthrough_rgb,pixels*12,3,network->Stream()),"HIP passthrough output copy");
+-   }else network->Enqueue(input.mapped,temporal?history.mapped:nullptr,output.mapped,seed);
++   }else {auto_host_timing::Mark(3);network->Enqueue(input.mapped,temporal?history.mapped:nullptr,output.mapped,seed);auto_host_timing::Mark(4);}
+    if(timed)TimingEnd();
+    if(span_probe){span_cpu=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-start).count();api.Check(api.hipEventRecord(span_end,network->Stream()),"span end");span_pending=true;}
+    hip_probe::SignalParams signal{};signal.params.fence.value=++value;api.Check(api.hipSignalExternalSemaphoresAsync(&semaphore,&signal,1,network->Stream()),"HIP output signal");
+--- a/Development/HIP/benchmark_vit_reuse.cpp
++++ b/Development/HIP/benchmark_vit_reuse.cpp
+@@ -58,15 +58,15 @@
+   if(sequence==2)for(unsigned c=0;c<3;c++)rgba[c]=Float16ForSequence(NativeHalfToFloat(rgba[c])*(1.f+.01f*step));
+   if(sequence==4&&step>=6&&x>=3*W/5&&x<4*W/5&&y>=H/8&&y<3*H/5)for(unsigned c=0;c<3;c++)rgba[c]=0;
+ memcpy(sequence_frames[step].data()+(size_t(y)*W+x)*4,rgba,8);}}}
+-for(UINT i=0;i<N;i++){
++auto_host_timing::Initialize(N);for(UINT i=0;i<N;i++){
+  if(sequence){void*mp=nullptr;ck(up->Map(0,&none,&mp));for(UINT y=0;y<H;y++)memcpy(static_cast<char*>(mp)+fp.Offset+size_t(y)*fp.Footprint.RowPitch,sequence_frames[i%12].data()+size_t(y)*W*4,size_t(W)*8);up->Unmap(0,nullptr); }
+  // Each step restores its own controlled input; sequence 0 is frozen.
+ 
+- submit.Submit([&](ID3D12GraphicsCommandList*c){restore(c,target,up,fp);});submit.Flush();auto begin=std::chrono::steady_clock::now();frame.ProcessSubmittedFrame(target,D3D12_RESOURCE_STATE_COPY_DEST,D3D12_RESOURCE_STATE_COPY_DEST,seed,false,temporal?motion:nullptr,!temporal||i==0||(reset_every&&i%reset_every==0));submit.Submit([](ID3D12GraphicsCommandList*){});submit.Flush();double elapsed=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-begin).count();walltotal+=elapsed;
++ submit.Submit([&](ID3D12GraphicsCommandList*c){restore(c,target,up,fp);});submit.Flush();auto_host_timing::Reset();auto begin=std::chrono::steady_clock::now();auto_host_timing::Mark(0);frame.ProcessSubmittedFrame(target,D3D12_RESOURCE_STATE_COPY_DEST,D3D12_RESOURCE_STATE_COPY_DEST,seed,false,temporal?motion:nullptr,!temporal||i==0||(reset_every&&i%reset_every==0));auto_host_timing::Mark(8);auto_host_timing::Mark(9);submit.Submit([](ID3D12GraphicsCommandList*){});submit.Flush();auto_host_timing::Mark(10);double elapsed=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-begin).count();walltotal+=elapsed;auto_host_timing::Save(i,elapsed);
+  if(edges_only&&i>0&&i+1<N){fprintf(csv,"%u,%u,%.6f,,,,,,,,,,0\n",i,!temporal||(reset_every&&i%reset_every==0),elapsed);fflush(csv);continue;}
+  submit.Submit([&](ID3D12GraphicsCommandList*c){barrier(c,target,D3D12_RESOURCE_STATE_COPY_DEST,D3D12_RESOURCE_STATE_COPY_SOURCE);D3D12_TEXTURE_COPY_LOCATION a{},b{};a.pResource=readback;a.Type=D3D12_TEXTURE_COPY_TYPE_PLACED_FOOTPRINT;a.PlacedFootprint=fp;b.pResource=target;b.Type=D3D12_TEXTURE_COPY_TYPE_SUBRESOURCE_INDEX;c->CopyTextureRegion(&a,0,0,0,&b,nullptr);barrier(c,target,D3D12_RESOURCE_STATE_COPY_SOURCE,D3D12_RESOURCE_STATE_COPY_DEST);});submit.Flush();D3D12_RANGE rr{0,size_t(size)};ck(readback->Map(0,&rr,&p));last.resize(count);for(UINT y=0;y<H;y++)memcpy(last.data()+size_t(y)*W*4,static_cast<char*>(p)+fp.Offset+size_t(y)*fp.Footprint.RowPitch,size_t(W)*8);readback->Unmap(0,&none);if(!i){first=last;save_frame(prefix+L"-first",first,W,H);}if(capture_rgb)save_frame(prefix+L"-frame-"+std::to_wstring(i),last,W,H);auto s=stats(last,W,H);invalidtotal+=s.invalid;size_t changed=0;double maxdiff=0;for(size_t j=0;j<count;j++){changed+=last[j]!=first[j];float a=NativeHalfToFloat(last[j]),b=NativeHalfToFloat(first[j]);if(std::isfinite(a)&&std::isfinite(b))maxdiff=std::max(maxdiff,std::abs(double(a)-b));}fprintf(csv,"%u,%u,%.6f,%zu,%.9g,%.9g,%.9g,%.9g,%zu,%zu,%zu,%.9g,1\n",i,!temporal||i==0||(reset_every&&i%reset_every==0),elapsed,s.invalid,s.min,s.max,s.mean,s.roi_mean,s.dark,s.roi_dark,changed,maxdiff);fflush(csv);printf("frame=%u reset=%u wall_ms=%.3f invalid=%zu luma=%.7g roi=%.7g dark=%zu roi_dark=%zu changed_first=%zu maxabs_first=%.7g\n",i,!temporal||i==0||(reset_every&&i%reset_every==0),elapsed,s.invalid,s.mean,s.roi_mean,s.dark,s.roi_dark,changed,maxdiff);fflush(stdout);
+  }
+- fclose(csv);save_frame(prefix,last,W,H);submit.Flush();
++ auto_host_timing::Dump(prefix);fclose(csv);save_frame(prefix,last,W,H);submit.Flush();
+ #ifdef DLSS5_BENCH_BRIDGE_ISOLATE
+  if(temporal)throw std::runtime_error("bridge isolation requires temporal=0");
+  auto&network=frame.DiagnosticNetwork();auto&api=network.Runtime();const auto geo=NativeCurrentNetworkGeometry();const size_t pixels=size_t(geo.processing_width)*geo.processing_height;

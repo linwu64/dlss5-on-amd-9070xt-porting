@@ -1,0 +1,21 @@
+{
+  "files": [
+    {
+      "file": "frame.exe",
+      "bytes": 4448001,
+      "sha256": "93d1a4f6eb22ad3cb2a472ce68b36b6eb1b1f2ed1a40550d78abfe4569e05fce"
+    },
+    {
+      "file": "run_aa.ps1",
+      "bytes": 7284,
+      "sha256": "9677bf36967d10d555945794ec4a724cc134332e4dacb2a7ea1b41fa4d91ac95"
+    }
+  ],
+  "gold_actual_session": 95980,
+  "gold_actual_exit": 0,
+  "sameexe_mode0_1_1_0": true,
+  "warm_per_slot": 80,
+  "measured_per_slot": 240,
+  "no_added_GPU_commands_or_sync": true,
+  "interpretation": "Host timing scaffold+QPC collection incremental disturbance; GPU idle/stage distribution not observable"
+}

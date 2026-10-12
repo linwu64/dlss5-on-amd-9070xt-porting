@@ -1,0 +1,11 @@
+{
+  "final_compile_session": 22857,
+  "actual_exit_code": 0,
+  "superseded_compile_session": 86372,
+  "superseded_exit": 0,
+  "reason": "offmarkmemorywrite gating; no GPU tests on supersededexe",
+  "gold_session": 95980,
+  "gold_exit": 0,
+  "AA_session": 31627,
+  "AA_terminal_pending": true
+}

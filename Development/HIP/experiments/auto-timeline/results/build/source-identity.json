@@ -1,0 +1,19 @@
+{
+  "base": "99fc33ba",
+  "scope": "host QPC only,11 marks; no GPU API or command changes; no Auto guard changes; no per-frame extra export/alloc",
+  "files": {
+    "src/native_game_frame.h": {
+      "original_sha256": "a4ae62a01257cdf83a335e6edfb13a11360bbb8bd64e181a2aeb3ffe6227e048",
+      "private_sha256": "c04eff0e98026ae77733bc2f2d6f7bd2729dfa67b198774f0435fe71b374e276"
+    },
+    "Development/HIP/hip_d3d12_bridge.h": {
+      "original_sha256": "321f28706082eea658958eaddc79ac68214f28de50897a334acf1cdabc5363b8",
+      "private_sha256": "d265921670f0d137a6d3bafa4f0e8d97a045e57fd847c02b30333d7920f1e246"
+    },
+    "Development/HIP/benchmark_vit_reuse.cpp": {
+      "original_sha256": "a36f7661ac66016e4f784e8bd985b2eeb79645f2f0934037c7043a4611d43f4c",
+      "private_sha256": "dbefe61777dcfebc2d10668be4ea56937755a6f7e2c5c1fbe23661507526a389"
+    }
+  },
+  "helper_sha256": "00e03c8a37c32a2040814b4047f99539c0845590a09a630002efba26b8ffb2eb"
+}

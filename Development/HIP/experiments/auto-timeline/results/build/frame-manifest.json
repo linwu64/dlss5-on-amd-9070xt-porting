@@ -1,0 +1,55 @@
+{
+  "base": "99fc33ba",
+  "compile_session": 22857,
+  "compile_exit": 0,
+  "files": [
+    {
+      "file": "modules-expected.json",
+      "bytes": 6405,
+      "sha256": "564b6d5a22dc231855d16930cbe20af8b023f1286c592fd22056c3db1a97f2f7"
+    },
+    {
+      "file": "frame.exe",
+      "bytes": 4448001,
+      "sha256": "93d1a4f6eb22ad3cb2a472ce68b36b6eb1b1f2ed1a40550d78abfe4569e05fce"
+    },
+    {
+      "file": "stage.ps1",
+      "bytes": 912,
+      "sha256": "2deada0c7385ee9afafad16e48a9ccd814b360fb76516e33eaa2955d443bfe64"
+    },
+    {
+      "file": "run_gold.ps1",
+      "bytes": 7729,
+      "sha256": "4b2e41bdf794a44f040a539f00ef2afd2a0e191faa1c9659ee657bfe9cda541f"
+    },
+    {
+      "file": "parse.ps1",
+      "bytes": 287,
+      "sha256": "6c50a7f3ca9e3ca7fb48c6fb8991113310d1c7c3be376e87f10abfb44f75b725"
+    }
+  ],
+  "source_identity": {
+    "base": "99fc33ba",
+    "scope": "host QPC only,11 marks; no GPU API or command changes; no Auto guard changes; no per-frame extra export/alloc",
+    "files": {
+      "src/native_game_frame.h": {
+        "original_sha256": "a4ae62a01257cdf83a335e6edfb13a11360bbb8bd64e181a2aeb3ffe6227e048",
+        "private_sha256": "c04eff0e98026ae77733bc2f2d6f7bd2729dfa67b198774f0435fe71b374e276"
+      },
+      "Development/HIP/hip_d3d12_bridge.h": {
+        "original_sha256": "321f28706082eea658958eaddc79ac68214f28de50897a334acf1cdabc5363b8",
+        "private_sha256": "d265921670f0d137a6d3bafa4f0e8d97a045e57fd847c02b30333d7920f1e246"
+      },
+      "Development/HIP/benchmark_vit_reuse.cpp": {
+        "original_sha256": "a36f7661ac66016e4f784e8bd985b2eeb79645f2f0934037c7043a4611d43f4c",
+        "private_sha256": "dbefe61777dcfebc2d10668be4ea56937755a6f7e2c5c1fbe23661507526a389"
+      }
+    },
+    "helper_sha256": "00e03c8a37c32a2040814b4047f99539c0845590a09a630002efba26b8ffb2eb"
+  },
+  "new_GPU_commands": 0,
+  "new_GPU_waits": 0,
+  "Host_QPC_marks": 11,
+  "scope": "host timing only; no GPU activity/idle attribution"
+}
