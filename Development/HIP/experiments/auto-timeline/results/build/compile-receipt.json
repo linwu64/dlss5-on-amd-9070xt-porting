@@ -7,5 +7,8 @@
   "gold_session": 95980,
   "gold_exit": 0,
   "AA_session": 31627,
-  "AA_terminal_pending": true
+  "AA_terminal_pending": false,
+  "AA_actual_exit_code": 0,
+  "AA_LOCK_RELEASED": true,
+  "interference_disposition": "limited/inconclusive; positive interference possible; not zero-overhead"
 }

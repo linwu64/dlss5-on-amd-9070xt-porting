@@ -418,3 +418,9 @@ Bridge公共接口unknown保旧，NativeFrame仅Off且无temporal config/rgb/exp
 projection仅FP8矩阵1MiB后scale尾从原4MiB地址搬到紧随矩阵，新export/ptr-layout配对；92358单矩阵4gold/finite/guard0。11819八实例完整Framegold0，在已开contract基线上weights322774824→297609000B实省24MiB，pool/gather/noise同；driverfree另录+32.5MiB，不把额外8.5MiB解释为峰值收益。30592一次ABBA mean9.658091667→9.656335417ms，p99−11.470µs、control drift+26.492µs，max10.068→10.255ms；无可靠加速，按资源收益采纳。
 
 最终生产自然并入既有vit_stream源/recipe，两内部macro默认1、gfx1201/9070XT冷资格、未知module/selector/legacy cache成对旧路；无永久侧车/NR实验开关。joint94285模块da1b4ae9...旧86/候选87原始函数字节全同。正式Frame99541与addon30670 O2均0，正式路径66725无NR、两43模块旧877e/新da1b各3帧0900/finite/repeat/Auto3全过；新weights297609000对旧423438120净省120MiB。阶段2共享两New已恢复，既有expand96MiB保留。installed64dc与游戏MODE0/1x未动，本轮未部署/未push，0.41不改；后续是否试用由用户另指令。
+
+### 2026-10-12：保真实Auto2的host timing有限结题
+
+基于99fc33ba只生成私有宿主11个QPC点，原GPU命令/同步和Auto guard不改，coreNetwork头逐字同；43joint模块/current资源/0900/数值门95980通过。唯一31627四角色320弃80 A/A真实0/released，各Autoaccepted320/reject0/PDLcalls0。off9.6242125→on9.647700ms(+23.4875µs)，p99+4.75µs，控制漂移28.725µs，两B均高于两A，不能宣零开销或几微秒可靠归因，不重刷。
+
+marked on480只报告主线程API经过时间：input录交.034ms、Network::Enqueue调用.354ms、output录交.020ms、原emptySubmit+Flush完成动作9.188ms；末者不是可删除CPU开销，也不等GPU执行/空档。无当前已验证且校时的外部GPU trace，内部stage/队列空泡不可辨；停止扩展，只建议后续先核实际GPU调度trace可行性，不据此派新优化。实验/CSV/身份/双审见 `HIP/experiments/auto-timeline/`。正式实现、installed64dc/游戏配置均未改，未部署/push。

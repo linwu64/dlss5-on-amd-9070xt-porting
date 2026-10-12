@@ -1,7 +1,7 @@
-# Host timing experiment — current state
+# Final — bounded host timing
 
-Base99fc33ba, private host-only11QPCmarks. No newGPUcommand/event/query/marker/wait or Auto guard edits; coreNetworkheader byte-identical. Allrecordstorage coldallocated and export only afterframes.
+Base99fc33ba; private11QPC hostmarks only. CoreNetwork/header/Auto guards byte-identical, originalGPUcommands/synchronization unchanged. FinalO222857=0. Gold95980=0/released and soleA/A31627=0/released; actual320accepted/reject0/PDL0,43moduleidentity/0900/finite/wide marks all passed. GoldMemory1/coldframes not timing evidence.
 
-FinalO2 22857 exit0 (86372 earlier CPU0 superseded by offmarkwrite gating). Gold95980 actualexit0/LOCK_RELEASED:two3frame roles,0900/finite/repeat/currentjoint43/8+8weights/history0/Auto3reject0/actualPDL0, off33ticks0/on33positive-monotonic/QPF10MHz. GoldMemory1 is only correctness/resource gate, not timingdata. Actualgoldsame.flags lackedGAME/NET/SPAN/POLL and childenvclear/sourceabsent defaults prove false.
+Measurementon mean+23.4875µs vscontrol drift28.725µs, bothBslots slower than bothA; possible positive interference retained, notzerooverhead/strictfine-timing admission. On480APIelapsed:Enqueue~.354ms, originalcompletionaction~9.188ms; the latter cannot be called removableCPUwork/GPUexecution/idle. No GPUstage/idle inference and no new optimization.
 
-Only plannedA/A31627 now actual live (firstPID11212):sameexe0-1-1-0,320frames/slot discard80,Memory0/fourprobes0/current43identities. Await originalhandle authority, no retries. Outcome may be bounded/negative. Only CPU API/submission/completion elapsed intervals; GPU stage time/idle cannot be inferred, no validated externaltrace available. No deployment/push/driver/game changes; no further optimization.
+Allsource/smallraws/reports preserved inmeasurement and audit. No liveGPU/RTC, no additional test, traceimplementation or performance retry; no productcode/deployment/push/driver/game changes. Installed64dc unchanged. WorkingPlan/DevHistory record finite capability and one optional follow-up to assess actualGPUtrace feasibility.

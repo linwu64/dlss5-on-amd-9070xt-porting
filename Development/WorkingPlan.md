@@ -1,6 +1,6 @@
 # 当前工作计划
 
-更新：2026-10-12。当前生产源码 `20fa6b93`，资源三项已结题；游戏仍是已安装64dc/MODE0/MP1/1x。**本次只更新计划，后续测量、实验和实现均未启动，没有GPU排队。** 前轮起点 `abacaaed`、计划 `ec0a2e99`，持久实验树 `/home/lmxxf/work/dlss5-resource-followups`。历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-12。生产实现基线 `20fa6b93`、测量计划 `99fc33ba`；本轮host timing有限实验已结题，没有新优化或GPU排队。游戏仍为已安装64dc/MODE0/MP1/1x，未部署、未push。资源三项结论保留。测量源与原证见 [auto-timeline](HIP/experiments/auto-timeline/README.md)，历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
 
 ## 三项最终裁决
 
@@ -14,11 +14,13 @@
 - 最终正式Frame宿主O2 99541=0、addonO2 30670=0，jointCOMGR94285=0；旧86个及两accepted候选87个函数对joint均逐原始函数字节一致。实际emitted helper CPU default1/off/unknown/cache/layout兼容门通过；正式66725全帧firstlast0900/finite/Auto3/原模块身份与旧模块fallback通过。证据索引 [resource-followups](HIP/experiments/resource-followups/README.md)。
 - **游戏里仍是已安装64dc/原MODE0/MP1/1x，正式0.41不变。本次33.75MiB共享资源与新增120MiB权重减少尚未部署到游戏，未push。两类分配宽度相加153.75MiB，不能称驻留峰值减少，也没有可靠加速结论。** 先前expand已省96MiB包含在本轮基线中，不能重复报作新收益；用户58.2fps是此前现场观察，不是这些新改动的性能证据。分配宽度、driverfree快照、驻留峰值严格分列，三轮性能不相加。
 
-## 下一步优先级：先确认真实生产瓶颈
+## 本轮真实Auto2测量：有限可用，只作host粗定位
 
-1. **优先当前MODE0、真实Auto2下的低扰动时间线。** 现有profile/dup/wall_profile及HIP timing/span开关会禁用Auto，旧家族表也不是当前热点图；不能把换路径后的排名直接用于生产决策。先验证测量前后模块/数学/提交路径一致、Auto accepted/PDL实际计数一致，再做同路径A/A检查测量干扰，不承诺零扰动。若测量改变路径或干扰无法区分，停止归因，不据此提出优化收益。
-2. **据CPU提交、GPU空档和阶段分布只选一刀。** 先分清CPU喂队列是否真在关键路径，再看主要GPU阶段；没有可辨GPU空档就停止host提交优化假设。当前没有获准立即编码的默认MODE0新候选，不重开tile-ready、QKV宽写、graph替换Auto、NoHi或D3D12全移植负账。
-3. **MODE2/3两外层Flush仅作后备待测线索。** 默认MODE0不走它们；Prepare的retirement、常量buffer与descriptor寿命必须保留，不能直接删Flush或算作MODE0可省耗时。先有该模式真实时间线与生命周期证据再决定，不排实现。
+- 只在私有宿主加11个host QPC点，预分配、末尾导出；原Network头逐字不变，无新增GPU事件/query/marker/等待、无绕过Auto guard。95980数值门、31627四角色A/A均真实exit0/released，当前joint43模块/0900输出/8+8权重/history0相同；每角色Auto实际record_ok/accepted320、reject0、PDL calls0。计数一致证明路径身份，不能证明GPU排程时刻完全不变。
+- **A/A不能证明零扰动。** 320帧弃80、480/arm：off9.6242125→on9.647700ms（+23.4875µs），p99+4.750µs，控制漂移+28.725µs；两B槽都高于两A槽，保留正向串扰可能。不重刷、不据几µs差选新刀；gold的MemoryReport同步/冷帧不当时间账。
+- on480只读CPU经过时间：input录/交约0.034ms、HIP发核API约0.354ms、output录/交约0.020ms、原emptySubmit+Flush完成动作约9.188ms。最后一项**不是9.188ms可删除CPU开销，不是GPU执行或空档**；可能包含等待实际GPU/队列完成，当前无法分开。没有GPU内部stage占比证据，不能把这些段相加/相减反推GPU分布。
+- **唯一后续建议：先审实际GPU调度trace的可行性。** 当前未有已验证的低扰动、HIP队列可见且校时可靠的外部trace证据；现profile/dup/wall/timing/span改变Auto路径，旧家族表不当当前热点。没有这种证据就暂缓默认host优化假设，不继续微改或造完整profiler。本任务到文档交付止，未排下一实验。
+- MODE2/3两外层Flush仍只作后备待测线索，默认MODE0不走；Prepare retirement、常量buffer与descriptor寿命必须保留，不直接删Flush或计作MODE0收益。
 
 ### 鸠建议：只列待查边界，不排GPU
 

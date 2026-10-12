@@ -2635,3 +2635,9 @@ SKIN_PROTECT只多遍：原输入肤色启发式mask混y1/yN，不是原图/语�
 - **证据：** 26032完整Frame两role各3帧，实际48C512calls/fallback0、0900gold/repeat/finite/Auto3/modulesame均PASS；source正式O2与私有FrameO2通过。
 - **结果/裁决：** 池290571128→292742008B，反增2170880B（约2.07MiB），均27tensor；weights423438120/gather5242880不变，driverfree只+65536B。best-fit复用重排使逻辑删除未带来净资源收益，STOP/撤回，不做性能ABBA，不称数学失败。
 - **不要重试/索引：** 除非有独立新池生命周期证据，不能换名再删同New或将64KiB计数粒度当胜。实验源/正式O2/source-diff在 `HIP/experiments/c512-unused-tensors/`，原Frame资源数据在 `HIP/experiments/resource-followups/measurement/`；主终态/source身份 `HIP/experiments/resource-followups/results/stage2-build/`，branch resource-followups。
+
+### 2026-10-12 — Auto2 host QPC timing｜有限测量，零扰动/精细GPU归因门未成立
+
+- **范围：** 99fc33ba私有宿主11个host QPC点，无新增GPU命令/同步、无绕过Auto guard。95980数值门和31627 A/A完整43模块/0900/Auto320 reject0 PDL0全部通过，不是数学或路径失败。
+- **干扰：** 320弃80×四槽、480/arm，off9.6242125→on9.647700ms(+23.4875µs)，p99+4.750µs；控制漂移28.725µs，两B均高于两A。正差无法与时变漂移分离，不能称零开销或精细排程不变；保留有限host粗定位用途。
+- **裁决/边界：** 不追加A/A或GPU标记工具；完成动作9.188ms不是可删除CPU开销，GPU内部stage/空档无可辨证据。重评需实际可见HIP队列/校时可靠/保持生产路径的trace证据，不能仅再平均几轮或把CPU等待当GPU空泡。证据 `HIP/experiments/auto-timeline/`，原handle31627 exit0/LOCK_RELEASED。
