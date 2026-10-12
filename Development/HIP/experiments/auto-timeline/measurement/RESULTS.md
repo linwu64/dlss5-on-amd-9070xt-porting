@@ -25,7 +25,7 @@ Marked480sample CPU means:
 | Bridge after enqueue |0.022157|
 | Output recording + submission |0.019855|
 | Caller original empty Submit + Flush completion action |9.188284|
-| Remaining host intervals |0.001995|
+| Remaining host intervals |0.002018|
 
 Outer QPC mean9.647225ms differs from original wall by−0.475µs due to timestamp endpoints/rounding. This difference is **not** a GPU gap. The9.188ms completion action includes original CPU submission/driver/fence waiting; it is not a measured GPU execution duration and cannot simply be removed. Input/output Submit intervals may also include blocking. The0.354ms enqueue interval is host API duration, not summed kernel time. These coarse CPU intervals are descriptive references only.
 
