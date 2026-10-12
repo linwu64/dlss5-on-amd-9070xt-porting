@@ -1,0 +1,39 @@
+{
+  "files": [
+    {
+      "file": "input.bin",
+      "bytes": 655360,
+      "sha256": "72f2dceb664db4cb962652231790e1fcffa3cd732b151ecada76b92ac1069c64"
+    },
+    {
+      "file": "weight.bin",
+      "bytes": 3145856,
+      "sha256": "af4388159cafcbe09d7309fd05c3f0d5f5d9fe3886bf89d2d9496f6363471d40"
+    },
+    {
+      "file": "canonical.hsaco",
+      "bytes": 673456,
+      "sha256": "da1b4ae9af3c1d2889f86e530b915971494ff2a58156a6abab2813dfb2d26014"
+    },
+    {
+      "file": "candidate.hsaco",
+      "bytes": 678768,
+      "sha256": "da86ed4b4c21534a9ea76c7bf2403aa0d277057259afd08ecaa4e3007dc67576"
+    },
+    {
+      "file": "gold.bin",
+      "bytes": 1966080,
+      "sha256": "845725af3275ea6e820eb6f18db71dc72a1c6a7f71b63f889e028ed5977348d7"
+    },
+    {
+      "file": "pair.exe",
+      "bytes": 2392849,
+      "sha256": "fd8bec672281f326b5ba5e84eb362aa1a8954c700a3d5116e96de9ee5ad22105"
+    }
+  ],
+  "source": "recent actual640 original1/original2QKV equal gold, input72f/FWaf438; not mixing oldqkvinput0c15 reference",
+  "newmodule": "da86ed4b4c21534a9ea76c7bf2403aa0d277057259afd08ecaa4e3007dc67576",
+  "currentstock": "da1b4ae9af3c1d2889f86e530b915971494ff2a58156a6abab2813dfb2d26014",
+  "numerical_gate_session": 94277,
+  "scope": "one standalone QKV paired screen A-B-B-A; same inputs/output/setup and edgeD2H both; not AutoFrame"
+}

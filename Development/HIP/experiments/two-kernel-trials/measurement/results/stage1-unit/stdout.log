@@ -1,0 +1,6 @@
+GOLD role=0 repeat=0 capture_diff=0 repeat_diff=0 nan=0 guard_diff=0 bytes=1966080 WG=160 groups=768
+GOLD role=0 repeat=1 capture_diff=0 repeat_diff=0 nan=0 guard_diff=0 bytes=1966080 WG=160 groups=768
+GOLD role=1 repeat=0 capture_diff=0 repeat_diff=0 nan=0 guard_diff=0 bytes=1966080 WG=160 groups=768
+GOLD role=1 repeat=1 capture_diff=0 repeat_diff=0 nan=0 guard_diff=0 bytes=1966080 WG=160 groups=768
+VTail_QKV_DOUBLE_OLD_DOUBLE_NEW_GOLD_PASS_NOT_PERFORMANCE
+

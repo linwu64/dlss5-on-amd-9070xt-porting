@@ -1,0 +1,8 @@
+{
+  "actual_case": 94277,
+  "actual_exit_code": 0,
+  "raw_outputs": 4,
+  "bytes_each": 1966080,
+  "raw_sha256": "845725af3275ea6e820eb6f18db71dc72a1c6a7f71b63f889e028ed5977348d7",
+  "scope": "original and candidate QKV repeated whole output; byte/finite/tailguard gate, not performance"
+}

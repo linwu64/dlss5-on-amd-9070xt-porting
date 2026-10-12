@@ -1,0 +1,32 @@
+[
+    {
+        "file":  "original0.bin",
+        "bytes":  1966080,
+        "sha256":  "845725AF3275EA6E820EB6F18DB71DC72A1C6A7F71B63F889E028ED5977348D7"
+    },
+    {
+        "file":  "original1.bin",
+        "bytes":  1966080,
+        "sha256":  "845725AF3275EA6E820EB6F18DB71DC72A1C6A7F71B63F889E028ED5977348D7"
+    },
+    {
+        "file":  "candidate0.bin",
+        "bytes":  1966080,
+        "sha256":  "845725AF3275EA6E820EB6F18DB71DC72A1C6A7F71B63F889E028ED5977348D7"
+    },
+    {
+        "file":  "candidate1.bin",
+        "bytes":  1966080,
+        "sha256":  "845725AF3275EA6E820EB6F18DB71DC72A1C6A7F71B63F889E028ED5977348D7"
+    },
+    {
+        "file":  "stdout.log",
+        "bytes":  469,
+        "sha256":  "7E92725352E3C771C58018D36415EC83E71EA5F3A3626CC1C908ACC24581C9A1"
+    },
+    {
+        "file":  "stderr.log",
+        "bytes":  2,
+        "sha256":  "7EB70257593DA06F682A3DDDA54A9D260D4FC514F645237F5CA74B08F8DA61A6"
+    }
+]

@@ -1,0 +1,145 @@
+{
+  "actual_case": 662786,
+  "actual_exit_code": 0,
+  "slots": {
+    "0": {
+      "role": 0,
+      "gpu_ms": {
+        "n": 20,
+        "mean_ms": 0.11329999970000001,
+        "median_ms": 0.1105000005,
+        "sd_ms": 0.015391452603038652,
+        "p99_ms": 0.1652069963299999,
+        "max_ms": 0.177499995
+      },
+      "wall_ms": {
+        "n": 20,
+        "mean_ms": 0.1596,
+        "median_ms": 0.146,
+        "sd_ms": 0.03585555818323819,
+        "p99_ms": 0.2739899999999999,
+        "max_ms": 0.289
+      }
+    },
+    "1": {
+      "role": 1,
+      "gpu_ms": {
+        "n": 20,
+        "mean_ms": 0.03684999998499999,
+        "median_ms": 0.03325000035,
+        "sd_ms": 0.015445336114606219,
+        "p99_ms": 0.09020099858899991,
+        "max_ms": 0.101999998
+      },
+      "wall_ms": {
+        "n": 20,
+        "mean_ms": 0.0904,
+        "median_ms": 0.087,
+        "sd_ms": 0.01699039976605984,
+        "p99_ms": 0.14673999999999993,
+        "max_ms": 0.157
+      }
+    },
+    "2": {
+      "role": 1,
+      "gpu_ms": {
+        "n": 20,
+        "mean_ms": 0.0322499999995,
+        "median_ms": 0.0335499998,
+        "sd_ms": 0.009553863969859506,
+        "p99_ms": 0.051529000718999976,
+        "max_ms": 0.0555000007
+      },
+      "wall_ms": {
+        "n": 20,
+        "mean_ms": 0.08835000000000001,
+        "median_ms": 0.0865,
+        "sd_ms": 0.006627494565107264,
+        "p99_ms": 0.10781,
+        "max_ms": 0.108
+      }
+    },
+    "3": {
+      "role": 0,
+      "gpu_ms": {
+        "n": 20,
+        "mean_ms": 0.034295000134999996,
+        "median_ms": 0.0337000005,
+        "sd_ms": 0.0020788342516018282,
+        "p99_ms": 0.040576999609,
+        "max_ms": 0.0408999994
+      },
+      "wall_ms": {
+        "n": 20,
+        "mean_ms": 0.08645,
+        "median_ms": 0.085,
+        "sd_ms": 0.010369362767813957,
+        "p99_ms": 0.11815999999999996,
+        "max_ms": 0.125
+      }
+    }
+  },
+  "metrics": {
+    "gpu_ms": {
+      "old": {
+        "n": 40,
+        "mean_ms": 0.0737974999175,
+        "median_ms": 0.07054999819999999,
+        "sd_ms": 0.04144846924244165,
+        "p99_ms": 0.15226699772999996,
+        "max_ms": 0.177499995
+      },
+      "new": {
+        "n": 40,
+        "mean_ms": 0.034549999992249995,
+        "median_ms": 0.03344999995,
+        "sd_ms": 0.012888535715971492,
+        "p99_ms": 0.08386499905299998,
+        "max_ms": 0.101999998
+      },
+      "delta_new_minus_old": {
+        "mean_ms": -0.03924749992525,
+        "median_ms": -0.03709999824999999,
+        "sd_ms": -0.028559933526470162,
+        "p99_ms": -0.06840199867699999,
+        "max_ms": -0.075499997
+      },
+      "control_mean_drift_ms": -0.07900499956500001,
+      "candidate_mean_drift_ms": -0.0045999999854999946,
+      "both_candidate_means_faster_than_both_controls": false
+    },
+    "wall_ms": {
+      "old": {
+        "n": 40,
+        "mean_ms": 0.12302500000000001,
+        "median_ms": 0.133,
+        "sd_ms": 0.04528512944353752,
+        "p99_ms": 0.2581899999999999,
+        "max_ms": 0.289
+      },
+      "new": {
+        "n": 40,
+        "mean_ms": 0.089375,
+        "median_ms": 0.087,
+        "sd_ms": 0.012771537866959462,
+        "p99_ms": 0.13788999999999996,
+        "max_ms": 0.157
+      },
+      "delta_new_minus_old": {
+        "mean_ms": -0.03365000000000001,
+        "median_ms": -0.04600000000000001,
+        "sd_ms": -0.03251359157657806,
+        "p99_ms": -0.12029999999999996,
+        "max_ms": -0.13199999999999998
+      },
+      "control_mean_drift_ms": -0.07314999999999999,
+      "candidate_mean_drift_ms": -0.0020499999999999824,
+      "both_candidate_means_faster_than_both_controls": false
+    }
+  },
+  "edges": 8,
+  "edge_byte_nan_guard_differences": 0,
+  "csv_sha256": "cf6138dec11eb856a6e1a550087d6e20e31df2b11deaa3f3f15231a52f662335",
+  "scope": "one-process ABBA isolated one-QKV kernel, ordinary launches; event outer and host submission-completion wall; 10warm20measure per slot,40perarm; p99 interpolates roughly one tail sample; not production Auto or Frame speed",
+  "decision": "coordinator decides screen signal versus drift; no extrapolation to eight-layer/fullFrame/FPS"
+}
