@@ -1,0 +1,158 @@
+{
+  "actual_handle": 31627,
+  "actual_exit_code": 0,
+  "raw_numeric_and_format_pass": true,
+  "instrumentation_equivalence_proven": false,
+  "qpc_frequency": 10000000,
+  "marked_steady_samples": 480,
+  "cpu_intervals": {
+    "frame_preamble_cpu": {
+      "n": 480,
+      "mean_ms": 0.0018575,
+      "median_ms": 0.0016,
+      "p95_ms": 0.0028,
+      "p99_ms": 0.010441999999999995,
+      "max_ms": 0.0272
+    },
+    "input_record_submit_cpu": {
+      "n": 480,
+      "mean_ms": 0.03404895833333333,
+      "median_ms": 0.0381,
+      "p95_ms": 0.0417,
+      "p99_ms": 0.049321,
+      "max_ms": 0.0774
+    },
+    "before_hip_cpu": {
+      "n": 480,
+      "mean_ms": 0.026553958333333332,
+      "median_ms": 0.025849999999999998,
+      "p95_ms": 0.03021499999999999,
+      "p99_ms": 0.041521,
+      "max_ms": 0.1555
+    },
+    "hip_enqueue_api_cpu": {
+      "n": 480,
+      "mean_ms": 0.35430770833333336,
+      "median_ms": 0.35515,
+      "p95_ms": 0.3937799999999999,
+      "p99_ms": 0.4412729999999996,
+      "max_ms": 0.482
+    },
+    "after_hip_bridge_cpu": {
+      "n": 480,
+      "mean_ms": 0.022157083333333334,
+      "median_ms": 0.0212,
+      "p95_ms": 0.0278,
+      "p99_ms": 0.04364199999999999,
+      "max_ms": 0.0462
+    },
+    "before_output_cpu": {
+      "n": 480,
+      "mean_ms": 2.229166666666667e-05,
+      "median_ms": 0.0,
+      "p95_ms": 0.0001,
+      "p99_ms": 0.0001,
+      "max_ms": 0.0001
+    },
+    "output_record_submit_cpu": {
+      "n": 480,
+      "mean_ms": 0.019855416666666667,
+      "median_ms": 0.0197,
+      "p95_ms": 0.0221,
+      "p99_ms": 0.027141999999999996,
+      "max_ms": 0.0405
+    },
+    "process_tail_cpu": {
+      "n": 480,
+      "mean_ms": 0.0001091666666666667,
+      "median_ms": 0.0001,
+      "p95_ms": 0.0002,
+      "p99_ms": 0.0002,
+      "max_ms": 0.0003
+    },
+    "caller_before_completion_cpu": {
+      "n": 480,
+      "mean_ms": 2.854166666666667e-05,
+      "median_ms": 0.0,
+      "p95_ms": 0.0001,
+      "p99_ms": 0.0001,
+      "max_ms": 0.0001
+    },
+    "caller_completion_cpu": {
+      "n": 480,
+      "mean_ms": 9.188284166666666,
+      "median_ms": 9.1974,
+      "p95_ms": 9.330645,
+      "p99_ms": 9.376467,
+      "max_ms": 9.4675
+    }
+  },
+  "qpc_outer": {
+    "n": 480,
+    "mean_ms": 9.647224791666668,
+    "median_ms": 9.658750000000001,
+    "p95_ms": 9.787425,
+    "p99_ms": 9.842557,
+    "max_ms": 9.9186
+  },
+  "qpc_outer_minus_existing_wall": {
+    "n": 480,
+    "mean_ms": -0.0004752083333334027,
+    "median_ms": -0.0005000000000006111,
+    "p95_ms": 0.0002999999999993008,
+    "p99_ms": 0.0005000000000006111,
+    "max_ms": 0.000700000000000145
+  },
+  "runtime": {
+    "baseline-A1": {
+      "auto_runtime_summary": "submit_pulse resources create=1 create_ok=1 record=320 record_ok=320 destroy=1 destroy_ok=1 drain=1 site_visits=320 accepted=320 reject_mask=0 lifetime_pdl_calls=0",
+      "host_summary": "HOST_TIMING on=0 frames=320 qpc_frequency=10000000 qpc_failures=0 gpu_commands_added=0 added_waits=0 export_after_frames=1",
+      "raw_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+      "edges": 2
+    },
+    "candidate-B1": {
+      "auto_runtime_summary": "submit_pulse resources create=1 create_ok=1 record=320 record_ok=320 destroy=1 destroy_ok=1 drain=1 site_visits=320 accepted=320 reject_mask=0 lifetime_pdl_calls=0",
+      "host_summary": "HOST_TIMING on=1 frames=320 qpc_frequency=10000000 qpc_failures=0 gpu_commands_added=0 added_waits=0 export_after_frames=1",
+      "raw_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+      "edges": 2
+    },
+    "candidate-B2": {
+      "auto_runtime_summary": "submit_pulse resources create=1 create_ok=1 record=320 record_ok=320 destroy=1 destroy_ok=1 drain=1 site_visits=320 accepted=320 reject_mask=0 lifetime_pdl_calls=0",
+      "host_summary": "HOST_TIMING on=1 frames=320 qpc_frequency=10000000 qpc_failures=0 gpu_commands_added=0 added_waits=0 export_after_frames=1",
+      "raw_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+      "edges": 2
+    },
+    "baseline-A2": {
+      "auto_runtime_summary": "submit_pulse resources create=1 create_ok=1 record=320 record_ok=320 destroy=1 destroy_ok=1 drain=1 site_visits=320 accepted=320 reject_mask=0 lifetime_pdl_calls=0",
+      "host_summary": "HOST_TIMING on=0 frames=320 qpc_frequency=10000000 qpc_failures=0 gpu_commands_added=0 added_waits=0 export_after_frames=1",
+      "raw_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+      "edges": 2
+    }
+  },
+  "file_sha256": {
+    "baseline-A1/out.csv": "f19bd2f0e1e6728d795a3cf43f6263bd8bcd6e8372873234e805de3ee65e2437",
+    "baseline-A1/out.host.csv": "404323fc6e5f88f09bde860cf57363394177c7a94dae59dc6c842884da17d5b2",
+    "baseline-A1/stdout.log": "d40a43fa22f2484fc558aa2b8abe1ee8af08b9feb9073466533497b6587b3903",
+    "baseline-A1/stderr.log": "d955c5cefd0182cfe688b6b6c90f8874ec4fab342c06695ecca097a658dbb35c",
+    "baseline-A1/raw-sha.json": "8adc3d85866cd0562b716bffc508cedd4ea92b155d22e18aa53066827f19466d",
+    "candidate-B1/out.csv": "3164aab124d82f1a45c20d2d30897ddb652592a41798f5c43fa90fc1dc3cd61b",
+    "candidate-B1/out.host.csv": "f9cadfaeca60c9f5d467bd14453637569ad9c4aa82a5ebbbb2b561319b9c2d09",
+    "candidate-B1/stdout.log": "d3bc8cbfe74b4c4bf6b0f65f7e4972249ea5b8b7b9d32b37ca14d7598f67b613",
+    "candidate-B1/stderr.log": "d955c5cefd0182cfe688b6b6c90f8874ec4fab342c06695ecca097a658dbb35c",
+    "candidate-B1/raw-sha.json": "9c3d8f4e86e1f755636a34b63b91388d5a2791a0f40ad8be370830bd680601fb",
+    "candidate-B2/out.csv": "e17c7b74e25ceeb2c16e13bc34dc361bb1814783cd1d69b5683968cddb8511d4",
+    "candidate-B2/out.host.csv": "8d56fb0509f78054a7af9dffe3d029b875740ae81e09c98f12cd37600c43ba34",
+    "candidate-B2/stdout.log": "9835f46c30c555b3ec35b68643444adf0523e6c4c6c9526b2d21723627b872c7",
+    "candidate-B2/stderr.log": "d955c5cefd0182cfe688b6b6c90f8874ec4fab342c06695ecca097a658dbb35c",
+    "candidate-B2/raw-sha.json": "303d5bedec4c35b5d909ef3bc23c3ea2c539bbcc892e7a9bea9c2a531d6638b8",
+    "baseline-A2/out.csv": "c9e713d38f2596bf0fdd3e834f72eff09e1b2f6e358ce96607adab23e0a5ad05",
+    "baseline-A2/out.host.csv": "df5a3428f2a5740ef63131fb818ddb5a36e871c23335d1aa5f6863c76ff64d34",
+    "baseline-A2/stdout.log": "aed417b4d8df577c80a63243394e5284d2f0bd51b106f581b77dd2b645b7b344",
+    "baseline-A2/stderr.log": "d955c5cefd0182cfe688b6b6c90f8874ec4fab342c06695ecca097a658dbb35c",
+    "baseline-A2/raw-sha.json": "acc19a618e588de6885831abd0be8d1eb6d43334225d8412aabf8384b7ad52c0"
+  },
+  "module_manifest_sha256": "72012fecdd3a47ea4170faa836f15b0649e4f5d8c327d26c11dae338883ddbca",
+  "scope": "standalone actual NativeGameFrame replay of the old frozen HDR menu input; Auto production path; host QPC intervals can include blocking; no GPU schedule evidence; not current gameplay FPS",
+  "gpu_execution_idle_overlap": "not observable / not inferred",
+  "decision": "two marked slots slower than both controls; approximately24us positive difference cannot be separated from drift, zero overhead/unmodified GPU schedule not established; host phase distribution is descriptive only; no repeat"
+}

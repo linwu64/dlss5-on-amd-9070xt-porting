@@ -1,0 +1,18 @@
+{
+  "csv": "/home/lmxxf/work/dlss5-auto-timeline-build/aa/baseline-A1/out.host.csv",
+  "csv_sha256": "404323fc6e5f88f09bde860cf57363394177c7a94dae59dc6c842884da17d5b2",
+  "frames": 320,
+  "discard": 80,
+  "on": 0,
+  "qpc_frequency": 10000000,
+  "frame_wall": {
+    "n": 240,
+    "mean_ms": 9.60985,
+    "median_ms": 9.6065,
+    "p95_ms": 9.774049999999999,
+    "p99_ms": 9.82966,
+    "max_ms": 9.945
+  },
+  "scope": "adjacent CPU QPC intervals, including any blocking inside calls; no GPU execution/idle/overlap claim",
+  "gpu_attribution": "unobservable from host marks"
+}

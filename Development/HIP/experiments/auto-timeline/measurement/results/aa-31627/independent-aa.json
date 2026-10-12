@@ -1,0 +1,89 @@
+{
+  "slots": {
+    "a1": {
+      "n": 240,
+      "mean_ms": 9.60985,
+      "median_ms": 9.6065,
+      "sd_ms": 0.1011535267959729,
+      "p95_ms": 9.774049999999999,
+      "p99_ms": 9.82966,
+      "max_ms": 9.945,
+      "csv": "/home/lmxxf/work/dlss5-auto-timeline-build/aa/baseline-A1/out.csv",
+      "csv_sha256": "f19bd2f0e1e6728d795a3cf43f6263bd8bcd6e8372873234e805de3ee65e2437",
+      "total_frames": 320,
+      "discard": 80
+    },
+    "b1": {
+      "n": 240,
+      "mean_ms": 9.6428625,
+      "median_ms": 9.649,
+      "sd_ms": 0.09403285419130926,
+      "p95_ms": 9.78715,
+      "p99_ms": 9.83915,
+      "max_ms": 9.871,
+      "csv": "/home/lmxxf/work/dlss5-auto-timeline-build/aa/candidate-B1/out.csv",
+      "csv_sha256": "3164aab124d82f1a45c20d2d30897ddb652592a41798f5c43fa90fc1dc3cd61b",
+      "total_frames": 320,
+      "discard": 80
+    },
+    "b2": {
+      "n": 240,
+      "mean_ms": 9.6525375,
+      "median_ms": 9.6645,
+      "sd_ms": 0.09255918975869766,
+      "p95_ms": 9.788,
+      "p99_ms": 9.84044,
+      "max_ms": 9.92,
+      "csv": "/home/lmxxf/work/dlss5-auto-timeline-build/aa/candidate-B2/out.csv",
+      "csv_sha256": "e17c7b74e25ceeb2c16e13bc34dc361bb1814783cd1d69b5683968cddb8511d4",
+      "total_frames": 320,
+      "discard": 80
+    },
+    "a2": {
+      "n": 240,
+      "mean_ms": 9.638575,
+      "median_ms": 9.6445,
+      "sd_ms": 0.10037891913075046,
+      "p95_ms": 9.798,
+      "p99_ms": 9.84752,
+      "max_ms": 9.906,
+      "csv": "/home/lmxxf/work/dlss5-auto-timeline-build/aa/baseline-A2/out.csv",
+      "csv_sha256": "c9e713d38f2596bf0fdd3e834f72eff09e1b2f6e358ce96607adab23e0a5ad05",
+      "total_frames": 320,
+      "discard": 80
+    }
+  },
+  "control": {
+    "n": 480,
+    "mean_ms": 9.624212499999999,
+    "median_ms": 9.626999999999999,
+    "sd_ms": 0.10168330963973485,
+    "p95_ms": 9.78805,
+    "p99_ms": 9.83788,
+    "max_ms": 9.945
+  },
+  "marked": {
+    "n": 480,
+    "mean_ms": 9.647699999999999,
+    "median_ms": 9.659500000000001,
+    "sd_ms": 0.09332721075454566,
+    "p95_ms": 9.788,
+    "p99_ms": 9.84263,
+    "max_ms": 9.92
+  },
+  "delta_marked_minus_control": {
+    "mean_ms": 0.023487499999999883,
+    "median_ms": 0.032500000000002416,
+    "sd_ms": -0.008356098885189192,
+    "p95_ms": -4.999999999988347e-05,
+    "p99_ms": 0.004749999999999588,
+    "max_ms": -0.025000000000000355
+  },
+  "control_mean_drift_ms": 0.028724999999999667,
+  "marked_mean_drift_ms": 0.009674999999999656,
+  "both_marked_slot_means_slower_than_both_controls": true,
+  "resolved_intrusive_mean_screen": false,
+  "scope": "one A/A screen of host QPC instrumentation under unchanged production Auto; Frame completion wall, not GPU duration/idle; p99 descriptive; manifest/source/raw/Auto/PDL admission must be verified independently",
+  "conclusion": "both marked slots are slower than both controls: positive disturbance indication cannot be separated from drift; not zero overhead or formal equivalence",
+  "gpu_execution_or_idle_attribution": "not observable from these host CSVs"
+}

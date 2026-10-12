@@ -1,0 +1,117 @@
+{
+  "csv": "/home/lmxxf/work/dlss5-auto-timeline-build/aa/candidate-B2/out.host.csv",
+  "csv_sha256": "8d56fb0509f78054a7af9dffe3d029b875740ae81e09c98f12cd37600c43ba34",
+  "frames": 320,
+  "discard": 80,
+  "on": 1,
+  "qpc_frequency": 10000000,
+  "frame_wall": {
+    "n": 240,
+    "mean_ms": 9.6525375,
+    "median_ms": 9.6645,
+    "p95_ms": 9.788,
+    "p99_ms": 9.84044,
+    "max_ms": 9.92
+  },
+  "scope": "adjacent CPU QPC intervals, including any blocking inside calls; no GPU execution/idle/overlap claim",
+  "gpu_attribution": "unobservable from host marks",
+  "cpu_intervals": {
+    "frame_preamble_cpu": {
+      "n": 240,
+      "mean_ms": 0.00193,
+      "median_ms": 0.0016,
+      "p95_ms": 0.0028049999999999985,
+      "p99_ms": 0.010321999999999998,
+      "max_ms": 0.0272
+    },
+    "input_record_submit_cpu": {
+      "n": 240,
+      "mean_ms": 0.033932500000000004,
+      "median_ms": 0.0382,
+      "p95_ms": 0.041604999999999996,
+      "p99_ms": 0.049360999999999995,
+      "max_ms": 0.0499
+    },
+    "before_hip_cpu": {
+      "n": 240,
+      "mean_ms": 0.02710125,
+      "median_ms": 0.0262,
+      "p95_ms": 0.032129999999999985,
+      "p99_ms": 0.041721999999999995,
+      "max_ms": 0.1555
+    },
+    "hip_enqueue_api_cpu": {
+      "n": 240,
+      "mean_ms": 0.35796041666666667,
+      "median_ms": 0.35714999999999997,
+      "p95_ms": 0.4064499999999999,
+      "p99_ms": 0.4717899999999997,
+      "max_ms": 0.482
+    },
+    "after_hip_bridge_cpu": {
+      "n": 240,
+      "mean_ms": 0.022317083333333335,
+      "median_ms": 0.0214,
+      "p95_ms": 0.02881999999999999,
+      "p99_ms": 0.043214999999999976,
+      "max_ms": 0.0447
+    },
+    "before_output_cpu": {
+      "n": 240,
+      "mean_ms": 2.0833333333333333e-05,
+      "median_ms": 0.0,
+      "p95_ms": 0.0001,
+      "p99_ms": 0.0001,
+      "max_ms": 0.0001
+    },
+    "output_record_submit_cpu": {
+      "n": 240,
+      "mean_ms": 0.019957083333333334,
+      "median_ms": 0.0199,
+      "p95_ms": 0.022805,
+      "p99_ms": 0.027021999999999997,
+      "max_ms": 0.0276
+    },
+    "process_tail_cpu": {
+      "n": 240,
+      "mean_ms": 0.00011375000000000005,
+      "median_ms": 0.0001,
+      "p95_ms": 0.0002,
+      "p99_ms": 0.0002,
+      "max_ms": 0.0002
+    },
+    "caller_before_completion_cpu": {
+      "n": 240,
+      "mean_ms": 3.2500000000000004e-05,
+      "median_ms": 0.0,
+      "p95_ms": 0.0001,
+      "p99_ms": 0.0001,
+      "max_ms": 0.0001
+    },
+    "caller_completion_cpu": {
+      "n": 240,
+      "mean_ms": 9.188707499999998,
+      "median_ms": 9.1974,
+      "p95_ms": 9.32794,
+      "p99_ms": 9.368253,
+      "max_ms": 9.4675
+    }
+  },
+  "outer_qpc_interval": {
+    "n": 240,
+    "mean_ms": 9.652072916666668,
+    "median_ms": 9.66415,
+    "p95_ms": 9.787425,
+    "p99_ms": 9.840171999999999,
+    "max_ms": 9.9186
+  },
+  "qpc_outer_minus_existing_wall_ms": {
+    "n": 240,
+    "mean_ms": -0.0004645833333334126,
+    "median_ms": -0.0005000000000006111,
+    "p95_ms": 0.0002999999999993008,
+    "p99_ms": 0.0004610000000007005,
+    "max_ms": 0.000600000000000378
+  },
+  "outer_difference_scope": "different host timestamp endpoints/measurement overhead; never interpreted as GPU gap"
+}

@@ -1,0 +1,13 @@
+{
+  "actual_handle": 95980,
+  "actual_exit_code": 0,
+  "raw_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+  "both_roles_frames": 3,
+  "off_marks_all_zero": true,
+  "on_marks_positive_monotone": true,
+  "qpc_frequency": 10000000,
+  "raw_finite_repeat_pass": true,
+  "auto_accepted_each": 3,
+  "pdl_calls_each": 0,
+  "scope": "cold numeric/schema gate only; Memory1 and first frames are not timing evidence"
+}

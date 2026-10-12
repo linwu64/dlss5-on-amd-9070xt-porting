@@ -13,11 +13,12 @@ values=[];wall=[];frequency=None
 for r in rows:
  tick=[int(r[n]) for n in names];f=int(r['qpc_frequency']);w=float(r['frame_wall_ms'])
  if not np.isfinite(w) or w<0:raise ValueError('nonfinite/negative Framewall')
+ if f<=0 or frequency is not None and f!=frequency:raise ValueError('invalid/changed clock frequency')
+ frequency=f
  wall.append(w)
  if a.expected_on:
   if f<=0 or any(x<=0 for x in tick) or any(b<a for a,b in zip(tick,tick[1:])):raise ValueError('invalid/nonmonotone raw QPC marks')
-  if frequency is not None and f!=frequency:raise ValueError('clock frequency changed')
-  frequency=f;values.append([1000*(b-a)/f for a,b in zip(tick,tick[1:])]+[1000*(tick[-1]-tick[0])/f])
+  values.append([1000*(b-a)/f for a,b in zip(tick,tick[1:])]+[1000*(tick[-1]-tick[0])/f])
  elif any(tick):raise ValueError('off arm emitted nonzero marks')
 def stats(x):return dict(n=len(x),mean_ms=float(np.mean(x)),median_ms=float(np.median(x)),p95_ms=float(np.quantile(x,.95)),p99_ms=float(np.quantile(x,.99)),max_ms=float(np.max(x)))
 result=dict(csv=str(a.csv),csv_sha256=hashlib.sha256(a.csv.read_bytes()).hexdigest(),frames=len(rows),discard=a.discard,on=a.expected_on,qpc_frequency=frequency,frame_wall=stats(np.array(wall[a.discard:])),scope='adjacent CPU QPC intervals, including any blocking inside calls; no GPU execution/idle/overlap claim',gpu_attribution='unobservable from host marks')
