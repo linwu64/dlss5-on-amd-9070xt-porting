@@ -1,0 +1,109 @@
+{
+  "actual_handle": 36250,
+  "wrapper_exit": 0,
+  "scope": "Stage1 complete NativeGameFrame wall; current compact weights retained; one ABBA, no gameFPS or GPUkernel time",
+  "discard": 80,
+  "slots": [
+    {
+      "slot": "baseline-A1",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.629425,
+        "median_ms": 9.631499999999999,
+        "sd_ms": 0.1399277256659374,
+        "p90_ms": 9.744,
+        "p95_ms": 9.7942,
+        "p99_ms": 9.84522,
+        "max_ms": 11.147
+      },
+      "csv_sha256": "391e2b4188810ba6f5c94214136c4218d3c80527b7bdfead2f1afed84ce3f548",
+      "rawgold": true,
+      "actual_auto_records": 320,
+      "actual_pdl_calls": 0
+    },
+    {
+      "slot": "candidate-B1",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.636204166666666,
+        "median_ms": 9.64,
+        "sd_ms": 0.09202262310151002,
+        "p90_ms": 9.7551,
+        "p95_ms": 9.7822,
+        "p99_ms": 9.83327,
+        "max_ms": 9.851
+      },
+      "csv_sha256": "e5310cf28f00ea1e9e31e3315c011ab52076e3abc67f0c935bf5955e766bed13",
+      "rawgold": true,
+      "actual_auto_records": 320,
+      "actual_pdl_calls": 0
+    },
+    {
+      "slot": "candidate-B2",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.656229166666666,
+        "median_ms": 9.6675,
+        "sd_ms": 0.08710135479813648,
+        "p90_ms": 9.7651,
+        "p95_ms": 9.783,
+        "p99_ms": 9.8321,
+        "max_ms": 9.896
+      },
+      "csv_sha256": "5333d36c0b207a8785d5d5333a5b317babc142663ad3dc002c0cd3beea7a42db",
+      "rawgold": true,
+      "actual_auto_records": 320,
+      "actual_pdl_calls": 0
+    },
+    {
+      "slot": "baseline-A2",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.655816666666665,
+        "median_ms": 9.6435,
+        "sd_ms": 0.142051112454327,
+        "p90_ms": 9.779,
+        "p95_ms": 9.79505,
+        "p99_ms": 9.8381,
+        "max_ms": 11.289
+      },
+      "csv_sha256": "b6038db6d996424978a52e88983f668b5e9bd775a314bdb62df15187764ed814",
+      "rawgold": true,
+      "actual_auto_records": 320,
+      "actual_pdl_calls": 0
+    }
+  ],
+  "all43module_identities": true,
+  "merged": {
+    "baseline": {
+      "n": 480,
+      "mean_ms": 9.642620833333332,
+      "median_ms": 9.638,
+      "sd_ms": 0.14146425584569527,
+      "p90_ms": 9.764,
+      "p95_ms": 9.79505,
+      "p99_ms": 9.84442,
+      "max_ms": 11.289
+    },
+    "candidate": {
+      "n": 480,
+      "mean_ms": 9.646216666666666,
+      "median_ms": 9.655,
+      "sd_ms": 0.09006167530301402,
+      "p90_ms": 9.763,
+      "p95_ms": 9.783,
+      "p99_ms": 9.836,
+      "max_ms": 9.896
+    }
+  },
+  "candidate_minus_baseline": {
+    "mean_ms": 0.0035958333333336867,
+    "median_ms": 0.01699999999999946,
+    "p95_ms": -0.012050000000000338,
+    "p99_ms": -0.008419999999999206,
+    "max_ms": -1.392999999999999
+  },
+  "mean_percent": 0.03729103731739958,
+  "control_drift_A2_minus_A1_mean_ms": 0.02639166666666526,
+  "candidate_drift_B2_minus_B1_mean_ms": 0.020025000000000404
+}

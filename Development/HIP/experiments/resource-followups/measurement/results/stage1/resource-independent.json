@@ -1,0 +1,33 @@
+{
+  "resource_actual_handle": 43364,
+  "timing_actual_handle": 36250,
+  "actual_wrapper_exit_codes": [
+    0,
+    0
+  ],
+  "source_baseline": "ec0a2e99 includes accepted B compact default1",
+  "accepted_stage1_checkpoint": "5ebd71dd",
+  "capacity_scope": "one fresh plain MODE0 Frame/bridge; caller NeverHistory explicit; unknown/DirectHistory/reference/Mode1 retain old route",
+  "actual_history_resource_width_bytes_baseline": 35389440,
+  "actual_history_resource_width_bytes_candidate": 0,
+  "candidate_shared_created": 2,
+  "candidate_shared_imported": 2,
+  "candidate_pool_hits": 0,
+  "baseline_created_imported_counters": "not separately instrumented; actual Width proves history resource, source successful fresh Create has three Share calls",
+  "same_process_old_shared_pool_freed": false,
+  "scope_excludes_old_pooled_history_reclamation": true,
+  "existing_B_compact_keys_each_4MiB_both_roles": 8,
+  "weight_key_count_both_roles": 184,
+  "weights_MiB_both_roles": 403.8,
+  "pool_MiB_both_roles": 277.1,
+  "pool_tensor_count_both_roles": 27,
+  "gather_MiB_both_roles": 5.0,
+  "driver_free_MiB_baseline": 15058.1,
+  "driver_free_MiB_candidate": 15125.6,
+  "driver_free_observed_difference_MiB": 67.5,
+  "driver_free_report_precision_MiB": 0.1,
+  "not_physical_duplicate_or_resident_peak_claim": true,
+  "all_gold_and_8timing_edges_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+  "timing_decision": "resource-first success; mean+3.596us relative to control drift+26.392us, p99-8.420us; no stable acceleration, no discernible large regression",
+  "no_new_gpu_or_game_change": true
+}
