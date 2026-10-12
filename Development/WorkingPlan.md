@@ -1,15 +1,16 @@
 # 当前工作计划
 
-更新：2026-10-12。此文件整份重写，只保当前状态、授权中的工作与真正未完成事项；逐轮历史见 [DevHistory.md](DevHistory.md)，负实验与旧裁决演进见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-12。当前生产源码基线 `abacaaed`（`5574d8db`部署回执、`1b4c898f`紧凑expand源码）；已安装候选64dc、MODE0/MP1/1x，用户58.2fps为主观现场观察，不推断96MiB压缩带来FPS。正式0.41不变。完整历史见 [DevHistory.md](DevHistory.md)，旧负账见 [failed-experiments.md](failed-experiments.md)。
 
-## 两项优化已结题（2026-10-12）
+## 新授权：三项按序资源优化
 
-持久隔离树 `/home/lmxxf/work/dlss5-bound-and-compact` / `bound-and-compact` 保存源、证明和实际终态。无新 GPU 排队，不追加变体；未部署、未 push，正式 0.41 和玩家 MODE0 配置不变。
+持久隔离树 `/home/lmxxf/work/dlss5-resource-followups`、分支 `resource-followups`。先提交本计划，再实施第一项；每项明确采纳/止负、存证checkpoint后才推进下一项，不并行写第二/三项实现。不部署、不push、不改游戏、不升降驱动、不新增goal。
 
-- **A，C32 score upper clamp：正确但未采纳。** 实际十层权重仅七层获严格界，后三层保持 stock；65536 Half 位型×32位置原语、真实 mapped unit、三帧完整 Frame 与七/三实际路由全部通过。单次完整 Frame ABBA25355（每槽320帧、弃80）wall 9.6336771→9.6284083 ms，仅−5.269µs；基线漂移+47.546µs，不能确认稳定收益。停止，不将 NoHi 加入生产路径。详见 `HIP/experiments/c32-score-nohi/` 与失败总账。
-- **B，八个 ViT expand packed 权重：作为资源优化集成。** 完整 Frame 逐字节相同，持有权重容量 524101416→423438120B，实省96MiB；单次 ABBA wall 9.633050→9.6346917ms，无稳定速度收益。仅精确已知八矩阵/布局缩短上传，未知 selector 和已有 legacy key 保留旧路，默认狭域开启、编译宏可关闭。容量/driverfree 快照不是驻留峰值，未做双架构实机验证。源码与证据见 `HIP/experiments/packed-weight-compact/`。
+1. **普通无history会话省Bridge history（当前实施）。** audit负责explicit `NeverHistory` capability与私有源码/实际CPU契约测试；主审公共接口与生命周期、唯一GPU排队；remaining独立资源与完整Frame统计。公共Bridge默认Unknown保旧，DirectHistory/模式1/experimental及任何支持history会话保留。只有NativeHipNetwork/Frame创建期严格无history且会话永不接历史才声明；RecordInput/Enqueue/recorded等所有入口统一拒非null/true违规，不hot lazyalloc。空资源Release、失败clear/wait及共享池生命周期必须有效；MemoryReport按实际资源宽度，不把旧池驻留当新省。源码兼容CPU/O2后，真实无history完整Framegold、资源/identity/no stalehistory与一次短ABBA闭环。33.75MiB只是1152档理论容量，实际取证后才报。
+2. **C512 fused分支不创建未用mixed/contract（排队，未实施）。** 第一项结题后才定位全部消费者、条件分支及pool别名，将New限制到需要的分支，保持kernels/math/flags。约8.44MiB仅逻辑张量推算，不保证pool净省/峰值下降。先CPU所有分支/生命周期审，再完整Frame数值与actual pool/driver容量、一次短ABBA；没有净资源收益或可辨回归就止，不扫池策略。
+3. **ViT contract/projection活tail紧凑化（最后，未实施）。** 第二项结题后，先一矩阵。原packed前缀后活1024F32尾在旧偏移，不能直接resize；新export/loader/选路成对守门，legacy pointer必须配legacykernel，未知布局旧路，不能双份常驻抵消。保所有packedbytes/精度/累加顺序；实际消费者与尾偏移证明、unit/完整NN/Framegold、真实held/allocated/resident口径与短ABBA。另96MiB contract/24MiBprojection仅理论值，不重复计已compact expand/QKV；不能拿资源省推FPS。
 
-本轮源码、文档与证据已审交结题；未追加任务或性能实验。真实运动闪烁、mochi 与当前生产路线差距仍是未完成研究；先取有决策价值的证据，不能重开 [failed-experiments.md](failed-experiments.md) 已否定的 tile-ready0431、宽写、graph Auto 替换或 native D3D12约33倍慢路线。MODE0约58fps是用户观察，不是同场景ABBA。
+前轮A NoHi七层证明/数值成立但收益低于漂移，已STOP不重开；B expand资源省96MiB已源码/本地试用，未证稳定Frame加速。各阶段保持当前B已生效，其余模块/数学不改，分阶段独立基线，不相加收益。
 
 ## 固定工作规矩
 
