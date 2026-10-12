@@ -1,0 +1,83 @@
+{
+  "baseline": "4a9d7eee8bcb7b3f3b3f2c2de4c7aa9965087505",
+  "source_baseline_parent": "795999977d4d866103373d9555890aadb2b986ce",
+  "gpu_used_by_auditor": false,
+  "shared_modified_by_auditor": false,
+  "stage_order": "V decision/checkpoint before TH execution",
+  "V": {
+    "source_admission": "PASS for compilation/ISA review only",
+    "candidate_source_sha256": "49baf406263d00ba74045cf06cbbfb0e29352f8b13ee075d39047a524fa7f9e3",
+    "stock_sha256": "da1b4ae9af3c1d2889f86e530b915971494ff2a58156a6abab2813dfb2d26014",
+    "new_export": "vit_stream_qkv_frag_bin_w5f8_vtail",
+    "uniformity": "part depends on workgroup id and scalar tokens, not wave/lane",
+    "source_preserved": [
+      "loop barriers",
+      "QK LDS reuse rendezvous",
+      "raw-store/norm-read barrier",
+      "inactive-wave original live exit",
+      "FP8/F16/F32 arithmetic and output layout"
+    ],
+    "required_ISA_gate": "Prove V alone skips final rendezvous; preserve or independently prove equivalent last LDS/load/WMMA hazards, QK synchronization and resource metadata. Source line removal is insufficient.",
+    "numeric_and_performance_admission": "pending actual artifact and gates",
+    "ISA_admission": "PASS for real numeric unit; not yet numeric/performance approval",
+    "actual_compile_handle": 8218,
+    "actual_compile_exit_code": 0,
+    "candidate_module_sha256": "da86ed4b4c21534a9ea76c7bf2403aa0d277057259afd08ecaa4e3007dc67576",
+    "actual_metadata": {
+      "kernarg_bytes": 40,
+      "kernarg_alignment": 8,
+      "workgroup_threads": 160,
+      "wave_size": 32,
+      "LDS_bytes": 16384,
+      "VGPRs": 76,
+      "SGPRs": 22,
+      "private_bytes": 0,
+      "VGPR_spills": 0,
+      "SGPR_spills": 0,
+      "float_mode": 240
+    },
+    "actual_ISA": {
+      "V_uniform_branch": "0x98140 skips signal/wait0x98174/0x98178",
+      "QK_norm_publication": "wait_dscnt0x0 at0x981d0 then signal/wait0x981d4/0x981d8 retained",
+      "all_data_wait_opcodes_and_immediates_histogram_matches_stock": true,
+      "loop_last_wait_and_MMA_sequence_preserved": true,
+      "FP8_WMMA_static_sites": 16,
+      "F16_WMMA_static_sites": 2,
+      "single_round_square_mixlo_sites": 8,
+      "single_round_square_mixhi_sites": 8,
+      "old_export_raw_function_identity": "88/88 exact; only new_vtail added",
+      "compiler_changes": "Predicate/reg allocation and quantization VOPD pairing rescheduled; old SALU hazard-wait changes are not load/DS-memory wait deletion. Do not claim only two machine instructions changed."
+    },
+    "numeric_admission": "PASS complete real640 QKV outputs; STOP before complete Frame because bounded screen benefit unproven",
+    "unit": {
+      "actual_handle": 94277,
+      "actual_exit_code": 0,
+      "full_raw_buffers": 4,
+      "logical_bytes_each": 1966080,
+      "raw_sha256": "845725af3275ea6e820eb6f18db71dc72a1c6a7f71b63f889e028ed5977348d7",
+      "byte_nan_tailguard_differences": 0
+    },
+    "pair": {
+      "actual_exit_code": 0,
+      "slots_gpu_mean_us": [
+        113.2999997,
+        36.849999985,
+        32.2499999995,
+        34.295000135
+      ],
+      "pooled_gpu_delta_us": -39.24749992525,
+      "control_gpu_drift_us": -79.004999565,
+      "edge_checks": 8,
+      "edge_byte_nan_tailguard_differences": 0,
+      "csv_sha256": "cf6138dec11eb856a6e1a550087d6e20e31df2b11deaa3f3f15231a52f662335",
+      "scope": "isolated one-kernel ABBA10warm20measure per slot, 40 samples per arm; not Auto full Frame",
+      "actual_case": 662786
+    },
+    "decision": "STOP: correctness passed, stable speedup not established; not a proof of slowdown; no full Frame, no retries or variants",
+    "production": "No shared or production source applied; current da1b original export unchanged"
+  },
+  "TH": {
+    "admission": "May begin only after this V STOP checkpoint; offline source preparation already permitted",
+    "allowed_scope": "arg4 main eight stores only; arg5 down unchanged; no scope/fence/value/vector-width changes"
+  }
+}
