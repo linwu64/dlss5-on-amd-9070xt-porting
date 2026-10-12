@@ -404,3 +404,7 @@ B 八个已知ViT expand原16MiB容量只读4MiB packed前缀。77951单位与21
 ### 2026-10-12：资源后续第一项，显式无history会话
 
 Bridge公共接口unknown保旧，NativeFrame仅Off且无temporal config/rgb/experimental显式声明NeverHistory；DirectHistory/实验/其它历史会话保原路径，全temporal入口拒违反，不热分配。CPU九拒/空析构与正式O2通过。43364两freshprocess三帧gold0900/finite/Auto3/moduleidentity全过，history真实Width35389440→0，candidate创建/导入2、poolhit0；这是33.75MiB会话容量，不是假释放旧共享池/驻留峰值。36250完整FrameABBA wall9.6426208→9.6462167ms (+3.596µs)，p99−8.420µs，控制漂移26.392µs；无稳定加速/可辨明显回归，采纳资源改动，不部署。证据 `HIP/experiments/history-elision/` 与 `HIP/experiments/resource-followups/`。第一项结题后才开始C512分支未用tensor；第三项尚未实施。
+
+### 2026-10-12：资源后续第二项止负
+
+只将CompactC512Body未用mixed/contract New挪fallback，26032完整Framegold0且48calls/fallback0证明生效；但actual best-fit pool290571128→292742008B反增2.07MiB，driverfree仅+64KiB，未省资源。按门停止、不跑ABBA/不改池，撤回生产候选，仅保实验源码/receipt与失败总账；第一项NeverHistory保留。第三项在本次checkpoint后再开始。

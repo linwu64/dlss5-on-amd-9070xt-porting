@@ -7,8 +7,8 @@
 持久隔离树 `/home/lmxxf/work/dlss5-resource-followups`、分支 `resource-followups`。先提交本计划，再实施第一项；每项明确采纳/止负、存证checkpoint后才推进下一项，不并行写第二/三项实现。不部署、不push、不改游戏、不升降驱动、不新增goal。
 
 1. **普通无history会话省Bridge history（已结题采纳）。** audit负责explicit `NeverHistory` capability与私有源码/实际CPU契约测试；主审公共接口与生命周期、唯一GPU排队；remaining独立资源与完整Frame统计。公共Bridge默认Unknown保旧，DirectHistory/模式1/experimental及任何支持history会话保留。只有NativeHipNetwork/Frame创建期严格无history且会话永不接历史才声明；RecordInput/Enqueue/recorded等所有入口统一拒非null/true违规，不hot lazyalloc。空资源Release、失败clear/wait及共享池生命周期必须有效；MemoryReport按实际资源宽度，不把旧池驻留当新省。源码兼容CPU/O2后，真实无history完整Framegold、资源/identity/no stalehistory与一次短ABBA闭环。43364 fresh-process完整Framegold/资源门通过：history actualWidth35389440→0，candidate create2/import2/poolhits0；33.75MiB为本会话容量减少，非旧池释放或驻留峰值。36250 ABBA wall+3.596µs、p99−8.420µs，低于26.392µs控制漂移，无稳定加速/可辨明显回归，作为资源优化采纳，不刷。
-2. **C512 fused分支不创建未用mixed/contract（当前实施）。** 第一项结题后才定位全部消费者、条件分支及pool别名，将New限制到需要的分支，保持kernels/math/flags。约8.44MiB仅逻辑张量推算，不保证pool净省/峰值下降。先CPU所有分支/生命周期审，再完整Frame数值与actual pool/driver容量、一次短ABBA；没有净资源收益或可辨回归就止，不扫池策略。
-3. **ViT contract/projection活tail紧凑化（最后，未实施）。** 第二项结题后，先一矩阵。原packed前缀后活1024F32尾在旧偏移，不能直接resize；新export/loader/选路成对守门，legacy pointer必须配legacykernel，未知布局旧路，不能双份常驻抵消。保所有packedbytes/精度/累加顺序；实际消费者与尾偏移证明、unit/完整NN/Framegold、真实held/allocated/resident口径与短ABBA。另96MiB contract/24MiBprojection仅理论值，不重复计已compact expand/QKV；不能拿资源省推FPS。
+2. **C512 fused分支不创建未用mixed/contract（已止负，不采纳）。** 第一项结题后才定位全部消费者、条件分支及pool别名，将New限制到需要的分支，保持kernels/math/flags。约8.44MiB仅逻辑张量推算，不保证pool净省/峰值下降。先CPU所有分支/生命周期审，再完整Frame数值与actual pool/driver容量、一次短ABBA；26032真实48calls/fallback0/gold0，但池290571128→292742008B反增2170880B，driverfree仅+64KiB；逻辑少New不等净省，已STOP不perf、不改池策略，撤回共享候选。
+3. **ViT contract/projection活tail紧凑化（下一项，待阶段2checkpoint）。** 第二项结题后，先一矩阵。原packed前缀后活1024F32尾在旧偏移，不能直接resize；新export/loader/选路成对守门，legacy pointer必须配legacykernel，未知布局旧路，不能双份常驻抵消。保所有packedbytes/精度/累加顺序；实际消费者与尾偏移证明、unit/完整NN/Framegold、真实held/allocated/resident口径与短ABBA。另96MiB contract/24MiBprojection仅理论值，不重复计已compact expand/QKV；不能拿资源省推FPS。
 
 前轮A NoHi七层证明/数值成立但收益低于漂移，已STOP不重开；B expand资源省96MiB已源码/本地试用，未证稳定Frame加速。各阶段保持当前B已生效，其余模块/数学不改，分阶段独立基线，不相加收益。
 

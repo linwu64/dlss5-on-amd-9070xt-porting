@@ -2628,3 +2628,10 @@ SKIN_PROTECT只多遍：原输入肤色启发式mask混y1/yN，不是原图/语�
 - **正确性：** 84738全部65536Half×32位置语义0；51888 mapped完整gold0；72895三帧raw0/finite0与21:9路由；25355四槽八首尾gold0、44模块一致。证明与候选正确，不属于数学失败。
 - **性能/裁决：** 320帧弃80×ABBA，480/arm wall9.6336771→9.6284083ms（−5.269µs/−0.05469%），p99−17.790µs；control漂移+47.546µs，candidate漂移+19.875µs。收益小于漂移，**未证稳定收益、停止/不采纳**，不追加刷轮或变体。
 - **重试条件/证据：** 只有可指向新的实际编译/热路径代价且有独立稳定测量前提才重开；不能将删掉32cmp等价速度改善。持久分支bound-and-compact，`Development/HIP/experiments/c32-score-nohi/` 和 `bound-and-compact/run_a_frame_timing.ps1`；原小CSV及SHA收录该实验results，build原始目录 `/home/lmxxf/work/dlss5-c32-score-nohi-build/frame-abba/`。
+
+### 2026-10-12 — CompactC512Body fused unused mixed/contract New｜资源负，不采纳
+
+- **改动/scope：** 仅将两个n×512 F32临时Tensor New移至原mix+FFN fallback；kernel/权重/数学/Run调用不变，当前Bcompact与NeverHistory已生效。逻辑8.44MiB不是实际池节省。
+- **证据：** 26032完整Frame两role各3帧，实际48C512calls/fallback0、0900gold/repeat/finite/Auto3/modulesame均PASS；source正式O2与私有FrameO2通过。
+- **结果/裁决：** 池290571128→292742008B，反增2170880B（约2.07MiB），均27tensor；weights423438120/gather5242880不变，driverfree只+65536B。best-fit复用重排使逻辑删除未带来净资源收益，STOP/撤回，不做性能ABBA，不称数学失败。
+- **不要重试/索引：** 除非有独立新池生命周期证据，不能换名再删同New或将64KiB计数粒度当胜。实验源/正式O2/source-diff在 `HIP/experiments/c512-unused-tensors/`，原Frame资源数据在 `HIP/experiments/resource-followups/measurement/`；主终态/source身份 `HIP/experiments/resource-followups/results/stage2-build/`，branch resource-followups。
