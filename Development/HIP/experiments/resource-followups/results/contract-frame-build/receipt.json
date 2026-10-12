@@ -1,0 +1,24 @@
+{
+  "candidate_final_compile_session": 31435,
+  "candidate_actual_exit_code": 0,
+  "sameexe_NR0_NR1": true,
+  "gold_session": 79561,
+  "ABBA_session": 67984,
+  "both_actual_exit_code": 0,
+  "LOCK_RELEASED": true,
+  "gold_8knownkeys": true,
+  "gold_weight_bytes": [
+    423438120,
+    322774824
+  ],
+  "gold_pool_bytes": [
+    290571128,
+    290571128
+  ],
+  "gold_driver_free_bytes": [
+    15860379648,
+    15961042944
+  ],
+  "not_peak_or_residency": true,
+  "ABBA_independent_stats_pending": true
+}

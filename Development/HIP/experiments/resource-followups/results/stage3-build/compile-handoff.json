@@ -1,0 +1,15 @@
+{
+  "original_compile_session": 96094,
+  "original_pid": 12940,
+  "actual_exit_code": 0,
+  "LOCK_RELEASED": true,
+  "main_repeat_attempt": {
+    "chunk": "86c257",
+    "exit": 1,
+    "stage": "pre-device existing artifact no repeat guard",
+    "compiler_started": false,
+    "GPU_started": false
+  },
+  "module_sha256": "14facdb57be7b3864b913a99ebe42604c9add4ed4f8bf032b2b04235897ec83f",
+  "numerical_gold": false
+}

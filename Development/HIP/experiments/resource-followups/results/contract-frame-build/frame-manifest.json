@@ -1,0 +1,33 @@
+{
+  "files": [
+    {
+      "file": "run_frame_gold.ps1",
+      "bytes": 7282,
+      "sha256": "b4d1af449c9b4447c23ad6a3dec53052ba857599a2b6e608e24dee1c64063fa4"
+    },
+    {
+      "file": "frame.exe",
+      "bytes": 4437934,
+      "sha256": "3afc3b6eba166be57499609d1d28d2063c31afeeab08ef35332ef615f3627193"
+    },
+    {
+      "file": "stage.ps1",
+      "bytes": 748,
+      "sha256": "0547f0460d73b393efa0c16fa0c246b93c5c66a6dd3a292976b177f041f2d8ef"
+    },
+    {
+      "file": "parse.ps1",
+      "bytes": 303,
+      "sha256": "83105c7ba3d1d31b3c8387394368a1662d366e2ea3c526a6ec3504cc8b4750b9"
+    }
+  ],
+  "candidate_compile_session": 31435,
+  "actual_exit_code": 0,
+  "sameexe_NR0_NR1": true,
+  "route_identity": {
+    "base_sha256": "8a82149abf1e29c88cfff36159ecc4060ddfe4b31aa0762f9527fcf08e306142",
+    "private_sha256": "df0fd26b02cea59bcba96d3f696dd7227aa91ceb8a4bd050cfc4601c03ba61bc",
+    "scope": "only contract byte edge; cold SHA/export guard; legacy pointer stays legacy function",
+    "candidate_sha256": "14facdb57be7b3864b913a99ebe42604c9add4ed4f8bf032b2b04235897ec83f"
+  }
+}

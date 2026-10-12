@@ -1,0 +1,18 @@
+{
+  "files": [
+    {
+      "file": "frame.exe",
+      "bytes": 4437934,
+      "sha256": "3afc3b6eba166be57499609d1d28d2063c31afeeab08ef35332ef615f3627193"
+    },
+    {
+      "file": "run_frame_timing.ps1",
+      "bytes": 6909,
+      "sha256": "0804b40283c35088caf0cde25ee5fdcbde5108c91c12e3ac259e631fad6f5bc9"
+    }
+  ],
+  "gold_session": 79561,
+  "gold_exit": 0,
+  "sameexe_NR0_NR1": true,
+  "scope": "four320frameABBA/discard80; necessarytagroute costs insideFrame; coldsidecar/load outside wall; Memory0"
+}

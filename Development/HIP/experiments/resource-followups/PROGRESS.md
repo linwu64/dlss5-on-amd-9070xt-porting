@@ -9,3 +9,8 @@ Stage2: shared41d66b31 twoNew moved only to fallback. CompleteFrame privateO2 34
 Stage2 STOP: completeFramegold0 but exactpool290571128→292742008B (+2170880B), driverfree+65536B only, weights/gather unchanged. No net resource benefit; no ABBA/pool variants. Sharedcandidate being reverted, experiments retained. Stage3 starts only after this checkpoint.
 
 Stage2 sharedcandidate reverted a5786fbb exactly to5ebd original, STOP checkpoint complete. Stage3 starts now, contract before projection: remaining private newexport+tail relocation+pairedloader/unit; audit independent; main Frame/queue. Stage1+B remain baseline, no stage2 implementation retained.
+
+Stage1 independent driver-free snapshots rose67.5MiB while one actual sharedbuffer Width33.75MiB was omitted; labels differ and no physical-double-copy/resident-peak inference is made. Weights/pool/gather unchanged. Original data saved6296579c.
+Stage3 baseline finalO2/exactmemory9573 exit0; source defaultoldScaleOffset/newcontractexport landed under vit-weight-tail-compact, audit math/ABI initialPASS. Remaining owns soleCOMGR queue slot once guardsready, no unit/FrameGPU yet; projection not implemented.
+
+Contractunit22077 terminal0/released:2old+2new655360Bbyte0/finite0/256canary0. Sameexefinal31435 O2=0; Framegold79561 terminal0/released:3frames/role0900/Auto3,8newkeys/legacy0,actualweights423438120→322774824B(-96MiB),pool/gather/noise same,driverfree+96MiB. ShortFrameABBA67984 terminal0/released four320roles/eight0900/Auto320/44moduleidentityPASS, independentstats pending. Productionpaired source integration prepared separately after decision; projection not implemented.
