@@ -1,0 +1,94 @@
+{
+  "base": "99fc33babddfabec568c01c2846c4d8256cce64d",
+  "design_scope": "CPU steady_clock/QPC boundaries only; no added GPU event/query/marker, synchronization, shader or resource-path change",
+  "admission": "Source, current production-path numerical identity and one bounded A/A completed; CPU-only coarse localization, possible timing interference retained",
+  "required": [
+    "Unmodified PulseRejectMask/profile/bridge-diagnostics guards; actual Auto2 accepted and PDL counters verified per arm",
+    "Same full Frame, immutable modules, input/noise/seed, memory path and correctness hashes",
+    "Fixed-size/preallocated CPU records; no formatting, file IO or new allocation inside measured frame",
+    "A/A instrumentation off/on calibration before interpreting instrumented CPU intervals",
+    "No CPU completion wait or enqueue duration interpreted as GPU idle, layer time or GPU scheduling timeline"
+  ],
+  "historical_evidence": [
+    "Development/DevHistory.md:183-192: HIP-event negative values/full insertion overhead, GAME_PROBE Flush disturbance, RGP clock/output changes",
+    "Development/results/outside-net-20261002/README.md:11: approximately 3ms clock-calibration offset; only offset-canceling sums supported",
+    "Development/results/same-queue-20261001/README.md:43: RGP Wait observation was proposed, not executed",
+    "Development/failed-experiments.md:2453: always-on NET timing and event v2/v3 failed or perturbed timings"
+  ],
+  "external_gpu_trace_status": "Historical RGP use exists; current ready ETW/WPR/GPUView capture and calibrated GPU/CPU correlation not established by these sources",
+  "gpu_used_by_auditor": false,
+  "source_sha256": {
+    "Development/HIP/experiments/auto-timeline/host_timing.h": "00e03c8a37c32a2040814b4047f99539c0845590a09a630002efba26b8ffb2eb",
+    "Development/HIP/experiments/auto-timeline/prepare.py": "f5f16541d824416723c8cf7f5c44377bb7ded4979b3fbe969efcee32074d9b5f",
+    "Development/HIP/hip_reference_network.h": "007d03c58be6da9160d6d97a3f445c451f8eb49345c00bb929680252be1409b0"
+  },
+  "verified": [
+    "Production hip_reference_network.h copied byte-identically to base99fc33ba; PulseRejectMask untouched",
+    "Only eleven host QPC marks; original GPU/API/synchronization call order preserved",
+    "Disabled arm writes no marks; rows cold-zeroed; public wall bookkeeping outside measured interval",
+    "t9 placed before existing empty Submit; t9\u2192t10 includes Submit+Flush, not Flush alone"
+  ],
+  "gold": {
+    "actual_handle": 95980,
+    "actual_exit_code": 0,
+    "frames_per_arm": 3,
+    "raw_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+    "finite_repeat_differences": 0,
+    "actual_Auto_accepted_per_arm": 3,
+    "actual_reject_mask": 0,
+    "actual_PDL_calls": 0,
+    "off_marks_all_zero": true,
+    "on_11_marks_positive_monotone": true,
+    "gold_probe_flags": "all four absent; cleared child environment and source default false; no repeated gold",
+    "timing_scope": "gold MemoryReport third-frame synchronization excluded from timing interpretation"
+  },
+  "aa": {
+    "actual_handle": 31627,
+    "authoritative_terminal_chunk": "ec580f",
+    "actual_exit_code": 0,
+    "lock_released": true,
+    "actual_slot_pids": {
+      "A1": 11212,
+      "B1": 9144,
+      "B2": 13504,
+      "A2": 16152
+    },
+    "frames_per_slot": 320,
+    "discard": 80,
+    "samples_per_arm": 480,
+    "same_executable": true,
+    "raw_edges": 8,
+    "raw_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+    "actual_Auto_requested": "auto",
+    "actual_Auto_accepted_per_slot": 320,
+    "actual_reject_mask": 0,
+    "actual_PDL_calls_per_slot": 0,
+    "module_count": 43,
+    "modules_match_formal_66725_expected": true,
+    "module_preflight_after_identical": true,
+    "joint_module_sha256": "da1b4ae9af3c1d2889f86e530b915971494ff2a58156a6abab2813dfb2d26014",
+    "memory_reporting": 0,
+    "four_gpu_probe_flags": 0,
+    "control_mean_ms": 9.6242125,
+    "marked_mean_ms": 9.6477,
+    "delta_marked_minus_control_us": 23.4875,
+    "p99_delta_us": 4.75,
+    "control_mean_drift_us": 28.725,
+    "both_marked_slots_slower_than_both_controls": true,
+    "interpretation": "Possible instrumentation interference; delta below control drift. Short screen does not establish zero overhead or exact production equivalence."
+  },
+  "marked_cpu_means_ms": {
+    "input_record_submit": 0.03404895833333333,
+    "before_HIP_bridge": 0.026553958333333332,
+    "HIP_Enqueue_API": 0.35430770833333336,
+    "after_HIP_bridge": 0.022157083333333334,
+    "output_record_submit": 0.019855416666666667,
+    "original_empty_Submit_plus_Flush": 9.188284166666667
+  },
+  "final_limits": [
+    "All intervals are host API/CPU elapsed and include blocking within calls; not GPU work or idle",
+    "Completion Submit+Flush cannot establish GPU bubbles, layer costs or HIP/D3D overlap",
+    "No optimization, production source change, GPU tracing, game deployment or extra experiment was performed by this audit",
+    "No additional timing run is justified by this one bounded screen"
+  ]
+}
