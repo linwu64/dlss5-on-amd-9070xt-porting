@@ -1,0 +1,35 @@
+{
+  "actual_gold_handle": 26032,
+  "actual_child_pids": [
+    16484,
+    9432
+  ],
+  "actual_child_exit_codes": [
+    0,
+    0
+  ],
+  "lock_released": true,
+  "baseline": "5ebd71dd stage1 nohistory + accepted compact-expand96MiB",
+  "actual_compact_C512_calls_per_role": 48,
+  "actual_fallback_calls": 0,
+  "weights_bytes_both_roles": 423438120,
+  "gather_bytes_both_roles": 5242880,
+  "noise_bytes_both_roles": 0,
+  "pool_tensor_count_both_roles": 27,
+  "pool_capacity_baseline_bytes": 290571128,
+  "pool_capacity_candidate_bytes": 292742008,
+  "pool_capacity_candidate_minus_baseline_bytes": 2170880,
+  "pool_capacity_increase_MiB": 2.0703125,
+  "driver_free_baseline_bytes": 15860379648,
+  "driver_free_candidate_bytes": 15860445184,
+  "driver_free_increase_bytes": 65536,
+  "history_bytes_both_roles": 0,
+  "current_compact_expand_retained": true,
+  "gold_finite_repeat_cross_differences": 0,
+  "gold_output_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+  "decision": "STOP: no demonstrated net resource saving; pool retained capacity increased, driver free change only64KiB. Do not run performance. Logical eliminated request8.4375MiB is not actual reclaimed memory.",
+  "numerical_correctness_failure": false,
+  "source_review": "mixed/contract allocated only in original fallback, Run sequence unchanged; current fused profile does not use them; allocator reuse/order still changes pool size",
+  "new_gpu_runs_by_independent_audit": false,
+  "stage3_implemented_in_this_checkpoint": false
+}
