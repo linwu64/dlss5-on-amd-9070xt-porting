@@ -1,0 +1,18 @@
+{
+  "old_frame_cpu_case": 11901,
+  "old_frame_sha256": "6a21e10c1d627ece61958c2fec173ac07403e336d294f2693f763c2f7953ab0d",
+  "old_frame_case": 68401,
+  "old_wrapper_exit": 1,
+  "old_child_exits": [
+    0,
+    0
+  ],
+  "failure": "NR1 ready0/candidate_calls0: Style1 uses -1 sentinel, host qualifier required explicit1/128",
+  "scope": "host qualification failure before NT use; not mathematical or performance negative",
+  "correction": "accept -1 default or explicit1/128 for fixed hashed modules whose styleglobal is0000003c; no module/unit/math change",
+  "new_frame_cpu_case": 20047,
+  "new_frame_cpu_exit": 0,
+  "new_frame_sha256": "6495f946dea091318efeee99b3072307f9ef944835c5ccaeaa244e127d371c77",
+  "new_valid_gold_case": 79532,
+  "only_effective_aa_case": 89008
+}

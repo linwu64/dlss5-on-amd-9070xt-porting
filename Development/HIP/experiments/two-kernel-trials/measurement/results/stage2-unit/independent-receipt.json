@@ -1,0 +1,12 @@
+{
+  "actual_case": 18221,
+  "actual_exit_code": 0,
+  "full_outputs": 8,
+  "main_bytes_each": 70778880,
+  "down_bytes_each": 17694720,
+  "main_sha256": "170b59906259c0417d21869b7b46bd35661096f5af02b3a0dd4042d3ad985d5b",
+  "down_sha256": "0417a910ee1d544c464115d3112d04b80c99ae92937ce66279718c592e171973",
+  "encoded_style_feature": 0.0078125,
+  "byte_nan_guard_repeat_differences": 0,
+  "scope": "full old2/new2 main+down outputs; no performance claim"
+}

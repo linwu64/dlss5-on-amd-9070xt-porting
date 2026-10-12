@@ -1,0 +1,113 @@
+{
+  "actual_case": 89008,
+  "actual_exit_code": 0,
+  "slots": {
+    "baseline-A1": {
+      "n": 240,
+      "mean_ms": 9.643316666666667,
+      "median_ms": 9.6455,
+      "sd_ms": 0.09965064358590503,
+      "p95_ms": 9.80545,
+      "p99_ms": 9.8753,
+      "max_ms": 9.899,
+      "csv_sha256": "515eb240cd893c00a5d744089ba378df6f84be851cd82b6e70eb5d3c6c0fd9c8",
+      "frames": 320,
+      "discard": 80
+    },
+    "candidate-B1": {
+      "n": 240,
+      "mean_ms": 9.640095833333334,
+      "median_ms": 9.6345,
+      "sd_ms": 0.0980431720258612,
+      "p95_ms": 9.78715,
+      "p99_ms": 9.83383,
+      "max_ms": 9.926,
+      "csv_sha256": "0c36ae2e15c0535ece850ab5eeff80cc5e3267d36ca63838d0b703aa1e2cdaab",
+      "frames": 320,
+      "discard": 80
+    },
+    "candidate-B2": {
+      "n": 240,
+      "mean_ms": 9.671225,
+      "median_ms": 9.6725,
+      "sd_ms": 0.0912639706735152,
+      "p95_ms": 9.82,
+      "p99_ms": 9.890929999999999,
+      "max_ms": 9.903,
+      "csv_sha256": "65c956e94a588678513e357196cd45ad159eed3f5fb90d9ae3cb89209b9e72c0",
+      "frames": 320,
+      "discard": 80
+    },
+    "baseline-A2": {
+      "n": 240,
+      "mean_ms": 9.669725000000001,
+      "median_ms": 9.6685,
+      "sd_ms": 0.10097540713058942,
+      "p95_ms": 9.83215,
+      "p99_ms": 9.89503,
+      "max_ms": 9.947,
+      "csv_sha256": "08e904358382d7fa8aaf5c516d6c27b240a2f2fec8507c1b2b65f08d4299d938",
+      "frames": 320,
+      "discard": 80
+    }
+  },
+  "old": {
+    "n": 480,
+    "mean_ms": 9.656520833333335,
+    "median_ms": 9.651499999999999,
+    "sd_ms": 0.10107842086336252,
+    "p95_ms": 9.825149999999999,
+    "p99_ms": 9.88847,
+    "max_ms": 9.947
+  },
+  "new": {
+    "n": 480,
+    "mean_ms": 9.655660416666668,
+    "median_ms": 9.659500000000001,
+    "sd_ms": 0.09588963349567352,
+    "p95_ms": 9.809,
+    "p99_ms": 9.86799,
+    "max_ms": 9.926
+  },
+  "delta_new_minus_old": {
+    "mean_ms": -0.0008604166666668078,
+    "median_ms": 0.008000000000002672,
+    "sd_ms": -0.0051887873676890045,
+    "p95_ms": -0.016149999999999665,
+    "p99_ms": -0.020479999999999166,
+    "max_ms": -0.02099999999999902
+  },
+  "control_mean_drift_ms": 0.026408333333334255,
+  "candidate_mean_drift_ms": 0.031129166666666208,
+  "runtime": {
+    "baseline-A1": {
+      "prefix_summary": "PREFIX_NT_SUMMARY requested=0 ready=0 candidate_calls=0 stock_calls=320",
+      "auto_accepted": 320,
+      "pdl_actual_calls": 0,
+      "raw_edges": 2
+    },
+    "candidate-B1": {
+      "prefix_summary": "PREFIX_NT_SUMMARY requested=1 ready=1 candidate_calls=320 stock_calls=0",
+      "auto_accepted": 320,
+      "pdl_actual_calls": 0,
+      "raw_edges": 2
+    },
+    "candidate-B2": {
+      "prefix_summary": "PREFIX_NT_SUMMARY requested=1 ready=1 candidate_calls=320 stock_calls=0",
+      "auto_accepted": 320,
+      "pdl_actual_calls": 0,
+      "raw_edges": 2
+    },
+    "baseline-A2": {
+      "prefix_summary": "PREFIX_NT_SUMMARY requested=0 ready=0 candidate_calls=0 stock_calls=320",
+      "auto_accepted": 320,
+      "pdl_actual_calls": 0,
+      "raw_edges": 2
+    }
+  },
+  "modules": 44,
+  "scope": "single ABBA whole NativeGameFrame controlled old HDR menu replay; same private non-QPC exe NR0/1, current43 original modules plus NT sidecar; CPU Frame completion wall; warm80discard from320 each,480perarm; not gameFPS or cachemiss causality",
+  "probe_flag_correction": "unused HIP_NET_TIMING/HIP_NET_SPAN written0; real NET_TIMING/HIP_SPAN_PROBE absent in actualflags and childenv cleared, defaultfalse per bridge; no rerun/no changed case",
+  "decision": "STOP: numerical/identity gates pass, no reliable wholeFrame gain versus slot drift; no integration/no further trial",
+  "gpu_code_residency": "candidate cold-loads extra sidecar, baseline does not; file manifest equality is not GPU residency equality"
+}

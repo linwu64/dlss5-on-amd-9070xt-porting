@@ -1,0 +1,29 @@
+{
+  "baseline": {
+    "weights_bytes": 297609000,
+    "pool_bytes": 290571128,
+    "gather_bytes": 5242880,
+    "noise_bytes": 0,
+    "driver_free_bytes": 15995121664,
+    "driver_total_bytes": 17095983104,
+    "not_resident_peak": 1
+  },
+  "candidate": {
+    "weights_bytes": 297609000,
+    "pool_bytes": 290571128,
+    "gather_bytes": 5242880,
+    "noise_bytes": 0,
+    "driver_free_bytes": 15995121664,
+    "driver_total_bytes": 17095983104,
+    "not_resident_peak": 1
+  },
+  "delta": {
+    "weights_bytes": 0,
+    "pool_bytes": 0,
+    "gather_bytes": 0,
+    "noise_bytes": 0,
+    "driver_free_bytes": 0,
+    "driver_total_bytes": 0,
+    "not_resident_peak": 0
+  }
+}

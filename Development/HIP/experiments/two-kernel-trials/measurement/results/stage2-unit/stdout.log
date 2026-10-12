@@ -1,0 +1,10 @@
+GOLD role=0 repeat=0 output=main capture_diff=0 repeat_diff=0 nan=0 guard=0 bytes=70778880 style_feature=0.0078125
+GOLD role=0 repeat=0 output=down capture_diff=0 repeat_diff=0 nan=0 guard=0 bytes=17694720 style_feature=0.0078125
+GOLD role=0 repeat=1 output=main capture_diff=0 repeat_diff=0 nan=0 guard=0 bytes=70778880 style_feature=0.0078125
+GOLD role=0 repeat=1 output=down capture_diff=0 repeat_diff=0 nan=0 guard=0 bytes=17694720 style_feature=0.0078125
+GOLD role=1 repeat=0 output=main capture_diff=0 repeat_diff=0 nan=0 guard=0 bytes=70778880 style_feature=0.0078125
+GOLD role=1 repeat=0 output=down capture_diff=0 repeat_diff=0 nan=0 guard=0 bytes=17694720 style_feature=0.0078125
+GOLD role=1 repeat=1 output=main capture_diff=0 repeat_diff=0 nan=0 guard=0 bytes=70778880 style_feature=0.0078125
+GOLD role=1 repeat=1 output=down capture_diff=0 repeat_diff=0 nan=0 guard=0 bytes=17694720 style_feature=0.0078125
+PREFIX_MAIN_TH_DOUBLE_OLD_DOUBLE_NEW_TWO_OUTPUT_GOLD_PASS_NOT_PERFORMANCE
+

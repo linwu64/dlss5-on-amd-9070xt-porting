@@ -1,0 +1,8 @@
+{
+  "base": "79599997 plus trial docs only; no V candidate/no QPC helper",
+  "original_header_sha256": "007d03c58be6da9160d6d97a3f445c451f8eb49345c00bb929680252be1409b0",
+  "private_header_sha256": "ae114ec7546d86f698e39f865deabadfde50a9971309bbe99e865c936ad84eab",
+  "guard_sha256": "a6f73553f8f7fa8365dd3cced26466c4004d7bf36d07fabe58b1c12047363d28",
+  "candidate_module_sha256": "761984e781c58f9587a9e6b3432f2b9c6c8713516e441ed21bc0aabdcb67f094",
+  "scope": "single prefix_b8d handle override only; constructor cold module hash/load/getFn; existing Run launchparams/Auto/PDL/fences untouched; all other kernels use original current43"
+}
