@@ -382,3 +382,9 @@ Installed the formal O2 compact ViT-expand-weight addon `64dc04286c22d5d3…` in
 ## Unreleased — explicit no-history session resources (2026-10-12)
 
 Explicit never-history Frame sessions omit the unused shared Bridge history buffer (33.75 MiB at1920×1152). Unknown callers and all declared history sessions keep the original path; invalid temporal submissions are rejected. Complete Frame gold passed; short ABBA showed no stable speed gain or discernible large regression. Capacity only, not peak residency; source only, not deployed.
+
+## Unreleased — compact ViT contract and projection tails (2026-10-12)
+
+Preserve the packed matrices and F32 scale bytes while moving the live tail beside each matrix. Versioned exports and pointer layout tags select matching buffers/kernels; missing exports, existing legacy cache entries, unknown module selectors and gfx1200 retain the old path. Internal defaults enable the validated gfx1201/1152 profile. The existing vit_stream recipes include both exports, with no permanent sidecar module or user setting.
+
+Controlled complete Frame gold and the final production old/new43-module paths were byte-identical. Weight capacity fell423,438,120→297,609,000 bytes:96MiB contract plus24MiB projection, on top of the previously compact expand baseline. Individual ABBA mean changes were smaller than control drift; p99/max/drift are preserved in the experiment report, with no reliable FPS gain claimed. The C512 allocation candidate was reverted after an adverse pool result. Final host/addon O2 builds passed. Source only: installed64dc and release0.41 are unchanged; no deployment or push.

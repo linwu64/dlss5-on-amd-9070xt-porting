@@ -412,3 +412,9 @@ Bridge公共接口unknown保旧，NativeFrame仅Off且无temporal config/rgb/exp
 ### 2026-10-12：第三项contract活尾紧凑化采纳资源收益
 
 只将原FP8矩阵后F32 scale尾从16MiB偏移搬到4MiB后，新export/带tag buffer成对，缺新Fn/legacy cache/未知selector保旧；单矩阵22077双old双new全gold0。79561八实例完整Frame0900/Auto3/44moduleidentity通过，weights423438120→322774824B净省96MiB，pool290571128/gather5242880同，driverfree+96MiB，非驻留峰值。67984单次ABBA480/arm mean9.65121875→9.642650ms(−8.569µs)，p99−42.690µs，控制漂移+46.1125µs；单max9.924→10.182ms保留，不宣稳定加速。作为资源优化采纳，实验source与原CSV持久，最终生产paired接口/recipe随后统一集成；contract checkpoint后才启动projection。
+
+### 2026-10-12：projection及正式资源后续交付完成，未部署
+
+projection仅FP8矩阵1MiB后scale尾从原4MiB地址搬到紧随矩阵，新export/ptr-layout配对；92358单矩阵4gold/finite/guard0。11819八实例完整Framegold0，在已开contract基线上weights322774824→297609000B实省24MiB，pool/gather/noise同；driverfree另录+32.5MiB，不把额外8.5MiB解释为峰值收益。30592一次ABBA mean9.658091667→9.656335417ms，p99−11.470µs、control drift+26.492µs，max10.068→10.255ms；无可靠加速，按资源收益采纳。
+
+最终生产自然并入既有vit_stream源/recipe，两内部macro默认1、gfx1201/9070XT冷资格、未知module/selector/legacy cache成对旧路；无永久侧车/NR实验开关。joint94285模块da1b4ae9...旧86/候选87原始函数字节全同。正式Frame99541与addon30670 O2均0，正式路径66725无NR、两43模块旧877e/新da1b各3帧0900/finite/repeat/Auto3全过；新weights297609000对旧423438120净省120MiB。阶段2共享两New已恢复，既有expand96MiB保留。installed64dc与游戏MODE0/1x未动，本轮未部署/未push，0.41不改；后续是否试用由用户另指令。

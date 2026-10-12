@@ -384,3 +384,9 @@
 ## Unreleased — explicit no-history session resources (2026-10-12)
 
 显式永不使用history的Frame会话不创建未用Bridge共享历史buffer，1920×1152实测少33.75MiB容量；未知调用者与已有历史会话保旧，违规temporal提交拒绝。完整Framegold通过，短ABBA无稳定加速/可辨明显回归。仅容量非驻留峰值，源码未部署。
+
+## 未发行 — ViT contract/projection 活尾紧凑存储（2026-10-12）
+
+保原packed矩阵与F32 scale字节，只把活尾移到矩阵后；版本化导出与指针布局tag成对选buffer/kernel。缺新导出、已有legacy缓存、未知模块selector及gfx1200保旧路。内部默认只启已验gfx1201/1152 profile，既有vit_stream recipe自然包含两新导出，不增加永久侧车或用户配置。
+
+受控完整Frame和最终正式旧/新各43模块路径逐字节相同。权重容量423438120→297609000B：contract96MiB、projection24MiB；此前expand96MiB已在基线，不重复计。本轮各ABBA均值变化小于控制漂移，p99/max/漂移原数见实验报告，不宣可靠FPS提升。C512候选因池容量负结果已撤回。最终宿主/addon O2通过。仅源码：installed64dc、正式0.41与游戏配置未变，未部署、未push。

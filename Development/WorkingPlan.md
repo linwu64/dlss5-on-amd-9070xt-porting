@@ -1,16 +1,18 @@
 # 当前工作计划
 
-更新：2026-10-12。当前生产源码基线 `abacaaed`（`5574d8db`部署回执、`1b4c898f`紧凑expand源码）；已安装候选64dc、MODE0/MP1/1x，用户58.2fps为主观现场观察，不推断96MiB压缩带来FPS。正式0.41不变。完整历史见 [DevHistory.md](DevHistory.md)，旧负账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-12。本轮三项已结题，源码、构建与数值证据交付完成；没有下一项优化或GPU排队。起点 `abacaaed`（`5574d8db`试用、`1b4c898f`此前expand紧凑源码），计划 `ec0a2e99`，持久实验树 `/home/lmxxf/work/dlss5-resource-followups`。历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
 
-## 新授权：三项按序资源优化
+## 三项最终裁决
 
-持久隔离树 `/home/lmxxf/work/dlss5-resource-followups`、分支 `resource-followups`。先提交本计划，再实施第一项；每项明确采纳/止负、存证checkpoint后才推进下一项，不并行写第二/三项实现。不部署、不push、不改游戏、不升降驱动、不新增goal。
+1. **无history会话：采纳。** 显式NeverHistory，公共unknown默认保旧，所有temporal入口拒违反，不热分配。43364完整Framegold0，fresh会话实际少一项35389440B=33.75MiB共享buffer/导入，candidate创建2/import2/poolhits0；driverfree另录+67.5MiB，不解释为物理双份或峰值。36250 Framewall微+3.596µs，小于26.392µs控制漂移，无稳定加速。DirectHistory/实验/未声明会话保旧。
+2. **C512未用mixed/contract：停止、撤回。** 26032实际48calls/fallback0/gold0，但best-fit池290571128→292742008B反增2170880B，driverfree仅+64KiB，逻辑少New未带来净省。a5786fbb已恢复共享原两New；不perf、不调池，候选与原负证保留。
+3. **ViT活scale尾紧凑：contract与projection均采纳资源收益。** 仅搬原packed字节与4096B F32尾、改变新export尾地址，精度/math/累加顺序不动。contract79561实省96MiB，projection11819在已启contract上实省24MiB；两轮ABBA均值变化−8.569/−1.756µs均低于控制漂移46.113/26.492µs，不宣提速，单max分别+0.258/+0.187ms保留。最终生产同宿主66725/两43模块旧新路径gold0：weights423438120→297609000B净省120MiB，history0，8+8新keys，无侧车/NR实验开关。
 
-1. **普通无history会话省Bridge history（已结题采纳）。** audit负责explicit `NeverHistory` capability与私有源码/实际CPU契约测试；主审公共接口与生命周期、唯一GPU排队；remaining独立资源与完整Frame统计。公共Bridge默认Unknown保旧，DirectHistory/模式1/experimental及任何支持history会话保留。只有NativeHipNetwork/Frame创建期严格无history且会话永不接历史才声明；RecordInput/Enqueue/recorded等所有入口统一拒非null/true违规，不hot lazyalloc。空资源Release、失败clear/wait及共享池生命周期必须有效；MemoryReport按实际资源宽度，不把旧池驻留当新省。源码兼容CPU/O2后，真实无history完整Framegold、资源/identity/no stalehistory与一次短ABBA闭环。43364 fresh-process完整Framegold/资源门通过：history actualWidth35389440→0，candidate create2/import2/poolhits0；33.75MiB为本会话容量减少，非旧池释放或驻留峰值。36250 ABBA wall+3.596µs、p99−8.420µs，低于26.392µs控制漂移，无稳定加速/可辨明显回归，作为资源优化采纳，不刷。
-2. **C512 fused分支不创建未用mixed/contract（已止负，不采纳）。** 第一项结题后才定位全部消费者、条件分支及pool别名，将New限制到需要的分支，保持kernels/math/flags。约8.44MiB仅逻辑张量推算，不保证pool净省/峰值下降。先CPU所有分支/生命周期审，再完整Frame数值与actual pool/driver容量、一次短ABBA；26032真实48calls/fallback0/gold0，但池290571128→292742008B反增2170880B，driverfree仅+64KiB；逻辑少New不等净省，已STOP不perf、不改池策略，撤回共享候选。
-3. **ViT contract/projection活tail紧凑化（contract已采纳资源收益；当前projection）。** 第二项结题后，先一矩阵。原packed前缀后活1024F32尾在旧偏移，不能直接resize；新export/loader/选路成对守门，legacy pointer必须配legacykernel，未知布局旧路，不能双份常驻抵消。保所有packedbytes/精度/累加顺序；实际消费者与尾偏移证明、unit/完整NN/Framegold、真实held/allocated/resident口径与短ABBA。contract79561真实weights423438120→322774824B净省96MiB、pool/gather同且driverfree+96MiB，完整Framegold0。67984ABBA mean−8.569µs小于46.113µs控制漂移，p99−42.69µs但单max+0.258ms；作为资源收益采纳、不宣加速。源码正式paired/recipe交付待最终集成，projection此后开始，其24MiB仍理论值，不重复计expand/QKV；不能拿资源省推FPS。
+## 最终源码与边界
 
-前轮A NoHi七层证明/数值成立但收益低于漂移，已STOP不重开；B expand资源省96MiB已源码/本地试用，未证稳定Frame加速。各阶段保持当前B已生效，其余模块/数学不改，分阶段独立基线，不相加收益。
+- 默认内部紧凑开关只在已审gfx1201/RX9070XT、1152固定profile及正确byte-edge消费者生效；未知selector、自定义模块、缺新export/已有legacy cache保持旧buffer+旧kernel成对，gfx1200保旧，不宣双架构实机验证。官方既有vit_stream recipe自然构建两newexport，不增加永久模块或用户配置。
+- 最终正式Frame宿主O2 99541=0、addonO2 30670=0，jointCOMGR94285=0；旧86个及两accepted候选87个函数对joint均逐原始函数字节一致。实际emitted helper CPU default1/off/unknown/cache/layout兼容门通过；正式66725全帧firstlast0900/finite/Auto3/原模块身份与旧模块fallback通过。证据索引 [resource-followups](HIP/experiments/resource-followups/README.md)。
+- **游戏里仍是已安装64dc/原MODE0/MP1/1x，正式0.41不变。本次33.75MiB共享资源与新增120MiB权重减少尚未部署到游戏，未push。** 先前expand已省96MiB包含在本轮基线中，不能重复报作新收益；用户58.2fps是此前现场观察，不是这些新改动的性能证据。分配宽度、driverfree快照、驻留峰值严格分列，三轮性能不相加。
 
 ## 固定工作规矩
 
@@ -32,7 +34,7 @@
 ## 仍未完成的其他主线（本轮不扩大）
 
 1. **真实房顶闪烁/时序质量**：拍屏111.mp4不能替代原始连续color/MV/depth/jitter/exposure/reset。原history HALF4合同、RTZ/内部blend与受控工具链已取证，真实反光/遮挡/拖影是否改善仍未验证；不继续synthetic代真实场景，不把跳ViT删反光当无损修复。0.41-a临时历史试验默认off，正式0.41不动；资产/试包状态以各receipt为准，不沿旧“正在构建”文案。
-2. **mochi差距**：旧锁定同1088/full71对照仍有约1ms量级差，但各自noise/数学/plan/输入输出边界必须分列；a9b13dd ACO同时改Linux shader、TCHAIN/weight plan，其5.7ms不是HIP换compiler可得。未有值得立即编码的泛“融合/地址外提”新刀，本轮A/B两个具体假设已结题；未追加新的实现任务。
+2. **mochi差距**：旧锁定同1088/full71对照仍有约1ms量级差，但各自noise/数学/plan/输入输出边界必须分列；a9b13dd ACO同时改Linux shader、TCHAIN/weight plan，其5.7ms不是HIP换compiler可得。未有值得立即编码的泛“融合/地址外提”新刀，本轮资源三项已结题；未追加新的实现任务。
 3. **人物保护**：正常游玩小脸/脸颈一致需求保留。整人mask模型离线真游戏集、多人/遮挡/边界/时域稳定与AMD互操作成本均未验证；face parser只是第二阶段，RVM/SAM仅参考，不本轮装模型/改游戏。
 4. 真实新硬件/gfx1200/game/MP3/history组合及未验导出不借其它shape门；接口源码审、单图demo或部署成功均不当性能/观感完成。需要这些现实输入时再按用户范围安排，本轮没有为此追加实验。
 

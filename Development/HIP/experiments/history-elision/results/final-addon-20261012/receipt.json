@@ -14,5 +14,8 @@
   "runtime_modules_built_separately": true,
   "no_deployment": true,
   "no_remote_RTC_or_GPU": true,
-  "actual_formal_frame_numeric_gate_pending": true
+  "actual_formal_frame_numeric_gate_pending": false,
+  "actual_formal_frame_numeric_handle": 66725,
+  "actual_formal_frame_numeric_exit_code": 0,
+  "actual_formal_frame_numeric_receipt": "Development/HIP/experiments/vit-weight-tail-compact/results/formal-frame-66725/independent-receipt.json"
 }

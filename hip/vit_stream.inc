@@ -18,7 +18,7 @@
 #define VIT_QKV_TAIL_VEC 0 /* 1: vit_stream_qkv_frag_hin_w5 byte tail transposed through the wave's LDS norm tile, one 16-byte store per lane; bytes unchanged (results/deep-tail-20260930) */
 #endif
 #if HIP_VIT_STREAM_KERNELS
-template<uint TM,uint TN,bool ByteAv,bool HalfSkip,bool ByteSkip=false>
+template<uint TM,uint TN,bool ByteAv,bool HalfSkip,bool ByteSkip=false,uint ScaleOffset=1048576>
 DEV void vit_stream_project_tiles(const float*in,const float*w,const float*skip,float*out,uint tokens,const uint*reuse_gate){if(reuse_gate&&reuse_gate[0])return;
  constexpr uint IN=1024,OUT=1024;
  uint first=bid()/(OUT/(16*TN))*(16*TM),row=bid()%(OUT/(16*TN))*(16*TN);if(first>=tokens)return;
@@ -30,7 +30,7 @@ DEV void vit_stream_project_tiles(const float*in,const float*w,const float*skip,
  for(uint p=0;p<4;p++){f8 a[TM][TN]{};
   if(!p)
 #pragma unroll
-  for(uint t=0;t<TM;t++)for(uint j=0;j<TN;j++)if(t<live)for(uint e=0;e<8;e++)a[t][j][e]=VIT_FAST_H((ByteSkip?__builtin_amdgcn_cvt_f32_fp8(int(reinterpret_cast<const unsigned char*>(skip)[(first+t*16+gr()*8+e)*OUT+row+j*16+rc()]),0):(HalfSkip?float(reinterpret_cast<const _Float16*>(skip)[(first+t*16+gr()*8+e)*OUT+row+j*16+rc()]):skip[(first+t*16+gr()*8+e)*OUT+row+j*16+rc()]))*w[IN*OUT+row+j*16+rc()]);
+  for(uint t=0;t<TM;t++)for(uint j=0;j<TN;j++)if(t<live)for(uint e=0;e<8;e++)a[t][j][e]=VIT_FAST_H((ByteSkip?__builtin_amdgcn_cvt_f32_fp8(int(reinterpret_cast<const unsigned char*>(skip)[(first+t*16+gr()*8+e)*OUT+row+j*16+rc()]),0):(HalfSkip?float(reinterpret_cast<const _Float16*>(skip)[(first+t*16+gr()*8+e)*OUT+row+j*16+rc()]):skip[(first+t*16+gr()*8+e)*OUT+row+j*16+rc()]))*w[ScaleOffset+row+j*16+rc()]);
   for(uint k=p*(IN/4);k<(p+1)*(IN/4);k+=16){i2 x[TM];
 #pragma unroll
    for(uint t=0;t<TM;t++){x[t]=i2{};if(t<live){if constexpr(ByteAv)__builtin_memcpy(&x[t],reinterpret_cast<const unsigned char*>(in)+(first+t*16+rc())*IN+k+gr()*8,8);else {DF_PACK8_LOOP(x[t],in[(first+t*16+rc())*IN+k+gr()*8+e]);}}}
@@ -232,4 +232,15 @@ KERNEL __attribute__((amdgpu_flat_work_group_size(160,160))) void vit_stream_qkv
  for(uint j=0;j<2;j++)for(uint e=0;e<8;e++){float v=acc[j][e];if(part<2){v*=__builtin_amdgcn_rsqf(maxf(sum[e],6.198883056640625e-5f))*scale;}out[(part*tokens+first+gr()*8+e)*1024+row+j*16+rc()]=byte_F(v);}
 }
 #endif
+#endif
+
+
+// New ABI-name, identical argument layout/math; only scalar tail address differs.
+#if VIT_CONTRACT_BYTE_EDGE && VIT_QKV_F8W
+WAVE void vit_stream_contract_frag_bout_compactw(const float*in,const float*w,const float*skip,float*out,uint tokens,uint inputs,uint outputs,const uint*reuse_gate){if(reuse_gate&&reuse_gate[0])return;if(inputs==4096&&outputs==1024)vit_contract_blocked_body<false,false,false,false,true,true,1048576>(in,w,skip,out,tokens);}
+#endif
+
+
+#if VIT_CONTRACT_BYTE_EDGE && VIT_QKV_F8W
+WAVE void vit_stream_project_n64_bb_compactw(const float*in,const float*w,const float*skip,float*out,uint tokens,uint inputs,uint outputs,const uint*reuse_gate){vit_stream_project_tiles<1,4,true,false,true,262144>(in,w,skip,out,tokens,reuse_gate);}
 #endif
