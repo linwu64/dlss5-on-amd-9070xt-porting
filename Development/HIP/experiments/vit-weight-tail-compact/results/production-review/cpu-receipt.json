@@ -1,0 +1,7 @@
+{
+  "emitted_helpers_on_exit": 0,
+  "emitted_helpers_off_exit": 0,
+  "win64_syntax_handle": 80451,
+  "win64_syntax_exit": 0,
+  "scope": "actual emitted helper methods, CPU API/storage stubs; prepacked bytes test, no quantization/GPU claim; full GPU units and Frame separately passed"
+}

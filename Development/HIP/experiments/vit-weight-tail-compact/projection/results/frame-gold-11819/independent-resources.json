@@ -1,0 +1,32 @@
+{
+  "baseline": {
+    "weights_bytes": 322774824,
+    "pool_bytes": 290571128,
+    "gather_bytes": 5242880,
+    "noise_bytes": 0,
+    "driver_free_bytes": 15961042944,
+    "driver_total_bytes": 17095983104,
+    "not_resident_peak": 1
+  },
+  "candidate": {
+    "weights_bytes": 297609000,
+    "pool_bytes": 290571128,
+    "gather_bytes": 5242880,
+    "noise_bytes": 0,
+    "driver_free_bytes": 15995121664,
+    "driver_total_bytes": 17095983104,
+    "not_resident_peak": 1
+  },
+  "delta_candidate_minus_baseline": {
+    "weights_bytes": -25165824,
+    "pool_bytes": 0,
+    "gather_bytes": 0,
+    "noise_bytes": 0,
+    "driver_free_bytes": 34078720,
+    "driver_total_bytes": 0,
+    "not_resident_peak": 0
+  },
+  "actual_handle": 11819,
+  "actual_exit_code": 0,
+  "scope": "fresh fullFrame 3frames each; contract enabled both arms; extra24MiB packed projection capacity saved, driverfree+32.5MiB separately reported not residency peak; all six HDR outputs exact0900; no timing claim"
+}
