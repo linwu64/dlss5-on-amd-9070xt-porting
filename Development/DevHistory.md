@@ -408,3 +408,7 @@ Bridge公共接口unknown保旧，NativeFrame仅Off且无temporal config/rgb/exp
 ### 2026-10-12：资源后续第二项止负
 
 只将CompactC512Body未用mixed/contract New挪fallback，26032完整Framegold0且48calls/fallback0证明生效；但actual best-fit pool290571128→292742008B反增2.07MiB，driverfree仅+64KiB，未省资源。按门停止、不跑ABBA/不改池，撤回生产候选，仅保实验源码/receipt与失败总账；第一项NeverHistory保留。第三项在本次checkpoint后再开始。
+
+### 2026-10-12：第三项contract活尾紧凑化采纳资源收益
+
+只将原FP8矩阵后F32 scale尾从16MiB偏移搬到4MiB后，新export/带tag buffer成对，缺新Fn/legacy cache/未知selector保旧；单矩阵22077双old双new全gold0。79561八实例完整Frame0900/Auto3/44moduleidentity通过，weights423438120→322774824B净省96MiB，pool290571128/gather5242880同，driverfree+96MiB，非驻留峰值。67984单次ABBA480/arm mean9.65121875→9.642650ms(−8.569µs)，p99−42.690µs，控制漂移+46.1125µs；单max9.924→10.182ms保留，不宣稳定加速。作为资源优化采纳，实验source与原CSV持久，最终生产paired接口/recipe随后统一集成；contract checkpoint后才启动projection。
