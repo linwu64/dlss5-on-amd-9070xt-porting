@@ -1,0 +1,36 @@
+{
+  "candidate_sha256": "761984e781c58f9587a9e6b3432f2b9c6c8713516e441ed21bc0aabdcb67f094",
+  "old_functions": 26,
+  "raw_identical_functions": 23,
+  "style_relocation_only_functions": [
+    "c32_fast_ffn_attention_fused_half_prefix_finish_main8",
+    "c32_wave1_prefix",
+    "c32_wave1_prefix_b8d"
+  ],
+  "style_symbol_old": "0x7e00",
+  "style_symbol_new": "0x8e00",
+  "style_initial_bytes": "0000003c",
+  "new_target_bytes": 10624,
+  "main_TH_changed_word_offsets": [
+    "0x2110",
+    "0x21c8",
+    "0x2280",
+    "0x2338",
+    "0x23f0",
+    "0x24a8",
+    "0x2588",
+    "0x25c4"
+  ],
+  "bit_changed_per_96bit_instruction": 52,
+  "scope_bits_50_51_unchanged": true,
+  "target_other_code_unchanged_except_explained_PC_style_relocation": true,
+  "down_two_stores_unchanged": true,
+  "descriptor_resources_equal_except_entry_address": true,
+  "float_mode": 240,
+  "extra_exports": [
+    "c32_wave1_post_b8_logit",
+    "c32_wave1_post_logit",
+    "c32_wave1_prefix_b8d_main_nt"
+  ],
+  "admission": "PASS for exact real main/down numeric gold; not performance approval"
+}

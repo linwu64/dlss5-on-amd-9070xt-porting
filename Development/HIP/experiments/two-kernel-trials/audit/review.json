@@ -18,7 +18,7 @@
       "FP8/F16/F32 arithmetic and output layout"
     ],
     "required_ISA_gate": "Prove V alone skips final rendezvous; preserve or independently prove equivalent last LDS/load/WMMA hazards, QK synchronization and resource metadata. Source line removal is insufficient.",
-    "numeric_and_performance_admission": "pending actual artifact and gates",
+    "numeric_and_performance_admission": "Correctness PASS; STOP because stable performance benefit unproven",
     "ISA_admission": "PASS for real numeric unit; not yet numeric/performance approval",
     "actual_compile_handle": 8218,
     "actual_compile_exit_code": 0,
@@ -77,7 +77,85 @@
     "production": "No shared or production source applied; current da1b original export unchanged"
   },
   "TH": {
-    "admission": "May begin only after this V STOP checkpoint; offline source preparation already permitted",
-    "allowed_scope": "arg4 main eight stores only; arg5 down unchanged; no scope/fence/value/vector-width changes"
-  }
+    "admission": "Source/ISA/unit/full Auto Frame correctness PASS; performance STOP",
+    "allowed_scope": "arg4 main eight stores only; arg5 down unchanged; no scope/fence/value/vector-width changes",
+    "actual_CPU_compile_case": 91436,
+    "actual_CPU_compile_exit_code": 0,
+    "candidate_sha256": "761984e781c58f9587a9e6b3432f2b9c6c8713516e441ed21bc0aabdcb67f094",
+    "ISA_receipt": "nt-isa.json",
+    "actual_metadata": {
+      "kernarg_bytes": 76,
+      "kernarg_alignment": 8,
+      "workgroup_threads": 32,
+      "wave_size": 32,
+      "LDS_bytes": 4096,
+      "VGPRs": 128,
+      "SGPRs": 48,
+      "private_bytes": 0,
+      "spills": 0,
+      "float_mode": 240
+    },
+    "numeric_runner_source": "PASS: capture4669 actual1152 typed spans/scalars, 2old2new fullmain70778880/down17694720 with repeat/finite/canaries; style1/128 before both module loads; history alias input ignored under temporal0",
+    "production_route_requirement": "Sidecar only new main-NT function; never replace c32 module or use unrelated extra post-logit exports; retain old on unknown/missing/ineligible",
+    "unit": {
+      "actual_handle": 18221,
+      "actual_exit_code": 0,
+      "complete_outputs": 8,
+      "main_bytes": 70778880,
+      "down_bytes": 17694720,
+      "main_sha256": "170b59906259c0417d21869b7b46bd35661096f5af02b3a0dd4042d3ad985d5b",
+      "down_sha256": "0417a910ee1d544c464115d3112d04b80c99ae92937ce66279718c592e171973",
+      "byte_nonfinite_canary_differences": 0
+    },
+    "superseded_host_gate": {
+      "actual_handle": 68401,
+      "wrapper_exit_code": 1,
+      "children_exit_code": 0,
+      "reason": "Readiness guard rejected default encoded_style=-1; candidate calls0/stock3. NT was not exercised; not a kernel correctness failure."
+    },
+    "style_fix": "Accept -1 unset-override sentinel OR explicit1/128 under verified identical stock/candidate default globals0000003c. Sentinel retains compiled feature; never means network feature -1. Modes0/2 remain excluded.",
+    "valid_frame_gold": {
+      "actual_handle": 79532,
+      "actual_exit_code": 0,
+      "frames_per_arm": 3,
+      "candidate_calls": 3,
+      "candidate_stock_calls": 0,
+      "baseline_candidate_calls": 0,
+      "baseline_stock_calls": 3,
+      "raw_gold": "0900",
+      "Auto_accepted": 3,
+      "reject_mask": 0,
+      "PDL_calls": 0,
+      "weights_bytes": 297609000,
+      "history_bytes": 0,
+      "module_identity_files": 44
+    },
+    "frame_ABBA": {
+      "actual_handle": 89008,
+      "actual_exit_code": 0,
+      "frames_per_slot": 320,
+      "discard_per_slot": 80,
+      "edge_gold_checks": 8,
+      "slot_wall_mean_ms": [
+        9.643316666666667,
+        9.640095833333334,
+        9.671225,
+        9.669725
+      ],
+      "pooled_mean_delta_us": -0.8604166666668078,
+      "p99_delta_us": -20.479999999999166,
+      "control_drift_us": 26.40833333333248,
+      "same_executable": true,
+      "memory_report": 0,
+      "Auto_accepted_each": 320,
+      "reject_mask": 0,
+      "PDL_calls": 0,
+      "actual_candidate_or_stock_calls_each": 320,
+      "module_identity_files": 44
+    },
+    "probe_boundary": "Actual GAME_PROBE0/HIP_INPUT_POLL0; true DLSS5_NET_TIMING and DLSS5_HIP_SPAN_PROBE absent after child clears NR_/DLSS5_/SP_, therefore source defaultfalse. Explicit HIP_NET_TIMING/HIP_NET_SPAN are unused aliases, not evidence. Auto accepted/reject0 confirms intended path. No rerun required.",
+    "decision": "STOP: mean -0.860us below26.408us control drift; B2 slower than A2, no consistent benefit. No TH sweep/retry/production integration.",
+    "production": "Shared hip/src/hip_reference_network/bridge source remains identical to79599997; private sidecar only, no rollback or deployment."
+  },
+  "evidence_root": "../measurement/results/"
 }
