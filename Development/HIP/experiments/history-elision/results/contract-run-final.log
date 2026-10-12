@@ -1,0 +1,10 @@
+REJECT temporal history not available in this bridge session
+REJECT direct-after-never direct history must precede Create
+REJECT aux-after-never post auxiliary history request contract
+REJECT record-input history not available in this bridge session
+REJECT recorded-execution history not available in this bridge session
+REJECT enqueue history not available in this bridge session
+REJECT experimental-create never-history initialization conflict
+REJECT never-after-direct never history must precede Create without history requests
+REJECT never-after-aux never history must precede Create without history requests
+PASS CPU_ONLY EMPTY_RESOURCE_DESTRUCTION

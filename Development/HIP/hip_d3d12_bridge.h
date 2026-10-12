@@ -24,7 +24,7 @@ class D3D12Bridge {
  size_t zero_upload_bytes{};bool clear_submission_unconfirmed{};
  /* Direct input (2026-09-28): the host producer writes the network input straight into the shared buffer (UAV) and leaves it in
     COMMON; RecordInput then skips the 35 MB D3D12 copy. Requested before Create; the bytes the network reads are unchanged. */
- bool direct_input{},direct_history{};std::vector<float> post_auxiliary_row;
+ bool direct_input{},direct_history{},never_history{};unsigned shared_created{},shared_imported{},shared_pool_hits{};std::vector<float> post_auxiliary_row;
  using PassthroughCopyFn=int(*)(void*,size_t,const void*,size_t,size_t,size_t,int,Handle);
  PassthroughCopyFn passthrough_copy{};void*passthrough_rgb{};unsigned long long passthrough_queued{};
  Handle release_mark{};bool release_marker_requested{};unsigned long long release_marks{},release_mark_failures{};
@@ -150,14 +150,14 @@ private:
  static std::vector<PoolEntry>&Pool(){static std::vector<PoolEntry> v;return v;}
  static bool PoolEnabled(){const char*v=std::getenv("DLSS5_HIP_SHARED_POOL");return !(v&&!strcmp(v,"0"));}
  void Share(Shared&s,size_t bytes,bool uav=false){
-  if(PoolEnabled()){std::lock_guard<std::mutex> lock(PoolMutex());for(auto&e:Pool())if(!e.busy&&e.device==device&&e.bytes==bytes&&e.uav==uav){e.busy=true;s=e.shared;return;}}
+  if(PoolEnabled()){std::lock_guard<std::mutex> lock(PoolMutex());for(auto&e:Pool())if(!e.busy&&e.device==device&&e.bytes==bytes&&e.uav==uav){e.busy=true;s=e.shared;++shared_pool_hits;return;}}
   ShareNew(s,bytes,uav);
   if(PoolEnabled()){std::lock_guard<std::mutex> lock(PoolMutex());Pool().push_back({device,bytes,uav,true,s});}
  }
  void ShareNew(Shared&s,size_t bytes,bool uav){
   auto&api=network->Runtime();D3D12_HEAP_PROPERTIES hp{};hp.Type=D3D12_HEAP_TYPE_DEFAULT;D3D12_RESOURCE_DESC rd{};rd.Dimension=D3D12_RESOURCE_DIMENSION_BUFFER;rd.Width=bytes;rd.Height=1;rd.DepthOrArraySize=rd.MipLevels=1;rd.SampleDesc.Count=1;rd.Layout=D3D12_TEXTURE_LAYOUT_ROW_MAJOR;rd.Flags=uav?D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS:D3D12_RESOURCE_FLAG_NONE;
-  Check(device->CreateCommittedResource(&hp,D3D12_HEAP_FLAG_SHARED,&rd,D3D12_RESOURCE_STATE_COMMON,nullptr,IID_PPV_ARGS(&s.resource)),"shared buffer");Check(device->CreateSharedHandle(s.resource,nullptr,GENERIC_ALL,nullptr,&s.handle),"buffer handle");
-  hip_probe::MemoryDesc md{};md.type=5;md.handle.win32.handle=s.handle;md.size=device->GetResourceAllocationInfo(0,1,&rd).SizeInBytes;md.flags=1;api.Check(api.hipImportExternalMemory(&s.imported,&md),"import D3D12 resource");hip_probe::BufferDesc bd{};bd.size=bytes;api.Check(api.hipExternalMemoryGetMappedBuffer(&s.mapped,s.imported,&bd),"map shared resource");
+  Check(device->CreateCommittedResource(&hp,D3D12_HEAP_FLAG_SHARED,&rd,D3D12_RESOURCE_STATE_COMMON,nullptr,IID_PPV_ARGS(&s.resource)),"shared buffer");++shared_created;Check(device->CreateSharedHandle(s.resource,nullptr,GENERIC_ALL,nullptr,&s.handle),"buffer handle");
+  hip_probe::MemoryDesc md{};md.type=5;md.handle.win32.handle=s.handle;md.size=device->GetResourceAllocationInfo(0,1,&rd).SizeInBytes;md.flags=1;api.Check(api.hipImportExternalMemory(&s.imported,&md),"import D3D12 resource");++shared_imported;hip_probe::BufferDesc bd{};bd.size=bytes;api.Check(api.hipExternalMemoryGetMappedBuffer(&s.mapped,s.imported,&bd),"map shared resource");
  }
  void Release(Shared&s){
   if(s.resource&&PoolEnabled()){std::lock_guard<std::mutex> lock(PoolMutex());for(auto&e:Pool())if(e.shared.resource==s.resource){e.busy=false;s={};return;}}
@@ -204,6 +204,7 @@ public:
   if(fence_handle)CloseHandle(fence_handle);if(event)CloseHandle(event);if(fence)fence->Release();if(queue)queue->Release();if(device)device->Release();
  }
  void Create(ID3D12CommandQueue*q,Options options,const std::vector<float>&noise){
+  if(never_history&&(direct_history||!post_auxiliary_row.empty()||options.experimental_temporal))throw std::runtime_error("never-history initialization conflict");
   if(network||queue||!q)throw std::runtime_error("bridge already initialized/invalid queue");if(q->GetDesc().Type!=D3D12_COMMAND_LIST_TYPE_DIRECT&&q->GetDesc().Type!=D3D12_COMMAND_LIST_TYPE_COMPUTE)throw std::runtime_error("bridge requires DIRECT or COMPUTE queue");queue=q;queue->AddRef();Check(q->GetDevice(IID_PPV_ARGS(&device)),"queue device");pixels=size_t(options.width)*options.height;
   options.pooled=true;options.profile=false;options.dump_dir.clear();
   // Pick the HIP device that is the game's D3D12 adapter. Hosts with an iGPU or a second card expose several HIP devices
@@ -224,7 +225,7 @@ probe.Check(probe.hipSetDevice(chosen),"select device");size_t total=0;if(probe.
   network=new Network(std::move(options));auto&api=network->Runtime();
   if((direct_history||!post_auxiliary_row.empty())&&network->ExperimentalTemporalConfigured())throw std::runtime_error("direct history/auxiliary output cannot use experimental temporal layout");
   if(!post_auxiliary_row.empty()&&!network->NativeHistorySupported())throw std::runtime_error("auxiliary post unsupported network");
-  Share(input,pixels*16,direct_input);Share(history,pixels*16,direct_history);Share(output,pixels*(post_auxiliary_row.empty()?12:20),true);
+  Share(input,pixels*16,direct_input);if(!never_history)Share(history,pixels*16,direct_history);Share(output,pixels*(post_auxiliary_row.empty()?12:20),true);
   if(!post_auxiliary_row.empty())network->EnableNativePostHistory(post_auxiliary_row,{static_cast<char*>(output.mapped)+pixels*12,pixels*8,network->W,network->H,8});
   Check(device->CreateFence(0,D3D12_FENCE_FLAG_SHARED,IID_PPV_ARGS(&fence)),"shared fence");Check(device->CreateSharedHandle(fence,nullptr,GENERIC_ALL,nullptr,&fence_handle),"fence handle");hip_probe::SemaphoreDesc sd{};sd.type=4;sd.handle.win32.handle=fence_handle;api.Check(api.hipImportExternalSemaphore(&semaphore,&sd),"import fence");event=CreateEventW(nullptr,FALSE,FALSE,nullptr);if(!event)throw std::runtime_error("bridge completion event");if(const char*v=std::getenv("DLSS5_HIP_SPAN_PROBE"))span_probe=!strcmp(v,"1");if(span_probe){api.Check(api.hipEventCreate(&span_begin),"span begin event");api.Check(api.hipEventCreate(&span_end),"span end event");fprintf(stderr,"hip_span probe enabled\n");}if(release_marker_requested)api.Check(api.hipEventCreate(&release_mark),"release marker event");network->SetNoise(noise);
   {const char*v=std::getenv("DLSS5_HIP_POST_SIGNAL_QUERY");if(!(v&&!strcmp(v,"0")))post_query=reinterpret_cast<EventQueryFn>(GetProcAddress(api.dll,"hipStreamQuery"));}
@@ -247,10 +248,12 @@ probe.Check(probe.hipSetDevice(chosen),"select device");size_t total=0;if(probe.
  unsigned long long ReleaseMarks()const{return release_marks;}
  unsigned long long ReleaseMarkFailures()const{return release_mark_failures;}
  unsigned long long HipPassthroughQueued()const{return passthrough_queued;}
- void RequestDirectHistory(){if(network||queue)throw std::runtime_error("direct history must precede Create");direct_history=true;}
+ void RequestNeverHistory(){if(network||queue||direct_history||!post_auxiliary_row.empty())throw std::runtime_error("never history must precede Create without history requests");never_history=true;}
+ void RequireHistory(bool requested)const{if(requested&&(never_history||!history.resource||!history.mapped))throw std::runtime_error("history not available in this bridge session");}
+ void RequestDirectHistory(){if(never_history||network||queue)throw std::runtime_error("direct history must precede Create");direct_history=true;}
  ID3D12Resource*DirectHistory()const{return direct_history?history.resource:nullptr;}
  void RequestPostAuxiliary(const std::vector<float>&row){
-  if(network||queue||row.size()!=32)throw std::runtime_error("post auxiliary request contract");
+  if(never_history||network||queue||row.size()!=32)throw std::runtime_error("post auxiliary history request contract");
   for(float v:row)if(!std::isfinite(v))throw std::runtime_error("post auxiliary nonfinite weight");
   post_auxiliary_row=row;
  }
@@ -259,7 +262,8 @@ probe.Check(probe.hipSetDevice(chosen),"select device");size_t total=0;if(probe.
  void SetAdaptiveReuseAllowed(bool allowed){Require(Phase::Ready);network->SetAdaptiveReuseAllowed(allowed);}
 
  size_t free_at_create{};int hip_device=-1;/* HIP device index chosen for the D3D12 adapter */
- void MemoryReport(FILE*f){if(!network)return;network->Runtime().hipStreamSynchronize(network->Stream());std::fprintf(f,"hip_memory device_free_before_network_MiB=%.1f shared input_MiB=%.1f history_MiB=%.1f output_MiB=%.1f\n",free_at_create/1048576.,pixels*16/1048576.,pixels*16/1048576.,pixels*12/1048576.);network->MemoryReport(f);}
+ static UINT64 SharedBytes(const Shared&s){return s.resource?s.resource->GetDesc().Width:0;}
+ void MemoryReport(FILE*f){if(!network)return;network->Runtime().hipStreamSynchronize(network->Stream());std::fprintf(f,"hip_memory device_free_before_network_MiB=%.1f shared input_MiB=%.1f history_MiB=%.1f output_MiB=%.1f\n",free_at_create/1048576.,SharedBytes(input)/1048576.,SharedBytes(history)/1048576.,SharedBytes(output)/1048576.);std::fprintf(f,"hip_bridge_resources never_history=%u input_bytes=%llu history_bytes=%llu output_bytes=%llu created=%u imported=%u pool_hits=%u pool_enabled=%u scope=this_bridge_not_process_residency\n",unsigned(never_history),(unsigned long long)SharedBytes(input),(unsigned long long)SharedBytes(history),(unsigned long long)SharedBytes(output),shared_created,shared_imported,shared_pool_hits,unsigned(PoolEnabled()));network->MemoryReport(f);}
  bool PdlRequested()const{return network?network->PdlRequested():false;}
  bool PdlEffective()const{return network?network->PdlEffective():false;}
  std::string PdlReason()const{return network?network->PdlReason():"bridge uninitialized";}
@@ -274,7 +278,7 @@ private:
   ID3D12Device*owner{};Check(c->GetDevice(IID_PPV_ARGS(&owner)),"command list device");bool same=NativeSameDevice(owner,device);owner->Release();if(!same)throw std::runtime_error("bridge command list device mismatch");
  }
  void RecordInput(ID3D12GraphicsCommandList*c,ID3D12Resource*rgba,ID3D12Resource*temporal,bool external){
-  Require(Phase::Ready);if(external&&network->GraphEnabled())throw std::runtime_error("staged bridge requires HIP graph off");ListContract(c);InputContract(rgba);if(temporal)InputContract(temporal,network->ExperimentalTemporalConfigured()?8:16);
+  RequireHistory(temporal!=nullptr);Require(Phase::Ready);if(external&&network->GraphEnabled())throw std::runtime_error("staged bridge requires HIP graph off");ListContract(c);InputContract(rgba);if(temporal)InputContract(temporal,network->ExperimentalTemporalConfigured()?8:16);
   phase=Phase::InputRecorded;recorded_temporal=temporal!=nullptr;
   try{
    auto copy=[&](ID3D12Resource*src,Shared&dst,size_t bytes_per_pixel=16){Barrier(c,src,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,D3D12_RESOURCE_STATE_COPY_SOURCE);Barrier(c,dst.resource,D3D12_RESOURCE_STATE_COMMON,D3D12_RESOURCE_STATE_COPY_DEST);c->CopyBufferRegion(dst.resource,0,src,0,pixels*bytes_per_pixel);Barrier(c,dst.resource,D3D12_RESOURCE_STATE_COPY_DEST,D3D12_RESOURCE_STATE_COMMON);Barrier(c,src,D3D12_RESOURCE_STATE_COPY_SOURCE,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);};
@@ -283,6 +287,7 @@ private:
   }catch(...){failed=true;throw;}
  }
  void Enqueue(ID3D12CommandQueue*producer,U seed,bool temporal,bool external,bool hip_passthrough=false){
+  RequireHistory(temporal);
   if(!network||failed)throw std::runtime_error("bridge unavailable");
   const bool output_recorded=phase==Phase::OutputRecordedPendingHip;
   if(phase!=Phase::InputRecorded&&!output_recorded)throw std::runtime_error("bridge stage order");
@@ -355,6 +360,7 @@ public:
  // BEFORE submitting the producer, order it after the previous actual consumer,
  // including executions on another same-device queue. Never wait on the CPU here.
  void BeginRecordedExecution(ID3D12CommandQueue*actual,bool temporal=false){
+  RequireHistory(temporal);
   if(!recording_leases||recording_active||recording_submission_unconfirmed)throw std::runtime_error("recording execution unavailable");
   Require(Phase::Ready);
   if(!actual||actual->GetDesc().Type!=queue->GetDesc().Type)throw std::runtime_error("recording queue type mismatch");

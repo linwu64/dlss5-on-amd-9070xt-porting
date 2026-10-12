@@ -1,0 +1,20 @@
+{
+  "base_commit": "ec0a2e997f156fadf0d48a141ef2c06739d6a183",
+  "final_cpu_compile_handle": 66039,
+  "final_cpu_compile_exit_code": 0,
+  "formal_o2_addon_sha256": "7011d246d6ca394b4fb8438f49352cf59230458623534f497575b0d79d7070ab",
+  "contract_exe_sha256": "06730011b654f65b88b0aacc5be7f0925cb0f7ab63db72a2b51805afb9b107b2",
+  "contract_actual_command": "ssh amd9070 D:/DLSSNR-Lab/history-elision-20261012/contract.exe",
+  "contract_actual_receipt_chunk": "7c4167",
+  "contract_actual_exit_code": 0,
+  "contract_scope": "CPU-only; no D3D device creation, HIP runtime loading or dispatch; nine rejection paths and empty-resource destruction",
+  "superseded_contract": "Initial check expected history substring but old auxiliary error said post auxiliary request contract; failed before PASS, corrected error text and reran final CPU fixture. No device used.",
+  "source_sha256": {
+    "Development/HIP/hip_d3d12_bridge.h": "321f28706082eea658958eaddc79ac68214f28de50897a334acf1cdabc5363b8",
+    "src/native_hip_network.h": "57e3617d8af99e1350f3d8dba0e7752d21fd89bcad3fdc0feb77166991370db6",
+    "src/native_game_frame.h": "a4ae62a01257cdf83a335e6edfb13a11360bbb8bd64e181a2aeb3ffe6227e048",
+    "Development/HIP/experiments/history-elision/contract.cpp": "16c2002023ff42951b8a642ef8a63ea3dc7848e4f8288f45082e8c5a6685467b"
+  },
+  "actual_gpu_resource_or_numeric_pass": false,
+  "stages_2_3_modified": false
+}

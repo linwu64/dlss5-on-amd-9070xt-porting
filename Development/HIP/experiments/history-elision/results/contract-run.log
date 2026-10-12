@@ -1,0 +1,3 @@
+REJECT temporal history not available in this bridge session
+REJECT direct-after-never direct history must precede Create
+post auxiliary request contract
