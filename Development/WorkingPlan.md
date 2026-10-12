@@ -1,6 +1,6 @@
 # 当前工作计划
 
-更新：2026-10-12。本轮三项已结题，源码、构建与数值证据交付完成；没有下一项优化或GPU排队。起点 `abacaaed`（`5574d8db`试用、`1b4c898f`此前expand紧凑源码），计划 `ec0a2e99`，持久实验树 `/home/lmxxf/work/dlss5-resource-followups`。历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-12。当前生产源码 `20fa6b93`，资源三项已结题；游戏仍是已安装64dc/MODE0/MP1/1x。**本次只更新计划，后续测量、实验和实现均未启动，没有GPU排队。** 前轮起点 `abacaaed`、计划 `ec0a2e99`，持久实验树 `/home/lmxxf/work/dlss5-resource-followups`。历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
 
 ## 三项最终裁决
 
@@ -12,7 +12,21 @@
 
 - 默认内部紧凑开关只在已审gfx1201/RX9070XT、1152固定profile及正确byte-edge消费者生效；未知selector、自定义模块、缺新export/已有legacy cache保持旧buffer+旧kernel成对，gfx1200保旧，不宣双架构实机验证。官方既有vit_stream recipe自然构建两newexport，不增加永久模块或用户配置。
 - 最终正式Frame宿主O2 99541=0、addonO2 30670=0，jointCOMGR94285=0；旧86个及两accepted候选87个函数对joint均逐原始函数字节一致。实际emitted helper CPU default1/off/unknown/cache/layout兼容门通过；正式66725全帧firstlast0900/finite/Auto3/原模块身份与旧模块fallback通过。证据索引 [resource-followups](HIP/experiments/resource-followups/README.md)。
-- **游戏里仍是已安装64dc/原MODE0/MP1/1x，正式0.41不变。本次33.75MiB共享资源与新增120MiB权重减少尚未部署到游戏，未push。** 先前expand已省96MiB包含在本轮基线中，不能重复报作新收益；用户58.2fps是此前现场观察，不是这些新改动的性能证据。分配宽度、driverfree快照、驻留峰值严格分列，三轮性能不相加。
+- **游戏里仍是已安装64dc/原MODE0/MP1/1x，正式0.41不变。本次33.75MiB共享资源与新增120MiB权重减少尚未部署到游戏，未push。两类分配宽度相加153.75MiB，不能称驻留峰值减少，也没有可靠加速结论。** 先前expand已省96MiB包含在本轮基线中，不能重复报作新收益；用户58.2fps是此前现场观察，不是这些新改动的性能证据。分配宽度、driverfree快照、驻留峰值严格分列，三轮性能不相加。
+
+## 下一步优先级：先确认真实生产瓶颈
+
+1. **优先当前MODE0、真实Auto2下的低扰动时间线。** 现有profile/dup/wall_profile及HIP timing/span开关会禁用Auto，旧家族表也不是当前热点图；不能把换路径后的排名直接用于生产决策。先验证测量前后模块/数学/提交路径一致、Auto accepted/PDL实际计数一致，再做同路径A/A检查测量干扰，不承诺零扰动。若测量改变路径或干扰无法区分，停止归因，不据此提出优化收益。
+2. **据CPU提交、GPU空档和阶段分布只选一刀。** 先分清CPU喂队列是否真在关键路径，再看主要GPU阶段；没有可辨GPU空档就停止host提交优化假设。当前没有获准立即编码的默认MODE0新候选，不重开tile-ready、QKV宽写、graph替换Auto、NoHi或D3D12全移植负账。
+3. **MODE2/3两外层Flush仅作后备待测线索。** 默认MODE0不走它们；Prepare的retirement、常量buffer与descriptor寿命必须保留，不能直接删Flush或算作MODE0可省耗时。先有该模式真实时间线与生命周期证据再决定，不排实现。
+
+### 鸠建议：只列待查边界，不排GPU
+
+- **Non-temporal存储：** 只审低复用末端输出；马上被消费的中间量不盲目旁路缓存。TH不是保证绕过L2；旧decoder“NT”指tile数，不是non-temporal，不能误写成这条路线已失败。
+- **Split signal/wait：** 先找得到可插入的具体独立计算；leave不是arrive，且不能替代LDS数据完成所需的wait。没有独立工作与同步证明就不改。
+- **原生FP8：** 当前已大量使用；只做反汇编漏网审计，不从此直接跳到手写汇编重写或虚构收益。
+- **Lower occupancy：** C512_MIX与VIT_CONTRACT_OCC_LDS4096已有采纳，不能换名重复；wave宽度不等于驻留数量，需实际资源/关键路径新证据。
+- **多stream：** stream不保证独立ACE。未找到具体无依赖且处于关键路径的工作前，不排多流实现。
 
 ## 固定工作规矩
 
@@ -25,7 +39,7 @@
 
 - 正式0.41、tag `523723fd`、三个已上传ZIP及镜像不变；载荷源码标记 `ab8e3e82`。发布默认单遍，预测仅3x选项执行两遍+预测第三，肤色保护默认off。正式包38模块/架构、76总计，与后续本机开发载荷分开。
 - 0.41后三项（final RGB免copy、block4 pool字节边、真实1440 FAST3 SP）已按各自scope完成，不跨批相加FPS；H900原布局normhoist只限已验900范围，1152尾负不启；单timed Auto提交marker已接受，不能拿pulseoff当当前APP基线。
-- 当前剑星已按用户要求恢复 **MODE0/MP1/PRED0/SKIN0**，增强strength1保留但MODE0不用；最后已核addon `9413682f`、79模块与配置恢复回执见 `results/stellar-mode0-restore-20261011/`。用户观察MODE3约54fps、MODE0约58上下，非同场景ABBA，不当定量算法成本。鬼武者此前MODE1/MP1及其独立配置本轮不改，当前实际运行状态须操作前重查。
+- 当前剑星保持 **MODE0/MP1/PRED0/SKIN0/1x**，已核安装addon `64dc04286c22d5d3…`，79模块/Runtime与配置未改，见 `results/stellar-compact-trial-20261012/`。`9413682f`只是10-11恢复时的历史载荷，见 `results/stellar-mode0-restore-20261011/`。用户最新观察静态58.2fps，旧MODE3约54fps与MODE0约58上下均非同场景ABBA，不归出精确算法收益。鬼武者此前MODE1/MP1及独立配置本次不改，实际运行状态仍须操作前重查。
 - MODE3同NN/samecodec旧HDR菜单说明修正幅度+45.2%、局部反差/颜色可辨，未证新细节/画质改善；用户未保留。skin启发式保护亦用户关闭，YuNet只单菜单demo；人物保护模型调研未选型/未游戏集成，不能列已验证小脸方案。
 - ViT tile-ready `0431ba0e`已STOP：真实矩阵overlap且pair byte0，但公平GPU70.043→95.770µs、wall106.475→141.603µs，不整帧/不续变体。QKV宽尾、graph替换真实Auto产品等负账直接检索总账，不换名重复。
 - current71 nativeD3D12独立分支 `b834a93f`受控185端点+final+poison全0，但GPU301–304ms对HIP约9.2ms，约33倍慢；不重启全移植，不把globalUAV桥成本归API固有差。未部署游戏。
@@ -34,12 +48,12 @@
 ## 仍未完成的其他主线（本轮不扩大）
 
 1. **真实房顶闪烁/时序质量**：拍屏111.mp4不能替代原始连续color/MV/depth/jitter/exposure/reset。原history HALF4合同、RTZ/内部blend与受控工具链已取证，真实反光/遮挡/拖影是否改善仍未验证；不继续synthetic代真实场景，不把跳ViT删反光当无损修复。0.41-a临时历史试验默认off，正式0.41不动；资产/试包状态以各receipt为准，不沿旧“正在构建”文案。
-2. **mochi差距**：旧锁定同1088/full71对照仍有约1ms量级差，但各自noise/数学/plan/输入输出边界必须分列；a9b13dd ACO同时改Linux shader、TCHAIN/weight plan，其5.7ms不是HIP换compiler可得。未有值得立即编码的泛“融合/地址外提”新刀，本轮资源三项已结题；未追加新的实现任务。
+2. **mochi差距**：旧锁定同1088/full71对照曾有约1ms量级差，但各自noise/数学/plan/输入输出边界必须分列；a9b13dd ACO同时改Linux shader、TCHAIN/weight plan，其5.7ms不是HIP换compiler可得。未有值得立即编码的泛“融合/地址外提”新刀，本轮资源三项已结题；未追加新的实现任务。
 3. **人物保护**：正常游玩小脸/脸颈一致需求保留。整人mask模型离线真游戏集、多人/遮挡/边界/时域稳定与AMD互操作成本均未验证；face parser只是第二阶段，RVM/SAM仅参考，不本轮装模型/改游戏。
 4. 真实新硬件/gfx1200/game/MP3/history组合及未验导出不借其它shape门；接口源码审、单图demo或部署成功均不当性能/观感完成。需要这些现实输入时再按用户范围安排，本轮没有为此追加实验。
 
 ## 2026-10-12 本机试用更新
 
-剑星已按授权安装紧凑权重正式O2 addon `64dc04286c22d5d3…`（源码 `1b4c898f`，部署57883 exit0）；MODE0/MP1/PRED0/SKIN0及其他配置字节不变，模块/Runtime不变。用户可启动试用；游戏观感/帧率尚未测，不当新发版。回执与回滚：`results/stellar-compact-trial-20261012/`。
+剑星已按授权安装紧凑权重正式O2 addon `64dc04286c22d5d3…`（源码 `1b4c898f`，部署57883 exit0）；MODE0/MP1/PRED0/SKIN0及其他配置字节不变，模块/Runtime不变。用户已实玩并反馈静态58.2fps；无旧版同场景严格对照，不当ABBA或新发版。回执与回滚：`results/stellar-compact-trial-20261012/`。
 
 - 2026-10-12 12:54 用户反馈“有提升”，通过Splashtop玩剑星，用户原称“2k AA(1080P dlss5) exact”，静态画面稳定58.2帧；对应addon `64dc04286c22d5d3…`，MODE0/1x设置未改。属实玩观察，旧版无同场景精确对照，不报精确增幅。
