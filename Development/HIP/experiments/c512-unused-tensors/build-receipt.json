@@ -1,0 +1,9 @@
+{
+  "actual_handle": 47203,
+  "actual_exit_code": 0,
+  "build": "formal scripts/build-addon.sh --hip O2; existing MinHook/ReShade dependencies",
+  "addon_sha256": "58c8709608df15b98ec31b869efb7b25d0130aee83fd339ee03274c87522b24f",
+  "source_sha256": "f4baf4b2c3f07a05f1ea02e0c165ac88cd12dbdba8097b94ad675d3e6bda0d72",
+  "gpu_or_game_used": false,
+  "actual_frame_gates_pending": true
+}
