@@ -1,0 +1,20 @@
+{
+  "actual_handle": 22077,
+  "actual_exit_code": 0,
+  "lock_released": true,
+  "numerical_pass": true,
+  "byte_differences": 0,
+  "nonfinite": 0,
+  "tail_guard_diff": 0,
+  "outputs": 4,
+  "logical_bytes_each": 655360,
+  "shape": [
+    640,
+    4096,
+    1024
+  ],
+  "module_sha256": "14facdb57be7b3864b913a99ebe42604c9add4ed4f8bf032b2b04235897ec83f",
+  "scope": "single real captured contract matrix, not complete Frame / eight allocations / performance",
+  "same_exe_frame_cpu_handle": 31435,
+  "same_exe_frame_cpu_exit_code": 0
+}

@@ -1,0 +1,58 @@
+{
+  "scope": "real640 contract only; unchanged FP8 prefix and F32 scales; original877e/new sidecar only export",
+  "args": [
+    "inputFP8",
+    "weight",
+    "skipF32",
+    "outputFP8",
+    640,
+    4096,
+    1024,
+    null
+  ],
+  "kernarg_bytes": 56,
+  "grid": 640,
+  "threads": 32,
+  "files": [
+    {
+      "file": "unit.exe",
+      "bytes": 2389805,
+      "sha256": "9dc7cd1fdb304b3d70b1dd738768c27b0562c0d712f8e4b05dcdc14abe662742"
+    },
+    {
+      "file": "contract-compact.hsaco",
+      "bytes": 667248,
+      "sha256": "14facdb57be7b3864b913a99ebe42604c9add4ed4f8bf032b2b04235897ec83f"
+    },
+    {
+      "file": "canonical.hsaco",
+      "bytes": 658952,
+      "sha256": "877eaf122f827af6e00824582f5ca918b5d61499d4ad7c7cde7ab6e422516a57"
+    },
+    {
+      "file": "run-unit.ps1",
+      "bytes": 2965,
+      "sha256": "a27dc574ffa9499539b3219dba3cc5115b1f4114ad27ace50463f2f9db7551f3"
+    },
+    {
+      "file": "input.bin",
+      "bytes": 2621440,
+      "sha256": "4f48d3e261e92b62ed7ad51f131b342c4b4b96df690de016f93f559abeb0647c"
+    },
+    {
+      "file": "weight.bin",
+      "bytes": 16781312,
+      "sha256": "f53f976c6bb9e2be87c361c45503e2fe63106202baf104a8dcaa06973c0800e3"
+    },
+    {
+      "file": "skip.bin",
+      "bytes": 2621440,
+      "sha256": "4afe82b76575a1560610c2a01c9c2384681a26ef7b13a95dbdb2cd106fd468c9"
+    },
+    {
+      "file": "gold.bin",
+      "bytes": 655360,
+      "sha256": "72f2dceb664db4cb962652231790e1fcffa3cd732b151ecada76b92ac1069c64"
+    }
+  ]
+}

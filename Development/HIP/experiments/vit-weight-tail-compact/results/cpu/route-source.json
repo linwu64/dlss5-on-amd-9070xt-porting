@@ -1,0 +1,6 @@
+{
+  "base_sha256": "8a82149abf1e29c88cfff36159ecc4060ddfe4b31aa0762f9527fcf08e306142",
+  "private_sha256": "df0fd26b02cea59bcba96d3f696dd7227aa91ceb8a4bd050cfc4601c03ba61bc",
+  "scope": "only contract byte edge; cold SHA/export guard; legacy pointer stays legacy function",
+  "candidate_sha256": "14facdb57be7b3864b913a99ebe42604c9add4ed4f8bf032b2b04235897ec83f"
+}

@@ -1,0 +1,22 @@
+{
+  "weight_file": "/home/lmxxf/work/dlss5-dx12-recovery/vit/linear-inputs/vit_stream_contract_frag_bout-arg1.bin",
+  "old_bytes": 16781312,
+  "new_bytes": 4198400,
+  "bytes_saved_per_matrix": 12582912,
+  "old_sha256": "f53f976c6bb9e2be87c361c45503e2fe63106202baf104a8dcaa06973c0800e3",
+  "new_sha256": "87c629dc4dd572f6e1ed1896f9b3ec5b929465d407d532c7cd56ae1757bcf9fb",
+  "matrix_sha256": "c6fa10ff310d27f06017f2365c46555fee8d83de45199ae02a26b2a9df975edb",
+  "tail_sha256": "90cddb7cafe8c51d092e5de52a6395aaaffdd6a7bb6c8dc5543c9c08add67858",
+  "all4194304matrix_addresses_bijection": true,
+  "matrix_byte_differences": 0,
+  "F32tail_byte_differences": 0,
+  "inverse_all_live_byte_differences": 0,
+  "old_scale_float_index": 4194304,
+  "new_scale_float_index": 1048576,
+  "max_new_matrix_byte": 4194303,
+  "max_new_scale_byte": 4198399,
+  "weight_addresses_independent_of_tokens": true,
+  "no_float_conversion_or_quantization": true,
+  "numeric_hardware_pass": false,
+  "hypothetical_eight_matrix_capacity_savings_bytes": 100663296
+}
