@@ -1,0 +1,18 @@
+[
+    {
+        "Path":  "D:\\DLSSNR-Lab\\combined-vs041-20261006\\input.f16",
+        "Hash":  "FA3C18735AC5F105903614A18A9B1475966B9AFD9DD4AEB0CD9CAD7BC759EC9B"
+    },
+    {
+        "Path":  "D:\\DLSSNR-Lab\\combined-vs041-20261006\\base.flags",
+        "Hash":  "18364E766811BD55D3E786EAA911A600DB7B1F9681969DABC2A33291465C4083"
+    },
+    {
+        "Path":  "D:\\DLSSNR-Lab\\vit-contract-compact-frame-20261012\\frame-abba\\same.flags",
+        "Hash":  "8BFF56B0ABE1D30CC635385CE5DC60DE9DE66E875E76AECB720EC38E00D37824"
+    },
+    {
+        "Path":  "D:\\DLSSNR-Lab\\combined-vs041-20261006\\assets-common\\noise.f32",
+        "Hash":  "AA38F7E6C5F20227F90EDCB223FB28C258006A9931941DF1442494CF5D64AC7F"
+    }
+]

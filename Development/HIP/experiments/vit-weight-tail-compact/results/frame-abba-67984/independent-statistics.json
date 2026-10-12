@@ -1,0 +1,95 @@
+{
+  "actual_handle": 67984,
+  "actual_exit_code": 0,
+  "slots": {
+    "baseline-A1": {
+      "n": 240,
+      "mean_ms": 9.6281625,
+      "median_ms": 9.642,
+      "sd_ms": 0.10273638244673923,
+      "p95_ms": 9.774049999999999,
+      "p99_ms": 9.88388,
+      "max_ms": 9.903,
+      "csv_sha256": "e768dc198bf23c4e925ecafb4c4b115875047b04f29ee6a64b52e70f10408936",
+      "actual_frames": 320,
+      "discard": 80,
+      "raw_edges": 2,
+      "auto_records": 320,
+      "compact_keys": 0
+    },
+    "candidate-B1": {
+      "n": 240,
+      "mean_ms": 9.650145833333333,
+      "median_ms": 9.653,
+      "sd_ms": 0.10136998589890235,
+      "p95_ms": 9.793099999999999,
+      "p99_ms": 9.83322,
+      "max_ms": 10.182,
+      "csv_sha256": "cacf68986a2af9636fb0739924c5ab26713007e2e4353ed9e719af65a0e740b5",
+      "actual_frames": 320,
+      "discard": 80,
+      "raw_edges": 2,
+      "auto_records": 320,
+      "compact_keys": 8
+    },
+    "candidate-B2": {
+      "n": 240,
+      "mean_ms": 9.635154166666666,
+      "median_ms": 9.6385,
+      "sd_ms": 0.09741936469998924,
+      "p95_ms": 9.78405,
+      "p99_ms": 9.839739999999999,
+      "max_ms": 9.91,
+      "csv_sha256": "0c317b0e6468e9652fc11b30338b983cd3873d226752107dacf6946a3c8a8ffb",
+      "actual_frames": 320,
+      "discard": 80,
+      "raw_edges": 2,
+      "auto_records": 320,
+      "compact_keys": 8
+    },
+    "baseline-A2": {
+      "n": 240,
+      "mean_ms": 9.674275,
+      "median_ms": 9.688500000000001,
+      "sd_ms": 0.09286544569528588,
+      "p95_ms": 9.8202,
+      "p99_ms": 9.86676,
+      "max_ms": 9.924,
+      "csv_sha256": "219d7058717100e8afd27333ecb025bebeca8999fde47d2504978446921f60a5",
+      "actual_frames": 320,
+      "discard": 80,
+      "raw_edges": 2,
+      "auto_records": 320,
+      "compact_keys": 0
+    }
+  },
+  "baseline": {
+    "n": 480,
+    "mean_ms": 9.65121875,
+    "median_ms": 9.662,
+    "sd_ms": 0.1005089972109706,
+    "p95_ms": 9.806149999999999,
+    "p99_ms": 9.88068,
+    "max_ms": 9.924
+  },
+  "candidate": {
+    "n": 480,
+    "mean_ms": 9.64265,
+    "median_ms": 9.647,
+    "sd_ms": 0.09959354977394973,
+    "p95_ms": 9.79105,
+    "p99_ms": 9.83799,
+    "max_ms": 10.182
+  },
+  "delta_candidate_minus_baseline": {
+    "mean_ms": -0.008568750000000236,
+    "median_ms": -0.015000000000000568,
+    "sd_ms": -0.0009154474370208776,
+    "p95_ms": -0.015099999999998559,
+    "p99_ms": -0.04269000000000034,
+    "max_ms": 0.2580000000000009
+  },
+  "control_mean_drift_ms": 0.04611249999999956,
+  "candidate_mean_drift_ms": -0.014991666666666958,
+  "scope": "one ABBA four fresh processes; same NativeGameFrame executable, HDR input, 44 immutable modules; 320 frames/slot discard80; CPU Frame wall completion, not game FPS or pure kernel time; cold sidecar/hash/setup outside window; no memory/diagnostic logging in measured frames; n480 per arm p99 descriptive"
+}

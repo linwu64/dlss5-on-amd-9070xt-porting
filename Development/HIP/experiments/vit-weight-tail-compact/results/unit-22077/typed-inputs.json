@@ -1,0 +1,8 @@
+{
+  "scope": "CPU-only actual unit inputs; no additional GPU",
+  "skip_f32_components": 655360,
+  "skip_nonfinite": 0,
+  "scale_f32_components": 1024,
+  "scale_nonfinite": 0,
+  "skip_sha256": "4afe82b76575a1560610c2a01c9c2384681a26ef7b13a95dbdb2cd106fd468c9"
+}
