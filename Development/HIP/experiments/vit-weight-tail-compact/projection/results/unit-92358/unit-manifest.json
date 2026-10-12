@@ -1,0 +1,58 @@
+{
+  "scope": "real640 projection only; unchanged FP8 prefix and F32 scales; original877e/new sidecar only export",
+  "args": [
+    "inputFP8",
+    "weight",
+    "skipFP8",
+    "outputF32",
+    640,
+    1024,
+    1024,
+    null
+  ],
+  "kernarg_bytes": 56,
+  "grid": 640,
+  "threads": 32,
+  "files": [
+    {
+      "file": "unit.exe",
+      "bytes": 2389805,
+      "sha256": "722320625d7e09dbcb8ee0d6c1ac6e33bc406e26d9fc275660fc8b9329be9d87"
+    },
+    {
+      "file": "projection-compact.hsaco",
+      "bytes": 665032,
+      "sha256": "8cd0807f1364dfc4cc9cd13bdd96bca042fd2ab3db9e05e62d64d7762be15de6"
+    },
+    {
+      "file": "canonical.hsaco",
+      "bytes": 658952,
+      "sha256": "877eaf122f827af6e00824582f5ca918b5d61499d4ad7c7cde7ab6e422516a57"
+    },
+    {
+      "file": "run-unit.ps1",
+      "bytes": 2969,
+      "sha256": "e383be190ba7c639236c8742929bafd52f3c2103b0cdb96fcee53fc1c84a638d"
+    },
+    {
+      "file": "input.bin",
+      "bytes": 655360,
+      "sha256": "111330903f81ad47b0b62f7a3224fcc8441f4bc1a149d6028c48fcc485664b60"
+    },
+    {
+      "file": "weight.bin",
+      "bytes": 4198400,
+      "sha256": "cf403644e90609118e6c12a16681c92a7aac170da268244cd2d314582df70714"
+    },
+    {
+      "file": "skip.bin",
+      "bytes": 655360,
+      "sha256": "72f2dceb664db4cb962652231790e1fcffa3cd732b151ecada76b92ac1069c64"
+    },
+    {
+      "file": "gold.bin",
+      "bytes": 2621440,
+      "sha256": "c3190d1373c70034709494152348a93540376a6d2b6492419f1781842e027dfe"
+    }
+  ]
+}

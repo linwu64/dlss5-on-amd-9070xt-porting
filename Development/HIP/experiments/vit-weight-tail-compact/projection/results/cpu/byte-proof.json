@@ -1,0 +1,22 @@
+{
+  "weight_file": "/home/lmxxf/work/dlss5-dx12-recovery/vit/linear-inputs/vit_stream_project_n64_bb-arg1.bin",
+  "old_bytes": 4198400,
+  "new_bytes": 1052672,
+  "bytes_saved_per_matrix": 3145728,
+  "old_sha256": "cf403644e90609118e6c12a16681c92a7aac170da268244cd2d314582df70714",
+  "new_sha256": "3860ecfc4e8a6e5503e0f8b6fa83838d3b308b3f1eb782a6ee15d868ba105689",
+  "matrix_sha256": "3cf4ef3f9f3d300c4450d586a8999e19d6f0e9261451ca37576a93ed7573224f",
+  "tail_sha256": "15a139b7c694ede9f57ab2cabdd2199a3683dc5a1d8b63d40458e98d32c37d3d",
+  "all1048576matrix_addresses_bijection": true,
+  "matrix_byte_differences": 0,
+  "F32tail_byte_differences": 0,
+  "inverse_all_live_byte_differences": 0,
+  "old_scale_float_index": 1048576,
+  "new_scale_float_index": 262144,
+  "max_new_matrix_byte": 1048575,
+  "max_new_scale_byte": 1052671,
+  "weight_addresses_independent_of_tokens": true,
+  "no_float_conversion_or_quantization": true,
+  "numeric_hardware_pass": false,
+  "hypothetical_eight_matrix_capacity_savings_bytes": 25165824
+}

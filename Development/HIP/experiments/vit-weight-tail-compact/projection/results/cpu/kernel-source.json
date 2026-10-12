@@ -1,0 +1,25 @@
+{
+  "defines": [
+    "HIP_ISA_HALF 1",
+    "VIT_CONTRACT_BYTE_EDGE 1",
+    "HIP_PREPACKED_WEIGHTS 1",
+    "HIP_BRANCHLESS_F 1",
+    "HIP_VIT_STREAM_KERNELS 1",
+    "HIP_VIT_QKV_W5 1",
+    "VIT_CONTRACT_OCC_LDS 4096",
+    "VIT_QKV_F8W 1",
+    "VIT_FAST_NUM 4"
+  ],
+  "opts": "",
+  "target": "gfx1201",
+  "old_export": "vit_stream_project_n64_bb",
+  "new_export": "vit_stream_project_n64_bb_compactw",
+  "old_scale_float_offset": 1048576,
+  "new_scale_float_offset": 262144,
+  "matrix_bytes": 1048576,
+  "tail_bytes": 4096,
+  "old_weight_bytes": 4198400,
+  "new_weight_bytes": 1052672,
+  "source_sha256": "cdb9eb4beacd6f635535385e041af89453285eefc49ba4e5e25fd98183e68c00",
+  "scope": "projection only; default old tail preserves existing exports; same WMMA accumulation/rounding/skip math; new sidecar only new export"
+}

@@ -1,0 +1,5 @@
+{
+  "base_contract_header_sha256": "df0fd26b02cea59bcba96d3f696dd7227aa91ceb8a4bd050cfc4601c03ba61bc",
+  "private_header_sha256": "a449d9963289b50a81c5c1d1b5c6a3b4de64900c79fef38f58f05bcac939370e",
+  "scope": "contract remains independently enabled; new projection only actual bb consumer; oldcache/unknown/missing candidate retains oldpair; cold-only load/hash/function"
+}

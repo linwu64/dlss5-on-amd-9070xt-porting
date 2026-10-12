@@ -1,0 +1,9 @@
+DEVICE AMD Radeon RX 9070 XT
+WEIGHT variant=original held_weight_allocations=1 requested_bytes=4198400 driver_free_before=16910843904 driver_free_after=16906584064 driver_total=17095983104 driver_delta_not_peak_or_residency=1
+GOLD variant=original repeat=0 capture_diff=0 original_repeat_diff=0 nonfinite=0 tail_guard_diff=0 logical_bytes=2621440 grid=640 threads=32 launchflags=0 paired_kernel_by_variant=1
+GOLD variant=original repeat=1 capture_diff=0 original_repeat_diff=0 nonfinite=0 tail_guard_diff=0 logical_bytes=2621440 grid=640 threads=32 launchflags=0 paired_kernel_by_variant=1
+WEIGHT variant=compact held_weight_allocations=1 requested_bytes=1052672 driver_free_before=16910843904 driver_free_after=16910843904 driver_total=17095983104 driver_delta_not_peak_or_residency=1
+GOLD variant=compact repeat=0 capture_diff=0 original_repeat_diff=0 nonfinite=0 tail_guard_diff=0 logical_bytes=2621440 grid=640 threads=32 launchflags=0 paired_kernel_by_variant=1
+GOLD variant=compact repeat=1 capture_diff=0 original_repeat_diff=0 nonfinite=0 tail_guard_diff=0 logical_bytes=2621440 grid=640 threads=32 launchflags=0 paired_kernel_by_variant=1
+COMPACT_PROJECTION_UNIT_PASS no_timing=1 unchanged_math=1 no_VMM=1
+
