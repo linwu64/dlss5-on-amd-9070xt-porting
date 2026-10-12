@@ -1,0 +1,32 @@
+{
+  "isa_gate_pass": true,
+  "stock_sha256": "f46b8af25841a9878ce34544f4b3465f71da36fec9f08f48ad33b48f08c1ee52",
+  "candidate_sha256": "761984e781c58f9587a9e6b3432f2b9c6c8713516e441ed21bc0aabdcb67f094",
+  "function_bytes": 10624,
+  "exact_main_th_only_changes": 8,
+  "down_exact_instruction_identity": 2,
+  "all_remaining_instruction_bytes_identical_after_verified_style_relocation": true,
+  "style_relocation": {
+    "old_target": 32256,
+    "new_target": 36352,
+    "raw_bytes": "0000003c",
+    "old_literal": -283680,
+    "new_literal": -390688,
+    "pc_offset": 544,
+    "literal_offset": 556
+  },
+  "resources": {
+    "group_segment_fixed_size": 4096,
+    "kernarg_segment_align": 8,
+    "kernarg_segment_size": 76,
+    "max_flat_workgroup_size": 32,
+    "private_segment_fixed_size": 0,
+    "sgpr_count": 48,
+    "sgpr_spill_count": 0,
+    "vgpr_count": 128,
+    "vgpr_spill_count": 0,
+    "wavefront_size": 32,
+    "workgroup_processor_mode": 0
+  },
+  "scope": "FLAT gfx12 TH bits54:52 and scope51:50 per actual LLVM23 TableGen; no changed scope/waits/math/vector width; function-external padding is excluded; not GPU numerical/performance gate"
+}

@@ -1,0 +1,38 @@
+{
+  "remote_root": "D:\\DLSSNR-Lab\\current-full-graph-capture-owned-20261010",
+  "resources": {
+    "resource-1.bin": {
+      "bytes": 35389440,
+      "sha256": "b3d114c4779fc1f593162b36d22bbb5ae7777e22e7aec701f0f551916539b2ac",
+      "role": "encodedRGBA32 input and unused history alias"
+    },
+    "resource-2.bin": {
+      "bytes": 41088,
+      "sha256": "106ba9b1e3bcaf238e23208e84c6695b2b975739ba714322ca137bcc7074fb5c",
+      "role": "packed FW"
+    },
+    "resource-3.bin": {
+      "bytes": 32900,
+      "sha256": "12bff39f1cee8c3c681ed3630dad5a3978f5258036ab2eccf6296d4c143468a3",
+      "role": "packed AW"
+    }
+  },
+  "local_after_reference_root": "/home/lmxxf/work/dlss5-dx12-recovery/multihead/after-capture-all",
+  "after_outputs": {
+    "node-000-r4-o0-n70778880.bin": "170b59906259c0417d21869b7b46bd35661096f5af02b3a0dd4042d3ad985d5b",
+    "node-000-r5-o0-n17694720.bin": "0417a910ee1d544c464115d3112d04b80c99ae92937ce66279718c592e171973"
+  },
+  "scalars": [
+    34560,
+    0,
+    1,
+    1920,
+    1152,
+    0,
+    0
+  ],
+  "grid": 34560,
+  "threads": 32,
+  "encoded_style_feature": 0.0078125,
+  "warning": "pre-first-use resource4/resource5 are not output gold; after60355 references only"
+}
