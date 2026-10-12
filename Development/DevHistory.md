@@ -396,3 +396,7 @@ B 八个已知ViT expand原16MiB容量只读4MiB packed前缀。77951单位与21
 ## 2026-10-12｜剑星紧凑权重本机试装（非发版）
 
 用户授权后，以 `1b4c898f` 正式 `scripts/build-addon.sh --hip` O2 构建 addon `64dc04286c22d5d3…`；实际部署 `57883` exit0/锁释放，替换旧 `9413682f`。仅带已采纳的8个ViT expand紧凑权重路径；C32 NoHi未带入。写前游戏/RTC空，配置全部字节保持，实际MODE0/MP1/PRED0/SKIN0；79模块、SUMS、row和Runtime不变，鬼武者不动。备份与rollback、小回执见 `Development/results/stellar-compact-trial-20261012/`。未代启游戏、未测新帧率、未推送或发布。
+
+### 2026-10-12 12:54｜用户剑星试用反馈
+
+用户原话：“有提升~ 我通过splashtop剑星2k AA(1080P dlss5) exact 静态画面稳定在58.2帧”。对应已部署 addon `64dc04286c22d5d3…`（部署记录 `5574d8db`），普通MODE0/1x设置未改。这是用户实玩观察与主观提升反馈；旧版没有同场景精确对照，不能计算精确增幅；AA/Exact按用户原称记录，不推断实际GPU字段。未另改配置或运行实验。
