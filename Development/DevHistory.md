@@ -428,3 +428,9 @@ marked on480只报告主线程API经过时间：input录交.034ms、Network::Enq
 ### 2026-10-12：V末rendezvous候选正确，筛选漂移止损
 
 只使WG-uniform part2/V跳过QKV末weight→norm复用rendezvous；COMGR8218/actualda86 ISA数据wait/MMA/资源与旧88Fn身份通过，94277完整1,966,080B双old双new gold/finite/canary0。唯一662786 QKV-only10warm20measure ABBA各GPU均值113.300/36.850/32.250/34.295µs，首末control漂移−79.005µs盖过pooled−39.2475µs；收益不可归因，STOP、保原样本、不改warm/刷轮/整Frame，不证明候选慢。研究源码不进产品；封存后才第二项prefix主输出cachehint。
+
+### 2026-10-12：prefix main TH_STORE_NT正确，完整Frame收益未证
+
+第二项只将arg4 main八store的TH置NT，arg5 down/width/scope/waits/math/资源全保；761984模块的唯一style PC重定位已解析同默认global1/128。18221完整main70,778,880B/down17,694,720B双old双new各SHA/gold/finite/guard0。初次68401私有host资格将Style1的默认sentinel−1误拒（candidate_calls0），原wrapper1保；仅host20047修精确默认资格，79532实际new3/stock0与baseline0/3、0900/Auto3/current资源门全过。
+
+唯一完整生产Auto Frame89008四槽320弃80、480/arm：wall9.656520833→9.655660417ms（−0.8604µs），p99 9.88847→9.86799ms，max9.947→9.926ms；control漂移+26.408µs、B漂移+31.129µs，后B比后A慢1.5µs。改善不可与漂移分离，STOP未证稳定收益，不扫hint/重刷/正式集成。8firstlast0900、Autoaccepted320/reject0/PDLcalls0、实际NT320/stock320和44模块身份均通过。两候选均封存，产品源/已装64dc未变、未部署/push。证据 `HIP/experiments/two-kernel-trials/`。

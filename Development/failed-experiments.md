@@ -2647,3 +2647,9 @@ SKIN_PROTECT只多遍：原输入肤色启发式mask混y1/yN，不是原图/语�
 - 改动：仅part2/V跳过末post-K WG rendezvous；K-loop、Q/K LDS完成/norm同步、inactivewave退出及math全部保，actualda86资源同、旧88Fn原字节同。8218编译/ISA与94277完整640tokens/1,966,080B双old双new gold/finite/canary门通过。
 - 唯一662786 QKV-only A-B-B-A10warm20：GPU113.300/36.850/32.250/34.295µs，pooled73.7975→34.550µs但control漂移−79.005µs；wall159.600/90.400/88.350/86.450µs。原首A不剔除，不能归因pooled改善，亦不证明候选慢；STOP不整Frame/不重跑/不追加warm。
 - 证据 `HIP/experiments/two-kernel-trials/v-tail/`、measurement原CSV；以后需新的可靠测量/关键路径证据，不能因依赖原理成立就扩刷。本轮不是VTR/column/软件流水重试，产品源未改。
+
+### 2026-10-12 — Prefix main TH_STORE_NT｜正确，完整Frame收益未证/未采纳
+
+- **改动/范围：** f46 prefix arg4 main八8B store TH0→NT，down两store/scope/waits/math/资源保持；侧车761984仅newexport，currentjoint43/既有资源优化/真实Auto均保。18221完整双输出gold0，79532实际候选3calls全Frame0900/finite0。68401是私有style默认资格误拒，candidate未执行，修host后成功，不归类算法失败。
+- **实际测量：** 唯一89008完整Frame A-B-B-A各320弃80、480/arm：mean9.656520833→9.655660417ms（−0.8604µs），p99 9.88847→9.86799ms，max9.947→9.926ms；control漂移+26.408µs/B+31.129µs。槽均值9.643316667/9.640095833/9.671225/9.669725ms，后B略慢对应A。
+- **裁决/重评条件：** 收益远低漂移，STOP未证可靠收益，非数学失败/非证明变慢；不单凭p99改善采纳，不换TH/刷轮。TH不是保证绕L2；重评须新的真实关键路径/缓存行为证据，而非重复同短ABBA。产品源未改。证据 `HIP/experiments/two-kernel-trials/prefix-th/` 与 `measurement/`，原handle89008 exit0/LOCK_RELEASED，初次误拒68401原证保留。

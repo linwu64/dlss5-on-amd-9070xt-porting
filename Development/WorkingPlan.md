@@ -1,10 +1,12 @@
 # 当前工作计划
 
-更新：2026-10-12。生产实现基线 `20fa6b93`、测量计划 `99fc33ba`；前轮host timing有限实验已结题；当前仅按下节顺序试验两候选。游戏仍为已安装64dc/MODE0/MP1/1x，未部署、未push。资源三项结论保留。测量源与原证见 [auto-timeline](HIP/experiments/auto-timeline/README.md)，历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-12。生产实现基线 `20fa6b93`、测量计划 `99fc33ba`；前轮host timing有限实验已结题；两候选有界试验已结题，均未采纳。游戏仍为已安装64dc/MODE0/MP1/1x，未部署、未push。资源三项结论保留。测量源与原证见 [auto-timeline](HIP/experiments/auto-timeline/README.md)，历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
 
-## 当前授权：两候选严格顺序试验
+## 两候选顺序试验：已结题，均未采纳
 
-持久树 `/home/lmxxf/work/dlss5-two-kernel-trials`，research三文档基线4a9d7eee(parent79599997)。阶段1 V末rendezvous单变体已止：8218 ISA/资源通过、94277完整QKV数值通过；唯一662786筛选首A113.300末A34.295µs大漂移，收益未证，保原样本、不刷、不Frame。源码/统计封存后阶段2才编译prefix skip0 arg4 main八store TH_STORE_NT，arg5 down两store不动；只此单变体，ISA仅预期TH→双完整输出gold→真实Auto完整Framegold/一次320弃80ABBA，不以微核外推后继缓存效应。负结果保持产品源，适合采纳才官方recipe/fallback/正式gold。当前GPU无live、未部署/push。
+持久树 `/home/lmxxf/work/dlss5-two-kernel-trials`，research基线4a9d7eee(parent79599997)。V末rendezvous数值/ISA通过，但唯一662786孤立筛选控制漂移−79.005µs大于pooled改善−39.2475µs，收益未证，STOP、不Frame、不重跑。prefix主输出八store TH_STORE_NT的ISA/完整双输出18221/真实Auto Frame79532均通过；唯一89008整Frame320弃80×四槽：mean9.656520833→9.655660417ms（−0.8604µs），p99−20.480µs、max−21µs，控制漂移+26.408µs，后B比后A慢1.5µs，不能认定稳定收益，STOP、不换hint/刷轮。初次68401因私有style资格误拒未启用候选，保留原失败并仅修host，非算法失败。
+
+两候选均只保实验源码/统计/审计，不进产品；原43模块/正式实现/installed64dc与游戏配置未改，未部署/push，GPU无live。详见 [two-kernel-trials](HIP/experiments/two-kernel-trials/README.md)。本轮授权实验已完成，未启动第三候选。
 
 ## 三项最终裁决
 

@@ -1,0 +1,12 @@
+# Two bounded kernel trials — 2026-10-12
+
+Base `79599997` (research preservation `4a9d7eee`). Private sources, guards and original measurements are retained here; product kernels, installed64dc and game configuration were not changed. No deployment or push.
+
+1. **V-only terminal rendezvous:** source/ISA/resource and full QKV numerical gates passed. The sole isolated ABBA screen had GPU slot means113.300/36.850/32.250/34.295µs: control drift−79.005µs exceeds pooled improvement−39.2475µs. Benefit unestablished; STOP without Frame/retry/discarding the first slot. See [measurement](measurement/STAGE1.md).
+2. **Prefix main TH_STORE_NT:** exact eight main store hints changed; down stores, scope, math, waits and resources preserved, with one independently resolved style PC relocation. Full main/down unit18221 passed. Initial Frame68401 never enabled the candidate because private style qualification rejected the legitimate default sentinel−1; the original failure is retained. Host-only correction20047 preserves the proven1/128 module default. Effective Framegold79532 and sole FrameABBA89008 exited0/released, actual new/stock calls and Auto/PDL/current resources/output identities passed. Final timing interpretation is in the [independent measurement report](measurement/STAGE2.md).
+
+The complete Frame uses current joint43 modules plus one private prefix sidecar, no V candidate or host-QPC instrumentation. Performance mode disables MemoryReport; actual flags/environment/source defaults establish that diagnostic probes were off. All slots retain production Auto accepted320/reject0 and actual PDLcalls0. CPU completion wall is not isolated GPU kernel time; TH_STORE_NT does not guarantee an L2 bypass.
+
+Final Stage2 decision: **STOP, benefit unestablished.** Frame mean9.656520833→9.655660417ms (−0.8604µs), p99−20.480µs/max−21µs versus control drift+26.408µs and candidate drift+31.129µs; B2 was1.5µs slower than A2. Preserve improvements as observed statistics, not reliable speedup. Neither trial is integrated; no further run or third candidate.
+
+Integrity note: the historical runner explicitly wrote unused aliases `DLSS5_HIP_NET_TIMING`/`DLSS5_HIP_NET_SPAN`. Actual controls `DLSS5_NET_TIMING`/`DLSS5_HIP_SPAN_PROBE` were absent from recorded flags, child environment was cleared, and source defaults are false with no enable logs. Preserve the executed runner/manifest unchanged; do not treat the unused aliases as the evidence or rerun this case.
