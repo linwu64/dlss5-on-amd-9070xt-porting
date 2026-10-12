@@ -1,0 +1,66 @@
+{
+  "stage": 2,
+  "status": "CPU source only; forbidden compile/device until stage1 sealed by coordinator",
+  "row": "c32-wave1-fast",
+  "compiler": "llvm23",
+  "defines": [
+    "HIP_ISA_HALF 1",
+    "CW_UP_FUSED 1",
+    "CW_ACT_FMED3 1",
+    "HIP_PREPACKED_WEIGHTS 1",
+    "CW_ROLL_HIDDEN 1",
+    "CW_ROLL_WINDOW 1",
+    "CW_VEC_INPUT 1",
+    "CW_PREFIX_SPLIT 1",
+    "CW_PACK8 1",
+    "HIP_FP8_SAT_MODE 3",
+    "CW_DIRECT_OUT 1",
+    "CW_RTZ_PAIR 1",
+    "CW_PACK_MODE_MASK 127",
+    "CW_PREFIX_DIRECT_OUT 1",
+    "CW_PREFIX_FULL_TILE 1",
+    "CW_FINISH_FULL_TILE 1",
+    "CW_SKIP_BYTE 1",
+    "CW_DIAG_ONLY 1",
+    "CW_INPUT_HALF 7",
+    "CW_PREFIX_HALF_SOURCE 1",
+    "CW_PREPOST_BYTE 1",
+    "CW_PREFIX_TAIL_VEC 1",
+    "CW_FINISH_TAIL_VEC 1",
+    "CW_HOIST_UP 3",
+    "CW_FAST_NUM 3"
+  ],
+  "opts": [
+    "-enable-post-misched=0",
+    "-amdgpu-sched-strategy=max-ilp"
+  ],
+  "original_sources": [
+    "c32_fused_ffn_attention.hip",
+    "wave_owned_c32.inc"
+  ],
+  "stock_module_sha256": "f46b8af25841a9878ce34544f4b3465f71da36fec9f08f48ad33b48f08c1ee52",
+  "stock_source_sha256": "e31f48da401f129f02b66e3a025d66a9b99b4bba6934a28e3c19096c907ae68d",
+  "candidate_source_sha256": "c66ed1e35d674c3121f42a28e0e7c0bfce6020395777759eb14d7cf03124b1e3",
+  "old_export": "c32_wave1_prefix_b8d",
+  "new_export": "c32_wave1_prefix_b8d_main_nt",
+  "main_bytes_at1152": 70778880,
+  "down_bytes_at1152": 17694720,
+  "expected_main_store_sites": [
+    "0x4f10c",
+    "0x4f1c4",
+    "0x4f27c",
+    "0x4f334",
+    "0x4f3ec",
+    "0x4f4a4",
+    "0x4f584",
+    "0x4f5c0"
+  ],
+  "down_store_sites_untouched": [
+    "0x4f92c",
+    "0x4f968"
+  ],
+  "source_contract": "one vector8B main-store expression only; original template default false; appended new export selects true; down/values/loads/rounding/scope/fence unchanged",
+  "required_future_isa_gate": "builtin metadata is not proof: only eight main store TH bits may differ, resource/other instruction/scope must match; otherwise stop",
+  "benefit_unknown": true,
+  "cache_miss_evidence": false
+}
