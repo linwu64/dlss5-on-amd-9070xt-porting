@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "weights_bytes": 423438120,
+    "pool_bytes": 290571128,
+    "gather_bytes": 5242880,
+    "noise_bytes": 0,
+    "driver_free_bytes": 15860379648,
+    "driver_total_bytes": 17095983104,
+    "not_resident_peak": 1
+  },
+  "candidate": {
+    "weights_bytes": 297609000,
+    "pool_bytes": 290571128,
+    "gather_bytes": 5242880,
+    "noise_bytes": 0,
+    "driver_free_bytes": 15995121664,
+    "driver_total_bytes": 17095983104,
+    "not_resident_peak": 1
+  },
+  "delta_candidate_minus_baseline": {
+    "weights_bytes": -125829120,
+    "pool_bytes": 0,
+    "gather_bytes": 0,
+    "noise_bytes": 0,
+    "driver_free_bytes": 134742016,
+    "driver_total_bytes": 0,
+    "not_resident_peak": 0
+  },
+  "actual_handle": 66725,
+  "actual_exit_code": 0,
+  "independent_pass": true,
+  "modules_per_role": 43,
+  "only_changed_module": [
+    "vit-stream-fast.hsaco"
+  ],
+  "raw_sha256": "0900e489a397302b93074a878c694b9c3e7c3400cfe2dfdd3cc727abe1050f4a",
+  "scope": "same official host executable default internal guards; old module missing exports falls back to original layout/functions; new merged module uses16compact weights; no NR/no sidecar; complete Frame actual memory counters, not resident peak; no extra timing"
+}

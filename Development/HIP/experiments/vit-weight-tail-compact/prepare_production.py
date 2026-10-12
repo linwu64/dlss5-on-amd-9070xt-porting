@@ -3,7 +3,7 @@
 from pathlib import Path
 import argparse,difflib,json,hashlib
 p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--projection-base',type=Path);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
-r=Path(__file__).resolve().parents[4];private=r.parent/'dlss5-resource-followups-build/contract-compact/route/hip_reference_network.h';base=(r/'Development/HIP/hip_reference_network.h').read_text();private=(a.projection_base/'hip_reference_network.h') if a.projection_base else private;s=private.read_text().replace('#include "contract_compact_guard.h"\n','')
+r=Path(__file__).resolve().parents[4];private=r.parent/'dlss5-resource-followups-build/contract-compact/route/hip_reference_network.h';base=(r/'Development/HIP/hip_reference_network.h').read_text();assert 'Handle compact_contract_fn' not in base,'production patch generator requires pre-integration baseline a5786fbb; use archived patch on current tree';private=(a.projection_base/'hip_reference_network.h') if a.projection_base else private;s=private.read_text().replace('#include "contract_compact_guard.h"\n','')
 start=s.index('{const char*enable=std::getenv("NR_VIT_CONTRACT_COMPACT");');end=s.index('\n\n',start)
 s=s[:start]+'InitCompactContract();'+s[end:]
 if a.projection_base:

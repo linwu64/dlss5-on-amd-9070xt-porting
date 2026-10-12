@@ -9,5 +9,7 @@
   "accepted_projection_functions_identical": 87,
   "actual_shared_emitted_helpers_default_on_cpu_exit": 0,
   "actual_shared_emitted_helpers_default_off_cpu_exit": 0,
-  "scope": "CPU/COMGR and raw ELF-function identity only; final official host/module Frame gold by coordinator pending; no performance rerun"
+  "scope": "COMGR/raw ELF-function identity and actualshared CPU fallback; final official host/module Frame independently passed66725; no extra performance run",
+  "final_official_frame_handle": 66725,
+  "final_official_frame_independent_pass": true
 }
