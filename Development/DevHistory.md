@@ -386,3 +386,9 @@ APP -DCOMPARE_HLSL私有caller21603CPU过，源57NNshader匹配旧manifest、8co
 隔离 `vit-tile-ready` 从30040d4c派生，不改生产数学/AoS/权重/默认路径。每16token的16个contract列块agent release/acq_rel发布，QKV真实hipExtAnyOrderLaunch消费；fresh counters、agent acquire、统一WG失败合流、boundedwait。40675固定640token独立双原参考/顺序ready/双anyorder完整contract655360B与QKV1966080B均byte0/finite0/status0。77445用firstWMMA结果实际store完成后全局realtime标记，两anyorder有36/157WG在producer尾发布前已完成第一MMA，ordered为0，证明有效重叠。
 
 traceoff pair ABBA10warm+20measure/slot：原72359因窗外D2H不对称仅保原证；唯一公平修正31969两variant共同小读回、候选必需reset计入GPU/wall，8边缘gold0。GPU均值70.043→95.770µs（+25.727µs/+36.7%），wall106.475→141.603µs；两B均慢于两A，控制漂移−13.198µs不足改变方向。样本仅40/variant，不据p99作稳态尾结论。不拆分归因reset/原子/缓存失效/等待成本。STOP，不进整Frame、不追加变体、不装机/push。初始不支持旧时钟builtin的编译失败与0.643ms诊断值保留。源码、终态、SHA、原CSV及独立审见 `HIP/experiments/vit-tile-ready/README.md`；仅实验文件及研究文档进入main，无发行功能变化。
+
+### 2026-10-12：上界证明与权重紧凑存储结题
+
+A C32 NoHi 实际七层获界、三层保旧；84738 Half原语、51888 mapped、72895完整Frame和25355 ABBA数值/路由门全部通过。Frame wall9.6336771→9.6284083ms仅−5.269µs，小于控制漂移47.546µs；正确但没有可靠性能收益，停止，不进生产。证明/ISA/异常域与原日志保留 `HIP/experiments/c32-score-nohi/`。
+
+B 八个已知ViT expand原16MiB容量只读4MiB packed前缀。77951单位与21471完整Frame字节0，真实八key权重容量省96MiB；48281四子进程全0，wrapper末JSON嵌套误判经只读PS/Python43模块SHA核同闭合，原exit1保留未刷。wall9.633050→9.6346917ms无稳定加速。集成狭域默认开启loader，未知布局/已有legacy cache回旧；不改kernel/ABI/精度，不改玩家DLL或发行包。容量不冒驻留峰值，详见 `HIP/experiments/packed-weight-compact/RESULTS.md`。

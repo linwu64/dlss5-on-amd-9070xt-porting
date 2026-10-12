@@ -370,3 +370,9 @@
 - 用户授权将剑星设为1x、模式3高低频增强、增强强度1，关闭多遍预测与独立模式1/旧history实验。
 - 安装当前生产源码的正式O2 HIP addon（9413682f），包含已验证的F9防误切：模式1/2/3在写配置前阻止切至不支持的多遍。
 - 保留玩家AE、基础strength、几何、全部79模块及SUMS/row；实际三个配置文件字节未变。未改鬼武者、Runtime DLL、正式包或标签。已备份并校验安装，未代启游戏，观感待玩家反馈。证据：`Development/results/mode3-stellar-1x-trial-20261011/`。
+
+## 未发行 — ViT expand 权重紧凑存储（2026-10-12）
+
+八个已知 block31–38 FP8 fragment expand 矩阵只上传实际使用的 4 MiB packed 前缀，替代原 16 MiB F32 容量。原 kernel、权重字节、精度和 ABI 不变；未知布局与已有 legacy 缓存继续旧路。`HIP_COMPACT_VIT_EXPAND=0` 保留原加载路径。
+
+受控 RX 9070 XT 1152 档完整 Frame 输出逐字节相同，持有权重容量 524,101,416→423,438,120 字节，节省 96 MiB；这是分配容量而非驻留峰值。一次 Frame ABBA wall 9.633050→9.634692 ms，没有稳定速度收益，不宣称游戏 FPS 提升。详见 `Development/HIP/experiments/packed-weight-compact/RESULTS.md`。仅源码集成，未新发版、未部署。

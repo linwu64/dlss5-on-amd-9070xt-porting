@@ -2621,3 +2621,10 @@ SKIN_PROTECT只多遍：原输入肤色启发式mask混y1/yN，不是原图/语�
 
 本次只整理证据，无GPU实验、编译、游戏操作、部署或push；未删任何实验/原始历史。台账的目的是先检索旧候选和真实失败条件，避免换名重复，也避免用旧失败阻断已有新证据。
 
+
+### 2026-10-12 — C32 score upper clamp / NoHi 七层资格路由
+
+- **目标/范围：** 证明实际FP8/Half量化链下upper不可达，仅七个精确权重SHA启用孪生_nohi；其余三层/未知保持stock。FAST1/1920×1152/MP1/graph0，原Auto2/PDL请求1、实际calls0。不是全局删clamp。
+- **正确性：** 84738全部65536Half×32位置语义0；51888 mapped完整gold0；72895三帧raw0/finite0与21:9路由；25355四槽八首尾gold0、44模块一致。证明与候选正确，不属于数学失败。
+- **性能/裁决：** 320帧弃80×ABBA，480/arm wall9.6336771→9.6284083ms（−5.269µs/−0.05469%），p99−17.790µs；control漂移+47.546µs，candidate漂移+19.875µs。收益小于漂移，**未证稳定收益、停止/不采纳**，不追加刷轮或变体。
+- **重试条件/证据：** 只有可指向新的实际编译/热路径代价且有独立稳定测量前提才重开；不能将删掉32cmp等价速度改善。持久分支bound-and-compact，`Development/HIP/experiments/c32-score-nohi/` 和 `bound-and-compact/run_a_frame_timing.ps1`；原小CSV及SHA收录该实验results，build原始目录 `/home/lmxxf/work/dlss5-c32-score-nohi-build/frame-abba/`。

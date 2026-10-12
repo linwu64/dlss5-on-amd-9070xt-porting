@@ -2,30 +2,14 @@
 
 更新：2026-10-12。此文件整份重写，只保当前状态、授权中的工作与真正未完成事项；逐轮历史见 [DevHistory.md](DevHistory.md)，负实验与旧裁决演进见 [failed-experiments.md](failed-experiments.md)。
 
-## 当前授权：两项无损优化
+## 两项优化已结题（2026-10-12）
 
-用户已授权有界实际尝试，先CPU取证/证明，再按门执行真实GPU；不止于方案、不新增目标、不改变玩家默认。计划提交后建立持久隔离工作树 `/home/lmxxf/work/dlss5-bound-and-compact`，分支 `bound-and-compact`；若已有先核身份，不覆盖。实现与实验均在隔离树，主生产代码只在完整门通过、审交账后才考虑合入；部署/发包/push不在授权范围。
+持久隔离树 `/home/lmxxf/work/dlss5-bound-and-compact` / `bound-and-compact` 保存源、证明和实际终态。无新 GPU 排队，不追加变体；未部署、未 push，正式 0.41 和玩家 MODE0 配置不变。
 
-### A. C32 score 上界 clamp 是否严格冗余
+- **A，C32 score upper clamp：正确但未采纳。** 实际十层权重仅七层获严格界，后三层保持 stock；65536 Half 位型×32位置原语、真实 mapped unit、三帧完整 Frame 与七/三实际路由全部通过。单次完整 Frame ABBA25355（每槽320帧、弃80）wall 9.6336771→9.6284083 ms，仅−5.269µs；基线漂移+47.546µs，不能确认稳定收益。停止，不将 NoHi 加入生产路径。详见 `HIP/experiments/c32-score-nohi/` 与失败总账。
+- **B，八个 ViT expand packed 权重：作为资源优化集成。** 完整 Frame 逐字节相同，持有权重容量 524101416→423438120B，实省96MiB；单次 ABBA wall 9.633050→9.6346917ms，无稳定速度收益。仅精确已知八矩阵/布局缩短上传，未知 selector 和已有 legacy key 保留旧路，默认狭域开启、编译宏可关闭。容量/driverfree 快照不是驻留峰值，未做双架构实机验证。源码与证据见 `HIP/experiments/packed-weight-compact/`。
 
-- 先锁实际当前stock源码、有效FAST/RTZ行、产物SHA与ISA，确认目标upper clamp确实成为可删指令，不能优化未调用分支。独立audit负责证明和私有候选。
-- 从**实际模型权重**、Q/K归一化、FP8量化/舍入偏置与原累加顺序给出保守严格上界；不得以理想单位范数、随机样本最大值或连续实数Cauchy上界替代实际量化链。覆盖NaN/Inf/±0/溢出和真实允许输入域；范围前提必须显式守门。
-- 上界不可达证明成立才移除upper一处，保lower、score计算/映射/量化/布局与精度。证明不成立、域不足或actual ISA无可删指令即停止，保反例/资源证据，不调阈值或盲扫。
-- 有效候选先最小实际unit逐bit/typedfinite与边界gold，再完整当前NN与原NativeGameFrame/HDR数值、真实mean/尾门；只有小门显示潜力才扩大正式门。样本clip为0不代证明。
-
-### B. F32容量中FP8/F16权重紧凑存储
-
-- remaining负责当前production实际权重live bytes、逻辑span/物理capacity、scale尾/偏移、别名与每个消费者的机器可验普查，区分仅分配富余与仍被读的F32值。保原packed bytes及精度，不重做旧VMM/arena/布局置换负账。
-- 先选**一个真实矩阵**，明确紧凑buffer+scale/accessor ABI及所有引用；缺紧凑资产/未知布局/消费者不全走已验旧路或封闭拒绝，不能把旧F32指针强转后假称兼容。原权重及正常fallback不改。
-- 独立CPU字节/偏移/span/alias门和双arch编译资源门后，实际unit及完整NN逐bit/finite；记录重复实例/池生命周期与首次加载、额外资产大小。
-- 数值门过才测完整框架mean/尾、物理allocated bytes及可测峰值/驻留，明确driver resident与容量口径。减少容量不是减少带宽、更不是FPS收益；不从一矩阵乘层数推整网。
-- 若只有静态容量节省而无速度提升，按实际收益说明，可作为资源候选而非性能成功；若额外索引/scale搬运/尾回归或兼容范围不成立，停止本候选，不无限变体。
-
-### 共用集成与验收
-
-- math负责共用load接口/真实整Frame caller审查与唯一GPU队列；A/B私有源互不覆盖，CPU可并行。每次actualready再交窗，不用intent占锁。
-- 基线锁当前生产数学/模块/输入/权重/seed/flags、actual effective调用，不关闭已有Auto/PDL来制造优势；首尾gold、无中途图像扫描、单一有效计时范围与漂移/尾分列。微核只能筛选，不能当APP或游戏FPS。
-- 每项达到证否或有效收益就交账；失败保原终态/日志/反例/数值并更新负账，成功补结果/历史/CHANGELOG。共享index轮流、源码可编译阶段及时commit，不amend、不push。
+下一步是完成本轮源码/文档审交与提交，不追加性能实验。真实运动闪烁、mochi 与当前生产路线差距仍是未完成研究；先取有决策价值的证据，不能重开 [failed-experiments.md](failed-experiments.md) 已否定的 tile-ready0431、宽写、graph Auto 替换或 native D3D12约33倍慢路线。MODE0约58fps是用户观察，不是同场景ABBA。
 
 ## 固定工作规矩
 

@@ -368,3 +368,9 @@ Both temporal modes are approximations that change output and can produce ghosti
 - User-authorized 1x MODE3 low/high frequency enhancement, strength1, with multipass prediction and the separate MODE1/old history experiment disabled.
 - Installed the official O2 HIP build from current production source (9413682f), including the validated F9 guard: modes1/2/3 block unsupported multipass cycling before any configuration write.
 - Preserved player AE, base strength, geometry, all79 modules and SUMS/row. All three configuration files remained byte-identical. Onimusha, Runtime DLLs, release packages and tags were untouched. Installation was backed up and verified; no game launch or visual result is claimed. Evidence: `Development/results/mode3-stellar-1x-trial-20261011/`.
+
+## Unreleased — compact ViT expand weight storage (2026-10-12)
+
+The eight known block31–38 FP8 fragment expand matrices now upload their live 4 MiB packed prefix instead of a 16 MiB F32-sized buffer. Kernel code, weight bytes, precision and ABI stay identical. Unknown layouts and existing legacy cache entries retain the old loader. `HIP_COMPACT_VIT_EXPAND=0` keeps the original path.
+
+On the controlled RX 9070 XT 1152 profile, complete Frame outputs were byte-identical and held weight capacity fell by 96 MiB (524,101,416→423,438,120 bytes). This is allocation capacity, not a resident peak. One Frame ABBA measured 9.633050→9.634692 ms wall time, with no stable speed gain; no game FPS claim. See `Development/HIP/experiments/packed-weight-compact/RESULTS.md`. Source integration only; no new release or deployment.

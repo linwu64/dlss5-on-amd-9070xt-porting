@@ -395,11 +395,35 @@ class Network {friend class D3D12Bridge;
  void* PackedVitQkvWeightFrag8(const std::string&name){auto key=name+"@qkv-fp8-frag";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()!=3*1048576+32)throw std::runtime_error("ViT QKV compact shape");std::vector<float>scales(v.begin()+3*1048576,v.end());std::vector<uint8_t>t(size_t(3)*1048576);for(size_t part=0;part<3;part++)for(size_t nt=0;nt<64;nt++)for(size_t kt=0;kt<64;kt++)for(unsigned g=0;g<2;g++)for(unsigned rc=0;rc<16;rc++)for(unsigned e=0;e<8;e++)t[part*1048576+(nt*64+kt)*256+(g*16+rc)*8+e]=ExactWeightFp8(v[part*1048576+(nt*16+rc)*1024+kt*16+g*8+e]);v.resize(3*1048576/4+32);std::memcpy(v.data(),t.data(),t.size());std::memcpy(v.data()+3*1048576/4,scales.data(),32*sizeof(float));it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);} /* 2026-10-01 VIT_QKV_F8W: E4M3 fragments (exact) for vit_stream_qkv_frag_hin_w5f8 (results/c512-qkv-pipeline-20261001 §10) */
  void* PackedVitQkvWeightFrag(const std::string&name){auto key=name+"@qkv-f16-frag";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()!=3*1048576+32)throw std::runtime_error("ViT QKV compact shape");std::vector<float>scales(v.begin()+3*1048576,v.end());std::vector<uint16_t>t(size_t(3)*1048576);for(size_t part=0;part<3;part++)for(size_t nt=0;nt<64;nt++)for(size_t kt=0;kt<64;kt++)for(unsigned g=0;g<2;g++)for(unsigned rc=0;rc<16;rc++)for(unsigned e=0;e<8;e++)t[part*1048576+(nt*64+kt)*256+(g*16+rc)*8+e]=ExactWeightHalf(v[part*1048576+(nt*16+rc)*1024+kt*16+g*8+e]);v.resize(3*1048576/2+32);std::memcpy(v.data(),t.data(),t.size()*2);std::memcpy(v.data()+3*1048576/2,scales.data(),32*sizeof(float));it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
  void* PackedVitQkvWeight(const std::string&name){auto key=name+"@qkv-f16-compact";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()!=WeightElements(name))throw std::runtime_error("ViT QKV shape");if(v.size()!=3*1048576+32)throw std::runtime_error("ViT QKV compact shape");PackHalfMatrix(v,3*1048576);std::memmove(v.data()+3*1048576/2,v.data()+3*1048576,32*sizeof(float));v.resize(3*1048576/2+32);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
+#ifndef HIP_COMPACT_VIT_EXPAND
+#define HIP_COMPACT_VIT_EXPAND 1 // Reviewed narrow packed-expand storage only.
+#endif
+#if HIP_COMPACT_VIT_EXPAND
+ void* PackedVitWeight(const std::string&name,U rows,U cols,bool tiled,bool frag=false){
+  if(!tiled)return PackedDeepWeight(name,size_t(rows)*cols);
+  const bool expand_name=name.size()==18&&name.compare(0,6,"block3")==0&&name[6]>='1'&&name[6]<='8'&&name.compare(7,11,"-expand.f32")==0;
+  // Unknown names/layouts/selector paths keep the original full allocation.
+  const bool compact=expand_name&&rows==4096&&cols==1024&&frag&&!opt.sparse_weights&&opt.vit_expand_frag&&opt.vit_pack_input&&opt.vit_blocked&&opt.fp8_deep&&(opt.vit_weight_mask&1)&&!opt.vit_ffn_fused&&!opt.vit_expand_m2&&!opt.vit_expand_m4&&!opt.vit_input_tiled;
+  auto key=name+(compact?"@vit-frag@compact-expand":(frag?"@vit-frag":"@vit-tiled"));auto it=weights.find(key);
+  if(it==weights.end()){
+   if(compact){auto legacy=weights.find(name+"@vit-frag");if(legacy!=weights.end())return P(legacy->second);}
+   auto v=ReadWeights(opt.assets+"/"+name);if(v.size()!=WeightElements(name))throw std::runtime_error("ViT tiled weight shape");
+   Fp8(v,{{0,size_t(rows)*cols}});if(frag)FragmentPackedMatrix(v,0,rows,cols);else TilePackedMatrix(v,0,rows,cols);
+   if(compact){
+    // Only logical upload size shrinks; temporary CPU vector capacity may stay large.
+    // FW byte load range is [0,4194304), independent of token count. No scale tail.
+    v.resize(size_t(rows)*cols/4);dead.clear();
+    it=weights.emplace(key,Upload(v.data(),size_t(rows)*cols,true)).first;
+   }else it=weights.emplace(key,UploadWeight(v,key)).first;
+  }return P(it->second);
+ }
+#else
  void* PackedVitWeight(const std::string&name,U rows,U cols,bool tiled,bool frag=false){
   if(!tiled)return PackedDeepWeight(name,size_t(rows)*cols);
   auto key=name+(frag?"@vit-frag":"@vit-tiled");auto it=weights.find(key);
   if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()!=WeightElements(name))throw std::runtime_error("ViT tiled weight shape");Fp8(v,{{0,size_t(rows)*cols}});if(frag)FragmentPackedMatrix(v,0,rows,cols);else TilePackedMatrix(v,0,rows,cols);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);
  }
+#endif
  /* Optional export probe: modules without the symbol keep the old launch shape. */
  bool HasFn(const std::string&m,const std::string&name){std::string key=m+":"+name;if(functions.count(key))return true;if(missing_functions.count(key))return false;auto mi=modules.find(m);if(mi==modules.end())return false;Handle f{};if(api.hipModuleGetFunction(&f,mi->second,name.c_str())){missing_functions.insert(key);return false;}functions.emplace(key,f);return true;} /* 2026-10-01 rebuild-baseline: misses are cached too -- per-frame probes (ViT _ks2, ...) otherwise call hipModuleGetFunction every frame (+0.01..0.02ms ABBA) */
  bool C32Norm900Active()const{return c32_norm900_loaded&&fast_numeric&&W==1600&&H==960&&multi_pass==1&&!opt.graph&&!opt.experimental_temporal;}

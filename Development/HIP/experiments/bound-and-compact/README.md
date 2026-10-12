@@ -1,14 +1,12 @@
-# Bound and compact: bounded optimization work
+# Bound and compact — final result (2026-10-12)
 
-Production plan committed first: b93cc043, based on failed ledger967df5a3. All implementation lives on persistent branch bound-and-compact; no production defaults/game payload changes.
+Two independent optimizations were tested on RX 9070 XT with the current 1152/640 full71 Frame, frozen real HDR, Auto2 and requested PDL1 (actual PDL calls0). No game payload or release was changed.
 
-| Work | Owner / private path | Gate before GPU |
-|---|---|---|
-| A C32 upper score clamp | ../c32-score-nohi | Actual stock ISA and every admitted weight identity; rigorous bound including actual normalization, half-square and FP8 rounding; only certified layers may select a twin |
-| B packed weight capacity | ../packed-weight-compact | Actual allocation/consumer/alias map; first no-tail ViT expand4096×1024 only; all4,194,304 original packed bytes unchanged, ordinary smaller allocation |
+| Candidate | Numerical result | Complete Frame result | Decision |
+|---|---|---|---|
+| C32 NoHi, seven SHA-certified weights; other three stock | Half-domain primitive, mapped unit, three Frame gold and ABBA eight edge gold all pass | wall9.6336771→9.6284083ms; −5.269µs versus baseline drift47.546µs; p99−17.790µs | Correct but no reliable gain; STOP, not integrated |
+| Eight packed ViT expand weights, 16→4MiB each | Unit and complete Frame byte-identical, eight compact keys and no legacy duplicate | held weight capacity−96MiB; wall9.633050→9.6346917ms, no stable speed gain | Narrow default loader integration as resource improvement |
 
-Common integration requirements: original NativeGameFrame/HDR caller, current effective production Auto/PDL policy, source/executable/module/flags/input/weights identities. Pure-NN/units only establish numerical or screening scope. After an actual unit gate, verify fullNN and Frame before any performance conclusion. Necessary protocol/memory costs belong inside the chosen measurement; cold creation/upload and diagnostic reports remain explicitly outside steady timing. Report mean/tail/drift and resource scope, not inferred FPS.
+Each ABBA used four320-frame processes, discarded80 per process,480 measured samples per arm. These are complete controlled Frame wall times, not game FPS or pure GPU kernel times. Capacity and driver-free snapshots do not measure resident peak. B48281 original wrapper exit1 was a PowerShell nested-array identity-check bug: all four child exits/gold passed and independent read-only comparisons verified43 unchanged module names/sizes/SHAs; original evidence remains, no GPU rerun.
 
-GPU queue is exclusively coordinated by math. `status.ps1` is read-only preflight evidence, not permission to skip a fresh guard at dispatch time. Every RTC/device case must own atomic gpu.lock, check game/RTC and >=100GB disk, poll game every15s, enforce a bounded owned-PID timeout and save actual terminal. Unknown/timeout cases are never silently restarted. All CPU artifacts are persistent; owners checkpoint their private directories without shared-header edits.
-
-Current entry references: stock c32-wave1-fast f46b8af25841a9878ce34544f4b3465f71da36fec9f08f48ad33b48f08c1ee52 at /home/lmxxf/work/dlss5-dx12-artifacts/c32-family-20261010/; original full161 resource/dispatch ledger at /home/lmxxf/work/dlss5-dx12-artifacts/full-graph-50843/. These are provenance inputs, not a substitute for each new case's actual identity checks. Larger raw assets remain outsidegit. See PROGRESS.md for actual admission and queue state.
+Sources, proofs, exact identities and original small logs/CSVs are in [A](../c32-score-nohi/) and [B](../packed-weight-compact/). `run_a_frame_timing.ps1` preserves the actual A25355 guarded wrapper. A reproducibility requires its original pre-B baseline header, not silently rebuilding against the new B loader. Unknown B names/layouts and preexisting legacy cache entries keep the old loader; `HIP_COMPACT_VIT_EXPAND=0` restores its original path. No additional performance variants are queued.

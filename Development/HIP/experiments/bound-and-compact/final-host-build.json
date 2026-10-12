@@ -1,0 +1,14 @@
+{
+  "actual_session": 92603,
+  "actual_exit_code": 0,
+  "optimization": "O2",
+  "compiler": "x86_64-w64-mingw32-g++",
+  "scope": "Final integrated production header, complete Frame host compile/link only; no GPU/deployment",
+  "command": "x86_64-w64-mingw32-g++ -O2 -std=c++17 -static -municode -I src -I Development/HIP Development/HIP/benchmark_vit_reuse.cpp -o frame-production-reviewed.exe -ld3d12 -ldxgi -ld3dcompiler -ldxguid -lbcrypt",
+  "sources": {
+    "Development/HIP/hip_reference_network.h": "8a82149abf1e29c88cfff36159ecc4060ddfe4b31aa0762f9527fcf08e306142",
+    "Development/HIP/benchmark_vit_reuse.cpp": "a36f7661ac66016e4f784e8bd985b2eeb79645f2f0934037c7043a4611d43f4c",
+    "src/native_game_frame.h": "9a71aa4d3978f290f1cbecf5155de4f825c94a86fca6534baf18ea1909a6e6be"
+  },
+  "output_sha256": "27e709f487c2f58ed5fdac944f9830908ac06e35fbd59c5866cef388b0f53b44"
+}
