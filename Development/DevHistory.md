@@ -400,3 +400,7 @@ B 八个已知ViT expand原16MiB容量只读4MiB packed前缀。77951单位与21
 ### 2026-10-12 12:54｜用户剑星试用反馈
 
 用户原话：“有提升~ 我通过splashtop剑星2k AA(1080P dlss5) exact 静态画面稳定在58.2帧”。对应已部署 addon `64dc04286c22d5d3…`（部署记录 `5574d8db`），普通MODE0/1x设置未改。这是用户实玩观察与主观提升反馈；旧版没有同场景精确对照，不能计算精确增幅；AA/Exact按用户原称记录，不推断实际GPU字段。未另改配置或运行实验。
+
+### 2026-10-12：资源后续第一项，显式无history会话
+
+Bridge公共接口unknown保旧，NativeFrame仅Off且无temporal config/rgb/experimental显式声明NeverHistory；DirectHistory/实验/其它历史会话保原路径，全temporal入口拒违反，不热分配。CPU九拒/空析构与正式O2通过。43364两freshprocess三帧gold0900/finite/Auto3/moduleidentity全过，history真实Width35389440→0，candidate创建/导入2、poolhit0；这是33.75MiB会话容量，不是假释放旧共享池/驻留峰值。36250完整FrameABBA wall9.6426208→9.6462167ms (+3.596µs)，p99−8.420µs，控制漂移26.392µs；无稳定加速/可辨明显回归，采纳资源改动，不部署。证据 `HIP/experiments/history-elision/` 与 `HIP/experiments/resource-followups/`。第一项结题后才开始C512分支未用tensor；第三项尚未实施。

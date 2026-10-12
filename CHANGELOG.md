@@ -378,3 +378,7 @@ On the controlled RX 9070 XT 1152 profile, complete Frame outputs were byte-iden
 ### 2026-10-12 Local trial installation (not a release)
 
 Installed the formal O2 compact ViT-expand-weight addon `64dc04286c22d5d3…` in Stellar Blade only. Configuration, 79 modules and Runtime were preserved; C32 NoHi is excluded. In-game FPS is unmeasured. Backup and receipt: `Development/results/stellar-compact-trial-20261012/`.
+
+## Unreleased — explicit no-history session resources (2026-10-12)
+
+Explicit never-history Frame sessions omit the unused shared Bridge history buffer (33.75 MiB at1920×1152). Unknown callers and all declared history sessions keep the original path; invalid temporal submissions are rejected. Complete Frame gold passed; short ABBA showed no stable speed gain or discernible large regression. Capacity only, not peak residency; source only, not deployed.

@@ -380,3 +380,7 @@
 ### 2026-10-12 本机试装（非发版）
 
 仅剑星安装正式O2紧凑ViT expand权重 addon `64dc04286c22d5d3…`；配置与79模块、Runtime保持，C32 NoHi不带入。未测游戏帧率、未发布；备份/回执见 `Development/results/stellar-compact-trial-20261012/`。
+
+## Unreleased — explicit no-history session resources (2026-10-12)
+
+显式永不使用history的Frame会话不创建未用Bridge共享历史buffer，1920×1152实测少33.75MiB容量；未知调用者与已有历史会话保旧，违规temporal提交拒绝。完整Framegold通过，短ABBA无稳定加速/可辨明显回归。仅容量非驻留峰值，源码未部署。
