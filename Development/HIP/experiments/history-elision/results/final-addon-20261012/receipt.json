@@ -1,0 +1,18 @@
+{
+  "actual_compile_handle": 30670,
+  "actual_exit_code": 0,
+  "build": "formal scripts/build-addon.sh --hip O2 shared static, existing MinHook/ReShade",
+  "addon_local_path": "/home/lmxxf/work/dlss5-resource-followups-build/final-addon-20261012/dlss5-amd.addon64",
+  "addon_bytes": 4548824,
+  "addon_sha256": "085d1716c732e9e9cb45de74bb3f7fc25e9999132244356c41e84896ca4c9ef9",
+  "source_before_after_identical": true,
+  "source_file_count": 76,
+  "git_head_at_build": "0dfc3d159e6b8ec8dad380766d29af6651325472",
+  "compiler": "13-win32",
+  "extra_include_environment": "",
+  "includes": "accepted B compact + NeverHistory + contract/projection paired optional exports; stage2 reverted",
+  "runtime_modules_built_separately": true,
+  "no_deployment": true,
+  "no_remote_RTC_or_GPU": true,
+  "actual_formal_frame_numeric_gate_pending": true
+}
