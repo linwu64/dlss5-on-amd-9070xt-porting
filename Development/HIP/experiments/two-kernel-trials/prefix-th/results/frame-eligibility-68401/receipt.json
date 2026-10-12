@@ -1,0 +1,14 @@
+{
+  "handle": 68401,
+  "wrapper_exit": 1,
+  "lock_released": true,
+  "baseline_actual_exit": 0,
+  "candidate_actual_exit": 0,
+  "candidate_ready": false,
+  "candidate_calls": 0,
+  "stock_calls": 3,
+  "encoded_style": -1,
+  "decision": "host eligibility false rejection; no candidate Frame correctness/performance conclusion",
+  "original_case": "D:\\DLSSNR-Lab\\prefix-main-th-frame-20261012\\frame-gold",
+  "fix_scope": "accept proven default style sentinel -1 or explicit 1/128 only; host-only rebuild; kernel/unit unchanged"
+}
