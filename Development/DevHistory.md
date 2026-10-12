@@ -424,3 +424,7 @@ projection仅FP8矩阵1MiB后scale尾从原4MiB地址搬到紧随矩阵，新exp
 基于99fc33ba只生成私有宿主11个QPC点，原GPU命令/同步和Auto guard不改，coreNetwork头逐字同；43joint模块/current资源/0900/数值门95980通过。唯一31627四角色320弃80 A/A真实0/released，各Autoaccepted320/reject0/PDLcalls0。off9.6242125→on9.647700ms(+23.4875µs)，p99+4.75µs，控制漂移28.725µs，两B均高于两A，不能宣零开销或几微秒可靠归因，不重刷。
 
 marked on480只报告主线程API经过时间：input录交.034ms、Network::Enqueue调用.354ms、output录交.020ms、原emptySubmit+Flush完成动作9.188ms；末者不是可删除CPU开销，也不等GPU执行/空档。无当前已验证且校时的外部GPU trace，内部stage/队列空泡不可辨；停止扩展，只建议后续先核实际GPU调度trace可行性，不据此派新优化。实验/CSV/身份/双审见 `HIP/experiments/auto-timeline/`。正式实现、installed64dc/游戏配置均未改，未部署/push。
+
+### 2026-10-12：V末rendezvous候选正确，筛选漂移止损
+
+只使WG-uniform part2/V跳过QKV末weight→norm复用rendezvous；COMGR8218/actualda86 ISA数据wait/MMA/资源与旧88Fn身份通过，94277完整1,966,080B双old双new gold/finite/canary0。唯一662786 QKV-only10warm20measure ABBA各GPU均值113.300/36.850/32.250/34.295µs，首末control漂移−79.005µs盖过pooled−39.2475µs；收益不可归因，STOP、保原样本、不改warm/刷轮/整Frame，不证明候选慢。研究源码不进产品；封存后才第二项prefix主输出cachehint。

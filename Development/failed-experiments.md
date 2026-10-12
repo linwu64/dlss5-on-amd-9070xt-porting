@@ -2641,3 +2641,9 @@ SKIN_PROTECT只多遍：原输入肤色启发式mask混y1/yN，不是原图/语�
 - **范围：** 99fc33ba私有宿主11个host QPC点，无新增GPU命令/同步、无绕过Auto guard。95980数值门和31627 A/A完整43模块/0900/Auto320 reject0 PDL0全部通过，不是数学或路径失败。
 - **干扰：** 320弃80×四槽、480/arm，off9.6242125→on9.647700ms(+23.4875µs)，p99+4.750µs；控制漂移28.725µs，两B均高于两A。正差无法与时变漂移分离，不能称零开销或精细排程不变；保留有限host粗定位用途。
 - **裁决/边界：** 不追加A/A或GPU标记工具；完成动作9.188ms不是可删除CPU开销，GPU内部stage/空档无可辨证据。重评需实际可见HIP队列/校时可靠/保持生产路径的trace证据，不能仅再平均几轮或把CPU等待当GPU空泡。证据 `HIP/experiments/auto-timeline/`，原handle31627 exit0/LOCK_RELEASED。
+
+### 2026-10-12 — ViT QKV V-only末rendezvous｜数值通过，筛选漂移/收益未证
+
+- 改动：仅part2/V跳过末post-K WG rendezvous；K-loop、Q/K LDS完成/norm同步、inactivewave退出及math全部保，actualda86资源同、旧88Fn原字节同。8218编译/ISA与94277完整640tokens/1,966,080B双old双new gold/finite/canary门通过。
+- 唯一662786 QKV-only A-B-B-A10warm20：GPU113.300/36.850/32.250/34.295µs，pooled73.7975→34.550µs但control漂移−79.005µs；wall159.600/90.400/88.350/86.450µs。原首A不剔除，不能归因pooled改善，亦不证明候选慢；STOP不整Frame/不重跑/不追加warm。
+- 证据 `HIP/experiments/two-kernel-trials/v-tail/`、measurement原CSV；以后需新的可靠测量/关键路径证据，不能因依赖原理成立就扩刷。本轮不是VTR/column/软件流水重试，产品源未改。

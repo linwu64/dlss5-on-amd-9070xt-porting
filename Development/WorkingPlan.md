@@ -1,6 +1,10 @@
 # 当前工作计划
 
-更新：2026-10-12。生产实现基线 `20fa6b93`、测量计划 `99fc33ba`；本轮host timing有限实验已结题，没有新优化或GPU排队。游戏仍为已安装64dc/MODE0/MP1/1x，未部署、未push。资源三项结论保留。测量源与原证见 [auto-timeline](HIP/experiments/auto-timeline/README.md)，历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-12。生产实现基线 `20fa6b93`、测量计划 `99fc33ba`；前轮host timing有限实验已结题；当前仅按下节顺序试验两候选。游戏仍为已安装64dc/MODE0/MP1/1x，未部署、未push。资源三项结论保留。测量源与原证见 [auto-timeline](HIP/experiments/auto-timeline/README.md)，历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
+
+## 当前授权：两候选严格顺序试验
+
+持久树 `/home/lmxxf/work/dlss5-two-kernel-trials`，research三文档基线4a9d7eee(parent79599997)。阶段1 V末rendezvous单变体已止：8218 ISA/资源通过、94277完整QKV数值通过；唯一662786筛选首A113.300末A34.295µs大漂移，收益未证，保原样本、不刷、不Frame。源码/统计封存后阶段2才编译prefix skip0 arg4 main八store TH_STORE_NT，arg5 down两store不动；只此单变体，ISA仅预期TH→双完整输出gold→真实Auto完整Framegold/一次320弃80ABBA，不以微核外推后继缓存效应。负结果保持产品源，适合采纳才官方recipe/fallback/正式gold。当前GPU无live、未部署/push。
 
 ## 三项最终裁决
 

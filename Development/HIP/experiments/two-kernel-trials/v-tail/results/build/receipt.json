@@ -1,0 +1,26 @@
+{
+  "COMGR_session": 8218,
+  "COMGR_PID": 3424,
+  "COMGR_exit": 0,
+  "unit_session": 94277,
+  "unit_PID": 23364,
+  "unit_exit": 0,
+  "pair_chunk": "662786",
+  "pair_PID": 24248,
+  "pair_exit": 0,
+  "all_LOCK_RELEASED": true,
+  "candidate_sha256": "da86ed4b4c21534a9ea76c7bf2403aa0d277057259afd08ecaa4e3007dc67576",
+  "decision": "STOP: correct but pair benefit unestablished due control drift; no Frame/retry",
+  "misplaced_helpers": {
+    "paths": [
+      "D:/DLSSNR-Lab/build.ps1",
+      "D:/DLSSNR-Lab/candidate.hip",
+      "D:/DLSSNR-Lab/source.json"
+    ],
+    "creation_UTC": "2026-10-12T12:16:02.xxxZ matches this scp",
+    "hashes_matched_own_new_files": true,
+    "cleanup_chunk": "6ab6a7",
+    "cleanup_exit": 0,
+    "executed_in_lab_root": false
+  }
+}
