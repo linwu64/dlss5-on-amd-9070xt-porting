@@ -1,0 +1,16 @@
+{
+  "actual_gold_handle": 26032,
+  "actual_gold_exit_code": 0,
+  "correctness_pass": true,
+  "compact_calls": 48,
+  "fallback_calls": 0,
+  "frames": 3,
+  "auto_record_accepted": 3,
+  "pool_baseline_bytes": 290571128,
+  "pool_candidate_bytes": 292742008,
+  "pool_delta_bytes": 2170880,
+  "driver_free_delta_bytes": 65536,
+  "decision": "STOP no net resource benefit; no performance run",
+  "shared_restored_to": "5ebd71dd",
+  "candidate_patch": "candidate.patch"
+}
