@@ -1,0 +1,148 @@
+{
+  "actual_handle": 25355,
+  "actual_wrapper_exit": 0,
+  "slots": [
+    {
+      "slot": "baseline-A1",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.609904166666665,
+        "median_ms": 9.6095,
+        "sd_ms": 0.09835974437294048,
+        "p90_ms": 9.7391,
+        "p95_ms": 9.78305,
+        "p99_ms": 9.80361,
+        "max_ms": 9.88
+      },
+      "actual_nohi_counts": [
+        0,
+        7,
+        0,
+        3200
+      ],
+      "actual_pulse_records": 320,
+      "actual_pdl_calls": 0,
+      "csv_sha256": "f0eb51ece2ef089f1dd833d18c0ebeb58a559b0f89c3ce13505fb84451b48975"
+    },
+    {
+      "slot": "nohi-B1",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.618470833333333,
+        "median_ms": 9.607,
+        "sd_ms": 0.09165968063274031,
+        "p90_ms": 9.7412,
+        "p95_ms": 9.7781,
+        "p99_ms": 9.85101,
+        "max_ms": 9.903
+      },
+      "actual_nohi_counts": [
+        1,
+        7,
+        2240,
+        960
+      ],
+      "actual_pulse_records": 320,
+      "actual_pdl_calls": 0,
+      "csv_sha256": "a1a2fe70d0ed70609ac4ba6bb64963c2b05dbee7e91c8b95e0d2c5342b35f12f"
+    },
+    {
+      "slot": "nohi-B2",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.638345833333336,
+        "median_ms": 9.6405,
+        "sd_ms": 0.09791598943354629,
+        "p90_ms": 9.760399999999999,
+        "p95_ms": 9.7805,
+        "p99_ms": 9.83144,
+        "max_ms": 9.842
+      },
+      "actual_nohi_counts": [
+        1,
+        7,
+        2240,
+        960
+      ],
+      "actual_pulse_records": 320,
+      "actual_pdl_calls": 0,
+      "csv_sha256": "04b52a915b29dbd7de59532b85f93b658e38b4769385b1836d9db42e56a4b1bc"
+    },
+    {
+      "slot": "baseline-A2",
+      "statistics": {
+        "n": 240,
+        "mean_ms": 9.65745,
+        "median_ms": 9.657,
+        "sd_ms": 0.09463078218655113,
+        "p90_ms": 9.7791,
+        "p95_ms": 9.83305,
+        "p99_ms": 9.8601,
+        "max_ms": 9.877
+      },
+      "actual_nohi_counts": [
+        0,
+        7,
+        0,
+        3200
+      ],
+      "actual_pulse_records": 320,
+      "actual_pdl_calls": 0,
+      "csv_sha256": "0f7d849308581baa8bdec2074439f4710d1278892a7f54f7a42976d7c97b44f5"
+    }
+  ],
+  "scope": "one fullNativeGameFrame wall ABBA; source sameexe NRenv0/1, no B compact, no game FPS or pureGPU claim",
+  "discard": 80,
+  "steady_per_slot": 240,
+  "all8raw_gold": true,
+  "all44module_name_size_sha_identity": true,
+  "merged": {
+    "baseline": {
+      "n": 480,
+      "mean_ms": 9.633677083333332,
+      "median_ms": 9.634,
+      "sd_ms": 0.0993060782494156,
+      "p90_ms": 9.761199999999999,
+      "p95_ms": 9.79905,
+      "p99_ms": 9.85163,
+      "max_ms": 9.88
+    },
+    "nohi": {
+      "n": 480,
+      "mean_ms": 9.628408333333335,
+      "median_ms": 9.626,
+      "sd_ms": 0.09526122711674696,
+      "p90_ms": 9.757,
+      "p95_ms": 9.78,
+      "p99_ms": 9.83384,
+      "max_ms": 9.903
+    }
+  },
+  "nohi_minus_baseline": {
+    "mean_ms": -0.005268749999997269,
+    "median_ms": -0.008000000000000895,
+    "p90_ms": -0.004199999999999093,
+    "p95_ms": -0.01905000000000001,
+    "p99_ms": -0.01778999999999975,
+    "max_ms": 0.022999999999999687
+  },
+  "mean_percent": -0.05469095501563492,
+  "control_drift_A2_minus_A1_mean_ms": 0.04754583333333606,
+  "candidate_drift_B2_minus_B1_mean_ms": 0.01987500000000253,
+  "decision": "STOP: insufficient stable speed improvement, not a proven slowdown; no integration or retry",
+  "frozen_cpu_review": {
+    "same_exe_env0_1": true,
+    "cold_module_and_SHA_setup_outside_steady": true,
+    "MemoryReport_off": true,
+    "actual_modeled_7_3_route_counts": true,
+    "stock43_plus_privateNoHi_module44": true,
+    "no_B_compact_in_measured_private_header": true
+  },
+  "shared_B_final_function_review": {
+    "actual_block_equals_reviewed_production_inc": true,
+    "default_macro": 1,
+    "unknown_selector_fallback": true,
+    "legacy_pointer_return_without_new_allocation": true,
+    "shared_patch_not_part_of_A25355": true
+  }
+}

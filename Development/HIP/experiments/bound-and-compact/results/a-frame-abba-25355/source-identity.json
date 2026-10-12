@@ -1,0 +1,7 @@
+{
+  "base": "b93cc043",
+  "original_caller": "/home/lmxxf/work/dlss5-bound-and-compact/Development/HIP/benchmark_vit_reuse.cpp",
+  "caller_sha256": "a36f7661ac66016e4f784e8bd985b2eeb79645f2f0934037c7043a4611d43f4c",
+  "private_header_sha256": "469b02f8a317db0e362e200e6dce98090bc14615d85a351610cb32fa4d7de373",
+  "scope": "ordinary complete NativeGameFrame copied without compact changes, NR env controls same executable"
+}
