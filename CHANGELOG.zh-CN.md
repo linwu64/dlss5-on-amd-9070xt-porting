@@ -376,3 +376,7 @@
 八个已知 block31–38 FP8 fragment expand 矩阵只上传实际使用的 4 MiB packed 前缀，替代原 16 MiB F32 容量。原 kernel、权重字节、精度和 ABI 不变；未知布局与已有 legacy 缓存继续旧路。`HIP_COMPACT_VIT_EXPAND=0` 保留原加载路径。
 
 受控 RX 9070 XT 1152 档完整 Frame 输出逐字节相同，持有权重容量 524,101,416→423,438,120 字节，节省 96 MiB；这是分配容量而非驻留峰值。一次 Frame ABBA wall 9.633050→9.634692 ms，没有稳定速度收益，不宣称游戏 FPS 提升。详见 `Development/HIP/experiments/packed-weight-compact/RESULTS.md`。仅源码集成，未新发版、未部署。
+
+### 2026-10-12 本机试装（非发版）
+
+仅剑星安装正式O2紧凑ViT expand权重 addon `64dc04286c22d5d3…`；配置与79模块、Runtime保持，C32 NoHi不带入。未测游戏帧率、未发布；备份/回执见 `Development/results/stellar-compact-trial-20261012/`。

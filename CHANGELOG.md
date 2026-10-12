@@ -374,3 +374,7 @@ Both temporal modes are approximations that change output and can produce ghosti
 The eight known block31–38 FP8 fragment expand matrices now upload their live 4 MiB packed prefix instead of a 16 MiB F32-sized buffer. Kernel code, weight bytes, precision and ABI stay identical. Unknown layouts and existing legacy cache entries retain the old loader. `HIP_COMPACT_VIT_EXPAND=0` keeps the original path.
 
 On the controlled RX 9070 XT 1152 profile, complete Frame outputs were byte-identical and held weight capacity fell by 96 MiB (524,101,416→423,438,120 bytes). This is allocation capacity, not a resident peak. One Frame ABBA measured 9.633050→9.634692 ms wall time, with no stable speed gain; no game FPS claim. See `Development/HIP/experiments/packed-weight-compact/RESULTS.md`. Source integration only; no new release or deployment.
+
+### 2026-10-12 Local trial installation (not a release)
+
+Installed the formal O2 compact ViT-expand-weight addon `64dc04286c22d5d3…` in Stellar Blade only. Configuration, 79 modules and Runtime were preserved; C32 NoHi is excluded. In-game FPS is unmeasured. Backup and receipt: `Development/results/stellar-compact-trial-20261012/`.

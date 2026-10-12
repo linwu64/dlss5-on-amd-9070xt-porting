@@ -1,0 +1,17 @@
+{
+  "build_source_commit": "1b4c898f210cfcf2f67dfa138e695ae3ca022d0c",
+  "build_handle": 51509,
+  "build_exit_code": 0,
+  "deployment_handle": 57883,
+  "deployment_exit_code": 0,
+  "initial_handle_43054": "process script execution policy refused before any write; retried with process-only Bypass",
+  "build_command": "bash scripts/build-addon.sh existing-minhook existing-reshade output --hip",
+  "addon_sha256": "64dc04286c22d5d378a70013f986c98c8d26a55a53feaf02ba682c4301ca8483",
+  "source_sha256": {
+    "Development/HIP/hip_reference_network.h": "8a82149abf1e29c88cfff36159ecc4060ddfe4b31aa0762f9527fcf08e306142",
+    "scripts/build-addon.sh": "d065015fff91e0a6670e1bd3cf173cdc87107533bbdf4a10752f2c8e0f344add",
+    "src/native_hip_network.h": "cc52f00c3e98cd8504297db2d2be28d78aaff512c4270f30b4e12a6690a74a42"
+  },
+  "scope": "only Stellar Blade addon; no config/module/runtime/game launch or GPU benchmark",
+  "formal_release": false
+}

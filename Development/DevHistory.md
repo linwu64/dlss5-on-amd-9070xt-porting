@@ -392,3 +392,7 @@ traceoff pair ABBA10warm+20measure/slot：原72359因窗外D2H不对称仅保原
 A C32 NoHi 实际七层获界、三层保旧；84738 Half原语、51888 mapped、72895完整Frame和25355 ABBA数值/路由门全部通过。Frame wall9.6336771→9.6284083ms仅−5.269µs，小于控制漂移47.546µs；正确但没有可靠性能收益，停止，不进生产。证明/ISA/异常域与原日志保留 `HIP/experiments/c32-score-nohi/`。
 
 B 八个已知ViT expand原16MiB容量只读4MiB packed前缀。77951单位与21471完整Frame字节0，真实八key权重容量省96MiB；48281四子进程全0，wrapper末JSON嵌套误判经只读PS/Python43模块SHA核同闭合，原exit1保留未刷。wall9.633050→9.6346917ms无稳定加速。集成狭域默认开启loader，未知布局/已有legacy cache回旧；不改kernel/ABI/精度，不改玩家DLL或发行包。容量不冒驻留峰值，详见 `HIP/experiments/packed-weight-compact/RESULTS.md`。
+
+## 2026-10-12｜剑星紧凑权重本机试装（非发版）
+
+用户授权后，以 `1b4c898f` 正式 `scripts/build-addon.sh --hip` O2 构建 addon `64dc04286c22d5d3…`；实际部署 `57883` exit0/锁释放，替换旧 `9413682f`。仅带已采纳的8个ViT expand紧凑权重路径；C32 NoHi未带入。写前游戏/RTC空，配置全部字节保持，实际MODE0/MP1/PRED0/SKIN0；79模块、SUMS、row和Runtime不变，鬼武者不动。备份与rollback、小回执见 `Development/results/stellar-compact-trial-20261012/`。未代启游戏、未测新帧率、未推送或发布。

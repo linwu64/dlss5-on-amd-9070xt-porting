@@ -1,0 +1,21 @@
+{
+    "previous_addon_sha256":  "9413682f3185d1e9327ce7ce76be96ee88aad794f528799152ebaa3f2a7f85f3",
+    "actual_exit_code":  0,
+    "config_bytes_unchanged":  true,
+    "target":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64\\dlss5-amd.addon64",
+    "source_commit":  "1b4c898f210cfcf2f67dfa138e695ae3ca022d0c",
+    "hsaco_count":  79,
+    "onimusha_written":  false,
+    "modules_bytes_unchanged":  true,
+    "runtime_written":  false,
+    "gpu_experiment":  false,
+    "environment_overrides":  [
+
+                              ],
+    "game_running_at_write":  false,
+    "backup":  "D:\\DLSSNR-Lab\\stellar-compact-trial-20261012\\backup",
+    "addon_sha256":  "64dc04286c22d5d378a70013f986c98c8d26a55a53feaf02ba682c4301ca8483",
+    "rollback":  "D:\\DLSSNR-Lab\\stellar-compact-trial-20261012\\rollback.ps1",
+    "c32_nohi_included":  false,
+    "compact_default":  1
+}
