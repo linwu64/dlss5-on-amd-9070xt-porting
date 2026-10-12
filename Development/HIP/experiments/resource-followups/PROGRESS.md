@@ -7,3 +7,5 @@ Stage1 source owned audit Bridge/nativeHip/history-elision; main Frame/scripts a
 Stage2: shared41d66b31 twoNew moved only to fallback. CompleteFrame privateO2 34998/43260 exit0; gold26032 terminal0/released two3frame roles, actual48C512calls/fallback0,0900/repeat/finite/Auto3/moduleidentity PASS. Net exactpool/driver evaluation pending, no perf yet; stage3 not implemented.
 
 Stage2 STOP: completeFramegold0 but exactpool290571128→292742008B (+2170880B), driverfree+65536B only, weights/gather unchanged. No net resource benefit; no ABBA/pool variants. Sharedcandidate being reverted, experiments retained. Stage3 starts only after this checkpoint.
+
+Stage2 sharedcandidate reverted a5786fbb exactly to5ebd original, STOP checkpoint complete. Stage3 starts now, contract before projection: remaining private newexport+tail relocation+pairedloader/unit; audit independent; main Frame/queue. Stage1+B remain baseline, no stage2 implementation retained.
