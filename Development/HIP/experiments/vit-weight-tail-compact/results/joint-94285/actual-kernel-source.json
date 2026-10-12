@@ -1,0 +1,19 @@
+{
+  "source_sha256": "d9e133d3dde49016acef980d246b558ec4fd2ba9f94e23a243a157191cd9e394",
+  "actual_shared_deep_sha256": "5efd8f3b4a8fa51431d327db0fb80b2bae1cd71c246226509b58399e5fbc49d7",
+  "actual_shared_stream_sha256": "ef2ec2a31937212ce7572279265c93d98b24ea2401db817dc55b942174984cdb",
+  "defines": [
+    "HIP_ISA_HALF 1",
+    "VIT_CONTRACT_BYTE_EDGE 1",
+    "HIP_PREPACKED_WEIGHTS 1",
+    "HIP_BRANCHLESS_F 1",
+    "HIP_VIT_STREAM_KERNELS 1",
+    "HIP_VIT_QKV_W5 1",
+    "VIT_CONTRACT_OCC_LDS 4096",
+    "VIT_QKV_F8W 1",
+    "VIT_FAST_NUM 4"
+  ],
+  "target": "gfx1201",
+  "opts": "",
+  "scope": "actual applied sharedsource current vit-stream-fast recipe; both compact exports default old tails, no private sidecar math"
+}

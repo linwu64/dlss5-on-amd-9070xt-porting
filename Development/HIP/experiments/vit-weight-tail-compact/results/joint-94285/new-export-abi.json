@@ -1,0 +1,26 @@
+[
+  {
+    "kernarg_segment_size": 56,
+    "kernarg_segment_align": 8,
+    "max_flat_workgroup_size": 32,
+    "wavefront_size": 32,
+    "group_segment_fixed_size": 4096,
+    "vgpr_count": 208,
+    "sgpr_count": 14,
+    "vgpr_spill_count": 0,
+    "sgpr_spill_count": 0,
+    "name": "vit_stream_contract_frag_bout_compactw"
+  },
+  {
+    "kernarg_segment_size": 56,
+    "kernarg_segment_align": 8,
+    "max_flat_workgroup_size": 32,
+    "wavefront_size": 32,
+    "group_segment_fixed_size": 0,
+    "vgpr_count": 120,
+    "sgpr_count": 14,
+    "vgpr_spill_count": 0,
+    "sgpr_spill_count": 0,
+    "name": "vit_stream_project_n64_bb_compactw"
+  }
+]

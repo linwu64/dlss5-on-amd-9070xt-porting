@@ -1,0 +1,13 @@
+{
+  "actual_compile_handle": 94285,
+  "actual_pid": 26724,
+  "actual_exit_code": 0,
+  "lock_released": true,
+  "module_sha256": "da1b4ae9af3c1d2889f86e530b915971494ff2a58156a6abab2813dfb2d26014",
+  "old_stock_functions_identical": 86,
+  "accepted_contract_functions_identical": 87,
+  "accepted_projection_functions_identical": 87,
+  "actual_shared_emitted_helpers_default_on_cpu_exit": 0,
+  "actual_shared_emitted_helpers_default_off_cpu_exit": 0,
+  "scope": "CPU/COMGR and raw ELF-function identity only; final official host/module Frame gold by coordinator pending; no performance rerun"
+}
