@@ -1,0 +1,16 @@
+BASE VERIFIED Magpie-DLSS5-AMD-0.42 (D:\給網友打包\history\Magpie-DLSS5-AMD-0.41.zip)
+PASS 44 shader variants compiled with production D3DCompiler
+{"name":"Magpie-DLSS5-AMD-0.42","bytes":344087793,"sha256":"35b1f90f18c5db6be355aab9a00c99cc29a4ce42bea17558a21620cc5ebea8de","files":781,"verified":true}
+BASE VERIFIED OptiScaler-DLSS5-AMD-0.42 (D:\給網友打包\history\OptiScaler-DLSS5-AMD-0.41.zip)
+PASS 44 shader variants compiled with production D3DCompiler
+{"name":"OptiScaler-DLSS5-AMD-0.42","bytes":374285768,"sha256":"3718b265d69eede8be35e7095e126a43f3a3c3a1eeaf3e410ff3ffbe73c3685b","files":599,"verified":true}
+BASE VERIFIED OptiScaler-REFramework-DLSS5-AMD-0.42 (D:\給網友打包\history\OptiScaler-REFramework-DLSS5-AMD-0.41.zip)
+SP_PLAN c=256 first=16 layers=6 tasks=624 initial=104 state_bytes=7504 w16=1
+SP_PLAN c=256 first=49 layers=6 tasks=624 initial=104 state_bytes=7504 w16=1
+PrepareFrame rc=0 error=lmxxf: geometry net=1600x900 color_job=1506x848 proc=1600x960 wave_owned=1/1 c512_m32=1/1 vit_proj_n64=1/1 pdl=1/1 skip=0 swin_run=1/1 vit_stream=3/3 multi_pass=1 predict=1 skin=0 | flags: D:\绲︾恫鍙嬫墦鍖匼OptiScaler-REFramework-DLSS5-AMD-0.42\DLSS5-AMD layers=D-- applied=29 env_kept=0
+HIP rc=0 error=
+SP_STATS runs=4 fallback=0 rollover=0 jobs=2496 disabled=0 errors=0
+lmxxf_nr_gpu: ok
+PASS 44 shader variants compiled with production D3DCompiler
+{"name":"OptiScaler-REFramework-DLSS5-AMD-0.42","bytes":429238298,"sha256":"1f41aee9584cf9e70d2dc86da26ad4d01bf81a05518b67fa133c0958b3ef4e1a","files":608,"verified":true}
+

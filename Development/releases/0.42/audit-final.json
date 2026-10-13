@@ -1,0 +1,64 @@
+{
+  "status": "PASS final small ZIP metadata independently checked",
+  "package_session": 3734,
+  "package_actual_exit_code": 0,
+  "metadata_readback_session": 21818,
+  "metadata_readback_exit_code": 0,
+  "metadata_sha256": "302a2d3bb86d1dc2aa998adbf55d079ceb0271af952532e3847f15d27d1c1d51",
+  "metadata_encoding": "Windows CP936/GB18030 decoded; no payload modification",
+  "checks": "3 defaults/entry counts/version/source/80 exact modules/40 eacharch/addonRuntime identity/row presence/no personal runtime config/no experimental modules",
+  "packages": [
+    {
+      "package": "Magpie-DLSS5-AMD-0.42",
+      "sha256": "35b1f90f18c5db6be355aab9a00c99cc29a4ce42bea17558a21620cc5ebea8de",
+      "bytes": 344087793,
+      "entries": 782,
+      "defaults": {
+        "DLSS5_TEMPORAL_MODE": "0",
+        "DLSS5_TEMPORAL_ENHANCE_STRENGTH": "1",
+        "DLSS5_MULTI_PASS": "1",
+        "DLSS5_MULTI_PASS_PREDICT": "1",
+        "DLSS5_MULTI_PASS_SKIN_PROTECT": "0"
+      },
+      "modules": 80,
+      "source_commit": "456b7e16",
+      "addon_sha256": "085d1716c732e9e9cb45de74bb3f7fc25e9999132244356c41e84896ca4c9ef9",
+      "runtime_sha256": null
+    },
+    {
+      "package": "OptiScaler-DLSS5-AMD-0.42",
+      "sha256": "3718b265d69eede8be35e7095e126a43f3a3c3a1eeaf3e410ff3ffbe73c3685b",
+      "bytes": 374285768,
+      "entries": 600,
+      "defaults": {
+        "DLSS5_TEMPORAL_MODE": "0",
+        "DLSS5_TEMPORAL_ENHANCE_STRENGTH": "1",
+        "DLSS5_MULTI_PASS": "1",
+        "DLSS5_MULTI_PASS_PREDICT": "1",
+        "DLSS5_MULTI_PASS_SKIN_PROTECT": "0"
+      },
+      "modules": 80,
+      "source_commit": "456b7e16",
+      "addon_sha256": "085d1716c732e9e9cb45de74bb3f7fc25e9999132244356c41e84896ca4c9ef9",
+      "runtime_sha256": null
+    },
+    {
+      "package": "OptiScaler-REFramework-DLSS5-AMD-0.42",
+      "sha256": "1f41aee9584cf9e70d2dc86da26ad4d01bf81a05518b67fa133c0958b3ef4e1a",
+      "bytes": 429238298,
+      "entries": 609,
+      "defaults": {
+        "DLSS5_TEMPORAL_MODE": "0",
+        "DLSS5_TEMPORAL_ENHANCE_STRENGTH": "1",
+        "DLSS5_MULTI_PASS": "1",
+        "DLSS5_MULTI_PASS_PREDICT": "1",
+        "DLSS5_MULTI_PASS_SKIN_PROTECT": "0"
+      },
+      "modules": 80,
+      "source_commit": "456b7e16",
+      "addon_sha256": null,
+      "runtime_sha256": "8389b69b96c8c772075b261d65a062c9a403769098afa50a669a59a393a6b4a8"
+    }
+  ],
+  "scope": "Auditor checked actual ZIP readback metadata and production manifest; complete ZIP per-file hashing and 64B row hash were performed by package3734/readback21818, not repeated or falsely attributed to this CPU script. No GPU/deployment/upload."
+}

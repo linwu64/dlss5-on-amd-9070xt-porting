@@ -27,5 +27,20 @@
     "actual_exit": 0,
     "lock_released": true,
     "scope": "original43 accepted baseline vs fresh official40 gfx1201, three full frames each; final0900/finite/repeat/Auto3/8+8/history0 all passed; no performance claim"
+  },
+  "package": {
+    "session": 3734,
+    "owner_pid": 25740,
+    "actual_exit": 0,
+    "lock_released": true,
+    "zip_per_file_readback": true,
+    "shader_variants_per_package": 44,
+    "RE9_runtime_smoke": "PrepareFrame0/HIP0/lmxxf_nr_gpu ok",
+    "warnings": "D3DCompiler X4000 EffectivePaperWhite warnings preserved in package.stderr.log; all shader compilations succeeded"
+  },
+  "post_package_verify": {
+    "session": 21818,
+    "actual_exit": 0,
+    "defaults_80_modules_row_version_source_pass": true
   }
 }

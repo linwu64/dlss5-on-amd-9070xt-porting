@@ -26,3 +26,9 @@
 `package-042.ps1` 已改为0.41正式ZIP为基线、40×2官方白名单、当前addon/runtimeSHA与64B row硬核；regular/Magpie不ship用户custom/native，REFramework保来源/许可及Runtime结构。双changelog0.42、README当前版与六类package notes保旧版本为历史，明确MODE0/1x/SKIN0、PRED仅3x、153.75MiB与先前96MiB边界，不承诺FPS；不纳STOP候选/hostQPC/独立D3D12研究后端。未见阻塞的scope/default问题。
 
 已发主两个小修：脚本头旧0.41←0.40注释；合并LLVM manifest取不存在的`opts`会丢选项，应保完整`commands`（原LLVM receipt已保存真实rowopts）。最终ZIP仍待实际产物核。
+
+## 最终裁决：PASS
+
+正式打包 `3734` 权威exit0/LOCK_RELEASED，ZIP回读小元数据 `21818` exit0。审计员本地独立解析实际ZIP回读结果（Windows CP936/GB18030），三包均0.42/source `456b7e16`、模块清单与正式80项SHA完全一致、每架构40且无重复；五个默认MODE0/s1/MP1/PRED1/SKIN0正确，个人运行时custom/native不ship，history row存在、addon/runtime与release metadata匹配，无实验模块。entry总数分别782/600/609，等于原文件计数加SHA256SUMS本身。完整ZIP每文件hash/row64B hash由3734及21818回读门完成，本地独立审不冒重复下载整ZIP或GPU测试。
+
+三ZIP名字、字节数、完整SHA与独立审字段见 `audit-final.json`。脚本shader编译原X4000警告保持为警告，无需为本次包审改数学。无未解决阻点；未安装游戏、上传、tag或push。已验官方gfx1201路径与gfx1200静态编译/保守fallback边界不变，不承诺双架构全组合质量或FPS收益。
