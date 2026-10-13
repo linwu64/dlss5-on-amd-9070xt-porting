@@ -1,0 +1,50 @@
+APP_NATIVE_GEOMETRY actual_valid=1920x1080 actual_processing=1920x1152
+multi_pass=1 multi_pass_predict=1 actual_network_passes=1
+vit_contract_byte_edge=1
+c32_norm900 scope=0 loaded=0 selected=c32-wave1-fast.hsaco processing=1920x1152 fast_numeric=1 mp=1 graph=0 experimental=0
+DLSS5_FAST_NUMERIC=1: multihead-fast-padded-wave-packed-fast.hsaco missing, using multihead-fast-padded-wave-packed.hsaco
+pool64_byte_edge=1
+submit_pulse device_scope arch=gfx1201 runtime=70260201 driver_query=00000000 driver=00200000791f0800 validated=1
+submit_pulse capabilities=1 c32_full26=1 wave_owned=1 c512_m32=1 vit_proj_n64=1 vit_stream=3 vit_byte_edge=1 pool64_byte_edge=1 sp_w16=1 sp_init_pair=0
+submit_pulse requested=auto initialized=1 active=0 reason=pending-first-record init_reject_mask=0 driver=validated site=C512_encoder_start preceding=ordered_Down_c256 mode=timed_single
+APP_BRIDGE_BUFFERS input=0000000304000000 output=0000000308380000 in_capacity=35389440 out_capacity=26542080 input_span=35389440 output_span=26542080 alias=0
+APP_GRAPH_KEY actualW=1920 actualH=1152 input_span=35389440 output_span=26542080 seed=0 history=0 style_feature=-1 in=0000000304000000 out=0000000308380000
+APP_MODULE key=boundary handle=00000268bcb19da0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/boundary_reference.hsaco
+APP_MODULE key=boundary_fast handle=00000268c3014e30 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/boundary-fast.hsaco
+APP_MODULE key=c32 handle=00000268bcb19b80 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/c32_prefix_reference.hsaco
+APP_MODULE key=c32_fast_attention handle=00000268c3013b10 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/c32_fast_attention.hsaco
+APP_MODULE key=c32_fast_ffn handle=00000268c30138f0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/c32_fast.hsaco
+APP_MODULE key=c32_fused handle=00000268c30134b0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/c32_fused_attention.hsaco
+APP_MODULE key=c32_fused_ffn handle=00000268bcb1bd80 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/c32_fused_ffn_attention-packed.hsaco
+APP_MODULE key=c32_tiled handle=00000268c3017030 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/c32_tiled.hsaco
+APP_MODULE key=c32_wave1 handle=00000268bcb19300 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/c32-wave1-fast.hsaco
+APP_MODULE key=c32_wmma handle=00000268bcb1b2e0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/c32_wmma.hsaco
+APP_MODULE key=c512_m32_deep handle=00000268bcb1b720 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/c512-m32-deep.hsaco
+APP_MODULE key=c512_m32_mh handle=00000268bcb1bfa0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/c512-m32-mh.hsaco
+APP_MODULE key=c64_wave2 handle=00000268bcb19fc0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/c64-wave2-fast.hsaco
+APP_MODULE key=deep handle=00000268bcb1bb60 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/deep_reference.hsaco
+APP_MODULE key=deep_fast handle=00000268c3016bf0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/deep_fast-packed-fast.hsaco
+APP_MODULE key=deep_wmma handle=00000268bcb1c820 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/deep_wmma.hsaco
+APP_MODULE key=mh handle=00000268bcb1b0c0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/multihead-reference.hsaco
+APP_MODULE key=mh_fast handle=00000268c3014c10 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/multihead-fast-padded-wave-packed.hsaco
+APP_MODULE key=mh_fused handle=00000268c30136d0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/multihead_fused_attention.hsaco
+APP_MODULE key=mh_tiled handle=00000268c3016150 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/multihead-tiled.hsaco
+APP_MODULE key=mh_wmma handle=00000268bcb190e0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/multihead-wmma.hsaco
+APP_MODULE key=mp_predict handle=00000268c3015270 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/multi-pass-predict.hsaco
+APP_MODULE key=prefix_fast handle=00000268c30147d0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/prefix_fast.hsaco
+APP_MODULE key=sp handle=00000268c3015af0 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/swin-persistent.hsaco
+APP_MODULE key=vit_stream handle=00000268bcb1a620 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/vit-stream-fast.hsaco
+APP_MODULE key=vit_wide_deep handle=00000268bcb1ca40 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/vit-wide-deep.hsaco
+APP_MODULE key=wave handle=00000268c3015050 effectiveFile=D:\DLSSNR-Lab\combined-vs041-20261006\modules-current/wave-pointwise.hsaco
+submit_pulse requested=1 active=1 reason=eligible-first-record site=C512_encoder_start preceding=ordered_Down_c256 launch_mode=hipModuleLaunchKernel mode=timed_single current_anyorder=0 record_attempts=1 record_accepted=1 lifetime_pdl_calls=0 frame_prefix_pdl=0
+APP_WARM iteration=0 malloc_calls_before=0 after=209 successful_before=0 after=209 upload_before=0 after=186 fnmiss_before=2 after=13 planmiss_before=0 after=2 pool_before=0 after=23 stable=0 kernels=161
+APP_WARM iteration=1 malloc_calls_before=209 after=213 successful_before=209 after=213 upload_before=186 after=186 fnmiss_before=13 after=13 planmiss_before=2 after=2 pool_before=23 after=27 stable=0 kernels=161
+APP_WARM iteration=2 malloc_calls_before=213 after=213 successful_before=213 after=213 upload_before=186 after=186 fnmiss_before=13 after=13 planmiss_before=2 after=2 pool_before=27 after=27 stable=1 kernels=161
+APP_WARM iteration=3 malloc_calls_before=213 after=213 successful_before=213 after=213 upload_before=186 after=186 fnmiss_before=13 after=13 planmiss_before=2 after=2 pool_before=27 after=27 stable=2 kernels=161
+APP_WARM_READY iterations=4 stable=2 actual_kernels=161 no_retained_warmTensor=1
+PRODUCT_SETUP pulse_mode=2 driver=1 caps=1 create_ok=1 record_ok=4 accepted=4 warm=4
+APP_PERF_SETUP mode=eager stable_warm=4 warm_ms=1157.341000 actual_kernels=161 graph_calls=0
+REPLAY_AUTO_FINAL frames=160 warm=4 capture_record_calls=0 graph_launch_api_calls=0 host_RecordAccepted=163 expected_host_Record=163 valid=1 GPU_marker_count_unobserved=1
+APP_PERF_FINAL graph_launch_api_calls=0 lab_record=0 ready=1 ordinary_enqueues=163 pulse_mode=2 driver_validated=1 capabilities=1 pulse_create_ok=1 pulse_record_ok=163 pulse_accepted=163
+submit_pulse resources create=1 create_ok=1 record=163 record_ok=163 destroy=1 destroy_ok=1 drain=1 site_visits=163 accepted=163 reject_mask=0 lifetime_pdl_calls=0
+

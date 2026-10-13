@@ -1,5 +1,21 @@
 --- validated-quietproduct/submit_pulse.h
 +++ isolated-replayauto/submit_pulse.h
+@@ -33,13 +33,13 @@
+  }
+  // Call only after the caller has selected the owning device. No device change,
+  // allocation, query or synchronization occurs in this hot path.
+- void Record() noexcept {
++ void Record(bool capturing=false) noexcept {
+   if(!active_)return;
+   for(unsigned i=0;i<count_;i++){
+    // A failed API call may have partially queued work. Conservatively require
+    // drain even if the first record returned failure.
+    needs_drain_=true;
+-   const int status=ops_.record(handles_[i]);
++   const int status=capturing?ops_.record_capture(handles_[i]):ops_.record(handles_[i]);
+    if(status){ops_.log("record",status);active_=false;return;}
+   }
+  }
 @@ -59,6 +59,7 @@
    }
    return released;

@@ -1,0 +1,71 @@
+{
+  "slots": [
+    {
+      "slot": 0,
+      "mode": "eager",
+      "steady": {
+        "mean": 9.5382625,
+        "p99": 9.68857,
+        "n": 80
+      },
+      "cold_frame0_ms": 1149.917,
+      "discarded_first80_mean_ms": 23.6972,
+      "all160_mean_ms": 16.61773125
+    },
+    {
+      "slot": 1,
+      "mode": "replay",
+      "steady": {
+        "mean": 9.4921,
+        "p99": 9.6708,
+        "n": 80
+      },
+      "cold_frame0_ms": 1173.725,
+      "discarded_first80_mean_ms": 24.0082125,
+      "all160_mean_ms": 16.75015625
+    },
+    {
+      "slot": 2,
+      "mode": "replay",
+      "steady": {
+        "mean": 9.5446625,
+        "p99": 9.74534,
+        "n": 80
+      },
+      "cold_frame0_ms": 1172.205,
+      "discarded_first80_mean_ms": 23.985799999999998,
+      "all160_mean_ms": 16.76523125
+    },
+    {
+      "slot": 3,
+      "mode": "eager",
+      "steady": {
+        "mean": 9.569475,
+        "p99": 9.757439999999999,
+        "n": 80
+      },
+      "cold_frame0_ms": 1213.079,
+      "discarded_first80_mean_ms": 24.501112499999998,
+      "all160_mean_ms": 17.03529375
+    }
+  ],
+  "merged": {
+    "eager": {
+      "mean": 9.55386875,
+      "p99": 9.73574,
+      "n": 160
+    },
+    "replay": {
+      "mean": 9.51838125,
+      "p99": 9.734,
+      "n": 160
+    },
+    "delta_mean_ms": -0.03548750000000034,
+    "delta_p99_ms": -0.0017399999999998528
+  },
+  "control_drift": {
+    "mean": 0.03121250000000053,
+    "p99": 0.06886999999999865
+  },
+  "gate": "PASS"
+}

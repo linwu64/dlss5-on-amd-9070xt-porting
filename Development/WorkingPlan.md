@@ -1,6 +1,6 @@
 # 当前工作计划
 
-更新：2026-10-14。**正式0.42已于10月13日完成三包交付，用户已提供网盘下载入口。** 载荷源码 `456b7e16`，构建/验收归档 `88472e96`；发布与哈希见 [0.42记录](releases/0.42/README.md)，功能与设置见 [使用说明](../0.42-更新与使用说明.md)。剑星最后确认仍为已安装64dc/MODE0/MP1/1x，本次发版未替换游戏安装。没有优化实验排队；后文10月12日“未发布/未部署”等为当时的实验状态，以本段及开发史10月13日发版记录为当前交付状态。两候选均未采纳，资源优化已随0.42交付。历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-14。**正式0.42已于10月13日完成三包交付，用户已提供网盘下载入口。** 载荷源码 `456b7e16`，构建/验收归档 `88472e96`；发布与哈希见 [0.42记录](releases/0.42/README.md)，功能与设置见 [使用说明](../0.42-更新与使用说明.md)。2026-10-14 补完留置 `ReplayAuto`（161 kernel + 1 timed EventRecord = 162 节点强 DAG）的 ROCm 7.0.2 CLR 捕获修复、12 帧 gold 0-diff 与 3 轮 4-slot ABBA（pooled Δmean=−17.25µs、Δp99=+4.00µs，R3 均值/p99 双退步，结论 **STOP**，见 [ReplayAuto结题报告](results/graph0-replay-auto-20261014/README.md)），hipGraph 全家桶在 RX 9070 XT 上彻底封板，生产维持 `EagerAuto`（`DLSS5_SUBMIT_PULSE=2, opt.graph=0`）。剑星最后确认仍为已安装64dc/MODE0/MP1/1x，本次发版与实验均未替换游戏安装。没有优化实验排队；后文10月12日“未发布/未部署”等为当时的实验状态，以本段及开发史10月13–14日记录为当前交付状态。两微核候选及 ReplayAuto 均未采纳，资源优化已随0.42交付。历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
 
 ## 两候选顺序试验：已结题，均未采纳
 
@@ -49,7 +49,7 @@
 - 0.41后三项（final RGB免copy、block4 pool字节边、真实1440 FAST3 SP）已按各自scope完成，不跨批相加FPS；H900原布局normhoist只限已验900范围，1152尾负不启；单timed Auto提交marker已接受，不能拿pulseoff当当前APP基线。
 - 当前剑星保持 **MODE0/MP1/PRED0/SKIN0/1x**，已核安装addon `64dc04286c22d5d3…`，79模块/Runtime与配置未改，见 `results/stellar-compact-trial-20261012/`。`9413682f`只是10-11恢复时的历史载荷，见 `results/stellar-mode0-restore-20261011/`。用户最新观察静态58.2fps，旧MODE3约54fps与MODE0约58上下均非同场景ABBA，不归出精确算法收益。鬼武者此前MODE1/MP1及独立配置本次不改，实际运行状态仍须操作前重查。
 - MODE3同NN/samecodec旧HDR菜单说明修正幅度+45.2%、局部反差/颜色可辨，未证新细节/画质改善；用户未保留。skin启发式保护亦用户关闭，YuNet只单菜单demo；人物保护模型调研未选型/未游戏集成，不能列已验证小脸方案。
-- ViT tile-ready `0431ba0e`已STOP：真实矩阵overlap且pair byte0，但公平GPU70.043→95.770µs、wall106.475→141.603µs，不整帧/不续变体。QKV宽尾、graph替换真实Auto产品等负账直接检索总账，不换名重复。
+- ViT tile-ready `0431ba0e`已STOP：真实矩阵overlap且pair byte0，但公平GPU70.043→95.770µs、wall106.475→141.603µs，不整帧/不续变体。QKV宽尾、graph替换真实Auto产品（含 `ReplayOff` 161节点及 2026-10-14 结题的 `ReplayAuto` 162节点强DAG `results/graph0-replay-auto-20261014/`）等负账直接检索总账，不换名重复。
 - current71 nativeD3D12独立分支 `b834a93f`受控185端点+final+poison全0，但GPU301–304ms对HIP约9.2ms，约33倍慢；不重启全移植，不把globalUAV桥成本归API固有差。未部署游戏。
 - 完整负账 `967df5a3`，369候选分组，覆盖早HLSL/DirectML/多轮HIP/compiler/graph/interop与近期结果；以后提优化先核旧候选真实条件，修复后采纳者不能当永久失败。
 

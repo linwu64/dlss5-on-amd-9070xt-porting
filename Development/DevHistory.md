@@ -270,7 +270,7 @@
 - gfx1200硬件、720几何对NV oracle偏差（约28dB）、自由分辨率与原版900plan/完整动态history规则、MV缺失后reset/exposure/jitter/depth仍待真实合同。RE9/卧龙/Forza auto适配与通用host补丁没有全部实机覆盖；PR12/TheAutomatic拆改等外部事项看WorkingPlan。
 - 0.41发布、0.41-a临时包、双游戏现装、local未安装H/Pulse新core是不同载荷，禁止混作已发布默认。APP图外层固定scope尚非生产长期graph，MP/AE/history/resize/hotkey/故障恢复不自动支持。
 - 同640 pureNN仍差1.046285750ms，已收APP小刀和离线图收益不能相扣；fresh公平目标包括900/1080平均/p99、确定画质/游戏验证及复现产物，不以单微核或有利小窗算追平。
-- ReplayAuto新组合仅CPU待源/接口节点与owner合同审（事件GetEvent7、162节点/DAG、资格每帧复核/图先lease销）。未GPU/输出/收益，当前STOP的ReplayOff不能悄替换产品Auto。
+- ReplayAuto 162节点强DAG（161 kernel + 1 EventRecord7，position=24 `C256Down -> EventRecord -> C512 firstFFN`）已于2026-10-14完成ROCm 7.0.2 CLR捕获补丁、12帧gold 0-diff及3轮ABBA实测（pooled Δmean=−17.25µs、Δp99=+4.00µs，R3双退步，结论STOP），hipGraph各代在RX 9070 XT上全线封板（详§12 2026-10-14节与 `results/graph0-replay-auto-20261014/`）。
 
 ## 附：原始历史与结果索引
 
@@ -447,3 +447,21 @@ marked on480只报告主线程API经过时间：input录交.034ms、Network::Enq
 用户随后提供公开下载入口：[夸克](https://pan.quark.cn/s/316704620069) · [Gofile](https://gofile.io/d/HNE20Ocp)，以 `490a1b5a` 补入中英文README/changelog；网盘内容未独立下载核验。`82227299` 将已发布细节归入唯一0.42节并恢复版本表旧→新顺序，`46e6c28c` 新增 [0.42更新与使用说明](../0.42-更新与使用说明.md)，后续使用说明修订 `f5e66999`。这些文档修订未重打已上传ZIP，其二进制和SHA保持不变。本轮没有替换用户游戏安装；最后确认的剑星仍为64dc/MODE0/1x。打包与文档任务未执行GitHub release/tag/push，不把网盘交付等同GitHub发布。
 
 2026-10-14补记：用户发现开发史漏记，核对上述实际回执后补齐此条，并同步WorkingPlan当前发布状态；未重跑构建或修改发行包。
+
+### 2026-10-14：ReplayAuto 162节点强DAG闭环与ABBA结题（STOP）
+
+对 2026-10-06 留置的 CPU 隔离候选 `ReplayAuto`（`cd0534bb`，161 kernel + 1 timed EventRecord = 162 节点强 DAG）完成源码审计、ROCm 7.0.2 CLR 捕获修复、12 帧 gold 验证与 3 轮 4-slot ABBA 实测闭环（证据与补丁归档于 `HIP/experiments/graph0-replay-auto-20261006/` 与 [ReplayAuto结题报告](results/graph0-replay-auto-20261014/README.md)）：
+
+1. **ROCm 7.0.2 CLR 流捕获 EventRecord 缺陷定位与修复**：
+   - 未修复的 `cd0534bb`（`279984df...`）首次上机捕获时在 `if(n!=eager.size()+1)` 门禁触发 `REPLAY_AUTO_NATIVE_FAILURE reason=APP graph dynamic node count`（实际返回 `n=161`）。根因：`amdhip64_7.dll`（ROCm 7.0.2 CLR `hip_event.cpp:365-413`）在 stream capture 期间对默认 `hipEventRecord(event, stream)`（`flags=0`）直接走底层流记录并返回 `hipSuccess`，不会向捕获图插入 `GraphEventRecordNode`；而 `hipEventRecordWithFlags(..., hipEventRecordExternal=1)` 存在上游栈指针 `amd::GraphNode* pGraphNode;` 未初始化即传入 `addEventRecordNode`（检查 `*node != nullptr` 报 `hipErrorInvalidValue=1`）的 bug。
+   - 在 `submit_pulse_hip.h::record_capture` 中通过 `hipEventRecord` + `hipStreamGetCaptureInfo_v2` + `hipGraphAddEventRecordNode(&evNode, cgraph, deps, 1, handle)`（零初始化 `evNode`）+ `hipStreamUpdateCaptureDependencies(*stream, &evNode, 1, hipStreamSetCaptureDependencies=1u)` 显式构建 `type=7` 节点并更新捕获依赖前沿。修复后编译产物 `graph0-replay-auto.exe` SHA256 为 `70a61794cd7a5566e02792ba2b990064cbeb5974d960992bec285e96ae7b3c6a`。
+2. **162 节点唯一 Kahn 拓扑与 12 帧 HDR 序列 2 Gold（PASS）**：
+   - 实机捕获验证通过：`nodes=162 edges=161 event_record_nodes=1 external_interop_nodes=0`，唯一拓扑序在 `position=24` 处满足 `mh_fast:mh_pool_project_group_c256 -> EventRecord(type=7, owned_event) -> c512_m32_deep:split_ffn_one_w2f8`，且 `hipGraphEventRecordNodeGetEvent` 返回句柄与 `pulse_lease` 私有单句柄严格一致。
+   - 12 帧 `DLSS5_RESIDUAL_SEQUENCE=2` 成对 gold：`EagerAuto`（`warm=4, record_ok=15, accepted=15`）与 `ReplayAuto`（`warm=4, capture_record_calls=1, graph_launch_api_calls=12, host_RecordAccepted=5, valid=1, before_lease_destroy=1`）全部 12 帧 `.f16` 逐位完全一致（`0 bit-diff`，`nan_inf=0`）。
+3. **3 轮 4-slot ABBA 稳态性能评估（STOP）**：
+   - 160 帧/slot、弃前 80 帧、取后 80 帧稳态（每轮 160 帧/arm，3 轮共 480 帧/arm，`edges_only=1`，`NET0`）：
+     - **Round 1**：`EagerAuto` mean `9.509006 ms` vs `ReplayAuto` mean `9.491825 ms`（`Δmean = -0.017181 ms` / `-17.18 µs`），`Δp99 = -0.000040 ms`（`-0.04 µs`），落在同臂 slot 漂移（`+11.84` / `+17.20 µs`）噪声带内。
+     - **Round 2**：`EagerAuto` mean `9.553869 ms` vs `ReplayAuto` mean `9.518381 ms`（`Δmean = -0.035488 ms` / `-35.49 µs`），`Δp99 = -0.001740 ms`（`-1.74 µs`）；但 `B2`（`9.544663 ms`）慢于 `A1`（`9.538263 ms`），control/candidate 漂移达 `+31.21` / `+52.56 µs`。
+     - **Round 3**：`EagerAuto` mean `9.561094 ms` vs `ReplayAuto` mean `9.562006 ms`（`Δmean = +0.000913 ms` / `+0.91 µs`），`EagerAuto` p99 `9.732920 ms` vs `ReplayAuto` p99 `9.761560 ms`（`Δp99 = +0.028640 ms` / `+28.64 µs`），均值与尾延迟双退步触发 **STOP**。
+     - **3 轮合并（480 帧/arm）**：`EagerAuto` mean `9.541323 ms` → `ReplayAuto` mean `9.524071 ms`（**`Δmean = -0.017252 ms` / `-17.25 µs`，`-0.18%`**），`EagerAuto` p99 `9.732100 ms` → `ReplayAuto` p99 `9.736100 ms`（**`Δp99 = +0.004000 ms` / `+4.00 µs`**）。
+4. **物理结论与封板**：将帧内 timed EventRecord 脉冲编入图第 24 号节点确实消除了无脉冲 `ReplayOff` 相对 `EagerAuto` 的 `+38 µs` 退步，但因 ROCm 7.0.2 `hipGraphLaunch` 在主机侧仍逐节点遍历发射 AQL 包且附加图执行包装开销，相对 `EagerAuto` 净均值仅差 `-17.25 µs`（处于 12～53 µs 漂移噪声内）且 p99 退步 `+4.00 µs`（R3 `+28.64 µs`）。判定 **STOP**，hipGraph 全家桶（旧 `opt.graph=1`、同工 `graph0`、`ReplayOff`、`ReplayAuto` 162 节点）在 RX 9070 XT 上彻底结题，生产默认维持 `EagerAuto`（`DLSS5_SUBMIT_PULSE=2, opt.graph=0`）。

@@ -1,0 +1,28 @@
+{
+  "phase": "GPU 162-node strong DAG gold + 3-round 4-slot ABBA completed (STOP)",
+  "minimal_gate_source": "359d6b3d",
+  "base_candidate_commit": "cd0534bb",
+  "build": "x86_64-w64-mingw32-g++ -std=c++20 -O2 exit0",
+  "exe_sha256": "70a61794cd7a5566e02792ba2b990064cbeb5974d960992bec285e96ae7b3c6a",
+  "cd0534bb_unfixed_exe_sha256": "279984dfaf8b453edc7d0502dd5725a051042a47fd0e5dd0fb4cdd27c2da02cb",
+  "source_sha256": {
+    "benchmark.cpp": "a36f7661ac66016e4f784e8bd985b2eeb79645f2f0934037c7043a4611d43f4c",
+    "hip_reference_network.h": "15bdbca70e444aafea400de2c4819d283cfc7dcf4c67d8f64625ad7290b9dcb4",
+    "hip_d3d12_bridge.h": "1ef1b9472ff005e2fc49d20c27ded65edb7f2244674afc838b0ef0e437a97bd5",
+    "submit_pulse.h": "242be4fcefad286177d635705c0bd74033685db8636f04647043ce076a8f702f",
+    "submit_pulse_hip.h": "a9c149285155cb28bb3e58621c242535f0740c627abc27b3d24f674e2ba09de9",
+    "native_hip_network.h": "bc530ba6f674f1390e2c39a042f2bbaaecf1b78323567f7ca7699133019a379f"
+  },
+  "scope": "currentOrigFrame1152F1MP1PRED1inactiveAE0noneHistseed0resettruePDL0NET0overlap0 Style1/HDR12seq2",
+  "roles": [
+    "actualEagerAuto2 unchangedphysicalmarker",
+    "ReplayAuto2 withsameownedlease event inNNgraph"
+  ],
+  "rocm_clr_capture_fix": "ROCm 7.0.2 CLR default hipEventRecord(event, stream) with flags=0 returns hipSuccess during stream capture without adding a GraphEventRecordNode (leaving n=161 nodes), while hipEventRecordWithFlags(..., hipEventRecordExternal=1) dereferences an uninitialized GraphNode* in hip_event.cpp:406. Fixed in submit_pulse_hip.h::record_capture via hipEventRecord + hipStreamGetCaptureInfo_v2 + hipGraphAddEventRecordNode + hipStreamUpdateCaptureDependencies(..., hipStreamSetCaptureDependencies=1).",
+  "event_API_gate": "ActualDLL optionalhipGraphEventRecordNodeGetEvent + hipStreamGetCaptureInfo_v2 + hipGraphAddEventRecordNode + hipStreamUpdateCaptureDependencies resolved beforecapture; absencecasefail, no fallback/anothermarker",
+  "owned_event": "privatelease read-only active/count1 handle; actualEventRecordNodegetter matches samehandle; everyreplayhandlematches recordedkey",
+  "DAG_gate": "162nodes (161Kernel + 1EventRecord type=7) with 161 directed edges. Unique Kahn topological order verified on GPU: EventRecord at position=24 immediately after mh_fast:mh_pool_project_group_c256 and immediately before c512_m32_deep:split_ffn_one_w2f8",
+  "gold_12frame_gate": "12-frame HDR residual sequence=2 paired gold: 0 bit-diff across all 12 frames (all finite, identical SHA256s); EagerAuto create_ok=1 record_ok=15 accepted=15 graph_launch_api_calls=0; ReplayAuto warm=4 capture_record_calls=1 graph_launch_api_calls=12 host_RecordAccepted=5 expected_host_Record=5 valid=1",
+  "abba_3round_verdict": "STOP (3 rounds of 4-slot ABBA, 160 frames/slot, discard 80, measure 80 steady, edges_only=1, NET0: pooled 480 frames/arm EagerAuto mean 9.541323 ms -> ReplayAuto mean 9.524071 ms, delta_mean=-0.017252 ms [-17.25 us], p99 9.732100 -> 9.736100 ms, delta_p99=+0.004000 ms [+4.00 us]; Round 3 regresses both mean +0.91 us and p99 +28.64 us)",
+  "results_dir": "Development/results/graph0-replay-auto-20261014"
+}
