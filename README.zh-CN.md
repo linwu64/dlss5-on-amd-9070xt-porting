@@ -16,7 +16,7 @@ DLSS 5（DLSSNR）跑在 AMD RX 9070 XT / RDNA 4 上。
 | **Magpie**（便携） | 任何游戏，不需要游戏支持超分 | Magpie 抓游戏窗口；网络接在效果组的 FSR3_SR 一项里，之后 FSR4 放大到全屏（可选 XeSS 帧生成） |
 | **OptiScaler-REFramework**（只给 RE9） | 《生化危机 9》，常规路线切不开它的命令提交 | TheAutomatic 改的 OptiScaler 宿主 + 我们的 `LmxxfNrRuntime.dll`（成对使用，别和常规包混装） |
 
-**当前版本：0.42（2026-10-13）。** 三个完整本地包，包含已采纳数据流、可选时序接口及狭域分配节省。默认MODE0/1x/SKIN0，不承诺FPS提升。详见[更新日志](CHANGELOG.zh-CN.md)，下载链接待用户上传。
+**当前版本：0.42（2026-10-13）。** 三个完整包，包含已采纳数据流、可选时序接口及狭域分配节省。默认MODE0/1x/SKIN0，不承诺FPS提升。详见[更新日志](CHANGELOG.zh-CN.md)，下载：[夸克](https://pan.quark.cn/s/316704620069) · [Gofile 镜像](https://gofile.io/d/HNE20Ocp)（三个包）。
 
 **历史版本：0.40（2026-10-03）。** **默认输出变了**：全 71 块 + fast 数值（`DLSS5_SKIP_BLOCKS=` 空值、`DLSS5_FAST_NUMERIC=1`），对 NVIDIA 44.26 → 47.55 dB、偏色消失，每帧慢约 0.12 / 0.19 ms（900 / 1080）；写 `DLSS5_SKIP_BLOCKS=42,43,46` + `DLSS5_FAST_NUMERIC=0` 就逐位回到 0.39。新东西：叠层 `DLSS5_MULTI_PASS=1/2/3`（风格更浓，耗时约 N 倍；游戏里 F9 轮换，《剑星》2K 57 / 37 / 27 fps）、三个配置文件（`default-config.txt` → `custom-config.txt` → `native-game-flags.txt`，环境变量最高；包里不再带你的文件）、逐位提速（C32/C64 改 LLVM 23 编，1080 约 −0.2 ms）。下载：[夸克](https://pan.quark.cn/s/d38e0f653c5a) · [Gofile 镜像](https://gofile.io/d/moSf7cqf)。0.39：[夸克](https://pan.quark.cn/s/dea9c0ef2f95) · [Gofile 镜像](https://gofile.io/d/iqtFTSpS)。
 
@@ -254,6 +254,7 @@ powershell -ExecutionPolicy Bypass -File scripts\deploy_fast.ps1 -Source <lab> -
 | 0.38 · 三个包（Magpie · OptiScaler · OptiScaler-REFramework，HIP）[夸克](https://pan.quark.cn/s/6856d875bbe9) · [Gofile 镜像](https://gofile.io/d/lzsqfUiE) | 09-30 | 默认与 0.37 逐位相同：900 去 shift_pack、C32 字节化与跳全零半块、复合量化、C256 FFN W16、C512 attention 去冗余 F、三处宽写；离线 900 约 8.0 → 7.6ms、1080 约 10.8 → 10.4ms（`results/hip-roofline-20260930`）。新开关 `DLSS5_FORMAT_FALLBACK=1`、`DLSS5_HOT_RELOAD=1`；可选有损 `DLSS5_NETWORK_1080_ROWS=1088`（默认不开）。 |
 | 0.39 · 三个包（Magpie · OptiScaler · OptiScaler-REFramework，HIP）[夸克](https://pan.quark.cn/s/dea9c0ef2f95) · [Gofile 镜像](https://gofile.io/d/iqtFTSpS) | 10-01 | 默认与 0.38 逐位相同：C512 FFN 一 wave 寄存器内完成、残差初始化/权重读取外提、解码加宽、ViT QKV/attention 合并等；离线 900 约 7.27 → 6.8ms、1080 约 10.05 → 9.5ms，《剑星》2K +1.5～2 帧。新开关 `DLSS5_STYLE=1`；add-on/runtime 可复现构建。 |
 | 0.40 · 三个包（Magpie · OptiScaler · OptiScaler-REFramework，HIP）[夸克](https://pan.quark.cn/s/d38e0f653c5a) · [Gofile 镜像](https://gofile.io/d/moSf7cqf) | 10-03 | **默认输出变了**：全 71 块 + `DLSS5_FAST_NUMERIC=1`（对 NVIDIA 44.26 → 47.55 dB，+0.12/+0.19 ms）。叠层 `DLSS5_MULTI_PASS` + F9；三个配置文件（`default-config` → `custom-config` → `native-game-flags`，环境变量最高）；C32/C64 改 LLVM 23 等逐位提速。 |
+| 0.42 · [夸克](https://pan.quark.cn/s/316704620069) · [Gofile 镜像](https://gofile.io/d/HNE20Ocp) | 10-13 | 默认MODE0/1x/SKIN0；已采纳数据流、可选时序接口及狭域分配节省，80模块；不承诺FPS提升。[完整说明](CHANGELOG.zh-CN.md)。 |
 | 0.41 · [夸克](https://pan.quark.cn/s/dbda3e470f8f) · [Gofile 镜像](https://gofile.io/d/YAENU0ex) | 10-05 | 默认1x；选3x才默认两真实遍加预测。首帧/HIP设备修复、RE9强度、C256/ViT/C512及直接RGBA优化，76模块；[完整说明](CHANGELOG.zh-CN.md)。 |
 
 

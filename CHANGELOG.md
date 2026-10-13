@@ -391,6 +391,8 @@ Controlled complete Frame gold and the final production old/new43-module paths w
 
 ## 0.42 (2026-10-13)
 
+Download (all three packages): [Quark](https://pan.quark.cn/s/316704620069) · [Gofile mirror](https://gofile.io/d/HNE20Ocp).
+
 Three complete packages: Magpie, standard OptiScaler, and OptiScaler+REFramework. Includes accepted source changes since0.41; existing0.41 ZIPs remain intact, and0.41-a was not a formal release. Defaults remain MODE0,1x,SKIN0; PRED1 applies only when3x is selected. No personal custom/native settings are packaged.
 
 - Accepted data flow: final RGB without the final copy, the block4-to-C64 FP8 edge, and SP only for the verified1440 FAST3 scope. H900 normalization reuse and Auto submission retain their verified shape/driver/runtime/recipe qualifications.
@@ -398,4 +400,4 @@ Three complete packages: Magpie, standard OptiScaler, and OptiScaler+REFramework
 - Weight capacities:96MiB expand+96MiB contract+24MiB projection=216MiB; the latter two add120MiB to the already compact-expand baseline. Explicit NeverHistory saves33.75MiB shared-buffer allocation width in eligible sessions. These are not resident-peak claims; shortABBA differences were below drift, with no FPS promise. New tail layout is limited to verified gfx1201/RX9070XT1152 scope; gfx1200/unknown/old modules retain paired legacy buffer/kernel fallback.
 - V-tail barrier, prefix NT, NoHi, C512 allocation trials and host QPC are excluded. D3D12 whole-network research is not a release backend. Official recipes build80 modules(40 per architecture), including compact tail exports, without experimental sidecars.
 
-Local packages and verification receipts only; no game installation, upload, tag or push. Download links will be added after the user uploads them.
+Local packages and verification receipts only; no game installation, upload, tag or push. The mirror links above were supplied by the user.

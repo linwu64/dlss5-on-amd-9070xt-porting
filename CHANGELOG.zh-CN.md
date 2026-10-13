@@ -393,6 +393,8 @@
 
 ## 0.42（2026-10-13）
 
+下载（三个包）：[夸克](https://pan.quark.cn/s/316704620069) · [Gofile 镜像](https://gofile.io/d/HNE20Ocp)。
+
 正式三个完整包：Magpie、通用 OptiScaler、OptiScaler＋REFramework。包含0.41后已采纳的正式源码；0.41 ZIP保留，0.41-a不是正式版。默认MODE0、1x、SKIN0；PRED1仅选择3x时生效，已有custom/native覆盖不带入包。
 
 - 数据流：final RGB免最终copy、block4→C64 FP8边、仅已验1440 FAST3范围的SP路径；H900范数复用仅1600×960 FAST1/MP1等原资格，Auto提交仅已验驱动/runtime/配方，不扩大到未知组合。
@@ -400,4 +402,4 @@
 - 权重容量：expand96MiB、contract96MiB、projection24MiB，合计216MiB；后两项相对已expand基线新增120MiB。显式NeverHistory无history会话少33.75MiB共享buffer分配宽度。不是驻留峰值结论；短ABBA差异低于漂移，不承诺FPS提升。compact tail仅gfx1201/RX9070XT已验1152资格启用，gfx1200/未知/旧模块成对旧buffer旧kernel回落。
 - V末屏障、prefix NT、NoHi、C512少New及host QPC均未进入产品。独立D3D12整网研究不作为发行后端。正式构建80模块（40×双架构），官方recipe包含新tail出口；无实验侧车。
 
-本次只生成本地发行包及校验回执，不自动部署游戏、上传、创建tag或push。下载链接由用户上传后另补。
+本次只生成本地发行包及校验回执，不自动部署游戏、上传、创建tag或push。上述镜像链接由用户提供。
