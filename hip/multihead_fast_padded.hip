@@ -567,6 +567,41 @@ FASTWAVE void mh_attention_project_frag_c512(const unsigned char*av8,const float
 #endif
 }
 
+template<uint Unroll>
+DEV void mh_attention_project_frag_c512_w16_body(const unsigned char*av8,const float*feature,const float*w,float*out,uint tokens,uint post,uint cropw,uint croph,uint workw,uint sx,uint sy){
+ const uint C=512;uint l=__builtin_amdgcn_workitem_id_x(),rc=l&15,g=l>>4,block=__builtin_amdgcn_workgroup_id_x(),first=block/8*16,col=block%8*64;if(first>=tokens)return;
+ const unsigned char*wb=reinterpret_cast<const unsigned char*>(w)+size_t(3)*C*C*4;const uint skip=4*C*C+(C/32)*4096+C/32;
+ f8 acc[4];
+ {float ws[4];for(uint n=0;n<4;n++)ws[n]=w[skip+col+n*16+rc];
+  float fv[4][8];for(uint n=0;n<4;n++)for(uint e=0;e<8;e++){uint p=first+g*8+e;uint pp=p<tokens?p:first;fv[n][e]=feature[pp*C+col+n*16+rc];}
+  for(uint n=0;n<4;n++)for(uint e=0;e<8;e++){uint p=first+g*8+e;float h=Hrtz(fv[n][e]*ws[n]);__asm__ volatile("":"+v"(h));acc[n][e]=p<tokens?h:0.f;}}
+ const bool live=first+rc<tokens;
+ typedef int w16_i4 __attribute__((ext_vector_type(4)));
+ const unsigned char*arow=av8+(live?first+rc:first)*C+g*8;
+ if constexpr(Unroll==4){
+  _Pragma("unroll 4") for(uint k=0;k<C;k+=32){uint gs=k/32;
+   i2 a0,a1;__builtin_memcpy(&a0,arow+k,8);__builtin_memcpy(&a1,arow+k+16,8);
+   a0=live?a0:i2{};a1=live?a1:i2{};
+   _Pragma("unroll") for(uint n=0;n<4;n++){uint n0=col+n*16+rc;w16_i4 bw;__builtin_memcpy(&bw,wb+((n0/16)*16+gs)*512+(g*16+n0%16)*16,16);
+    i2 b0={bw[0],bw[1]},b1={bw[2],bw[3]};
+    acc[n]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(a0,b0,acc[n]);
+    acc[n]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(a1,b1,acc[n]);}}
+ }else{
+  _Pragma("unroll 2") for(uint k=0;k<C;k+=32){uint gs=k/32;
+   i2 a0,a1;__builtin_memcpy(&a0,arow+k,8);__builtin_memcpy(&a1,arow+k+16,8);
+   a0=live?a0:i2{};a1=live?a1:i2{};
+   _Pragma("unroll") for(uint n=0;n<4;n++){uint n0=col+n*16+rc;w16_i4 bw;__builtin_memcpy(&bw,wb+((n0/16)*16+gs)*512+(g*16+n0%16)*16,16);
+    i2 b0={bw[0],bw[1]},b1={bw[2],bw[3]};
+    acc[n]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(a0,b0,acc[n]);
+    acc[n]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(a1,b1,acc[n]);}}
+ }
+ for(uint n=0;n<4;n++)for(uint e=0;e<8;e++){uint p=first+g*8+e,c=col+n*16+rc;if(p>=tokens)continue;float a=acc[n][e],v=post==3?Hrtz(a):post==4?F(a):F(Hrtz(a));uint dest=p*C+c;
+  if(cropw){uint x=p%workw,y=p/workw;if(x<sx||y<sy||x>=sx+cropw||y>=sy+croph)continue;dest=((y-sy)*cropw+x-sx)*C+c;}
+  out[dest]=v;}
+}
+FASTWAVE void mh_attention_project_frag_c512_w16(const unsigned char*av8,const float*feature,const float*w,float*out,uint tokens,uint post,uint cropw,uint croph,uint workw,uint sx,uint sy){mh_attention_project_frag_c512_w16_body<2>(av8,feature,w,out,tokens,post,cropw,croph,workw,sx,sy);}
+FASTWAVE void mh_attention_project_frag_c512_w16_u4(const unsigned char*av8,const float*feature,const float*w,float*out,uint tokens,uint post,uint cropw,uint croph,uint workw,uint sx,uint sy){mh_attention_project_frag_c512_w16_body<4>(av8,feature,w,out,tokens,post,cropw,croph,workw,sx,sy);}
+
 // C512_PROJ_WN4 (2026-10-01, results/gap-map-evening-20261001): mh_attention_project_frag_c512 reorganised like mochizuki's
 // Proj (WN=4): a 128-thread workgroup = the same 16 tokens x 64 columns, each wave one 16-column slice (one accumulator,
 // 32 WMMA in the same (k32, half) order). Same grid as the 1-wave form, so 4x the waves and a 4x shorter serial chain; the

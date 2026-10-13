@@ -2653,3 +2653,22 @@ SKIN_PROTECT只多遍：原输入肤色启发式mask混y1/yN，不是原图/语�
 - **改动/范围：** f46 prefix arg4 main八8B store TH0→NT，down两store/scope/waits/math/资源保持；侧车761984仅newexport，currentjoint43/既有资源优化/真实Auto均保。18221完整双输出gold0，79532实际候选3calls全Frame0900/finite0。68401是私有style默认资格误拒，candidate未执行，修host后成功，不归类算法失败。
 - **实际测量：** 唯一89008完整Frame A-B-B-A各320弃80、480/arm：mean9.656520833→9.655660417ms（−0.8604µs），p99 9.88847→9.86799ms，max9.947→9.926ms；control漂移+26.408µs/B+31.129µs。槽均值9.643316667/9.640095833/9.671225/9.669725ms，后B略慢对应A。
 - **裁决/重评条件：** 收益远低漂移，STOP未证可靠收益，非数学失败/非证明变慢；不单凭p99改善采纳，不换TH/刷轮。TH不是保证绕L2；重评须新的真实关键路径/缓存行为证据，而非重复同短ABBA。产品源未改。证据 `HIP/experiments/two-kernel-trials/prefix-th/` 与 `measurement/`，原handle89008 exit0/LOCK_RELEASED，初次误拒68401原证保留。
+
+### 2026-10-14 — ViT `compactw` contract / projection W16（16B `global_load_b128`）｜静态 VGPR 膨胀掉 occupancy，不采纳
+
+- **改动/范围：** 在 C512 W16 成功后，排查 ViT 8 块（`31..38`）中仍使用 `FragmentPackedMatrix`（8B `global_load_b64`）的两个紧凑权重核：`vit_stream_contract_frag_bout_compactw` 与 `vit_stream_project_n64_bb_compactw`（`vit-stream.hsaco` / `vit-stream-fast.hsaco`），尝试按 32-k 步 `_Pragma("unroll 4")` 改为 16B `global_load_b128`（`W16=true`）。（注：ViT 最大的 `vit_stream_qkv_f8w_bin` 在 0.42 已是 `PackedVitQkvCompactFp8` W16 16B 加载。）
+- **编译器/ISA 审计结论：** 用 `compile-modules.py --only vit-stream vit-stream-fast --targets gfx1201 --target-feature=-real-true16` 实编核查：
+  1. `vit_stream_contract_frag_bout_compactw`：VGPR 从 `211` 暴涨至 **`251`**（贴死 256 VGPR 硬件上限，且带 4096B occupancy-cap LDS）。
+  2. `vit_stream_project_n64_bb_compactw`：VGPR 从 `161` 暴涨至 **`220`**，直接跨过 `170` VGPR 阈值，使每 SIMD wave 驻留数从 **3 waves/SIMD 跌至 2 waves/SIMD（occupancy -33%）**。
+- **裁决/重评条件：** 停止/不合入，避免把掉 occupancy 的 ViT 改动混入已验证的 C512 W16（VGPR 81～187，occupancy 不降）。除非未来能在不跨 170 VGPR 阈值（如 `unroll 1` 或寄存器复用重排）的前提下保持 3 waves/SIMD，否则不再对 ViT contract/projection 套用 W16 unroll。证据：`Development/results/c512-w16-20261014/README.md`。
+
+### 2026-10-14 — C256 `SpStage` 首尾层（`15, 22, 48, 55`）并入与 `sp_init`/`sp_recover` 合并审计｜合同不兼容且单层 `c64-wave2-fast` 更快，不采纳
+
+- **范围：** 源码与历史回执全量审计为什么 Encoder C256（`blocks 15..22`）只将 `16..21` 放进 `SpStage(16,6)`、Decoder C256（`blocks 48..55`）只将 `49..54` 放进 `SpStage(49,6)`，以及能否并入首尾层或省掉 `sp_init`/`sp_recover`。
+- **源码/历史铁证（四重阻断）：**
+  1. **Encoder 首尾层（`15, 22`）数据格式硬不兼容**：`block 15` 输入来自 `Down(14)`（`mh_pool_project_group_c128_hin`），格式为 **FP32（`ByteIn=false`，4B/通道）**，而 `sp_run256_w16` 硬编码 `ByteIn=true`（1B E4M3）；`block 22` 为 stage tail（`raw=true, post=3, ByteOut=false`），必须输出 **FP32 `Hrtz(v)`（`33.75 MiB`）** 同时喂给 `skips[3]`（供 Decoder `Up(48)` 按 FP32 64B `b128` 读取）和 `Down(22)`（按 4B 步长读低 16 位 half）。
+  2. **Decoder 首尾层（`48, 55`）在 1080p 下数值合同不同（`W2_FAST_NUM=3` vs `0`）**：`swin_persistent_network.h:59` 中 `SpFastTierMask()` 默认为 `1`（仅 720p 用 `swin-persistent-fast.hsaco`；1080p 因 `sp-fast-coverage-20261006` 实测慢 `+0.025 ms` 且改数值而保持 `swin-persistent.hsaco` 即 `W2_FAST_NUM=0`）。而独立 `Body(48)` 和 `Body(55)` 调的是 `c64-wave2-fast.hsaco`（`W2_FAST_NUM=3`）。把 `48` 或 `55` 并入 `SpStage` 会将其算术从 `W2_FAST_NUM=3` 变成 `W2_FAST_NUM=0`，直接破坏 0.42 Gold（`0900E489...`）。
+  3. **`swin-persistent.hsaco` 单层内核配方显著弱于 `c64-wave2-fast.hsaco`**：`c64-wave2-fast.hsaco` 由 **LLVM 23** 编译且开启 **`W2_QKV_FUSE=3`（FFN+QKV 融合）、`W2_FFN_QT_BATCH=4`、`W2_HOIST_LOADS=15`**；而 `swin-persistent.hsaco` 因持久外层循环 VGPR 压力只能用 **COMGR** 编译且 **`W2_QKV_FUSE=0`、`W2_FFN_QT_BATCH=2`、`W2_HOIST_LOADS=0`**（此前尝试在 `swin-persistent` 开 `W2_QKV_FUSE`/`W2_HOIST_LOADS`/LLVM23 均因 VGPR `184→222` 退步 `+0.006..+0.27 ms` 被拒，见 `DevHistory-full-20261006.md:1277,1290,1353`），且每扩 1 层还需在 `plan.outputs` 多常驻 `2.21 MB` 非别名恢复缓冲（两层 `+4.42 MB`）。
+  4. **`sp_init_pair` 与 `sp_recover256_w16` 不可删改**：`sp_init_pair` 早在 `swin_persistent.inc:27` 实现并实测负（`-0.001 / +0.023 / +0.003 ms`，`DevHistory-full-20261006.md:1378`），且 `CheckPulseCapabilities()`（`hip_reference_network.h:1006`）明确规定若模块导出 `sp_init_pair` 则直接禁用 `submit_pulse=auto`；`sp_recover256_w16` 是替代每次 `+0.485..+0.685 ms` CPU `hipStreamSynchronize` 的 `<1.5 µs` 1-WG 异步超时检查核（正常情况 `if(!sp_load(p.state+2)) return;` 立即返回）。
+- **裁决：** 保持 `SpStage(16,6)` 与 `SpStage(49,6)` 现行边界及 3-launch 结构不动，不再重开 C256 首尾层并入或 `sp_init_pair`。证据：`Development/results/c512-w16-20261014/README.md`、`Development/results/sp-fast-coverage-20261006/README.md`、`Development/results/swin-persistent-20260929/README.md`。
+

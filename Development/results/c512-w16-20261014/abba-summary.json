@@ -1,0 +1,400 @@
+{
+  "u2": {
+    "mode_env": "1",
+    "rounds": {
+      "r1": {
+        "slots": {
+          "baseline-A1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.526087500000001,
+            "median_ms": 9.5165,
+            "p90_ms": 9.651,
+            "p99_ms": 9.699,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.535,
+            "median_ms": 9.5405,
+            "p90_ms": 9.648,
+            "p99_ms": 9.685,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.5370375,
+            "median_ms": 9.539,
+            "p90_ms": 9.646,
+            "p99_ms": 9.713,
+            "invalid": 0,
+            "changed": 0
+          },
+          "baseline-A2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.57029375,
+            "median_ms": 9.57,
+            "p90_ms": 9.693,
+            "p99_ms": 9.763,
+            "invalid": 0,
+            "changed": 0
+          }
+        },
+        "A_mean_ms": 9.548190625,
+        "B_mean_ms": 9.53601875,
+        "delta_mean_ms": -0.012171874999999943,
+        "A_median_ms": 9.549,
+        "B_median_ms": 9.54,
+        "delta_median_ms": -0.009000000000000341,
+        "A_p90_ms": 9.671,
+        "B_p90_ms": 9.648,
+        "delta_p90_ms": -0.022999999999999687,
+        "A_p99_ms": 9.743,
+        "B_p99_ms": 9.705,
+        "delta_p99_ms": -0.038000000000000256,
+        "drift_A2_minus_A1_ms": 0.04420624999999845,
+        "drift_B2_minus_B1_ms": 0.0020375000000001364,
+        "pair1_B1_minus_A1_ms": 0.008912499999999213,
+        "pair2_B2_minus_A2_ms": -0.0332562499999991
+      },
+      "r2": {
+        "slots": {
+          "baseline-A1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.565775,
+            "median_ms": 9.563500000000001,
+            "p90_ms": 9.694,
+            "p99_ms": 9.747,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.56045,
+            "median_ms": 9.5675,
+            "p90_ms": 9.677,
+            "p99_ms": 9.751,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.57281875,
+            "median_ms": 9.565999999999999,
+            "p90_ms": 9.688,
+            "p99_ms": 9.778,
+            "invalid": 0,
+            "changed": 0
+          },
+          "baseline-A2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.59764375,
+            "median_ms": 9.5895,
+            "p90_ms": 9.718,
+            "p99_ms": 9.847,
+            "invalid": 0,
+            "changed": 0
+          }
+        },
+        "A_mean_ms": 9.581709375,
+        "B_mean_ms": 9.566634375,
+        "delta_mean_ms": -0.015075000000001282,
+        "A_median_ms": 9.575,
+        "B_median_ms": 9.567,
+        "delta_median_ms": -0.007999999999999119,
+        "A_p90_ms": 9.709,
+        "B_p90_ms": 9.688,
+        "delta_p90_ms": -0.02099999999999902,
+        "A_p99_ms": 9.796,
+        "B_p99_ms": 9.771,
+        "delta_p99_ms": -0.02499999999999858,
+        "drift_A2_minus_A1_ms": 0.031868749999999224,
+        "drift_B2_minus_B1_ms": 0.012368750000000261,
+        "pair1_B1_minus_A1_ms": -0.005325000000000912,
+        "pair2_B2_minus_A2_ms": -0.024824999999999875
+      },
+      "r3": {
+        "slots": {
+          "baseline-A1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.60291875,
+            "median_ms": 9.591999999999999,
+            "p90_ms": 9.738,
+            "p99_ms": 9.79,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.60505,
+            "median_ms": 9.596,
+            "p90_ms": 9.715,
+            "p99_ms": 9.815,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.5872875,
+            "median_ms": 9.5885,
+            "p90_ms": 9.703,
+            "p99_ms": 9.816,
+            "invalid": 0,
+            "changed": 0
+          },
+          "baseline-A2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.62381875,
+            "median_ms": 9.615,
+            "p90_ms": 9.743,
+            "p99_ms": 9.808,
+            "invalid": 0,
+            "changed": 0
+          }
+        },
+        "A_mean_ms": 9.61336875,
+        "B_mean_ms": 9.59616875,
+        "delta_mean_ms": -0.017199999999998994,
+        "A_median_ms": 9.606,
+        "B_median_ms": 9.59,
+        "delta_median_ms": -0.016000000000000014,
+        "A_p90_ms": 9.74,
+        "B_p90_ms": 9.712,
+        "delta_p90_ms": -0.02800000000000047,
+        "A_p99_ms": 9.808,
+        "B_p99_ms": 9.816,
+        "delta_p99_ms": 0.008000000000000895,
+        "drift_A2_minus_A1_ms": 0.020899999999999253,
+        "drift_B2_minus_B1_ms": -0.017762499999999903,
+        "pair1_B1_minus_A1_ms": 0.002131249999999696,
+        "pair2_B2_minus_A2_ms": -0.03653124999999946
+      }
+    },
+    "pooled_960f": {
+      "A_mean_ms": 9.581089583333334,
+      "B_mean_ms": 9.566273958333333,
+      "delta_mean_ms": -0.014815625000000665,
+      "A_median_ms": 9.573,
+      "B_median_ms": 9.568,
+      "delta_median_ms": -0.005000000000000782,
+      "A_p90_ms": 9.709,
+      "B_p90_ms": 9.685,
+      "delta_p90_ms": -0.023999999999999133,
+      "A_p99_ms": 9.796,
+      "B_p99_ms": 9.787,
+      "delta_p99_ms": -0.008999999999998565
+    }
+  },
+  "u4": {
+    "mode_env": "2",
+    "rounds": {
+      "r1": {
+        "slots": {
+          "baseline-A1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.6307625,
+            "median_ms": 9.624,
+            "p90_ms": 9.765,
+            "p99_ms": 9.829,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.62894375,
+            "median_ms": 9.6355,
+            "p90_ms": 9.726,
+            "p99_ms": 9.833,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.60445625,
+            "median_ms": 9.588,
+            "p90_ms": 9.732,
+            "p99_ms": 9.82,
+            "invalid": 0,
+            "changed": 0
+          },
+          "baseline-A2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.64098125,
+            "median_ms": 9.6445,
+            "p90_ms": 9.751,
+            "p99_ms": 9.822,
+            "invalid": 0,
+            "changed": 0
+          }
+        },
+        "A_mean_ms": 9.635871875,
+        "B_mean_ms": 9.6167,
+        "delta_mean_ms": -0.019171874999999616,
+        "A_median_ms": 9.628499999999999,
+        "B_median_ms": 9.607,
+        "delta_median_ms": -0.02149999999999963,
+        "A_p90_ms": 9.76,
+        "B_p90_ms": 9.73,
+        "delta_p90_ms": -0.02999999999999936,
+        "A_p99_ms": 9.829,
+        "B_p99_ms": 9.833,
+        "delta_p99_ms": 0.0039999999999995595,
+        "drift_A2_minus_A1_ms": 0.010218749999999943,
+        "drift_B2_minus_B1_ms": -0.02448749999999933,
+        "pair1_B1_minus_A1_ms": -0.00181874999999998,
+        "pair2_B2_minus_A2_ms": -0.03652499999999925
+      },
+      "r2": {
+        "slots": {
+          "baseline-A1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.634675,
+            "median_ms": 9.633,
+            "p90_ms": 9.756,
+            "p99_ms": 9.841,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.61734375,
+            "median_ms": 9.620000000000001,
+            "p90_ms": 9.739,
+            "p99_ms": 9.839,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.62736875,
+            "median_ms": 9.623999999999999,
+            "p90_ms": 9.751,
+            "p99_ms": 9.796,
+            "invalid": 0,
+            "changed": 0
+          },
+          "baseline-A2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.64318125,
+            "median_ms": 9.6355,
+            "p90_ms": 9.786,
+            "p99_ms": 9.849,
+            "invalid": 0,
+            "changed": 0
+          }
+        },
+        "A_mean_ms": 9.638928125,
+        "B_mean_ms": 9.62235625,
+        "delta_mean_ms": -0.016571875000000347,
+        "A_median_ms": 9.6345,
+        "B_median_ms": 9.620000000000001,
+        "delta_median_ms": -0.014499999999998181,
+        "A_p90_ms": 9.774,
+        "B_p90_ms": 9.749,
+        "delta_p90_ms": -0.02499999999999858,
+        "A_p99_ms": 9.847,
+        "B_p99_ms": 9.815,
+        "delta_p99_ms": -0.03200000000000003,
+        "drift_A2_minus_A1_ms": 0.008506249999999937,
+        "drift_B2_minus_B1_ms": 0.010025000000000617,
+        "pair1_B1_minus_A1_ms": -0.017331249999999798,
+        "pair2_B2_minus_A2_ms": -0.01581249999999912
+      },
+      "r3": {
+        "slots": {
+          "baseline-A1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.64149375,
+            "median_ms": 9.632,
+            "p90_ms": 9.752,
+            "p99_ms": 9.82,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B1": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.64193125,
+            "median_ms": 9.6335,
+            "p90_ms": 9.765,
+            "p99_ms": 9.849,
+            "invalid": 0,
+            "changed": 0
+          },
+          "candidate-B2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.63679375,
+            "median_ms": 9.6445,
+            "p90_ms": 9.743,
+            "p99_ms": 9.833,
+            "invalid": 0,
+            "changed": 0
+          },
+          "baseline-A2": {
+            "total_frames": 240,
+            "steady_frames": 160,
+            "mean_ms": 9.666,
+            "median_ms": 9.6685,
+            "p90_ms": 9.774,
+            "p99_ms": 9.852,
+            "invalid": 0,
+            "changed": 0
+          }
+        },
+        "A_mean_ms": 9.653746875,
+        "B_mean_ms": 9.6393625,
+        "delta_mean_ms": -0.014384374999998784,
+        "A_median_ms": 9.648499999999999,
+        "B_median_ms": 9.6395,
+        "delta_median_ms": -0.008999999999998565,
+        "A_p90_ms": 9.765,
+        "B_p90_ms": 9.754,
+        "delta_p90_ms": -0.011000000000001009,
+        "A_p99_ms": 9.841,
+        "B_p99_ms": 9.849,
+        "delta_p99_ms": 0.008000000000000895,
+        "drift_A2_minus_A1_ms": 0.02450624999999995,
+        "drift_B2_minus_B1_ms": -0.005137500000000017,
+        "pair1_B1_minus_A1_ms": 0.00043750000000031264,
+        "pair2_B2_minus_A2_ms": -0.029206249999999656
+      }
+    },
+    "pooled_960f": {
+      "A_mean_ms": 9.642848958333333,
+      "B_mean_ms": 9.626139583333334,
+      "delta_mean_ms": -0.016709374999999582,
+      "A_median_ms": 9.6365,
+      "B_median_ms": 9.6245,
+      "delta_median_ms": -0.012000000000000455,
+      "A_p90_ms": 9.767,
+      "B_p90_ms": 9.749,
+      "delta_p90_ms": -0.017999999999998906,
+      "A_p99_ms": 9.847,
+      "B_p99_ms": 9.839,
+      "delta_p99_ms": -0.007999999999999119
+    }
+  }
+}

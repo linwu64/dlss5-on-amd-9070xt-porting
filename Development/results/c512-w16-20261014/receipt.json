@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-14",
+  "experiment": "c512-w16-20261014",
+  "verdict": "PASS (HIP_C512_W16=2 default enabled; 0 bytes extra VRAM; bit-exact 0900E489...)",
+  "default_macro": "HIP_C512_W16=2 (u4 mode; 1=u2 mode; 0=disabled via DLSS5_HIP_C512_W16=0)",
+  "source_sha256": {
+    "Development/HIP/hip_reference_network.h": "b4c517d4984d9d39142f297e0d1ac974cad89f6beec60ab09cae6e6337f8783f",
+    "hip/deep_fast.hip": "fc7afe29159be1730561affae9e8b1ef8575e6ed2404b4dbd2415d44449625b0",
+    "hip/c512_qkv_attention_compact.inc": "88377aeb741fcf6a3dab3bbda4b940089684acf04ff2a915f699106cbc2a8a1b",
+    "hip/multihead_fast_padded.hip": "c6211c0a6613778b48eef2f895e17c96f892dae46b3d06b3f04968b01f46845a"
+  },
+  "updated_modules_12_of_80": [
+    {
+      "target": "gfx1200",
+      "file": "c512-m32-mh.hsaco",
+      "bytes": 999440,
+      "sha256": "A3F68DA788C8472726644B01FF3F65F6D4681E76D246C3EF3D37C3FE343ED4B1"
+    },
+    {
+      "target": "gfx1200",
+      "file": "deep_fast.hsaco",
+      "bytes": 579344,
+      "sha256": "1B49C9C4855019160236E78F7B88C4B19D37CC0371171B1D31BAB4CB59AAFB3F"
+    },
+    {
+      "target": "gfx1200",
+      "file": "deep_fast-packed.hsaco",
+      "bytes": 569368,
+      "sha256": "7F3B5A58F8C95D11B4D4513444D29603D8B69ADE02427EAEF4738A429B62B195"
+    },
+    {
+      "target": "gfx1200",
+      "file": "deep_fast-packed-fast.hsaco",
+      "bytes": 564504,
+      "sha256": "91EFC90332EA862AE307170ABD6C647209DA553CC7220682F36CB88DBEA8F822"
+    },
+    {
+      "target": "gfx1200",
+      "file": "multihead-fast-padded-wave.hsaco",
+      "bytes": 1100600,
+      "sha256": "4CC888D3FEEE496DD553630B0D8D5DEB9919A189718890B3B48E48D423F80E3E"
+    },
+    {
+      "target": "gfx1200",
+      "file": "multihead-fast-padded-wave-packed.hsaco",
+      "bytes": 1154576,
+      "sha256": "4E0DE3F17F5F57ECF1D661C9905CC09BA983D5A3268EFDD18D09EB3E220D3D99"
+    },
+    {
+      "target": "gfx1201",
+      "file": "c512-m32-mh.hsaco",
+      "bytes": 999440,
+      "sha256": "27B00C69573C38A40433AF54B12080DE161514810C045D2A6CDA155229DF1CEF"
+    },
+    {
+      "target": "gfx1201",
+      "file": "deep_fast.hsaco",
+      "bytes": 579344,
+      "sha256": "38DF2F250DD6083FC011C2A86CDDA47E3BD924C9517B93369F4045FB80F9D27F"
+    },
+    {
+      "target": "gfx1201",
+      "file": "deep_fast-packed.hsaco",
+      "bytes": 569368,
+      "sha256": "6EBBE218A2BA35B682F5171282B9AB81CE99BD266F3B64FC80880E85E99239A7"
+    },
+    {
+      "target": "gfx1201",
+      "file": "deep_fast-packed-fast.hsaco",
+      "bytes": 564504,
+      "sha256": "489015A5B007C5BE3B8CD44D898A0E9F91B599F40D00DE7630A85EFCC764F8D9"
+    },
+    {
+      "target": "gfx1201",
+      "file": "multihead-fast-padded-wave.hsaco",
+      "bytes": 1100600,
+      "sha256": "BB4FDF310F9A463C36EE20451B2E76F93862D766A3F8E192FED60ACF0262F391"
+    },
+    {
+      "target": "gfx1201",
+      "file": "multihead-fast-padded-wave-packed.hsaco",
+      "bytes": 1154576,
+      "sha256": "05F77830C557A25250A7910F580920A0801B113FE72340C761CF2BE5B9527334"
+    }
+  ],
+  "gold_gate": {
+    "expected_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "baseline_mode0": {
+      "sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+      "w16_blocks": 0,
+      "stock_blocks": 48,
+      "weights_count": 184,
+      "weights_bytes": 297609000
+    },
+    "candidate_u2_mode1": {
+      "sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+      "w16_blocks": 48,
+      "stock_blocks": 0,
+      "weights_count": 184,
+      "weights_bytes": 297609000
+    },
+    "candidate_u4_mode2": {
+      "sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+      "w16_blocks": 48,
+      "stock_blocks": 0,
+      "weights_count": 184,
+      "weights_bytes": 297609000
+    },
+    "extra_vram_bytes": 0
+  },
+  "abba_pooled_960f": {
+    "u4": {
+      "A_mean_ms": 9.642848958333333,
+      "B_mean_ms": 9.626139583333334,
+      "delta_mean_ms": -0.016709374999999582,
+      "A_median_ms": 9.6365,
+      "B_median_ms": 9.6245,
+      "delta_median_ms": -0.012000000000000455,
+      "A_p90_ms": 9.767,
+      "B_p90_ms": 9.749,
+      "delta_p90_ms": -0.017999999999998906,
+      "A_p99_ms": 9.847,
+      "B_p99_ms": 9.839,
+      "delta_p99_ms": -0.007999999999999119
+    },
+    "u2": {
+      "A_mean_ms": 9.581089583333334,
+      "B_mean_ms": 9.566273958333333,
+      "delta_mean_ms": -0.014815625000000665,
+      "A_median_ms": 9.573,
+      "B_median_ms": 9.568,
+      "delta_median_ms": -0.005000000000000782,
+      "A_p90_ms": 9.709,
+      "B_p90_ms": 9.685,
+      "delta_p90_ms": -0.023999999999999133,
+      "A_p99_ms": 9.796,
+      "B_p99_ms": 9.787,
+      "delta_p99_ms": -0.008999999999998565
+    }
+  },
+  "remote_lab_dir": "D:\\DLSSNR-Lab\\c512-w16-20261014"
+}

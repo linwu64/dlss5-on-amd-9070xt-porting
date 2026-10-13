@@ -101,6 +101,9 @@ using Tensor=std::shared_ptr<Allocation>;
 #ifndef HIP_C512_FFN_ONE
 #define HIP_C512_FFN_ONE 1 /* 2026-10-01: C512 mix+FFN as one dispatch (split_ffn_one_m32 in c512-m32-deep built with C512_FFN_ONE) when the module exports it; 0 or older modules = mix + split_ffn_fused_fp8_t8 (results/mochizuki-gap-20261001) */
 #endif
+#ifndef HIP_C512_W16
+#define HIP_C512_W16 2 /* 2026-10-14: C512 QKV + AttnProj + FFNProj weights in FragmentPackedMatrixW16 layout (16B global_load_b128 per 32-k tile; 2 = u4 AttnProj, 1 = u2 AttnProj, 0 = disabled) when the _w16 exports exist; DLSS5_HIP_C512_W16=0 disables */
+#endif
 #ifndef HIP_C32_RTZ_TALL
 #define HIP_C32_RTZ_TALL 1 /* 2026-10-03: 1080 tier (1920x1152 / 1920x1088) loads c32-wave1-rtz.hsaco (same recipe + HIP_C32_RTZ_ISA 2, builtin Hrtz) under the c32_wave1 key when the file exists; 900/720/free geometry and missing file = c32-wave1.hsaco. Bit-exact (2^32 check); 900 kept old because one ABBA round was slower (results/ideas-yami-ikaruga-20261002) */
 #endif
@@ -334,8 +337,8 @@ class Network {friend class D3D12Bridge;
  void* Weight(const std::string&name){auto it=weights.find(name);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()!=WeightElements(name))throw std::runtime_error("weight shape "+name+": "+std::to_string(v.size()));it=weights.emplace(name,UploadWeight(v,name)).first;}return P(it->second);}
  // QKV rows as fragment tiles (mh_qkv_normalize_frag_c512); projection bytes and the f32 scales stay where PackedMhWeight puts them.
  // ffwd-projection [512][512] E4M3 bytes in fragment-tile layout for split_projection_frag; the residual scale floats keep their offset.
- void* PackedSplitProjectionFrag(const std::string&name){auto key=name+"@proj-frag";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()!=WeightElements(name))throw std::runtime_error("split projection weight shape");Fp8(v,{{0,262144}});FragmentPackedMatrix(v,0,512,512);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
- void* PackedMhWeightQkvFrag(const std::string&name,U c){const std::string key=name+"@qkv-frag";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()!=WeightElements(name))throw std::runtime_error("packed weight shape "+name);size_t cc=size_t(c)*c;Fp8(v,{{0,3*cc},{3*cc,cc}});FragmentPackedMatrix(v,0,3*size_t(c),c);FragmentPackedMatrix(v,3*cc,c,c);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
+ void* PackedSplitProjectionFrag(const std::string&name,bool w16=false){auto key=name+"@proj-frag";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()!=WeightElements(name))throw std::runtime_error("split projection weight shape");Fp8(v,{{0,262144}});if(w16)FragmentPackedMatrixW16(v,0,512,512);else FragmentPackedMatrix(v,0,512,512);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
+ void* PackedMhWeightQkvFrag(const std::string&name,U c,bool w16=false){const std::string key=name+"@qkv-frag";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()!=WeightElements(name))throw std::runtime_error("packed weight shape "+name);size_t cc=size_t(c)*c;Fp8(v,{{0,3*cc},{3*cc,cc}});if(w16){FragmentPackedMatrixW16(v,0,3*size_t(c),c);FragmentPackedMatrixW16(v,3*cc,c,c);}else{FragmentPackedMatrix(v,0,3*size_t(c),c);FragmentPackedMatrix(v,3*cc,c,c);}it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
  // PackedMhWeight(attention) plus the three residual-scale pieces as diagonal fragment B tiles appended after the float tail
  // (byte 4*WeightElements; c*96 bytes): the fused attention-project kernels then form the residual with three MMAs instead of scalar FMAs.
  void* WaveOwnedAttentionWeight(const std::string&name,U c){
@@ -515,7 +518,7 @@ class Network {friend class D3D12Bridge;
    if(kernel.rfind("vit_expand_blocked_fp8",0)==0&&kernel.size()>3&&kernel.compare(kernel.size()-3,3,"_m2")==0)groups=((count/4096+31)/32)*64;
    if(kernel=="vit_qkv_project_blocked"||kernel=="vit_qkv_project_normalize_fused"||kernel=="vit_qkv_project_normalize_fused_f16compact"||kernel=="vit_qkv_project_normalize_fused_f16compact_fp8"||kernel=="vit_qkv_project_normalize_fused_f16compact_fp8_bytein"||kernel=="vit_qkv_project_normalize_fused_f16compact_fp8_h16in"||kernel=="vit_qkv_project_normalize_fused_f16compact_fp8_frag")groups=count/512;
    if(kernel=="vit_qkv_project_normalize_fused_f16compact_fp8_h16in_n4")groups=count/1024;
-   if(kernel=="split_mix_blocked"||kernel=="split_mix_blocked_h16w"||kernel=="split_projection_blocked"||kernel=="split_projection_blocked_t8"||kernel=="split_projection_frag"||kernel=="split_projection_frag_nof32")groups=count/1024;
+   if(kernel=="split_mix_blocked"||kernel=="split_mix_blocked_h16w"||kernel=="split_projection_blocked"||kernel=="split_projection_blocked_t8"||kernel=="split_projection_frag"||kernel=="split_projection_frag_w16"||kernel=="split_projection_frag_nof32")groups=count/1024;
    if(kernel=="split_ffn_fused"||kernel=="split_ffn_fused_fp8"||kernel=="split_ffn_fused_fp8_mix"||kernel=="split_ffn_fused_fp8_t8"){threads=128;groups=count/1024;}
    if(kernel=="vit_ffn_fused"){threads=512;groups=count/16384;}
    if(kernel=="vit_contract_combine"||kernel=="vit_pack_input"||kernel=="vit_pack_input_tiled")threads=256;
@@ -529,7 +532,7 @@ class Network {friend class D3D12Bridge;
    else if(kernel=="mh_qkv_normalize_wave_c512"){threads=128;groups=count/4096;}
    else if(kernel=="mh_qkv_normalize_frag_c512"){threads=32;groups=count/1024;}
    else if(kernel=="mh_attention_project_frag_c512"&&HIP_C512_PROJ_WN4&&HasFn(module,"mh_attention_project_frag_c512_wn4")){kernel="mh_attention_project_frag_c512_wn4";threads=128;groups=count/1024;}
-   else if(kernel=="mh_attention_project_frag_c512"||kernel=="mh_attention_project_frag_c512_fb8"){threads=32;groups=count/1024;}
+   else if(kernel=="mh_attention_project_frag_c512"||kernel=="mh_attention_project_frag_c512_w16"||kernel=="mh_attention_project_frag_c512_w16_u4"||kernel=="mh_attention_project_frag_c512_fb8"){threads=32;groups=count/1024;}
    else if(kernel.rfind("mh_ffn_fused_c",0)==0){U c=U(std::stoul(kernel.substr(14)));if((c!=64&&c!=128&&c!=256)||count%(c*16))throw std::runtime_error("fused FFN dispatch shape");threads=c*2;groups=count/(c*16);}
    else if(kernel=="mh_qkv_normalize_fast"||kernel=="mh_qkv_normalize_fast_wave"||kernel=="mh_qkv_normalize_fast_wave_fp8"){threads=256;if(kernel!="mh_qkv_normalize_fast")count=Count(size_t(count)*32);}
    else if(kernel=="mh_pool_project_c32_b8_out8"){threads=32;groups=unsigned(((count/64+15)/16)*4);}
@@ -548,7 +551,7 @@ class Network {friend class D3D12Bridge;
   if(kernel=="split_ffn_one_w2"||kernel=="split_ffn_one_w2f8")threads=64;
   if(kernel=="split_ffn_proj_fused"){threads=256;groups=count/8192;}
   if(module=="c512_m32_mh"&&kernel=="c512_qkv_attention_fused"){groups=count;threads=64;}
-  if(module=="c512_m32_mh"&&kernel=="c512_qkv_attention_compact"){groups=count;threads=64;}
+  if(module=="c512_m32_mh"&&(kernel=="c512_qkv_attention_compact"||kernel=="c512_qkv_attention_compact_w16")){groups=count;threads=64;}
   if(vit_proj_n64_active&&module=="deep_fast"&&kernel=="vit_project_frag"&&count%1024==0){module="vit_wide_deep";kernel="vit_project_frag_n64";groups=unsigned(((count/1024+15)/16)*16);threads=32;}
   if(kernel=="vit_stream_contract_frag_hout"||kernel=="vit_stream_contract_frag_bout"){module="vit_stream";groups=count/1024;threads=32;}
   if(kernel=="vit_stream_qkv_frag_bin_w5f8"){module="vit_stream";groups=96*((count/3072/16+4)/5);threads=160;}
@@ -670,6 +673,8 @@ class Network {friend class D3D12Bridge;
  /* byte_in/byte_out (option mh_byte_stream, C64/128/256 chains only): the residual stream between consecutive blocks of a
     chain is the E4M3 byte of the lattice-exact block output; chain heads read the f32 tensor from pool/Up, chain tails
     (raw Hrtz outputs, Down/skip consumers) still write f32. Inside a block the FFN feature is always bytes on this path. */
+ static int C512W16Mode(){static const int m=[]{const char*v=std::getenv("NR_C512_W16");if(!v||!*v)v=std::getenv("DLSS5_HIP_C512_W16");if(!v||!*v)return int(HIP_C512_W16);return std::atoi(v);}();return m;}
+ unsigned long long c512_w16_calls=0,c512_stock_calls=0;
  Tensor CompactC512Body(Tensor input,U w,U h,U ww,U hh,U sx,U sy,U block,bool raw){
   U valid=w*h,n=(valid+15)&~15u;
   auto compact=input;
@@ -683,14 +688,19 @@ class Network {friend class D3D12Bridge;
   else{Run("c512_m32_deep","split_mix_blocked_h16w_m32",size_t((n+31)/32*32)*256,P(compact),PackedSplitFfnWeightMixHalf(Block(block,"ffwd")),P(mixed),n);
   Run("deep","split_ffn_fused_fp8_t8",size_t(n)*512,P(mixed),PackedSplitFfnWeightMixHalf(Block(block,"ffwd")),P(contract),P(contract8),n);}
   mixed.reset();
-  const bool fb8=HIP_C512_PROJ_FB8&&HasFn("deep_fast","split_projection_frag_nof32")&&HasFn("mh_fast","mh_attention_project_frag_c512_fb8");
-  if(!fpf)Run("deep",fb8?"split_projection_frag_nof32":"split_projection_frag",size_t(n)*512,P(contract8),PackedSplitProjectionFrag(Block(block,"ffwd-projection")),P(compact),P(ffn),P(ffn8),n);
+  const int w16m=C512W16Mode();
+  const bool w16_ffn=w16m>0&&HasFn("deep_fast","split_projection_frag_w16");
+  const bool w16_mh=w16m>0&&HasFn("c512_m32_mh","c512_qkv_attention_compact_w16")&&HasFn("mh_fast",w16m>=2?"mh_attention_project_frag_c512_w16_u4":"mh_attention_project_frag_c512_w16");
+  if(w16_ffn&&w16_mh)++c512_w16_calls;else ++c512_stock_calls;
+  const bool fb8=!w16_mh&&HIP_C512_PROJ_FB8&&HasFn("deep_fast","split_projection_frag_nof32")&&HasFn("mh_fast","mh_attention_project_frag_c512_fb8");
+  if(!fpf)Run("deep",fb8?"split_projection_frag_nof32":w16_ffn?"split_projection_frag_w16":"split_projection_frag",size_t(n)*512,P(contract8),PackedSplitProjectionFrag(Block(block,"ffwd-projection"),w16_ffn),P(compact),P(ffn),P(ffn8),n);
   compact.reset();contract.reset();contract8.reset();
   auto av=New(size_t(n)*128);
-  Run("c512_m32_mh","c512_qkv_attention_compact",size_t(ww)*hh/64*16,P(ffn8),PackedMhWeightQkvFrag(Block(block,"attention"),512),P(av),w,h,ww,hh,sx,sy);
+  void*att_w=PackedMhWeightQkvFrag(Block(block,"attention"),512,w16_mh);
+  Run("c512_m32_mh",w16_mh?"c512_qkv_attention_compact_w16":"c512_qkv_attention_compact",size_t(ww)*hh/64*16,P(ffn8),att_w,P(av),w,h,ww,hh,sx,sy);
   if(!fb8)ffn8.reset();
   auto result=HIP_C512_PAD16?NewPad16(valid,512):New(size_t(valid)*512);
-  Run("mh_fast",fb8?"mh_attention_project_frag_c512_fb8":"mh_attention_project_frag_c512",size_t(n)*512,P(av),fb8?P(ffn8):P(ffn),PackedMhWeightQkvFrag(Block(block,"attention"),512),P(result),n,U(raw?3:0),w,h,w,U(0),U(0));
+  Run("mh_fast",fb8?"mh_attention_project_frag_c512_fb8":w16_mh?(w16m>=2?"mh_attention_project_frag_c512_w16_u4":"mh_attention_project_frag_c512_w16"):"mh_attention_project_frag_c512",size_t(n)*512,P(av),fb8?P(ffn8):P(ffn),att_w,P(result),n,U(raw?3:0),w,h,w,U(0),U(0));
   Stage("block"+std::to_string(block),result);return result;
  }
 #include "swin_persistent_network.h"
@@ -907,7 +917,7 @@ if(opt.experimental_temporal){
 }
 
 if(wave_owned_active)HasFn("c32_wave1","c32_wave1_post_b8_rgba");if(multi_predict||std::ifstream(opt.modules+"/multi-pass-predict.hsaco").good())EnsurePredictModule();if(multi_pass>1)PrepareMultiPassFeeds();if(multi_skin)PrepareSkin();}catch(...){if(!pulse_lease.Close()){std::fprintf(stderr,"submit_pulse ctor cleanup retained owner stream\n");throw;}if(pdl_flags){api.hipStreamSynchronize(stream);api.hipFree(pdl_flags);pdl_flags=nullptr;}for(auto&m:modules)api.hipModuleUnload(m.second);api.hipStreamDestroy(stream);throw;}}
- ~Network(){if(!pulse_lease.Close()){std::fprintf(stderr,"submit_pulse direct destructor retained owner stream; bridge must preclose\n");return;}std::fprintf(stderr,"submit_pulse resources create=%llu create_ok=%llu record=%llu record_ok=%llu destroy=%llu destroy_ok=%llu drain=%llu site_visits=%llu accepted=%llu reject_mask=%u lifetime_pdl_calls=%u\n",pulse_ops.create_calls,pulse_ops.create_ok,pulse_ops.record_calls,pulse_ops.record_ok,pulse_ops.destroy_calls,pulse_ops.destroy_ok,pulse_ops.drain_calls,pulse_site_visits,pulse_record_accepted,pulse_last_reject_mask,pdl_calls);api.hipSetDevice(int(opt.device));api.hipStreamSynchronize(stream);native_post_row.reset();experimental_history.reset();experimental_prefix.reset();experimental_raw.reset();experimental_logit.reset();experimental_weights.reset();experimental_sig.reset();experimental_recip.reset();temporal_features.reset();SpReport();pdl_keep.clear();if(pdl_flags){api.hipFree(pdl_flags);pdl_flags=nullptr;}if(opt.graph)std::printf("graph_stats builds=%u replays=%u\n",graph_builds,graph_replays);ClearGraph();for(auto&t:timings){api.hipEventDestroy(t.begin);api.hipEventDestroy(t.end);}adaptive_image_anchor.reset();adaptive_image_signature.reset();adaptive_image_delta.reset();adaptive_anchor_in.reset();adaptive_anchor_out.reset();adaptive_gain.reset();adaptive_stats.reset();adaptive_state.reset();device_noise.reset();gather_maps[0].clear();gather_maps[1].clear();weights.clear();pool.clear();for(auto&m:modules)api.hipModuleUnload(m.second);api.hipStreamDestroy(stream);}
+ ~Network(){if(!pulse_lease.Close()){std::fprintf(stderr,"submit_pulse direct destructor retained owner stream; bridge must preclose\n");return;}std::fprintf(stderr,"submit_pulse resources create=%llu create_ok=%llu record=%llu record_ok=%llu destroy=%llu destroy_ok=%llu drain=%llu site_visits=%llu accepted=%llu reject_mask=%u lifetime_pdl_calls=%u\n",pulse_ops.create_calls,pulse_ops.create_ok,pulse_ops.record_calls,pulse_ops.record_ok,pulse_ops.destroy_calls,pulse_ops.destroy_ok,pulse_ops.drain_calls,pulse_site_visits,pulse_record_accepted,pulse_last_reject_mask,pdl_calls);{size_t wsum=0;for(auto&kv:weights)if(kv.second&&kv.second->owned)wsum+=kv.second->capacity;std::fprintf(stderr,"C512_W16_SUMMARY mode=%d w16_blocks=%llu stock_blocks=%llu weights_count=%zu weights_bytes=%zu\n",C512W16Mode(),c512_w16_calls,c512_stock_calls,weights.size(),wsum);}api.hipSetDevice(int(opt.device));api.hipStreamSynchronize(stream);native_post_row.reset();experimental_history.reset();experimental_prefix.reset();experimental_raw.reset();experimental_logit.reset();experimental_weights.reset();experimental_sig.reset();experimental_recip.reset();temporal_features.reset();SpReport();pdl_keep.clear();if(pdl_flags){api.hipFree(pdl_flags);pdl_flags=nullptr;}if(opt.graph)std::printf("graph_stats builds=%u replays=%u\n",graph_builds,graph_replays);ClearGraph();for(auto&t:timings){api.hipEventDestroy(t.begin);api.hipEventDestroy(t.end);}adaptive_image_anchor.reset();adaptive_image_signature.reset();adaptive_image_delta.reset();adaptive_anchor_in.reset();adaptive_anchor_out.reset();adaptive_gain.reset();adaptive_stats.reset();adaptive_state.reset();device_noise.reset();gather_maps[0].clear();gather_maps[1].clear();weights.clear();pool.clear();for(auto&m:modules)api.hipModuleUnload(m.second);api.hipStreamDestroy(stream);}
  void PrintMemory(){size_t bytes=0,free=0,total=0;std::set<void*>seen;auto add=[&](const Tensor&t){if(t&&t->owned&&seen.insert(t->ptr).second)bytes+=t->capacity;};for(auto&t:pool)add(t);for(auto&w:weights)add(w.second);for(auto&maps:gather_maps)for(auto&m:maps)add(m.second);add(device_noise);api.Check(api.hipMemGetInfo(&free,&total),"memory stats");std::printf("memory owned_MiB=%.1f allocations=%zu device_free_MiB=%.1f total_MiB=%.1f\n",bytes/1048576.,seen.size(),free/1048576.,total/1048576.);}
  /* DLSS5_HIP_MEMORY=1 (diagnostic): device memory by category after the pool has warmed — weights by key, pool tensors by capacity, gather maps, noise, and the runtime's free/total. */
  void MemoryReport(FILE*f){std::set<void*>seen;size_t wsum=0,psum=0,gsum=0,nsum=0;std::vector<std::pair<size_t,std::string>>w,p;

@@ -1,0 +1,482 @@
+[
+    {
+        "target":  "gfx1200",
+        "file":  "boundary_reference.hsaco",
+        "bytes":  17832,
+        "sha256":  "693547DEC3C6E47900ABA1E85F220304F2BFB19313F2B1D7403561F46CF3D6CF"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "boundary-fast.hsaco",
+        "bytes":  50904,
+        "sha256":  "71AFC8157C410D849B57A9823FEB7A7107013306AE6F9ADB55C51EB2A5888C6F"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32_fast.hsaco",
+        "bytes":  38056,
+        "sha256":  "FFF987B9ADA5AF154B3862CC2D2B8B0474A2AA82C6271E7EA378FC473B2FF617"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32_fast_attention.hsaco",
+        "bytes":  29568,
+        "sha256":  "169DE549AA946CBBA505260DE2D7A0B228ED93F2E2806D005F874C4009C18B6C"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32_fused_attention.hsaco",
+        "bytes":  39472,
+        "sha256":  "2B66DEB6C8C17BDE5E27734F49D205DA2651222A860A9183D5F1B88B41F893A6"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32_fused_ffn_attention.hsaco",
+        "bytes":  286528,
+        "sha256":  "911C7E6CCB0D9E879CD02C75AADDEA74AF01DE7B948FA7974F76C36ED6829BFE"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32_fused_ffn_attention-packed.hsaco",
+        "bytes":  219328,
+        "sha256":  "75229A63DDD075E2BA536B360BFB5C30AFF45EE1B12D579E4319ACE90AC1B66D"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32_prefix_reference.hsaco",
+        "bytes":  35784,
+        "sha256":  "C3B01C905B7B20AC357FD97D1BAA9D6C4EA7616AF0431543B41617C7324CBFF8"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32_tiled.hsaco",
+        "bytes":  31536,
+        "sha256":  "9A2B98313A62611FEE3AB230DCD44AC794C1CBB1A2CCCC3598939612CA8A995A"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32_wmma.hsaco",
+        "bytes":  66504,
+        "sha256":  "576AFA15B5E76B2FF10EEC95FF585E60AB8B7055F0F3EE3DF41478A3FEEF46A7"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32-wave1.hsaco",
+        "bytes":  433456,
+        "sha256":  "4EB0C3F82363C6849D864759F82DD2F7D2FE35DDFB4109E0535446480AB5AE16"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32-wave1-fast.hsaco",
+        "bytes":  426032,
+        "sha256":  "7A86BEC4123C218BC856FAE2E9550D153B892755D585F511D655F30EF5E3D5C5"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32-wave1-fast-norm900.hsaco",
+        "bytes":  421168,
+        "sha256":  "1E1C30167BB481ED2D046FD90CFEA9D20B8EE7C9F7E5E1E0648F45AB67F2AE24"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c32-wave1-rtz.hsaco",
+        "bytes":  439856,
+        "sha256":  "1F082BD5B94E1BEFFCF45F16208325C94811E61DC90D18FCAF83B61CE74B530C"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c512-m32-deep.hsaco",
+        "bytes":  571864,
+        "sha256":  "A7828273495657853439B8C2B8E88927A118F117A4B1E6C9540EF0A5405D54C4"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c512-m32-mh.hsaco",
+        "bytes":  999440,
+        "sha256":  "A3F68DA788C8472726644B01FF3F65F6D4681E76D246C3EF3D37C3FE343ED4B1"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c64-wave2.hsaco",
+        "bytes":  1695736,
+        "sha256":  "5975AFDE8C661B44D0A8F10C0A9B2788D938B720A2B6C8DBE861F14AF8FFFFDA"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "c64-wave2-fast.hsaco",
+        "bytes":  1655544,
+        "sha256":  "B80519B88E6D45D5791755708E6F3D6610AA0E1653160F3C79038666071E9052"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "deep_fast.hsaco",
+        "bytes":  579344,
+        "sha256":  "1B49C9C4855019160236E78F7B88C4B19D37CC0371171B1D31BAB4CB59AAFB3F"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "deep_fast-packed.hsaco",
+        "bytes":  569368,
+        "sha256":  "7F3B5A58F8C95D11B4D4513444D29603D8B69ADE02427EAEF4738A429B62B195"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "deep_fast-packed-fast.hsaco",
+        "bytes":  564504,
+        "sha256":  "91EFC90332EA862AE307170ABD6C647209DA553CC7220682F36CB88DBEA8F822"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "deep_reference.hsaco",
+        "bytes":  70312,
+        "sha256":  "C2779CDFF408360721E5CD1312D945AE1951CFFC955893821EFD75724C67852E"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "deep_wmma.hsaco",
+        "bytes":  82616,
+        "sha256":  "6B708483D0A9FCEE96967862E92AA5895BE969AB2316749EB5860CFE39BE0AF1"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "multihead_fused_attention.hsaco",
+        "bytes":  366880,
+        "sha256":  "5B1CAD8F5B5061FBDF9D26C98C68785F4A57E359BFDAAB6B0A330E51F59DB10B"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "multihead-fast.hsaco",
+        "bytes":  106952,
+        "sha256":  "04D80A8CF63D5B0D908ECFBC3D25D12A3E4087BE5FBC0ECB962D8E7FE8D6AEBA"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "multihead-fast-packed.hsaco",
+        "bytes":  104904,
+        "sha256":  "8D602696B3D97D6DBAC759350951D744D4AA37578ABCDDE52BEE681EF68718C4"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "multihead-fast-padded-wave.hsaco",
+        "bytes":  1100600,
+        "sha256":  "4CC888D3FEEE496DD553630B0D8D5DEB9919A189718890B3B48E48D423F80E3E"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "multihead-fast-padded-wave-packed.hsaco",
+        "bytes":  1154576,
+        "sha256":  "4E0DE3F17F5F57ECF1D661C9905CC09BA983D5A3268EFDD18D09EB3E220D3D99"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "multihead-reference.hsaco",
+        "bytes":  66824,
+        "sha256":  "4B02890CAAD85A42C185180CFD65B5051CD01D8402F8EC21536D9779BA3144D6"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "multihead-tiled.hsaco",
+        "bytes":  49072,
+        "sha256":  "10AA32A6735464D21F37E197423942E7D33333C667B035F8300B9819A8FCC88E"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "multihead-wmma.hsaco",
+        "bytes":  93264,
+        "sha256":  "8C1A097BFA170EBA0C0CE51E44CC8F6F7521E2B64D6EFF3E07230DEB64D419AD"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "multi-pass-predict.hsaco",
+        "bytes":  14328,
+        "sha256":  "68FA718EDD874CCFC14633FCABB57963F7EEA309896C60984B91C466A09BA2DC"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "multi-pass-skin.hsaco",
+        "bytes":  12888,
+        "sha256":  "C33DCD30746F7DE2E7BD442322CADF183C87EAA29E6C086ACF8757767CD26C53"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "prefix_fast.hsaco",
+        "bytes":  77496,
+        "sha256":  "724CF9A7329B8FE2FF8846D0CDA97E51D01A775B2CDBEF90F2F67286294FFDB7"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "swin-persistent.hsaco",
+        "bytes":  1160624,
+        "sha256":  "38A9A2407F48CF380EFE0124FDA0AF8E538805D34E9A626E562205D1512F8340"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "swin-persistent-fast.hsaco",
+        "bytes":  1214256,
+        "sha256":  "0563C00B9B32510A8D1BEF9E75F8D7B0E37573C496A30F915D2E454DC0344A96"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "vit-stream.hsaco",
+        "bytes":  658992,
+        "sha256":  "44B8D08027320F1972FB8DB8DBAA5A6C1039B475ECF6BD7F297509C060C6646C"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "vit-stream-fast.hsaco",
+        "bytes":  673456,
+        "sha256":  "0F9D3AB9BA64FC526381E6FBB1DE3C2052EEE4BAFA2E19496E389E4BE0E10126"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "vit-wide-deep.hsaco",
+        "bytes":  580576,
+        "sha256":  "6F9616B6BACA99EDC86B4A30F5038ECC1EC8E5FDEC1313536FF879A590D833F5"
+    },
+    {
+        "target":  "gfx1200",
+        "file":  "wave-pointwise.hsaco",
+        "bytes":  46704,
+        "sha256":  "1CFF01355F32152834286C303D38EFD05628757C6D4E0FD7F1C0A0F3DB9E701F"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "boundary_reference.hsaco",
+        "bytes":  17832,
+        "sha256":  "1B1A514743924D43542ED9AC30E4CA50EC6E84E62D2BAFAB1960AAF061E0ADC8"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "boundary-fast.hsaco",
+        "bytes":  50904,
+        "sha256":  "40FA66062ECA6BBE654E480944783C27B9BD93970696E1FFCA9BBC8773CA9700"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32_fast.hsaco",
+        "bytes":  38056,
+        "sha256":  "A639601561123594F6D8B335F884F4E229338875F460213AF1396BC2F28C90EC"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32_fast_attention.hsaco",
+        "bytes":  29568,
+        "sha256":  "B3ABD5620764F5A5BA4D86FB439E0A57688E346AFDD5945F6F1D9067DA6D032C"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32_fused_attention.hsaco",
+        "bytes":  39472,
+        "sha256":  "5091D35E5AC53E4A8D16DE2F5FB1C8C057159C72D6605FAEB5A5CA7DAA65AACD"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32_fused_ffn_attention.hsaco",
+        "bytes":  286528,
+        "sha256":  "AEDB066C95A76AA60FE67C91443C2CF8189C5E4F8E849356695CB5CD9FDC9870"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32_fused_ffn_attention-packed.hsaco",
+        "bytes":  219328,
+        "sha256":  "C0634176BF9E0A79FFB0E28FB120DF310A646D4DEDCAAD69C34F7185718D2155"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32_prefix_reference.hsaco",
+        "bytes":  35784,
+        "sha256":  "65103D0C3930DD22D7EC40E282E38285D68169C9C8860DF7D561A7C04FEF7640"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32_tiled.hsaco",
+        "bytes":  31536,
+        "sha256":  "6E7DB748FBD492CD566F208A1AA3B7E48A42A9C0D8B31022148469BB46D01E8F"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32_wmma.hsaco",
+        "bytes":  66504,
+        "sha256":  "4D239CA134400EE2B42C60F99DC24202F9A4FD38C21A471C01A98217DF04B294"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32-wave1.hsaco",
+        "bytes":  433456,
+        "sha256":  "C79E9C2A83FFD93B74089E0587BE6B79F1B48B98E3AC8BBCDBA45C40E71B0B24"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32-wave1-fast.hsaco",
+        "bytes":  426032,
+        "sha256":  "FF5B04C666FED772C72B8A0D30BB49F1BB3EACB887F211403E181CAED0C9A2A7"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32-wave1-fast-norm900.hsaco",
+        "bytes":  421168,
+        "sha256":  "354EAA74D117B2A1BECD0795B5FAE5A5C8F869907D2F33AFFB7F70C0189F66E4"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c32-wave1-rtz.hsaco",
+        "bytes":  439856,
+        "sha256":  "04C98FE3177F294BA981ECA2C1C74782CF965B2B47843AE72E05E9F7E904D33A"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c512-m32-deep.hsaco",
+        "bytes":  571864,
+        "sha256":  "340BB6DF9905549479EB9AC8F15591766DD512F287C38A419B4A9AAB2600FF98"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c512-m32-mh.hsaco",
+        "bytes":  999440,
+        "sha256":  "27B00C69573C38A40433AF54B12080DE161514810C045D2A6CDA155229DF1CEF"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c64-wave2.hsaco",
+        "bytes":  1695736,
+        "sha256":  "CF263F2F25DF25A8099937A2D60BA1B22AEC91C3330503B9226C0A3F1F7D9504"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "c64-wave2-fast.hsaco",
+        "bytes":  1655544,
+        "sha256":  "C41FDD911733BB31168BB0C2CCEA1A6FAB27871FE7C1CFBD4710A815D30BFF2D"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "deep_fast.hsaco",
+        "bytes":  579344,
+        "sha256":  "38DF2F250DD6083FC011C2A86CDDA47E3BD924C9517B93369F4045FB80F9D27F"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "deep_fast-packed.hsaco",
+        "bytes":  569368,
+        "sha256":  "6EBBE218A2BA35B682F5171282B9AB81CE99BD266F3B64FC80880E85E99239A7"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "deep_fast-packed-fast.hsaco",
+        "bytes":  564504,
+        "sha256":  "489015A5B007C5BE3B8CD44D898A0E9F91B599F40D00DE7630A85EFCC764F8D9"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "deep_reference.hsaco",
+        "bytes":  70312,
+        "sha256":  "0D2E3E9658A8ABC53BE68B6FC108CE57594784D3ED56F237BEDD9766D86DB895"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "deep_wmma.hsaco",
+        "bytes":  82616,
+        "sha256":  "B562C8986300B0517818AE54A46108E725E1ECC6C6B6C88A3B7FA14C749A5B2F"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "multihead_fused_attention.hsaco",
+        "bytes":  366880,
+        "sha256":  "F7F23560D490868EACB161D7E49C958548FAAA1D61384014EA0859B5E8CEF1B9"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "multihead-fast.hsaco",
+        "bytes":  106952,
+        "sha256":  "3493FB0EDE45F233A5D09472BD7A76D7532387F1FD6B0C835D46C20C0D196C9A"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "multihead-fast-packed.hsaco",
+        "bytes":  104904,
+        "sha256":  "31E258756683B9A60E455C1C315C7B22B9605D90AE784891073FB6C74BA8EAD7"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "multihead-fast-padded-wave.hsaco",
+        "bytes":  1100600,
+        "sha256":  "BB4FDF310F9A463C36EE20451B2E76F93862D766A3F8E192FED60ACF0262F391"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "multihead-fast-padded-wave-packed.hsaco",
+        "bytes":  1154576,
+        "sha256":  "05F77830C557A25250A7910F580920A0801B113FE72340C761CF2BE5B9527334"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "multihead-reference.hsaco",
+        "bytes":  66824,
+        "sha256":  "1CFA639E9F37B7872C69D738C7332B58EAAF0539CAF720CC29A844E770FC8CBE"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "multihead-tiled.hsaco",
+        "bytes":  49072,
+        "sha256":  "3799AE40ECEC89796132BF6464A76FAF1ADFFFE65DF2F5E6406F47A86F67AA81"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "multihead-wmma.hsaco",
+        "bytes":  93264,
+        "sha256":  "BFC99774435FCF89985A795EA6E1C20DE3335053097B40206839ADF687D0E226"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "multi-pass-predict.hsaco",
+        "bytes":  14328,
+        "sha256":  "133F0975E39E7E716E146DAB15F05573D6767C8C1C99E01528F3C11509293900"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "multi-pass-skin.hsaco",
+        "bytes":  12888,
+        "sha256":  "5FF15F49135BEEF3BC68D744B9D33F615812CE293D13C0783C88B0A3D9AAA011"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "prefix_fast.hsaco",
+        "bytes":  77496,
+        "sha256":  "81B3FACDA5A1512AF3940D7A82C5A2F6F2E5CC7A0F2428194F4420FC8B68A57C"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "swin-persistent.hsaco",
+        "bytes":  1160624,
+        "sha256":  "7753178021F88086C8243450EDD03DC1A4FF306DE09098C340534BB63CBE0A46"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "swin-persistent-fast.hsaco",
+        "bytes":  1214256,
+        "sha256":  "1699ECA50811B9DC140F258882A1B087B5BE0CB3005E81C937A5FF8BD54AE541"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "vit-stream.hsaco",
+        "bytes":  658992,
+        "sha256":  "680045B61A7B10CDA0290D79393EC4CF4F614EB73C4C4EDCE9DB020A0EF5757F"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "vit-stream-fast.hsaco",
+        "bytes":  673456,
+        "sha256":  "DA1B4AE9AF3C1D2889F86E530B915971494FF2A58156A6ABAB2813DFB2D26014"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "vit-wide-deep.hsaco",
+        "bytes":  580576,
+        "sha256":  "1FB90124496A99F76F0494496F239BD67C3F8D4A9CDF76C6C8EC40932755998C"
+    },
+    {
+        "target":  "gfx1201",
+        "file":  "wave-pointwise.hsaco",
+        "bytes":  46704,
+        "sha256":  "5E65693DA46044B697218194BB17EC8453952FA4A4A684C6ECC59DF1CECF12AA"
+    }
+]

@@ -465,3 +465,21 @@ marked on480只报告主线程API经过时间：input录交.034ms、Network::Enq
      - **Round 3**：`EagerAuto` mean `9.561094 ms` vs `ReplayAuto` mean `9.562006 ms`（`Δmean = +0.000913 ms` / `+0.91 µs`），`EagerAuto` p99 `9.732920 ms` vs `ReplayAuto` p99 `9.761560 ms`（`Δp99 = +0.028640 ms` / `+28.64 µs`），均值与尾延迟双退步触发 **STOP**。
      - **3 轮合并（480 帧/arm）**：`EagerAuto` mean `9.541323 ms` → `ReplayAuto` mean `9.524071 ms`（**`Δmean = -0.017252 ms` / `-17.25 µs`，`-0.18%`**），`EagerAuto` p99 `9.732100 ms` → `ReplayAuto` p99 `9.736100 ms`（**`Δp99 = +0.004000 ms` / `+4.00 µs`**）。
 4. **物理结论与封板**：将帧内 timed EventRecord 脉冲编入图第 24 号节点确实消除了无脉冲 `ReplayOff` 相对 `EagerAuto` 的 `+38 µs` 退步，但因 ROCm 7.0.2 `hipGraphLaunch` 在主机侧仍逐节点遍历发射 AQL 包且附加图执行包装开销，相对 `EagerAuto` 净均值仅差 `-17.25 µs`（处于 12～53 µs 漂移噪声内）且 p99 退步 `+4.00 µs`（R3 `+28.64 µs`）。判定 **STOP**，hipGraph 全家桶（旧 `opt.graph=1`、同工 `graph0`、`ReplayOff`、`ReplayAuto` 162 节点）在 RX 9070 XT 上彻底结题，生产默认维持 `EagerAuto`（`DLSS5_SUBMIT_PULSE=2, opt.graph=0`）。
+
+### 2026-10-14：C512 W16（16B `global_load_b128` 权重分块）零额外显存采纳与 ViT / C256 边界审计
+
+对 16 个 C512 块（`23..30` 与 `40..47`）除 `split_ffn_one_w2f8` 外的其余三个权重 fragment 消费核（`split_projection_frag`、`c512_qkv_attention_compact`、`mh_attention_project_frag_c512`）完成 `FragmentPackedMatrixW16`（16B `global_load_b128`）改造、零额外显存合并及 3 轮 4-slot ABBA 验证（详见 [C512 W16 报告](results/c512-w16-20261014/README.md)）：
+
+1. **机制与零额外显存实现**：
+   - 将每个 512B 权重块（`16 rows × 32 k`）由 `[h=0..1][gr=0..1][lane16][8B]` 改为 `FragmentPackedMatrixW16`（`[gr=0..1][lane16][h=0..1][8B]`），使同一线程相邻两个 16-k WMMA 的 8B B-fragment 连续排列为 16B，每 32-k 步由 2 条 `global_load_b64` 合为 1 条 `global_load_b128`（FFNProj/AttnProj 每 wave 权重 VMEM load `64 → 32`，QKV `192 → 96`），WMMA 累加顺序（`k=0, 16, ..., 496`）与舍入完全不变。
+   - `PackedSplitProjectionFrag(name, w16)` 与 `PackedMhWeightQkvFrag(name, 512, w16)` 原地复用既有 `@proj-frag` 与 `@qkv-frag` 键，**零额外显存分配（`weights_count=184, weights_bytes=297,609,000 B`）**。
+   - 默认启用 `HIP_C512_W16=2`（`u4`：`split_projection_frag_w16` 100 VGPR、`c512_qkv_attention_compact_w16` 187 VGPR、`mh_attention_project_frag_c512_w16_u4` 97 VGPR，均 `0 spill`；`HIP_C512_W16=1` 为 `u2` 81 VGPR，`DLSS5_HIP_C512_W16=0` 可回退旧核）。`gfx1200`/`gfx1201` 涉及的 12 个 `.hsaco` 模块已同步重编，保持 80 模块完整。
+2. **完整 Frame Gold 与 3 轮 4-slot ABBA（PASS）**：
+   - `1920×1152` 完整 Frame Gold（3 帧重复，`Auto` 脉冲 `record_ok=3 accepted=3 reject_mask=0`）：`baseline(0)`、`u2(1)`、`u4(2)` 首尾帧 SHA256 全为 `0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A`（`0 bit-diff`）。
+   - `benchmark.exe` 独立 NN 微基准 `u4` 净降 `-0.088 ms`。完整 `frame.exe` 3 轮 4-slot ABBA（240 帧/slot，弃 80 取 160 稳态，960 帧/arm）：
+     - **`u4`（`HIP_C512_W16=2`，默认）**：3 轮均值差分别为 `-14.1 µs`、`-31.1 µs`、`-4.9 µs`，**6/6 对偶比较全负（`< 0`）**；960 帧合并 mean `9.6070 → 9.5903 ms`（**`-16.7 µs`**）、median **`-14.5 µs`**、p90 **`-17.0 µs`**、p99 **`-5.0 µs`**。
+     - **`u2`（`HIP_C512_W16=1`）**：3 轮均值差分别为 `-24.1 µs`、`-7.5 µs`、`-12.8 µs`（5/6 对偶为负）；960 帧合并 mean `9.5902 → 9.5754 ms`（**`-14.8 µs`**）、median **`-13.0 µs`**、p90 **`-27.0 µs`**、p99 **`-16.0 µs`**。
+3. **伴随边界排查（不采纳，已记入 `failed-experiments.md`）**：
+   - **ViT `compactw` W16**：`vit-stream-fast` 下 `vit_stream_contract_frag_bout_compactw_w16` VGPR `211 → 251`（逼近 256 上限），`vit_stream_project_n64_bb_compactw_w16` VGPR `161 → 220`（wave 占用由 3 waves/SIMD 掉至 2 waves/SIMD），且 ViT 最大的 QKV（`vit_stream_qkv_f8w_bin`）在 0.42 已是 W16，不合入。
+   - **C256 `SpStage` 首尾层（`15, 22, 48, 55`）与 `sp_init`/`sp_recover`**：Encoder `15` 输入为 FP32（`Down(14)`）、`22` 输出需保 FP32 `Hrtz`（`PostMode=3` 供 `skips[3]` 与 `Down(22)`）；Decoder `48/55` 走 `c64-wave2-fast.hsaco`（LLVM 23，`W2_QKV_FUSE=3, W2_FFN_QT_BATCH=4, W2_HOIST_LOADS=15, W2_FAST_NUM=3`），而 1080p `SpStage(49,6)` 走 `swin-persistent.hsaco`（COMGR，`W2_QKV_FUSE=0, W2_FFN_QT_BATCH=2, W2_HOIST_LOADS=0, W2_FAST_NUM=0`），并入 `SpStage` 会改变算术合同（破坏 `0900E489...` Gold）、退化到更慢的单层 recipe 并多占 `4.42 MB` 持久缓冲；`sp_init_pair` 被 `CheckPulseCapabilities` 显式禁止（会关闭 `submit_pulse=auto`），`sp_recover256_w16` 是替代 CPU `hipStreamSynchronize` 的 `<1.5 µs` 异步超时守卫，保持不动。
+

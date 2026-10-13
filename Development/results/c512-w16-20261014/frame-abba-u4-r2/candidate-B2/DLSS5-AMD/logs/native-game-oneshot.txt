@@ -1,0 +1,23 @@
+pid=11152 tick=313662375 event=frame_create_step detail=encode removed=00000000
+pid=11152 tick=313662375 event=codec_step detail=inputs-checked removed=00000000
+pid=11152 tick=313662390 event=codec_step detail=output-created removed=00000000
+pid=11152 tick=313662390 event=codec_step detail=srvs removed=00000000
+pid=11152 tick=313662406 event=codec_step detail=uav removed=00000000
+pid=11152 tick=313662406 event=codec_step detail=rootsig-serialized removed=00000000
+pid=11152 tick=313662406 event=codec_step detail=rootsig removed=00000000
+pid=11152 tick=313662421 event=codec_step detail=compiled removed=00000000
+pid=11152 tick=313662421 event=frame_create_step detail=input=1296x720 network=1920x1080 viewport=0,6,1920,1067 output=1296x720 removed=00000000
+pid=11152 tick=313662421 event=frame_create_step detail=input removed=00000000
+pid=11152 tick=313662437 event=frame_create_step detail=network removed=00000000
+pid=11152 tick=313662859 event=frame_create_step detail=direct_input removed=00000000
+pid=11152 tick=313662875 event=frame_create_step detail=neural removed=00000000
+pid=11152 tick=313662875 event=frame_create_step detail=decode removed=00000000
+pid=11152 tick=313662875 event=codec_step detail=inputs-checked removed=00000000
+pid=11152 tick=313662890 event=codec_step detail=output-created removed=00000000
+pid=11152 tick=313662890 event=codec_step detail=srvs removed=00000000
+pid=11152 tick=313662890 event=codec_step detail=uav removed=00000000
+pid=11152 tick=313662906 event=codec_step detail=rootsig-serialized removed=00000000
+pid=11152 tick=313662906 event=codec_step detail=rootsig removed=00000000
+pid=11152 tick=313662906 event=codec_step detail=compiled removed=00000000
+pid=11152 tick=313662921 event=frame_create_step detail=ready removed=00000000
+pid=11152 tick=313662937 event=strength detail=auto exe=frame.exe -> 1,1
