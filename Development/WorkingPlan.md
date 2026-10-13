@@ -1,6 +1,6 @@
 # 当前工作计划
 
-更新：2026-10-12。生产实现基线 `20fa6b93`、测量计划 `99fc33ba`；前轮host timing有限实验已结题；两候选有界试验已结题，均未采纳。游戏仍为已安装64dc/MODE0/MP1/1x，未部署、未push。资源三项结论保留。测量源与原证见 [auto-timeline](HIP/experiments/auto-timeline/README.md)，历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-14。**正式0.42已于10月13日完成三包交付，用户已提供网盘下载入口。** 载荷源码 `456b7e16`，构建/验收归档 `88472e96`；发布与哈希见 [0.42记录](releases/0.42/README.md)，功能与设置见 [使用说明](../0.42-更新与使用说明.md)。剑星最后确认仍为已安装64dc/MODE0/MP1/1x，本次发版未替换游戏安装。没有优化实验排队；后文10月12日“未发布/未部署”等为当时的实验状态，以本段及开发史10月13日发版记录为当前交付状态。两候选均未采纳，资源优化已随0.42交付。历史见 [DevHistory.md](DevHistory.md)，负账见 [failed-experiments.md](failed-experiments.md)。
 
 ## 两候选顺序试验：已结题，均未采纳
 

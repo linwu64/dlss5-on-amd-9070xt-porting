@@ -434,3 +434,16 @@ marked on480只报告主线程API经过时间：input录交.034ms、Network::Enq
 第二项只将arg4 main八store的TH置NT，arg5 down/width/scope/waits/math/资源全保；761984模块的唯一style PC重定位已解析同默认global1/128。18221完整main70,778,880B/down17,694,720B双old双new各SHA/gold/finite/guard0。初次68401私有host资格将Style1的默认sentinel−1误拒（candidate_calls0），原wrapper1保；仅host20047修精确默认资格，79532实际new3/stock0与baseline0/3、0900/Auto3/current资源门全过。
 
 唯一完整生产Auto Frame89008四槽320弃80、480/arm：wall9.656520833→9.655660417ms（−0.8604µs），p99 9.88847→9.86799ms，max9.947→9.926ms；control漂移+26.408µs、B漂移+31.129µs，后B比后A慢1.5µs。改善不可与漂移分离，STOP未证稳定收益，不扫hint/重刷/正式集成。8firstlast0900、Autoaccepted320/reject0/PDLcalls0、实际NT320/stock320和44模块身份均通过。两候选均封存，产品源/已装64dc未变、未部署/push。证据 `HIP/experiments/two-kernel-trials/`。
+
+
+### 2026-10-13：正式 0.42 三包交付与下载入口
+
+按用户要求发布日常三包：`Magpie-DLSS5-AMD-0.42.zip`、`OptiScaler-DLSS5-AMD-0.42.zip`、`OptiScaler-REFramework-DLSS5-AMD-0.42.zip`，位于 `D:\給網友打包`，各附 `.zip.sha256`。载荷源码 `456b7e16`，构建及独立验收归档 `88472e96`；0.41 原包保留，0.41-a 仍只是临时测试包。
+
+正式包纳入0.41后已采纳的数据流、限定范围的范数复用与Auto提交优化，以及可选MODE1/2/3、history资产和F9准入修复。默认MODE0/MP1/SKIN0，PRED1只在3x时使用两真实遍加预测；Magpie未接入新增时域消费者，具体支持范围见配置说明。已验范围内紧凑权重合计省216MiB分配容量（expand96+contract96+projection24），显式无history会话另省33.75MiB共享buffer；不是驻留峰值或新增FPS保证。V末屏障、prefix NT、NoHi、C512闲置分配及QPC诊断未进产品，D3D12研究不作为发行后端。
+
+官方配方重新构建80模块（gfx1200/gfx1201各40，LLVM12+COMGR68），新tail导出进入正式vit-stream，无实验侧车。正式addon/runtime O2、gfx1201新40模块对旧43模块完整Frame逐字节0900/finite/Auto及资源门、各包44项shader编译、REFramework运行库smoke和ZIP逐文件回读全部通过，独立审计通过。gfx1200仅构建与结构核验，不宣实机性能；新tail主机资格仍保守回退。三包大小分别344087793、374285768、429238298字节；完整SHA、源/编译器清单与回执见 [0.42发布记录](releases/0.42/README.md) 和 `releases/0.42/results.json`。
+
+用户随后提供公开下载入口：[夸克](https://pan.quark.cn/s/316704620069) · [Gofile](https://gofile.io/d/HNE20Ocp)，以 `490a1b5a` 补入中英文README/changelog；网盘内容未独立下载核验。`82227299` 将已发布细节归入唯一0.42节并恢复版本表旧→新顺序，`46e6c28c` 新增 [0.42更新与使用说明](../0.42-更新与使用说明.md)，后续使用说明修订 `f5e66999`。这些文档修订未重打已上传ZIP，其二进制和SHA保持不变。本轮没有替换用户游戏安装；最后确认的剑星仍为64dc/MODE0/1x。打包与文档任务未执行GitHub release/tag/push，不把网盘交付等同GitHub发布。
+
+2026-10-14补记：用户发现开发史漏记，核对上述实际回执后补齐此条，并同步WorkingPlan当前发布状态；未重跑构建或修改发行包。
