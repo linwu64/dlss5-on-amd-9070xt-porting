@@ -390,3 +390,14 @@
 保原packed矩阵与F32 scale字节，只把活尾移到矩阵后；版本化导出与指针布局tag成对选buffer/kernel。缺新导出、已有legacy缓存、未知模块selector及gfx1200保旧路。内部默认只启已验gfx1201/1152 profile，既有vit_stream recipe自然包含两新导出，不增加永久侧车或用户配置。
 
 受控完整Frame和最终正式旧/新各43模块路径逐字节相同。权重容量423438120→297609000B：contract96MiB、projection24MiB；此前expand96MiB已在基线，不重复计。本轮各ABBA均值变化小于控制漂移，p99/max/漂移原数见实验报告，不宣可靠FPS提升。C512候选因池容量负结果已撤回。最终宿主/addon O2通过。仅源码：installed64dc、正式0.41与游戏配置未变，未部署、未push。
+
+## 0.42（2026-10-13）
+
+正式三个完整包：Magpie、通用 OptiScaler、OptiScaler＋REFramework。包含0.41后已采纳的正式源码；0.41 ZIP保留，0.41-a不是正式版。默认MODE0、1x、SKIN0；PRED1仅选择3x时生效，已有custom/native覆盖不带入包。
+
+- 数据流：final RGB免最终copy、block4→C64 FP8边、仅已验1440 FAST3范围的SP路径；H900范数复用仅1600×960 FAST1/MP1等原资格，Auto提交仅已验驱动/runtime/配方，不扩大到未知组合。
+- 可选PR12接口与MODE1/2/3及相应资源、热键/生命周期保护纳入正式包，时序默认关闭；MODE1依赖原64B history head及matching C32出口。运动/深度约定未知保持静态回落，Magpie不宣新时序消费者已验。
+- 权重容量：expand96MiB、contract96MiB、projection24MiB，合计216MiB；后两项相对已expand基线新增120MiB。显式NeverHistory无history会话少33.75MiB共享buffer分配宽度。不是驻留峰值结论；短ABBA差异低于漂移，不承诺FPS提升。compact tail仅gfx1201/RX9070XT已验1152资格启用，gfx1200/未知/旧模块成对旧buffer旧kernel回落。
+- V末屏障、prefix NT、NoHi、C512少New及host QPC均未进入产品。独立D3D12整网研究不作为发行后端。正式构建80模块（40×双架构），官方recipe包含新tail出口；无实验侧车。
+
+本次只生成本地发行包及校验回执，不自动部署游戏、上传、创建tag或push。下载链接由用户上传后另补。

@@ -1,0 +1,31 @@
+{
+  "source_base": "31f5c239",
+  "addon": {
+    "exit": 0,
+    "sha256": "085d1716c732e9e9cb45de74bb3f7fc25e9999132244356c41e84896ca4c9ef9"
+  },
+  "runtime": {
+    "exit": 0,
+    "sha256": "8389b69b96c8c772075b261d65a062c9a403769098afa50a669a59a393a6b4a8"
+  },
+  "COMGR": {
+    "session": 90915,
+    "owner_pid": 9520,
+    "actual_exit": 0,
+    "lock_released": true,
+    "rows": 68,
+    "compiler": "D:\\DLSSNR-Lab\\build-0927\\rtc_compile.exe"
+  },
+  "LLVM23": {
+    "session": 73062,
+    "actual_exit": 0,
+    "rows": 12,
+    "receipt": "llvm23/receipt.json"
+  },
+  "formalFrame": {
+    "session": 20490,
+    "actual_exit": 0,
+    "lock_released": true,
+    "scope": "original43 accepted baseline vs fresh official40 gfx1201, three full frames each; final0900/finite/repeat/Auto3/8+8/history0 all passed; no performance claim"
+  }
+}

@@ -37,7 +37,7 @@ Rules:
 
 Tests: `tools/test_config_layers.cpp` contains 28 checks, runnable natively on Linux or as a MinGW-built Windows executable.
 
-RE9 reads the whitelisted network settings from `hip-re9-flags.txt`; `re9-presr.ini` overlays the OptiScaler host and does not replace the network file. Current package assembly uses `Development/tools/package-040.ps1` and `stage-config-layers.ps1` to copy default and custom templates, never the player's actual custom/native files. `-ConfigDirectory` must point to templates from the same commit. Version 0.41 packages passed separate packaging and release validation. Template comments use two lines, Chinese and English, each at most 191 bytes.
+RE9 reads the whitelisted network settings from `hip-re9-flags.txt`; `re9-presr.ini` overlays the OptiScaler host and does not replace the network file. Current package assembly uses `Development/tools/package-042.ps1` and `stage-config-layers.ps1` to copy default and custom templates, never the player's actual custom/native files. `-ConfigDirectory` must point to templates from the same commit. Version 0.41 packages passed separate packaging and release validation. Template comments use two lines, Chinese and English, each at most 191 bytes.
 
 ## Configuration controls
 

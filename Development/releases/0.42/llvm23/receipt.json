@@ -1,0 +1,14 @@
+{
+  "session_id": 73062,
+  "actual_exit_code": 0,
+  "source_commit": "31f5c2397843057610d261f2cce2dbcfd4c08107",
+  "compiler_sha256": "e6ca62c09435066f1035f14cc41db84bbd84c4a5209c44d66ed9b0895771b86e",
+  "rows": 12,
+  "architectures": [
+    "gfx1200",
+    "gfx1201"
+  ],
+  "purpose": "official LLVM23 prebuilt rows, not old installed copy",
+  "gpu_used": false,
+  "out": "/home/lmxxf/work/dlss5-release-042-build/prebuilt"
+}

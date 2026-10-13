@@ -1,0 +1,212 @@
+{
+  "independent_pass": true,
+  "rows": [
+    {
+      "target": "gfx1200",
+      "module": "c32-wave1",
+      "source_sha256": "bc6a8a22e5888fbe865c26031a74f70ee844edd08647016322079f8b21a88dca",
+      "binary_sha256": "4eb0c3f82363c6849d864759f82dd2f7d2fe35ddfb4109e0535446480ab5ae16",
+      "bytes": 433456,
+      "aux": {
+        "c32_wave1_post_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        },
+        "c32_wave1_post_b8_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        }
+      }
+    },
+    {
+      "target": "gfx1200",
+      "module": "c32-wave1-rtz",
+      "source_sha256": "17848426d580ee60ad4a407f1b0341396aced17419b0fb29de34c9eaed596b69",
+      "binary_sha256": "1f082bd5b94e1beffcf45f16208325c94811e61dc90d18fcaf83b61ce74b530c",
+      "bytes": 439856,
+      "aux": {
+        "c32_wave1_post_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        },
+        "c32_wave1_post_b8_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        }
+      }
+    },
+    {
+      "target": "gfx1200",
+      "module": "c64-wave2",
+      "source_sha256": "a40936874937d2d44ffef2f9a009c37f2b0a572d50dcbef75a8958e7a34571c4",
+      "binary_sha256": "5975afde8c661b44d0a8f10c0a9b2788d938b720a2b6c8dbe861f14af8ffffda",
+      "bytes": 1695736,
+      "aux": {}
+    },
+    {
+      "target": "gfx1200",
+      "module": "c32-wave1-fast",
+      "source_sha256": "e31f48da401f129f02b66e3a025d66a9b99b4bba6934a28e3c19096c907ae68d",
+      "binary_sha256": "7a86bec4123c218bc856fae2e9550d153b892755d585f511d655f30ef5e3d5c5",
+      "bytes": 426032,
+      "aux": {
+        "c32_wave1_post_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        },
+        "c32_wave1_post_b8_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        }
+      }
+    },
+    {
+      "target": "gfx1200",
+      "module": "c32-wave1-fast-norm900",
+      "source_sha256": "0aa7db9de5fd242c71641fd186f40cb834442ef2e40a6827a5d123b7ba4ecaa1",
+      "binary_sha256": "1e1c30167bb481ed2d046fd90cfea9d20b8ee7c9f7e5e1e0648f45ab67f2ae24",
+      "bytes": 421168,
+      "aux": {
+        "c32_wave1_post_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        },
+        "c32_wave1_post_b8_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        }
+      }
+    },
+    {
+      "target": "gfx1200",
+      "module": "c64-wave2-fast",
+      "source_sha256": "5c78794778164576a7e2e6fca152090d182cd931c51260af67aa770407a40fbd",
+      "binary_sha256": "b80519b88e6d45d5791755708e6f3d6610aa0e1653160f3c79038666071e9052",
+      "bytes": 1655544,
+      "aux": {}
+    },
+    {
+      "target": "gfx1201",
+      "module": "c32-wave1",
+      "source_sha256": "bc6a8a22e5888fbe865c26031a74f70ee844edd08647016322079f8b21a88dca",
+      "binary_sha256": "c79e9c2a83ffd93b74089e0587be6b79f1b48b98e3ac8bbcdba45c40e71b0b24",
+      "bytes": 433456,
+      "aux": {
+        "c32_wave1_post_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        },
+        "c32_wave1_post_b8_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        }
+      }
+    },
+    {
+      "target": "gfx1201",
+      "module": "c32-wave1-rtz",
+      "source_sha256": "17848426d580ee60ad4a407f1b0341396aced17419b0fb29de34c9eaed596b69",
+      "binary_sha256": "04c98fe3177f294ba981eca2c1c74782cf965b2b47843ae72e05e9f7e904d33a",
+      "bytes": 439856,
+      "aux": {
+        "c32_wave1_post_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        },
+        "c32_wave1_post_b8_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        }
+      }
+    },
+    {
+      "target": "gfx1201",
+      "module": "c64-wave2",
+      "source_sha256": "a40936874937d2d44ffef2f9a009c37f2b0a572d50dcbef75a8958e7a34571c4",
+      "binary_sha256": "cf263f2f25df25a8099937a2d60ba1b22aec91c3330503b9226c0a3f1f7d9504",
+      "bytes": 1695736,
+      "aux": {}
+    },
+    {
+      "target": "gfx1201",
+      "module": "c32-wave1-fast",
+      "source_sha256": "e31f48da401f129f02b66e3a025d66a9b99b4bba6934a28e3c19096c907ae68d",
+      "binary_sha256": "ff5b04c666fed772c72b8a0d30bb49f1bb3eacb887f211403e181caed0c9a2a7",
+      "bytes": 426032,
+      "aux": {
+        "c32_wave1_post_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        },
+        "c32_wave1_post_b8_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        }
+      }
+    },
+    {
+      "target": "gfx1201",
+      "module": "c32-wave1-fast-norm900",
+      "source_sha256": "0aa7db9de5fd242c71641fd186f40cb834442ef2e40a6827a5d123b7ba4ecaa1",
+      "binary_sha256": "354eaa74d117b2a1becd0795b5fae5a5c8f869907d2f33affb7f70c0189f66e4",
+      "bytes": 421168,
+      "aux": {
+        "c32_wave1_post_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        },
+        "c32_wave1_post_b8_logit": {
+          "kernarg_segment_size": 104,
+          "kernarg_segment_align": 8,
+          "wavefront_size": 32,
+          "max_flat_workgroup_size": 32
+        }
+      }
+    },
+    {
+      "target": "gfx1201",
+      "module": "c64-wave2-fast",
+      "source_sha256": "5c78794778164576a7e2e6fca152090d182cd931c51260af67aa770407a40fbd",
+      "binary_sha256": "c41fdd911733bb31168bb0c2ccea1a6fab27871fe7c1cfbd4710a815d30bff2d",
+      "bytes": 1655544,
+      "aux": {}
+    }
+  ],
+  "source_and_binary_sha": true,
+  "architectures": [
+    "gfx1200",
+    "gfx1201"
+  ],
+  "experimental_exports_absent": true,
+  "scope": "CPU static source/hash/ELF AMDGPU target and required Mode1 auxiliary ABI; no GPU or performance validation"
+}

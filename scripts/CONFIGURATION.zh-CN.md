@@ -36,7 +36,7 @@
 
 测试：`tools/test_config_layers.cpp`（Linux 原生或 mingw 编出 Windows 版都能跑，28 项）。
 
-当前默认模板见上表。RE9同样读取hip-re9-flags.txt白名单配置；re9-presr.ini是OptiScaler宿主覆盖，不代替网络文件。当前发布组装入口为`Development/tools/package-040.ps1`，通过`stage-config-layers.ps1`复制default-config和custom-config.template，不带实际玩家custom/native。`-ConfigDirectory`须指向同提交模板；0.41包已完成独立打包/发行核验。注释中英两行，每行≤191字节。
+当前默认模板见上表。RE9同样读取hip-re9-flags.txt白名单配置；re9-presr.ini是OptiScaler宿主覆盖，不代替网络文件。当前发布组装入口为`Development/tools/package-042.ps1`，通过`stage-config-layers.ps1`复制default-config和custom-config.template，不带实际玩家custom/native。`-ConfigDirectory`须指向同提交模板；0.41包已完成独立打包/发行核验。注释中英两行，每行≤191字节。
 
 ## 配置项
 

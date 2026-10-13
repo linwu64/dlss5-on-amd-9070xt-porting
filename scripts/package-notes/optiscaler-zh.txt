@@ -1,5 +1,16 @@
 OptiScaler-DLSS5-AMD @VERSION@ — 常规游戏完整包
 
+正式三个完整包：Magpie、通用 OptiScaler、OptiScaler＋REFramework。包含0.41后已采纳的正式源码；0.41 ZIP保留，0.41-a不是正式版。默认MODE0、1x、SKIN0；PRED1仅选择3x时生效，已有custom/native覆盖不带入包。
+
+- 数据流：final RGB免最终copy、block4→C64 FP8边、仅已验1440 FAST3范围的SP路径；H900范数复用仅1600×960 FAST1/MP1等原资格，Auto提交仅已验驱动/runtime/配方，不扩大到未知组合。
+- 可选PR12接口与MODE1/2/3及相应资源、热键/生命周期保护纳入正式包，时序默认关闭；MODE1依赖原64B history head及matching C32出口。运动/深度约定未知保持静态回落，Magpie不宣新时序消费者已验。
+- 权重容量：expand96MiB、contract96MiB、projection24MiB，合计216MiB；后两项相对已expand基线新增120MiB。显式NeverHistory无history会话少33.75MiB共享buffer分配宽度。不是驻留峰值结论；短ABBA差异低于漂移，不承诺FPS提升。compact tail仅gfx1201/RX9070XT已验1152资格启用，gfx1200/未知/旧模块成对旧buffer旧kernel回落。
+- V末屏障、prefix NT、NoHi、C512少New及host QPC均未进入产品。独立D3D12整网研究不作为发行后端。正式构建80模块（40×双架构），官方recipe包含新tail出口；无实验侧车。
+
+本次只生成本地发行包及校验回执，不自动部署游戏、上传、创建tag或push。下载链接由用户上传后另补。
+
+
+--- Historical0.41 notes ---
 0.41
 默认仍为1x。选择3x时默认两遍真实网络加预测第三遍（有损）；DLSS5_MULTI_PASS_PREDICT=0恢复真三遍，1x/2x不受预测影响，肤色保护默认关闭。新增首帧预分配、HIP设备重绑、RE9强度文件控制和逐位算子优化；FAST_NUMERIC加深本身会改变1x/2x数值。已有custom/native覆盖保留。配置说明见sources/configuration/CONFIGURATION.zh-CN.md。
 

@@ -13,3 +13,5 @@ Development/deployments/**/*.addon64
 Development/deployments/**/*.hsaco
 Development/deployments/**/*.dll
 Development/HIP/experiments/**/*.exe
+
+/-build/
