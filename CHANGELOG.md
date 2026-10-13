@@ -318,15 +318,22 @@ The default remains **1x** (`DLSS5_MULTI_PASS=1`). When 3x is selected, two real
 User observations on the installed development build: Stellar Blade 1x about 57.6 fps, fast 3x about 37 fps; Onimusha 900p fast 3x about 49 fps, unchanged and without anomalies. These are user observations, not controlled ABBA evidence of package speed-ups. gfx1200 receives build/ELF checks; hardware validation remains on gfx1201.
 
 
-## Unreleased source update — 2026-10-06
+
+## 0.42 (2026-10-13)
+
+Download (all three packages): [Quark](https://pan.quark.cn/s/316704620069) · [Gofile mirror](https://gofile.io/d/HNE20Ocp).
+
+Three complete packages: Magpie, standard OptiScaler, and OptiScaler+REFramework. Includes the accepted changes below since 0.41. Defaults remain **MODE0 / 1x / SKIN0**; PRED1 applies only when 3x is selected. Personal custom/native overrides are not packaged. Existing 0.41 ZIPs remain intact; 0.41-a was a historical experiment, not a formal release.
+
+### Data flow and scoped normalization
+
+Final RGB avoids the final copy; the block4-to-C64 edge retains FP8 bytes; the additional SP path applies only to the verified 1440 FAST3 scope. These separate optimizations do not imply additive FPS gains. Evidence: `Development/results/final-output-direct-20261005`, `pool64-byte-20261005` and `sp1440-fast-20261005`.
 
 - C32 normalization reuses its replicated per-lane inverse square root. The optional `c32-wave1-fast-norm900.hsaco` is selected with fast numerics on, processing size 1600×960, one real pass, graph off and experimental temporal history off. Other processing sizes and modes use their original modules. All 26 existing exports are checked together; a missing module or export falls back to the original module. No new user setting.
 - On the RX 9070 XT, the original O2, timing-disabled HDR frame replay improved 900-tier mean time by 0.045–0.049 ms across three formal rounds; p99 improved in two rounds and was indistinguishable within the original 1 µs measurement resolution in the third. The 1152-row screen had a p99 regression and keeps its original route. These are frozen frame replays covering codec, bridge, network and decode, rather than full game frame rates.
-- Standard 19 compatibility checks, controlled seed/history cases and module fallback checks were bit-identical. AE correctness was checked; performance was measured with AE off. This source update has not been installed or packaged. `Development/results/c32-norm-hoist-framework-20261006`, `c32-norm-hoist-stat-audit-20261006` and `c32-norm-hoist-compat-20261006`.
+- Standard 19 compatibility checks, controlled seed/history cases and module fallback checks were bit-identical. AE correctness was checked; performance was measured with AE off. `Development/results/c32-norm-hoist-framework-20261006`, `c32-norm-hoist-stat-audit-20261006` and `c32-norm-hoist-compat-20261006`.
 
-## Unreleased source updates — 2026-10-07–08
-
-These changes are in source and locally tested builds; the published 0.41 packages remain unchanged. The temporary 0.41-a history experiment is not a new formal release.
+### Optional temporal interfaces and modes
 
 - **Opt-in integration interfaces**: merged [TheAutomatic’s PR #12](https://github.com/lmxxf/dlss5-on-amd-9070xt-porting/pull/12), adding optional codec controls and final-pass auxiliary outputs for history consumers. Existing codec defaults remain unchanged. The reusable auxiliary interface supports multiple passes; the temporal consumers below require one pass.
 - **One temporal setting**, `DLSS5_TEMPORAL_MODE`, defaults to **0**:
@@ -336,68 +343,50 @@ These changes are in source and locally tested builds; the published 0.41 packag
   | `0` | Off; no new temporal shaders or history resources |
   | `1` | TheAutomatic Fast History: model-gated blending with previous output, including feedback to the next network input |
   | `2` | Low-frequency temporal stabilization: blend only the low-frequency output correction; keep current high-frequency detail and do not feed it back into the network |
+  | `3` | Single-pass low/high-frequency residual enhancement, described below |
 
   Change it in `custom-config.txt` and **restart**. An explicit mode, including `0`, takes precedence over the legacy `DLSS5_FAST_HISTORY` key; the existing file/environment priority still applies to the new key. Invalid values are rejected. The older `DLSS5_TEMPORAL_HISTORY_EXPERIMENT` diagnostic cannot be combined with modes 1/2. `DLSS5_FAST_TEMPORAL` does not enable either new mode.
 - **Mode 1 assets and runtime support**: regular HIP add-on and standalone RE9-style runtime now support Fast History. It needs the original 64-byte `post70-history-head.f16` row and matching C32 auxiliary exports, including the normal, RTZ, FAST and norm900 variants; changing a flag in an old package is insufficient. Missing assets fail explicitly. The runtime uses static screen-space history because its ABI does not supply verified motion/depth guides. The add-on uses motion/depth only with valid resources and explicit unjittered-MV/depth-direction declarations; otherwise it also falls back to static history with raw-colour change rejection. Unknown conventions are not guessed.
 - **Mode 2 on AMD**: independently implemented from the algorithm described by [SAOG0721/Magpie](https://github.com/SAOG0721/Magpie/tree/2fceab5e241bc9f8ded001ab3266762f1f8bc51e). In the codec’s encoded colour domain, split the final correction into low/high frequencies, apply approximately 80 ms temporal memory to the low band, then preserve the current high band. It does not add another network pass, increase single-pass strength or reproduce two/three-pass enhancement. No Oklab controls or extra gain are automatically added.
 - **Scope and recovery**: modes 1/2 require HIP, MP1, graph off and no overlap/external history; the add-on uses a full network viewport. ViT reuse is disabled for the temporal session without rewriting the user preference. Startup and F9/hot-reload guards reject MP2/3 while a temporal mode is active. Reset, exposure changes, long frame gaps and guide-mode changes invalidate history; the runtime retires constants/resources after actual queue submission. These modes are not enabled for the Magpie add-on by this integration.
 - **Compatibility fixes**: restored the RGB input buffer’s first-use UAV-to-SRV transition; corrected MinGW wide-path file opening. Mode 0 preserves the previous path. Controlled 720/900 runtime checks with the new auxiliary modules were bit-identical when off; temporal shader, reset, gap and finite-output checks passed on WARP/RX 9070 XT. These checks do not prove improved game image quality.
-- **Scoped submission optimization**: the unreleased `DLSS5_HIP_SUBMIT_PULSE=auto` source default uses one owned HIP event only on the verified gfx1201/Runtime7 driver and compatible single-pass, history-off recipes. Other scopes retain their prior path; `0` disables it. No output math or default quality setting changes, and no game FPS promise follows. The earlier norm900 optimization remains documented above.
+- **Scoped submission optimization**: the `DLSS5_HIP_SUBMIT_PULSE=auto` default uses one owned HIP event only on the verified gfx1201/Runtime7 driver and compatible single-pass, history-off recipes. Other scopes retain their prior path; `0` disables it. No output math or default quality setting changes, and no game FPS promise follows. The norm900 qualification is documented above.
 
-Both temporal modes are approximations that change output and can produce ghosting. No bit-exact NGX equivalence, universal flicker fix, quality improvement or performance advantage is claimed. Local Stellar Blade/Onimusha trial installs use MP1; they do not change release defaults. Configuration details: [English guide](scripts/CONFIGURATION.md). Evidence: `Development/results/pr12-integration-20261007`, `low-frequency-temporal-20261007`, `lowfreq-runtime-20261007` and `mode1-assets-20261008`.
+Temporal modes are approximations that change output and can produce ghosting. No bit-exact NGX equivalence, universal flicker fix, quality improvement or performance advantage is claimed. Configuration details: [English guide](scripts/CONFIGURATION.md). Evidence: `Development/results/pr12-integration-20261007`, `low-frequency-temporal-20261007`, `lowfreq-runtime-20261007` and `mode1-assets-20261008`.
 
-## Unreleased — single-pass enhancement mode (2026-10-08)
+### Mode 3: single-pass enhancement
 
 - Added `DLSS5_TEMPORAL_MODE=3`: one network evaluation followed by low/high-frequency residual enhancement. Low frequencies retain the temporal stabilization; high frequencies use the current frame. Cold/reset frames apply enhancement immediately, so this is not only a flicker filter.
 - `DLSS5_TEMPORAL_ENHANCE_STRENGTH` applies only to mode 3: default `1`, finite range `0..2`, restart required. Its extra correction is `s × (0.5 × stableLow + currentHigh)`. At strength 1, small unsaturated corrections have approximately 1.5× low-frequency and 2× high-frequency gain. Strength 0 preserves the original single-pass network output, including bypassing historical output changes.
 - Only the new increment is softly compressed above encoded magnitude 0.04 (excess scale 0.12). One shared RGB headroom scale keeps the correction direction within range. This is an independent codec-encoded-domain variant, not the reference Oklab algorithm or an equivalent second network pass; it needs no extra learned row or NN exports.
-- Overall default remains **mode 0**. Modes 0/1/2 and existing player settings remain unchanged. WARP/RX 9070 XT mathematical fixtures and mode-2 regression passed, and both hosts compiled. Mode 3 has not been deployed to the games or measured for game appearance/performance; stronger residuals may amplify artifacts or ghosting. No quality or FPS improvement is promised.
+- Overall default remains **mode 0**. Modes 0/1/2 and existing player settings remain unchanged. WARP/RX 9070 XT mathematical fixtures and mode-2 regression passed, and both hosts compiled. Historical game trials and controlled menu comparisons showed stronger residuals, not proof of better detail or quality; they may amplify artifacts or ghosting. No quality or FPS improvement is promised.
 
-### Temporal-mode F9 admission fix (2026-10-08)
+### Temporal-mode F9 admission
 
-- Prevent F9 from writing MP2/3 into either configuration layer while modes 1/2/3 are active. The key edge is consumed before the cycle is rejected; mode 0 keeps its previous pass cycling. Manual invalid settings remain fail-closed, with an error naming all three temporal modes. This fixes the write-before-admission ordering found during the Sword mode-3 trial, where MP2 caused initialization failure and no NN processing. An isolated CPU configuration fixture passed and the candidate add-on compiled; this candidate was not deployed by the test. No shader or enhancement math changed. Evidence: `Development/results/temporal-hotkey-guard-20261008`.
+Modes 1/2/3 consume the F9 key edge and reject unsupported MP2/3 cycling **before** writing either configuration layer; mode 0 keeps its pass cycling. Invalid manual settings fail closed and name all three temporal modes. This corrected the write-before-admission bug that caused MP2 initialization failure during an earlier mode-3 trial. The CPU configuration fixture and later live F9-blocking check passed; shader/enhancement math was unchanged. Evidence: `Development/results/temporal-hotkey-guard-20261008`, `mode3-stellar-live-audit-20261011` and `mode3-objective-20261011`. These historical checks are not a quality or FPS claim.
 
-## Unreleased — native D3D12 research prototype (2026-10-09)
-
-- Reused the existing full71 HLSL network for a native D3D12 baseline and added a bounded recorder for ViT expand/contract/QKV/attention. With the same actual network intermediate, weights and math, four lists and one list recording those four stages produced bit-identical finite output. The old whole-network single-list guard is not bypassed.
-- The old full71 HLSL chunked pure-network pilot measured about23.39ms GPU /23.57ms wall (20 samples, legacy math and noise path); this is not evidence of a gain over current HIP. Validation is currently limited to the RX9070XT SM6.10/Agility721 preview environment. One timing pair had a shorter GPU interval but a longer CPU wall time; no speed-up is established. Legacy HLSL math differs from current HIP fast numerics, so comparisons are not a pure backend gain. Isolated experiment only: no production backend, game installation or release defaults changed. Evidence: `Development/results/nr-dx12-fourstage-20261009`.
-- The isolated1152-row full APP path also completed one frozen HDR-menu frame with finite, nonzero decoded RGBA16F output. This is an integration check, not a cold-frame speed result. The old full-network pilot remains slower than the current HIP reference; neither it nor the bounded-stage experiment establishes native-backend acceleration.
-
-## 2026-10-11 Local Stellar Blade trial (not a release)
-
-- User-authorized 1x MODE3 low/high frequency enhancement, strength1, with multipass prediction and the separate MODE1/old history experiment disabled.
-- Installed the official O2 HIP build from current production source (9413682f), including the validated F9 guard: modes1/2/3 block unsupported multipass cycling before any configuration write.
-- Preserved player AE, base strength, geometry, all79 modules and SUMS/row. All three configuration files remained byte-identical. Onimusha, Runtime DLLs, release packages and tags were untouched. Installation was backed up and verified; no game launch or visual result is claimed. Evidence: `Development/results/mode3-stellar-1x-trial-20261011/`.
-
-## Unreleased — compact ViT expand weight storage (2026-10-12)
+### Compact ViT expand weights
 
 The eight known block31–38 FP8 fragment expand matrices now upload their live 4 MiB packed prefix instead of a 16 MiB F32-sized buffer. Kernel code, weight bytes, precision and ABI stay identical. Unknown layouts and existing legacy cache entries retain the old loader. `HIP_COMPACT_VIT_EXPAND=0` keeps the original path.
 
-On the controlled RX 9070 XT 1152 profile, complete Frame outputs were byte-identical and held weight capacity fell by 96 MiB (524,101,416→423,438,120 bytes). This is allocation capacity, not a resident peak. One Frame ABBA measured 9.633050→9.634692 ms wall time, with no stable speed gain; no game FPS claim. See `Development/HIP/experiments/packed-weight-compact/RESULTS.md`. Source integration only; no new release or deployment.
+On the controlled RX 9070 XT 1152 profile, complete Frame outputs were byte-identical and held weight capacity fell by 96 MiB (524,101,416→423,438,120 bytes). This is allocation capacity, not a resident peak. One Frame ABBA measured 9.633050→9.634692 ms wall time, with no stable speed gain; no game FPS claim. See `Development/HIP/experiments/packed-weight-compact/RESULTS.md`.
 
-### 2026-10-12 Local trial installation (not a release)
+### Explicit no-history sessions
 
-Installed the formal O2 compact ViT-expand-weight addon `64dc04286c22d5d3…` in Stellar Blade only. Configuration, 79 modules and Runtime were preserved; C32 NoHi is excluded. In-game FPS is unmeasured. Backup and receipt: `Development/results/stellar-compact-trial-20261012/`.
+Explicit never-history Frame sessions omit the unused shared Bridge history buffer (33.75 MiB at1920×1152). Unknown callers and all declared history sessions keep the original path; invalid temporal submissions are rejected. Complete Frame gold passed; short ABBA showed no stable speed gain or discernible large regression. Capacity only, not peak residency.
 
-## Unreleased — explicit no-history session resources (2026-10-12)
-
-Explicit never-history Frame sessions omit the unused shared Bridge history buffer (33.75 MiB at1920×1152). Unknown callers and all declared history sessions keep the original path; invalid temporal submissions are rejected. Complete Frame gold passed; short ABBA showed no stable speed gain or discernible large regression. Capacity only, not peak residency; source only, not deployed.
-
-## Unreleased — compact ViT contract and projection tails (2026-10-12)
+### Compact ViT contract/projection tails
 
 Preserve the packed matrices and F32 scale bytes while moving the live tail beside each matrix. Versioned exports and pointer layout tags select matching buffers/kernels; missing exports, existing legacy cache entries, unknown module selectors and gfx1200 retain the old path. Internal defaults enable the validated gfx1201/1152 profile. The existing vit_stream recipes include both exports, with no permanent sidecar module or user setting.
 
-Controlled complete Frame gold and the final production old/new43-module paths were byte-identical. Weight capacity fell423,438,120→297,609,000 bytes:96MiB contract plus24MiB projection, on top of the previously compact expand baseline. Individual ABBA mean changes were smaller than control drift; p99/max/drift are preserved in the experiment report, with no reliable FPS gain claimed. The C512 allocation candidate was reverted after an adverse pool result. Final host/addon O2 builds passed. Source only: installed64dc and release0.41 are unchanged; no deployment or push.
+Controlled complete Frame gold and the final production old/new43-module paths were byte-identical. Weight capacity fell423,438,120→297,609,000 bytes:96MiB contract plus24MiB projection, on top of the previously compact expand baseline. Individual ABBA mean changes were smaller than control drift; p99/max/drift are preserved in the experiment report, with no reliable FPS gain claimed. The C512 allocation candidate was reverted after an adverse pool result. Final host/addon O2 builds passed.
 
-## 0.42 (2026-10-13)
+Together, expand96MiB + contract96MiB + projection24MiB reduce held weight capacity by216MiB in the validated scope; the latter two add120MiB to the already compact-expand baseline. The33.75MiB shared-buffer allocation width is a separate resource category, not a resident-peak measurement. See `Development/HIP/experiments/resource-followups/README.md` for exact per-trial p99/max/drift and compatibility boundaries.
 
-Download (all three packages): [Quark](https://pan.quark.cn/s/316704620069) · [Gofile mirror](https://gofile.io/d/HNE20Ocp).
+### Packages, validation and exclusions
 
-Three complete packages: Magpie, standard OptiScaler, and OptiScaler+REFramework. Includes accepted source changes since0.41; existing0.41 ZIPs remain intact, and0.41-a was not a formal release. Defaults remain MODE0,1x,SKIN0; PRED1 applies only when3x is selected. No personal custom/native settings are packaged.
+Official recipes build80 modules (40 per architecture: six LLVM23.1.2 and34 driver-COMGR rows each), including both compact-tail exports without permanent sidecars. Hosts were rebuilt; the REFramework source bundle and configuration documentation were refreshed. The original64-byte history head and matching C32 normal/RTZ/FAST/norm900 auxiliary exports are included. The final gfx1201 official-module Frame gold, staged RE9 runtime smoke,44 shader variants per package, complete ZIP hash readback and independent defaults/module/asset audit passed. gfx1200 received build/ELF checks, not hardware validation. Receipts: [Development/releases/0.42](Development/releases/0.42/README.md).
 
-- Accepted data flow: final RGB without the final copy, the block4-to-C64 FP8 edge, and SP only for the verified1440 FAST3 scope. H900 normalization reuse and Auto submission retain their verified shape/driver/runtime/recipe qualifications.
-- Optional PR12 interfaces and modes1/2/3 with history assets and lifecycle/hotkey guards are packaged, default off. Mode1 requires the original64B history head and matching C32 exports. Unknown motion/depth conventions retain static fallback; no new Magpie temporal-consumer validation is claimed.
-- Weight capacities:96MiB expand+96MiB contract+24MiB projection=216MiB; the latter two add120MiB to the already compact-expand baseline. Explicit NeverHistory saves33.75MiB shared-buffer allocation width in eligible sessions. These are not resident-peak claims; shortABBA differences were below drift, with no FPS promise. New tail layout is limited to verified gfx1201/RX9070XT1152 scope; gfx1200/unknown/old modules retain paired legacy buffer/kernel fallback.
-- V-tail barrier, prefix NT, NoHi, C512 allocation trials and host QPC are excluded. D3D12 whole-network research is not a release backend. Official recipes build80 modules(40 per architecture), including compact tail exports, without experimental sidecars.
+V-tail barrier, prefix NT, NoHi, C512 allocation trials and host-QPC instrumentation are excluded. Native D3D12 whole-network research is not a released backend; research evidence remains in [DevHistory](Development/DevHistory.md) and [failed experiments](Development/failed-experiments.md).
 
-Local packages and verification receipts only; no game installation, upload, tag or push. The mirror links above were supplied by the user.
+0.42 is available through the user-provided public mirrors above. The mirror contents have not been independently verified; recording these links does not imply a Git push, tag or GitHub Release publication.
