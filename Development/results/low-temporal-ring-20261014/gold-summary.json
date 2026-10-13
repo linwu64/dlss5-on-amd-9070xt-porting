@@ -1,0 +1,30 @@
+﻿{
+    "sync-mode2":  {
+                       "ring0_first_sha256":  "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+                       "ring1_first_sha256":  "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+                       "ring0_last_sha256":  "30F1313DA9FFFDEB6F0477E3AEED5FC7B838CF3AB57635EAA3901524E018EDCC",
+                       "ring1_last_sha256":  "30F1313DA9FFFDEB6F0477E3AEED5FC7B838CF3AB57635EAA3901524E018EDCC",
+                       "bit_exact":  true
+                   },
+    "sync-mode3":  {
+                       "ring0_first_sha256":  "A7B0DDB8EF8186BB297A2B741546903F8AE7F387D4CEC7D140CAFCBD123DC45F",
+                       "ring1_first_sha256":  "A7B0DDB8EF8186BB297A2B741546903F8AE7F387D4CEC7D140CAFCBD123DC45F",
+                       "ring0_last_sha256":  "5008EF28D19423545DEF5194AD7C486E482E838FB57364455F18EDF26A319B9C",
+                       "ring1_last_sha256":  "5008EF28D19423545DEF5194AD7C486E482E838FB57364455F18EDF26A319B9C",
+                       "bit_exact":  true
+                   },
+    "async-mode2":  {
+                        "ring0_first_sha256":  "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+                        "ring1_first_sha256":  "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+                        "ring0_last_sha256":  "30F1313DA9FFFDEB6F0477E3AEED5FC7B838CF3AB57635EAA3901524E018EDCC",
+                        "ring1_last_sha256":  "30F1313DA9FFFDEB6F0477E3AEED5FC7B838CF3AB57635EAA3901524E018EDCC",
+                        "bit_exact":  true
+                    },
+    "async-mode3":  {
+                        "ring0_first_sha256":  "A7B0DDB8EF8186BB297A2B741546903F8AE7F387D4CEC7D140CAFCBD123DC45F",
+                        "ring1_first_sha256":  "A7B0DDB8EF8186BB297A2B741546903F8AE7F387D4CEC7D140CAFCBD123DC45F",
+                        "ring0_last_sha256":  "5008EF28D19423545DEF5194AD7C486E482E838FB57364455F18EDF26A319B9C",
+                        "ring1_last_sha256":  "5008EF28D19423545DEF5194AD7C486E482E838FB57364455F18EDF26A319B9C",
+                        "bit_exact":  true
+                    }
+}

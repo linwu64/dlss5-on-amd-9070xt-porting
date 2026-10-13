@@ -395,7 +395,8 @@ public:
   ID3D12Device*owner=nullptr;auto hr=target->GetDevice(IID_PPV_ARGS(&owner));if(FAILED(hr))throw std::runtime_error("frame target device query");bool same=NativeSameDevice(owner,resources->submit.Device());owner->Release();if(!same)throw std::runtime_error("frame target device mismatch");
   try{
    auto&r=*resources;
-   if(r.low_temporal.enabled){r.submit.Flush();r.low_temporal.Prepare(r.submit.Queue(),experimental_metadata.frame_id,experimental_metadata.ffx_pre,experimental_metadata.pre_exposure,reset,motion_texture,r.low_render_w,r.low_render_h,experimental_metadata.motion_scale[0],experimental_metadata.motion_scale[1],NativeTemporalExperimentUnjittered()&&experimental_metadata.ffx_pre);}
+   static const bool low_ring=[]{const char*v=std::getenv("NR_LOW_TEMPORAL_RING");return !v||!*v||std::strcmp(v,"0")!=0;}();
+   if(r.low_temporal.enabled){if(low_ring)r.low_temporal.Prepare(r.submit,experimental_metadata.frame_id,experimental_metadata.ffx_pre,experimental_metadata.pre_exposure,reset,motion_texture,r.low_render_w,r.low_render_h,experimental_metadata.motion_scale[0],experimental_metadata.motion_scale[1],NativeTemporalExperimentUnjittered()&&experimental_metadata.ffx_pre);else{r.submit.Flush();r.low_temporal.Prepare(r.submit.Queue(),experimental_metadata.frame_id,experimental_metadata.ffx_pre,experimental_metadata.pre_exposure,reset,motion_texture,r.low_render_w,r.low_render_h,experimental_metadata.motion_scale[0],experimental_metadata.motion_scale[1],NativeTemporalExperimentUnjittered()&&experimental_metadata.ffx_pre);}}
    const bool fast_use=r.fast_history.Prepare(r.submit,motion_texture,depth,experimental_metadata,reset);
    if(r.fast_history.enabled)seed=r.fast_history.Seed();
    bool experimental_active=false;
@@ -446,7 +447,7 @@ public:
     if(r.fps_text[0])r.fps_overlay.Draw(c,target,r.fps_text,24,96,3,target_state);
     }
     if(r.probe_on){r.probe.Mark(c,"t3");r.probe.Resolve(c);}
-   });if(r.low_temporal.enabled){r.submit.Flush();r.low_temporal.Submitted(r.submit.Queue());}r.black.Submitted(r.submit.LastValue());r.fast_history.Submitted(r.submit.LastValue());
+   });if(r.low_temporal.enabled){if(low_ring)r.low_temporal.Submitted(r.submit.LastValue());else{r.submit.Flush();r.low_temporal.Submitted(r.submit.Queue());}}r.black.Submitted(r.submit.LastValue());r.fast_history.Submitted(r.submit.LastValue());
    /* 2026-10-01 input-slim: finer marks (encode | input(+history) | network+handoff | neural | decode | copy+overlay), per-step µs averaged per 100 frames */
    if(r.probe_on){r.submit.Flush();std::vector<double>iv;if(r.probe.Intervals(r.submit.TimestampFrequency(),iv)&&iv.size()<=8){r.probe_parts=unsigned(iv.size());for(size_t i=0;i<iv.size();i++)r.probe_sum[i]+=iv[i];}
     r.probe_cpu+=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-cpu_start).count();
