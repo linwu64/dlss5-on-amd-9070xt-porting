@@ -18,6 +18,8 @@ DLSS 5（DLSSNR）跑在 AMD RX 9070 XT / RDNA 4 上。
 
 **当前版本：0.42（2026-10-13）。** 三个完整包，包含已采纳数据流、可选时序接口及狭域分配节省。默认MODE0/1x/SKIN0，不承诺FPS提升。详见[更新日志](CHANGELOG.zh-CN.md)，下载：[夸克](https://pan.quark.cn/s/316704620069) · [Gofile 镜像](https://gofile.io/d/HNE20Ocp)（三个包）。
 
+**新用户先看：[0.42更新与使用说明](0.42-更新与使用说明.md)**（选包、升级、custom配置、热键与MODE0／1／2／3）。
+
 **历史版本：0.40（2026-10-03）。** **默认输出变了**：全 71 块 + fast 数值（`DLSS5_SKIP_BLOCKS=` 空值、`DLSS5_FAST_NUMERIC=1`），对 NVIDIA 44.26 → 47.55 dB、偏色消失，每帧慢约 0.12 / 0.19 ms（900 / 1080）；写 `DLSS5_SKIP_BLOCKS=42,43,46` + `DLSS5_FAST_NUMERIC=0` 就逐位回到 0.39。新东西：叠层 `DLSS5_MULTI_PASS=1/2/3`（风格更浓，耗时约 N 倍；游戏里 F9 轮换，《剑星》2K 57 / 37 / 27 fps）、三个配置文件（`default-config.txt` → `custom-config.txt` → `native-game-flags.txt`，环境变量最高；包里不再带你的文件）、逐位提速（C32/C64 改 LLVM 23 编，1080 约 −0.2 ms）。下载：[夸克](https://pan.quark.cn/s/d38e0f653c5a) · [Gofile 镜像](https://gofile.io/d/moSf7cqf)。0.39：[夸克](https://pan.quark.cn/s/dea9c0ef2f95) · [Gofile 镜像](https://gofile.io/d/iqtFTSpS)。
 
 **环境要求。** RDNA 4 显卡（RX 9070 XT 实测；RX 9060 的内核随包但没机器测）和带 `amdhip64_7.dll` 的 AMD 驱动（现在的正式版驱动就带）。
