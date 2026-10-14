@@ -274,7 +274,7 @@ KERNEL __attribute__((amdgpu_flat_work_group_size(64,64))) void split_ffn_one_w2
  for(uint ob=0;ob<4;ob++)for(uint e=0;e<8;e++){uint rr=first+gr()*8+e,c=g*64+ob*16+rc();float v=F(c512_hq(r[ob][e]));out8[((rr/16)*16+c/32)*512+(rr%16)*32+c%32]=static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(v,0.f,0,false));}
 #endif
 }
-template<bool TVEC> DEV void c512_ffn_one_w2f8_w16_body(const float*in,const float*w,unsigned char*out8,uint tokens){
+template<bool TVEC,bool ByteIn=false> DEV void c512_ffn_one_w2f8_w16_body(const float*in,const float*w,unsigned char*out8,uint tokens){
  const uint tid=__builtin_amdgcn_workitem_id_x(),wave=tid/32,first=bid()/8*32+wave*16,g=bid()%8;
  __attribute__((shared)) unsigned char t8[TVEC?2048:1];
  if(first<tokens){
@@ -284,9 +284,11 @@ template<bool TVEC> DEV void c512_ffn_one_w2f8_w16_body(const float*in,const flo
   const unsigned char*wc=wm+393216*4+g*16384;
   f8 m[4]{};
   const float*ar=in+(first+rc())*512+gr()*8;
-  for(uint gs=0;gs<16;gs++){
-   float fa0[8],fa1[8];__builtin_memcpy(fa0,ar+gs*32,32);__builtin_memcpy(fa1,ar+gs*32+16,32);
-   i2 a0=c5d_pack8f(fa0),a1=c5d_pack8f(fa1);
+  const unsigned char*ar8=reinterpret_cast<const unsigned char*>(in)+(first+rc())*512+gr()*8;
+  _Pragma("clang loop unroll_count(2)") for(uint gs=0;gs<16;gs++){
+   i2 a0,a1;
+   if constexpr(ByteIn){__builtin_memcpy(&a0,ar8+gs*32,8);__builtin_memcpy(&a1,ar8+gs*32+16,8);}
+   else{float fa0[8],fa1[8];__builtin_memcpy(fa0,ar+gs*32,32);__builtin_memcpy(fa1,ar+gs*32+16,32);a0=c5d_pack8f(fa0);a1=c5d_pack8f(fa1);}
    _Pragma("unroll") for(uint j=0;j<4;j++){
     w16_i4 bw;__builtin_memcpy(&bw,wm+((g*4+j)*16+gs)*512+(gr()*16+rc())*16,16);
     i2 b0={bw[0],bw[1]},b1={bw[2],bw[3]};
@@ -338,6 +340,8 @@ template<bool TVEC> DEV void c512_ffn_one_w2f8_w16_body(const float*in,const flo
 }
 KERNEL __attribute__((amdgpu_flat_work_group_size(64,64))) void split_ffn_one_w2f8_w16(const float*in,const float*w,unsigned char*out8,uint tokens){c512_ffn_one_w2f8_w16_body<false>(in,w,out8,tokens);}
 KERNEL __attribute__((amdgpu_flat_work_group_size(64,64))) void split_ffn_one_w2f8_w16_tvec(const float*in,const float*w,unsigned char*out8,uint tokens){c512_ffn_one_w2f8_w16_body<true>(in,w,out8,tokens);}
+KERNEL __attribute__((amdgpu_flat_work_group_size(64,64))) void split_ffn_one_w2f8_w16_bin(const float*in,const float*w,unsigned char*out8,uint tokens){c512_ffn_one_w2f8_w16_body<false,true>(in,w,out8,tokens);}
+KERNEL __attribute__((amdgpu_flat_work_group_size(64,64))) void split_ffn_one_w2f8_w16_tvec_bin(const float*in,const float*w,unsigned char*out8,uint tokens){c512_ffn_one_w2f8_w16_body<true,true>(in,w,out8,tokens);}
 #endif
 #ifndef C512_FFN_PROJ_FUSE
 #define C512_FFN_PROJ_FUSE 0 /* 2026-10-02 ideas-yami-ikaruga: 1 = export split_ffn_proj_fused (needs C512_FFN_F8W): split_ffn_one_w2f8 and

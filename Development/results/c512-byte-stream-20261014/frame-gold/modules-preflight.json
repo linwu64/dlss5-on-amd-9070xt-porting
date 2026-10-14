@@ -1,0 +1,202 @@
+[
+    {
+        "file":  "c32_prefix_reference.hsaco",
+        "bytes":  35784,
+        "sha256":  "65103D0C3930DD22D7EC40E282E38285D68169C9C8860DF7D561A7C04FEF7640"
+    },
+    {
+        "file":  "multihead-reference.hsaco",
+        "bytes":  66824,
+        "sha256":  "1CFA639E9F37B7872C69D738C7332B58EAAF0539CAF720CC29A844E770FC8CBE"
+    },
+    {
+        "file":  "deep_reference.hsaco",
+        "bytes":  70312,
+        "sha256":  "0D2E3E9658A8ABC53BE68B6FC108CE57594784D3ED56F237BEDD9766D86DB895"
+    },
+    {
+        "file":  "boundary_reference.hsaco",
+        "bytes":  17832,
+        "sha256":  "1B1A514743924D43542ED9AC30E4CA50EC6E84E62D2BAFAB1960AAF061E0ADC8"
+    },
+    {
+        "file":  "c32_wmma.hsaco",
+        "bytes":  66504,
+        "sha256":  "4D239CA134400EE2B42C60F99DC24202F9A4FD38C21A471C01A98217DF04B294"
+    },
+    {
+        "file":  "multihead-wmma.hsaco",
+        "bytes":  93264,
+        "sha256":  "BFC99774435FCF89985A795EA6E1C20DE3335053097B40206839ADF687D0E226"
+    },
+    {
+        "file":  "deep_wmma.hsaco",
+        "bytes":  82616,
+        "sha256":  "B562C8986300B0517818AE54A46108E725E1ECC6C6B6C88A3B7FA14C749A5B2F"
+    },
+    {
+        "file":  "wave-pointwise.hsaco",
+        "bytes":  46704,
+        "sha256":  "5E65693DA46044B697218194BB17EC8453952FA4A4A684C6ECC59DF1CECF12AA"
+    },
+    {
+        "file":  "c32_tiled.hsaco",
+        "bytes":  31536,
+        "sha256":  "6E7DB748FBD492CD566F208A1AA3B7E48A42A9C0D8B31022148469BB46D01E8F"
+    },
+    {
+        "file":  "multihead-tiled.hsaco",
+        "bytes":  49072,
+        "sha256":  "3799AE40ECEC89796132BF6464A76FAF1ADFFFE65DF2F5E6406F47A86F67AA81"
+    },
+    {
+        "file":  "c32_fast.hsaco",
+        "bytes":  38056,
+        "sha256":  "A639601561123594F6D8B335F884F4E229338875F460213AF1396BC2F28C90EC"
+    },
+    {
+        "file":  "c32_fast_attention.hsaco",
+        "bytes":  29568,
+        "sha256":  "B3ABD5620764F5A5BA4D86FB439E0A57688E346AFDD5945F6F1D9067DA6D032C"
+    },
+    {
+        "file":  "boundary-fast.hsaco",
+        "bytes":  50904,
+        "sha256":  "40FA66062ECA6BBE654E480944783C27B9BD93970696E1FFCA9BBC8773CA9700"
+    },
+    {
+        "file":  "c32_fused_attention.hsaco",
+        "bytes":  39472,
+        "sha256":  "5091D35E5AC53E4A8D16DE2F5FB1C8C057159C72D6605FAEB5A5CA7DAA65AACD"
+    },
+    {
+        "file":  "c32_fused_ffn_attention.hsaco",
+        "bytes":  286528,
+        "sha256":  "AEDB066C95A76AA60FE67C91443C2CF8189C5E4F8E849356695CB5CD9FDC9870"
+    },
+    {
+        "file":  "c32_fused_ffn_attention-packed.hsaco",
+        "bytes":  219328,
+        "sha256":  "C0634176BF9E0A79FFB0E28FB120DF310A646D4DEDCAAD69C34F7185718D2155"
+    },
+    {
+        "file":  "prefix_fast.hsaco",
+        "bytes":  77496,
+        "sha256":  "81B3FACDA5A1512AF3940D7A82C5A2F6F2E5CC7A0F2428194F4420FC8B68A57C"
+    },
+    {
+        "file":  "multihead-fast.hsaco",
+        "bytes":  106952,
+        "sha256":  "3493FB0EDE45F233A5D09472BD7A76D7532387F1FD6B0C835D46C20C0D196C9A"
+    },
+    {
+        "file":  "multihead-fast-padded-wave.hsaco",
+        "bytes":  1164984,
+        "sha256":  "50D34BBF355758D697812D00FC907448658FC32773641140A1BA77B62EB7591E"
+    },
+    {
+        "file":  "multihead_fused_attention.hsaco",
+        "bytes":  366880,
+        "sha256":  "F7F23560D490868EACB161D7E49C958548FAAA1D61384014EA0859B5E8CEF1B9"
+    },
+    {
+        "file":  "deep_fast.hsaco",
+        "bytes":  613472,
+        "sha256":  "23E0C2596F46649A37A8B2EE6CEF67E22478EEA376F2EC2F53B8014E12D3C3F4"
+    },
+    {
+        "file":  "deep_fast-packed.hsaco",
+        "bytes":  656320,
+        "sha256":  "159232F46311D8763FD66AB0CAAB4BE4A8F057DF8394C65D5405E677A6FBED41"
+    },
+    {
+        "file":  "multihead-fast-packed.hsaco",
+        "bytes":  104904,
+        "sha256":  "31E258756683B9A60E455C1C315C7B22B9605D90AE784891073FB6C74BA8EAD7"
+    },
+    {
+        "file":  "multihead-fast-padded-wave-packed.hsaco",
+        "bytes":  1226160,
+        "sha256":  "DBF8F93A61997D1A1E96E0BDC958D577D1B954033343D745BC4E3884B139558A"
+    },
+    {
+        "file":  "deep_fast-packed-fast.hsaco",
+        "bytes":  654528,
+        "sha256":  "10E028A0B865124278C4ED4AAF9F831A6E436328F041802B77CF3C7D0447E8A0"
+    },
+    {
+        "file":  "vit-stream-fast.hsaco",
+        "bytes":  732408,
+        "sha256":  "583A840968EAE609BC27C84A41E25D37F42C5271DAF63DFD4248D4D99D5FBA59"
+    },
+    {
+        "file":  "c512-m32-mh.hsaco",
+        "bytes":  1010296,
+        "sha256":  "E57017246264F66A68F1452C336C5D862C0CC27B30C5375C746F4F975398173D"
+    },
+    {
+        "file":  "c512-m32-deep.hsaco",
+        "bytes":  625504,
+        "sha256":  "6EC42703DA8289EE2FEA109CFCEC04FAF1761A295B9120B7CEFC26987237D81E"
+    },
+    {
+        "file":  "vit-stream.hsaco",
+        "bytes":  691192,
+        "sha256":  "9DBFA1270015147E47597F307C6EFE24A3C84445F6D682D304844DA0553E707E"
+    },
+    {
+        "file":  "vit-wide-deep.hsaco",
+        "bytes":  595984,
+        "sha256":  "726E74A4EF769318BE929E697ADE83BAE31310EC2CED1D43BB61C5045E09D720"
+    },
+    {
+        "file":  "multi-pass-skin.hsaco",
+        "bytes":  12888,
+        "sha256":  "5FF15F49135BEEF3BC68D744B9D33F615812CE293D13C0783C88B0A3D9AAA011"
+    },
+    {
+        "file":  "multi-pass-predict.hsaco",
+        "bytes":  14328,
+        "sha256":  "133F0975E39E7E716E146DAB15F05573D6767C8C1C99E01528F3C11509293900"
+    },
+    {
+        "file":  "swin-persistent.hsaco",
+        "bytes":  1188400,
+        "sha256":  "E5125B29F04D3C25D4D11A7567B52471E67F0094A252AD894B78FBEC8E819EFC"
+    },
+    {
+        "file":  "swin-persistent-fast.hsaco",
+        "bytes":  1217456,
+        "sha256":  "83C30C89CE318D3DA88EF3D8A4B36E40433F768D75C60138ED6DAEB1279464C2"
+    },
+    {
+        "file":  "c32-wave1.hsaco",
+        "bytes":  906816,
+        "sha256":  "2C13D546BADC9EA6A2FA4D9723CBAA2C964CFC73B910EB118F31A300E0945AEE"
+    },
+    {
+        "file":  "c32-wave1-rtz.hsaco",
+        "bytes":  908352,
+        "sha256":  "F0018A204E3F623301445B8EF4110970D412C2DF1C043DFBFA4CE0016FB2A8E6"
+    },
+    {
+        "file":  "c64-wave2.hsaco",
+        "bytes":  1782160,
+        "sha256":  "0061FD7936608950D8715FA71C2EF470E27DC7CDC469EE327618CA8E3A3EECDE"
+    },
+    {
+        "file":  "c32-wave1-fast.hsaco",
+        "bytes":  874816,
+        "sha256":  "4A94D8529CE2D9D11D4A51310E8C8DA6EE07C51D1807F9B31A2103A7FB03A0B0"
+    },
+    {
+        "file":  "c32-wave1-fast-norm900.hsaco",
+        "bytes":  860480,
+        "sha256":  "5287120A21CB8A913A7A2990BCB10F3660B09A0D5AA595646FEB7F3D134EC7BF"
+    },
+    {
+        "file":  "c64-wave2-fast.hsaco",
+        "bytes":  1801744,
+        "sha256":  "12C7B8E1845C223B40833FE13AFF7BE48A4BBF5DDF8FEA7CF51F62FC99BA008D"
+    }
+]
