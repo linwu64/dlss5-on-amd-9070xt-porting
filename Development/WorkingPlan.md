@@ -65,3 +65,11 @@
 剑星已按授权安装紧凑权重正式O2 addon `64dc04286c22d5d3…`（源码 `1b4c898f`，部署57883 exit0）；MODE0/MP1/PRED0/SKIN0及其他配置字节不变，模块/Runtime不变。用户已实玩并反馈静态58.2fps；无旧版同场景严格对照，不当ABBA或新发版。回执与回滚：`results/stellar-compact-trial-20261012/`。
 
 - 2026-10-12 12:54 用户反馈“有提升”，通过Splashtop玩剑星，用户原称“2k AA(1080P dlss5) exact”，静态画面稳定58.2帧；对应addon `64dc04286c22d5d3…`，MODE0/1x设置未改。属实玩观察，旧版无同场景精确对照，不报精确增幅。
+
+## 2026-10-14 《剑星》与《鬼武者》本机安装更新
+
+已按用户指令将今日全部验收合入的 `be506729` 基线（含 C512/C32/ViT W16、全网 Epilogue 无分支与 `v_movrel` 清理、ViT/C512/Down 1B E4M3 字节流直连 `HIP_VIT_INTER_BYTE=15` 及 `MODE 2/3` 64-slot ring）部署至《剑星》与《鬼武者》：
+- **《剑星》**：更新 `dlss5-amd.addon64`（`64dc0428… → 91d8147188b950367d40ed041588a0591ccbc0d4627ff70702b9a4e68eb0cd26`）及双架构 80 个 `.hsaco` 模块；个人配置 `custom-config.txt`（`MODE0/MP1/PRED0/SKIN0/1x`）字节未改。
+- **《鬼武者》**：更新 `LmxxfNrRuntime.dll` 与 `_storage_\LmxxfNrRuntime.dll`（`3eaed204… → 50c3b80b730fce925c65c83a803c42406e6644f03e0fb0ae71535bbd88567844`）及双架构 80 个 `.hsaco` 模块，并通过 `runtime-smoke.exe` 冒烟校验（`PrepareFrame rc=0, HIP rc=0, lmxxf_nr_gpu: ok`）；个人配置 `custom-config.txt`（`MODE1/MP1/PRED0/SKIN0`）字节未改。
+- 备份目录：`D:\DLSSNR-Lab\game-install-20261014\backup-20261014-233615`，回执与一键回滚见 [game-install-20261014](results/game-install-20261014/README.md)。
+

@@ -1,0 +1,25 @@
+{
+    "date":  "2026-10-14",
+    "source_commit":  "be506729",
+    "backup_dir":  "D:\\DLSSNR-Lab\\game-install-20261014\\backup-20261014-233615",
+    "rollback_script":  "D:\\DLSSNR-Lab\\game-install-20261014\\rollback.ps1",
+    "addon_sha256":  "91d8147188b950367d40ed041588a0591ccbc0d4627ff70702b9a4e68eb0cd26",
+    "runtime_sha256":  "50c3b80b730fce925c65c83a803c42406e6644f03e0fb0ae71535bbd88567844",
+    "hip_sha256sums_sha256":  "d864d3937e3a9cdf029343ee2d11ef2204a76ee30ab238977ebbeea08d155942",
+    "stellar_blade":  {
+                          "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\StellarBlade\\SB\\Binaries\\Win64",
+                          "previous_addon_sha256":  "64dc04286c22d5d378a70013f986c98c8d26a55a53feaf02ba682c4301ca8483",
+                          "installed_addon_sha256":  "91d8147188b950367d40ed041588a0591ccbc0d4627ff70702b9a4e68eb0cd26",
+                          "hsaco_count":  80,
+                          "config_untouched":  true
+                      },
+    "onimusha":  {
+                     "path":  "C:\\XboxGames\\Onimusha- Way of the Sword\\Content",
+                     "previous_runtime_sha256":  "3eaed204f5d6ad803749d6e8c79ed1e79c514f5d02ef1e68d8dcb3f292638db6",
+                     "installed_runtime_sha256":  "50c3b80b730fce925c65c83a803c42406e6644f03e0fb0ae71535bbd88567844",
+                     "installed_storage_runtime_sha256":  "50c3b80b730fce925c65c83a803c42406e6644f03e0fb0ae71535bbd88567844",
+                     "hsaco_count":  80,
+                     "config_untouched":  true
+                 },
+    "runtime_smoke_exit":  0
+}
