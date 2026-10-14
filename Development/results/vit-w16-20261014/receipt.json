@@ -1,0 +1,40 @@
+{
+  "campaign": "vit-w16-20261014",
+  "date": "2026-10-14",
+  "description": "ViT Expand + Contract + Projection weights in FragmentPackedMatrixW16 layout (16B global_load_b128) + outer-part loop unroll disable to cut contract/projection VGPRs from 211/190 to 115/114",
+  "kernels_added": [
+    "vit_expand_blocked_fp8_frag_bytein_w16",
+    "vit_stream_contract_frag_bout_compactw_w16",
+    "vit_stream_project_n64_bb_compactw_w16"
+  ],
+  "default_mode": 7,
+  "isa_metrics_gfx1201": {
+    "vit_expand_blocked_fp8_frag_bytein": { "vgpr": 77, "sgpr": 25, "lds_bytes": 0, "scratch_bytes": 0, "global_load_b64": 128, "global_load_b128_weights": 0 },
+    "vit_expand_blocked_fp8_frag_bytein_w16": { "vgpr": 77, "sgpr": 13, "lds_bytes": 0, "scratch_bytes": 0, "global_load_b64": 0, "global_load_b128_weights": 64 },
+    "vit_stream_contract_frag_bout_compactw": { "vgpr": 211, "sgpr": 14, "lds_bytes": 4096, "scratch_bytes": 0, "global_load_b64": 256, "global_load_b128_weights": 0, "waves_per_simd": 6 },
+    "vit_stream_contract_frag_bout_compactw_w16": { "vgpr": 115, "sgpr": 14, "lds_bytes": 4096, "scratch_bytes": 0, "global_load_b64": 0, "global_load_b128_weights": 128, "waves_per_simd": 8 },
+    "vit_stream_project_n64_bb_compactw": { "vgpr": 190, "sgpr": 12, "lds_bytes": 0, "scratch_bytes": 0, "global_load_b64": 128, "global_load_b128_weights": 0, "waves_per_simd": 6 },
+    "vit_stream_project_n64_bb_compactw_w16": { "vgpr": 114, "sgpr": 12, "lds_bytes": 0, "scratch_bytes": 0, "global_load_b64": 0, "global_load_b128_weights": 64, "waves_per_simd": 10 }
+  },
+  "gold_gate": {
+    "expected_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "baseline_mode0_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "candidate_expand_mode1_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "candidate_contract_proj_mode6_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "candidate_all_mode7_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "submit_pulse_record_ok": 3,
+    "weights_count": 184,
+    "weights_bytes": 297609000,
+    "extra_vram_bytes": 0
+  },
+  "abba_w16_mode7": {
+    "r1": { "A1": 9.4041, "B1": 9.3777, "B2": 9.3914, "A2": 9.4605, "base_mean": 9.4323, "cand_mean": 9.3846, "delta_mean_ms": -0.0478, "delta_median_ms": -0.0650 },
+    "r2": { "A1": 9.4574, "B1": 9.4220, "B2": 9.4167, "A2": 9.5000, "base_mean": 9.4787, "cand_mean": 9.4194, "delta_mean_ms": -0.0593, "delta_median_ms": -0.0685 },
+    "r3": { "A1": 9.5035, "B1": 9.4560, "B2": 9.4356, "A2": 9.5139, "base_mean": 9.5087, "cand_mean": 9.4458, "delta_mean_ms": -0.0629, "delta_median_ms": -0.0660 },
+    "aggregate_base_mean_ms": 9.4732,
+    "aggregate_cand_mean_ms": 9.4166,
+    "aggregate_delta_mean_ms": -0.0566,
+    "aggregate_delta_median_ms": -0.0665,
+    "rounds_won": "3/3"
+  }
+}

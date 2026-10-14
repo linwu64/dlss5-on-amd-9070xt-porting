@@ -526,3 +526,23 @@ marked on480只报告主线程API经过时间：input录交.034ms、Network::Enq
 3. **伴随 C256 Swin Attention W16 实测排查（中性，不合入）**：
    - 将 `WaveOwnedAttentionWeight(name, 256)` 由 8B `FragmentPackedMatrix` 改为 16B `FragmentPackedMatrixW16`（`c256_wave2*_w16a`、`sp_run256_w16a`，`vgpr=184~189, scratch=0, b64: 433 → 17, b128: 46 → 254`），1920×1152 Gold 逐位一致（`0900E489...`），但 3 轮 4-slot ABBA 均值差为 `-12.0 µs`、`-3.6 µs`、`+18.0 µs`（3 轮合并 `+0.8 µs`，打平）：因 C256 已有 8B `FragmentPackedMatrix`（256B 半合并读取）且 8-wave WG 受 `w2_sync()` 跨 wave LDS 屏障主导，16B 合并未能缩短关键路径，已回退不合入。
 
+### 2026-10-14：ViT 核心三算子 W16 + 外层分片循环禁展开（`HIP_VIT_W16=7`，Contract/Proj VGPR 削减 `-96`/`-76` 跨档提 Occupancy）零额外显存采纳与 C64/C128/C512-QKV 审计
+
+对 C64/C128 `wave2`、`c512_qkv_attention_compact_w16` 与 ViT 核心算子（blocks `31..38`，共 `1.204 ms`）执行 ISA 与寄存器/驻留悬崖全面审计并完成实机验证（详见 [ViT W16 报告](results/vit-w16-20261014/README.md)）：
+
+1. **前置审计结论（C64/C128 `wave2` 与 `c512_qkv_attention_compact_w16`）**：
+   - **C64/C128 `wave2`（`c64-wave2-fast.hsaco`）**：`W2_QKV_FUSE=3`、`W2_FFN_QT_BATCH=4`、`W2_UP_LOW_BYTES=1`、`W2_DOWN_HALF=1`、`W2_UP_VEC=1` 已全开；`W2_FFN_W16_SMALL` 先前已在 `w16-c64-c128-20260930` 与 `bitexact-pm-20261001` 实测证伪（`-1 ~ -7 µs` 噪声，因 `64 KB / 256 KB` 权重常驻 L2/MALL 且被 4-wave WG 屏障掩盖）。
+   - **`c512_qkv_attention_compact_w16`（`187 VGPR`）**：在 `gfx1201` 上 `161..192 VGPR` 同属 `8 waves/SIMD` 档，且每 wave `3072 B` LDS（`6144 B / 2-wave WG`）已将硬件驻留硬封顶在 `5 waves/SIMD`（`20 waves/CU`）；调小预取深度 `D=3, 2, 1` 的 VGPR 为 `183, 179, 171`，不改变 VGPR 档位与 LDS 封顶，仅减少预取深度。
+   - **ViT 核心算子根因定位**：`vit_stream_qkv_frag_bin_w5f8` 已用 16B `vit_frag_matrix_w16`（`114 VGPR`，`10 waves/SIMD`）；但 `vit_expand_blocked_fp8_frag_bytein`（每帧 24 次调用，每 wave 128 条 `global_load_b64`）、`vit_stream_contract_frag_bout_compactw`（每帧 8 次调用，每 wave 256 条 `global_load_b64`，**`211 VGPR` = `6 waves/SIMD` 悬崖**）与 `vit_stream_project_n64_bb_compactw`（每帧 1 次调用，每 wave 128 条 `global_load_b64`，**`190 VGPR` = `6 waves/SIMD` 悬崖**）仍为 8B `FragmentPackedMatrix`。此前 `failed-experiments.md:2657` 尝试 ViT W16 退步 `+32 µs` 的真因是 Clang 将外层 `for (uint part = 0; part < 4u; ++part)` / `for (uint p = 0; p < 4u; ++p)` 完全展开，导致 VGPR 暴涨至 `251` 与 `220`。
+2. **机制、ISA 与零额外显存实现（`HIP_VIT_W16=7`）**：
+   - `Development/HIP/hip_reference_network.h` 新增 `HIP_VIT_W16`（默认 `7`，支持 `NR_VIT_W16` / `DLSS5_HIP_VIT_W16` 位掩码覆写：`1`=Expand，`2`=Contract，`4`=Projection），在既有 `@vit-frag@compact-expand`、`@vit-frag@compact-contract`、`@vit-proj-frag@compact-projection` 键下原地执行 `FragmentPackedMatrixW16`，**零额外显存分配（`weights_count=184, weights_bytes=297,609,000 B`）**。
+   - `hip/deep_fast.hip` 与 `hip/vit_stream.inc` 新增 `vit_expand_blocked_fp8_frag_bytein_w16`、`vit_stream_contract_frag_bout_compactw_w16`、`vit_stream_project_n64_bb_compactw_w16`：在 Contract 与 Projection 的外层 4 分片循环加 `_Pragma("clang loop unroll(disable)")`、内层 `k += 32u` W16 循环加 `_Pragma("unroll 2")`（Project 将 `p==0` 残差读取外提到循环前），保持 K 累加顺序与舍入 100% 不变。
+   - `gfx1201` ISA 质变：
+     - `vit_expand_blocked_fp8_frag_bytein_w16`：`77 VGPR`，SGPR 由 `25 → 13`（`-12`），`128` 条 `global_load_b64` → **`64` 条合并 `global_load_b128`**（`16 waves/SIMD`）。
+     - `vit_stream_contract_frag_bout_compactw_w16`：VGPR 由 **`211 → 115`（`-96 VGPR`！）**，`256` 条 `global_load_b64` → **`128` 条合并 `global_load_b128`**，Occupancy 由 **`6 → 8 waves/SIMD`**（达 `4096 B` LDS 硬上限）！
+     - `vit_stream_project_n64_bb_compactw_w16`：VGPR 由 **`190 → 114`（`-76 VGPR`！）**，`128` 条 `global_load_b64` → **`64` 条合并 `global_load_b128`**，Occupancy 由 **`6 → 10 waves/SIMD`（`+67%`）**！
+3. **完整 Frame Gold 与 3 轮 4-slot ABBA（PASS，`-0.0566 ms` mean / `-0.0665 ms` median）**：
+   - `1920×1152` 完整 Frame Gold（3 帧重复，`Auto` 脉冲 `record_ok=3 accepted=3 reject_mask=0`）：`baseline(0)`、`expand(1)`、`contract+proj(6)`、`all(7)` 四角色首尾帧 SHA256 全为 `0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A`（`0 bit-diff`，`extra_vram_bytes=0`）。
+   - 在已开启 `HIP_C512_W16=2`、`HIP_C512_FFN_W16=1` 与 `HIP_C32_W16=1` 的基线之上执行完整 `frame.exe` 3 轮 4-slot ABBA（240 帧/slot，弃 80 取 160 稳态，960 帧/arm）：
+     - **`NR_VIT_W16=7`（默认）**：3 轮均值差分别为 **`-47.8 µs`**（`9.4323 → 9.3846 ms`，median `-65.0 µs`）、**`-59.3 µs`**（`9.4787 → 9.4194 ms`，median `-68.5 µs`）、**`-62.9 µs`**（`9.5087 → 9.4458 ms`，median `-66.0 µs`），**3/3 轮全胜**；960 帧合并 mean `9.4732 → 9.4166 ms`（**`-0.0566 ms` / `-56.6 µs`，`-0.60%`**），median `9.4708 → 9.4043 ms`（**`-0.0665 ms` / `-66.5 µs`**，单槽 median 最低达 **`9.3620 ms`**）。
+     - 与今日前两轮 W16 战役（C512 Split-FFN W16 `-0.1312 ms` + C32 Wave1 W16 `-0.0240 ms`）合计，三场 W16 战役累计净降 **`-0.2118 ms` mean / `-0.2338 ms` median**（`9.5926 ms → 9.4166 ms` mean，单槽 median 低至 `9.3620 ms`）。
