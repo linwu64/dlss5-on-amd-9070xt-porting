@@ -1,0 +1,121 @@
+{
+  "campaign": "isa-epilogue-clean-20261014",
+  "date": "2026-10-14",
+  "description": "Full-network epilogue de-branching, loop reordering (outer e=0..7, inner n/j=0..3), movrel elimination, and branchless fmed3f(x + 0.f, -448.f, 448.f) + cvt_pk_fp8_f32 across C512, Swin Wave2, Downsample Pool+Project, and C32 Wave1 epilogues",
+  "files_modified": [
+    "hip/multihead_fast_padded.hip",
+    "hip/deep_fast.hip",
+    "hip/c512_qkv_attention_compact.inc",
+    "hip/wave_owned_mh.inc",
+    "hip/wave_owned_c32.inc"
+  ],
+  "isa_metrics_gfx1201": {
+    "mh_attention_project_frag_c512_w16_u4": {
+      "old": { "insns": 1029, "movrel": 4, "s_cbranch": 58, "cndmask": 76, "vgpr": 97, "sgpr": 29, "spill": 0 },
+      "new": { "insns": 952, "movrel": 0, "s_cbranch": 17, "cndmask": 107, "vgpr": 101, "sgpr": 29, "spill": 0 }
+    },
+    "mh_attention_project_frag_c512_w16": {
+      "old": { "insns": 950, "movrel": 4, "s_cbranch": 58, "cndmask": 68, "vgpr": 81, "sgpr": 29, "spill": 0 },
+      "new": { "insns": 931, "movrel": 0, "s_cbranch": 17, "cndmask": 107, "vgpr": 85, "sgpr": 29, "spill": 0 }
+    },
+    "split_projection_frag_w16_deep_fast": {
+      "old": { "insns": 799, "max_num": 31, "cndmask": 32, "vgpr": 100, "sgpr": 17, "spill": 0 },
+      "new": { "insns": 648, "max_num": 0, "cndmask": 0, "vgpr": 99, "sgpr": 17, "spill": 0 }
+    },
+    "split_projection_frag_w16_vit_stream_fast": {
+      "old": { "insns": 904, "max_num": 32, "cndmask": 32, "vgpr": 101, "sgpr": 18, "spill": 0 },
+      "new": { "insns": 745, "max_num": 0, "cndmask": 0, "vgpr": 101, "sgpr": 18, "spill": 0 }
+    },
+    "c512_qkv_attention_compact_w16": {
+      "old": { "insns": 2629, "max_num": 16, "vgpr": 187, "sgpr": 32, "spill": 0 },
+      "new": { "insns": 2637, "max_num": 8, "vgpr": 187, "sgpr": 32, "spill": 0 }
+    },
+    "c64_wave2_bi": {
+      "old": { "insns": 3292, "s_cbranch": 35, "vgpr": 128, "sgpr": 30, "spill": 0 },
+      "new": { "insns": 3126, "s_cbranch": 6, "vgpr": 128, "sgpr": 30, "spill": 0 }
+    },
+    "c128_wave2_bi": {
+      "old": { "insns": 3866, "s_cbranch": 35, "vgpr": 128, "sgpr": 30, "spill": 0 },
+      "new": { "insns": 3689, "s_cbranch": 6, "vgpr": 128, "sgpr": 30, "spill": 0 }
+    },
+    "c256_wave2_bi_w16": {
+      "old": { "insns": 4649, "s_cbranch": 35, "vgpr": 128, "sgpr": 30, "spill": 0 },
+      "new": { "insns": 4481, "s_cbranch": 6, "vgpr": 128, "sgpr": 30, "spill": 0 }
+    },
+    "mh_pool_project_group_c64": {
+      "old": { "insns": 2397, "s_cbranch": 94, "cndmask": 149, "vgpr": 102, "sgpr": 28, "spill": 0 },
+      "new": { "insns": 1000, "s_cbranch": 22, "cndmask": 58, "vgpr": 99, "sgpr": 27, "spill": 0 }
+    },
+    "mh_pool_project_group_c128": {
+      "old": { "insns": 2635, "s_cbranch": 94, "cndmask": 148, "vgpr": 146, "sgpr": 28, "spill": 0 },
+      "new": { "insns": 1238, "s_cbranch": 22, "cndmask": 58, "vgpr": 147, "sgpr": 27, "spill": 0 }
+    },
+    "mh_pool_project_group_c256": {
+      "old": { "insns": 2344, "s_cbranch": 95, "cndmask": 149, "vgpr": 98, "sgpr": 28, "spill": 0 },
+      "new": { "insns": 948, "s_cbranch": 23, "cndmask": 58, "vgpr": 98, "sgpr": 27, "spill": 0 }
+    },
+    "mh_pool_project_group_c512": {
+      "old": { "insns": 2406, "s_cbranch": 95, "cndmask": 150, "vgpr": 98, "sgpr": 28, "spill": 0 },
+      "new": { "insns": 1012, "s_cbranch": 23, "cndmask": 56, "vgpr": 98, "sgpr": 27, "spill": 0 }
+    },
+    "c32_wave1_finish_b8_w16": {
+      "old": { "insns": 2193, "cndmask": 16 },
+      "new": { "insns": 2152, "cndmask": 0 }
+    }
+  },
+  "gold_gate": {
+    "expected_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "baseline_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "candidate_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "submit_pulse_record_ok": 3,
+    "weights_count": 184,
+    "weights_bytes": 297609000,
+    "extra_vram_bytes": 0
+  },
+  "abba_3round": {
+    "r1": {
+      "A1": 9.3549,
+      "B1": 9.2388,
+      "B2": 9.2436,
+      "A2": 9.4243,
+      "base_mean": 9.3896,
+      "cand_mean": 9.2412,
+      "delta_mean_ms": -0.1484,
+      "delta_median_ms": -0.1415,
+      "delta_p90_ms": -0.1570,
+      "delta_p99_ms": -0.1550
+    },
+    "r2": {
+      "A1": 9.4044,
+      "B1": 9.2731,
+      "B2": 9.3119,
+      "A2": 9.4421,
+      "base_mean": 9.4233,
+      "cand_mean": 9.2925,
+      "delta_mean_ms": -0.1308,
+      "delta_median_ms": -0.1325,
+      "delta_p90_ms": -0.1470,
+      "delta_p99_ms": -0.0840
+    },
+    "r3": {
+      "A1": 9.4555,
+      "B1": 9.2966,
+      "B2": 9.3167,
+      "A2": 9.4765,
+      "base_mean": 9.4660,
+      "cand_mean": 9.3067,
+      "delta_mean_ms": -0.1593,
+      "delta_median_ms": -0.1550,
+      "delta_p90_ms": -0.1660,
+      "delta_p99_ms": -0.1800
+    },
+    "aggregate_base_mean_ms": 9.4263,
+    "aggregate_cand_mean_ms": 9.2801,
+    "aggregate_delta_mean_ms": -0.1462,
+    "aggregate_delta_median_ms": -0.1435,
+    "aggregate_delta_p90_ms": -0.1560,
+    "aggregate_delta_p99_ms": -0.1460,
+    "rounds_won": "3/3",
+    "pairs_won": "6/6"
+  }
+}

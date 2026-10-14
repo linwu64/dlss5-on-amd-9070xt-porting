@@ -77,7 +77,7 @@ DEV float c5c_serial_norm(f8 lo,f8 hi){
 }
 // Keep C512 attention's own clamp/F/byte semantics (not the C256 bounded reciprocal).
 DEV float c5c_clamp(float a,float lo,float hi){float b=a>lo?a:lo;return b<hi?b:hi;}
-DEV uint c5c_fp8(float x){return uint(__builtin_amdgcn_cvt_pk_fp8_f32(__builtin_fminf(__builtin_fmaxf(x,-448.f),448.f),0.f,0,false))&255u;}
+DEV uint c5c_fp8(float x){return uint(__builtin_amdgcn_cvt_pk_fp8_f32(__builtin_amdgcn_fmed3f(x,-448.f,448.f),0.f,0,false))&255u;}
 DEV float c5c_F(float x){uint a=bits(x)&0x7fffffffu;float c=__builtin_fminf(__builtin_fmaxf(x,-448.f),448.f);float r=__builtin_amdgcn_cvt_f32_fp8(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false),0);return a==0?0.f:r;}
 DEV float c5c_inv(float x){
 #if C512_COMPACT_RCP

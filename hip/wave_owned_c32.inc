@@ -554,7 +554,7 @@ CW_Q8_SET(a,e,v);}CW_Q8_END_SITE(a,3);
    if(tx>=sx&&ty>=sy&&tx+8<=width+sx&&ty+8<=height+sy&&(!DownCrop||((sx|sy)&1u)==0))emitv(cw_true{});else emitv(cw_false{});
    if constexpr(!DownCrop)if(down)for(uint k=0;k<16;k++){uint t=(k/4)*16+(k%4)*2;float top=Hrtz(load(t)+load(t+1)),bottom=Hrtz(load(t+8)+load(t+9));uint x=tx+t%8,y=ty+t/8;
     if constexpr(DownByte)reinterpret_cast<unsigned char*>(down)[((y/2)*(ww/2)+x/2)*32+c]=static_cast<unsigned char>(fp8(F(Hrtz(Hrtz(top+bottom)*.25f))));
-    else down[((y/2)*(ww/2)+x/2)*32+c]=F(Hrtz(Hrtz(top+bottom)*.25f));}
+    else{float dv=Hrtz(Hrtz(top+bottom)*.25f),dc=__builtin_amdgcn_fmed3f(dv+0.f,-448.f,448.f);down[((y/2)*(ww/2)+x/2)*32+c]=__builtin_amdgcn_cvt_f32_fp8(__builtin_amdgcn_cvt_pk_fp8_f32(dc,0.f,0,false),0);}}
    return;
   }
 #endif

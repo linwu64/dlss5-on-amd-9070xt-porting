@@ -882,11 +882,11 @@ template<bool W32,bool F16Res=false> DEV void split_projection_frag_body(const u
 #if C512_T8_TAIL_VEC
  // 16 tokens x 64 channels = two consecutive 512-byte out8 tiles; staged in LDS, lane stores 2 x 16 contiguous bytes.
  __attribute__((shared)) unsigned char t8[1024];
- for(uint j=0;j<4;j++)for(uint e=0;e<8;e++){uint r=first+gr()*8+e,c=row+j*16+rc();float v=F(VIT_FAST_H(acc[j][e]));if constexpr(W32)out[r*512+c]=v;if constexpr(F16Res)out16[r*512+c]=(_Float16)v;uint cl=j*16+rc();t8[(cl/32)*512+(r%16)*32+cl%32]=static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(v,0.f,0,false));}
+ for(uint j=0;j<4;j++)for(uint e=0;e<8;e++){uint r=first+gr()*8+e,c=row+j*16+rc();float x=VIT_FAST_H(acc[j][e]),xc=__builtin_amdgcn_fmed3f(x+0.f,-448.f,448.f);int b8=__builtin_amdgcn_cvt_pk_fp8_f32(xc,0.f,0,false);float v=__builtin_amdgcn_cvt_f32_fp8(b8,0);if constexpr(W32)out[r*512+c]=v;if constexpr(F16Res)out16[r*512+c]=(_Float16)v;uint cl=j*16+rc();t8[(cl/32)*512+(r%16)*32+cl%32]=static_cast<unsigned char>(b8);}
  WG_FENCE(3);__builtin_amdgcn_wave_barrier();WG_FENCE(2);
  {uint l=__builtin_amdgcn_workitem_id_x();for(uint h=0;h<2;h++){int __attribute__((ext_vector_type(4))) q;__builtin_memcpy(&q,__builtin_assume_aligned(t8+h*512+l*16,16),16);__builtin_memcpy(__builtin_assume_aligned(out8+size_t(first+row/32)*512+h*512+l*16,16),&q,16);}}
 #else
- for(uint j=0;j<4;j++)for(uint e=0;e<8;e++){uint r=first+gr()*8+e,c=row+j*16+rc();float v=F(VIT_FAST_H(acc[j][e]));if constexpr(W32)out[r*512+c]=v;if constexpr(F16Res)out16[r*512+c]=(_Float16)v;out8[((r/16)*16+c/32)*512+(r%16)*32+c%32]=static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(v,0.f,0,false));}
+ for(uint j=0;j<4;j++)for(uint e=0;e<8;e++){uint r=first+gr()*8+e,c=row+j*16+rc();float x=VIT_FAST_H(acc[j][e]),xc=__builtin_amdgcn_fmed3f(x+0.f,-448.f,448.f);int b8=__builtin_amdgcn_cvt_pk_fp8_f32(xc,0.f,0,false);float v=__builtin_amdgcn_cvt_f32_fp8(b8,0);if constexpr(W32)out[r*512+c]=v;if constexpr(F16Res)out16[r*512+c]=(_Float16)v;out8[((r/16)*16+c/32)*512+(r%16)*32+c%32]=static_cast<unsigned char>(b8);}
 #endif
 }
 WAVE void split_projection_frag(const unsigned char*in8,const float*w,const float*skip,float*out,unsigned char*out8,uint tokens){split_projection_frag_body<true>(in8,w,skip,out,out8,nullptr,tokens);}
@@ -903,11 +903,11 @@ template<bool W32,bool F16Res=false> DEV void split_projection_frag_w16_body(con
    acc[j]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(a1,b1,acc[j]);}}
 #if C512_T8_TAIL_VEC
  __attribute__((shared)) unsigned char t8[1024];
- for(uint j=0;j<4;j++)for(uint e=0;e<8;e++){uint r=first+gr()*8+e,c=row+j*16+rc();float v=F(VIT_FAST_H(acc[j][e]));if constexpr(W32)out[r*512+c]=v;if constexpr(F16Res)out16[r*512+c]=(_Float16)v;uint cl=j*16+rc();t8[(cl/32)*512+(r%16)*32+cl%32]=static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(v,0.f,0,false));}
+ for(uint j=0;j<4;j++)for(uint e=0;e<8;e++){uint r=first+gr()*8+e,c=row+j*16+rc();float x=VIT_FAST_H(acc[j][e]),xc=__builtin_amdgcn_fmed3f(x+0.f,-448.f,448.f);int b8=__builtin_amdgcn_cvt_pk_fp8_f32(xc,0.f,0,false);float v=__builtin_amdgcn_cvt_f32_fp8(b8,0);if constexpr(W32)out[r*512+c]=v;if constexpr(F16Res)out16[r*512+c]=(_Float16)v;uint cl=j*16+rc();t8[(cl/32)*512+(r%16)*32+cl%32]=static_cast<unsigned char>(b8);}
  WG_FENCE(3);__builtin_amdgcn_wave_barrier();WG_FENCE(2);
  {uint l=__builtin_amdgcn_workitem_id_x();for(uint h=0;h<2;h++){int __attribute__((ext_vector_type(4))) q;__builtin_memcpy(&q,__builtin_assume_aligned(t8+h*512+l*16,16),16);__builtin_memcpy(__builtin_assume_aligned(out8+size_t(first+row/32)*512+h*512+l*16,16),&q,16);}}
 #else
- for(uint j=0;j<4;j++)for(uint e=0;e<8;e++){uint r=first+gr()*8+e,c=row+j*16+rc();float v=F(VIT_FAST_H(acc[j][e]));if constexpr(W32)out[r*512+c]=v;if constexpr(F16Res)out16[r*512+c]=(_Float16)v;out8[((r/16)*16+c/32)*512+(r%16)*32+c%32]=static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(v,0.f,0,false));}
+ for(uint j=0;j<4;j++)for(uint e=0;e<8;e++){uint r=first+gr()*8+e,c=row+j*16+rc();float x=VIT_FAST_H(acc[j][e]),xc=__builtin_amdgcn_fmed3f(x+0.f,-448.f,448.f);int b8=__builtin_amdgcn_cvt_pk_fp8_f32(xc,0.f,0,false);float v=__builtin_amdgcn_cvt_f32_fp8(b8,0);if constexpr(W32)out[r*512+c]=v;if constexpr(F16Res)out16[r*512+c]=(_Float16)v;out8[((r/16)*16+c/32)*512+(r%16)*32+c%32]=static_cast<unsigned char>(b8);}
 #endif
 }
 WAVE void split_projection_frag_w16(const unsigned char*in8,const float*w,const float*skip,float*out,unsigned char*out8,uint tokens){split_projection_frag_w16_body<true>(in8,w,skip,out,out8,nullptr,tokens);}
