@@ -23,3 +23,7 @@
 - **个人配置保留**：`default-config.txt`、`custom-config.txt`（`MODE1 / MP1 / PREDICT0 / SKIN0`）、`native-game-flags.txt` 字节哈希 100% 未改动。
 - **Runtime 冒烟验证（`runtime-smoke.exe`）**：
   - `PrepareFrame rc=0`，`HIP rc=0`，`SP_STATS runs=4 fallback=0 rollover=0 jobs=2496 disabled=0 errors=0`，`lmxxf_nr_gpu: ok`（`exit=0`）。
+
+## 3. 用户实玩反馈（2026-10-15 00:14）
+- 用户原话：“试了一下， 剑星 稳定在60帧了。”（此前 10-12 紧凑权重版 `64dc0428…` 同为 `MODE0 / MP1 / 1x` 静态画面为 58.2 帧）。
+

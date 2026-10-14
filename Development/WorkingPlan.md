@@ -72,4 +72,6 @@
 - **《剑星》**：更新 `dlss5-amd.addon64`（`64dc0428… → 91d8147188b950367d40ed041588a0591ccbc0d4627ff70702b9a4e68eb0cd26`）及双架构 80 个 `.hsaco` 模块；个人配置 `custom-config.txt`（`MODE0/MP1/PRED0/SKIN0/1x`）字节未改。
 - **《鬼武者》**：更新 `LmxxfNrRuntime.dll` 与 `_storage_\LmxxfNrRuntime.dll`（`3eaed204… → 50c3b80b730fce925c65c83a803c42406e6644f03e0fb0ae71535bbd88567844`）及双架构 80 个 `.hsaco` 模块，并通过 `runtime-smoke.exe` 冒烟校验（`PrepareFrame rc=0, HIP rc=0, lmxxf_nr_gpu: ok`）；个人配置 `custom-config.txt`（`MODE1/MP1/PRED0/SKIN0`）字节未改。
 - 备份目录：`D:\DLSSNR-Lab\game-install-20261014\backup-20261014-233615`，回执与一键回滚见 [game-install-20261014](results/game-install-20261014/README.md)。
+- 2026-10-15 00:14 用户实玩反馈：“试了一下， 剑星 稳定在60帧了。”（对应已装 `91d81471…` + 80 模块，`MODE0/MP1/PRED0/SKIN0/1x` 设置未改；此前 10-12 紧凑权重版 `64dc0428…` 实玩观察为 58.2 帧）。
+
 
