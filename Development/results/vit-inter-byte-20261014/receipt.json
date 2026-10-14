@@ -1,0 +1,47 @@
+{
+  "campaign": "vit-inter-byte-20261014",
+  "date": "2026-10-14",
+  "description": "ViT inter-block 1B E4M3 byte stream (HIP_VIT_INTER_BYTE=1, eliminating 7 vit_pack_input kernel launches and 49.28 MB/frame of FP32<->FP8 DRAM traffic across ViT blocks 31..38) + vit-stream HIP_BYTE_F_ADD0 and QKV normalization epilogue hoist",
+  "kernels_added": [
+    "vit_stream_contract_frag_bstream_bout_compactw",
+    "vit_stream_contract_frag_bstream_bout_compactw_w16",
+    "vit_stream_project_n64_bb_bout_compactw",
+    "vit_stream_project_n64_bb_bout_compactw_w16"
+  ],
+  "default_mode": 1,
+  "structural_and_isa_metrics_gfx1201": {
+    "full_network_dispatches_per_frame_base": 161,
+    "full_network_dispatches_per_frame_cand": 154,
+    "vit_pack_input_dispatches_eliminated": 7,
+    "dram_traffic_saved_mb_per_frame": 49.28,
+    "vit_stream_qkv_frag_bin_w5f8_base": { "total_insts": 521, "valu_insts": 233, "v_cvt_insts": 48, "vgpr": 100, "sgpr": 18 },
+    "vit_stream_qkv_frag_bin_w5f8_cand": { "total_insts": 455, "valu_insts": 168, "v_cvt_insts": 16, "vgpr": 102, "sgpr": 18 },
+    "vit_stream_contract_frag_bstream_bout_compactw_w16": { "total_insts": 465, "valu_insts": 144, "vmem_insts": 140, "vgpr": 115, "sgpr": 14, "lds_bytes": 4096, "waves_per_simd": 8 },
+    "vit_stream_project_n64_bb_bout_compactw_w16": { "total_insts": 599, "valu_insts": 227, "vmem_insts": 154, "vgpr": 114, "sgpr": 12, "lds_bytes": 0, "waves_per_simd": 10 }
+  },
+  "gold_gate": {
+    "expected_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "baseline_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "candidate_qkv_only_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "candidate_inter_byte_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "submit_pulse_record_ok": 3,
+    "vit_inter_byte_calls_3frames": 21,
+    "weights_count": 184,
+    "weights_bytes": 297609000,
+    "pool_mib": 277.1,
+    "pool_tensors": 27,
+    "extra_vram_bytes": 0
+  },
+  "abba_inter_byte_mode1": {
+    "r1": { "A1": 9.2172, "B1": 9.0424, "B2": 9.0815, "A2": 9.2659, "base_mean": 9.2416, "cand_mean": 9.0620, "delta_mean_ms": -0.1796, "delta_median_ms": -0.1816 },
+    "r2": { "A1": 9.2776, "B1": 9.1218, "B2": 9.1232, "A2": 9.3164, "base_mean": 9.2970, "cand_mean": 9.1225, "delta_mean_ms": -0.1745, "delta_median_ms": -0.1580 },
+    "r3": { "A1": 9.3033, "B1": 9.1415, "B2": 9.1516, "A2": 9.3039, "base_mean": 9.3036, "cand_mean": 9.1466, "delta_mean_ms": -0.1571, "delta_median_ms": -0.1437 },
+    "aggregate_base_mean_ms": 9.2807,
+    "aggregate_cand_mean_ms": 9.1103,
+    "aggregate_delta_mean_ms": -0.1704,
+    "aggregate_delta_median_ms": -0.1611,
+    "best_slot_mean_ms": 9.0424,
+    "best_slot_median_ms": 9.0372,
+    "rounds_won": "3/3"
+  }
+}
