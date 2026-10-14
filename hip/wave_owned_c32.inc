@@ -200,7 +200,7 @@ DEV i2 cw_input(const unsigned char*in,uint win,uint qt,uint ci,uint width,uint 
 #if CW_SKIP_BYTE && CW_TAIL_QUAD
 #error "CW_SKIP_BYTE: byte main store only on the non-quad finish tail"
 #endif
-DEV float cw_up_F(float x){uint a=bits(x)&0x7fffffffu;float c=__builtin_fminf(__builtin_fmaxf(x,-448.f),448.f);float r=__builtin_amdgcn_cvt_f32_fp8(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false),0);return a==0?0.f:r;}
+DEV float cw_up_F(float x){float c=__builtin_amdgcn_fmed3f(x+0.f,-448.f,448.f);return __builtin_amdgcn_cvt_f32_fp8(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false),0);}
 DEV float cw_up_shuffle(float v,uint lane){return __builtin_bit_cast(float,__builtin_amdgcn_ds_bpermute(lane*4,__builtin_bit_cast(int,v)));}
 using cw_i4=int __attribute__((ext_vector_type(4)));
 struct cw_i2_pair{i2 lo,hi;};
@@ -509,11 +509,13 @@ CW_Q8_SET(a,e,v);}CW_Q8_END_SITE(a,3);
   uint lane=__builtin_amdgcn_workitem_id_x(),ww=width+2*sx,tx=(win%(ww/8))*8,ty=(win/(ww/8))*8;
   for(uint t=lane;t<64;t+=32){int x=int(tx+t%8)-int(sx),y=int(ty+t/8)-int(sy);if(x>=0&&y>=0&&x<int(width)&&y<int(height)){
    uint p=uint(y)*width+uint(x);float sums[3]{};
-   if constexpr(PostTap)for(uint c=0;c<32;c++)post_features[p*32+c]=residual[((t/16*2+c/16)*32+(c%16/8*16+t%16))*8+c%8];
-   for(uint c=0;c<32;c++){float f=float(residual[((t/16*2+c/16)*32+(c%16/8*16+t%16))*8+c%8]);sums[0]+=f*headw[c];sums[1]+=f*headw[32+c];sums[2]+=f*headw[64+c];}
-   for(uint c=0;c<3;c++){float acc=Hrtz(sums[c]),centered=color[p*4+c]*.125f-.0625f,v=(acc*rgbscale+centered)*8.f+.5f;rgb[p*(PostRGBA?4:3)+c]=cw_clampf(v,0.f,1.f);}if constexpr(PostRGBA)rgb[p*4+3]=1.f;
+   h8 fs[4];
+   _Pragma("unroll") for(uint cg=0;cg<4;cg++)__builtin_memcpy(&fs[cg],__builtin_assume_aligned(residual+((t/16*2+cg/2)*32+((cg&1u)*16+t%16))*8,16),16);
+   if constexpr(PostTap)_Pragma("unroll") for(uint cg=0;cg<4;cg++)__builtin_memcpy(post_features+p*32+cg*8,&fs[cg],16);
+   _Pragma("unroll") for(uint cg=0;cg<4;cg++){uint c=cg*8;_Pragma("unroll") for(uint e=0;e<8;e++){float f=float(fs[cg][e]);sums[0]+=f*headw[c+e];sums[1]+=f*headw[32+c+e];sums[2]+=f*headw[64+c+e];}}
+   for(uint c=0;c<3;c++){float acc=Hrtz(sums[c]),centered=color[p*4+c]*.125f-.0625f,v=(acc*rgbscale+centered)*8.f+.5f;rgb[p*(PostRGBA?4:3)+c]=__builtin_amdgcn_fmed3f(v,0.f,1.f);}if constexpr(PostRGBA)rgb[p*4+3]=1.f;
    if(logit){float value=0.f;
-    for(uint c=0;c<32;c++){float f=float(residual[((t/16*2+c/16)*32+(c%16/8*16+t%16))*8+c%8]);value+=f*logitw[c];}
+    _Pragma("unroll") for(uint cg=0;cg<4;cg++){uint c=cg*8;_Pragma("unroll") for(uint e=0;e<8;e++)value+=float(fs[cg][e])*logitw[c+e];}
     logit[p*2]=value;logit[p*2+1]=Hrtz(value);
    }
   }}
@@ -536,25 +538,34 @@ CW_Q8_SET(a,e,v);}CW_Q8_END_SITE(a,3);
   // The quad route above emits both outputs.
 #endif
 #if CW_FINISH_TAIL_VEC && !CW_TAIL_QUAD
-  // Byte main (and byte DownCrop down) tail, vectorised like CW_PREFIX_TAIL_VEC: lane = (pixel slot c>>2, 8-channel group c&3),
-  // one ds_load_b128 of 8 contiguous residual halves, one MODE-saturated cw_pack8, one 8-byte store; bounds tested per pixel
-  // exactly as the per-channel loop. Bytes unchanged: fp8(F(x)) == fp8(x+0) for the finite half values x held here.
-  if constexpr(Byte&&(DownByte||!DownCrop)){
+  // Byte main (and DownCrop/non-DownCrop down) tail, vectorised like CW_PREFIX_TAIL_VEC: lane = (pixel slot c>>2, 8-channel group c&3),
+  // one ds_load_b128 of 8 contiguous residual halves, one MODE-saturated cw_pack8, one 8-byte (or 32-byte f32) store; bounds tested per pixel.
+  // Bytes/floats unchanged: fp8(F(x)) == fp8(x+0) for the finite half values x held here.
+  if constexpr(Byte){
    uint cg=c&3u,sl=c>>2;
    auto row=[&](uint t)->h8{h8 v;__builtin_memcpy(&v,__builtin_assume_aligned(residual+((t/16*2+cg/2)*32+((cg&1u)*16+t%16))*8,16),16);return v;};
-   auto emitv=[&](auto full){
-    if(main)for(uint i=0;i<8;i++){uint t=i*8+sl;int x=int(tx+t%8)-int(sx),y=int(ty+t/8)-int(sy);
-     if(full||(x>=0&&y>=0&&x<int(width)&&y<int(height))){h8 hv=row(t);float q[8];for(uint e=0;e<8;e++)q[e]=float(hv[e])+0.f;
-      i2 b=cw_pack8<0,cw_kind>(q);__builtin_memcpy(__builtin_assume_aligned(reinterpret_cast<unsigned char*>(main)+((uint(y)*width+uint(x))*32+cg*8),8),&b,8);}}
-    if constexpr(DownByte&&DownCrop)if(down)for(uint j=0;j<2;j++){uint k=j*8+sl,t=(k/4)*16+(k%4)*2;uint x=tx+t%8,y=ty+t/8;int cx=int(x/2)-int(sx/2),cy=int(y/2)-int(sy/2);
-     if(full||(cx>=0&&cy>=0&&cx<int(width/2)&&cy<int(height/2))){h8 a0=row(t),a1=row(t+1),b0=row(t+8),b1=row(t+9);float q[8];
-      for(uint e=0;e<8;e++){float top=Hrtz(float(a0[e])+float(a1[e])),bottom=Hrtz(float(b0[e])+float(b1[e]));q[e]=Hrtz(Hrtz(top+bottom)*.25f)+0.f;}
-      i2 b=cw_pack8<0,cw_kind>(q);__builtin_memcpy(__builtin_assume_aligned(reinterpret_cast<unsigned char*>(down)+((uint(cy)*(width/2)+uint(cx))*32+cg*8),8),&b,8);}}
-   };
-   if(tx>=sx&&ty>=sy&&tx+8<=width+sx&&ty+8<=height+sy&&(!DownCrop||((sx|sy)&1u)==0))emitv(cw_true{});else emitv(cw_false{});
-   if constexpr(!DownCrop)if(down)for(uint k=0;k<16;k++){uint t=(k/4)*16+(k%4)*2;float top=Hrtz(load(t)+load(t+1)),bottom=Hrtz(load(t+8)+load(t+9));uint x=tx+t%8,y=ty+t/8;
-    if constexpr(DownByte)reinterpret_cast<unsigned char*>(down)[((y/2)*(ww/2)+x/2)*32+c]=static_cast<unsigned char>(fp8(F(Hrtz(Hrtz(top+bottom)*.25f))));
-    else{float dv=Hrtz(Hrtz(top+bottom)*.25f),dc=__builtin_amdgcn_fmed3f(dv+0.f,-448.f,448.f);down[((y/2)*(ww/2)+x/2)*32+c]=__builtin_amdgcn_cvt_f32_fp8(__builtin_amdgcn_cvt_pk_fp8_f32(dc,0.f,0,false),0);}}
+   if(main)_Pragma("unroll") for(uint i=0;i<8;i++){uint t=i*8+sl;int x=int(tx+t%8)-int(sx),y=int(ty+t/8)-int(sy);
+    h8 hv=row(t);float q[8];_Pragma("unroll") for(uint e=0;e<8;e++)q[e]=float(hv[e])+0.f;
+    i2 b=cw_pack8<0,cw_kind>(q);
+    if(x>=0&&y>=0&&x<int(width)&&y<int(height))__builtin_memcpy(__builtin_assume_aligned(reinterpret_cast<unsigned char*>(main)+((uint(y)*width+uint(x))*32+cg*8),8),&b,8);}
+   if(down)_Pragma("unroll") for(uint j=0;j<2;j++){uint k=j*8+sl,t=(k/4)*16+(k%4)*2;uint x=tx+t%8,y=ty+t/8;
+    h8 a0=row(t),a1=row(t+1),b0=row(t+8),b1=row(t+9);float q[8];
+    _Pragma("unroll") for(uint e=0;e<8;e++){float top=Hrtz(float(a0[e])+float(a1[e])),bottom=Hrtz(float(b0[e])+float(b1[e]));q[e]=Hrtz(Hrtz(top+bottom)*.25f)+0.f;}
+    if constexpr(DownByte){
+     i2 b=cw_pack8<0,cw_kind>(q);
+     if constexpr(DownCrop){int cx=int(x/2)-int(sx/2),cy=int(y/2)-int(sy/2);if(cx>=0&&cy>=0&&cx<int(width/2)&&cy<int(height/2))__builtin_memcpy(__builtin_assume_aligned(reinterpret_cast<unsigned char*>(down)+((uint(cy)*(width/2)+uint(cx))*32+cg*8),8),&b,8);}
+     else __builtin_memcpy(__builtin_assume_aligned(reinterpret_cast<unsigned char*>(down)+(((y/2)*(ww/2)+x/2)*32+cg*8),8),&b,8);
+    }else{
+     i2 b=cw_pack8<0,cw_kind>(q);
+     f8 fq;
+     fq[0]=__builtin_amdgcn_cvt_f32_fp8(b[0],0);fq[1]=__builtin_amdgcn_cvt_f32_fp8(b[0],1);
+     fq[2]=__builtin_amdgcn_cvt_f32_fp8(b[0],2);fq[3]=__builtin_amdgcn_cvt_f32_fp8(b[0],3);
+     fq[4]=__builtin_amdgcn_cvt_f32_fp8(b[1],0);fq[5]=__builtin_amdgcn_cvt_f32_fp8(b[1],1);
+     fq[6]=__builtin_amdgcn_cvt_f32_fp8(b[1],2);fq[7]=__builtin_amdgcn_cvt_f32_fp8(b[1],3);
+     if constexpr(DownCrop){int cx=int(x/2)-int(sx/2),cy=int(y/2)-int(sy/2);if(cx>=0&&cy>=0&&cx<int(width/2)&&cy<int(height/2))__builtin_memcpy(__builtin_assume_aligned(down+((uint(cy)*(width/2)+uint(cx))*32+cg*8),16),&fq,32);}
+     else __builtin_memcpy(__builtin_assume_aligned(down+(((y/2)*(ww/2)+x/2)*32+cg*8),16),&fq,32);
+    }
+   }
    return;
   }
 #endif

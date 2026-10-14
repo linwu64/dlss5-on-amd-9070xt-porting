@@ -1,0 +1,118 @@
+{
+  "campaign": "isa-audit2-20261014",
+  "date": "2026-10-14",
+  "description": "Second-round ISA pathology audit and cleanup across all 18 modules on top of d5b72614: fmed3f(x+0.f,-448.f,448.f) in deep_fast F(x) & vit_contract_F_byte(x), wave_owned_mh w2_z/w2_up_F/w2_skip_byte, wave_owned_c32 cw_up_F, c32_wave1_post* ds_load_b128 vectorization, and c32_wave1_finish* store-predication & vectorized down",
+  "files_modified": [
+    "hip/deep_fast.hip",
+    "hip/wave_owned_c32.inc",
+    "hip/wave_owned_mh.inc",
+    "hip/multihead_fast_padded.hip",
+    "hip/c512_qkv_attention_fused.inc",
+    "hip/c512_qkv_attention_compact.inc"
+  ],
+  "isa_metrics_gfx1201": {
+    "c32_wave1_finish_b8_w16": {
+      "old": { "insns": 2116, "s_cbranch": 25, "ds_load_u16": 64, "ds_load_b128": 18, "global_store_b32": 16, "global_store_b128": 0 },
+      "new": { "insns": 1589, "s_cbranch": 16, "ds_load_u16": 0, "ds_load_b128": 18, "global_store_b32": 0, "global_store_b128": 4 }
+    },
+    "c32_wave1_finish_dcrop_b8_w16": {
+      "old": { "insns": 2557, "s_cbranch": 37, "cndmask": 38, "ds_load_u16": 134, "ds_load_b128": 2, "global_store_b32": 31, "global_store_b128": 0 },
+      "new": { "insns": 1621, "s_cbranch": 18, "cndmask": 0, "ds_load_u16": 0, "ds_load_b128": 18, "global_store_b32": 0, "global_store_b128": 4 }
+    },
+    "c32_wave1_finish_dcrop_b8d_w16": {
+      "old": { "insns": 2203, "s_cbranch": 28, "ds_load_b128": 34 },
+      "new": { "insns": 1591, "s_cbranch": 18, "ds_load_b128": 18 }
+    },
+    "c32_wave1_post_b8_w16": {
+      "old": { "insns": 1545, "ds_load_u16": 8, "ds_load_b128": 5, "s_wait_dscnt": 14 },
+      "new": { "insns": 1532, "ds_load_u16": 0, "ds_load_b128": 6, "s_wait_dscnt": 7 }
+    },
+    "c32_wave1_post_b8_logit_w16": {
+      "old": { "insns": 1664, "ds_load_u16": 8, "ds_load_b128": 5, "s_wait_dscnt": 14 },
+      "new": { "insns": 1658, "ds_load_u16": 0, "ds_load_b128": 6, "s_wait_dscnt": 7 }
+    },
+    "c64_wave2_up_lb_sh": {
+      "old": { "insns": 4770, "cndmask": 175 },
+      "new": { "insns": 4541, "cndmask": 47 }
+    },
+    "vit_stream_contract_frag_bout_compactw_w16": {
+      "old": { "insns": 581, "max_num": 23, "cndmask": 28 },
+      "new": { "insns": 472, "max_num": 0, "cndmask": 0 }
+    },
+    "vit_stream_project_n64_bb_compactw_w16": {
+      "old": { "insns": 689, "max_num": 27, "cndmask": 29 },
+      "new": { "insns": 595, "max_num": 0, "cndmask": 0 }
+    },
+    "vit_stream_qkv_frag_bin_w5f8": {
+      "old": { "insns": 575, "max_num": 25, "cndmask": 30 },
+      "new": { "insns": 521, "max_num": 9, "cndmask": 16 }
+    },
+    "vit_stream_qkv_frag_hin_w5f8": {
+      "old": { "insns": 711, "max_num": 23, "cndmask": 29 },
+      "new": { "insns": 665, "max_num": 11, "cndmask": 16 }
+    },
+    "split_ffn_fused_fp8_t8": {
+      "old": { "insns": 692, "max_num": 24, "cndmask": 8 },
+      "new": { "insns": 669, "max_num": 16, "cndmask": 0 }
+    },
+    "decoder_project2x_h16w_byteout": {
+      "old": { "insns": 5618, "max_num": 34, "cndmask": 87 },
+      "new": { "insns": 5425, "max_num": 0, "cndmask": 39 }
+    }
+  },
+  "gold_gate": {
+    "expected_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "baseline_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "candidate_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "submit_pulse_record_ok": 3,
+    "weights_count": 184,
+    "weights_bytes": 297609000,
+    "extra_vram_bytes": 0
+  },
+  "abba_3round": {
+    "r1": {
+      "A1": 9.2777,
+      "B1": 9.2769,
+      "B2": 9.2901,
+      "A2": 9.2903,
+      "base_mean": 9.2840,
+      "cand_mean": 9.2835,
+      "delta_mean_ms": -0.0005,
+      "delta_median_ms": 0.0030,
+      "delta_p90_ms": -0.0210,
+      "delta_p99_ms": -0.0110
+    },
+    "r2": {
+      "A1": 9.2528,
+      "B1": 9.2627,
+      "B2": 9.2786,
+      "A2": 9.2854,
+      "base_mean": 9.2691,
+      "cand_mean": 9.2706,
+      "delta_mean_ms": 0.0015,
+      "delta_median_ms": -0.0065,
+      "delta_p90_ms": 0.0110,
+      "delta_p99_ms": 0.0290
+    },
+    "r3": {
+      "A1": 9.3136,
+      "B1": 9.3135,
+      "B2": 9.2811,
+      "A2": 9.3168,
+      "base_mean": 9.3152,
+      "cand_mean": 9.2973,
+      "delta_mean_ms": -0.0179,
+      "delta_median_ms": -0.0215,
+      "delta_p90_ms": -0.0020,
+      "delta_p99_ms": -0.0070
+    },
+    "aggregate_base_mean_ms": 9.2894,
+    "aggregate_cand_mean_ms": 9.2838,
+    "aggregate_delta_mean_ms": -0.0056,
+    "aggregate_delta_median_ms": -0.0095,
+    "aggregate_delta_p90_ms": -0.0070,
+    "aggregate_delta_p99_ms": 0.0000,
+    "rounds_won": "2/3",
+    "pairs_won": "5/6"
+  }
+}

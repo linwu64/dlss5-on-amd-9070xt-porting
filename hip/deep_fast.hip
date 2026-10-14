@@ -94,7 +94,7 @@ DEV float H(float x){return from_half(half_bits(x));}
 #define HIP_BRANCHLESS_F 1 /* 2026-09-17: with the two multihead files -0.12ms, bit-exact. F() as clamp+cvt+cndmask instead of a divergent branch pair per call (same values for every non-NaN input; NaN gives -448 instead of +-448) */
 #endif
 #if HIP_NATIVE_FP8_F && HIP_BRANCHLESS_F
-DEV float F(float x){uint a=bits(x)&0x7fffffffu;float c=__builtin_fminf(__builtin_fmaxf(x,-448.f),448.f);float r=__builtin_amdgcn_cvt_f32_fp8(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false),0);return a==0?0.f:r;}
+DEV float F(float x){float c=__builtin_amdgcn_fmed3f(x+0.f,-448.f,448.f);return __builtin_amdgcn_cvt_f32_fp8(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false),0);}
 #elif HIP_NATIVE_FP8_F
 DEV float F(float x){
  uint b=bits(x),a=b&0x7fffffffu;
@@ -730,9 +730,8 @@ WAVE void vit_expand_blocked_fp8_frag_bytein_m4(const float*in,const float*w,flo
 #endif
 // Return the byte already chosen inside production F(), preserving its zero and saturation rules.
 DEV unsigned char vit_contract_F_byte(float x){
- uint a=bits(x)&0x7fffffffu;float c=__builtin_fminf(__builtin_fmaxf(x,-448.f),448.f);
- unsigned char b=static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false));
- return a==0?0:b;
+ float c=__builtin_amdgcn_fmed3f(x+0.f,-448.f,448.f);
+ return static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false));
 }
 template<bool Partial,bool Tiled=false,bool ByteStream=false,bool HalfOut=false,bool Frag=false,bool ByteFOut=false,uint ScaleOffset=4194304,bool W16=false>
 DEV void vit_contract_blocked_body(const float*in,const float*w,const float*skip,float*out,uint tokens){

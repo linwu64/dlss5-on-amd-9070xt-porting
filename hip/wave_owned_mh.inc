@@ -177,9 +177,9 @@ DEV float w2_z(float x){return __builtin_amdgcn_fmed3f(x+0.f,-448.f,448.f);}
 #elif W2_PACK8==2
 // +0.f before the clamp: clamp(x+0) == clamp(x)+0 for every x (only -0 changes, to +0; x+0 is never -0 under RNE) and lets
 // a preceding multiply contract into fma(a,b,+0), which rounds exactly like the multiply (results/transpose-persist-20260927).
-DEV float w2_z(float x){return __builtin_fminf(__builtin_fmaxf(x+0.f,-448.f),448.f);}
+DEV float w2_z(float x){return __builtin_amdgcn_fmed3f(x+0.f,-448.f,448.f);}
 #else
-DEV float w2_z(float x){return __builtin_fminf(__builtin_fmaxf(x,-448.f),448.f)+0.f;}
+DEV float w2_z(float x){return __builtin_amdgcn_fmed3f(x,-448.f,448.f)+0.f;}
 #endif
 #ifndef W2_OVFL
 #define W2_OVFL(v) (void)0
@@ -220,7 +220,7 @@ DEV float w2_serial_norm(f8 lo,f8 hi){
 #define W2_UP_FUSED 0
 #endif
 // Exact deep_fast branchless F, including its signed-zero behavior.
-DEV float w2_up_F(float x){uint a=bits(x)&0x7fffffffu;float c=__builtin_fminf(__builtin_fmaxf(x,-448.f),448.f);float r=__builtin_amdgcn_cvt_f32_fp8(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false),0);return a==0?0.f:r;}
+DEV float w2_up_F(float x){float c=__builtin_amdgcn_fmed3f(x+0.f,-448.f,448.f);return __builtin_amdgcn_cvt_f32_fp8(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false),0);}
 // f-sweep 2026-09-30: W2_UP_ADD0 1 -> up output byte cvt_pk_fp8(med3(merged+0)) instead of cvt_pk_fp8(w2_up_F(merged))
 // (same byte for all 2^32 inputs, results/f-sweep-20260930).
 #ifndef W2_QKV_FUSE
@@ -248,7 +248,7 @@ DEV float w2_add0(float x){
 template<bool Half> DEV float w2_skip(const float*skip,uint i){if constexpr(Half)return float(reinterpret_cast<const _Float16*>(skip)[i]);else return skip[i];}
 /* W2_SKIP_BYTE (2026-10-01, c128-c64-inchain): the encoder tail also stores the byte of w2_up_F(Hrtz(v)) (0 for +-0, as F); the Up reads it
    back as cvt_f32_fp8(byte) == w2_up_F(skip) and skips its own F. */
-DEV uint w2_skip_byte(float x){uint a=bits(x)&0x7fffffffu;float c=__builtin_fminf(__builtin_fmaxf(x,-448.f),448.f);uint b=uint(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false))&255u;return a==0?0u:b;}
+DEV uint w2_skip_byte(float x){float c=__builtin_amdgcn_fmed3f(x+0.f,-448.f,448.f);return uint(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false))&255u;}
 template<bool Byte> DEV float w2_skipF(float v){if constexpr(Byte)return v;else return w2_up_F(v);}
 template<uint C,bool ByteIn,bool ByteOut,bool Up=false
 #if W2_EXPLICIT_WINDOW

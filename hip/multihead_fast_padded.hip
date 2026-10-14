@@ -83,11 +83,10 @@ DEV float minf(float a,float b){return a<b?a:b;}
 #endif
 #if HIP_FMED3_CLAMP
 DEV float clampf(float a,float lo,float hi){return __builtin_amdgcn_fmed3f(a,lo,hi);}
-#define HIP_FP8_CLAMP(x) __builtin_amdgcn_fmed3f((x),-448.f,448.f)
 #else
 DEV float clampf(float a,float lo,float hi){return minf(maxf(a,lo),hi);}
-#define HIP_FP8_CLAMP(x) __builtin_fminf(__builtin_fmaxf((x),-448.f),448.f)
 #endif
+#define HIP_FP8_CLAMP(x) __builtin_amdgcn_fmed3f((x),-448.f,448.f)
 DEV uint shift_rne(uint x,uint n){if(n>31)return 0;uint q=x>>n,mask=(1u<<n)-1u,r=x&mask,mid=1u<<(n-1);return q+uint(r>mid||(r==mid&&(q&1u)));}
 DEV uint half_bits(float x){uint b=bits(x),a=b&0x7fffffffu,s=(b>>16)&0x8000u;int e=int(a>>23)-127;
  if(a>=0x7f800000u)return s|0x7c00u|((a&0x7fffffu)?0x200u:0u);
@@ -117,7 +116,7 @@ DEV float H(float x){if((bits(x)&0x7fffffffu)>=0x7f800000u)return x;return from_
 #define HIP_BRANCHLESS_F 1 /* 2026-09-17: with deep_fast and the fused attention file -0.12ms, bit-exact. F() as clamp+cvt+cndmask instead of a divergent branch pair per call (same values for every non-NaN input; NaN gives -448 instead of +-448) */
 #endif
 #if HIP_NATIVE_FP8_F && HIP_BRANCHLESS_F
-DEV float F(float x){uint a=bits(x)&0x7fffffffu;float c=HIP_FP8_CLAMP(x);float r=__builtin_amdgcn_cvt_f32_fp8(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false),0);return a==0?0.f:r;}
+DEV float F(float x){float c=HIP_FP8_CLAMP(x+0.f);return __builtin_amdgcn_cvt_f32_fp8(__builtin_amdgcn_cvt_pk_fp8_f32(c,0.f,0,false),0);}
 #elif HIP_NATIVE_FP8_F
 DEV float F(float x){
  uint b=bits(x),a=b&0x7fffffffu;
