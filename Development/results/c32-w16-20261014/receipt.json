@@ -1,0 +1,60 @@
+{
+  "campaign": "c32-w16-20261014",
+  "date": "2026-10-14",
+  "description": "C32 Wave1 FFN + Attention + Residual Diagonal weights in FragmentPackedMatrixW16 layout (16B global_load_b128 per 32-k tile)",
+  "kernels_added": [
+    "c32_wave1_chain_w16",
+    "c32_wave1_mapped_w16",
+    "c32_wave1_mapped_b8_w16",
+    "c32_wave1_finish_w16",
+    "c32_wave1_finish_b8_w16",
+    "c32_wave1_finish_dcrop_w16",
+    "c32_wave1_finish_dcrop_b8_w16",
+    "c32_wave1_finish_dcrop_b8d_w16",
+    "c32_wave1_post_w16",
+    "c32_wave1_post_b8_w16",
+    "c32_wave1_post_b8_rgba_w16",
+    "c32_wave1_post_b8_features_w16",
+    "c32_wave1_post_logit_w16",
+    "c32_wave1_post_b8_logit_w16",
+    "c32_wave1_prefix_w16",
+    "c32_wave1_prefix_b8d_w16",
+    "c32_wave1_up_w16",
+    "c32_wave1_up_b8_w16",
+    "c32_wave1_up_lb_w16",
+    "c32_wave1_up_b8_lb_w16"
+  ],
+  "default_mode": 1,
+  "gold_gate": {
+    "expected_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "baseline_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "candidate_w16_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "candidate_w16h_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "submit_pulse_record_ok": 3,
+    "weights_count": 184,
+    "weights_bytes": 297609000,
+    "extra_vram_bytes": 0
+  },
+  "abba_w16_mode1": {
+    "r1": { "A1": 9.4312, "B1": 9.4029, "B2": 9.4302, "A2": 9.4567, "base_mean": 9.4440, "cand_mean": 9.4166, "delta_mean_ms": -0.0274, "delta_median_ms": -0.0420 },
+    "r2": { "A1": 9.4440, "B1": 9.4424, "B2": 9.4602, "A2": 9.4983, "base_mean": 9.4712, "cand_mean": 9.4513, "delta_mean_ms": -0.0199, "delta_median_ms": -0.0225 },
+    "r3": { "A1": 9.4899, "B1": 9.4717, "B2": 9.4788, "A2": 9.5098, "base_mean": 9.4999, "cand_mean": 9.4753, "delta_mean_ms": -0.0246, "delta_median_ms": -0.0340 },
+    "aggregate_base_mean_ms": 9.4717,
+    "aggregate_cand_mean_ms": 9.4477,
+    "aggregate_delta_mean_ms": -0.0240,
+    "aggregate_delta_median_ms": -0.0328,
+    "rounds_won": "3/3"
+  },
+  "abba_w16h_mode2": {
+    "r1": { "A1": 9.5023, "B1": 9.5469, "B2": 9.5554, "A2": 9.5430, "base_mean": 9.5227, "cand_mean": 9.5512, "delta_mean_ms": 0.0285, "delta_median_ms": 0.0345 },
+    "verdict": "falsified (indexing 8B Contract inside rolled ht loop adds 128 dynamic bit-shift ALU instructions and 64 global_load_b64 per wave)"
+  },
+  "c256_attn_w16_probe": {
+    "gold_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "r1_delta_mean_ms": -0.0120,
+    "r2_delta_mean_ms": -0.0036,
+    "r3_delta_mean_ms": 0.0180,
+    "aggregate_delta_mean_ms": 0.0008,
+    "verdict": "flat/neutral (not shipped; 8-wave C256 WG already hides 8B FragmentPackedMatrix loads via LDS barriers)"
+  }
+}

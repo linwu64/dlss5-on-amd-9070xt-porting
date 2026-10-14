@@ -107,6 +107,9 @@ using Tensor=std::shared_ptr<Allocation>;
 #ifndef HIP_C512_FFN_W16
 #define HIP_C512_FFN_W16 1 /* 2026-10-14: C512 split FFN mix+expand+contract weights in FragmentPackedMatrixW16 layout (split_ffn_one_w2f8_w16 / _tvec); 1 = w16, 2 = w16_tvec, 0 = row-major split_ffn_one_w2f8; NR_C512_FFN_W16 / DLSS5_HIP_C512_FFN_W16 overrides */
 #endif
+#ifndef HIP_C32_W16
+#define HIP_C32_W16 1 /* 2026-10-14: C32 wave1 FFN+Attention FP8 weights in FragmentPackedMatrixW16 layout (c32_wave1_*_w16 / _w16h); 1 = all W16 + paired diag, 2 = Expand/QKV/OutProj W16 + Contract Frag8, 0 = row-major; NR_C32_W16 / DLSS5_HIP_C32_W16 overrides */
+#endif
 #ifndef HIP_C32_RTZ_TALL
 #define HIP_C32_RTZ_TALL 1 /* 2026-10-03: 1080 tier (1920x1152 / 1920x1088) loads c32-wave1-rtz.hsaco (same recipe + HIP_C32_RTZ_ISA 2, builtin Hrtz) under the c32_wave1 key when the file exists; 900/720/free geometry and missing file = c32-wave1.hsaco. Bit-exact (2^32 check); 900 kept old because one ABBA round was slower (results/ideas-yami-ikaruga-20261002) */
 #endif
@@ -375,12 +378,31 @@ class Network {friend class D3D12Bridge;
   if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()!=WeightElements(name))throw std::runtime_error("fused FFN weight shape");if(opt.grouped_mh_contract)ValidateGroupedMhContract(v,c);size_t cc=size_t(c)*c;Fp8(v,{{0,4*cc},{4*cc,4*cc},{8*cc,cc}});TilePackedMatrix(v,0,4*c,c);TilePackedMatrix(v,4*cc,c,4*c);it=weights.emplace(key,UploadWeight(v,key)).first;}
   return P(it->second);
  }
+ static int C32W16Mode(){static const int m=[]{const char*v=std::getenv("NR_C32_W16");if(!v||!*v)v=std::getenv("DLSS5_HIP_C32_W16");if(!v||!*v)return int(HIP_C32_W16);return std::atoi(v);}();return m;}
+ int C32W16Active(){
+  if(!wave_owned_active)return 0;
+  const int m=C32W16Mode();if(m<=0)return 0;
+  static const std::string normkey="c32_norm900";
+  const std::string&actual=C32Norm900Active()?normkey:std::string("c32_wave1");
+  const char*sfx=m>=2?"_w16h":"_w16";
+  return HasFn(actual,std::string("c32_wave1_chain")+sfx)?(m>=2?2:1):0;
+ }
+ unsigned long long c32_w16_calls=0,c32_stock_calls=0;
  void* PackedC32Weight(const std::string&name,bool attention){
   if(!opt.packed_c32)return Weight(name);
   const std::string key=name+"@c32fp8";auto it=weights.find(key);
   if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);
    if(v.size()!=WeightElements(name))throw std::runtime_error("packed C32 weight shape");
-   if(attention)Fp8(v,{{0,4096}});else{Fp8(v,{{512,4096},{4608,4096}});AppendC32ResidualDiagonals(v);}
+   const int w16=C32W16Active();
+   if(attention){
+    Fp8(v,{{0,4096}});
+    if(w16>0){FragmentPackedMatrixW16(v,0,96,32);FragmentPackedMatrixW16(v,3072/4,32,32);}
+   }else{
+    Fp8(v,{{512,4096},{4608,4096}});
+    if(w16==1){FragmentPackedMatrixW16(v,512,128,32);FragmentPackedMatrixW16(v,4608,32,128);AppendC32ResidualDiagonalsW16(v);}
+    else if(w16==2){FragmentPackedMatrixW16(v,512,128,32);FragmentPackedMatrix(v,4608,32,128);AppendC32ResidualDiagonals(v);}
+    else AppendC32ResidualDiagonals(v);
+   }
    it=weights.emplace(key,UploadWeight(v,key)).first;
   }return P(it->second);
  }
@@ -483,7 +505,18 @@ class Network {friend class D3D12Bridge;
  /* Optional export probe: modules without the symbol keep the old launch shape. */
  bool HasFn(const std::string&m,const std::string&name){std::string key=m+":"+name;if(functions.count(key))return true;if(missing_functions.count(key))return false;auto mi=modules.find(m);if(mi==modules.end())return false;Handle f{};if(api.hipModuleGetFunction(&f,mi->second,name.c_str())){missing_functions.insert(key);return false;}functions.emplace(key,f);return true;} /* 2026-10-01 rebuild-baseline: misses are cached too -- per-frame probes (ViT _ks2, ...) otherwise call hipModuleGetFunction every frame (+0.01..0.02ms ABBA) */
  bool C32Norm900Active()const{return c32_norm900_loaded&&fast_numeric&&W==1600&&H==960&&multi_pass==1&&!opt.graph&&!opt.experimental_temporal;}
- Handle Fn(const std::string&m,const std::string&name){static const std::string normkey="c32_norm900";const std::string&actual=m=="c32_wave1"&&C32Norm900Active()?normkey:m;std::string key=actual+":"+name;auto it=functions.find(key);if(it!=functions.end())return it->second;Handle f{};api.Check(api.hipModuleGetFunction(&f,modules.at(actual),name.c_str()),name.c_str());functions.emplace(key,f);return f;}
+ Handle Fn(const std::string&m,const std::string&name){
+  static const std::string normkey="c32_norm900";
+  const std::string&actual=m=="c32_wave1"&&C32Norm900Active()?normkey:m;
+  std::string target=name;
+  if(m=="c32_wave1"&&name.rfind("c32_wave1_",0)==0){
+   const int w16=C32W16Active();
+   if(w16>0){const std::string cand=name+(w16>=2?"_w16h":"_w16");if(HasFn(actual,cand)){target=cand;++c32_w16_calls;}else ++c32_stock_calls;}
+   else ++c32_stock_calls;
+  }
+  std::string key=actual+":"+target;auto it=functions.find(key);if(it!=functions.end())return it->second;
+  Handle f{};api.Check(api.hipModuleGetFunction(&f,modules.at(actual),target.c_str()),target.c_str());functions.emplace(key,f);return f;
+ }
  /* DLSS5_FAST_NUMERIC twin (2026-10-03 fast-vit-c512): <stem>.hsaco -> <stem>-fast.hsaco when the option is 1 and the file
     exists; missing twin falls back to the exact module with one stderr line (same contract as the C32/C64 swap). */
  std::string FastTwin(const std::string&requested,bool wave_c32=false)const{
@@ -926,7 +959,7 @@ if(opt.experimental_temporal){
 }
 
 if(wave_owned_active)HasFn("c32_wave1","c32_wave1_post_b8_rgba");if(multi_predict||std::ifstream(opt.modules+"/multi-pass-predict.hsaco").good())EnsurePredictModule();if(multi_pass>1)PrepareMultiPassFeeds();if(multi_skin)PrepareSkin();}catch(...){if(!pulse_lease.Close()){std::fprintf(stderr,"submit_pulse ctor cleanup retained owner stream\n");throw;}if(pdl_flags){api.hipStreamSynchronize(stream);api.hipFree(pdl_flags);pdl_flags=nullptr;}for(auto&m:modules)api.hipModuleUnload(m.second);api.hipStreamDestroy(stream);throw;}}
- ~Network(){if(!pulse_lease.Close()){std::fprintf(stderr,"submit_pulse direct destructor retained owner stream; bridge must preclose\n");return;}std::fprintf(stderr,"submit_pulse resources create=%llu create_ok=%llu record=%llu record_ok=%llu destroy=%llu destroy_ok=%llu drain=%llu site_visits=%llu accepted=%llu reject_mask=%u lifetime_pdl_calls=%u\n",pulse_ops.create_calls,pulse_ops.create_ok,pulse_ops.record_calls,pulse_ops.record_ok,pulse_ops.destroy_calls,pulse_ops.destroy_ok,pulse_ops.drain_calls,pulse_site_visits,pulse_record_accepted,pulse_last_reject_mask,pdl_calls);{size_t wsum=0;for(auto&kv:weights)if(kv.second&&kv.second->owned)wsum+=kv.second->capacity;std::fprintf(stderr,"C512_W16_SUMMARY mode=%d w16_blocks=%llu stock_blocks=%llu ffn_mode=%d ffn_w16_blocks=%llu ffn_stock_blocks=%llu weights_count=%zu weights_bytes=%zu\n",C512W16Mode(),c512_w16_calls,c512_stock_calls,C512FfnW16Mode(),c512_ffn_w16_calls,c512_ffn_stock_calls,weights.size(),wsum);}api.hipSetDevice(int(opt.device));api.hipStreamSynchronize(stream);native_post_row.reset();experimental_history.reset();experimental_prefix.reset();experimental_raw.reset();experimental_logit.reset();experimental_weights.reset();experimental_sig.reset();experimental_recip.reset();temporal_features.reset();SpReport();pdl_keep.clear();if(pdl_flags){api.hipFree(pdl_flags);pdl_flags=nullptr;}if(opt.graph)std::printf("graph_stats builds=%u replays=%u\n",graph_builds,graph_replays);ClearGraph();for(auto&t:timings){api.hipEventDestroy(t.begin);api.hipEventDestroy(t.end);}adaptive_image_anchor.reset();adaptive_image_signature.reset();adaptive_image_delta.reset();adaptive_anchor_in.reset();adaptive_anchor_out.reset();adaptive_gain.reset();adaptive_stats.reset();adaptive_state.reset();device_noise.reset();gather_maps[0].clear();gather_maps[1].clear();weights.clear();pool.clear();for(auto&m:modules)api.hipModuleUnload(m.second);api.hipStreamDestroy(stream);}
+ ~Network(){if(!pulse_lease.Close()){std::fprintf(stderr,"submit_pulse direct destructor retained owner stream; bridge must preclose\n");return;}std::fprintf(stderr,"submit_pulse resources create=%llu create_ok=%llu record=%llu record_ok=%llu destroy=%llu destroy_ok=%llu drain=%llu site_visits=%llu accepted=%llu reject_mask=%u lifetime_pdl_calls=%u\n",pulse_ops.create_calls,pulse_ops.create_ok,pulse_ops.record_calls,pulse_ops.record_ok,pulse_ops.destroy_calls,pulse_ops.destroy_ok,pulse_ops.drain_calls,pulse_site_visits,pulse_record_accepted,pulse_last_reject_mask,pdl_calls);{size_t wsum=0;for(auto&kv:weights)if(kv.second&&kv.second->owned)wsum+=kv.second->capacity;std::fprintf(stderr,"C512_W16_SUMMARY mode=%d w16_blocks=%llu stock_blocks=%llu ffn_mode=%d ffn_w16_blocks=%llu ffn_stock_blocks=%llu c32_mode=%d c32_w16_calls=%llu c32_stock_calls=%llu weights_count=%zu weights_bytes=%zu\n",C512W16Mode(),c512_w16_calls,c512_stock_calls,C512FfnW16Mode(),c512_ffn_w16_calls,c512_ffn_stock_calls,C32W16Mode(),c32_w16_calls,c32_stock_calls,weights.size(),wsum);}api.hipSetDevice(int(opt.device));api.hipStreamSynchronize(stream);native_post_row.reset();experimental_history.reset();experimental_prefix.reset();experimental_raw.reset();experimental_logit.reset();experimental_weights.reset();experimental_sig.reset();experimental_recip.reset();temporal_features.reset();SpReport();pdl_keep.clear();if(pdl_flags){api.hipFree(pdl_flags);pdl_flags=nullptr;}if(opt.graph)std::printf("graph_stats builds=%u replays=%u\n",graph_builds,graph_replays);ClearGraph();for(auto&t:timings){api.hipEventDestroy(t.begin);api.hipEventDestroy(t.end);}adaptive_image_anchor.reset();adaptive_image_signature.reset();adaptive_image_delta.reset();adaptive_anchor_in.reset();adaptive_anchor_out.reset();adaptive_gain.reset();adaptive_stats.reset();adaptive_state.reset();device_noise.reset();gather_maps[0].clear();gather_maps[1].clear();weights.clear();pool.clear();for(auto&m:modules)api.hipModuleUnload(m.second);api.hipStreamDestroy(stream);}
  void PrintMemory(){size_t bytes=0,free=0,total=0;std::set<void*>seen;auto add=[&](const Tensor&t){if(t&&t->owned&&seen.insert(t->ptr).second)bytes+=t->capacity;};for(auto&t:pool)add(t);for(auto&w:weights)add(w.second);for(auto&maps:gather_maps)for(auto&m:maps)add(m.second);add(device_noise);api.Check(api.hipMemGetInfo(&free,&total),"memory stats");std::printf("memory owned_MiB=%.1f allocations=%zu device_free_MiB=%.1f total_MiB=%.1f\n",bytes/1048576.,seen.size(),free/1048576.,total/1048576.);}
  /* DLSS5_HIP_MEMORY=1 (diagnostic): device memory by category after the pool has warmed — weights by key, pool tensors by capacity, gather maps, noise, and the runtime's free/total. */
  void MemoryReport(FILE*f){std::set<void*>seen;size_t wsum=0,psum=0,gsum=0,nsum=0;std::vector<std::pair<size_t,std::string>>w,p;

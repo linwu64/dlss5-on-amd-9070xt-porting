@@ -1,0 +1,50 @@
+[
+  {
+    "target": "gfx1201",
+    "module": "c32-wave1-fast-norm900.hsaco",
+    "bytes": 898496,
+    "sha256": "c0b37fe46374be59dc90c1309553b91116543e859168c9432bcd9590d7efd3a1"
+  },
+  {
+    "target": "gfx1201",
+    "module": "c32-wave1-fast.hsaco",
+    "bytes": 912832,
+    "sha256": "20d4bcc0021b9236e0f93054d1e18015c4e49c322fa3ada5fd60f02e859165f4"
+  },
+  {
+    "target": "gfx1201",
+    "module": "c32-wave1-rtz.hsaco",
+    "bytes": 949952,
+    "sha256": "3f68e18f48f09db7848f316d837d6bd43f455de16de66b2844f8cab34b03270f"
+  },
+  {
+    "target": "gfx1201",
+    "module": "c32-wave1.hsaco",
+    "bytes": 933824,
+    "sha256": "e27be2562bbac463740986430d43a143c657437751748dc7ac153ff4555df6b4"
+  },
+  {
+    "target": "gfx1200",
+    "module": "c32-wave1-fast-norm900.hsaco",
+    "bytes": 898496,
+    "sha256": "5aa599172efec3f5763f966df146cecbd232004c93280637cf463491db52d18a"
+  },
+  {
+    "target": "gfx1200",
+    "module": "c32-wave1-fast.hsaco",
+    "bytes": 912832,
+    "sha256": "4d6df492ac04c827c2e4245ef5e8325a10976afc4d032344c9bce135175a80a7"
+  },
+  {
+    "target": "gfx1200",
+    "module": "c32-wave1-rtz.hsaco",
+    "bytes": 949952,
+    "sha256": "1c2bb813fcbbcc529b0ec4d832cb2de4513162ec1622eb185098955747cb1376"
+  },
+  {
+    "target": "gfx1200",
+    "module": "c32-wave1.hsaco",
+    "bytes": 933824,
+    "sha256": "c98b4b0fc4e7364c5db7dc04f5df2ba6670d60e897c40ce0b5d9866972114571"
+  }
+]

@@ -509,3 +509,20 @@ marked on480只报告主线程API经过时间：input录交.034ms、Network::Enq
    - 在已开启 `HIP_C512_W16=2` 的基线（`~9.59 ms`）之上执行完整 `frame.exe` 3 轮 4-slot ABBA（240 帧/slot，弃 80 取 160 稳态，960 帧/arm）：
      - **`w16`（`HIP_C512_FFN_W16=1`，默认）**：3 轮均值差分别为 **`-134.8 µs`**（`9.5473 → 9.4126 ms`）、**`-131.8 µs`**（`9.6127 → 9.4810 ms`）、**`-127.2 µs`**（`9.6179 → 9.4907 ms`），**3/3 轮全胜**；960 帧合并 mean `9.5926 → 9.4614 ms`（**`-0.1312 ms` / `-131.2 µs`，`-1.37%`**），median **`-0.1345 ms`**。
      - **`w16_tvec`（`NR_C512_FFN_W16=2`）**：3 轮均值差分别为 `-123.5 µs`、`-124.1 µs`、`-115.0 µs`（3/3 全胜，960 帧合并 **`-0.1209 ms`**），因 `32 × ds_store_b8 + wave_barrier + 2 × ds_load_b128` 额外开销比纯 `w16` 慢约 `10.3 µs`，保留为可选模式 `2`，生产默认采用 `HIP_C512_FFN_W16=1`。
+
+### 2026-10-14：C32 Wave1 W16（`c32_wave1_*_w16`，30 条合并 `global_load_b128` 替代 88 条跨步/窄 `global_load_b64`）零额外显存采纳与 C256 Attention W16 边界排查
+
+继续沿“消除未合并跨步 `global_load_b64` 权重加载”脉络对 C32 `wave1`（每帧 10 次发射、`8,100 ~ 32,400` WG、`0.78 ms`）与 C256 Swin Attention 进行审计与实机验证（详见 [C32 Wave1 W16 报告](results/c32-w16-20261014/README.md)）：
+
+1. **机制、ISA 与零额外显存实现**：
+   - `PackedC32Weight` 原先仅将 C32 FFN（`Expand [128][32]`、`Contract [32][128]`）与 Attention（`QKV [96][32]`、`OutProj [32][32]`）量化为未分块 row-major E4M3，导致 `cw_matrix8` 每 wave 发出 **76 条跨 32B/128B 的非合并 `global_load_b64`** 加 12 条对角残差 `global_load_b64`（共 88 条 `global_load_b64`）。
+   - 在 `HIP_C32_W16=1`（默认开启，支持 `NR_C32_W16` / `DLSS5_HIP_C32_W16` 覆写）下，`PackedC32Weight` 原地复用既有 `@c32fp8` 缓存键对 4 个 FP8 权重矩阵执行 `FragmentPackedMatrixW16` 并通过 `AppendC32ResidualDiagonalsW16` 将每个 `(part, ci)` 的 `kt=0,1` 对角片合并为单个 512B W16 tile，**零额外显存分配（`weights_count=184, weights_bytes=297,609,000 B`）**。
+   - `hip/wave_owned_c32.inc` 新增 `cw_matrix16` 与 `W16=1`（`c32_wave1_*_w16`）：FFN Expand + Contract 按 `h2=0..3` 成对步进（常数立即数偏移 `offset:2048/2560/18432/20480`），对角残差、QKV 与 OutProj 全部改为 512B 全 wave 100% 合并 `global_load_b128`，WMMA 累加顺序完全不变。`c32_wave1_chain`（126 VGPR，88 条 `global_load_b64`）→ `c32_wave1_chain_w16`（136 VGPR，`0 spill`，**0 条 `global_load_b64`**，**30 条合并 `global_load_b128` 权重加载**）。保留原 26 个导出符号供 `CheckPulseCapabilities()` 校验。
+2. **完整 Frame Gold 与 3 轮 4-slot ABBA（PASS，`-0.0240 ms` mean / `-0.0328 ms` median）**：
+   - `1920×1152` 完整 Frame Gold（3 帧重复，`Auto` 脉冲 `record_ok=3 accepted=3 reject_mask=0`）：`baseline(0)`、`w16(1)`、`w16h(2)` 首尾帧 SHA256 全为 `0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A`（`0 bit-diff`，`extra_vram_bytes=0`）。
+   - 在已开启 `HIP_C512_W16=2` 与 `HIP_C512_FFN_W16=1` 的基线（`~9.47 ms`）之上执行完整 `frame.exe` 3 轮 4-slot ABBA（240 帧/slot，弃 80 取 160 稳态，960 帧/arm）：
+     - **`w16`（`HIP_C32_W16=1`，默认）**：3 轮均值差分别为 **`-27.4 µs`**（`9.4440 → 9.4166 ms`，median `-42.0 µs`）、**`-19.9 µs`**（`9.4712 → 9.4513 ms`，median `-22.5 µs`）、**`-24.6 µs`**（`9.4999 → 9.4753 ms`，median `-34.0 µs`），**3/3 轮全胜**；960 帧合并 mean `9.4717 → 9.4477 ms`（**`-0.0240 ms` / `-24.0 µs`**），median `9.4707 → 9.4378 ms`（**`-0.0328 ms` / `-32.8 µs`**，单槽 median 最低达 `9.3900 ms`）。与同日 C512 Split-FFN W16（`-0.1312 ms` mean / `-0.1345 ms` median）合计净降 **`-0.1552 ms` mean / `-0.1673 ms` median**。
+     - **`w16h`（`NR_C32_W16=2`，Contract 保 8B Frag）**：单轮 ABBA 退步 `+28.5 µs`（因在 `ht=0..7` 循环内索引 8B Contract 引入 128 条动态移位 ALU 指令与 64 条 `global_load_b64`），不采用。
+3. **伴随 C256 Swin Attention W16 实测排查（中性，不合入）**：
+   - 将 `WaveOwnedAttentionWeight(name, 256)` 由 8B `FragmentPackedMatrix` 改为 16B `FragmentPackedMatrixW16`（`c256_wave2*_w16a`、`sp_run256_w16a`，`vgpr=184~189, scratch=0, b64: 433 → 17, b128: 46 → 254`），1920×1152 Gold 逐位一致（`0900E489...`），但 3 轮 4-slot ABBA 均值差为 `-12.0 µs`、`-3.6 µs`、`+18.0 µs`（3 轮合并 `+0.8 µs`，打平）：因 C256 已有 8B `FragmentPackedMatrix`（256B 半合并读取）且 8-wave WG 受 `w2_sync()` 跨 wave LDS 屏障主导，16B 合并未能缩短关键路径，已回退不合入。
+
