@@ -495,3 +495,17 @@ marked on480只报告主线程API经过时间：input录交.034ms、Network::Enq
    - `test_low_frequency.exe 1`（MODE 2）与 `test_temporal_enhancement.exe 1`（MODE 3）全部 `PASS`。
    - 12 帧 `DLSS5_RESIDUAL_SEQUENCE=2` 多帧时序 Gold（`NR_LOW_TEMPORAL_FIXED_DT=0.016` 锁定帧间 `dt`）：在默认同步提交与 `DLSS5_TEST_ASYNC_SUBMIT=1` 延迟 ring 提交下，`NR_LOW_TEMPORAL_RING=0` 与 `NR_LOW_TEMPORAL_RING=1` 的 `MODE 2`（首帧 `0900E489...`、末帧 `30F1313D...`）和 `MODE 3`（首帧 `A7B0DDB8...`、末帧 `5008EF28...`）全部 **逐位一致（`0 bit-diff`）**。
    - 3 轮 4-slot ABBA（`MODE 3`，24 帧/slot，取后 20 帧稳态）：默认同步提交下 `ring=0` `10.779 ms` vs `ring=1` `10.776 ms`（`-0.003 ms`）；在延迟 ring 提交（`DLSS5_TEST_ASYNC_SUBMIT=1`）下消除每帧额外 `Flush()` + `CreateDescriptorHeap` 后，3 轮均值分别为 `-0.072 ms`、`-0.060 ms`、`-0.077 ms`（**3/3 轮全胜**），6-slot 稳态中位数均值由 `10.910 ms` 降至 `10.840 ms`（**`-0.070 ms / frame`**）。
+
+### 2026-10-14：C512 Split-FFN W16（`split_ffn_one_w2f8_w16`，128 条合并 `global_load_b128` 替代 256 条跨步 `global_load_b64`）零额外显存采纳
+
+对 `c512-m32-deep.hsaco` 中的 `split_ffn_one_w2f8` 进行 ISA 反汇编审计时发现，前序 `c512-w16-20261014` 误判该核已使用 16B W16 权重加载，实则仅其 FP32 输入 `ar` 使用了 `global_load_b128`，而 `PackedSplitFfnWeightMixFp8` 的三个 E4M3 权重区（`Mix [512][512]`、`Expand 8×[256][64]`、`Contract 8×[64][256]`）仍为未分块的 row-major 布局，每 wave 发出 **256 条跨步非合并 `global_load_b64`**（Mix 相邻 lane `rc()` 跨 `512B` 打散到 16 条不同 cache line，Expand 跨 `64B`，Contract 跨 `256B`）。完成 `FragmentPackedMatrixW16` 改造及 3 轮 4-slot ABBA 实机验证（详见 [C512 Split-FFN W16 报告](results/c512-ffn-w16-20261014/README.md)）：
+
+1. **机制、ISA 与零额外显存实现**：
+   - `PackedSplitFfnWeightMixFp8(name, w16)` 原地复用既有 `@split-mix-fp8` 缓存键，在 `w16=true` 时对 Mix（`FragmentPackedMatrixW16(v, 0, 512, 512)`）、Expand（`FragmentPackedMatrixW16(v, 262144, 2048, 64)`）和 Contract（`FragmentPackedMatrixW16(v, 393216, 512, 256)`）原地执行 W16 排列，**零额外显存分配（`weights_count=184, weights_bytes=297,609,000 B`）**。
+   - 新增 `split_ffn_one_w2f8_w16`（`HIP_C512_FFN_W16=1`，默认开启）：Stage 1（Mix）按 `gs=0..15`（32-k 步）每 `j=0..3` 发 1 条 512B 全 wave 合并 `global_load_b128` 覆盖相邻两步 WMMA；Stage 2/3（Expand + Contract）按 `h2=0..7` 成对处理 `hb=2*h2, 2*h2+1`，预取 4 条 Contract `global_load_b128`（低 8B 供 `2*h2`、高 8B 供 `2*h2+1`），内层每 `hb` 发 2 条 Expand `global_load_b128`，WMMA 操作数与 K 累加顺序（`k=0, 16, ..., 496` 及 `hb=0..15`）完全不变。
+   - `gfx1201` ISA 对比：`split_ffn_one_w2f8`（112 VGPR，256 条跨步 `global_load_b64` 权重加载）→ `split_ffn_one_w2f8_w16`（124 VGPR，Occupancy 10，`0 spill`，`0 LDS`，**0 条 `global_load_b64`**，**128 条 100% 合并 `global_load_b128` 权重加载**）。同步测试 LDS 合并写出的 `split_ffn_one_w2f8_w16_tvec`（`NR_C512_FFN_W16=2`，126 VGPR，2048B LDS）。
+2. **完整 Frame Gold 与 3 轮 4-slot ABBA（PASS，`-0.1312 ms / frame`）**：
+   - `1920×1152` 完整 Frame Gold（3 帧重复，`Auto` 脉冲 `record_ok=3 accepted=3 reject_mask=0`）：`baseline(0)`、`w16(1)`、`w16_tvec(2)` 首尾帧 SHA256 全为 `0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A`（`0 bit-diff`，`extra_vram_bytes=0`）。
+   - 在已开启 `HIP_C512_W16=2` 的基线（`~9.59 ms`）之上执行完整 `frame.exe` 3 轮 4-slot ABBA（240 帧/slot，弃 80 取 160 稳态，960 帧/arm）：
+     - **`w16`（`HIP_C512_FFN_W16=1`，默认）**：3 轮均值差分别为 **`-134.8 µs`**（`9.5473 → 9.4126 ms`）、**`-131.8 µs`**（`9.6127 → 9.4810 ms`）、**`-127.2 µs`**（`9.6179 → 9.4907 ms`），**3/3 轮全胜**；960 帧合并 mean `9.5926 → 9.4614 ms`（**`-0.1312 ms` / `-131.2 µs`，`-1.37%`**），median **`-0.1345 ms`**。
+     - **`w16_tvec`（`NR_C512_FFN_W16=2`）**：3 轮均值差分别为 `-123.5 µs`、`-124.1 µs`、`-115.0 µs`（3/3 全胜，960 帧合并 **`-0.1209 ms`**），因 `32 × ds_store_b8 + wave_barrier + 2 × ds_load_b128` 额外开销比纯 `w16` 慢约 `10.3 µs`，保留为可选模式 `2`，生产默认采用 `HIP_C512_FFN_W16=1`。

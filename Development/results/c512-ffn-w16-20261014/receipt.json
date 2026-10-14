@@ -1,0 +1,41 @@
+{
+  "campaign": "c512-ffn-w16-20261014",
+  "date": "2026-10-14",
+  "target": "gfx1201 (AMD Radeon RX 9070 XT)",
+  "module": "c512-m32-deep.hsaco",
+  "kernels": [
+    "split_ffn_one_w2f8_w16",
+    "split_ffn_one_w2f8_w16_tvec"
+  ],
+  "default_mode": 1,
+  "gold_gate": {
+    "expected_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "baseline_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "candidate_w16_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "candidate_w16_tvec_sha256": "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+    "submit_pulse_record_ok": 3,
+    "weights_count": 184,
+    "weights_bytes": 297609000,
+    "extra_vram_bytes": 0
+  },
+  "abba_w16_mode1": {
+    "r1": { "A1": 9.5254, "B1": 9.4058, "B2": 9.4193, "A2": 9.5692, "base_mean": 9.5473, "cand_mean": 9.4126, "delta_mean_ms": -0.1348, "delta_median_ms": -0.1425 },
+    "r2": { "A1": 9.6077, "B1": 9.4806, "B2": 9.4813, "A2": 9.6177, "base_mean": 9.6127, "cand_mean": 9.4810, "delta_mean_ms": -0.1318, "delta_median_ms": -0.1340 },
+    "r3": { "A1": 9.6177, "B1": 9.4936, "B2": 9.4878, "A2": 9.6181, "base_mean": 9.6179, "cand_mean": 9.4907, "delta_mean_ms": -0.1272, "delta_median_ms": -0.1270 },
+    "aggregate_base_mean_ms": 9.5926,
+    "aggregate_cand_mean_ms": 9.4614,
+    "aggregate_delta_mean_ms": -0.1312,
+    "aggregate_delta_median_ms": -0.1345,
+    "rounds_won": "3/3"
+  },
+  "abba_tvec_mode2": {
+    "r1": { "A1": 9.5734, "B1": 9.4679, "B2": 9.4664, "A2": 9.6079, "base_mean": 9.5907, "cand_mean": 9.4672, "delta_mean_ms": -0.1235, "delta_median_ms": -0.1310 },
+    "r2": { "A1": 9.6214, "B1": 9.5003, "B2": 9.5211, "A2": 9.6481, "base_mean": 9.6348, "cand_mean": 9.5107, "delta_mean_ms": -0.1241, "delta_median_ms": -0.1280 },
+    "r3": { "A1": 9.6523, "B1": 9.5467, "B2": 9.5407, "A2": 9.6651, "base_mean": 9.6587, "cand_mean": 9.5437, "delta_mean_ms": -0.1150, "delta_median_ms": -0.1285 },
+    "aggregate_base_mean_ms": 9.6280,
+    "aggregate_cand_mean_ms": 9.5072,
+    "aggregate_delta_mean_ms": -0.1209,
+    "aggregate_delta_median_ms": -0.1292,
+    "rounds_won": "3/3"
+  }
+}
