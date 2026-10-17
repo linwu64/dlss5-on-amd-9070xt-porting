@@ -632,3 +632,7 @@ marked on480只报告主线程API经过时间：input录交.034ms、Network::Enq
 ### 2026-10-17：候选1 decoder字节边与W16 FP8采纳
 
 接通Block47→Up48 E4M3字节边，Up39/48直接读取字节输入与FragmentPackedMatrixW16权重，K16累加及Up39四段归并/skip尾保持。复用原权重key、容量不增；mode3默认，mode0旧路，缺export成对回退。1920×1152完整Frame Gold首尾0900E489...0F4A逐位一致；3轮ABBA(240弃80/slot，960/arm) mean分别−22.087/−12.966/−17.142µs，p99分别−29.038/−8.255/−29.330µs；pooled mean9.168759792→9.151361354ms(−17.398µs)，p99−23.962µs。R2控制漂移−103.6µs照留，不宣全部对偶赢。远端首次旧模块Gold仅fallback，RTC路径/null ExitCode失败及正式COMGR Gold分开记录。测试遵game-check/原子锁/15秒游戏看门狗，游戏期间仅CPU准备。游戏安装与发行包未改。证据results/decoder-f8-w16-20261017。
+
+### 2026-10-17：候选2双写入端gather折叠止负
+
+Down30写ViT序、Block38写decoder序，避免旧gin读取端打散。完整Frame Gold0900逐位同，但3轮ABBA mean全部非改善，pooled9.128203125→9.133894583ms(+5.691µs)，p99 pooled−3.487µs不能抵均值负。STOP，不合入；候选3从已接受候选1继续。结果results/vit-write-gather-20261017，失败总账已追加；游戏和发行包未改。

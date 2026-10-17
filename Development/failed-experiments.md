@@ -2672,3 +2672,7 @@ SKIN_PROTECT只多遍：原输入肤色启发式mask混y1/yN，不是原图/语�
   4. **`sp_init_pair` 与 `sp_recover256_w16` 不可删改**：`sp_init_pair` 早在 `swin_persistent.inc:27` 实现并实测负（`-0.001 / +0.023 / +0.003 ms`，`DevHistory-full-20261006.md:1378`），且 `CheckPulseCapabilities()`（`hip_reference_network.h:1006`）明确规定若模块导出 `sp_init_pair` 则直接禁用 `submit_pulse=auto`；`sp_recover256_w16` 是替代每次 `+0.485..+0.685 ms` CPU `hipStreamSynchronize` 的 `<1.5 µs` 1-WG 异步超时检查核（正常情况 `if(!sp_load(p.state+2)) return;` 立即返回）。
 - **裁决：** 保持 `SpStage(16,6)` 与 `SpStage(49,6)` 现行边界及 3-launch 结构不动，不再重开 C256 首尾层并入或 `sp_init_pair`。证据：`Development/results/c512-w16-20261014/README.md`、`Development/results/sp-fast-coverage-20261006/README.md`、`Development/results/swin-persistent-20260929/README.md`。
 
+
+### 2026-10-17｜候选2：ViT双写入端gather折叠｜Gold通过，性能负
+
+区别旧读取端gin：Down30写ViT顺序、Block38写raster顺序，Up39保持连续读取。1920×1152 Gold0900逐位同；以候选1(mode3)为共同基线，3轮ABBA mean +0.513/+1.659/+14.902µs，pooled +5.691µs；p99各+14.445/−37.833/+7.254µs，pooled−3.487µs。不收，保两个gather和旧生产代码，不刷轮。详results/vit-write-gather-20261017。
