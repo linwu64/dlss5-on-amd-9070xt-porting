@@ -393,12 +393,13 @@ V-tail barrier, prefix NT, NoHi, C512 allocation trials and host-QPC instrumenta
 
 ## 0.43 · 2026-10-17
 
-Three formal local complete packages use validated payload source `10982cf4` and the existing80 dual-architecture modules; no public0.43 URL has been supplied. Existing0.42 mirrors remain0.42. Names, full hashes and verification: [0.43 release receipt](Development/releases/0.43/README.md).
+Download: [Quark](https://pan.quark.cn/s/3b19c0403e3f) · [Gofile mirror](https://gofile.io/d/hz5cDOPF) (three complete packages, validated payload source `10982cf4`, 80 dual-architecture modules; names, full hashes and verification: [0.43 release receipt](Development/releases/0.43/README.md)).
 
+- **Single-frame time (`frame.exe` steady-state mean, RX 9070 XT)**: **1080 tier (1920×1152) `9.121 ms`** (best slot `8.960 ms` mean / `8.945 ms` median, down **`~0.53–0.60 ms`** from the `~9.65 ms` 0.42 baseline); **900 tier (1600×960) `6.535 ms`**. Because 1x gameplay already hits the 60 FPS cap in Stellar Blade 2K AA, per-release performance is recorded directly as single-frame time (`ms/frame`).
 - **Weights and data flow**: accepted October14 C512/C32/ViT W16 layouts, ISA cleanup and ViT/C512/Down byte-stream edges, eliminating all8 ViT input-pack dispatches. Already-quantized E4M3 values stay as bytes; accumulation/rounding boundaries are preserved. The tested1080 pool capacity drops1.1MiB, not a resident-peak claim.
 - **Up/downsampling**: Block47→Up48 byte edge, direct W16 FP8 reads in Up39/48, and byte LDS/W16 FP8 in Down8/14/22/30. Distinct cache identities prevent interpreting FP8 layouts as half fallback layouts.
 - **Optional modes2/3**: bounded64-slot descriptor/constant rings replace per-frame creation and two Flush calls. Defaults remain MODE0/1x/SKIN0; PRED1 applies only at3x.
-- **Validation**: fixed900/1080 Frame configurations pass per-frame Gold. October17 final-combination ABBA has six improving round means; pooled mean deltas−34.487/−20.846us and p99−32.351/−25.690us. 1080 round2 p99+10.599us is retained. These are the October17 increments against same-batch controls, not the total0.42→0.43 change or game FPS. [Evidence](Development/results/five-final-20261017/README.md).
+- **Validation**: fixed900/1080 Frame configurations pass per-frame Gold. October17 final-combination ABBA has six improving round means; pooled mean deltas−34.487/−20.846us and p99−32.351/−25.690us. 1080 round2 p99+10.599us is retained. [Evidence](Development/results/five-final-20261017/README.md).
 - **Packaging**: reuse40 modules per architecture with verified actual ELF targets; gfx1200 is compile-only verified.44 shader variants per package, staged RE9 smoke and per-file ZIP readback are required. Rejected gather folding, C32 pool consolidation, fused-Up FP8 and hipGraph are excluded. Specular-flicker cases remain unresolved.
 
-[October17 game installation receipt](Development/results/game-install-20261017/README.md) is separate. Packaging does not change installed games/personal settings, overwrite0.42 ZIPs, upload, push or create a GitHub release/tag.
+[October17 game installation receipt](Development/results/game-install-20261017/README.md) is separate. Existing0.42 ZIPs remain unchanged; mirror links supplied by the user.

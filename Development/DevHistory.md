@@ -667,4 +667,10 @@ Gold0900逐位一致；3轮ABBA均值全部退步，pooled9.117309583→9.122855
 
 D:\給網友打包三包：Magpie345297302B SHA b3450315de6bf23bfbbd550a56cc82d7ed461e31b6a2c402e6baf1fefe3160ac；OptiScaler375495322B SHA e507a6b4fb4e8a80c92334f7509d40f81907095eb6b281190d8c09756e4e512e；OptiScaler-REFramework430517634B SHA 0ac552c469f7d4b88dbb0e3d7aa484e462a5fd4967d8f52b6d29adbc5257203f，均附.zip.sha256，载荷文件781/599/608个（另加总SHA清单）。
 
-准备阶段配置重复展开、PowerShell5无BOM中文路径解析失败在成包前修正并留原日志；metadata输出明确UTF8。打包GPU阶段持gpu.lock、game-check、≥100GB余量与15秒游戏看门狗，最终锁释放；本轮没有再次安装/修改玩家配置，没有改旧0.42 ZIP，也未公开上传/tag/push。README/双语CHANGELOG/六份package-notes/WorkingPlan同步；完整产物与验证回执见Development/releases/0.43。
+准备阶段配置重复展开、PowerShell5无BOM中文路径解析失败在成包前修正并留原日志；metadata输出明确UTF8。打包GPU阶段持gpu.lock、game-check、≥100GB余量与15秒游戏看门狗，最终锁释放；本轮没有再次安装/修改玩家配置，没有改旧0.42 ZIP。用户随后提供 0.43 公开下载入口：[夸克](https://pan.quark.cn/s/3b19c0403e3f) · [Gofile](https://gofile.io/d/hz5cDOPF)，README/双语CHANGELOG/六份package-notes/WorkingPlan已同步更新；完整产物与验证回执见Development/releases/0.43。
+
+**2026-10-18 测量口径更新（Zero 定）**：因《剑星》2K AA（1080P DLSS5）1x 实玩已顶满 60 FPS 上限，游戏内帧率已无法分辨亚毫秒级收益，**以后不再用游戏内帧率衡量，直接记录每个版本的单帧耗时（`frame.exe` 稳态 `ms/frame`）**：
+- `0.42`（`456b7e16`）：1080 档 `~9.65 ms`
+- `10-14`（`be506729`，七场战役）：1080 档 `9.055 ms` mean / `9.049 ms` median（最佳单槽 `8.960 ms` mean / `8.945 ms` median）
+- `0.43`（`10982cf4`，含候选 1+3）：1080 档 **`9.121 ms`**（同批对照 `9.142 → 9.121 ms`，`-20.85 µs`）、900 档 **`6.535 ms`**（同批对照 `6.570 → 6.535 ms`，`-34.49 µs`）。
+

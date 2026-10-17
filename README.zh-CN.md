@@ -16,7 +16,7 @@ DLSS 5（DLSSNR）跑在 AMD RX 9070 XT / RDNA 4 上。
 | **Magpie**（便携） | 任何游戏，不需要游戏支持超分 | Magpie 抓游戏窗口；网络接在效果组的 FSR3_SR 一项里，之后 FSR4 放大到全屏（可选 XeSS 帧生成） |
 | **OptiScaler-REFramework**（只给 RE9） | 《生化危机 9》，常规路线切不开它的命令提交 | TheAutomatic 改的 OptiScaler 宿主 + 我们的 `LmxxfNrRuntime.dll`（成对使用，别和常规包混装） |
 
-**当前版本：0.43（2026-10-17，本地正式三包）。** 权重访问、字节直连和上下采样优化；默认MODE0/1x/SKIN0。[更新日志](CHANGELOG.zh-CN.md) · [包与校验回执](Development/releases/0.43/README.md)。0.43 尚无公开下载链接；[夸克](https://pan.quark.cn/s/316704620069) / [Gofile](https://gofile.io/d/HNE20Ocp) 仍为0.42。
+**当前版本：0.43（2026-10-17）。** W16 权重访问、跨核 1B E4M3 字节直连与上下采样优化；默认 MODE0/1x/SKIN0（单帧耗时：1080 档 **9.12 ms**、900 档 **6.54 ms**）。下载：[夸克](https://pan.quark.cn/s/3b19c0403e3f) · [Gofile 镜像](https://gofile.io/d/hz5cDOPF) · [更新日志](CHANGELOG.zh-CN.md) · [包与校验回执](Development/releases/0.43/README.md)。0.42：[夸克](https://pan.quark.cn/s/316704620069) · [Gofile 镜像](https://gofile.io/d/HNE20Ocp)。
 
 **新用户先看：[0.42更新与使用说明](0.42-更新与使用说明.md)**（选包、升级、custom配置、热键与MODE0／1／2／3）。
 
@@ -257,8 +257,8 @@ powershell -ExecutionPolicy Bypass -File scripts\deploy_fast.ps1 -Source <lab> -
 | 0.39 · 三个包（Magpie · OptiScaler · OptiScaler-REFramework，HIP）[夸克](https://pan.quark.cn/s/dea9c0ef2f95) · [Gofile 镜像](https://gofile.io/d/iqtFTSpS) | 10-01 | 默认与 0.38 逐位相同：C512 FFN 一 wave 寄存器内完成、残差初始化/权重读取外提、解码加宽、ViT QKV/attention 合并等；离线 900 约 7.27 → 6.8ms、1080 约 10.05 → 9.5ms，《剑星》2K +1.5～2 帧。新开关 `DLSS5_STYLE=1`；add-on/runtime 可复现构建。 |
 | 0.40 · 三个包（Magpie · OptiScaler · OptiScaler-REFramework，HIP）[夸克](https://pan.quark.cn/s/d38e0f653c5a) · [Gofile 镜像](https://gofile.io/d/moSf7cqf) | 10-03 | **默认输出变了**：全 71 块 + `DLSS5_FAST_NUMERIC=1`（对 NVIDIA 44.26 → 47.55 dB，+0.12/+0.19 ms）。叠层 `DLSS5_MULTI_PASS` + F9；三个配置文件（`default-config` → `custom-config` → `native-game-flags`，环境变量最高）；C32/C64 改 LLVM 23 等逐位提速。 |
 | 0.41 · [夸克](https://pan.quark.cn/s/dbda3e470f8f) · [Gofile 镜像](https://gofile.io/d/YAENU0ex) | 10-05 | 默认1x；选3x才默认两真实遍加预测。首帧/HIP设备修复、RE9强度、C256/ViT/C512及直接RGBA优化，76模块；[完整说明](CHANGELOG.zh-CN.md)。 |
-| 0.42 · [夸克](https://pan.quark.cn/s/316704620069) · [Gofile 镜像](https://gofile.io/d/HNE20Ocp) | 10-13 | 默认MODE0/1x/SKIN0；已采纳数据流、可选时序接口及狭域分配节省，80模块；不承诺FPS提升。[完整说明](CHANGELOG.zh-CN.md)。 |
-| 0.43 · [本地三包与SHA](Development/releases/0.43/README.md) | 10-17 | W16权重访问、跨核字节直连、上下采样与MODE2/3资源环优化；已验固定配置逐位一致，80模块。[完整说明](CHANGELOG.zh-CN.md)。 |
+| 0.42 · [夸克](https://pan.quark.cn/s/316704620069) · [Gofile 镜像](https://gofile.io/d/HNE20Ocp) | 10-13 | 默认MODE0/1x/SKIN0；已采纳数据流、可选时序接口及狭域分配节省（省216MiB权重+33.75MiB无history缓冲），80模块；单帧耗时 1080 档约 9.65 ms。[完整说明](CHANGELOG.zh-CN.md)。 |
+| 0.43 · [夸克](https://pan.quark.cn/s/3b19c0403e3f) · [Gofile 镜像](https://gofile.io/d/hz5cDOPF) | 10-17 | W16权重访问、跨核1B E4M3字节直连（消除全部8次`vit_pack_input`）、上下采样W16 FP8与MODE2/3资源环优化；已验固定配置逐位一致，80模块；**单帧耗时 1080 档 9.12 ms（最佳单槽 8.96 ms）、900 档 6.54 ms**。[完整说明](CHANGELOG.zh-CN.md)。 |
 
 
 ## 权重
