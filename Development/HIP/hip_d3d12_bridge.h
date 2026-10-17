@@ -225,7 +225,6 @@ probe.Check(probe.hipSetDevice(chosen),"select device");size_t total=0;if(probe.
    options.modules=root.u8string();
   }
   module_directory=options.modules;
-  if(direct_history||!post_auxiliary_row.empty())options.integration.allow_small_model=false; // Small native history remains a separate validation gate.
   network=new Network(std::move(options));auto&api=network->Runtime();
   if((direct_history||!post_auxiliary_row.empty())&&network->ExperimentalTemporalConfigured())throw std::runtime_error("direct history/auxiliary output cannot use experimental temporal layout");
   if(!post_auxiliary_row.empty()&&!network->NativeHistorySupported())throw std::runtime_error("auxiliary post unsupported network");

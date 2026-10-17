@@ -5,7 +5,7 @@ DLSS 5 (DLSSNR) on AMD RX 9070 XT / RDNA 4.
 [Simplified Chinese](README.zh-CN.md)
 
 A from-scratch re-implementation of NVIDIA's DLSS 5 neural renderer ("DLSSNR", the 71-block Swin/ViT network shipped in
-`nvngx_dlssnr.dll`) for AMD RDNA 4. The network was reverse-engineered block by block and now runs as 38 HIP modules per
+`nvngx_dlssnr.dll`) for AMD RDNA 4. The network was reverse-engineered block by block and now runs as 40 HIP modules per
 architecture (gfx1201 = RX 9070 series, gfx1200 = RX 9060 series) on the HIP 7 runtime that ships with the AMD driver. The
 weights are NVIDIA's, extracted from the user's own copy of the DLL; nothing of NVIDIA's is distributed here.
 
@@ -18,7 +18,7 @@ the host upscaler (FSR) takes it to the display resolution.** Three packages, th
 | **Magpie** (portable) | any game, no upscaler support needed | Magpie captures the game window; the network runs in the FSR3_SR slot of its effect group, then FSR4 fills the screen (optional XeSS frame generation) |
 | **OptiScaler-REFramework** (RE9 only) | Resident Evil Requiem, whose command submission the regular route cannot split | TheAutomatic's modified OptiScaler host + our `LmxxfNrRuntime.dll` (matched pair; do not mix with the regular packages) |
 
-**Current release: 0.43 (2026-10-17).** W16 weight-access, 1B E4M3 byte-stream and up/downsampling improvements; defaults MODE0/1x/SKIN0 (single-frame time: **9.12 ms** at 1080 tier, **6.54 ms** at 900 tier). Download: [Quark](https://pan.quark.cn/s/3b19c0403e3f) · [Gofile mirror](https://gofile.io/d/hz5cDOPF) · [Changelog](CHANGELOG.md) · [Packages and verification](Development/releases/0.43/README.md). 0.42: [Quark](https://pan.quark.cn/s/316704620069) · [Gofile mirror](https://gofile.io/d/HNE20Ocp).
+**Current release: 0.44 (2026-10-18).** Default 0.5x Small: 1080 **5.554 ms/frame**, 900 **4.377 ms/frame**; 1080/900/720/free, AE, MODE1 and F9 switching. [Packages and verification](Development/releases/0.44/README.md). Local packages are prepared; public mirrors have not been updated. Previous 0.43: [Quark](https://pan.quark.cn/s/3b19c0403e3f) · [Gofile](https://gofile.io/d/hz5cDOPF).
 
 **Previous release: 0.40 (2026-10-03).** **The default output changed**: all 71 blocks with fast numerics (`DLSS5_SKIP_BLOCKS=` empty, `DLSS5_FAST_NUMERIC=1`), against NVIDIA 44.26 → 47.55 dB and no overall colour shift, about 0.12 / 0.19 ms (900 / 1080) slower per frame; `DLSS5_SKIP_BLOCKS=42,43,46` + `DLSS5_FAST_NUMERIC=0` gives the 0.39 output bit for bit. New: multi pass `DLSS5_MULTI_PASS=1/2/3` (stronger style, about N times the network; F9 cycles it in game, Stellar Blade 2K 57 / 37 / 27 fps), three config files (`default-config.txt` → `custom-config.txt` → `native-game-flags.txt`, environment on top; packages no longer ship your files), and bit-exact speed-ups (LLVM 23 builds of C32/C64, 1080 −0.2 ms or so). Download: [Quark](https://pan.quark.cn/s/d38e0f653c5a) · [Gofile mirror](https://gofile.io/d/moSf7cqf). 0.39: [Quark](https://pan.quark.cn/s/dea9c0ef2f95) · [Gofile mirror](https://gofile.io/d/iqtFTSpS).
 

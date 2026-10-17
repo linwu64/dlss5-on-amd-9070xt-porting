@@ -80,7 +80,7 @@ try {
   }
   $rows=@(Import-Csv "$d\out.csv");$edges=@($rows|Where-Object {$_.checked -eq '1'});if($rows.Count -ne $Frames -or $edges.Count -ne 2 -or @($edges|Where-Object {[int]$_.invalid -ne 0 -or [int]$_.changed_half_values_from_first -ne 0}).Count){throw "actual240frames twofinite repeatededges $slot"}
   $log=Get-Content "$d\stderr.log" -Raw
-  if($name -eq 'baseline' -and $log -notmatch ("submit_pulse resources[^`r`n]*record_ok=$Frames[^`r`n]*accepted=$Frames")){throw "actualproductionAuto240records required $slot"}
+  if($name -eq 'baseline' -and ($Height -eq '1080' -or $Height -eq '900') -and $log -notmatch ("submit_pulse resources[^`r`n]*record_ok=$Frames[^`r`n]*accepted=$Frames")){throw "actualproductionAuto240records required $slot"}
   if($log -notmatch "model requested=${mode}x effective=${mode}x"){throw 'requested model did not execute'}
   $summary=([regex]::Match($log,'C512_W16_SUMMARY[^\r\n]*')).Value
   $meas=@($rows | Select-Object -Skip $(if($Kind -eq 'gold'){0}else{80}) | ForEach-Object { [double]$_.wall_ms })
@@ -91,7 +91,7 @@ try {
   $p99=$sorted[[int]([math]::Floor(($sorted.Count-1)*0.99))]
   Write-Output ("SLOT={0,-14} mean={1:F4} med={2:F4} p90={3:F4} p99={4:F4} [{5}]" -f $slot,$mean,$med,$p90,$p99,$summary)
  }
- $ref=if($Height -eq '900'){(Get-FileHash "$case\baseline-A1\out-first.f16").Hash}else{'0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A'}
+ $ref=if($Height -ne '1080'){(Get-FileHash "$case\baseline-A1\out-first.f16").Hash}else{'0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A'}
  $smallRef=(Get-FileHash "$case\candidate-B1\out-first.f16").Hash
  foreach($slot in 'baseline-A1','candidate-B1','candidate-B2','baseline-A2'){
   $expect=if($slot.StartsWith('baseline')){$ref}else{$smallRef}

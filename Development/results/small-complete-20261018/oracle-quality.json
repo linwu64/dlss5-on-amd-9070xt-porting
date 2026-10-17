@@ -1,0 +1,30 @@
+[
+  {
+    "tier": "900",
+    "processing": [
+      1600,
+      1024
+    ],
+    "psnr": 47.40259908268313,
+    "maxabs": 0.06278848648071289,
+    "oracle_zero_pixels": 0,
+    "oracle_sha256": "913b346751c8b3087744bda939872c4c8646fac876d4a5f70d650b1375118f9c",
+    "hip_sha256": "132bf0482ff8b25ba69a91b4ce841f6d05164816a0520b3829359ae67cadb071",
+    "reference": "NV internal Post FP16 surface widened to float32, seed0 Style1 FAST1 historyoff",
+    "capture_barriers": false
+  },
+  {
+    "tier": "720",
+    "processing": [
+      1344,
+      768
+    ],
+    "psnr": 47.702756001279845,
+    "maxabs": 0.04240751266479492,
+    "oracle_zero_pixels": 0,
+    "oracle_sha256": "7762b3e3490592ddff371340a6c7301798665b4d94e8e69b3e2b6870f4cf08b8",
+    "hip_sha256": "bffff9b2cca8a9516519e9180e80dc6ba712fe8ff0534814edfea645f425ff98",
+    "reference": "NV internal Post FP16 surface widened to float32, seed0 Style1 FAST1 historyoff",
+    "capture_barriers": true
+  }
+]

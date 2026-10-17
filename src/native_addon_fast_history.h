@@ -24,16 +24,18 @@ class NativeAddonFastHistory {
 public:
  bool enabled{};
  static std::vector<float> Row(const std::wstring&directory){
-  std::ifstream f((directory+L"\\post70-history-head.f16").c_str(),std::ios::binary|std::ios::ate);
+  const std::wstring folder=directory+(NativeCurrentNetworkGeometry().small_model?L"\\small":L"");
+  std::ifstream f((folder+L"\\post70-history-head.f16").c_str(),std::ios::binary|std::ios::ate);
   if(!f||f.tellg()!=64)throw std::runtime_error("fast history requires post70-history-head.f16 (32 half coefficients)");
   uint16_t halves[32];f.seekg(0);if(!f.read(reinterpret_cast<char*>(halves),64))throw std::runtime_error("fast history row read");
   std::vector<float> row;for(auto h:halves)row.push_back(NativeHalfToFloat(h));return row;
  }
  void Create(ID3D12Device*d,UINT w,UINT h,UINT ph,UINT rw,UINT rh,UINT64 offset,ID3D12Resource*shared){
   if(!rw||!rh||offset%4||offset/4>UINT_MAX)throw std::runtime_error("fast history geometry");
-  history.Create(d,w,h,ph,shared);parameters.width=w;parameters.height=h;parameters.processingHeight=ph;
+  auto g=NativeCurrentNetworkGeometry();const bool match=g.valid_width==w&&g.valid_height==h;const UINT pw=match?g.processing_width:w;history.Create(d,w,h,ph,shared,nullptr,pw);parameters.reserved[2]=pw;if(match&&g.small_model){const float blend=.76708984375f;std::memcpy(&parameters.reserved[1],&blend,4);}
+  parameters.width=w;parameters.height=h;parameters.processingHeight=ph;
   parameters.viewWidth=w;parameters.viewHeight=h;parameters.renderWidth=rw;parameters.renderHeight=rh;
-  parameters.logitOffset=UINT(offset/4);enabled=true;
+  parameters.logitOffset=UINT(offset/4);enabled=true;std::fprintf(stderr,"history model=%s blend=%.11f processing_width=%u valid_width=%u\n",match&&g.small_model?"Small":"Original",match&&g.small_model?.76708984375:.73974609375,pw,w);
  }
  // No depth-direction guess: FFX context flags are not carried by this addon.
  // Without both declarations the opt-in uses explicit screen-coordinate history.

@@ -1,0 +1,72 @@
+[
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-first.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-0.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-1.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "6E107B4BA19DA20AE665CED2D158FC886C980162049BF3D24DF72F678F8226F6",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-2.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "6E107B4BA19DA20AE665CED2D158FC886C980162049BF3D24DF72F678F8226F6",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-3.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "E76DAE328A34B81324B4F23764F9AAAF32EDEB45E7AC2BA36D6BE7915313B6BC",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-4.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "E76DAE328A34B81324B4F23764F9AAAF32EDEB45E7AC2BA36D6BE7915313B6BC",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-5.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "504C193C64B57D3B64FE23B786A240728062E8DB3D8C82A62CF613BB22140A2F",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-6.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "504C193C64B57D3B64FE23B786A240728062E8DB3D8C82A62CF613BB22140A2F",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-7.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-8.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-9.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "78116104308EDD24BE99ABC62415528C6007FA852E0B2971A1A61022E5A4E504",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-10.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "4C1D0FFAD9F4AF79B62FE563950EB5B70EE67FCC4882E44456F1A45D140C689D",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out-frame-11.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "4C1D0FFAD9F4AF79B62FE563950EB5B70EE67FCC4882E44456F1A45D140C689D",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\switch-history-720-r2\\out.f16"
+    }
+]

@@ -1,0 +1,72 @@
+[
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-first.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-0.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-1.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-2.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-3.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-4.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-5.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-6.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-7.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-8.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-9.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-10.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out-frame-11.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1F9A02A8AC6CE0D44081415E95C17A1D4DEA0F20D51CC31B85AD140BDFD289C5",
+        "Path":  "D:\\DLSSNR-Lab\\small-model-20261018\\free-frame\\out.f16"
+    }
+]

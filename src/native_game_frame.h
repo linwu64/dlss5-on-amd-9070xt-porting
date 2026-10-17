@@ -164,6 +164,7 @@ class NativeGameFrame {
 public:
  struct TemporalConfig {UINT motion_width{},motion_height{},render_width{},render_height{};bool experimental_ffx{};float motion_scale_x{},motion_scale_y{};};
 private:
+ std::wstring recreate_directory;Microsoft::WRL::ComPtr<ID3D12Resource> recreate_temporal;std::optional<TemporalConfig> recreate_config;bool small_assets_ready{};NativeTemporalMode built_temporal=NativeTemporalMode::Off;
  Resources*resources{};bool ready{},failed{};std::mutex mutex;NativeTemporalFrameMetadata experimental_metadata{};
 public:
  void ExperimentalFrameMetadata(const NativeTemporalFrameMetadata&m){std::lock_guard<std::mutex>g(mutex);experimental_metadata=m;}
@@ -175,7 +176,18 @@ public:
  }
  void Create(ID3D12CommandQueue*queue,ID3D12Resource*source,
              const std::vector<float>&noise,const std::wstring&directory,ID3D12Resource*temporal_rgb=nullptr,const TemporalConfig*temporal_config=nullptr){
-  std::lock_guard<std::mutex>guard(mutex);
+  std::lock_guard<std::mutex>guard(mutex);recreate_directory=directory;recreate_temporal=temporal_rgb;if(temporal_config)recreate_config=*temporal_config;
+#ifdef DLSS5_USE_HIP
+  small_assets_ready=hip_reference::SmallAssetsAvailable(std::filesystem::path(directory).u8string()+"/small");
+#endif
+  CreateUnlocked(queue,source,noise,directory,temporal_rgb,temporal_config);
+ }
+private:
+ void CreateUnlocked(ID3D12CommandQueue*queue,ID3D12Resource*source,const std::vector<float>&noise,const std::wstring&directory,ID3D12Resource*temporal_rgb,const TemporalConfig*temporal_config){
+#ifdef DLSS5_USE_HIP
+  NativeSmallGeometryEnabled()=dlss5_mode::Requested()==0&&small_assets_ready&&hip_reference::FastPrefixFromEnvironment()&&!NativeOutputTemporalMode(NativeSelectedTemporalMode())&&!NativeTemporalExperimentRequested();
+#endif
+  built_temporal=NativeSelectedTemporalMode();
   if(resources||!queue||!source)throw std::runtime_error("frame initialization contract");
   {auto sd=source->GetDesc();NativeResolveNetworkGeometry(unsigned(sd.Width),sd.Height);}
   resources=new Resources;
@@ -237,7 +249,7 @@ public:
    NativeGameFrameStep("network",d);
 #ifdef DLSS5_USE_HIP
    resources->network.Create(resources->overlap?resources->compute_queue:resources->queue,resources->input.PostBase(),noise,directory,temporal_rgb,3,direct_input,resources->experimental_temporal,fast_history?NativeAddonFastHistory::Row(directory):std::vector<float>{},low_temporal,temporal_mode==NativeTemporalMode::Off&&!temporal_config&&!temporal_rgb&&!resources->experimental_temporal);
-   if(fast_history){const auto g=resources->geometry;const auto fit=resources->encode.Geometry();if(g.processing_width!=g.valid_width||fit.x||fit.y||fit.fit_width!=g.valid_width||fit.fit_height!=g.valid_height)throw std::runtime_error("fast history requires full network viewport");resources->fast_history.Create(d,g.valid_width,g.valid_height,g.processing_height,temporal_config?temporal_config->render_width:g.valid_width,temporal_config?temporal_config->render_height:g.valid_height,resources->network.PostAuxiliary().offset,resources->network.DirectHistory());}if(direct_input){resources->input.RedirectOutput(resources->network.DirectInput());NativeGameFrameStep("direct_input",d);}
+   if(fast_history){const auto g=resources->geometry;const auto fit=resources->encode.Geometry();if(fit.x||fit.y||fit.fit_width!=g.valid_width||fit.fit_height!=g.valid_height)throw std::runtime_error("fast history requires full network viewport");resources->fast_history.Create(d,g.valid_width,g.valid_height,g.processing_height,temporal_config?temporal_config->render_width:g.valid_width,temporal_config?temporal_config->render_height:g.valid_height,resources->network.PostAuxiliary().offset,resources->network.DirectHistory());}if(direct_input){resources->input.RedirectOutput(resources->network.DirectInput());NativeGameFrameStep("direct_input",d);}
 #else
    if(fast_history)throw std::runtime_error("fast history requires HIP backend");
    resources->network.Create(d,resources->input.Tiles(),resources->input.PostBase(),noise,directory,temporal_rgb,3);
@@ -263,6 +275,7 @@ public:
    NativeGameFrameStep("decode",d);resources->decode.Create(d,{resources->encode.Output(),resources->neural.Output(),resources->overlap?resources->original_copy:source},directory);NativeGameFrameStep("ready",d);ready=true;
   }catch(...){failed=true;throw;}
  }
+public:
  void RebindSourceAfterCompletion(ID3D12Resource*source){
   // CPU serialization does not imply GPU completion in deferred mode.
   // Immutable cached bindings need no wait; eviction requires GPU completion.
@@ -389,6 +402,23 @@ public:
                             D3D12_RESOURCE_STATES target_state,UINT seed,bool temporal_enabled=false,ID3D12Resource*motion_texture=nullptr,bool reset=false,bool deliver=true,ID3D12Resource*depth=nullptr,D3D12_RESOURCE_STATES depth_state=D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE){
   std::lock_guard<std::mutex>guard(mutex);
   if(!ready||failed||!target)throw std::runtime_error("frame unavailable");
+#ifdef DLSS5_USE_HIP
+  NativePollRequestedModelMode(true);
+  NativeSmallGeometryEnabled()=dlss5_mode::Requested()==0&&small_assets_ready&&hip_reference::FastPrefixFromEnvironment()&&!NativeOutputTemporalMode(NativeSelectedTemporalMode())&&!NativeTemporalExperimentRequested();
+  {auto d=target->GetDesc();auto g=NativeResolveNetworkGeometry(unsigned(d.Width),d.Height);
+   if(g.processing_width!=resources->geometry.processing_width||g.processing_height!=resources->geometry.processing_height||g.small_model!=resources->geometry.small_model||built_temporal!=NativeSelectedTemporalMode()){
+    resources->submit.Flush();if(resources->overlap)resources->compute.Flush();
+    auto*q=resources->queue;q->AddRef();target->AddRef();delete resources;resources=nullptr;ready=false;
+    auto cfg=(NativeSelectedTemporalMode()==NativeTemporalMode::Off&&NativeConfiguredTemporalMode()!=NativeTemporalMode::Off)?nullptr:(recreate_config?&*recreate_config:nullptr);
+    try{CreateUnlocked(q,target,{},recreate_directory,recreate_temporal.Get(),cfg);}catch(...){target->Release();q->Release();throw;}
+    target->Release();q->Release();reset=true;
+    NativeGameFrameStep("model/geometry rebuild completed");
+   }
+  }
+#endif
+#ifdef DLSS5_USE_HIP
+  resources->network.SyncModelMode();
+#endif
   if(target==resources->original&&source_state!=target_state)throw std::runtime_error("aliased frame texture states disagree");
   auto desc=target->GetDesc();
   if(desc.Dimension!=D3D12_RESOURCE_DIMENSION_TEXTURE2D||desc.Width!=resources->encode.Geometry().width||desc.Height!=resources->encode.Geometry().height||desc.DepthOrArraySize!=1||desc.MipLevels!=1||desc.SampleDesc.Count!=1||!NativeIsGameColor(desc.Format))throw std::runtime_error(std::string("frame target must match the initialized input geometry/format (")+NativeDxgiFormatName(desc.Format)+" "+std::to_string(unsigned(desc.Format))+")");

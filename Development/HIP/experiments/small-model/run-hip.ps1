@@ -1,4 +1,4 @@
-param([string]$Case='probe-exact',[string]$Fast='0',[int]$Frames=12,[string]$InputName='input1152.f32',[switch]$Switch,[switch]$ExpectFallback,[int]$Predict=0)
+param([string]$Case='probe-exact',[string]$Fast='0',[int]$Frames=12,[string]$InputName='input1152.f32',[switch]$Switch,[switch]$ExpectFallback,[int]$Predict=0,[string]$Size='',[string[]]$Modes=@('1','0.5'))
 $ErrorActionPreference='Stop';$ProgressPreference='SilentlyContinue'
 $r='D:\DLSSNR-Lab\small-model-20261018';$lock='D:\DLSSNR-Lab\gpu.lock';$held=$null;$child=$null;$savedManifest=$false
 function Idle {
@@ -11,9 +11,9 @@ try {
  Idle;$held=[IO.File]::Open($lock,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::Read)
  $b=[Text.Encoding]::UTF8.GetBytes("small-hip pid=$PID case=$Case UTC=$([DateTime]::UtcNow.ToString('o'))");$held.Write($b,0,$b.Length);$held.Flush()
  if($ExpectFallback){Move-Item "$r\assets\small\model-manifest.json" "$r\assets\small\model-manifest.saved";$savedManifest=$true}
- foreach($mode in '1','0.5'){
+ foreach($mode in $Modes){
   Idle;$out="$r\$Case\$mode";if(Test-Path $out){throw 'preserve existing case'};New-Item -ItemType Directory -Force $out|Out-Null
-  $env:DLSS5_HIP_SWIN_RUN='1';$env:DLSS5_HIP_VIT_STREAM='3';$env:DLSS5_MULTI_PASS=$mode;$env:DLSS5_FAST_NUMERIC=$Fast;$env:DLSS5_MULTI_PASS_PREDICT=[string]$Predict;$env:DLSS5_MULTI_PASS_SKIN_PROTECT='0';$env:DLSS5_VIT_ADAPTIVE='0';$env:DLSS5_HIP_FAST='1'
+  $env:SMALL_PROBE_SIZE=$Size;$env:DLSS5_HIP_SWIN_RUN='1';$env:DLSS5_HIP_VIT_STREAM='3';$env:DLSS5_MULTI_PASS=$mode;$env:DLSS5_FAST_NUMERIC=$Fast;$env:DLSS5_MULTI_PASS_PREDICT=[string]$Predict;$env:DLSS5_MULTI_PASS_SKIN_PROTECT='0';$env:DLSS5_VIT_ADAPTIVE='0';$env:DLSS5_HIP_FAST='1'
   $arguments=@("$r\assets",'D:\DLSSNR-Lab\five-final-20261017\HIP\gfx1201',"$r\$InputName","$out\output.f32",[string]$Frames)
   if($Switch -and $mode -eq '0.5'){$arguments+=@('switch')}
   $child=Start-Process "$r\network-probe.exe" -ArgumentList $arguments -WorkingDirectory $r -RedirectStandardOutput "$out\stdout.log" -RedirectStandardError "$out\stderr.log" -PassThru

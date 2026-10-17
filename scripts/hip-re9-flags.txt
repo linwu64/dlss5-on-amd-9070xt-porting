@@ -455,3 +455,8 @@ DLSS5_STRENGTH=auto
 DLSS5_TEMPORAL_MODE=0
 # Mode3 only: 0 original NN identity, 1 default enhancement, 2 stronger; range0..2; restart required.
 DLSS5_TEMPORAL_ENHANCE_STRENGTH=1
+
+# Runtime hotkeys use the same configuration layers as the addon.
+DLSS5_HOT_RELOAD=1
+DLSS5_MULTI_PASS_HOTKEY=F9
+DLSS5_VIT_REUSE_HOTKEY=1

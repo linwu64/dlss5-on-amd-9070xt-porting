@@ -687,3 +687,11 @@ HIP固定1080图31块/640 token，复用既有算子、改拓扑/shift/skip与�
 完整frame.exe NET0/edges_only1，每槽240帧丢前80：同批1x **9.156154ms → 0.5x 5.553510ms/frame**（mean−39.347%，1.649×），Small median5.535300ms/p99 5.820500ms；三轮均正收益。0.43历史1x9.121ms保留，不把跨批差额当旧路径性能回归。驻留上传权重297609000→154793464B，不称整进程显存峰值。
 
 宿主add-on/runtime/frame已编译，既有80个双架构HSACO未改，未装游戏、未换0.43包、未发新版；gfx1200无Small真机声明。900/720/free逐层几何、跨尺寸热切、Small原生history/AE及游戏体验仍待下一阶段；runtime仍启动读配置，F9/热重载目前仅add-on，统一运行时热键也未结题。所有GPU实验守game-check、实验盘≥100GB、原子gpu.lock与15秒看门狗；5090 D盘余63GB，实验改放C盘（约777GB空闲），锁位置不变。完整源码/Oracle/CSV/Gold/模式切换回执见 [small-model-20261018](results/small-model-20261018/README.md)，当前排队只看WorkingPlan§2。
+
+## 2026-10-18 Small第三阶段：900/720/free、AE与MODE1
+
+接通Small逐节点ceil-half/round4及输入X补边、输出stride和跨模式重建。900=1600×1024/448token，720=1344×768/288token。5090内部Post对账90047.4026dB、72047.7028dB；720裁判抓取UAV同步修正后无零块，API输出SHA未变。
+
+9070三轮4-slot ABBA：900 Small **4.376946ms/frame**（median4.36715/p994.6548），同批Original6.558681，−33.2648%，每轮正收益；1080阶段二5.553510ms保留。正式宿主回归1080 Gold旧0900/Small65D7均逐位保持。Small AE按8个ViT层算gain；MODE1用独立history-head与0x3A23，GPU解析例、720时序reset、F9全模式回环、AE/free完整帧通过。runtime支持配置热键和切模式重建，2x/3x暂挂history再恢复。93 Small权重和旧模型共存，80模块复用。
+
+详[完整回执](results/small-complete-20261018/README.md)。用户本轮明确授权双游戏部署并把《剑星》custom MULTI_PASS改0.5；发行准备0.44三包，完成后追加安装/发行验收。

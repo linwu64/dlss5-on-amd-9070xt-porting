@@ -2,6 +2,7 @@
 #include "native_lab_paths.h"
 #include <cmath>
 #include "native_temporal_mode.h"
+#include "native_model_mode.h"
 // Opt-in temporary experiment. These keys require restart; no default history change.
 inline bool NativeTemporalExperimentFlag(const wchar_t*name,const char*key){
  if(const wchar_t*v=_wgetenv(name))return !wcscmp(v,L"1");
@@ -9,12 +10,13 @@ inline bool NativeTemporalExperimentFlag(const wchar_t*name,const char*key){
 }
 inline bool NativeTemporalExperimentRequested(){return NativeTemporalExperimentFlag(L"DLSS5_TEMPORAL_HISTORY_EXPERIMENT","DLSS5_TEMPORAL_HISTORY_EXPERIMENT");}
 inline bool NativeTemporalExperimentUnjittered(){return NativeTemporalExperimentFlag(L"DLSS5_TEMPORAL_MV_UNJITTERED","DLSS5_TEMPORAL_MV_UNJITTERED");}
-inline NativeTemporalMode NativeSelectedTemporalMode(){
+inline NativeTemporalMode NativeConfiguredTemporalMode(){
  std::optional<std::string> value;
  if(const wchar_t*v=_wgetenv(L"DLSS5_TEMPORAL_MODE"))value=std::string(v,v+wcslen(v));
  else for(const auto&line:NativeConfigFileLines())if(line.rfind("DLSS5_TEMPORAL_MODE=",0)==0)value=line.substr(std::string("DLSS5_TEMPORAL_MODE=").size());
  return NativeParseTemporalMode(value,NativeTemporalExperimentFlag(L"DLSS5_FAST_HISTORY","DLSS5_FAST_HISTORY"));
 }
+inline NativeTemporalMode NativeSelectedTemporalMode(){return dlss5_mode::Passes(dlss5_mode::Requested())>1?NativeTemporalMode::Off:NativeConfiguredTemporalMode();}
 inline bool NativeFastHistoryRequested(){return NativeSelectedTemporalMode()==NativeTemporalMode::FastHistory;}
 inline bool NativeLowFrequencyRequested(){return NativeOutputTemporalMode(NativeSelectedTemporalMode());}
 inline float NativeTemporalEnhancementStrength(){

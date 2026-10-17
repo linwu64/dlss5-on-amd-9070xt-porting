@@ -1,0 +1,21 @@
+seed=0 pattern=0
+input format=RGBA16_FLOAT W=1280 H=720 invalid=0 min=0.0822753906 max=0.999511719 luma=0.390755621 roi_luma=0.39523845
+adapter=AMD Radeon RX 9070 XT
+frame=0 reset=1 wall_ms=894.205 invalid=0 luma=0.393136 roi=0.4012774 dark=0 roi_dark=0 changed_first=0 maxabs_first=0
+frame=1 reset=0 wall_ms=7.190 invalid=0 luma=0.393136 roi=0.4012774 dark=0 roi_dark=0 changed_first=0 maxabs_first=0
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0
+frame=2 reset=0 wall_ms=1968.876 invalid=0 luma=0.3947814 roi=0.4100262 dark=0 roi_dark=0 changed_first=2739500 maxabs_first=0.2563477
+frame=3 reset=0 wall_ms=14.191 invalid=0 luma=0.3947814 roi=0.4100262 dark=0 roi_dark=0 changed_first=2739500 maxabs_first=0.2563477
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0
+frame=4 reset=0 wall_ms=1862.183 invalid=0 luma=0.4034619 roi=0.425515 dark=0 roi_dark=0 changed_first=2753213 maxabs_first=0.4121094
+frame=5 reset=0 wall_ms=15.083 invalid=0 luma=0.4034619 roi=0.425515 dark=0 roi_dark=0 changed_first=2753213 maxabs_first=0.4121094
+frame=6 reset=0 wall_ms=14.908 invalid=0 luma=0.4148173 roi=0.4416899 dark=618 roi_dark=12 changed_first=2756702 maxabs_first=0.5830078
+frame=7 reset=0 wall_ms=18.459 invalid=0 luma=0.4148173 roi=0.4416899 dark=618 roi_dark=12 changed_first=2756702 maxabs_first=0.5830078
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0
+frame=8 reset=0 wall_ms=1685.356 invalid=0 luma=0.393136 roi=0.4012774 dark=0 roi_dark=0 changed_first=0 maxabs_first=0
+frame=9 reset=0 wall_ms=12.672 invalid=0 luma=0.393136 roi=0.4012774 dark=0 roi_dark=0 changed_first=0 maxabs_first=0
+frame=10 reset=0 wall_ms=12.923 invalid=0 luma=0.3953207 roi=0.4037058 dark=0 roi_dark=0 changed_first=2576469 maxabs_first=0.04150391
+frame=11 reset=0 wall_ms=13.075 invalid=0 luma=0.3974321 roi=0.4060554 dark=0 roi_dark=0 changed_first=2664559 maxabs_first=0.04248047
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0
+RESULT frames=12 temporal=1 mean_wall_ms=543.260 invalid_total=0 restored_capture_every_frame=1 HDR_preserved=1
+

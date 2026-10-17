@@ -403,3 +403,13 @@ Download: [Quark](https://pan.quark.cn/s/3b19c0403e3f) · [Gofile mirror](https:
 - **Packaging**: reuse40 modules per architecture with verified actual ELF targets; gfx1200 is compile-only verified.44 shader variants per package, staged RE9 smoke and per-file ZIP readback are required. Rejected gather folding, C32 pool consolidation, fused-Up FP8 and hipGraph are excluded. Specular-flicker cases remain unresolved.
 
 [October17 game installation receipt](Development/results/game-install-20261017/README.md) is separate. Existing0.42 ZIPs remain unchanged; mirror links supplied by the user.
+
+## 0.44 · 2026-10-18
+
+0.44 defaults to the 31-block Small model from 310.9.16 (0.5x), with 1080/900/720/free geometry, Small adaptive ViT reuse and MODE1 history. F9 cycles 0.5 -> 1 -> 2 -> 3; missing Small assets log a fallback to 1x.
+
+RX9070XT full-frame replay: 1080 tier 5.554 ms/frame (-39.35%); 900 tier 4.377 ms/frame (same-batch 1x 6.559, -33.26%). This is a different trained model and changes default output. Original 71-block 1x remains available. Small vs RTX5090 internal Post: 47.40/47.70 dB at 900/720; not NVIDIA bit-exact.
+
+Small and Original weights coexist; all 80 modules are reused. F8 toggles AE/EXACT. MODE1 suspends for 2x/3x and resumes for 0.5x/1x. Personal overrides are preserved; remove an older MULTI_PASS=1 override or change it to 0.5 for the new default.
+
+[Validation / 验收](Development/results/small-complete-20261018/README.md) · [Packages / 三包](Development/releases/0.44/README.md)

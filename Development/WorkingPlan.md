@@ -1,6 +1,6 @@
 # 当前工作计划（WorkingPlan）
 
-更新：2026-10-18（0.5x Small 的1080阶段已接通并完成Oracle/Gold/3轮ABBA，900/720仍待接入；正式包仍0.43；开发载荷源码 `10982cf4`；五项优化已结题，完整回执见 `results/five-final-20261017/`；本机双游戏已装 `10982cf4`；正式0.43本地三包已完成）。历史流水见 [DevHistory.md](DevHistory.md)，负账台账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-18（第三阶段：Small 1080/900/720/free、AE与MODE1已接通；900档3轮ABBA 4.377 ms/frame，−33.26%；0.44打包与双游戏部署验收中）。历史流水见 [DevHistory.md](DevHistory.md)。
 
 ---
 
@@ -37,9 +37,9 @@
 
 ---
 
-## 2. 新主线：0.5x Small（1080阶段已闭环；900/720/free待接入）
+## 2. 新主线：0.5x Small（全档几何 / AE / MODE1已闭环，0.44交付）
 
-Zero 2026-10-18 定名：310.9.16 的31块新网络叫 **0.5x**，`DLSS5_MULTI_PASS=0.5` 为新的源码/三模板默认；`1` / `2` / `3` 分别为旧71块单遍/叠层，第三遍预测选项保留。add-on F9按 **0.5 → 1 → 2 → 3 → 0.5** 切换（runtime目前仍创建时读配置，运行时热键待扩展）。缺少Small资产时带requested/effective日志回退1x。
+Zero 2026-10-18 定名：310.9.16 的31块新网络叫 **0.5x**，`DLSS5_MULTI_PASS=0.5` 为新的源码/三模板默认；`1` / `2` / `3` 分别为旧71块单遍/叠层，第三遍预测选项保留。add-on F9按 **0.5 → 1 → 2 → 3 → 0.5** 切换（addon和runtime均支持；2x/3x暂挂MODE1，回到0.5x/1x自动恢复）。缺少Small资产时带requested/effective日志回退1x。
 
 ### 已完成（本轮1080阶段）
 
@@ -131,3 +131,12 @@ Zero 2026-10-18 定名：310.9.16 的31块新网络叫 **0.5x**，`DLSS5_MULTI_P
 - **GPU 锁与护栏**：所有 GPU/远程 RTC 操作必须先做 `game-check`、进程检查、确认实验盘余量 `≥100 GB`、获取原子锁 `D:\DLSSNR-Lab\gpu.lock`，并挂 15 秒游戏看门狗；游戏运行期间严禁抢占 GPU、严禁替换 DLL/HSACO。
 - **数值与验收门**：Original结构/布局/ISA优化必须对 `0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A` 逐位一致（`0 bit-diff`）；Small必须与310.9.16 Preset2另立gold，不拿训练差异强求旧0900，性能只认单进程同批交错 3 轮 4-slot ABBA（`edges_only=1, NET0`）。
 - **版本与仓库卫生**：commit 不加 `Co-Authored-By`；共享分支禁止 `amend`；未经用户显式指令不改动已安装游戏文件或已发布 ZIP。
+
+## 6. 2026-10-18 第三阶段验收
+
+- Small：900档1600×1024 → C512 52×32 → ViT28×16；720档1344×768 → ViT24×12；free逐节点ceil-half/round4，跨模式/尺寸重建缓冲。
+- Oracle：900 **47.4026 dB**，720 **47.7028 dB**；720抓取补UAV屏障，API输出hash未变。对内部Post层比较，不称NV逐位一致。
+- 9070三轮4-slot ABBA：900 Original **6.558681** → Small **4.376946 ms/frame**（−33.2648%）；各960稳态样本，逐轮正收益。1080沿用前阶段 **5.553510 ms/frame**。
+- Small AE从8个ViT块11..18的权重计算gain；F8保留。MODE1使用Small独立history-head和0x3A23=0.76708984375；时序重置及F9模式回环通过。
+- 最终1080 Original Gold仍0900E489…，Small仍65D71486…；80模块逐SHA复用。详[第三阶段回执](results/small-complete-20261018/README.md)。
+- 下一步：正式0.44三包逐文件读回、双游戏备份部署与smoke，完成后补齐发行/安装回执。

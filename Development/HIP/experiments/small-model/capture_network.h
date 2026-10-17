@@ -12,7 +12,8 @@ using GetKernel=void*(*)(void*,const char*,uint32_t,uint32_t,uint32_t,uint64_t);
 using Launch=int64_t(*)(void*,void*,uint32_t,uint32_t,uint32_t,void*,uint64_t,uint8_t);
 static GetKernel get{};static Launch launch{};static std::map<void*,std::string> names;static std::mutex guard;
 template<class T>T at(const void*p,size_t o){T v{};SIZE_T n{};if(p)ReadProcessMemory(GetCurrentProcess(),static_cast<const char*>(p)+o,&v,sizeof(v),&n);return v;}
-static uintptr_t plugin_base{};static bool newer{};static uint64_t capture_va{};static void*cap_backend{},*cap_texture{},*cap_surface{};static constexpr uint32_t CW=1920,CH=1080;static constexpr uint64_t PLANE=uint64_t(CW)*CH*16;
+static ID3D12GraphicsCommandList* barrier_commands{};
+static uintptr_t plugin_base{};static bool newer{};static uint64_t capture_va{};static void*cap_backend{},*cap_texture{},*cap_surface{};static constexpr uint32_t CW=ORACLE_WIDTH,CH=ORACLE_HEIGHT;static constexpr uint64_t PLANE=uint64_t(CW)*CH*16;
 static void capture(void*self,void*restore_kernel,uint64_t object,bool surface,uint32_t sourcew,uint32_t sourceh){
  void*ctx=at<void*>(self,8);void*cmd=at<void*>(self,16);
  if(!capture_va)return;
@@ -45,7 +46,12 @@ static int64_t launch_hook(void*self,void*k,uint32_t gx,uint32_t gy,uint32_t gz,
  bool pre=name.find("pre_block")!=std::string::npos;bool post=name.find("post_block")!=std::string::npos;
  if(pre)capture(self,k,at<uint64_t>(blob,0),false,at<uint32_t>(blob,newer?0xdc:0xd4),at<uint32_t>(blob,newer?0xd8:0xd0));
  auto result=launch(self,k,gx,gy,gz,wrapper,bytes,flag);
- if(post)capture(self,k,at<uint64_t>(blob,0x10),true,0,0);
+ if(post){
+  D3D12_RESOURCE_BARRIER b{};b.Type=D3D12_RESOURCE_BARRIER_TYPE_UAV;
+  if(barrier_commands)barrier_commands->ResourceBarrier(1,&b);
+  capture(self,k,at<uint64_t>(blob,0x10),true,0,0);
+  if(barrier_commands)barrier_commands->ResourceBarrier(1,&b);
+ }
  return result;
 }
 }
@@ -58,3 +64,5 @@ static int OriginalObserveInstall(HMODULE plugin,const wchar_t*logpath,bool is_n
 }
 
 static void OriginalCaptureDestination(uint64_t va){original_observe::capture_va=va;}
+
+static void OriginalCaptureCommandList(ID3D12GraphicsCommandList*l){original_observe::barrier_commands=l;}

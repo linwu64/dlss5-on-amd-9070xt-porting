@@ -106,3 +106,11 @@ public:
   return next;}
  static NativeHotFlags&Instance(){static NativeHotFlags*h=new NativeHotFlags;return *h;}
 };
+
+// Called before choosing per-frame geometry so a model hot switch can rebuild its buffers.
+inline unsigned NativePollRequestedModelMode(bool allow=true){
+ auto&hot=NativeHotFlags::Instance();if(NativeHotFlags::Enabled()||NativeHotFlags::HotkeyCode()){
+  hot.PollMultiPassHotkey(dlss5_mode::Requested(),allow);auto v=hot.Get();
+  if(v.multi_pass>=0)dlss5_mode::Request(unsigned(v.multi_pass));
+ }return dlss5_mode::Requested();
+}

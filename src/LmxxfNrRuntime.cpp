@@ -1,3 +1,4 @@
+#include "native_hot_flags.h"
 #include "LmxxfNrApi.h"
 
 #define WIN32_LEAN_AND_MEAN
@@ -56,9 +57,10 @@ public:
                         hip_reference::D3D12Bridge& bridge) {
         const auto auxiliary=bridge.PostAuxiliary();
         if(!auxiliary.resource || !bridge.DirectHistory() || auxiliary.offset%4 ||
-           auxiliary.offset/4>UINT_MAX || g.processing_width!=g.valid_width)
+           auxiliary.offset/4>UINT_MAX)
             throw std::runtime_error("Runtime mode1 auxiliary/geometry contract");
-        history.Create(d,g.valid_width,g.valid_height,g.processing_height,bridge.DirectHistory());
+        history.Create(d,g.valid_width,g.valid_height,g.processing_height,bridge.DirectHistory(),nullptr,g.processing_width);
+        parameters.reserved[2]=g.processing_width;if(g.small_model){const float b=.76708984375f;std::memcpy(&parameters.reserved[1],&b,4);}
         parameters.width=g.valid_width;parameters.height=g.valid_height;
         parameters.processingHeight=g.processing_height;
         parameters.viewWidth=parameters.width;parameters.viewHeight=parameters.height;
@@ -411,6 +413,7 @@ void LoadFlagsFileOnce(const std::wstring &assets)
         {
             if (!NativeConfigDirHasAny(folder))
                 continue;
+            NativeLabRootOverride()=folder;
             unsigned applied = 0, kept = 0, layers = 0;
             for (const auto &e : NativeConfigLoadDir(folder, &layers))
             {
@@ -422,7 +425,7 @@ void LoadFlagsFileOnce(const std::wstring &assets)
                                      key == "DLSS5_NETWORK_1080_ROWS" || key == "DLSS5_STYLE" || key == "DLSS5_DIRECT_IO" ||
                                      key == "DLSS5_NETWORK_FREE_RES" || key == "DLSS5_FAST_NUMERIC" ||
                                      key == "DLSS5_MULTI_PASS" || key == "DLSS5_MULTI_PASS_SKIP_BLOCKS" || key == "DLSS5_MULTI_PASS_SKIN_PROTECT" || key == "DLSS5_MULTI_PASS_PREDICT" ||
-                                     key == "DLSS5_FRAME_STATS" || key == "DLSS5_STRENGTH" ||
+                                     key == "DLSS5_FRAME_STATS" || key == "DLSS5_STRENGTH" || key == "DLSS5_HOT_RELOAD" || key == "DLSS5_MULTI_PASS_HOTKEY" || key == "DLSS5_VIT_ADAPTIVE" || key == "DLSS5_VIT_REUSE_HOTKEY" ||
                                      key == "DLSS5_TEMPORAL_MODE" || key == "DLSS5_TEMPORAL_ENHANCE_STRENGTH" || key == "DLSS5_FAST_HISTORY" ||
                                      key == "DLSS5_TEMPORAL_HISTORY_EXPERIMENT";
                 if (!allowed)
@@ -449,7 +452,8 @@ hip_reference::Options RuntimeOptions(unsigned w, unsigned h, const std::wstring
                                       const std::wstring &weightsDir, std::string *note)
 {
     auto opt = LmxxfProductionOptions(w, h, Utf8(modulesDir), Utf8(weightsDir));
-    opt.integration.allow_small_model = NativeSelectedTemporalMode() == NativeTemporalMode::Off;
+    opt.small_geometry=NativeCurrentNetworkGeometry().small_model;
+    opt.integration.allow_small_model = !NativeOutputTemporalMode(NativeSelectedTemporalMode());
     // The bridge picks HIP\gfx1200 or HIP\gfx1201 by device when those folders exist; require the module in every
     // architecture folder present (conservative: off rather than a load failure), else in the folder itself.
     auto has = [&](const wchar_t *f) {
@@ -489,7 +493,7 @@ hip_reference::Options RuntimeOptions(unsigned w, unsigned h, const std::wstring
                       unsigned(requestedM32), unsigned(hip_reference::C512M32Compatible(opt)),
                       unsigned(requestedVit), unsigned(hip_reference::VitProjN64Compatible(opt)),
                       unsigned(opt.pdl), opt.skip_blocks.size());
-        *note = t + gates + " multi_pass=" + std::string(dlss5_mode::Name(dlss5_mode::Environment())) + " predict=" + std::to_string(unsigned(hip_reference::MultiPredictFromEnvironment())) + " skin=" + std::to_string(unsigned(hip_reference::MultiSkinFromEnvironment()));
+        *note = t + gates + " multi_pass=" + std::string(dlss5_mode::Name(dlss5_mode::Requested())) + " predict=" + std::to_string(unsigned(hip_reference::MultiPredictFromEnvironment())) + " skin=" + std::to_string(unsigned(hip_reference::MultiSkinFromEnvironment()));
     }
     return opt;
 }
@@ -503,6 +507,7 @@ struct Session
     std::wstring modulesDir;
     std::wstring weightsDir;
     std::wstring shaderDir;
+    bool smallAssetsChecked=false,smallAssetsReady=false;unsigned modelMode=UINT_MAX;
     uint32_t hsacoCount = 0;
     bool modulesValidated = false;
     bool hipPrepared = false;
@@ -1107,6 +1112,9 @@ int32_t PrepareFrame(void *context, const LmxxfNrFrameInfo *info, LmxxfNrJob *jo
         // Prefer CRT _putenv so MinGW std::getenv sees "auto" (SetEnvironmentVariable alone may not).
         if (!std::getenv("DLSS5_NETWORK_HEIGHT"))
             _putenv("DLSS5_NETWORK_HEIGHT=auto");
+        NativePollRequestedModelMode(true);
+        if(!session->smallAssetsChecked){session->smallAssetsReady=hip_reference::SmallAssetsAvailable(Utf8(session->weightsDir)+"/small");session->smallAssetsChecked=true;}
+        NativeSmallGeometryEnabled()=dlss5_mode::Requested()==0&&session->smallAssetsReady&&!NativeOutputTemporalMode(NativeSelectedTemporalMode())&&!NativeTemporalExperimentRequested();
         NativeResolveNetworkGeometry(info->color_width, info->color_height);
         // Set when PrepareFrame deliberately leaves a notice in the error slot for the host to
         // log. Declared here, before the first HIP lazy-Create block, because BOTH of those
@@ -1114,11 +1122,12 @@ int32_t PrepareFrame(void *context, const LmxxfNrFrameInfo *info, LmxxfNrJob *jo
         // reason is clobbered and a per-frame rebuild becomes invisible in the log.
         bool keepLastError = false;
         const auto temporalMode = NativeSelectedTemporalMode();
-        if (session->temporalModeSelected && session->selectedTemporalMode!=temporalMode)
-            return Fail(LMXXF_NR_INVALID_ARGUMENT, "Runtime: temporal mode changed; restart required");
-        if (!session->temporalModeSelected) {
-            session->selectedTemporalMode=temporalMode; session->temporalModeSelected=true;
-        }
+        const unsigned modelMode=dlss5_mode::Requested();
+        const bool modelChanged=session->modelMode!=modelMode;
+        if(session->temporalModeSelected&&session->selectedTemporalMode!=temporalMode&&!modelChanged)
+            return Fail(LMXXF_NR_INVALID_ARGUMENT,"Runtime: temporal mode changed; restart required");
+        if(modelChanged&&session->bridge){if(FAILED(session->DrainGpu()))return Fail(LMXXF_NR_UNAVAILABLE,"Runtime: model-switch drain failed");session->TeardownCodecChain();session->job={};}
+        session->modelMode=modelMode;session->selectedTemporalMode=temporalMode;session->temporalModeSelected=true;
         if (temporalMode != NativeTemporalMode::Off &&
             (NativeTemporalExperimentRequested() || hip_reference::MultiPassFromEnvironment()!=1))
             return Fail(LMXXF_NR_INVALID_ARGUMENT, "Runtime: TEMPORAL_MODE=1/2/3 requires MP1 and reference history off");
@@ -1443,7 +1452,7 @@ int32_t PrepareFrame(void *context, const LmxxfNrFrameInfo *info, LmxxfNrJob *jo
             session->fastHistory=new RuntimeMode1History(session->device,NativeCurrentNetworkGeometry(),*session->bridge);
             CreateDirectoryW(NativeLabPath(L"logs").c_str(),nullptr);
             if(FILE*f=_wfopen(NativeLabPath(L"logs\\temporal-mode.txt").c_str(),L"ab")){
-                fprintf(f,"runtime temporal_mode=1 active domain=encoded motion=static depth=none frame_id=unverified gate=model-row77\n");fclose(f);
+                fprintf(f,"runtime temporal_mode=1 active domain=encoded motion=static depth=none frame_id=unverified gate=model-specific-row\n");fclose(f);
             }
         }
         if (NativeOutputTemporalMode(temporalMode) && !session->lowFrequency) {

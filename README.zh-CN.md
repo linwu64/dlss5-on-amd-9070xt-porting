@@ -16,7 +16,7 @@ DLSS 5（DLSSNR）跑在 AMD RX 9070 XT / RDNA 4 上。
 | **Magpie**（便携） | 任何游戏，不需要游戏支持超分 | Magpie 抓游戏窗口；网络接在效果组的 FSR3_SR 一项里，之后 FSR4 放大到全屏（可选 XeSS 帧生成） |
 | **OptiScaler-REFramework**（只给 RE9） | 《生化危机 9》，常规路线切不开它的命令提交 | TheAutomatic 改的 OptiScaler 宿主 + 我们的 `LmxxfNrRuntime.dll`（成对使用，别和常规包混装） |
 
-**当前版本：0.43（2026-10-17）。** W16 权重访问、跨核 1B E4M3 字节直连与上下采样优化；默认 MODE0/1x/SKIN0（单帧耗时：1080 档 **9.12 ms**、900 档 **6.54 ms**）。下载：[夸克](https://pan.quark.cn/s/3b19c0403e3f) · [Gofile 镜像](https://gofile.io/d/hz5cDOPF) · [更新日志](CHANGELOG.zh-CN.md) · [包与校验回执](Development/releases/0.43/README.md)。0.42：[夸克](https://pan.quark.cn/s/316704620069) · [Gofile 镜像](https://gofile.io/d/HNE20Ocp)。
+**当前版本：0.44（2026-10-18）。** 默认0.5x Small：1080档 **5.554 ms/frame**，900档 **4.377 ms/frame**；1080/900/720/free、AE、MODE1及F9切换。[三包与验收](Development/releases/0.44/README.md)。本地三包准备中，公开镜像尚未更新。旧0.43：[夸克](https://pan.quark.cn/s/3b19c0403e3f) · [Gofile](https://gofile.io/d/hz5cDOPF)。
 
 **新用户先看：[0.42更新与使用说明](0.42-更新与使用说明.md)**（选包、升级、custom配置、热键与MODE0／1／2／3）。
 

@@ -405,3 +405,13 @@ V末屏障、prefix NT、NoHi、C512少New及host QPC插桩均未进入产品。
 - **发行校验**：复用通过实际ELF目标核验的gfx1200/gfx1201各40模块，gfx1200仅编译核验；逐包44项shader编译、包内RE9 smoke和ZIP逐文件哈希回读。未采纳的gather折叠、C32 pool合波、融合Up FP8、hipGraph不进入产品。高光闪烁仍有未闭环场景。
 
 本机安装记录另见[10-17双游戏回执](Development/results/game-install-20261017/README.md)。旧0.42 ZIP保留，网盘链接由用户提供。
+
+## 0.44 · 2026-10-18
+
+0.44 默认改为 310.9.16 的31块 Small（0.5x）；1080/900/720/free几何、Small自适应ViT复用与MODE1时序已接通。F9按0.5→1→2→3循环，缺少Small权重会记录日志并回退1x。
+
+RX9070XT整帧回放：1080档5.554 ms/frame（−39.35%）；900档4.377 ms/frame（同批1x 6.559，−33.26%）。这是不同训练模型，默认输出会改变；旧71块1x仍保留。Small对5090内部Post的900/720对账为47.40/47.70dB，非NV逐位一致。
+
+Small权重与旧权重共存；80个双架构模块复用。F8切AE/EXACT；2x/3x暂挂MODE1，回到0.5x/1x恢复。升级保留个人custom/native覆盖；要启用新默认请删除旧MULTI_PASS=1覆盖或改为0.5。
+
+[Validation / 验收](Development/results/small-complete-20261018/README.md) · [Packages / 三包](Development/releases/0.44/README.md)

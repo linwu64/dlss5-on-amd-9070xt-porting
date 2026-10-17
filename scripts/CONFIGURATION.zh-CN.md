@@ -118,3 +118,7 @@ Only the new increment is soft-compressed using its maximum RGB magnitude: above
 模式3是在单次NN输出后增强低、高频残差，不增加第二遍网络。强度键 `DLSS5_TEMPORAL_ENHANCE_STRENGTH` 默认1、范围0～2：小幅修正时低频约1.5倍、高频约2倍；0严格返回本帧原NN输出。冷帧也立即增强，reset只清历史。新增增量有软压缩和统一RGB余量保护；这仍可能放大假纹理、锐化或拖影，需要观感验收，不能宣称“一次等于两次NN”。未知MV只用屏幕坐标历史，不冒充运动补偿。当前模式1玩家配置和发行包不因实现模式3自动改变。
 
 Algorithm reference: [SAOG0721/Magpie](https://github.com/SAOG0721/Magpie/tree/2fceab5e241bc9f8ded001ab3266762f1f8bc51e), residual gain and local compression concepts. The AMD shader and host logic are independently written; no GPL source expressions are copied.
+
+## 0.44 Small / 0.5x
+
+`DLSS5_MULTI_PASS=0.5` 默认/default：310.9.16 的31块 Small；1/2/3保留Original 71块网络。Addon和runtime均支持F9循环0.5→1→2→3→0.5及配置层热重载。Small权重缺失时日志回退1x。Small支持1080/900/720/free；F8切换AE/EXACT。MODE1使用Small独立history head及0x3A23，2x/3x临时关闭时序，回到单遍后恢复；MODE2/3继续原有模型兼容边界。Small与Original是不同训练模型，输出不同。Runtime新增HOT_RELOAD/MULTI_PASS_HOTKEY/VIT_ADAPTIVE/VIT_REUSE_HOTKEY配置白名单；其余非热配置仍需重启。
