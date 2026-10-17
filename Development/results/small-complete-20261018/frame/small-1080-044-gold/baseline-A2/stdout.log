@@ -7,4 +7,3 @@ frame=0 reset=1 wall_ms=1233.389 invalid=0 luma=0.01307101 roi=0.01974189 dark=8
 frame=2 reset=1 wall_ms=10.177 invalid=0 luma=0.01307101 roi=0.01974189 dark=806206 roi_dark=258238 changed_first=0 maxabs_first=0
 SP_STATS runs=6 fallback=0 rollover=0 jobs=5358 disabled=0 errors=0
 RESULT frames=3 temporal=0 mean_wall_ms=418.392 invalid_total=0 restored_capture_every_frame=1 HDR_preserved=1
-

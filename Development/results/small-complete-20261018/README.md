@@ -36,3 +36,5 @@ Small median4.367150，p99 4.6548；Original median6.5474，p99 6.7955。1080沿
 实验代码在 `Development/HIP/experiments/small-model/`，CSV/flags/stdout/stderr与SHA在本目录。外部大载荷在 `/home/lmxxf/work/dlss5-small-build` 与 `D:\DLSSNR-Lab\small-model-20261018`，不入Git。
 
 Runtime DLL完整路径追加验收：同一会话MODE1/free依次1280×720→1600×900→1001×777→1280×720，每尺寸4帧，全部完成；首末相同尺寸输出hash一致。另1024×832非固定档Small raw路径3帧finite/完成。r3误读D盘实验根的旧flags导致回退1x，不能用作Small验收；r4使用独立正式模板布局，日志四次effective=0.5x且skip=0。初两次runtime实验仅因lab未放codec shader未能启动，补齐正式布局后通过，未修改网络数值。
+
+Runtime热配置完整回环实测：配置文件0.5→1→2→3→0.5，日志依次effective0.5/1/2/3/0.5、实际网络遍数1/1/2/2/1（3x启用预测），进程exit0。MODE1随多遍暂挂并恢复；实验只使用独立lab配置。

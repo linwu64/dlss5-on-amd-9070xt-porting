@@ -1,0 +1,7 @@
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0
+round=0 size=1280x720 mean_ms=961.632 hash=0b8c6f199b39a36e vram_mib=995 status=lmxxf modules_ok=40 hip=1 net=1280x720 color_job=1280x720 weights=1 recreates=0 net_gpu_ms=off wave_owned=1/1 c512_m32=1/1 vit_proj_n64=1/1 pdl=1/0 skip=0 swin_run=1/0 vit_stream=3/3 multi_pass=0.5 predict=1 skin=0 | flags: D:\DLSSNR-Lab\small-model-20261018\runtime-stage\DLSS5-AMD layers=D-- applied=27 env_kept=6
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0
+rt_bench: ok

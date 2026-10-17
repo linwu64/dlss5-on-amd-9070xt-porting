@@ -27,4 +27,3 @@ CONTRACT_COMPACT key=block38-contract.f32@vit-frag@compact-contract bytes=419840
 PROJECTION_COMPACT key=block38-projection.f32@vit-proj-frag@compact-projection bytes=1052672 legacy_held=0
 submit_pulse resources create=1 create_ok=1 record=3 record_ok=3 destroy=1 destroy_ok=1 drain=1 site_visits=3 accepted=3 reject_mask=0 lifetime_pdl_calls=0
 C512_W16_SUMMARY mode=2 w16_blocks=48 stock_blocks=0 ffn_mode=1 ffn_w16_blocks=48 ffn_stock_blocks=0 c32_mode=1 c32_w16_calls=30 c32_stock_calls=0 vit_mode=7 vit_w16_calls=24 vit_stock_calls=0 vit_contract_w16=1 vit_proj_w16=1 vit_inter_byte=15 vit_inter_byte_calls=81 weights_count=184 weights_bytes=297609000
-
