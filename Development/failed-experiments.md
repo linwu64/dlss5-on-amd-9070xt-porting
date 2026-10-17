@@ -2680,3 +2680,7 @@ SKIN_PROTECT只多遍：原输入肤色启发式mask混y1/yN，不是原图/语�
 ### 2026-10-17｜候选4：C32 pool四列合波与W16｜Gold通过，性能负
 
 Down4每wave算64全列、W16权重、共享字节输入，保Hrtz(0+sum)并合并输出量化。Gold0900逐位同，候选1+3作共同基线，3轮ABBA mean +6.697/+4.832/+5.109µs，pooled+5.546µs；p99各−7.051/−9.417/−12.486µs、pooled−4.099µs。均值负，STOP不收，保旧四wave/行主序核。详results/pool32-wave-w16-20261017。
+
+### 2026-10-17｜候选5：融合Up56/62/66 W16 FP8｜部分性能负，完整Gold失败
+
+56/62实际命中新核、Gold0900同；3轮ABBA mean −0.670/−2.868/+14.202µs，pooled+3.555µs，p99三轮全退/pooled+20.987µs，STOP。独立派发记录发现66仍c32_wave1_up_b8：配方CW_UP_LOW_BYTES0缺原字节low导出，原计划输入假设不符。补通65字节输出→已编译66新export后，full Gold首帧2,768,436/3,732,480 half值异于0900，finite/repeat通过但数值门失败，未跑后续ABBA。原因未隔离，不泛归FP8/WMMA本身。完整停止，不入生产；代码/原失败结果/派发日志见results/upbody-f8-w16-20261017及HIP/experiments/five-bitexact-20261017/candidates.patch。

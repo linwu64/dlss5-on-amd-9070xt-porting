@@ -1,0 +1,418 @@
+diff --git a/Development/HIP/hip_reference_network.h b/Development/HIP/hip_reference_network.h
+index 0aac6360..ab112d3c 100644
+--- a/Development/HIP/hip_reference_network.h
++++ b/Development/HIP/hip_reference_network.h
+@@ -589,6 +589,7 @@ class Network {friend class D3D12Bridge;
+   }
+   if(module=="mh_fast"){
+    if(kernel.rfind("mh_pool_project_fused_c",0)==0){threads=32;groups=count/1024;}
++   else if(kernel=="mh_pool_project_c32_b8_out8_w16"){groups=(count/64+15)/16;threads=32;}
+    else if(kernel.rfind("mh_pool_project_group_c",0)==0){U c=U(std::stoul(kernel.substr(23)));threads=c;groups=(count/(2*c)+15)/16;}
+    else if(kernel=="mh_qkv_normalize_wave_c512"){threads=128;groups=count/4096;}
+    else if(kernel=="mh_qkv_normalize_frag_c512"){threads=32;groups=count/1024;}
+@@ -607,7 +608,7 @@ class Network {friend class D3D12Bridge;
+   }
+   if(module=="c32_fused"||module=="c32_fused_ffn"||module=="mh_fused"){groups=count;threads=128;}
+   if(module=="c64_wave2"){groups=count;threads=kernel.rfind("c64_",0)==0?64:kernel.rfind("c128_",0)==0?128:256;}
+-  if(module=="c32_wave1"&&(kernel=="c32_wave1_up"||kernel=="c32_wave1_up_b8"||kernel=="c32_wave1_up_lb"||kernel=="c32_wave1_up_b8_lb"||kernel=="c32_wave1_finish_dcrop_b8"||kernel=="c32_wave1_finish_dcrop_b8d"||kernel=="c32_wave1_prefix_b8d"||kernel=="c32_wave1_mapped_b8"||kernel=="c32_wave1_finish_b8"||(kernel=="c32_wave1_post_logit"||kernel=="c32_wave1_post_b8_logit"||kernel=="c32_wave1_post_b8"||kernel=="c32_wave1_post_b8_rgba"||kernel=="c32_wave1_post_b8_features"))){groups=count;threads=32;}
++  if(module=="c32_wave1"&&(kernel=="c32_wave1_up_b8_lb_f8w16"||kernel=="c32_wave1_up"||kernel=="c32_wave1_up_b8"||kernel=="c32_wave1_up_lb"||kernel=="c32_wave1_up_b8_lb"||kernel=="c32_wave1_finish_dcrop_b8"||kernel=="c32_wave1_finish_dcrop_b8d"||kernel=="c32_wave1_prefix_b8d"||kernel=="c32_wave1_mapped_b8"||kernel=="c32_wave1_finish_b8"||(kernel=="c32_wave1_post_logit"||kernel=="c32_wave1_post_b8_logit"||kernel=="c32_wave1_post_b8"||kernel=="c32_wave1_post_b8_rgba"||kernel=="c32_wave1_post_b8_features"))){groups=count;threads=32;}
+   if(module=="c512_m32_mh"||module=="c512_m32_deep"){groups=count/1024;threads=32;}
+   if(kernel=="split_ffn_one_w2"||kernel=="split_ffn_one_w2f8"||kernel=="split_ffn_one_w2f8_w16"||kernel=="split_ffn_one_w2f8_w16_bin"||kernel=="split_ffn_one_w2f8_w16_tvec"||kernel=="split_ffn_one_w2f8_w16_tvec_bin")threads=64;
+   if(kernel=="split_ffn_proj_fused"){threads=256;groups=count/8192;}
+@@ -615,6 +616,7 @@ class Network {friend class D3D12Bridge;
+   if(module=="c512_m32_mh"&&(kernel=="c512_qkv_attention_compact"||kernel=="c512_qkv_attention_compact_w16")){groups=count;threads=64;}
+   if(vit_proj_n64_active&&module=="deep_fast"&&kernel=="vit_project_frag"&&count%1024==0){module="vit_wide_deep";kernel="vit_project_frag_n64";groups=unsigned(((count/1024+15)/16)*16);threads=32;}
+   if(vit_proj_n64_active&&module=="deep_fast"&&kernel=="vit_project_frag_bout"&&count%1024==0){module="vit_stream";kernel="vit_stream_project_n64_bb_bout";groups=unsigned(((count/1024+15)/16)*16);threads=32;}
++  if(kernel=="vit_stream_project_n64_bb_bout_gout_compactw_w16"){groups=unsigned(((count/1024+15)/16)*16);threads=32;}
+   if(kernel=="vit_stream_contract_frag_hout"||kernel=="vit_stream_contract_frag_bout"||kernel=="vit_stream_contract_frag_bstream_bout"){module="vit_stream";groups=count/1024;threads=32;}
+   if(kernel=="vit_stream_qkv_frag_bin_w5f8"){module="vit_stream";groups=96*((count/3072/16+4)/5);threads=160;}
+   if(kernel=="vit_stream_qkv_frag_hin"){module="vit_stream";groups=count/512;threads=32;if(count%3072==0&&HIP_VIT_QKV_F8W&&HasFn(module,"vit_stream_qkv_frag_hin_w5f8")){kernel="vit_stream_qkv_frag_hin_w5f8";groups=96*((count/3072/16+4)/5);threads=160;}else if(count%3072==0&&HasFn(module,"vit_stream_qkv_frag_hin_w5")){kernel="vit_stream_qkv_frag_hin_w5";groups=96*((count/3072/16+4)/5);threads=160;}} /* w5: five waves share one head's weights through LDS; same per-wave math */
+@@ -626,7 +628,7 @@ class Network {friend class D3D12Bridge;
+   if(module=="c32_fast_ffn"){bool expand=kernel=="c32_ffn_expand_fast";U tokens=count/(expand?128:32);threads=expand?512:256;groups=((tokens+63)/64)*(expand?2:1);}
+   if(module=="c32_fast_attention")threads=32;
+   if(opt.wave&&(kernel=="c32_attn_normalize"||kernel=="c32_attn_probabilities"||kernel=="mh_normalize"||kernel=="mh_probabilities")){module="wave";kernel+="_wave";count=Count(size_t(count)*32);}
+-  const U dec_nt=(kernel.rfind("decoder_project2x_h16w_n",0)==0||kernel.rfind("decoder_project2x_h16w_byteout_n",0)==0)?U(std::stoul(kernel.substr(kernel.rfind('_')+2))):1u;const bool dec_w=kernel=="decoder_project2x_h16w_w"||kernel=="decoder_project2x_h16w_byteout_w"||kernel=="decoder_project2x_h16w_w_bin"||kernel=="decoder_project2x_h16w_byteout_w_bin"||kernel=="decoder_project2x_h16w_w_f8"||kernel=="decoder_project2x_h16w_byteout_w_f8"; /* HIP_DEC_NT exports: NT column tiles per wave */
++  const U dec_nt=(kernel.rfind("decoder_project2x_h16w_n",0)==0||kernel.rfind("decoder_project2x_h16w_byteout_n",0)==0)?U(std::stoul(kernel.substr(kernel.rfind('_')+2))):1u;const bool dec_w=kernel=="decoder_project2x_h16w_w_bin_f8w16"||kernel=="decoder_project2x_h16w_byteout_w_bin_f8w16"||kernel=="decoder_project2x_h16w_w"||kernel=="decoder_project2x_h16w_byteout_w"||kernel=="decoder_project2x_h16w_w_bin"||kernel=="decoder_project2x_h16w_byteout_w_bin"||kernel=="decoder_project2x_h16w_w_f8"||kernel=="decoder_project2x_h16w_byteout_w_f8"; /* HIP_DEC_NT exports: NT column tiles per wave */
+   if((kernel=="decoder_project2x"||kernel=="decoder_project2x_h16w"||kernel=="decoder_project2x_h16w_byteout"||kernel=="decoder_project2x_h16w_f8"||kernel=="decoder_project2x_h16w_byteout_f8"||dec_nt>1||dec_w)&&(module=="deep_fast"||module=="deep_wmma")){
+    if constexpr(sizeof...(A)==10){auto tuple=std::make_tuple(args...);auto integer=[](auto x)->U{if constexpr(std::is_integral_v<decltype(x)>)return U(x);else return 0;};
+     const U columns=integer(std::get<9>(tuple));if(!columns||columns%(16*dec_nt)||count%columns)throw std::runtime_error("decoder tile ABI");
+@@ -683,7 +685,8 @@ class Network {friend class D3D12Bridge;
+  C32Result C32UpBody(Tensor low,Tensor skip,U w,U h,bool low_bytes=false){
+   U shift=Shift(66),sx=(shift&1)?4:0,sy=(shift&2)?4:0,ww=w+2*sx,hh=h+2*sy,windows=ww*hh/64;
+   auto raw=New(size_t(ww)*hh*16);
+-  Run("c32_wave1",c32_skip_byte?(low_bytes?"c32_wave1_up_b8_lb":"c32_wave1_up_b8"):(low_bytes?"c32_wave1_up_lb":"c32_wave1_up"),windows,P(low),PackedDecoderHalf("block66-weights.f32",size_t(64)*32),P(skip),PackedC32Weight("block66-ffn.f32",false),PackedC32Weight("block66-attention.f32",true),P(raw),windows,w,h,sx,sy);
++  const bool up_f8=low_bytes&&c32_skip_byte&&C32W16Mode()==1&&UpBodyF8W16Mode()&&HasFn("c32_wave1","c32_wave1_up_b8_lb_f8w16");
++  Run("c32_wave1",up_f8?"c32_wave1_up_b8_lb_f8w16":c32_skip_byte?(low_bytes?"c32_wave1_up_b8_lb":"c32_wave1_up_b8"):(low_bytes?"c32_wave1_up_lb":"c32_wave1_up"),windows,P(low),up_f8?PackedDecoderF8W16("block66-weights.f32",64,32):PackedDecoderHalf("block66-weights.f32",size_t(64)*32),P(skip),PackedC32Weight("block66-ffn.f32",false),PackedC32Weight("block66-attention.f32",true),P(raw),windows,w,h,sx,sy);
+   return {Tensor{},Tensor{},raw,ww,hh,sx,sy};
+  }
+  C32Result C32Chain(Tensor input,const C32Result*prev,U w,U h,U shift,const std::string&fw,const std::string&aw,bool finish,bool down){
+@@ -811,11 +814,13 @@ class Network {friend class D3D12Bridge;
+    else Run("mh_fast",name.c_str(),size_t(n)*c,P(packed),fw,qw,P(ffn),P(producer_norm),n,w,h,ww,sx,sy);}else if(mapped)Run("mh_fast",name.c_str(),size_t(n)*c,P(packed),fw,P(ffn),n,w,h,ww,sx,sy);else Run("mh_fast",name.c_str(),size_t(n)*c,P(packed),fw,P(opt.fused_ffn_project?ffn:middle),n);}else{Run(opt.fast_mh?"mh_fast":"mh",opt.fp8_ffn?"mh_ffn_expand_fast_fp8":opt.fast_mh?"mh_ffn_expand_fast":"mh_ffn_expand",size_t(n)*c*4,P(packed),fw,P(hidden),n,c);Run(opt.fast_mh?"mh_fast":"mh",opt.fp8_middle?"mh_ffn_contract_fast_fp8_out":opt.fp8_ffn?"mh_ffn_contract_fast_fp8":opt.fast_mh?"mh_ffn_contract_fast":"mh_ffn_contract",size_t(n)*c,P(hidden),fw,P(middle),n,c);hidden.reset();}if(!opt.fused_ffn_project)Run(opt.fast_mh?"mh_fast":"mh",opt.fp8_middle?"mh_ffn_project_fast_fp8":opt.fast_mh?"mh_ffn_project_fast":"mh_ffn_project",size_t(n)*c,P(middle),P(packed),fw,P(ffn),n,c);}packed.reset();bool crop=opt.mh_project_crop&&!identity;auto attended=(crop||producer_norm||fused_c512_av)?AttentionFast(ffn,ww,hh,c,Block(block,"attention"),raw,block==48||block==55||block==61||block==65,crop?w:0,crop?h:0,sx,sy,producer_norm,byte_feature,byte_out,fused_c512_av):Attention(ffn,ww,hh,c,Block(block,"attention"),raw,block==48||block==55||block==61||block==65);auto out=(identity||crop)?attended:New(size_t(w)*h*c);if(!identity&&!crop)Run("mh","mh_shift_crop",size_t(w)*h*c,P(attended),P(out),w,h,ww,sx,sy,c);if(pdl_mode){pdl_keep.push_back(input);pdl_keep.push_back(ffn);pdl_keep.push_back(producer_norm);pdl_keep.push_back(out);while(pdl_keep.size()>32)pdl_keep.pop_front();}Stage("block"+std::to_string(block),out);return out;}
+  // Downsample projection weights for mh_pool_project_production_h16w: c==32 -> E4M3 bytes of the clamped RNE cast (pack()),
+  // c>=64 -> RNE half; the [2c][c] matrix is the first 2c*c floats of the file, the rest is left as is.
+- void* PackedDsWeightCast(const std::string&name,U c){auto key=name+"@ds-cast";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()<size_t(2)*c*c)throw std::runtime_error("downsample weight shape");size_t n=size_t(2)*c*c;if(c==32){auto*b=reinterpret_cast<uint8_t*>(v.data());std::vector<uint8_t>packed(n);for(size_t i=0;i<n;i++){float x=v[i];if(x>448.f)x=448.f;if(x<-448.f)x=-448.f;packed[i]=ExactWeightFp8(HostF(x));}std::memcpy(b,packed.data(),n);dead.push_back({n,4*n});}else HalfR(v,0,n);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
++ void* PackedDsWeightCast(const std::string&name,U c,bool w16=false){auto key=name+"@ds-cast";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()<size_t(2)*c*c)throw std::runtime_error("downsample weight shape");size_t n=size_t(2)*c*c;if(c==32){auto*b=reinterpret_cast<uint8_t*>(v.data());std::vector<uint8_t>packed(n);for(size_t i=0;i<n;i++){float x=v[i];if(x>448.f)x=448.f;if(x<-448.f)x=-448.f;packed[i]=ExactWeightFp8(HostF(x));}std::memcpy(b,packed.data(),n);if(w16)FragmentPackedMatrixW16(v,0,64,32);dead.push_back({n,4*n});}else HalfR(v,0,n);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
+  // Downsample projection weights [2c][c] as 16x16 f16 B fragment tiles (mh_pool_project_group_c*): tile (nt*(c/16)+kt), lane (g,rc) holds k=g*8..+8 of column nt*16+rc.
++ static bool DsF8W16Mode(){const char*v=std::getenv("NR_DS_F8_W16");return v&&std::atoi(v)!=0;}
++ void* PackedDsWeightF8W16(const std::string&name,U c){auto key=name+"@ds-frag";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);size_t matrix=size_t(2)*c*c;if(v.size()<matrix)throw std::runtime_error("down W16 shape");Fp8(v,{{0,matrix}});FragmentPackedMatrixW16(v,0,2*c,c);v.resize(size_t(c)*c);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
+  void* PackedDsWeightFrag(const std::string&name,U c){auto key=name+"@ds-frag";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()<size_t(2)*c*c)throw std::runtime_error("downsample weight shape");size_t N=size_t(2)*c,K=c;std::vector<uint16_t>t(N*K);for(size_t nt=0;nt<N/16;nt++)for(size_t kt=0;kt<K/16;kt++)for(unsigned g=0;g<2;g++)for(unsigned rc=0;rc<16;rc++)for(unsigned e=0;e<8;e++)t[(nt*(K/16)+kt)*256+(g*16+rc)*8+e]=ExactWeightHalf(v[(nt*16+rc)*K+kt*16+g*8+e]);v.resize(size_t(c)*c);std::memcpy(v.data(),t.data(),t.size()*2);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
+  void* PackedDsWeight(const std::string&name,U c){auto key=name+"@ds-f16";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()<size_t(2)*c*c)throw std::runtime_error("downsample weight shape");v.resize(size_t(2)*c*c);PackHalfMatrix(v,size_t(2)*c*c);v.resize(size_t(c)*c);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
+- Tensor Down(Tensor raw,U w,U h,U c,const std::string&file,bool head=false,bool half_in=false,bool byte_out=false){if(half_in&&!(opt.pool_project_group&&(c==64||c==128)))throw std::runtime_error("half pool contract");if(byte_out&&!(opt.pool_project_group&&(c==64||c==128||c==256||(head&&c==512))))throw std::runtime_error("byte pool contract");U ow=w/2,oh=h/2,vw=0,vh=0;if(head){U rw=w/2,rh=h/2;if(free_geometry){ow=(rw+3)/4*4;oh=(rh+3)/4*4;}else if(w==60&&(h==36||h==34)){ow=32;oh=20;}else{ow=rw;oh=(rw*rh)%16?rh+1:rh;}if(ow*oh!=rw*rh){vw=rw;vh=rh;}}if(opt.pool_project_group&&(c==64||c==128||c==256||(head&&c==512))){auto out=(HIP_C512_PAD16&&c==256)?NewPad16(size_t(ow)*oh,512,byte_out):New(size_t(ow)*oh*c*2/(byte_out?4:1));Run("mh_fast",("mh_pool_project_group_c"+std::to_string(c)+(head&&c==512&&gather_fold?"_gout":"")+(half_in?"_hin":"")+(byte_out?"_out8":"")).c_str(),size_t(ow)*oh*c*2,P(raw),PackedDsWeightFrag(file,c),P(out),ow,oh,w,vw,vh);if(c==256&&!head&&!pdl_anyorder)pulse_ordered_down_c256=true;return out;}
++ Tensor Down(Tensor raw,U w,U h,U c,const std::string&file,bool head=false,bool half_in=false,bool byte_out=false){if(half_in&&!(opt.pool_project_group&&(c==64||c==128)))throw std::runtime_error("half pool contract");if(byte_out&&!(opt.pool_project_group&&(c==64||c==128||c==256||(head&&c==512))))throw std::runtime_error("byte pool contract");U ow=w/2,oh=h/2,vw=0,vh=0;if(head){U rw=w/2,rh=h/2;if(free_geometry){ow=(rw+3)/4*4;oh=(rh+3)/4*4;}else if(w==60&&(h==36||h==34)){ow=32;oh=20;}else{ow=rw;oh=(rw*rh)%16?rh+1:rh;}if(ow*oh!=rw*rh){vw=rw;vh=rh;}}if(opt.pool_project_group&&(c==64||c==128||c==256||(head&&c==512))){auto out=(HIP_C512_PAD16&&c==256)?NewPad16(size_t(ow)*oh,512,byte_out):New(size_t(ow)*oh*c*2/(byte_out?4:1));std::string fn="mh_pool_project_group_c"+std::to_string(c)+(head&&c==512&&(gather_fold||vit_write_gather)?"_gout":"")+(half_in?"_hin":"")+(byte_out?"_out8":"");const bool f8w16=DsF8W16Mode()&&HasFn("mh_fast",fn+"_f8w16");if(f8w16)fn+="_f8w16";Run("mh_fast",fn.c_str(),size_t(ow)*oh*c*2,P(raw),f8w16?PackedDsWeightF8W16(file,c):PackedDsWeightFrag(file,c),P(out),ow,oh,w,vw,vh);if(c==256&&!head&&!pdl_anyorder)pulse_ordered_down_c256=true;return out;}
+   if(opt.pool_project_fused&&(c==64||c==128||c==256)){if((ow*oh)%16)throw std::runtime_error("fused pool project token count");auto out=New(size_t(ow)*oh*c*2);Run("mh_fast",("mh_pool_project_fused_c"+std::to_string(c)).c_str(),size_t(ow)*oh*c*2,P(raw),PackedDsWeight(file,c),P(out),ow,oh,w,vw,vh);return out;}auto pooled=New(size_t(ow)*oh*c),out=New(size_t(ow)*oh*c*2);Run("mh","mh_pool",size_t(ow)*oh*c,P(raw),P(pooled),ow,oh,w,vw,vh,c);if(opt.pool_project_h16w&&opt.fast_mh)Run("mh_fast","mh_pool_project_production_h16w",size_t(ow)*oh*c*2,P(pooled),PackedDsWeightCast(file,c),P(out),ow,oh,vw,vh,c);else Run(opt.fast_mh?"mh_fast":"mh",opt.fast_mh?"mh_pool_project_production":"mh_pool_project",size_t(ow)*oh*c*2,P(pooled),Weight(file),P(out),ow,oh,vw,vh,c);return out;}
+  Tensor adaptive_anchor_in,adaptive_anchor_out,adaptive_gain,adaptive_stats,adaptive_state;
+  /* DLSS5_VIT_ADAPTIVE_IDLE_MS (2026-10-01, c128-c64-inchain AE ledger): the adaptive state resets after this much wall-clock idle between
+@@ -870,6 +875,8 @@ class Network {friend class D3D12Bridge;
+  Tensor Gather(Tensor input,U n,bool inverse,bool byte_mode=false){auto it=gather_maps[inverse].find(n);if(it==gather_maps[inverse].end()){std::vector<U>map(size_t(n)*1024);for(U t=0;t<n;t++)for(U c=0;c<1024;c++){U raster=(t&~15u)|((t&1u)<<3)|((t&14u)>>1),ch=(c&~31u)|((c&1u)<<1)|((c&2u)>>1)|((c&4u)<<2)|((c&24u)>>1),to=t*1024+c,from=raster*1024+ch;if(inverse)map[from]=to;else map[to]=from;}it=gather_maps[inverse].emplace(n,Upload(map.data(),map.size()*4,true)).first;}auto out=New(size_t(n)*(byte_mode?256:1024));if(byte_mode)Run("deep","vit_gather_b8",size_t(n)*256,P(input),P(it->second),P(out),U(n*1024));else Run("deep","vit_gather",size_t(n)*1024,P(input),P(it->second),P(out),n*1024);input.reset();return out;}
+  Tensor vit_in8; // byte stream: block input bytes produced by the previous block's vit_project_bytein_bout
+  bool vit_entry_exit_byte=false;
++ bool vit_write_gather=false;
++ static bool WriteGatherMode(){const char*v=std::getenv("NR_VIT_WRITE_GATHER");return v&&std::atoi(v)!=0;}
+  Tensor Vit(Tensor input,U n,U block){if(block==31&&!vit_entry_exit_byte)vit_in8.reset();if(opt.skip_blocks.count(block)){vit_in8.reset();Stage("block"+std::to_string(block),input);return input;}const bool inter_byte=((VitInterByteMode()&1)!=0||vit_entry_exit_byte)&&!opt.vit_byte_stream&&vit_contract_byte_edge&&vit_proj_n64_active&&opt.vit_proj_frag&&opt.vit_contract_frag&&opt.vit_contract_blocked&&opt.vit_pack_input&&!opt.vit_input_tiled&&!opt.vit_ffn_fused&&!opt.vit_split_k&&compact_contract_bstream_fn&&compact_projection_bout_fn&&!adaptive_active&&!observer&&opt.dump_dir.empty();Tensor expanded_input=input,in8_skip;if(opt.vit_byte_stream&&vit_in8)expanded_input=vit_in8;else if(inter_byte&&vit_in8){expanded_input=vit_in8;in8_skip=vit_in8;vit_in8.reset();}else if(opt.vit_pack_input){vit_in8.reset();expanded_input=New(size_t(n)*256);Run("deep",opt.vit_input_tiled?"vit_pack_input_tiled":"vit_pack_input",size_t(n)*256,P(input),P(expanded_input),U(n*1024));}
+   if(opt.vit_byte_stream){Tensor in8=expanded_input;vit_in8.reset();if(n%16||(n>640&&!free_geometry))throw std::runtime_error("ViT byte stream token count");
+    auto hidden=New(size_t(n)*1024),contract8=New(size_t(n)*(opt.vit_half_stream?512:256));
+@@ -879,8 +886,11 @@ class Network {friend class D3D12Bridge;
+    auto av=New(size_t(n)*256);std::string fused=n<=256?"vit_attention_fused_256":n<=400?"vit_attention_fused_400":"vit_attention_fused_640";fused+="_bytein_bout";if(HIP_VIT_ATTN_KSPLIT_HOST&&n>256&&HasFn("deep_fast",fused+"_ks2"))fused+="_ks2"; /* fast tier HIP_VIT_ATTN_KSPLIT (lossy, module opt-in) */Run("deep",fused.c_str(),size_t(n)*512,P(norm),P(av),n);norm.reset();
+    auto out=New(size_t(n)*1024);Tensor out8;if(block<38)out8=New(size_t(n)*256);
+    Run("deep",opt.vit_half_stream?"vit_project_bytein_bout_hskip":"vit_project_bytein_bout",size_t(n)*1024,P(av),PackedDeepWeight(Block(block,"projection"),1048576),P(contract8),P(out),P(out8),n);
+-    vit_in8=out8;Stage("block"+std::to_string(block),out);return out;}std::string expand_name="vit_expand_blocked_fp8";if(opt.vit_weight_mask&1)expand_name+="_tiled";if(opt.vit_pack_input)expand_name+="_bytein";if(opt.vit_expand_m4)expand_name+="_m4";if(opt.vit_expand_frag)expand_name=opt.vit_expand_m4?"vit_expand_blocked_fp8_frag_bytein_m4":opt.vit_expand_m2?"vit_expand_blocked_fp8_frag_bytein_m2":"vit_expand_blocked_fp8_frag_bytein";if(opt.vit_input_tiled)expand_name="vit_expand_blocked_fp8_frag_tiledin";const bool expand_w16=expand_name=="vit_expand_blocked_fp8_frag_bytein"&&(VitW16Mode()&1)&&!opt.sparse_weights&&opt.vit_expand_frag&&opt.vit_pack_input&&opt.vit_blocked&&opt.fp8_deep&&(opt.vit_weight_mask&1)&&!opt.vit_ffn_fused&&!opt.vit_expand_m2&&!opt.vit_expand_m4&&!opt.vit_input_tiled&&HasFn("deep_fast","vit_expand_blocked_fp8_frag_bytein_w16");if(expand_w16){expand_name="vit_expand_blocked_fp8_frag_bytein_w16";++vit_w16_calls;}else ++vit_stock_calls;auto hidden=opt.vit_ffn_fused?Tensor{}:New(size_t(n)*(opt.fp8_deep?1024:4096)),contract=New(size_t(n)*(vit_contract_byte_edge?256:(vit_stream_active&2)?512:1024));if(opt.vit_ffn_fused){if(n%16)throw std::runtime_error("fused ViT FFN token count");Run("deep","vit_ffn_fused",size_t(n)*1024,P(expanded_input),PackedVitWeight(Block(block,"expand"),4096,1024,true,true),PackedVitWeight(Block(block,"contract"),1024,4096,false),P(input),P(contract),n);expanded_input.reset();}else{Run("deep",opt.vit_blocked?expand_name.c_str():opt.fp8_deep?"vit_expand_fp8":"vit_expand",size_t(n)*4096,P(expanded_input),PackedVitWeight(Block(block,"expand"),4096,1024,opt.vit_weight_mask&1,opt.vit_expand_frag,expand_w16),P(hidden),n,U(1024),U(4096));expanded_input.reset();if(opt.vit_split_k){auto parts=New(size_t(n)*4096);auto cw=PackedVitWeight(Block(block,"contract"),1024,4096,opt.vit_weight_mask&2);Run("deep",opt.vit_contract_blocked?(opt.vit_weight_mask&2?"vit_contract_parts_blocked_fp8_tiled":"vit_contract_parts_blocked_fp8"):"vit_contract_parts_fp8",size_t(n)*4096,P(hidden),cw,P(parts),n);Run("deep","vit_contract_combine",size_t(n)*1024,P(parts),cw,P(input),P(contract),n);}else{if(opt.vit_contract_frag&&opt.vit_contract_blocked)Run("deep",vit_contract_byte_edge?(in8_skip?"vit_stream_contract_frag_bstream_bout":"vit_stream_contract_frag_bout"):(vit_stream_active&2)?"vit_stream_contract_frag_hout":"vit_contract_blocked_fp8_frag",size_t(n)*1024,P(hidden),(vit_contract_byte_edge?CompactContractWeight(Block(block,"contract"),1024,4096,true,true):PackedVitWeight(Block(block,"contract"),1024,4096,true,true)),in8_skip?P(in8_skip):P(input),P(contract),n,U(4096),U(1024));else Run("deep",opt.vit_contract_blocked?(opt.vit_weight_mask&2?"vit_contract_blocked_fp8_tiled":"vit_contract_blocked_fp8"):opt.fp8_deep?"vit_project_fp8":"vit_project",size_t(n)*1024,P(hidden),PackedVitWeight(Block(block,"contract"),1024,4096,opt.vit_weight_mask&2),P(input),P(contract),n,U(4096),U(1024));}hidden.reset();in8_skip.reset();input.reset();}auto qkv=opt.vit_qkv_fused?Tensor{}:New(size_t(n)*3072),norm=New(opt.vit_qkv_fp8?size_t(n)*768:size_t(n)*3072);auto qw=(opt.vit_qkv_fused&&opt.packed_weights)?(opt.vit_qkv_frag&&opt.vit_qkv_fp8?((vit_stream_active&2)&&HIP_VIT_QKV_F8W&&HasFn("vit_stream","vit_stream_qkv_frag_hin_w5f8")?PackedVitQkvWeightFrag8(Block(block,"qkv")):PackedVitQkvWeightFrag(Block(block,"qkv"))):PackedVitQkvWeight(Block(block,"qkv"))):Weight(Block(block,"qkv"));if(opt.vit_qkv_fused)Run("deep",opt.vit_qkv_fp8?(opt.vit_qkv_frag?(vit_contract_byte_edge?"vit_stream_qkv_frag_bin_w5f8":(vit_stream_active&2)?"vit_stream_qkv_frag_hin":"vit_qkv_project_normalize_fused_f16compact_fp8_frag"):"vit_qkv_project_normalize_fused_f16compact_fp8"):opt.packed_weights?"vit_qkv_project_normalize_fused_f16compact":"vit_qkv_project_normalize_fused",size_t(n)*3072,P(contract),qw,P(norm),n);else{Run("deep",opt.vit_qkv_blocked?"vit_qkv_project_blocked":"vit_qkv_project",size_t(n)*3072,P(contract),qw,P(qkv),n);Run("deep","vit_qkv_normalize",size_t(n)*96,P(qkv),qw,P(norm),n);}qkv.reset();auto av=New(size_t(n)*((vit_stream_active&1)?256:1024));if(opt.vit_attn_fused){if(n%16||(n>640&&!free_geometry))throw std::runtime_error("fused ViT attention token count");std::string fused=n<=256?"vit_attention_fused_256":n<=400?"vit_attention_fused_400":"vit_attention_fused_640";if(opt.vit_qkv_fp8)fused+="_bytein";if(vit_stream_active&1)fused+="_bout";if(HIP_VIT_ATTN_KSPLIT_HOST&&n>256&&fused.size()>12&&fused.compare(fused.size()-12,12,"_bytein_bout")==0&&HasFn("deep_fast",fused+"_ks2"))fused+="_ks2"; /* fast tier HIP_VIT_ATTN_KSPLIT */Run("deep",fused.c_str(),size_t(n)*512,P(norm),P(av),n);}else{auto ex=New(size_t(n)*32*n),inv=New(size_t(n)*32);Run("deep",opt.fast_vit?"vit_attention_scores_fast":"vit_attention_scores",size_t(n)*32*n,P(norm),P(ex),n);Run("deep",opt.fast_vit?"vit_attention_inverse_fast":"vit_attention_inverse",size_t(n)*32,P(ex),P(inv),n);Run("deep",opt.fast_vit?"vit_attention_av_fast":"vit_attention_av",size_t(n)*1024,P(norm),P(ex),P(inv),P(av),n);ex.reset();inv.reset();}norm.reset();const bool bout=inter_byte&&((block<38&&!opt.skip_blocks.count(block+1))||(block==38&&vit_entry_exit_byte));auto out=New(size_t(n)*(bout?256:1024));if(opt.vit_proj_frag)Run("deep",bout?"vit_project_frag_bout":"vit_project_frag",size_t(n)*1024,P(av),((vit_contract_byte_edge&&vit_proj_n64_active)?CompactProjectionWeight(Block(block,"projection")):PackedVitProjectionFrag(Block(block,"projection"))),P(contract),P(out),n,U(1024),U(1024));else Run("deep","vit_project",size_t(n)*1024,P(av),PackedDeepWeight(Block(block,"projection"),1048576),P(contract),P(out),n,U(1024),U(1024));if(bout){if(block<38)vit_in8=out;++vit_inter_byte_calls;}Stage("block"+std::to_string(block),out);return out;}
++    vit_in8=out8;Stage("block"+std::to_string(block),out);return out;}std::string expand_name="vit_expand_blocked_fp8";if(opt.vit_weight_mask&1)expand_name+="_tiled";if(opt.vit_pack_input)expand_name+="_bytein";if(opt.vit_expand_m4)expand_name+="_m4";if(opt.vit_expand_frag)expand_name=opt.vit_expand_m4?"vit_expand_blocked_fp8_frag_bytein_m4":opt.vit_expand_m2?"vit_expand_blocked_fp8_frag_bytein_m2":"vit_expand_blocked_fp8_frag_bytein";if(opt.vit_input_tiled)expand_name="vit_expand_blocked_fp8_frag_tiledin";const bool expand_w16=expand_name=="vit_expand_blocked_fp8_frag_bytein"&&(VitW16Mode()&1)&&!opt.sparse_weights&&opt.vit_expand_frag&&opt.vit_pack_input&&opt.vit_blocked&&opt.fp8_deep&&(opt.vit_weight_mask&1)&&!opt.vit_ffn_fused&&!opt.vit_expand_m2&&!opt.vit_expand_m4&&!opt.vit_input_tiled&&HasFn("deep_fast","vit_expand_blocked_fp8_frag_bytein_w16");if(expand_w16){expand_name="vit_expand_blocked_fp8_frag_bytein_w16";++vit_w16_calls;}else ++vit_stock_calls;auto hidden=opt.vit_ffn_fused?Tensor{}:New(size_t(n)*(opt.fp8_deep?1024:4096)),contract=New(size_t(n)*(vit_contract_byte_edge?256:(vit_stream_active&2)?512:1024));if(opt.vit_ffn_fused){if(n%16)throw std::runtime_error("fused ViT FFN token count");Run("deep","vit_ffn_fused",size_t(n)*1024,P(expanded_input),PackedVitWeight(Block(block,"expand"),4096,1024,true,true),PackedVitWeight(Block(block,"contract"),1024,4096,false),P(input),P(contract),n);expanded_input.reset();}else{Run("deep",opt.vit_blocked?expand_name.c_str():opt.fp8_deep?"vit_expand_fp8":"vit_expand",size_t(n)*4096,P(expanded_input),PackedVitWeight(Block(block,"expand"),4096,1024,opt.vit_weight_mask&1,opt.vit_expand_frag,expand_w16),P(hidden),n,U(1024),U(4096));expanded_input.reset();if(opt.vit_split_k){auto parts=New(size_t(n)*4096);auto cw=PackedVitWeight(Block(block,"contract"),1024,4096,opt.vit_weight_mask&2);Run("deep",opt.vit_contract_blocked?(opt.vit_weight_mask&2?"vit_contract_parts_blocked_fp8_tiled":"vit_contract_parts_blocked_fp8"):"vit_contract_parts_fp8",size_t(n)*4096,P(hidden),cw,P(parts),n);Run("deep","vit_contract_combine",size_t(n)*1024,P(parts),cw,P(input),P(contract),n);}else{if(opt.vit_contract_frag&&opt.vit_contract_blocked)Run("deep",vit_contract_byte_edge?(in8_skip?"vit_stream_contract_frag_bstream_bout":"vit_stream_contract_frag_bout"):(vit_stream_active&2)?"vit_stream_contract_frag_hout":"vit_contract_blocked_fp8_frag",size_t(n)*1024,P(hidden),(vit_contract_byte_edge?CompactContractWeight(Block(block,"contract"),1024,4096,true,true):PackedVitWeight(Block(block,"contract"),1024,4096,true,true)),in8_skip?P(in8_skip):P(input),P(contract),n,U(4096),U(1024));else Run("deep",opt.vit_contract_blocked?(opt.vit_weight_mask&2?"vit_contract_blocked_fp8_tiled":"vit_contract_blocked_fp8"):opt.fp8_deep?"vit_project_fp8":"vit_project",size_t(n)*1024,P(hidden),PackedVitWeight(Block(block,"contract"),1024,4096,opt.vit_weight_mask&2),P(input),P(contract),n,U(4096),U(1024));}hidden.reset();in8_skip.reset();input.reset();}auto qkv=opt.vit_qkv_fused?Tensor{}:New(size_t(n)*3072),norm=New(opt.vit_qkv_fp8?size_t(n)*768:size_t(n)*3072);auto qw=(opt.vit_qkv_fused&&opt.packed_weights)?(opt.vit_qkv_frag&&opt.vit_qkv_fp8?((vit_stream_active&2)&&HIP_VIT_QKV_F8W&&HasFn("vit_stream","vit_stream_qkv_frag_hin_w5f8")?PackedVitQkvWeightFrag8(Block(block,"qkv")):PackedVitQkvWeightFrag(Block(block,"qkv"))):PackedVitQkvWeight(Block(block,"qkv"))):Weight(Block(block,"qkv"));if(opt.vit_qkv_fused)Run("deep",opt.vit_qkv_fp8?(opt.vit_qkv_frag?(vit_contract_byte_edge?"vit_stream_qkv_frag_bin_w5f8":(vit_stream_active&2)?"vit_stream_qkv_frag_hin":"vit_qkv_project_normalize_fused_f16compact_fp8_frag"):"vit_qkv_project_normalize_fused_f16compact_fp8"):opt.packed_weights?"vit_qkv_project_normalize_fused_f16compact":"vit_qkv_project_normalize_fused",size_t(n)*3072,P(contract),qw,P(norm),n);else{Run("deep",opt.vit_qkv_blocked?"vit_qkv_project_blocked":"vit_qkv_project",size_t(n)*3072,P(contract),qw,P(qkv),n);Run("deep","vit_qkv_normalize",size_t(n)*96,P(qkv),qw,P(norm),n);}qkv.reset();auto av=New(size_t(n)*((vit_stream_active&1)?256:1024));if(opt.vit_attn_fused){if(n%16||(n>640&&!free_geometry))throw std::runtime_error("fused ViT attention token count");std::string fused=n<=256?"vit_attention_fused_256":n<=400?"vit_attention_fused_400":"vit_attention_fused_640";if(opt.vit_qkv_fp8)fused+="_bytein";if(vit_stream_active&1)fused+="_bout";if(HIP_VIT_ATTN_KSPLIT_HOST&&n>256&&fused.size()>12&&fused.compare(fused.size()-12,12,"_bytein_bout")==0&&HasFn("deep_fast",fused+"_ks2"))fused+="_ks2"; /* fast tier HIP_VIT_ATTN_KSPLIT */Run("deep",fused.c_str(),size_t(n)*512,P(norm),P(av),n);}else{auto ex=New(size_t(n)*32*n),inv=New(size_t(n)*32);Run("deep",opt.fast_vit?"vit_attention_scores_fast":"vit_attention_scores",size_t(n)*32*n,P(norm),P(ex),n);Run("deep",opt.fast_vit?"vit_attention_inverse_fast":"vit_attention_inverse",size_t(n)*32,P(ex),P(inv),n);Run("deep",opt.fast_vit?"vit_attention_av_fast":"vit_attention_av",size_t(n)*1024,P(norm),P(ex),P(inv),P(av),n);ex.reset();inv.reset();}norm.reset();const bool bout=inter_byte&&((block<38&&!opt.skip_blocks.count(block+1))||(block==38&&vit_entry_exit_byte));auto out=New(size_t(n)*(bout?256:1024));if(opt.vit_proj_frag)Run(bout&&block==38&&vit_write_gather?"vit_stream":"deep",bout&&block==38&&vit_write_gather?"vit_stream_project_n64_bb_bout_gout_compactw_w16":bout?"vit_project_frag_bout":"vit_project_frag",size_t(n)*1024,P(av),((vit_contract_byte_edge&&vit_proj_n64_active)?CompactProjectionWeight(Block(block,"projection")):PackedVitProjectionFrag(Block(block,"projection"))),P(contract),P(out),n,U(1024),U(1024));else Run("deep","vit_project",size_t(n)*1024,P(av),PackedDeepWeight(Block(block,"projection"),1048576),P(contract),P(out),n,U(1024),U(1024));if(bout){if(block<38)vit_in8=out;++vit_inter_byte_calls;}Stage("block"+std::to_string(block),out);return out;}
+  void* PackedDecoderFp8(const std::string&name,size_t matrix){auto key=name+"@decoder-fp8";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()<matrix)throw std::runtime_error("decoder weight shape");Fp8(v,{{0,matrix}});it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);} /* 2026-10-01 HIP_DEC_F8W: exact E4M3 matrix for decoder_project2x_h16w*_f8 (results/c512-qkv-pipeline-20261001 §11) */
++ static bool UpBodyF8W16Mode(){const char*v=std::getenv("NR_UPBODY_F8_W16");return v&&std::atoi(v)!=0;}
++ static int DecoderF8W16Mode(){static const int m=[]{const char*v=std::getenv("NR_DEC_F8_W16");if(!v||!*v)v=std::getenv("DLSS5_HIP_DEC_F8_W16");return v&&*v?std::atoi(v):0;}();return m;}
++ void* PackedDecoderF8W16(const std::string&name,U ic,U oc){auto key=name+"@decoder-f16r";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);size_t matrix=size_t(ic)*oc;if(v.size()<matrix+oc)throw std::runtime_error("decoder W16 weight shape");Fp8(v,{{0,matrix}});FragmentPackedMatrixW16(v,0,oc,ic);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
+  void* PackedDecoderHalf(const std::string&name,size_t matrix){auto key=name+"@decoder-f16r";auto it=weights.find(key);if(it==weights.end()){auto v=ReadWeights(opt.assets+"/"+name);if(v.size()<matrix)throw std::runtime_error("decoder weight shape");HalfR(v,0,matrix);it=weights.emplace(key,UploadWeight(v,key)).first;}return P(it->second);}
+  Tensor UpBody(Tensor low,Tensor skip,U w,U h,U c,U block,bool low_bytes=false,bool skip_f16=false,Tensor skip_b8={}){
+   U shift=Shift(block),sx=(shift&1)?4:0,sy=(shift&2)?4:0,ww=(w+sx+7)&~7u,hh=(h+sy+7)&~7u;
+@@ -891,7 +901,8 @@ class Network {friend class D3D12Bridge;
+ #if HIP_SWIN_PERSISTENT_DIAGNOSTICS
+   {static bool shown[2]{};if(!shown[c==128]){shown[c==128]=true;std::printf("W2_UP %s\n",name.c_str());}}
+ #endif
+-  Run("c64_wave2",name.c_str(),size_t(ww)*hh/64,P(low),w16?PackedFusedMhWeightFragW16(Block(block,"ffn"),c):PackedFusedMhWeightFrag(Block(block,"ffn"),c),WaveOwnedAttentionWeight(Block(block,"attention"),c),P(out),w,h,ww,hh,sx,sy,U(4),PackedDecoderHalf(Block(block,"weights"),size_t(2*c)*c),sb?P(skip_b8):P(skip));
++  const bool up_f8=low_bytes&&UpBodyF8W16Mode()&&HasFn("c64_wave2",name+"_f8w16");if(up_f8)name+="_f8w16";
++  Run("c64_wave2",name.c_str(),size_t(ww)*hh/64,P(low),w16?PackedFusedMhWeightFragW16(Block(block,"ffn"),c):PackedFusedMhWeightFrag(Block(block,"ffn"),c),WaveOwnedAttentionWeight(Block(block,"attention"),c),P(out),w,h,ww,hh,sx,sy,U(4),up_f8?PackedDecoderF8W16(Block(block,"weights"),2*c,c):PackedDecoderHalf(Block(block,"weights"),size_t(2*c)*c),sb?P(skip_b8):P(skip));
+   Stage("block"+std::to_string(block),out);return out;
+  }
+  bool gather_fold=false;
+@@ -900,11 +911,12 @@ class Network {friend class D3D12Bridge;
+   bool ok=HasFn("mh_fast","mh_pool_project_group_c512_gout")&&HasFn("deep_fast","decoder_project2x_h16w_gin");
+   if(const char*d=std::getenv("DLSS5_HIP_GATHER_FOLD_LOG"))if(*d){static bool once=false;if(!once){once=true;fprintf(stderr,"GATHER_FOLD %d\n",ok?1:0);}}
+   return ok;}
+- Tensor Up(Tensor input,Tensor skip,U iw,U ih,U ow,U oh,U ic,U oc,const std::string&file,bool byte_out=false,bool byte_in=false){if(byte_out&&(!(opt.decoder_h16w&&opt.fast_deep)||oc==32))throw std::runtime_error("decoder byte output requires quantized fast path");if(byte_in&&!(opt.decoder_h16w&&opt.fast_deep&&ic==1024&&oc==512))throw std::runtime_error("decoder byte input requires quantized C512 fast path");auto out=(HIP_C512_PAD16&&oc==512)?NewPad16(size_t(ow)*oh,512,byte_out):New(size_t(ow)*oh*oc/(byte_out?4:1));if(opt.decoder_h16w&&opt.fast_deep){std::string dn=byte_out?"decoder_project2x_h16w_byteout":(gather_fold&&ic==1024&&oc==512)?"decoder_project2x_h16w_gin":"decoder_project2x_h16w";
++ Tensor Up(Tensor input,Tensor skip,U iw,U ih,U ow,U oh,U ic,U oc,const std::string&file,bool byte_out=false,bool byte_in=false){if(byte_out&&(!(opt.decoder_h16w&&opt.fast_deep)||oc==32))throw std::runtime_error("decoder byte output requires quantized fast path");if(byte_in&&!(opt.decoder_h16w&&opt.fast_deep&&((ic==1024&&oc==512)||(ic==512&&oc==256&&byte_out))))throw std::runtime_error("decoder byte input requires quantized C512 fast path");auto out=(HIP_C512_PAD16&&oc==512)?NewPad16(size_t(ow)*oh,512,byte_out):New(size_t(ow)*oh*oc/(byte_out?4:1));if(opt.decoder_h16w&&opt.fast_deep){std::string dn=byte_out?"decoder_project2x_h16w_byteout":(gather_fold&&ic==1024&&oc==512)?"decoder_project2x_h16w_gin":"decoder_project2x_h16w";
+   /* 2026-10-01 tail-c32-gap: NT column tiles per wave (HIP_DEC_NT exports), same bits; widest present */
+   if(!(gather_fold&&ic==1024&&oc==512)&&((ic==1024&&oc==512)||(ic==512&&oc==256&&byte_out))){if(HasFn("deep_fast",dn+"_w"+(byte_in?"_bin":"")))dn+="_w"+std::string(byte_in?"_bin":"");else if(!byte_in&&HasFn("deep_fast",dn+"_w"))dn+="_w";else if(!byte_in)for(U nt:{8u,4u,2u})if(HasFn("deep_fast",dn+"_n"+std::to_string(nt))){dn+="_n"+std::to_string(nt);break;}} /* HIP_DEC_WIDE exports (_w): same tiling, wide epilogue */
+   const bool f8=!byte_in&&HIP_DEC_F8W&&(((dn=="decoder_project2x_h16w"||dn=="decoder_project2x_h16w_w")&&ic==1024&&oc==512)||((dn=="decoder_project2x_h16w_byteout"||dn=="decoder_project2x_h16w_byteout_w")&&ic==512&&oc==256))&&HasFn("deep_fast",dn+"_f8");if(f8)dn+="_f8"; /* bitexact-pm: _w_f8 = HIP_DEC_WIDE epilogue + HIP_DEC_F8W main loop (both module macros) */
+-  Run("deep",dn.c_str(),size_t(iw)*ih*oc,P(input),f8?PackedDecoderFp8(file,size_t(ic)*oc):PackedDecoderHalf(file,size_t(ic)*oc),P(skip),P(out),iw,ih,ow,oh,ic,oc);}else Run("deep","decoder_project2x",size_t(iw)*ih*oc,P(input),Weight(file),P(skip),P(out),iw,ih,ow,oh,ic,oc);return out;}
++  const bool f8w16=byte_in&&(DecoderF8W16Mode()&2)&&HasFn("deep_fast",dn+"_f8w16");if(f8w16)dn+="_f8w16";
++  Run("deep",dn.c_str(),size_t(iw)*ih*oc,P(input),f8w16?PackedDecoderF8W16(file,ic,oc):f8?PackedDecoderFp8(file,size_t(ic)*oc):PackedDecoderHalf(file,size_t(ic)*oc),P(skip),P(out),iw,ih,ow,oh,ic,oc);}else Run("deep","decoder_project2x",size_t(iw)*ih*oc,P(input),Weight(file),P(skip),P(out),iw,ih,ow,oh,ic,oc);return out;}
+  static U Shift(U block){static constexpr U s[]={0,3,1,2,0,3,1,2,0,3,1,2,0,3,1,2,1,2,0,3,1,2,0,3,1,2,0,3,1,2};if(block<40||block>69)throw std::runtime_error("decoder shift");return s[block-40];}
+ public:
+  Network(const Network&)=delete;Network&operator=(const Network&)=delete;
+@@ -1016,23 +1028,24 @@ if(wave_owned_active)HasFn("c32_wave1","c32_wave1_post_b8_rgba");if(multi_predic
+  bool C512ByteStreamOk(){if(!(VitInterByteMode()&8)||!c512_m32_active||!opt.fast_deep||!opt.packed_weights||!opt.split_mix_h16w||opt.split_mix_fused||!opt.split_ffn_fused||!opt.c512_proj_tiles||!opt.c512_qkv_frag||!opt.c512_proj_frag||!opt.fp8_av||!opt.fused_mh||!opt.fp8_normalized||!opt.pool_project_group||!opt.decoder_h16w||observer||!opt.dump_dir.empty())return false;for(U b=23;b<=30;b++)if(opt.skip_blocks.count(b))return false;for(U b=40;b<=47;b++)if(opt.skip_blocks.count(b))return false;const int ffn_w16m=C512FfnW16Mode(),w16m=C512W16Mode();if(ffn_w16m<=0||w16m<=0||!HIP_C512_FFN_ONE||!HIP_C512_FFN_F8W)return false;const char*ffn_fn=ffn_w16m>=2?"split_ffn_one_w2f8_w16_tvec_bin":"split_ffn_one_w2f8_w16_bin";const char*att_fn=w16m>=2?"mh_attention_project_frag_c512_w16_u4_bout":"mh_attention_project_frag_c512_w16_bout";return HasFn("mh_fast","mh_pool_project_group_c256_out8")&&HasFn("c512_m32_deep",ffn_fn)&&HasFn("deep_fast","split_projection_frag_w16_bskip")&&HasFn("mh_fast",att_fn)&&HasFn("deep_fast","decoder_project2x_h16w_byteout_w");}
+  bool VitEntryExitByteOk(){if(!(VitInterByteMode()&4)||gather_fold||opt.vit_byte_stream||!vit_contract_byte_edge||!vit_proj_n64_active||!opt.vit_proj_frag||!opt.vit_contract_frag||!opt.vit_contract_blocked||!opt.vit_pack_input||opt.vit_input_tiled||opt.vit_ffn_fused||opt.vit_split_k||!compact_contract_bstream_fn||!compact_projection_bout_fn||!opt.pool_project_group||!opt.decoder_h16w||!opt.fast_deep||observer||!opt.dump_dir.empty())return false;const char*ae=std::getenv("DLSS5_VIT_ADAPTIVE");if(ae&&*ae&&std::strcmp(ae,"0"))return false;for(U b=31;b<=38;b++)if(opt.skip_blocks.count(b))return false;return HasFn("mh_fast","mh_pool_project_group_c512_out8")&&HasFn("deep_fast","vit_gather_b8")&&HasFn("deep_fast","decoder_project2x_h16w_w_bin")&&HasFn("deep_fast","decoder_project2x_h16w_byteout_w_bin");}
+  Tensor RunGraph(Tensor color,Tensor noisegpu,Tensor hist,bool request_rgba=false,void*final_rgb=nullptr,bool final_pass=true){if(request_rgba&&final_rgb)throw std::runtime_error("external RGB output cannot be RGBA");graph_output_stride=3;adaptive_image=P(color);if(opt.vit_qkv_fused&&!opt.fast_deep)throw std::runtime_error("ViT QKV fusion requires fast deep kernels");if(opt.ffn_qkv&&(!opt.grouped_mh_contract||!opt.fast_mh||!opt.fused_qkv_norm||!opt.fp8_normalized))throw std::runtime_error("FFN/QKV requires grouped byte pipeline");if(opt.grouped_mh_contract&&!opt.fused_ffn_project)throw std::runtime_error("grouped contraction requires fused project");if(opt.direct_prefix_input&&(!opt.fast_prefix||!opt.prefix_fused))throw std::runtime_error("direct input requires fused fast prefix");if(opt.mh_input_mapped&&!opt.fused_ffn_project)throw std::runtime_error("mapped MH input requires fused FFN project");if(opt.mh_project_crop&&(!opt.fast_mh||!opt.fp8_av))throw std::runtime_error("MH crop requires fast byte AV pipeline");if(opt.split_ffn_fused&&(!opt.fast_deep||!opt.fp8_deep))throw std::runtime_error("split fused FFN requires fast byte deep pipeline");if(opt.fused_ffn_project&&(!opt.fused_mh_ffn||!opt.packed_weights||!opt.fp8_middle||!opt.tiled_mh_ffn||opt.tiled_ffn_min_c!=256))throw std::runtime_error("fused FFN project requires selected packed FFN pipeline");if(opt.post_merge_fold&&(!opt.pre_main8||!opt.fused_ffn||!opt.half_c32||!opt.mapped_c32))throw std::runtime_error("post merge fold requires pre-main8 and fused half mapped pipeline");if(opt.pre_main8&&(!opt.fast_c32||!opt.half_c32||observer||!opt.dump_dir.empty()))throw std::runtime_error("pre main8 needs fast half path and no stage dumps");if(opt.raw_chain&&(!opt.fused_ffn||!opt.half_c32||!opt.mapped_c32||!opt.crop_c32||observer||!opt.dump_dir.empty()))throw std::runtime_error("raw chain requires fused half mapped crop pipeline and no stage dumps");auto tiles=opt.direct_prefix_input?color:New(size_t(W)*H*4),base=opt.direct_prefix_input?color:New(size_t(W)*H*4),prefix=opt.prefix_inline?Tensor{}:New(size_t(W)*H*32);if(!opt.direct_prefix_input)Run("boundary","hip_input_reflect",size_t(W)*H,P(color),P(base),P(tiles),W,H,W,H);color=base;if(opt.prefix_inline){if(!opt.direct_prefix_input||!opt.c32_finish_fused||!opt.pre_main8||!opt.fused_ffn||!opt.half_c32)throw std::runtime_error("inline prefix requires the direct raster input and the fused block 0 finish");inline_prefix=true;inline_rgba=tiles;inline_hist=hist;inline_seed=opt.seed;inline_temporal=U(bool(hist));}else if(opt.fast_prefix&&opt.prefix_fused){Run("prefix_fast",opt.direct_prefix_input?"dlss5_prefix_fast_fused_raster":"dlss5_prefix_fast_fused",size_t(W)*H*32,P(tiles),P(hist),Weight("block0-ffn.f32"),P(prefix),W,H,opt.seed,U(bool(hist)));}else if(opt.fast_prefix){auto features=New(size_t(W)*H*32);Run("prefix_fast","dlss5_prefix_fast_features",size_t(W)*H,P(tiles),P(hist),P(features),W,H,opt.seed,U(bool(hist)));Run("prefix_fast","dlss5_prefix_fast_project",size_t(W)*H*32,P(features),Weight("block0-ffn.f32"),P(prefix),W*H);}else{Run("c32","dlss5_prefix_reference",size_t(W)*H,P(tiles),P(hist),P(noisegpu),Weight("block0-ffn.f32"),P(prefix),static_cast<void*>(nullptr),W,H,opt.seed,U(bool(hist)));}tiles.reset();noisegpu.reset();hist.reset();auto pre=C32Body(prefix,W,H,"block0-ffn.f32","block0-attention.f32");prefix.reset();pre.raw.reset();Stage("pre-down",pre.down);Tensor skip0=pre.main,source=pre.down;pre.main.reset();pre.down.reset();Stage("block0",skip0);Tensor skips[5];U shifts[]={0,3,1,2,0,3,1,2};C32Result last;
+- for(U b=1;b<=4;b++){if(opt.skip_blocks.count(b)){if(!opt.raw_chain)throw std::runtime_error("C32 skip needs the raw chain");if(b==4)SkipChainFinish(last,W/2,H/2,true);if(last.main)source=last.main;continue;}last=opt.raw_chain?C32Chain(source,last.raw?&last:nullptr,W/2,H/2,shifts[b-1],Block(b,"ffn"),Block(b,"attention"),b==4,b==4):C32(source,W/2,H/2,shifts[b-1],Block(b,"ffn"),Block(b,"attention"));source=last.main;if(source)Stage("block"+std::to_string(b),source);}Stage("block4-down",last.down);skips[0]=source;Tensor poolcrop;if(last.down_cropped)poolcrop=last.down;else{poolcrop=New(size_t(W/4)*(H/4)*32);Run("mh","mh_shift_crop",size_t(W/4)*(H/4)*32,P(last.down),P(poolcrop),W/4,H/4,last.workw/2,last.sx/2,last.sy/2,U(32));}const bool pool64_byte=pool64_byte_available&&last.down_byte&&last.down_cropped;source=New(size_t(W/4)*(H/4)*64/(pool64_byte?4:1));if(last.down_byte&&!last.down_cropped)throw std::runtime_error("byte C32 down needs the crop path");if(opt.pool32_h16w&&opt.fast_mh)Run("mh_fast",pool64_byte?"mh_pool_project_c32_b8_out8":last.down_byte?"mh_pool_project_c32_b8":"mh_pool_project_production_h16w",size_t(W/4)*(H/4)*64,P(poolcrop),PackedDsWeightCast("block4-ds.f32",32),P(source),W/4,H/4,U(0),U(0),U(32));else Run(opt.fast_mh?"mh_fast":"mh",opt.fast_mh?"mh_pool_project_production":"mh_pool_project",size_t(W/4)*(H/4)*64,P(poolcrop),Weight("block4-ds.f32"),P(source),W/4,H/4,U(0),U(0),U(32));poolcrop.reset();last={};
++ for(U b=1;b<=4;b++){if(opt.skip_blocks.count(b)){if(!opt.raw_chain)throw std::runtime_error("C32 skip needs the raw chain");if(b==4)SkipChainFinish(last,W/2,H/2,true);if(last.main)source=last.main;continue;}last=opt.raw_chain?C32Chain(source,last.raw?&last:nullptr,W/2,H/2,shifts[b-1],Block(b,"ffn"),Block(b,"attention"),b==4,b==4):C32(source,W/2,H/2,shifts[b-1],Block(b,"ffn"),Block(b,"attention"));source=last.main;if(source)Stage("block"+std::to_string(b),source);}Stage("block4-down",last.down);skips[0]=source;Tensor poolcrop;if(last.down_cropped)poolcrop=last.down;else{poolcrop=New(size_t(W/4)*(H/4)*32);Run("mh","mh_shift_crop",size_t(W/4)*(H/4)*32,P(last.down),P(poolcrop),W/4,H/4,last.workw/2,last.sx/2,last.sy/2,U(32));}const bool pool64_byte=pool64_byte_available&&last.down_byte&&last.down_cropped;const char*pool32_env=std::getenv("NR_POOL32_W16");const bool pool32_w16=pool64_byte&&pool32_env&&std::atoi(pool32_env)&&HasFn("mh_fast","mh_pool_project_c32_b8_out8_w16");source=New(size_t(W/4)*(H/4)*64/(pool64_byte?4:1));if(last.down_byte&&!last.down_cropped)throw std::runtime_error("byte C32 down needs the crop path");if(opt.pool32_h16w&&opt.fast_mh)Run("mh_fast",pool64_byte?(pool32_w16?"mh_pool_project_c32_b8_out8_w16":"mh_pool_project_c32_b8_out8"):last.down_byte?"mh_pool_project_c32_b8":"mh_pool_project_production_h16w",size_t(W/4)*(H/4)*64,P(poolcrop),PackedDsWeightCast("block4-ds.f32",32,pool32_w16),P(source),W/4,H/4,U(0),U(0),U(32));else Run(opt.fast_mh?"mh_fast":"mh",opt.fast_mh?"mh_pool_project_production":"mh_pool_project",size_t(W/4)*(H/4)*64,P(poolcrop),Weight("block4-ds.f32"),P(source),W/4,H/4,U(0),U(0),U(32));poolcrop.reset();last={};
+  const bool c512_bstream=C512ByteStreamOk();
++ const bool up48_byte=c512_bstream&&(DecoderF8W16Mode()&1)&&opt.decoder_byte&&opt.mh_byte_stream&&!opt.skip_blocks.count(48)&&HasFn("deep_fast","decoder_project2x_h16w_byteout_w_bin");
+  bool prev_down_byte=false;
+  U starts[]={5,9,15},counts[]={4,6,8},channels[]={64,128,256};for(U g=0;g<3;g++){U w=W/(4u<<g),h=H/(4u<<g);for(U j=0;j<counts[g];j++){
+  if(j==1&&SpEnabled(channels[g],false)){source=SpStage(source,w,h,channels[g],starts[g]+1,counts[g]-2);j=counts[g]-2;continue;}
+  const bool half_tail=j+1==counts[g]&&j>0&&EncoderHalfTail(g);if(g<2)skip_b8[g].reset();source=Body(source,w,h,channels[g],shifts[j],starts[g]+j,j+1==counts[g],opt.mh_byte_stream&&(j>0||(g==0&&pool64_byte)||(g>0&&prev_down_byte)),opt.mh_byte_stream&&j+1<counts[g],half_tail,half_tail&&EncoderSkipByte(g)?&skip_b8[g]:nullptr);if(g<2)skip_half[g]=half_tail;}skips[g+1]=source;const bool down_byte=g<2?DownByteOutOk(g):c512_bstream;if(down_byte)++vit_inter_byte_calls;source=Down(source,w,h,channels[g],Block(starts[g]+counts[g]-1,"ds"),false,g<2&&skip_half[g],down_byte);prev_down_byte=down_byte;}
+-  if(pulse_lease.Active()){++pulse_site_visits;const unsigned reject=PulseRejectMask(true);pulse_last_reject_mask=reject;if(!reject){++pulse_record_attempts;pulse_lease.Record();if(pulse_lease.Active())++pulse_record_accepted;if(!pulse_runtime_reported){pulse_runtime_reported=true;std::fprintf(stderr,"submit_pulse requested=1 active=%u reason=%s site=C512_encoder_start preceding=ordered_Down_c256 launch_mode=hipModuleLaunchKernel mode=timed_single current_anyorder=%u record_attempts=%llu record_accepted=%llu lifetime_pdl_calls=%u frame_prefix_pdl=%u\n",unsigned(pulse_lease.Active()),pulse_lease.Active()?"eligible-first-record":"record-api-error",unsigned(pdl_anyorder),pulse_record_attempts,pulse_record_accepted,pdl_calls,pdl_calls-pulse_frame_pdl_start);}}else if(!pulse_fallback_logged){pulse_fallback_logged=true;std::fprintf(stderr,"submit_pulse requested=1 active=0 reason=frame-scope-fallback reject_mask=%u record_attempts=%llu pdl_calls=%u frame_prefix_pdl=%u pdl_anyorder=%u history=%u shape=%ux%u\n",reject,pulse_record_attempts,pdl_calls,pdl_calls-pulse_frame_pdl_start,unsigned(pdl_anyorder),unsigned(pulse_frame_history),W,H);}}for(U j=0;j<8;j++){if(c512_bstream&&j<7)++vit_inter_byte_calls;source=Body(source,W/32,H/32,512,shifts[j],23+j,j==7,c512_bstream,c512_bstream&&j<7);}skips[4]=source;gather_fold=GatherFoldOk();vit_entry_exit_byte=VitEntryExitByteOk();if(vit_entry_exit_byte)++vit_inter_byte_calls;source=Down(source,W/32,H/32,512,"head-matrix.f32",true,false,vit_entry_exit_byte);U vw=W==1920?32:W/64,vh=W==1920?20:H/64;if(W!=1920&&(vw*vh)%16)vh++;if(free_geometry){vw=(W/64+3)/4*4;vh=(H/64+3)/4*4;}/* 2026-09-17: token grid padded to a multiple of 16 tokens by one row of zero tokens (1600x960: 25x15 real -> 25x16), the way 1920x1152 pads 30x18 -> 32x20 */U n=vw*vh;Stage("head",source);if(!gather_fold)source=Gather(std::move(source),n,false,vit_entry_exit_byte);if(vit_entry_exit_byte)vit_in8=source;source=AdaptiveVitGroup(std::move(source),n);if(!gather_fold)source=Gather(std::move(source),n,true,vit_entry_exit_byte);if(c512_bstream)++vit_inter_byte_calls;source=Up(source,skips[4],vw,vh,W/32,H/32,1024,512,"decoder39-weights.f32",c512_bstream,vit_entry_exit_byte);vit_entry_exit_byte=false;gather_fold=false;skips[4].reset();Stage("block39",source);for(U b=40;b<=47;b++){if(c512_bstream&&b<47)++vit_inter_byte_calls;source=Body(source,W/32,H/32,512,Shift(b),b,false,c512_bstream,c512_bstream&&b<47);}
++  if(pulse_lease.Active()){++pulse_site_visits;const unsigned reject=PulseRejectMask(true);pulse_last_reject_mask=reject;if(!reject){++pulse_record_attempts;pulse_lease.Record();if(pulse_lease.Active())++pulse_record_accepted;if(!pulse_runtime_reported){pulse_runtime_reported=true;std::fprintf(stderr,"submit_pulse requested=1 active=%u reason=%s site=C512_encoder_start preceding=ordered_Down_c256 launch_mode=hipModuleLaunchKernel mode=timed_single current_anyorder=%u record_attempts=%llu record_accepted=%llu lifetime_pdl_calls=%u frame_prefix_pdl=%u\n",unsigned(pulse_lease.Active()),pulse_lease.Active()?"eligible-first-record":"record-api-error",unsigned(pdl_anyorder),pulse_record_attempts,pulse_record_accepted,pdl_calls,pdl_calls-pulse_frame_pdl_start);}}else if(!pulse_fallback_logged){pulse_fallback_logged=true;std::fprintf(stderr,"submit_pulse requested=1 active=0 reason=frame-scope-fallback reject_mask=%u record_attempts=%llu pdl_calls=%u frame_prefix_pdl=%u pdl_anyorder=%u history=%u shape=%ux%u\n",reject,pulse_record_attempts,pdl_calls,pdl_calls-pulse_frame_pdl_start,unsigned(pdl_anyorder),unsigned(pulse_frame_history),W,H);}}for(U j=0;j<8;j++){if(c512_bstream&&j<7)++vit_inter_byte_calls;source=Body(source,W/32,H/32,512,shifts[j],23+j,j==7,c512_bstream,c512_bstream&&j<7);}skips[4]=source;gather_fold=GatherFoldOk();vit_entry_exit_byte=VitEntryExitByteOk();vit_write_gather=vit_entry_exit_byte&&WriteGatherMode()&&compact_projection_w16&&HasFn("mh_fast","mh_pool_project_group_c512_gout_out8")&&HasFn("vit_stream","vit_stream_project_n64_bb_bout_gout_compactw_w16");if(vit_entry_exit_byte)++vit_inter_byte_calls;source=Down(source,W/32,H/32,512,"head-matrix.f32",true,false,vit_entry_exit_byte);U vw=W==1920?32:W/64,vh=W==1920?20:H/64;if(W!=1920&&(vw*vh)%16)vh++;if(free_geometry){vw=(W/64+3)/4*4;vh=(H/64+3)/4*4;}/* 2026-09-17: token grid padded to a multiple of 16 tokens by one row of zero tokens (1600x960: 25x15 real -> 25x16), the way 1920x1152 pads 30x18 -> 32x20 */U n=vw*vh;Stage("head",source);if(!gather_fold&&!vit_write_gather)source=Gather(std::move(source),n,false,vit_entry_exit_byte);if(vit_entry_exit_byte)vit_in8=source;source=AdaptiveVitGroup(std::move(source),n);if(!gather_fold&&!vit_write_gather)source=Gather(std::move(source),n,true,vit_entry_exit_byte);if(c512_bstream)++vit_inter_byte_calls;source=Up(source,skips[4],vw,vh,W/32,H/32,1024,512,"decoder39-weights.f32",c512_bstream,vit_entry_exit_byte);vit_entry_exit_byte=false;vit_write_gather=false;gather_fold=false;skips[4].reset();Stage("block39",source);for(U b=40;b<=47;b++){if(c512_bstream&&b<47)++vit_inter_byte_calls;source=Body(source,W/32,H/32,512,Shift(b),b,false,c512_bstream,c512_bstream&&(b<47||up48_byte));}
+  U ups[]={48,56,62},cs[]={256,128,64},ends[]={55,61,65};
+  /* 2026-10-01 swin-body-gap: when the next decoder stage is the fused wave-owned Up and the module exports *_up_lb, the chain tail
+     (post 0: already on the E4M3 lattice) writes bytes and the Up reads them (bit-exact; 4x less traffic both ways). */
+  auto up_body=[&](U g){return DecoderUpBody(g);};
+- auto tail_lb=[&](U g){if(!opt.mh_byte_stream||opt.skip_blocks.count(ends[g]))return false;if(g==2)return C32UpBodyPath()&&!opt.skip_blocks.count(66)&&HasFn("c32_wave1",c32_skip_byte?"c32_wave1_up_b8_lb":"c32_wave1_up_lb");return up_body(g+1)&&HasFn("c64_wave2","c"+std::to_string(cs[g+1])+"_wave2_up_lb");};
++ auto tail_lb=[&](U g){if(!opt.mh_byte_stream||opt.skip_blocks.count(ends[g]))return false;if(g==2)return C32UpBodyPath()&&!opt.skip_blocks.count(66)&&((UpBodyF8W16Mode()&&C32W16Mode()==1&&c32_skip_byte&&HasFn("c32_wave1","c32_wave1_up_b8_lb_f8w16"))||HasFn("c32_wave1",c32_skip_byte?"c32_wave1_up_b8_lb":"c32_wave1_up_lb"));return up_body(g+1)&&HasFn("c64_wave2","c"+std::to_string(cs[g+1])+"_wave2_up_lb");};
+  bool low_bytes=false;
+  for(U g=0;g<3;g++){U ow=W/(16u>>g),oh=H/(16u>>g);const bool byte_up=opt.decoder_byte&&opt.mh_byte_stream&&opt.decoder_h16w&&opt.fast_deep;U begin=ups[g];
+  if(g>0&&wave_owned_active&&byte_up&&opt.packed_weights&&opt.grouped_mh_contract&&opt.mh_proj_diag_fb&&opt.mh_project_crop&&opt.mh_input_mapped&&!opt.skip_blocks.count(begin)&&ow%2==0&&oh%2==0){source=UpBody(source,skips[3-g],ow,oh,cs[g],begin,low_bytes,g>0&&skip_half[2-g],g>0?skip_b8[2-g]:Tensor{});if(g>0)skip_b8[2-g].reset();low_bytes=false;++begin;}
+  else
+- source=Up(source,skips[3-g],ow/2,oh/2,ow,oh,cs[g]*2,cs[g],Block(ups[g],"weights"),byte_up);skips[3-g].reset();for(U b=begin;b<=ends[g];b++){
++ source=Up(source,skips[3-g],ow/2,oh/2,ow,oh,cs[g]*2,cs[g],Block(ups[g],"weights"),byte_up,g==0&&up48_byte);skips[3-g].reset();for(U b=begin;b<=ends[g];b++){
+  if(b==ups[g]+1&&SpEnabled(cs[g],true)){source=SpStage(source,ow,oh,cs[g],b,ends[g]-b);b=ends[g]-1;continue;}
+  source=Body(source,ow,oh,cs[g],Shift(b),b,false,opt.mh_byte_stream&&(b>ups[g]||byte_up),opt.mh_byte_stream&&(b<ends[g]||(b==ends[g]&&tail_lb(g))));}low_bytes=tail_lb(g);}C32Result chain{};U c32_begin=66;
+  if(C32UpBodyPath()){chain=C32UpBody(source,skips[0],W/2,H/2,low_bytes);low_bytes=false;c32_begin=67;source.reset();}
+diff --git a/hip/c512_head_group.inc b/hip/c512_head_group.inc
+index 5b11bfe7..bae56630 100644
+--- a/hip/c512_head_group.inc
++++ b/hip/c512_head_group.inc
+@@ -12,6 +12,8 @@ KERNEL __attribute__((amdgpu_flat_work_group_size(512,512)))
+ void mh_pool_project_group_c512_out8(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){
+  mh_pool_project_group_body<512,false,false,true>(raw,w,output,width,height,source_width,valid_width,valid_height);
+ }
++KERNEL __attribute__((amdgpu_flat_work_group_size(512,512)))
++void mh_pool_project_group_c512_gout_out8(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<512,true,false,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
+ #ifndef HIP_VIT_GATHER_FOLD
+ #define HIP_VIT_GATHER_FOLD 0
+ #endif
+diff --git a/hip/deep_fast.hip b/hip/deep_fast.hip
+index 0229473b..454f5b4c 100644
+--- a/hip/deep_fast.hip
++++ b/hip/deep_fast.hip
+@@ -512,10 +512,25 @@ WAVE void decoder_project2x_h16w_byteout_f8(const float*in,const float*w,const f
+ #if HIP_DEC_WIDE
+ /* 2026-10-01 bitexact-pm: W8 = the HIP_DEC_F8W main loop (E4M3 weights, fp8 WMMA, identical to decoder_project2x_h16w_body<..,W8=true>)
+    under the wide epilogue; exported as *_w_f8 when both HIP_DEC_WIDE and HIP_DEC_F8W are set. */
+-template<bool FullTile,bool ByteOutput,bool W8=false,bool ByteInput=false>
++template<bool FullTile,bool ByteOutput,bool W8=false,bool ByteInput=false,bool W16=false>
+ DEV void decoder_project2x_h16w_wide_body(const float*in,const float*w,const float*skip,float*out,uint iw,uint ih,uint ow,uint oh,uint inputs,uint outputs){
+  uint first=bid()/(outputs/16)*16,row=bid()%(outputs/16)*16;if(first>=iw*ih)return;uint parts=inputs==1024?4:1;f8 total{};const _Float16*w16=reinterpret_cast<const _Float16*>(w);
++ if constexpr(W16){
++  using dec_i4=int __attribute__((ext_vector_type(4)));
++  for(uint p=0;p<parts;p++){f8 a{};
++   for(uint k=p*(inputs/parts);k<(p+1)*(inputs/parts);k+=32){
++    dec_i4 bw;__builtin_memcpy(&bw,reinterpret_cast<const unsigned char*>(w)+((row/16)*(inputs/32)+k/32)*512+(gr()*16+rc())*16,16);
++    i2 x0{},x1{};if(FullTile||first+rc()<iw*ih){
++     __builtin_memcpy(&x0,reinterpret_cast<const unsigned char*>(in)+(first+rc())*inputs+k+gr()*8,8);
++     __builtin_memcpy(&x1,reinterpret_cast<const unsigned char*>(in)+(first+rc())*inputs+k+16+gr()*8,8);
++    }
++    a=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(x0,i2{bw[0],bw[1]},a);
++    a=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(x1,i2{bw[2],bw[3]},a);
++   }for(uint e=0;e<8;e++)total[e]=p?total[e]+a[e]:a[e];
++  }
++ }else{
+  for(uint p=0;p<parts;p++){f8 a{};for(uint k=p*(inputs/parts);k<(p+1)*(inputs/parts);k+=16){h8 x{},y;if constexpr(ByteInput){if(FullTile||first+rc()<iw*ih){i2 b8;__builtin_memcpy(&b8,reinterpret_cast<const unsigned char*>(in)+(first+rc())*inputs+k+gr()*8,8);for(uint e=0;e<8;e++)x[e]=(_Float16)__builtin_amdgcn_cvt_f32_fp8(int((uint(b8[e/4])>>(8*(e%4)))&255u),0);}}else{for(uint e=0;e<8;e++){uint j=k+gr()*8+e;x[e]=(FullTile||first+rc()<iw*ih)?(_Float16)in[(first+rc())*inputs+j]:(_Float16)0;}}if constexpr(W8){i2 y8;__builtin_memcpy(&y8,reinterpret_cast<const unsigned char*>(w)+(row+rc())*inputs+k+gr()*8,8);a=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(dec_pack8(x),y8,a);}else{__builtin_memcpy(&y,w16+(row+rc())*inputs+k+gr()*8,16);a=__builtin_amdgcn_wmma_f32_16x16x16_f16_w32_gfx12(x,y,a);}}for(uint e=0;e<8;e++)total[e]=p?total[e]+a[e]:a[e];}
++ }
+  __attribute__((shared)) float tl[16*17];
+  for(uint e=0;e<8;e++)tl[(gr()*8+e)*17+rc()]=H(total[e]);
+  WG_FENCE(3);__builtin_amdgcn_s_barrier();WG_FENCE(2);
+@@ -529,14 +544,17 @@ DEV void decoder_project2x_h16w_wide_body(const float*in,const float*w,const flo
+   if constexpr(ByteOutput){uint wv[4];for(uint q=0;q<4;q++){uint v=0;for(uint b=0;b<4;b++)v|=(uint(__builtin_amdgcn_cvt_pk_fp8_f32(r[q*4+b],0.f,0,false))&255u)<<(8*b);wv[q]=v;}__builtin_memcpy(__builtin_assume_aligned(reinterpret_cast<unsigned char*>(out)+base,16),wv,16);}
+   else __builtin_memcpy(__builtin_assume_aligned(out+base,16),r,64);}
+ }
+-template<bool ByteOutput,bool W8=false,bool ByteInput=false>
++template<bool ByteOutput,bool W8=false,bool ByteInput=false,bool W16=false>
+ DEV void decoder_project2x_h16w_wide_fixed(const float*in,const float*w,const float*skip,float*out,uint iw,uint ih,uint ow,uint oh,uint inputs,uint outputs){
+  uint first=bid()/(outputs/16)*16,n=iw*ih;
+- if(first<n&&n-first>=16)decoder_project2x_h16w_wide_body<true,ByteOutput,W8,ByteInput>(in,w,skip,out,iw,ih,ow,oh,inputs,outputs);
+- else decoder_project2x_h16w_wide_body<false,ByteOutput,W8,ByteInput>(in,w,skip,out,iw,ih,ow,oh,inputs,outputs);
++ if(first<n&&n-first>=16)decoder_project2x_h16w_wide_body<true,ByteOutput,W8,ByteInput,W16>(in,w,skip,out,iw,ih,ow,oh,inputs,outputs);
++ else decoder_project2x_h16w_wide_body<false,ByteOutput,W8,ByteInput,W16>(in,w,skip,out,iw,ih,ow,oh,inputs,outputs);
+ }
+ WAVE void decoder_project2x_h16w_w(const float*in,const float*w,const float*skip,float*out,uint iw,uint ih,uint ow,uint oh,uint inputs,uint outputs){if(inputs==1024&&outputs==512)decoder_project2x_h16w_wide_fixed<false>(in,w,skip,out,iw,ih,ow,oh,1024,512);}
+ WAVE void decoder_project2x_h16w_byteout_w(const float*in,const float*w,const float*skip,float*out,uint iw,uint ih,uint ow,uint oh,uint inputs,uint outputs){if(inputs==512&&outputs==256)decoder_project2x_h16w_wide_fixed<true>(in,w,skip,out,iw,ih,ow,oh,512,256);else if(inputs==1024&&outputs==512)decoder_project2x_h16w_wide_fixed<true>(in,w,skip,out,iw,ih,ow,oh,1024,512);}
++// Byte input + W16 E4M3 weights; same K16 accumulation and wide epilogue.
++WAVE void decoder_project2x_h16w_w_bin_f8w16(const float*in,const float*w,const float*skip,float*out,uint iw,uint ih,uint ow,uint oh,uint inputs,uint outputs){if(inputs==1024&&outputs==512)decoder_project2x_h16w_wide_fixed<false,true,true,true>(in,w,skip,out,iw,ih,ow,oh,1024,512);}
++WAVE void decoder_project2x_h16w_byteout_w_bin_f8w16(const float*in,const float*w,const float*skip,float*out,uint iw,uint ih,uint ow,uint oh,uint inputs,uint outputs){if(inputs==1024&&outputs==512)decoder_project2x_h16w_wide_fixed<true,true,true,true>(in,w,skip,out,iw,ih,ow,oh,1024,512);else if(inputs==512&&outputs==256)decoder_project2x_h16w_wide_fixed<true,true,true,true>(in,w,skip,out,iw,ih,ow,oh,512,256);}
+ WAVE void decoder_project2x_h16w_w_bin(const float*in,const float*w,const float*skip,float*out,uint iw,uint ih,uint ow,uint oh,uint inputs,uint outputs){if(inputs==1024&&outputs==512)decoder_project2x_h16w_wide_fixed<false,false,true>(in,w,skip,out,iw,ih,ow,oh,1024,512);}
+ WAVE void decoder_project2x_h16w_byteout_w_bin(const float*in,const float*w,const float*skip,float*out,uint iw,uint ih,uint ow,uint oh,uint inputs,uint outputs){if(inputs==512&&outputs==256)decoder_project2x_h16w_wide_fixed<true,false,true>(in,w,skip,out,iw,ih,ow,oh,512,256);else if(inputs==1024&&outputs==512)decoder_project2x_h16w_wide_fixed<true,false,true>(in,w,skip,out,iw,ih,ow,oh,1024,512);}
+ #if HIP_DEC_F8W
+diff --git a/hip/multihead_fast_padded.hip b/hip/multihead_fast_padded.hip
+index 2bdd4f84..c8c39c23 100644
+--- a/hip/multihead_fast_padded.hip
++++ b/hip/multihead_fast_padded.hip
+@@ -371,6 +371,17 @@ FASTWAVE void mh_pool_project_c32_b8(const unsigned char* pooled,const float* we
+ 
+ // Paired typed edge for block4 pool -> block5. Keep F and RTZ exactly;
+ // encode its result, including negative underflow zero, without changing the reduction.
++FASTWAVE void mh_pool_project_c32_b8_out8_w16(const unsigned char*pooled,const float*weights,unsigned char*output,uint width,uint height,uint valid_width,uint valid_height,uint channels){
++ const uint M=width*height,N=64,tile=__builtin_amdgcn_workgroup_id_x();if(channels!=32||tile>=(M+15)/16)return;
++ const uint first=tile*16,l=__builtin_amdgcn_workitem_id_x(),rc=l&15,g=l>>4,p=first+rc;
++ i2 a0{},a1{};if(p<M){__builtin_memcpy(&a0,pooled+p*32+g*8,8);__builtin_memcpy(&a1,pooled+p*32+16+g*8,8);}
++ using pool32_i4=int __attribute__((ext_vector_type(4)));
++ for(uint j=0;j<4;j++){pool32_i4 b;__builtin_memcpy(&b,reinterpret_cast<const unsigned char*>(weights)+j*512+(g*16+rc)*16,16);f8 sum{};
++  sum=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(a0,i2{b[0],b[1]},sum);
++  sum=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(a1,i2{b[2],b[3]},sum);
++  for(uint e=0;e<8;e++){uint q=first+g*8+e;if(q<M){float v=__builtin_amdgcn_fmed3f(Hrtz(0.f+sum[e])+0.f,-448.f,448.f);output[q*N+j*16+rc]=(valid_width&&(q%width>=valid_width||q/width>=valid_height))?0u:static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(v,0.f,0,false));}}
++ }
++}
+ FASTWAVE void mh_pool_project_c32_b8_out8(const unsigned char* pooled,const float* weights,unsigned char* output,uint width,uint height,uint valid_width,uint valid_height,uint channels){
+  uint M=width*height,N=64,tile=__builtin_amdgcn_workgroup_id_x(),nt=4;
+  if(channels!=32||tile>=((M+15)/16)*nt)return;uint first=tile/nt*16,col=tile%nt*16,l=__builtin_amdgcn_workitem_id_x(),rc=l&15,g=l>>4;f8 acc{},sum{};
+@@ -407,18 +418,28 @@ DEV void mh_pool_project_fused_body(const float*raw,const float*w,float*output,u
+ // out[t][c] = in[raster(t)][ch(c)]), so the separate vit_gather launch disappears; values unchanged, only addresses.
+ DEV uint pg_tinv(uint r){return (r&~15u)|((r&7u)<<1)|((r>>3)&1u);}
+ DEV uint pg_cinv(uint k){return (k&~31u)|((k>>1)&1u)|((k&1u)<<1)|((k>>4)&1u)<<2|((k>>2)&1u)<<3|((k>>3)&1u)<<4;}
+-template<uint C,bool Gout=false,bool HalfIn=false,bool ByteOut=false>
++template<uint C,bool Gout=false,bool HalfIn=false,bool ByteOut=false,bool F8W16=false>
+ DEV void mh_pool_project_group_body(const float*raw,const float*wf,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){
+  const uint M=width*height,N=2*C,S=C+8;uint tile=__builtin_amdgcn_workgroup_id_x();if(tile>=(M+15)/16)return;
+  uint first=tile*16,t=__builtin_amdgcn_workitem_id_x(),wave=t/32,l=t%32,rc=l&15,g=l>>4,colg=wave*64;
+- __attribute__((shared)) _Float16 pooled[16*S];
+- for(uint k=0;k<16;k++){uint p=first+k,c=t;float v=0.f;if(p<M&&!(valid_width&&(p%width>=valid_width||p/width>=valid_height))){uint base=((p/width)*2*source_width+(p%width)*2)*C;auto rd=[&](uint i)->float{if constexpr(HalfIn)return float(reinterpret_cast<const _Float16*>(raw)[i]);else return raw[i];};float top=H(rd(base+c)+rd(base+C+c)),bottom=H(rd(base+source_width*C+c)+rd(base+(source_width+1)*C+c));v=F(H(H(top+bottom)*.25f));}pooled[k*S+c]=(_Float16)v;}
++ __attribute__((shared)) unsigned char pooled8[F8W16?16*S:1];
++ __attribute__((shared)) _Float16 pooled[F8W16?1:16*S];
++ for(uint k=0;k<16;k++){uint p=first+k,c=t;float v=0.f;if(p<M&&!(valid_width&&(p%width>=valid_width||p/width>=valid_height))){uint base=((p/width)*2*source_width+(p%width)*2)*C;auto rd=[&](uint i)->float{if constexpr(HalfIn)return float(reinterpret_cast<const _Float16*>(raw)[i]);else return raw[i];};float top=H(rd(base+c)+rd(base+C+c)),bottom=H(rd(base+source_width*C+c)+rd(base+(source_width+1)*C+c));v=F(H(H(top+bottom)*.25f));}if constexpr(F8W16)pooled8[k*S+c]=static_cast<unsigned char>(__builtin_amdgcn_cvt_pk_fp8_f32(v,0.f,0,false));else pooled[k*S+c]=(_Float16)v;}
+  WG_FENCE(3);__builtin_amdgcn_s_barrier();WG_FENCE(2);
+  const _Float16*w16=reinterpret_cast<const _Float16*>(wf);
+  f8 acc[4]{};
+  for(uint chunk=0;chunk<C/32;chunk++){f8 sum[4]{};
++  if constexpr(F8W16){
++   using pool_i4=int __attribute__((ext_vector_type(4)));
++   i2 a0,a1;__builtin_memcpy(&a0,pooled8+rc*S+chunk*32+g*8,8);__builtin_memcpy(&a1,pooled8+rc*S+chunk*32+16+g*8,8);
++   for(uint j=0;j<4;j++){pool_i4 b;__builtin_memcpy(&b,reinterpret_cast<const unsigned char*>(wf)+(((colg/16+j)*(C/32)+chunk)*512)+(g*16+rc)*16,16);
++    sum[j]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(a0,i2{b[0],b[1]},sum[j]);
++    sum[j]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(a1,i2{b[2],b[3]},sum[j]);
++   }
++  }else{
+   for(uint half=0;half<2;half++){uint sidx=chunk*2+half;h8 a;__builtin_memcpy(&a,pooled+rc*S+sidx*16+g*8,16);
+    for(uint j=0;j<4;j++){h8 b;uint nt=colg/16+j;__builtin_memcpy(&b,w16+(nt*(C/16)+sidx)*256+(g*16+rc)*8,16);sum[j]=__builtin_amdgcn_wmma_f32_16x16x16_f16_w32_gfx12(a,b,sum[j]);}}
++  }
+   for(uint j=0;j<4;j++)for(uint e=0;e<8;e++)acc[j][e]=H(acc[j][e]+sum[j][e]);
+  }
+  _Pragma("unroll") for(uint e=0;e<8;e++){uint q=first+g*8+e;if(q<M){bool inv=valid_width&&(q%width>=valid_width||q/width>=valid_height);_Pragma("unroll") for(uint j=0;j<4;j++){float a=acc[j][e],ac=__builtin_amdgcn_fmed3f(a+0.f,-448.f,448.f);int b8=__builtin_amdgcn_cvt_pk_fp8_f32(ac,0.f,0,false);uint idx=Gout?pg_tinv(q)*N+pg_cinv(colg+j*16+rc):q*N+colg+j*16+rc;if constexpr(ByteOut)reinterpret_cast<unsigned char*>(output)[idx]=inv?0u:static_cast<unsigned char>(b8);else output[idx]=inv?0.f:__builtin_amdgcn_cvt_f32_fp8(b8,0);}}}
+@@ -1218,3 +1239,29 @@ KERNEL __attribute__((amdgpu_flat_work_group_size(128,128))) void mh_ffn_fused_c
+ KERNEL __attribute__((amdgpu_flat_work_group_size(128,128))) void mh_ffn_fused_c64_project_mapped_g128_qkv_bytein_fb_pdl(const float*in,const float*w,const float*aw,unsigned char*out,unsigned char*norm,uint tokens,uint width,uint height,uint workw,uint sx,uint sy,const uint*pflags,uint pepoch,uint pww,uint psx,uint psy,uint*fflags,uint fepoch){pdl_ffn_wait(pflags,pepoch,pww,psx,psy,tokens,width,height,workw,sx,sy);mh_ffn_qkv_body<64,false,true,true,true,true,true>(in,w,out,tokens,width,height,workw,sx,sy,aw,norm);pdl_publish(fflags,__builtin_amdgcn_workgroup_id_x());}
+ KERNEL __attribute__((amdgpu_flat_work_group_size(128,128))) void mh_ffn_fused_c64_project_mapped_g128_qkv_fb_pdl(const float*in,const float*w,const float*aw,unsigned char*out,unsigned char*norm,uint tokens,uint width,uint height,uint workw,uint sx,uint sy,const uint*pflags,uint pepoch,uint pww,uint psx,uint psy,uint*fflags,uint fepoch){pdl_ffn_wait(pflags,pepoch,pww,psx,psy,tokens,width,height,workw,sx,sy);mh_ffn_qkv_body<64,false,true,true,true,false,true>(in,w,out,tokens,width,height,workw,sx,sy,aw,norm);pdl_publish(fflags,__builtin_amdgcn_workgroup_id_x());}
+ #endif
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(64,64))) void mh_pool_project_group_c64_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<64,false,false,false,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(64,64))) void mh_pool_project_group_c64_out8_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<64,false,false,true,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(64,64))) void mh_pool_project_group_c64_hin_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<64,false,true,false,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(64,64))) void mh_pool_project_group_c64_hin_out8_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<64,false,true,true,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(128,128))) void mh_pool_project_group_c128_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<128,false,false,false,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(128,128))) void mh_pool_project_group_c128_out8_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<128,false,false,true,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(128,128))) void mh_pool_project_group_c128_hin_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<128,false,true,false,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(128,128))) void mh_pool_project_group_c128_hin_out8_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<128,false,true,true,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(256,256))) void mh_pool_project_group_c256_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<256,false,false,false,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(256,256))) void mh_pool_project_group_c256_out8_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<256,false,false,true,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(512,512))) void mh_pool_project_group_c512_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<512,false,false,false,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(512,512))) void mh_pool_project_group_c512_out8_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<512,false,false,true,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
++
++KERNEL __attribute__((amdgpu_flat_work_group_size(512,512))) void mh_pool_project_group_c512_gout_out8_f8w16(const float*raw,const float*w,float*output,uint width,uint height,uint source_width,uint valid_width,uint valid_height){mh_pool_project_group_body<512,true,false,true,true>(raw,w,output,width,height,source_width,valid_width,valid_height);}
+diff --git a/hip/vit_stream.inc b/hip/vit_stream.inc
+index 2621e5c4..b88fd988 100644
+--- a/hip/vit_stream.inc
++++ b/hip/vit_stream.inc
+@@ -18,7 +18,7 @@
+ #define VIT_QKV_TAIL_VEC 0 /* 1: vit_stream_qkv_frag_hin_w5 byte tail transposed through the wave's LDS norm tile, one 16-byte store per lane; bytes unchanged (results/deep-tail-20260930) */
+ #endif
+ #if HIP_VIT_STREAM_KERNELS
+-template<uint TM,uint TN,bool ByteAv,bool HalfSkip,bool ByteSkip=false,uint ScaleOffset=1048576,bool W16=false,bool ByteOut=false>
++template<uint TM,uint TN,bool ByteAv,bool HalfSkip,bool ByteSkip=false,uint ScaleOffset=1048576,bool W16=false,bool ByteOut=false,bool Gout=false>
+ DEV void vit_stream_project_tiles(const float*in,const float*w,const float*skip,float*out,uint tokens,const uint*reuse_gate){if(reuse_gate&&reuse_gate[0])return;
+  constexpr uint IN=1024,OUT=1024;
+  uint first=bid()/(OUT/(16*TN))*(16*TM),row=bid()%(OUT/(16*TN))*(16*TN);if(first>=tokens)return;
+@@ -63,7 +63,7 @@ DEV void vit_stream_project_tiles(const float*in,const float*w,const float*skip,
+    for(uint j=0;j<TN;j++)for(uint e=0;e<8;e++)total[t][j][e]=p?total[t][j][e]+a[t][j][e]:a[t][j][e];}
+  }
+ #pragma unroll
+- for(uint t=0;t<TM;t++){if(t>=live)continue;for(uint j=0;j<TN;j++)for(uint e=0;e<8;e++){if constexpr(ByteOut)reinterpret_cast<unsigned char*>(out)[(first+t*16+gr()*8+e)*OUT+row+j*16+rc()]=byte_F(VIT_FAST_H(total[t][j][e]));else out[(first+t*16+gr()*8+e)*OUT+row+j*16+rc()]=F(VIT_FAST_H(total[t][j][e]));}}
++ for(uint t=0;t<TM;t++){if(t>=live)continue;for(uint j=0;j<TN;j++)for(uint e=0;e<8;e++){if constexpr(ByteOut)reinterpret_cast<unsigned char*>(out)[Gout?(((first+t*16+gr()*8+e)&~15u)|(((first+t*16+gr()*8+e)&1u)<<3)|(((first+t*16+gr()*8+e)&14u)>>1))*OUT+(((row+j*16+rc())&~31u)|(((row+j*16+rc())&1u)<<1)|(((row+j*16+rc())&2u)>>1)|(((row+j*16+rc())&4u)<<2)|(((row+j*16+rc())&24u)>>1)):(first+t*16+gr()*8+e)*OUT+row+j*16+rc()]=byte_F(VIT_FAST_H(total[t][j][e]));else out[(first+t*16+gr()*8+e)*OUT+row+j*16+rc()]=F(VIT_FAST_H(total[t][j][e]));}}
+ }
+ WAVE void vit_stream_project_n64_b(const float*in,const float*w,const float*skip,float*out,uint tokens,uint inputs,uint outputs,const uint*reuse_gate){vit_stream_project_tiles<1,4,true,false>(in,w,skip,out,tokens,reuse_gate);}
+ WAVE void vit_stream_project_n64_h(const float*in,const float*w,const float*skip,float*out,uint tokens,uint inputs,uint outputs,const uint*reuse_gate){vit_stream_project_tiles<1,4,false,true>(in,w,skip,out,tokens,reuse_gate);}
+@@ -280,3 +280,7 @@ WAVE void vit_stream_project_n64_bb_compactw_w16(const float*in,const float*w,co
+ WAVE void vit_stream_project_n64_bb_bout_compactw(const float*in,const float*w,const float*skip,float*out,uint tokens,uint inputs,uint outputs,const uint*reuse_gate){vit_stream_project_tiles<1,4,true,false,true,262144,false,true>(in,w,skip,out,tokens,reuse_gate);}
+ WAVE void vit_stream_project_n64_bb_bout_compactw_w16(const float*in,const float*w,const float*skip,float*out,uint tokens,uint inputs,uint outputs,const uint*reuse_gate){vit_stream_project_tiles<1,4,true,false,true,262144,true,true>(in,w,skip,out,tokens,reuse_gate);}
+ #endif
++
++#if HIP_VIT_STREAM_KERNELS
++WAVE void vit_stream_project_n64_bb_bout_gout_compactw_w16(const float*in,const float*w,const float*skip,float*out,uint tokens,uint inputs,uint outputs,const uint*reuse_gate){vit_stream_project_tiles<1,4,true,false,true,262144,true,true,true>(in,w,skip,out,tokens,reuse_gate);}
++#endif
+diff --git a/hip/wave_owned_c32.inc b/hip/wave_owned_c32.inc
+index 8fc23a2e..6174fba8 100644
+--- a/hip/wave_owned_c32.inc
++++ b/hip/wave_owned_c32.inc
+@@ -209,7 +209,7 @@ DEV cw_i2_pair cw_matrix16(const float*w,uint byte_offset){
+  cw_i4 v;__builtin_memcpy(&v,__builtin_assume_aligned(p,16),16);
+  return {i2{v[0],v[1]},i2{v[2],v[3]}};
+ }
+-template<bool Chain,bool Finish=false,bool DownCrop=false,bool Post=false,bool Prefix=false,bool Up=false,bool Byte=false,bool DownByte=false,bool InByte=false,bool UpLowByte=false,bool PostRGBA=false,bool PostTap=false,uint W16=0>
++template<bool Chain,bool Finish=false,bool DownCrop=false,bool Post=false,bool Prefix=false,bool Up=false,bool Byte=false,bool DownByte=false,bool InByte=false,bool UpLowByte=false,bool PostRGBA=false,bool PostTap=false,uint W16=0,bool UpF8W16=false>
+ DEV void cw_body(const unsigned char*in,const float*fw,const float*w,unsigned char*out,uint windows,uint mode,uint raw,uint width,uint height,uint sx,uint sy,uint prevw,uint px,uint py,float*main=nullptr,float*down=nullptr,const unsigned char*skip=nullptr,const float*scales=nullptr,const float*color=nullptr,const float*headw=nullptr,float*rgb=nullptr,float rgbscale=0.f,const float*history=nullptr,uint seed=0,uint temporal=0,const float*upw=nullptr,_Float16*post_features=nullptr,const float*logitw=nullptr,float*logit=nullptr){fp8_sat_mode();
+  constexpr uint cw_kind=Prefix?5:Post?4:Finish?(DownCrop?3:2):Chain?0:1;
+  uint win=bid();if(win>=windows)return;
+@@ -220,6 +220,15 @@ DEV void cw_body(const unsigned char*in,const float*fw,const float*w,unsigned ch
+   uint lane=__builtin_amdgcn_workitem_id_x(),r=lane&15u,g=lane>>4;
+   uint ww=width+2*sx,iw=width/2,ih=height/2;
+   int lx=(int((win%(ww/8))*8)-int(sx))/2+int(r%4),ly=(int((win/(ww/8))*8)-int(sy))/2+int(r/4);
++  if constexpr(UpF8W16){
++   const bool ok=lx>=0&&ly>=0&&lx<int(iw)&&ly<int(ih);const uint base=ok?(uint(ly)*iw+uint(lx))*64:0u;
++   for(uint k=0;k<64;k+=32){i2 a0{},a1{};if(ok){__builtin_memcpy(&a0,in+base+k+g*8,8);__builtin_memcpy(&a1,in+base+k+16+g*8,8);}
++    for(uint ci=0;ci<2;ci++){cw_i4 b;__builtin_memcpy(&b,reinterpret_cast<const unsigned char*>(upw)+((ci*2+k/32)*512)+(g*16+r)*16,16);
++     up_totals[ci]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(i2{b[0],b[1]},a0,up_totals[ci]);
++     up_totals[ci]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(i2{b[2],b[3]},a1,up_totals[ci]);
++    }
++   }
++  }else{
+   for(uint k=0;k<64;k+=16){h8 a{},b{};
+ #if CW_HOIST_UP&1
+    {const bool ok=lx>=0&&ly>=0&&lx<int(iw)&&ly<int(ih);const uint base=ok?(uint(ly)*iw+uint(lx))*64:0u;for(uint e=0;e<8;e++){float v;if constexpr(UpLowByte)v=__builtin_amdgcn_cvt_f32_fp8(int(in[base+k+g*8+e]),0);else v=reinterpret_cast<const float*>(in)[base+k+g*8+e];a[e]=ok?(_Float16)v:(_Float16)0.f;}}
+@@ -230,7 +239,7 @@ DEV void cw_body(const unsigned char*in,const float*fw,const float*w,unsigned ch
+     __builtin_memcpy(&b,reinterpret_cast<const _Float16*>(upw)+(ci*16+r)*64+k+g*8,16);
+     up_totals[ci]=__builtin_amdgcn_wmma_f32_16x16x16_f16_w32_gfx12(b,a,up_totals[ci]);
+    }
+-  }
++  }  }
+  }
+ #if CW_ROLL_WINDOW
+  _Pragma("clang loop unroll(disable)")
+@@ -696,3 +705,7 @@ CW_EXPORT_ALL(,0)
+ CW_EXPORT_ALL(_w16,1)
+ CW_EXPORT_ALL(_w16h,2)
+ 
++
++#if CW_UP_FUSED && CW_SKIP_BYTE
++CW_ENTRY void c32_wave1_up_b8_lb_f8w16(const unsigned char*low,const float*upw,const unsigned char*skip,const float*fw,const float*aw,unsigned char*out,uint windows,uint width,uint height,uint sx,uint sy){cw_body<false,false,false,false,false,true,true,false,false,true,false,false,1,true>(low,fw,aw,out,windows,0,1,width,height,sx,sy,0,0,0,nullptr,nullptr,skip,nullptr,nullptr,nullptr,nullptr,0.f,nullptr,0,0,upw);}
++#endif
+diff --git a/hip/wave_owned_mh.inc b/hip/wave_owned_mh.inc
+index f50730b4..7086155a 100644
+--- a/hip/wave_owned_mh.inc
++++ b/hip/wave_owned_mh.inc
+@@ -254,7 +254,7 @@ template<uint C,bool ByteIn,bool ByteOut,bool Up=false
+ #if W2_EXPLICIT_WINDOW
+  ,bool ExplicitWindow=false
+ #endif
+- ,bool W16=false,bool LowByte=false,bool HalfOut=false,bool SkipHalf=false,bool SkipByte=false,bool SkipByteOut=false>
++ ,bool W16=false,bool LowByte=false,bool HalfOut=false,bool SkipHalf=false,bool SkipByte=false,bool SkipByteOut=false,bool UpF8W16=false>
+ DEV void swin_wave2_body(const float*in,const float*fw,const float*aw,void*out_any,
+  uint width,uint height,uint workw,uint workh,uint sx,uint sy,uint post,const float*upw=nullptr,const float*skip=nullptr
+ #if W2_EXPLICIT_WINDOW
+@@ -325,6 +325,16 @@ DEV void swin_wave2_body(const float*in,const float*fw,const float*aw,void*out_a
+ #else
+   const int lx=x0/2+int(rc%4),ly=y0/2+int(rc/4);const uint iw=width/2,ih=height/2;
+   f8 totals[2]{};
++  if constexpr(UpF8W16){
++   using up_i4=int __attribute__((ext_vector_type(4)));
++   const bool ok=lx>=0&&ly>=0&&lx<int(iw)&&ly<int(ih);const uint base=ok?(uint(ly)*iw+uint(lx))*IC:0u;
++   for(uint k=0;k<IC;k+=32){i2 a0{},a1{};if(ok){__builtin_memcpy(&a0,reinterpret_cast<const unsigned char*>(in)+base+k+gr*8,8);__builtin_memcpy(&a1,reinterpret_cast<const unsigned char*>(in)+base+k+16+gr*8,8);}
++    for(uint ci=0;ci<2;ci++){up_i4 b;__builtin_memcpy(&b,reinterpret_cast<const unsigned char*>(upw)+(((head*2+ci)*(IC/32)+k/32)*512)+(gr*16+rc)*16,16);
++     totals[ci]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(i2{b[0],b[1]},a0,totals[ci]);
++     totals[ci]=__builtin_amdgcn_wmma_f32_16x16x16_fp8_fp8_w32_gfx12(i2{b[2],b[3]},a1,totals[ci]);
++    }
++   }
++  }else{
+   for(uint k=0;k<IC;k+=16){h8 a{},b{};
+ #if W2_HOIST_LOADS&4
+    {const bool ok=lx>=0&&ly>=0&&lx<int(iw)&&ly<int(ih);const uint base=ok?(uint(ly)*iw+uint(lx))*IC:0u;for(uint e=0;e<8;e++){float v;if constexpr(LowByte)v=__builtin_amdgcn_cvt_f32_fp8(int(reinterpret_cast<const unsigned char*>(in)[base+k+gr*8+e]),0);else v=in[base+k+gr*8+e];a[e]=ok?(_Float16)v:(_Float16)0.f;}}
+@@ -336,6 +346,7 @@ DEV void swin_wave2_body(const float*in,const float*fw,const float*aw,void*out_a
+     totals[ci]=__builtin_amdgcn_wmma_f32_16x16x16_f16_w32_gfx12(b,a,totals[ci]);
+    }
+   }
++  }
+ #if W2_UP_VEC && defined(HIP_ISA_HALF)
+   /* W2_UP_VEC (2026-10-01, c128-c64-inchain): same values, fewer instructions in the Up epilogue.
+      H(shuffle(t)) == shuffle-of-the-f16-bits then v_cvt_f32_f16 (H is exactly those two ISA converts under HIP_ISA_HALF,
+@@ -860,3 +871,14 @@ W2_UP_KERNEL_SB(c128_wave2_up_lb_sb,128)
+ #endif
+ #endif
+ #endif
++
++#if W2_UP_FUSED && !W2_EXPLICIT_WINDOW
++#define W2_UP_F8(NAME,C,SH,SB) KERNEL __attribute__((amdgpu_flat_work_group_size(C,C))) void NAME(const float*in,const float*fw,const float*aw,void*out,uint w,uint h,uint ww,uint hh,uint sx,uint sy,uint post,const float*upw,const float*skip){swin_wave2_body<C,true,true,true,false,true,false,SH,SB,false,true>(in,fw,aw,out,w,h,ww,hh,sx,sy,post,upw,skip);}
++W2_UP_F8(c64_wave2_up_lb_f8w16,64,false,false)
++W2_UP_F8(c128_wave2_up_lb_f8w16,128,false,false)
++W2_UP_F8(c64_wave2_up_lb_sh_f8w16,64,true,false)
++W2_UP_F8(c128_wave2_up_lb_sh_f8w16,128,true,false)
++W2_UP_F8(c64_wave2_up_lb_sb_f8w16,64,false,true)
++W2_UP_F8(c128_wave2_up_lb_sb_f8w16,128,false,true)
++#undef W2_UP_F8
++#endif
