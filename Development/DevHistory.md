@@ -636,3 +636,7 @@ marked on480只报告主线程API经过时间：input录交.034ms、Network::Enq
 ### 2026-10-17：候选2双写入端gather折叠止负
 
 Down30写ViT序、Block38写decoder序，避免旧gin读取端打散。完整Frame Gold0900逐位同，但3轮ABBA mean全部非改善，pooled9.128203125→9.133894583ms(+5.691µs)，p99 pooled−3.487µs不能抵均值负。STOP，不合入；候选3从已接受候选1继续。结果results/vit-write-gather-20261017，失败总账已追加；游戏和发行包未改。
+
+### 2026-10-17：候选3 grouped Down FP8 W16采纳
+
+Down8/14/22/30使用字节LDS池化值与W16 FP8权重，保K32后H(acc+sum)及原padding/池化顺序，缺export回half；复用@ds-frag容量。Gold0900全同；3轮ABBA mean−21.775/−17.083/−23.255µs，p99−34.692/−47.005/−10.743µs，pooled9.153535833→9.132831563ms(−20.704µs)，p99−27.539µs。候选2关闭、候选1为共同基线；gfx1200仅编译，双架构80模块manifest后续最终干净重构统一封存。详results/down-f8-w16-20261017，游戏与正式包未改。
