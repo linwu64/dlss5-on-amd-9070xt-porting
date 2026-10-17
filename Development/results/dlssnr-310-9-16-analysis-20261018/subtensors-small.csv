@@ -1,0 +1,292 @@
+record,part,dtype,shape,relative_offset,file_offset,bytes,physical_storage_shape,semantic_note,source_permutation
+block0.layer0.layer,mlp_expand,E4M3,"[128, 32]",0,152515887,4096,"[128, 32]",,see pinned unpacker
+block0.layer0.layer,mlp_contract,E4M3,"[32, 128]",4096,152519983,4096,"[32, 128]",,see pinned unpacker
+block0.layer0.layer,input_lift,fp16,"[32, 16]",8208,152524095,1024,"[32, 16]",,see pinned unpacker
+block0.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[32],9232,152525119,80,[40],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block0.layer0.layer,qkv,E4M3,"[96, 32]",9312,152525199,3072,"[96, 32]",,see pinned unpacker
+block0.layer0.layer,attn_pos_bias,fp16,"[1, 64, 64]",12384,152528271,8192,"[1, 64, 64]",,see pinned unpacker
+block0.layer0.layer,scalars_b,fp32_with_padding,[1],20576,152536463,16,[4],,see pinned unpacker
+block0.layer0.layer,attn_out_proj,E4M3,"[32, 32]",20592,152536479,1024,"[32, 32]",,see pinned unpacker
+block0.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[32],21616,152537503,80,[40],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block0.layer0.layer,unclassified_gap,raw,[16],8192,152524079,16,,,none
+block1.layer0.layer,mlp_expand,E4M3,"[128, 32]",0,152537658,4096,"[128, 32]",,see pinned unpacker
+block1.layer0.layer,mlp_contract,E4M3,"[32, 128]",4096,152541754,4096,"[32, 128]",,see pinned unpacker
+block1.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[32],8192,152545850,96,[48],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block1.layer0.layer,qkv,E4M3,"[96, 32]",8288,152545946,3072,"[96, 32]",,see pinned unpacker
+block1.layer0.layer,attn_pos_bias,fp16,"[1, 64, 64]",11360,152549018,8192,"[1, 64, 64]",,see pinned unpacker
+block1.layer0.layer,scalars_b,fp32_with_padding,[1],19552,152557210,16,[4],,see pinned unpacker
+block1.layer0.layer,attn_out_proj,E4M3,"[32, 32]",19568,152557226,1024,"[32, 32]",,see pinned unpacker
+block1.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[32],20592,152558250,80,[40],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block2.layer0.layer,mlp_expand,E4M3,"[128, 32]",0,256276941,4096,"[128, 32]",,see pinned unpacker
+block2.layer0.layer,mlp_contract,E4M3,"[32, 128]",4096,256281037,4096,"[32, 128]",,see pinned unpacker
+block2.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[32],8192,256285133,96,[48],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block2.layer0.layer,qkv,E4M3,"[96, 32]",8288,256285229,3072,"[96, 32]",,see pinned unpacker
+block2.layer0.layer,attn_pos_bias,fp16,"[1, 64, 64]",11360,256288301,8192,"[1, 64, 64]",,see pinned unpacker
+block2.layer0.layer,scalars_b,fp32_with_padding,[1],19552,256296493,16,[4],,see pinned unpacker
+block2.layer0.layer,attn_out_proj,E4M3,"[32, 32]",19568,256296509,1024,"[32, 32]",,see pinned unpacker
+block2.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[32],20592,256297533,64,[32],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block2.layer0.layer,resample,E4M3,"[64, 32]",20656,256297597,2048,"[64, 32]",,see pinned unpacker
+block2.layer0.layer,tail,scalar,[8],22704,256299645,16,[8],,see pinned unpacker
+block3.layer0.layer,mlp_expand,E4M3,"[256, 64]",0,262349976,16384,"[256, 64]",,see pinned unpacker
+block3.layer0.layer,mlp_mid,E4M3,"[64, 128]",16384,262366360,8192,"[64, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block3.layer0.layer,mlp_contract,E4M3,"[64, 64]",24576,262374552,4096,"[64, 64]",,see pinned unpacker
+block3.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[64],28672,262378648,160,[80],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block3.layer0.layer,qkv,E4M3,"[192, 64]",28832,262378808,12288,"[192, 64]",,see pinned unpacker
+block3.layer0.layer,attn_pos_bias,fp16,"[2, 64, 64]",41120,262391096,16384,"[2, 64, 64]",,see pinned unpacker
+block3.layer0.layer,scalars_b,fp32_with_padding,[2],57504,262407480,16,[4],,see pinned unpacker
+block3.layer0.layer,attn_out_proj,E4M3,"[64, 64]",57520,262407496,4096,"[64, 64]",,see pinned unpacker
+block3.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[64],61616,262411592,144,[72],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block4.layer0.layer,mlp_expand,E4M3,"[256, 64]",0,262433779,16384,"[256, 64]",,see pinned unpacker
+block4.layer0.layer,mlp_mid,E4M3,"[64, 128]",16384,262450163,8192,"[64, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block4.layer0.layer,mlp_contract,E4M3,"[64, 64]",24576,262458355,4096,"[64, 64]",,see pinned unpacker
+block4.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[64],28672,262462451,160,[80],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block4.layer0.layer,qkv,E4M3,"[192, 64]",28832,262462611,12288,"[192, 64]",,see pinned unpacker
+block4.layer0.layer,attn_pos_bias,fp16,"[2, 64, 64]",41120,262474899,16384,"[2, 64, 64]",,see pinned unpacker
+block4.layer0.layer,scalars_b,fp32_with_padding,[2],57504,262491283,16,[4],,see pinned unpacker
+block4.layer0.layer,attn_out_proj,E4M3,"[64, 64]",57520,262491299,4096,"[64, 64]",,see pinned unpacker
+block4.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[64],61616,262495395,128,[64],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block4.layer0.layer,resample,E4M3,"[128, 64]",61744,262495523,8192,"[128, 64]",,see pinned unpacker
+block5.layer0.layer,mlp_expand,E4M3,"[512, 128]",0,262503790,65536,"[512, 128]",,see pinned unpacker
+block5.layer0.layer,mlp_mid,E4M3,"[128, 128]",65536,262569326,16384,"[128, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block5.layer0.layer,mlp_contract,E4M3,"[128, 128]",81920,262585710,16384,"[128, 128]",,see pinned unpacker
+block5.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[128],98304,262602094,288,[144],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block5.layer0.layer,qkv,E4M3,"[384, 128]",98592,262602382,49152,"[384, 128]",,see pinned unpacker
+block5.layer0.layer,attn_pos_bias,fp16,"[4, 64, 64]",147744,262651534,32768,"[4, 64, 64]",,see pinned unpacker
+block5.layer0.layer,scalars_b,fp32_with_padding,[4],180512,262684302,16,[4],,see pinned unpacker
+block5.layer0.layer,attn_out_proj,E4M3,"[128, 128]",180528,262684318,16384,"[128, 128]",,see pinned unpacker
+block5.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[128],196912,262700702,272,[136],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block6.layer0.layer,mlp_expand,E4M3,"[512, 128]",0,262701049,65536,"[512, 128]",,see pinned unpacker
+block6.layer0.layer,mlp_mid,E4M3,"[128, 128]",65536,262766585,16384,"[128, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block6.layer0.layer,mlp_contract,E4M3,"[128, 128]",81920,262782969,16384,"[128, 128]",,see pinned unpacker
+block6.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[128],98304,262799353,288,[144],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block6.layer0.layer,qkv,E4M3,"[384, 128]",98592,262799641,49152,"[384, 128]",,see pinned unpacker
+block6.layer0.layer,attn_pos_bias,fp16,"[4, 64, 64]",147744,262848793,32768,"[4, 64, 64]",,see pinned unpacker
+block6.layer0.layer,scalars_b,fp32_with_padding,[4],180512,262881561,16,[4],,see pinned unpacker
+block6.layer0.layer,attn_out_proj,E4M3,"[128, 128]",180528,262881577,16384,"[128, 128]",,see pinned unpacker
+block6.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[128],196912,262897961,256,[128],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block6.layer0.layer,resample,E4M3,"[256, 128]",197168,262898217,32768,"[256, 128]",,see pinned unpacker
+block7.layer0.layer,mlp_expand,E4M3,"[1024, 256]",0,262931060,262144,"[1024, 256]",,see pinned unpacker
+block7.layer0.layer,mlp_mid,E4M3,"[256, 128]",262144,263193204,32768,"[256, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block7.layer0.layer,mlp_contract,E4M3,"[256, 256]",294912,263225972,65536,"[256, 256]",,see pinned unpacker
+block7.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[256],360448,263291508,544,[272],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block7.layer0.layer,qkv,E4M3,"[768, 256]",360992,263292052,196608,"[768, 256]",,see pinned unpacker
+block7.layer0.layer,attn_pos_bias,fp16,"[8, 64, 64]",557600,263488660,65536,"[8, 64, 64]",,see pinned unpacker
+block7.layer0.layer,scalars_b,fp32_with_padding,[8],623136,263554196,32,[8],,see pinned unpacker
+block7.layer0.layer,attn_out_proj,E4M3,"[256, 256]",623168,263554228,65536,"[256, 256]",,see pinned unpacker
+block7.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[256],688704,263619764,528,[264],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block8.layer0.layer,mlp_expand,E4M3,"[1024, 256]",0,263620367,262144,"[1024, 256]",,see pinned unpacker
+block8.layer0.layer,mlp_mid,E4M3,"[256, 128]",262144,263882511,32768,"[256, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block8.layer0.layer,mlp_contract,E4M3,"[256, 256]",294912,263915279,65536,"[256, 256]",,see pinned unpacker
+block8.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[256],360448,263980815,544,[272],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block8.layer0.layer,qkv,E4M3,"[768, 256]",360992,263981359,196608,"[768, 256]",,see pinned unpacker
+block8.layer0.layer,attn_pos_bias,fp16,"[8, 64, 64]",557600,264177967,65536,"[8, 64, 64]",,see pinned unpacker
+block8.layer0.layer,scalars_b,fp32_with_padding,[8],623136,264243503,32,[8],,see pinned unpacker
+block8.layer0.layer,attn_out_proj,E4M3,"[256, 256]",623168,264243535,65536,"[256, 256]",,see pinned unpacker
+block8.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[256],688704,264309071,512,[256],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block8.layer0.layer,resample,E4M3,"[512, 256]",689216,264309583,131072,"[512, 256]",,see pinned unpacker
+block9.layer0.layer,mix_A,E4M3,"[8, 64, 512]",0,264440730,262144,"[512, 512]",,ff_a/ff_q0/ff_q2
+block9.layer0.layer,group_expand_Q0,E4M3,"[8, 256, 64]",262144,264702874,131072,"[2048, 64]",,ff_a/ff_q0/ff_q2
+block9.layer0.layer,group_contract_Q2,E4M3,"[8, 64, 256]",393216,264833946,131072,"[512, 256]",,ff_a/ff_q0/ff_q2
+block9.layer1.layer,weight,E4M3,"[512, 512]",0,264965093,262144,"[512, 512]",,see pinned unpacker
+block9.layer1.layer,skip_weight,fp16,[512],262144,265227237,1024,[512],,see pinned unpacker
+block9.layer2.layer,qkv,E4M3,"[1536, 512]",0,265228336,786432,"[1536, 512]",,see pinned unpacker
+block9.layer2.layer,attn_pos_bias,fp16,"[16, 64, 64]",786432,266014768,131072,"[16, 64, 64]",,see pinned unpacker
+block9.layer2.layer,tail,fp32,[16],917504,266145840,64,[16],,see pinned unpacker
+block9.layer3.layer,weight,E4M3,"[512, 512]",0,266145979,262144,"[512, 512]",,see pinned unpacker
+block9.layer3.layer,skip_weight,fp16,[512],262144,266408123,1024,[512],,see pinned unpacker
+block10.layer0.layer,mix_A,E4M3,"[8, 64, 512]",0,152558406,262144,"[512, 512]",,ff_a/ff_q0/ff_q2
+block10.layer0.layer,group_expand_Q0,E4M3,"[8, 256, 64]",262144,152820550,131072,"[2048, 64]",,ff_a/ff_q0/ff_q2
+block10.layer0.layer,group_contract_Q2,E4M3,"[8, 64, 256]",393216,152951622,131072,"[512, 256]",,ff_a/ff_q0/ff_q2
+block10.layer1.layer,weight,E4M3,"[512, 512]",0,153082770,262144,"[512, 512]",,see pinned unpacker
+block10.layer1.layer,skip_weight,fp16,[512],262144,153344914,1024,[512],,see pinned unpacker
+block10.layer2.layer,qkv,E4M3,"[1536, 512]",0,153346014,786432,"[1536, 512]",,see pinned unpacker
+block10.layer2.layer,attn_pos_bias,fp16,"[16, 64, 64]",786432,154132446,131072,"[16, 64, 64]",,see pinned unpacker
+block10.layer2.layer,tail,fp32,[16],917504,154263518,64,[16],,see pinned unpacker
+block10.layer3.layer,weight,E4M3,"[512, 512]",0,154263658,262144,"[512, 512]",,see pinned unpacker
+block10.layer3.layer,skip_weight,fp16,[512],262144,154525802,1024,[512],,see pinned unpacker
+block10.layer4.layer,weight,E4M3,"[1024, 512]",0,154526902,524288,"[1024, 512]",,see pinned unpacker
+block10.layer4.layer,tail,raw,[16],524288,155051190,16,[16],,see pinned unpacker
+block11.layer0.layer,weight,E4M3,"[4096, 1024]",0,155051282,4194304,"[4096, 1024]",,see pinned unpacker
+block11.layer0.layer,tail,raw,[16],4194304,159245586,16,[16],,see pinned unpacker
+block11.layer1.layer,weight,E4M3,"[1024, 4096]",0,159245678,4194304,"[1024, 4096]",,see pinned unpacker
+block11.layer1.layer,skip_weight,fp16,[1024],4194304,163439982,2048,[1024],,see pinned unpacker
+block11.layer2.layer,header,fp32,[32],0,163442106,128,[32],,see pinned unpacker
+block11.layer2.layer,weight,E4M3,"[3072, 1024]",128,163442234,3145728,"[3072, 1024]",,QKV 1024-byte alternating tiles
+block11.layer3.layer,opaque_attention_blob,raw,[2],0,166588038,2,[2],,see pinned unpacker
+block11.layer4.layer,weight,E4M3,"[1024, 1024]",0,166588116,1048576,"[1024, 1024]",,see pinned unpacker
+block11.layer4.layer,skip_weight,fp16,[1024],1048576,167636692,2048,[1024],,see pinned unpacker
+block12.layer0.layer,weight,E4M3,"[4096, 1024]",0,167638816,4194304,"[4096, 1024]",,see pinned unpacker
+block12.layer0.layer,tail,raw,[16],4194304,171833120,16,[16],,see pinned unpacker
+block12.layer1.layer,weight,E4M3,"[1024, 4096]",0,171833212,4194304,"[1024, 4096]",,see pinned unpacker
+block12.layer1.layer,skip_weight,fp16,[1024],4194304,176027516,2048,[1024],,see pinned unpacker
+block12.layer2.layer,header,fp32,[32],0,176029640,128,[32],,see pinned unpacker
+block12.layer2.layer,weight,E4M3,"[3072, 1024]",128,176029768,3145728,"[3072, 1024]",,QKV 1024-byte alternating tiles
+block12.layer3.layer,opaque_attention_blob,raw,[2],0,179175572,2,[2],,see pinned unpacker
+block12.layer4.layer,weight,E4M3,"[1024, 1024]",0,179175650,1048576,"[1024, 1024]",,see pinned unpacker
+block12.layer4.layer,skip_weight,fp16,[1024],1048576,180224226,2048,[1024],,see pinned unpacker
+block13.layer0.layer,weight,E4M3,"[4096, 1024]",0,180226350,4194304,"[4096, 1024]",,see pinned unpacker
+block13.layer0.layer,tail,raw,[16],4194304,184420654,16,[16],,see pinned unpacker
+block13.layer1.layer,weight,E4M3,"[1024, 4096]",0,184420746,4194304,"[1024, 4096]",,see pinned unpacker
+block13.layer1.layer,skip_weight,fp16,[1024],4194304,188615050,2048,[1024],,see pinned unpacker
+block13.layer2.layer,header,fp32,[32],0,188617174,128,[32],,see pinned unpacker
+block13.layer2.layer,weight,E4M3,"[3072, 1024]",128,188617302,3145728,"[3072, 1024]",,QKV 1024-byte alternating tiles
+block13.layer3.layer,opaque_attention_blob,raw,[2],0,191763106,2,[2],,see pinned unpacker
+block13.layer4.layer,weight,E4M3,"[1024, 1024]",0,191763184,1048576,"[1024, 1024]",,see pinned unpacker
+block13.layer4.layer,skip_weight,fp16,[1024],1048576,192811760,2048,[1024],,see pinned unpacker
+block14.layer0.layer,weight,E4M3,"[4096, 1024]",0,192813884,4194304,"[4096, 1024]",,see pinned unpacker
+block14.layer0.layer,tail,raw,[16],4194304,197008188,16,[16],,see pinned unpacker
+block14.layer1.layer,weight,E4M3,"[1024, 4096]",0,197008280,4194304,"[1024, 4096]",,see pinned unpacker
+block14.layer1.layer,skip_weight,fp16,[1024],4194304,201202584,2048,[1024],,see pinned unpacker
+block14.layer2.layer,header,fp32,[32],0,201204708,128,[32],,see pinned unpacker
+block14.layer2.layer,weight,E4M3,"[3072, 1024]",128,201204836,3145728,"[3072, 1024]",,QKV 1024-byte alternating tiles
+block14.layer3.layer,opaque_attention_blob,raw,[2],0,204350640,2,[2],,see pinned unpacker
+block14.layer4.layer,weight,E4M3,"[1024, 1024]",0,204350718,1048576,"[1024, 1024]",,see pinned unpacker
+block14.layer4.layer,skip_weight,fp16,[1024],1048576,205399294,2048,[1024],,see pinned unpacker
+block15.layer0.layer,weight,E4M3,"[4096, 1024]",0,205401418,4194304,"[4096, 1024]",,see pinned unpacker
+block15.layer0.layer,tail,raw,[16],4194304,209595722,16,[16],,see pinned unpacker
+block15.layer1.layer,weight,E4M3,"[1024, 4096]",0,209595814,4194304,"[1024, 4096]",,see pinned unpacker
+block15.layer1.layer,skip_weight,fp16,[1024],4194304,213790118,2048,[1024],,see pinned unpacker
+block15.layer2.layer,header,fp32,[32],0,213792242,128,[32],,see pinned unpacker
+block15.layer2.layer,weight,E4M3,"[3072, 1024]",128,213792370,3145728,"[3072, 1024]",,QKV 1024-byte alternating tiles
+block15.layer3.layer,opaque_attention_blob,raw,[2],0,216938174,2,[2],,see pinned unpacker
+block15.layer4.layer,weight,E4M3,"[1024, 1024]",0,216938252,1048576,"[1024, 1024]",,see pinned unpacker
+block15.layer4.layer,skip_weight,fp16,[1024],1048576,217986828,2048,[1024],,see pinned unpacker
+block16.layer0.layer,weight,E4M3,"[4096, 1024]",0,217988952,4194304,"[4096, 1024]",,see pinned unpacker
+block16.layer0.layer,tail,raw,[16],4194304,222183256,16,[16],,see pinned unpacker
+block16.layer1.layer,weight,E4M3,"[1024, 4096]",0,222183348,4194304,"[1024, 4096]",,see pinned unpacker
+block16.layer1.layer,skip_weight,fp16,[1024],4194304,226377652,2048,[1024],,see pinned unpacker
+block16.layer2.layer,header,fp32,[32],0,226379776,128,[32],,see pinned unpacker
+block16.layer2.layer,weight,E4M3,"[3072, 1024]",128,226379904,3145728,"[3072, 1024]",,QKV 1024-byte alternating tiles
+block16.layer3.layer,opaque_attention_blob,raw,[2],0,229525708,2,[2],,see pinned unpacker
+block16.layer4.layer,weight,E4M3,"[1024, 1024]",0,229525786,1048576,"[1024, 1024]",,see pinned unpacker
+block16.layer4.layer,skip_weight,fp16,[1024],1048576,230574362,2048,[1024],,see pinned unpacker
+block17.layer0.layer,weight,E4M3,"[4096, 1024]",0,230576486,4194304,"[4096, 1024]",,see pinned unpacker
+block17.layer0.layer,tail,raw,[16],4194304,234770790,16,[16],,see pinned unpacker
+block17.layer1.layer,weight,E4M3,"[1024, 4096]",0,234770882,4194304,"[1024, 4096]",,see pinned unpacker
+block17.layer1.layer,skip_weight,fp16,[1024],4194304,238965186,2048,[1024],,see pinned unpacker
+block17.layer2.layer,header,fp32,[32],0,238967310,128,[32],,see pinned unpacker
+block17.layer2.layer,weight,E4M3,"[3072, 1024]",128,238967438,3145728,"[3072, 1024]",,QKV 1024-byte alternating tiles
+block17.layer3.layer,opaque_attention_blob,raw,[2],0,242113242,2,[2],,see pinned unpacker
+block17.layer4.layer,weight,E4M3,"[1024, 1024]",0,242113320,1048576,"[1024, 1024]",,see pinned unpacker
+block17.layer4.layer,skip_weight,fp16,[1024],1048576,243161896,2048,[1024],,see pinned unpacker
+block18.layer0.layer,weight,E4M3,"[4096, 1024]",0,243164020,4194304,"[4096, 1024]",,see pinned unpacker
+block18.layer0.layer,tail,raw,[16],4194304,247358324,16,[16],,see pinned unpacker
+block18.layer1.layer,weight,E4M3,"[1024, 4096]",0,247358416,4194304,"[1024, 4096]",,see pinned unpacker
+block18.layer1.layer,skip_weight,fp16,[1024],4194304,251552720,2048,[1024],,see pinned unpacker
+block18.layer2.layer,header,fp32,[32],0,251554844,128,[32],,see pinned unpacker
+block18.layer2.layer,weight,E4M3,"[3072, 1024]",128,251554972,3145728,"[3072, 1024]",,QKV 1024-byte alternating tiles
+block18.layer3.layer,opaque_attention_blob,raw,[2],0,254700776,2,[2],,see pinned unpacker
+block18.layer4.layer,weight,E4M3,"[1024, 1024]",0,254700854,1048576,"[1024, 1024]",,see pinned unpacker
+block18.layer4.layer,skip_weight,fp16,[1024],1048576,255749430,2048,[1024],,see pinned unpacker
+block19.layer0.layer,weight,E4M3,"[512, 1024]",0,255751554,524288,"[512, 1024]",,see pinned unpacker
+block19.layer0.layer,skip_weight,fp16,[512],524288,256275842,1024,[512],,see pinned unpacker
+block20.layer0.layer,mix_A,E4M3,"[8, 64, 512]",0,256299737,262144,"[512, 512]",,ff_a/ff_q0/ff_q2
+block20.layer0.layer,group_expand_Q0,E4M3,"[8, 256, 64]",262144,256561881,131072,"[2048, 64]",,ff_a/ff_q0/ff_q2
+block20.layer0.layer,group_contract_Q2,E4M3,"[8, 64, 256]",393216,256692953,131072,"[512, 256]",,ff_a/ff_q0/ff_q2
+block20.layer1.layer,weight,E4M3,"[512, 512]",0,256824101,262144,"[512, 512]",,see pinned unpacker
+block20.layer1.layer,skip_weight,fp16,[512],262144,257086245,1024,[512],,see pinned unpacker
+block20.layer2.layer,qkv,E4M3,"[1536, 512]",0,257087345,786432,"[1536, 512]",,see pinned unpacker
+block20.layer2.layer,attn_pos_bias,fp16,"[16, 64, 64]",786432,257873777,131072,"[16, 64, 64]",,see pinned unpacker
+block20.layer2.layer,tail,fp32,[16],917504,258004849,64,[16],,see pinned unpacker
+block20.layer3.layer,weight,E4M3,"[512, 512]",0,258004989,262144,"[512, 512]",,see pinned unpacker
+block20.layer3.layer,skip_weight,fp16,[512],262144,258267133,1024,[512],,see pinned unpacker
+block21.layer0.layer,mix_A,E4M3,"[8, 64, 512]",0,258268233,262144,"[512, 512]",,ff_a/ff_q0/ff_q2
+block21.layer0.layer,group_expand_Q0,E4M3,"[8, 256, 64]",262144,258530377,131072,"[2048, 64]",,ff_a/ff_q0/ff_q2
+block21.layer0.layer,group_contract_Q2,E4M3,"[8, 64, 256]",393216,258661449,131072,"[512, 256]",,ff_a/ff_q0/ff_q2
+block21.layer1.layer,weight,E4M3,"[512, 512]",0,258792597,262144,"[512, 512]",,see pinned unpacker
+block21.layer1.layer,skip_weight,fp16,[512],262144,259054741,1024,[512],,see pinned unpacker
+block21.layer2.layer,qkv,E4M3,"[1536, 512]",0,259055841,786432,"[1536, 512]",,see pinned unpacker
+block21.layer2.layer,attn_pos_bias,fp16,"[16, 64, 64]",786432,259842273,131072,"[16, 64, 64]",,see pinned unpacker
+block21.layer2.layer,tail,fp32,[16],917504,259973345,64,[16],,see pinned unpacker
+block21.layer3.layer,weight,E4M3,"[512, 512]",0,259973485,262144,"[512, 512]",,see pinned unpacker
+block21.layer3.layer,skip_weight,fp16,[512],262144,260235629,1024,[512],,see pinned unpacker
+block22.layer0.layer,mlp_expand,E4M3,"[1024, 256]",0,260236729,262144,"[1024, 256]",,see pinned unpacker
+block22.layer0.layer,mlp_mid,E4M3,"[256, 128]",262144,260498873,32768,"[256, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block22.layer0.layer,mlp_contract,E4M3,"[256, 256]",294912,260531641,65536,"[256, 256]",,see pinned unpacker
+block22.layer0.layer,resample,E4M3,"[256, 512]",360448,260597177,131072,"[256, 512]",,see pinned unpacker
+block22.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[256],491520,260728249,544,[272],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block22.layer0.layer,upsample_gain,fp16_region_with_padding_or_shared_gain,[256],492064,260728793,480,[240],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block22.layer0.layer,qkv,E4M3,"[768, 256]",492544,260729273,196608,"[768, 256]",,see pinned unpacker
+block22.layer0.layer,attn_pos_bias,fp16,"[8, 64, 64]",689152,260925881,65536,"[8, 64, 64]",,see pinned unpacker
+block22.layer0.layer,scalars_b,fp32_with_padding,[8],754688,260991417,32,[8],,see pinned unpacker
+block22.layer0.layer,attn_out_proj,E4M3,"[256, 256]",754720,260991449,65536,"[256, 256]",,see pinned unpacker
+block22.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[256],820256,261056985,528,[264],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block23.layer0.layer,mlp_expand,E4M3,"[1024, 256]",0,261057589,262144,"[1024, 256]",,see pinned unpacker
+block23.layer0.layer,mlp_mid,E4M3,"[256, 128]",262144,261319733,32768,"[256, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block23.layer0.layer,mlp_contract,E4M3,"[256, 256]",294912,261352501,65536,"[256, 256]",,see pinned unpacker
+block23.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[256],360448,261418037,544,[272],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block23.layer0.layer,qkv,E4M3,"[768, 256]",360992,261418581,196608,"[768, 256]",,see pinned unpacker
+block23.layer0.layer,attn_pos_bias,fp16,"[8, 64, 64]",557600,261615189,65536,"[8, 64, 64]",,see pinned unpacker
+block23.layer0.layer,scalars_b,fp32_with_padding,[8],623136,261680725,32,[8],,see pinned unpacker
+block23.layer0.layer,attn_out_proj,E4M3,"[256, 256]",623168,261680757,65536,"[256, 256]",,see pinned unpacker
+block23.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[256],688704,261746293,528,[264],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block24.layer0.layer,mlp_expand,E4M3,"[512, 128]",0,261746897,65536,"[512, 128]",,see pinned unpacker
+block24.layer0.layer,mlp_mid,E4M3,"[128, 128]",65536,261812433,16384,"[128, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block24.layer0.layer,mlp_contract,E4M3,"[128, 128]",81920,261828817,16384,"[128, 128]",,see pinned unpacker
+block24.layer0.layer,resample,E4M3,"[128, 256]",98304,261845201,32768,"[128, 256]",,see pinned unpacker
+block24.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[128],131072,261877969,288,[144],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block24.layer0.layer,upsample_gain,fp16_region_with_padding_or_shared_gain,[128],131360,261878257,224,[112],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block24.layer0.layer,qkv,E4M3,"[384, 128]",131584,261878481,49152,"[384, 128]",,see pinned unpacker
+block24.layer0.layer,attn_pos_bias,fp16,"[4, 64, 64]",180736,261927633,32768,"[4, 64, 64]",,see pinned unpacker
+block24.layer0.layer,scalars_b,fp32_with_padding,[4],213504,261960401,16,[4],,see pinned unpacker
+block24.layer0.layer,attn_out_proj,E4M3,"[128, 128]",213520,261960417,16384,"[128, 128]",,see pinned unpacker
+block24.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[128],229904,261976801,272,[136],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block25.layer0.layer,mlp_expand,E4M3,"[512, 128]",0,261977149,65536,"[512, 128]",,see pinned unpacker
+block25.layer0.layer,mlp_mid,E4M3,"[128, 128]",65536,262042685,16384,"[128, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block25.layer0.layer,mlp_contract,E4M3,"[128, 128]",81920,262059069,16384,"[128, 128]",,see pinned unpacker
+block25.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[128],98304,262075453,288,[144],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block25.layer0.layer,qkv,E4M3,"[384, 128]",98592,262075741,49152,"[384, 128]",,see pinned unpacker
+block25.layer0.layer,attn_pos_bias,fp16,"[4, 64, 64]",147744,262124893,32768,"[4, 64, 64]",,see pinned unpacker
+block25.layer0.layer,scalars_b,fp32_with_padding,[4],180512,262157661,16,[4],,see pinned unpacker
+block25.layer0.layer,attn_out_proj,E4M3,"[128, 128]",180528,262157677,16384,"[128, 128]",,see pinned unpacker
+block25.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[128],196912,262174061,272,[136],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block26.layer0.layer,mlp_expand,E4M3,"[256, 64]",0,262174409,16384,"[256, 64]",,see pinned unpacker
+block26.layer0.layer,mlp_mid,E4M3,"[64, 128]",16384,262190793,8192,"[64, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block26.layer0.layer,mlp_contract,E4M3,"[64, 64]",24576,262198985,4096,"[64, 64]",,see pinned unpacker
+block26.layer0.layer,resample,E4M3,"[64, 128]",28672,262203081,8192,"[64, 128]",,see pinned unpacker
+block26.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[64],36864,262211273,160,[80],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block26.layer0.layer,upsample_gain,fp16_region_with_padding_or_shared_gain,[64],37024,262211433,96,[48],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block26.layer0.layer,qkv,E4M3,"[192, 64]",37120,262211529,12288,"[192, 64]",,see pinned unpacker
+block26.layer0.layer,attn_pos_bias,fp16,"[2, 64, 64]",49408,262223817,16384,"[2, 64, 64]",,see pinned unpacker
+block26.layer0.layer,scalars_b,fp32_with_padding,[2],65792,262240201,16,[4],,see pinned unpacker
+block26.layer0.layer,attn_out_proj,E4M3,"[64, 64]",65808,262240217,4096,"[64, 64]",,see pinned unpacker
+block26.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[64],69904,262244313,144,[72],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block27.layer0.layer,mlp_expand,E4M3,"[256, 64]",0,262244533,16384,"[256, 64]",,see pinned unpacker
+block27.layer0.layer,mlp_mid,E4M3,"[64, 128]",16384,262260917,8192,"[64, 128]","stored grouped [C,128]; logical dense [C,4C] has structural zeros",see pinned unpacker
+block27.layer0.layer,mlp_contract,E4M3,"[64, 64]",24576,262269109,4096,"[64, 64]",,see pinned unpacker
+block27.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[64],28672,262273205,160,[80],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block27.layer0.layer,qkv,E4M3,"[192, 64]",28832,262273365,12288,"[192, 64]",,see pinned unpacker
+block27.layer0.layer,attn_pos_bias,fp16,"[2, 64, 64]",41120,262285653,16384,"[2, 64, 64]",,see pinned unpacker
+block27.layer0.layer,scalars_b,fp32_with_padding,[2],57504,262302037,16,[4],,see pinned unpacker
+block27.layer0.layer,attn_out_proj,E4M3,"[64, 64]",57520,262302053,4096,"[64, 64]",,see pinned unpacker
+block27.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[64],61616,262306149,144,[72],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block28.layer0.layer,mlp_expand,E4M3,"[128, 32]",0,262306369,4096,"[128, 32]",,see pinned unpacker
+block28.layer0.layer,mlp_contract,E4M3,"[32, 128]",4096,262310465,4096,"[32, 128]",,see pinned unpacker
+block28.layer0.layer,resample,E4M3,"[32, 64]",8192,262314561,2048,"[32, 64]",,see pinned unpacker
+block28.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[32],10240,262316609,96,[48],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block28.layer0.layer,upsample_gain,fp16_region_with_padding_or_shared_gain,[32],10336,262316705,64,[32],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block28.layer0.layer,qkv,E4M3,"[96, 32]",10400,262316769,3072,"[96, 32]",,see pinned unpacker
+block28.layer0.layer,attn_pos_bias,fp16,"[1, 64, 64]",13472,262319841,8192,"[1, 64, 64]",,see pinned unpacker
+block28.layer0.layer,scalars_b,fp32_with_padding,[1],21664,262328033,16,[4],,see pinned unpacker
+block28.layer0.layer,attn_out_proj,E4M3,"[32, 32]",21680,262328049,1024,"[32, 32]",,see pinned unpacker
+block28.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[32],22704,262329073,80,[40],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block29.layer0.layer,mlp_expand,E4M3,"[128, 32]",0,262329229,4096,"[128, 32]",,see pinned unpacker
+block29.layer0.layer,mlp_contract,E4M3,"[32, 128]",4096,262333325,4096,"[32, 128]",,see pinned unpacker
+block29.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[32],8192,262337421,96,[48],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block29.layer0.layer,qkv,E4M3,"[96, 32]",8288,262337517,3072,"[96, 32]",,see pinned unpacker
+block29.layer0.layer,attn_pos_bias,fp16,"[1, 64, 64]",11360,262340589,8192,"[1, 64, 64]",,see pinned unpacker
+block29.layer0.layer,scalars_b,fp32_with_padding,[1],19552,262348781,16,[4],,see pinned unpacker
+block29.layer0.layer,attn_out_proj,E4M3,"[32, 32]",19568,262348797,1024,"[32, 32]",,see pinned unpacker
+block29.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[32],20592,262349821,80,[40],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block30.layer0.layer,mlp_expand,E4M3,"[128, 32]",0,262411896,4096,"[128, 32]",,see pinned unpacker
+block30.layer0.layer,mlp_contract,E4M3,"[32, 128]",4096,262415992,4096,"[32, 128]",,see pinned unpacker
+block30.layer0.layer,residual_scale,fp16_region_with_padding_or_shared_gain,[32],8208,262420104,64,[32],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block30.layer0.layer,main_gain,fp16,[32],8272,262420168,64,[32],,see pinned unpacker
+block30.layer0.layer,skip_gain,fp16,[32],8336,262420232,64,[32],,see pinned unpacker
+block30.layer0.layer,qkv,E4M3,"[96, 32]",8400,262420296,3072,"[96, 32]",,see pinned unpacker
+block30.layer0.layer,attn_pos_bias,fp16,"[1, 64, 64]",11472,262423368,8192,"[1, 64, 64]",,see pinned unpacker
+block30.layer0.layer,scalars_b,fp32_with_padding,[1],19664,262431560,16,[4],,see pinned unpacker
+block30.layer0.layer,attn_out_proj,E4M3,"[32, 32]",19680,262431576,1024,"[32, 32]",,see pinned unpacker
+block30.layer0.layer,attn_residual_scale,fp16_region_with_padding_or_shared_gain,[32],20704,262432600,80,[40],physical file includes padding; C>=64 upsample_gain requires16 coefficients from residual_scale tail,see pinned unpacker
+block30.layer0.layer,out_project,fp16,"[16, 32]",20784,262432680,1024,"[16, 32]",,see pinned unpacker
+block30.layer0.layer,unclassified_gap,raw,[16],8192,262420088,16,,,none

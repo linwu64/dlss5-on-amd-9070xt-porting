@@ -1,6 +1,6 @@
 # 当前工作计划（WorkingPlan）
 
-更新：2026-10-17（开发载荷源码 `10982cf4`；五项优化已结题，完整回执见 `results/five-final-20261017/`；本机双游戏已装 `10982cf4`；正式0.43本地三包已完成）。历史流水见 [DevHistory.md](DevHistory.md)，负账台账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-18（开发载荷源码 `10982cf4`；五项优化已结题，完整回执见 `results/five-final-20261017/`；本机双游戏已装 `10982cf4`；正式0.43本地三包已完成）。历史流水见 [DevHistory.md](DevHistory.md)，负账台账见 [failed-experiments.md](failed-experiments.md)。
 
 ---
 
@@ -37,7 +37,30 @@
 
 ---
 
-## 2. 2026-10-17 候选与实测结论（已全部结题：收1/3，停2/4/5）
+## 2. 新主线：310.9.16 CC_SMALL_FP8 接入（静态分析完成，HIP待实施）
+
+**2026-10-18 已交付逆向报告**：[dlssnr-310-9-16-analysis-20261018](results/dlssnr-310-9-16-analysis-20261018/README.md)，含77/153记录、76层、291子区段、255导出项、31块与旧HIP逐块映射及实施阶段。只做CPU解析/提取与planner验证，未执行新DLL/NGX/GPU；未改生产代码、已装双游戏或正式0.43 ZIP。
+
+### 已确定，不重复调查
+
+- DLL310.9.16.0，266424944B，SHA `2bc19bc09a7b89dd44f73e2ac0108fcc586e2154bdd0830f242f4f040e28789f`；Preset1旧HT资源与310.8整段SHA完全相同，Preset2/default新增`WEIGHTS_CC_SMALL_FP8`。
+- Small31块/76层/77资源记录，正式255项pack113917248B，SHA `7e966e2639dbec6596aa0bac3b8761137d2c40ca8cb4aca30df7ca10043c6e33`；Python和指定C++源码的本机CPU构建提取逐字节一致。PR13是256项/另带blend条目，不能混用指纹。
+- ViT仍8块，边界11..18；Post30，blend half `0x3A23`=0.76708984375；按本仓布局的新history行6 SHA `c4c5f5189360756001e96abb43a482396ac8bde56f6ac4c7c19ae63db01d0980`。Model Preset与Style分开。
+- 六skip：19←10、22←8、24←6、26←4、28←2、30←0（前三位之外还要保正确pre-down/pre-pool输出）；真实层表skip ordinal见报告。
+- Small native工作域：1080→1920×1152/ViT640；900→1600×1024/448；720→1344×768/288。900的深层宽100→52→28，720有防整除宽轴补64；不是当前固定900/720几何，也不能只改H或ViT token常量。
+
+### 顺序实施
+
+1. **P1模型/资产身份**：保Original默认与0.43行为；引入不可变ModelSpec（图、类型/shift/terminal、skip、ViT/Post边界、blend、几何/指纹）。逻辑31 ID与legacy kernel role、资产名分离；独立Small目录/缓存身份；模型切换drain/reset并重建，日志必须有requested/effective model，显式Small缺资产不能默默测旧网。
+2. **P2先固定1080正确性**：新权重用现有exact解码器生成本仓布局；可先RunSmall复用kernel roles。MP1/Style/seed明确，history/AE/skin/Sp/PDL/Pulse/graph先关；逐节点保存并对310.9.16 Preset2 oracle。先用已验F16 Up和明确中间张量，尤其不纳入已Gold失败的C32 FP8 Up候选。新Small另立gold；旧0900只保护Original。
+3. **P3几何与时序**：逐节点ceil-half/round4、skip恢复、有效尾/零填充/stride后再开900/720/free。新head/gate与blend独立参数化，不提前缩放historyStrength改变saturate语义；随后验证reset/MV/exposure/resize/模型切换、AE新gain、多遍与可选时域。
+4. **P4性能与产品**：Small同模型数值门后3轮ABBA及Zero游戏观感，再考虑单plain+DS/UPS的Sp策略及提交功能。旧full71性能资格不自动适用Small，不重开hipGraph/INT4。双架构编译/实际ELF目标核验与Original回归独立完成；现有GPU锁/看门狗规矩照旧。
+
+当前不存在可用Small HIP开关或Small发行包；报告中的新配置/ModelSpec是实施建议，不代表0.43已支持。0.43本地三包与已装10982cf4保持；公开上传仍等用户指令。
+
+---
+
+## 3. 2026-10-17 候选与实测结论（已全部结题：收1/3，停2/4/5）
 
 以下保留基于 `be506729` 的原始五项审计提案；是否成立以各节实测状态为准，不能把提案中的逐位/收益假设当成验收结果。汇总见 `results/five-final-20261017/`。
 
@@ -90,7 +113,7 @@
 
 ---
 
-## 3. 已封板边界（禁止换名重开）
+## 4. 已封板边界（禁止换名重开）
 
 - **hipGraph 全线封板**：旧 `opt.graph=1`、外层同工 `graph0`（`ReplayOff` 161 节点）与 2026-10-14 结题的 `ReplayAuto`（162 节点强 DAG，含 `EventRecord`）在 RX 9070 XT 上均无净收益或尾延迟退步，生产维持 `EagerAuto`（`DLSS5_SUBMIT_PULSE=2, opt.graph=0`）。
 - **C256 `SpStage(16,6)` / `SpStage(49,6)` 边界不动**：首尾层（`15, 22, 48, 55`）因 `Block 22` `post=3` FP32 合同、1080p `W2_FAST_NUM=3 vs 0` 数值合同差异及 `c64-wave2-fast`（LLVM23 + `W2_QKV_FUSE=3` + `W2_FFN_QT_BATCH=4`）单层核快于 COMGR 持久核，不并入 `SpStage`；`sp_init_pair` 会禁用 `submit_pulse=auto`，不启用。
@@ -101,8 +124,8 @@
 
 ---
 
-## 4. 固定工程纪律
+## 5. 固定工程纪律
 
 - **GPU 锁与护栏**：所有 GPU/远程 RTC 操作必须先做 `game-check`、进程检查、确认实验盘余量 `≥100 GB`、获取原子锁 `D:\DLSSNR-Lab\gpu.lock`，并挂 15 秒游戏看门狗；游戏运行期间严禁抢占 GPU、严禁替换 DLL/HSACO。
-- **数值与验收门**：结构/布局/ISA 优化必须对 `0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A` 逐位一致（`0 bit-diff`），性能只认单进程同批交错 3 轮 4-slot ABBA（`edges_only=1, NET0`）。
+- **数值与验收门**：Original结构/布局/ISA优化必须对 `0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A` 逐位一致（`0 bit-diff`）；Small必须与310.9.16 Preset2另立gold，不拿训练差异强求旧0900，性能只认单进程同批交错 3 轮 4-slot ABBA（`edges_only=1, NET0`）。
 - **版本与仓库卫生**：commit 不加 `Co-Authored-By`；共享分支禁止 `amend`；未经用户显式指令不改动已安装游戏文件或已发布 ZIP。

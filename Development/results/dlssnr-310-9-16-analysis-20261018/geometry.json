@@ -1,0 +1,548 @@
+[
+  {
+    "input": [
+      1001,
+      777
+    ],
+    "model": "old",
+    "working": [
+      1024,
+      832
+    ],
+    "vit_raster": [
+      16,
+      16
+    ],
+    "vit_tokens": 256,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1001x777-old.txt"
+  },
+  {
+    "input": [
+      1001,
+      777
+    ],
+    "model": "small",
+    "working": [
+      1024,
+      832
+    ],
+    "vit_raster": [
+      16,
+      16
+    ],
+    "vit_tokens": 256,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1001x777-small.txt"
+  },
+  {
+    "input": [
+      1280,
+      720
+    ],
+    "model": "old",
+    "working": [
+      1344,
+      768
+    ],
+    "vit_raster": [
+      24,
+      12
+    ],
+    "vit_tokens": 288,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1280x720-old.txt"
+  },
+  {
+    "input": [
+      1280,
+      720
+    ],
+    "model": "small",
+    "working": [
+      1344,
+      768
+    ],
+    "vit_raster": [
+      24,
+      12
+    ],
+    "vit_tokens": 288,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1280x720-small.txt"
+  },
+  {
+    "input": [
+      1280,
+      768
+    ],
+    "model": "old",
+    "working": [
+      1344,
+      768
+    ],
+    "vit_raster": [
+      24,
+      12
+    ],
+    "vit_tokens": 288,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1280x768-old.txt"
+  },
+  {
+    "input": [
+      1280,
+      768
+    ],
+    "model": "small",
+    "working": [
+      1344,
+      768
+    ],
+    "vit_raster": [
+      24,
+      12
+    ],
+    "vit_tokens": 288,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1280x768-small.txt"
+  },
+  {
+    "input": [
+      1288,
+      720
+    ],
+    "model": "old",
+    "working": [
+      1344,
+      768
+    ],
+    "vit_raster": [
+      24,
+      12
+    ],
+    "vit_tokens": 288,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1288x720-old.txt"
+  },
+  {
+    "input": [
+      1288,
+      720
+    ],
+    "model": "small",
+    "working": [
+      1408,
+      768
+    ],
+    "vit_raster": [
+      24,
+      12
+    ],
+    "vit_tokens": 288,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1288x720-small.txt"
+  },
+  {
+    "input": [
+      1600,
+      900
+    ],
+    "model": "old",
+    "working": [
+      1600,
+      960
+    ],
+    "vit_raster": [
+      28,
+      16
+    ],
+    "vit_tokens": 448,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1600x900-old.txt"
+  },
+  {
+    "input": [
+      1600,
+      900
+    ],
+    "model": "small",
+    "working": [
+      1600,
+      1024
+    ],
+    "vit_raster": [
+      28,
+      16
+    ],
+    "vit_tokens": 448,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1600x900-small.txt"
+  },
+  {
+    "input": [
+      1600,
+      908
+    ],
+    "model": "old",
+    "working": [
+      1600,
+      960
+    ],
+    "vit_raster": [
+      28,
+      16
+    ],
+    "vit_tokens": 448,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1600x908-old.txt"
+  },
+  {
+    "input": [
+      1600,
+      908
+    ],
+    "model": "small",
+    "working": [
+      1600,
+      960
+    ],
+    "vit_raster": [
+      28,
+      16
+    ],
+    "vit_tokens": 448,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1600x908-small.txt"
+  },
+  {
+    "input": [
+      1600,
+      960
+    ],
+    "model": "old",
+    "working": [
+      1600,
+      960
+    ],
+    "vit_raster": [
+      28,
+      16
+    ],
+    "vit_tokens": 448,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1600x960-old.txt"
+  },
+  {
+    "input": [
+      1600,
+      960
+    ],
+    "model": "small",
+    "working": [
+      1600,
+      960
+    ],
+    "vit_raster": [
+      28,
+      16
+    ],
+    "vit_tokens": 448,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1600x960-small.txt"
+  },
+  {
+    "input": [
+      1919,
+      1079
+    ],
+    "model": "old",
+    "working": [
+      1920,
+      1088
+    ],
+    "vit_raster": [
+      32,
+      20
+    ],
+    "vit_tokens": 640,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1919x1079-old.txt"
+  },
+  {
+    "input": [
+      1919,
+      1079
+    ],
+    "model": "small",
+    "working": [
+      1920,
+      1152
+    ],
+    "vit_raster": [
+      32,
+      20
+    ],
+    "vit_tokens": 640,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1919x1079-small.txt"
+  },
+  {
+    "input": [
+      1920,
+      1080
+    ],
+    "model": "old",
+    "working": [
+      1920,
+      1088
+    ],
+    "vit_raster": [
+      32,
+      20
+    ],
+    "vit_tokens": 640,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1920x1080-old.txt"
+  },
+  {
+    "input": [
+      1920,
+      1080
+    ],
+    "model": "small",
+    "working": [
+      1920,
+      1152
+    ],
+    "vit_raster": [
+      32,
+      20
+    ],
+    "vit_tokens": 640,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1920x1080-small.txt"
+  },
+  {
+    "input": [
+      1920,
+      1152
+    ],
+    "model": "old",
+    "working": [
+      1920,
+      1152
+    ],
+    "vit_raster": [
+      32,
+      20
+    ],
+    "vit_tokens": 640,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1920x1152-old.txt"
+  },
+  {
+    "input": [
+      1920,
+      1152
+    ],
+    "model": "small",
+    "working": [
+      1920,
+      1152
+    ],
+    "vit_raster": [
+      32,
+      20
+    ],
+    "vit_tokens": 640,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "1920x1152-small.txt"
+  },
+  {
+    "input": [
+      2560,
+      1440
+    ],
+    "model": "old",
+    "working": [
+      2560,
+      1472
+    ],
+    "vit_raster": [
+      40,
+      24
+    ],
+    "vit_tokens": 960,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "2560x1440-old.txt"
+  },
+  {
+    "input": [
+      2560,
+      1440
+    ],
+    "model": "small",
+    "working": [
+      2560,
+      1472
+    ],
+    "vit_raster": [
+      40,
+      24
+    ],
+    "vit_tokens": 960,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "2560x1440-small.txt"
+  },
+  {
+    "input": [
+      320,
+      320
+    ],
+    "model": "old",
+    "working": [
+      320,
+      320
+    ],
+    "vit_raster": [
+      8,
+      8
+    ],
+    "vit_tokens": 64,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "320x320-old.txt"
+  },
+  {
+    "input": [
+      320,
+      320
+    ],
+    "model": "small",
+    "working": [
+      320,
+      320
+    ],
+    "vit_raster": [
+      8,
+      8
+    ],
+    "vit_tokens": 64,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "320x320-small.txt"
+  },
+  {
+    "input": [
+      3840,
+      2160
+    ],
+    "model": "old",
+    "working": [
+      3840,
+      2176
+    ],
+    "vit_raster": [
+      60,
+      36
+    ],
+    "vit_tokens": 2160,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "3840x2160-old.txt"
+  },
+  {
+    "input": [
+      3840,
+      2160
+    ],
+    "model": "small",
+    "working": [
+      3840,
+      2176
+    ],
+    "vit_raster": [
+      60,
+      36
+    ],
+    "vit_tokens": 2160,
+    "reductions": [
+      6,
+      6
+    ],
+    "plan": "3840x2160-small.txt"
+  }
+]

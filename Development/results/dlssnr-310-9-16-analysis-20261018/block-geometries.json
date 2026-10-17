@@ -1,0 +1,4864 @@
+{
+  "1001x777": [
+    {
+      "block": 0,
+      "input": [
+        1024,
+        832
+      ],
+      "output": [
+        512,
+        416
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        512,
+        416
+      ],
+      "output": [
+        512,
+        416
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        512,
+        416
+      ],
+      "output": [
+        256,
+        208
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        256,
+        208
+      ],
+      "output": [
+        256,
+        208
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        256,
+        208
+      ],
+      "output": [
+        128,
+        104
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        128,
+        104
+      ],
+      "output": [
+        128,
+        104
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        128,
+        104
+      ],
+      "output": [
+        64,
+        52
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        64,
+        52
+      ],
+      "output": [
+        64,
+        52
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        64,
+        52
+      ],
+      "output": [
+        32,
+        28
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        32,
+        28
+      ],
+      "output": [
+        32,
+        28
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        32,
+        28
+      ],
+      "output": [
+        16,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        16,
+        16
+      ],
+      "output": [
+        16,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        16,
+        16
+      ],
+      "output": [
+        16,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        16,
+        16
+      ],
+      "output": [
+        16,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        16,
+        16
+      ],
+      "output": [
+        16,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        16,
+        16
+      ],
+      "output": [
+        16,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        16,
+        16
+      ],
+      "output": [
+        16,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        16,
+        16
+      ],
+      "output": [
+        16,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        16,
+        16
+      ],
+      "output": [
+        16,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        16,
+        16
+      ],
+      "output": [
+        32,
+        28
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        32,
+        28
+      ],
+      "output": [
+        32,
+        28
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        32,
+        28
+      ],
+      "output": [
+        32,
+        28
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        32,
+        28
+      ],
+      "output": [
+        64,
+        52
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        64,
+        52
+      ],
+      "output": [
+        64,
+        52
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        64,
+        52
+      ],
+      "output": [
+        128,
+        104
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        128,
+        104
+      ],
+      "output": [
+        128,
+        104
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        128,
+        104
+      ],
+      "output": [
+        256,
+        208
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        256,
+        208
+      ],
+      "output": [
+        256,
+        208
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        256,
+        208
+      ],
+      "output": [
+        512,
+        416
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        512,
+        416
+      ],
+      "output": [
+        512,
+        416
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        512,
+        416
+      ],
+      "output": [
+        1024,
+        832
+      ],
+      "layer_count": 1
+    }
+  ],
+  "1280x720": [
+    {
+      "block": 0,
+      "input": [
+        1344,
+        768
+      ],
+      "output": [
+        672,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        672,
+        384
+      ],
+      "output": [
+        672,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        672,
+        384
+      ],
+      "output": [
+        336,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        336,
+        192
+      ],
+      "output": [
+        336,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        336,
+        192
+      ],
+      "output": [
+        168,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        168,
+        96
+      ],
+      "output": [
+        168,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        168,
+        96
+      ],
+      "output": [
+        84,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        84,
+        48
+      ],
+      "output": [
+        84,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        84,
+        48
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        84,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        84,
+        48
+      ],
+      "output": [
+        84,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        84,
+        48
+      ],
+      "output": [
+        168,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        168,
+        96
+      ],
+      "output": [
+        168,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        168,
+        96
+      ],
+      "output": [
+        336,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        336,
+        192
+      ],
+      "output": [
+        336,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        336,
+        192
+      ],
+      "output": [
+        672,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        672,
+        384
+      ],
+      "output": [
+        672,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        672,
+        384
+      ],
+      "output": [
+        1344,
+        768
+      ],
+      "layer_count": 1
+    }
+  ],
+  "1280x768": [
+    {
+      "block": 0,
+      "input": [
+        1344,
+        768
+      ],
+      "output": [
+        672,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        672,
+        384
+      ],
+      "output": [
+        672,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        672,
+        384
+      ],
+      "output": [
+        336,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        336,
+        192
+      ],
+      "output": [
+        336,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        336,
+        192
+      ],
+      "output": [
+        168,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        168,
+        96
+      ],
+      "output": [
+        168,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        168,
+        96
+      ],
+      "output": [
+        84,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        84,
+        48
+      ],
+      "output": [
+        84,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        84,
+        48
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        84,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        84,
+        48
+      ],
+      "output": [
+        84,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        84,
+        48
+      ],
+      "output": [
+        168,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        168,
+        96
+      ],
+      "output": [
+        168,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        168,
+        96
+      ],
+      "output": [
+        336,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        336,
+        192
+      ],
+      "output": [
+        336,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        336,
+        192
+      ],
+      "output": [
+        672,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        672,
+        384
+      ],
+      "output": [
+        672,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        672,
+        384
+      ],
+      "output": [
+        1344,
+        768
+      ],
+      "layer_count": 1
+    }
+  ],
+  "1288x720": [
+    {
+      "block": 0,
+      "input": [
+        1408,
+        768
+      ],
+      "output": [
+        704,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        704,
+        384
+      ],
+      "output": [
+        704,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        704,
+        384
+      ],
+      "output": [
+        352,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        352,
+        192
+      ],
+      "output": [
+        352,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        352,
+        192
+      ],
+      "output": [
+        176,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        176,
+        96
+      ],
+      "output": [
+        176,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        176,
+        96
+      ],
+      "output": [
+        88,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        88,
+        48
+      ],
+      "output": [
+        88,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        88,
+        48
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        24,
+        12
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        24,
+        12
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        44,
+        24
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        44,
+        24
+      ],
+      "output": [
+        88,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        88,
+        48
+      ],
+      "output": [
+        88,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        88,
+        48
+      ],
+      "output": [
+        176,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        176,
+        96
+      ],
+      "output": [
+        176,
+        96
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        176,
+        96
+      ],
+      "output": [
+        352,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        352,
+        192
+      ],
+      "output": [
+        352,
+        192
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        352,
+        192
+      ],
+      "output": [
+        704,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        704,
+        384
+      ],
+      "output": [
+        704,
+        384
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        704,
+        384
+      ],
+      "output": [
+        1408,
+        768
+      ],
+      "layer_count": 1
+    }
+  ],
+  "1600x900": [
+    {
+      "block": 0,
+      "input": [
+        1600,
+        1024
+      ],
+      "output": [
+        800,
+        512
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        800,
+        512
+      ],
+      "output": [
+        800,
+        512
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        800,
+        512
+      ],
+      "output": [
+        400,
+        256
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        400,
+        256
+      ],
+      "output": [
+        400,
+        256
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        400,
+        256
+      ],
+      "output": [
+        200,
+        128
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        200,
+        128
+      ],
+      "output": [
+        200,
+        128
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        200,
+        128
+      ],
+      "output": [
+        100,
+        64
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        100,
+        64
+      ],
+      "output": [
+        100,
+        64
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        100,
+        64
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        100,
+        64
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        100,
+        64
+      ],
+      "output": [
+        100,
+        64
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        100,
+        64
+      ],
+      "output": [
+        200,
+        128
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        200,
+        128
+      ],
+      "output": [
+        200,
+        128
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        200,
+        128
+      ],
+      "output": [
+        400,
+        256
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        400,
+        256
+      ],
+      "output": [
+        400,
+        256
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        400,
+        256
+      ],
+      "output": [
+        800,
+        512
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        800,
+        512
+      ],
+      "output": [
+        800,
+        512
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        800,
+        512
+      ],
+      "output": [
+        1600,
+        1024
+      ],
+      "layer_count": 1
+    }
+  ],
+  "1600x908": [
+    {
+      "block": 0,
+      "input": [
+        1600,
+        960
+      ],
+      "output": [
+        800,
+        480
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        800,
+        480
+      ],
+      "output": [
+        800,
+        480
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        800,
+        480
+      ],
+      "output": [
+        400,
+        240
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        400,
+        240
+      ],
+      "output": [
+        400,
+        240
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        400,
+        240
+      ],
+      "output": [
+        200,
+        120
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        200,
+        120
+      ],
+      "output": [
+        200,
+        120
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        200,
+        120
+      ],
+      "output": [
+        100,
+        60
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        100,
+        60
+      ],
+      "output": [
+        100,
+        60
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        100,
+        60
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        100,
+        60
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        100,
+        60
+      ],
+      "output": [
+        100,
+        60
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        100,
+        60
+      ],
+      "output": [
+        200,
+        120
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        200,
+        120
+      ],
+      "output": [
+        200,
+        120
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        200,
+        120
+      ],
+      "output": [
+        400,
+        240
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        400,
+        240
+      ],
+      "output": [
+        400,
+        240
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        400,
+        240
+      ],
+      "output": [
+        800,
+        480
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        800,
+        480
+      ],
+      "output": [
+        800,
+        480
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        800,
+        480
+      ],
+      "output": [
+        1600,
+        960
+      ],
+      "layer_count": 1
+    }
+  ],
+  "1600x960": [
+    {
+      "block": 0,
+      "input": [
+        1600,
+        960
+      ],
+      "output": [
+        800,
+        480
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        800,
+        480
+      ],
+      "output": [
+        800,
+        480
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        800,
+        480
+      ],
+      "output": [
+        400,
+        240
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        400,
+        240
+      ],
+      "output": [
+        400,
+        240
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        400,
+        240
+      ],
+      "output": [
+        200,
+        120
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        200,
+        120
+      ],
+      "output": [
+        200,
+        120
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        200,
+        120
+      ],
+      "output": [
+        100,
+        60
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        100,
+        60
+      ],
+      "output": [
+        100,
+        60
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        100,
+        60
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        28,
+        16
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        28,
+        16
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        52,
+        32
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        52,
+        32
+      ],
+      "output": [
+        100,
+        60
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        100,
+        60
+      ],
+      "output": [
+        100,
+        60
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        100,
+        60
+      ],
+      "output": [
+        200,
+        120
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        200,
+        120
+      ],
+      "output": [
+        200,
+        120
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        200,
+        120
+      ],
+      "output": [
+        400,
+        240
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        400,
+        240
+      ],
+      "output": [
+        400,
+        240
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        400,
+        240
+      ],
+      "output": [
+        800,
+        480
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        800,
+        480
+      ],
+      "output": [
+        800,
+        480
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        800,
+        480
+      ],
+      "output": [
+        1600,
+        960
+      ],
+      "layer_count": 1
+    }
+  ],
+  "1919x1079": [
+    {
+      "block": 0,
+      "input": [
+        1920,
+        1152
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        1920,
+        1152
+      ],
+      "layer_count": 1
+    }
+  ],
+  "1920x1080": [
+    {
+      "block": 0,
+      "input": [
+        1920,
+        1152
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        1920,
+        1152
+      ],
+      "layer_count": 1
+    }
+  ],
+  "1920x1152": [
+    {
+      "block": 0,
+      "input": [
+        1920,
+        1152
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        32,
+        20
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        32,
+        20
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        120,
+        72
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        120,
+        72
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        240,
+        144
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        240,
+        144
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        480,
+        288
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        480,
+        288
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        960,
+        576
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        960,
+        576
+      ],
+      "output": [
+        1920,
+        1152
+      ],
+      "layer_count": 1
+    }
+  ],
+  "2560x1440": [
+    {
+      "block": 0,
+      "input": [
+        2560,
+        1472
+      ],
+      "output": [
+        1280,
+        736
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        1280,
+        736
+      ],
+      "output": [
+        1280,
+        736
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        1280,
+        736
+      ],
+      "output": [
+        640,
+        368
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        640,
+        368
+      ],
+      "output": [
+        640,
+        368
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        640,
+        368
+      ],
+      "output": [
+        320,
+        184
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        320,
+        184
+      ],
+      "output": [
+        320,
+        184
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        320,
+        184
+      ],
+      "output": [
+        160,
+        92
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        160,
+        92
+      ],
+      "output": [
+        160,
+        92
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        160,
+        92
+      ],
+      "output": [
+        80,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        80,
+        48
+      ],
+      "output": [
+        80,
+        48
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        80,
+        48
+      ],
+      "output": [
+        40,
+        24
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        40,
+        24
+      ],
+      "output": [
+        40,
+        24
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        40,
+        24
+      ],
+      "output": [
+        40,
+        24
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        40,
+        24
+      ],
+      "output": [
+        40,
+        24
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        40,
+        24
+      ],
+      "output": [
+        40,
+        24
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        40,
+        24
+      ],
+      "output": [
+        40,
+        24
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        40,
+        24
+      ],
+      "output": [
+        40,
+        24
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        40,
+        24
+      ],
+      "output": [
+        40,
+        24
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        40,
+        24
+      ],
+      "output": [
+        40,
+        24
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        40,
+        24
+      ],
+      "output": [
+        80,
+        48
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        80,
+        48
+      ],
+      "output": [
+        80,
+        48
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        80,
+        48
+      ],
+      "output": [
+        80,
+        48
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        80,
+        48
+      ],
+      "output": [
+        160,
+        92
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        160,
+        92
+      ],
+      "output": [
+        160,
+        92
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        160,
+        92
+      ],
+      "output": [
+        320,
+        184
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        320,
+        184
+      ],
+      "output": [
+        320,
+        184
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        320,
+        184
+      ],
+      "output": [
+        640,
+        368
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        640,
+        368
+      ],
+      "output": [
+        640,
+        368
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        640,
+        368
+      ],
+      "output": [
+        1280,
+        736
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        1280,
+        736
+      ],
+      "output": [
+        1280,
+        736
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        1280,
+        736
+      ],
+      "output": [
+        2560,
+        1472
+      ],
+      "layer_count": 1
+    }
+  ],
+  "320x320": [
+    {
+      "block": 0,
+      "input": [
+        320,
+        320
+      ],
+      "output": [
+        160,
+        160
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        160,
+        160
+      ],
+      "output": [
+        160,
+        160
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        160,
+        160
+      ],
+      "output": [
+        80,
+        80
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        80,
+        80
+      ],
+      "output": [
+        80,
+        80
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        80,
+        80
+      ],
+      "output": [
+        40,
+        40
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        40,
+        40
+      ],
+      "output": [
+        40,
+        40
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        40,
+        40
+      ],
+      "output": [
+        20,
+        20
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        20,
+        20
+      ],
+      "output": [
+        20,
+        20
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        20,
+        20
+      ],
+      "output": [
+        12,
+        12
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        12,
+        12
+      ],
+      "output": [
+        12,
+        12
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        12,
+        12
+      ],
+      "output": [
+        8,
+        8
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        8,
+        8
+      ],
+      "output": [
+        8,
+        8
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        8,
+        8
+      ],
+      "output": [
+        8,
+        8
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        8,
+        8
+      ],
+      "output": [
+        8,
+        8
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        8,
+        8
+      ],
+      "output": [
+        8,
+        8
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        8,
+        8
+      ],
+      "output": [
+        8,
+        8
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        8,
+        8
+      ],
+      "output": [
+        8,
+        8
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        8,
+        8
+      ],
+      "output": [
+        8,
+        8
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        8,
+        8
+      ],
+      "output": [
+        8,
+        8
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        8,
+        8
+      ],
+      "output": [
+        12,
+        12
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        12,
+        12
+      ],
+      "output": [
+        12,
+        12
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        12,
+        12
+      ],
+      "output": [
+        12,
+        12
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        12,
+        12
+      ],
+      "output": [
+        20,
+        20
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        20,
+        20
+      ],
+      "output": [
+        20,
+        20
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        20,
+        20
+      ],
+      "output": [
+        40,
+        40
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        40,
+        40
+      ],
+      "output": [
+        40,
+        40
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        40,
+        40
+      ],
+      "output": [
+        80,
+        80
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        80,
+        80
+      ],
+      "output": [
+        80,
+        80
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        80,
+        80
+      ],
+      "output": [
+        160,
+        160
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        160,
+        160
+      ],
+      "output": [
+        160,
+        160
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        160,
+        160
+      ],
+      "output": [
+        320,
+        320
+      ],
+      "layer_count": 1
+    }
+  ],
+  "3840x2160": [
+    {
+      "block": 0,
+      "input": [
+        3840,
+        2176
+      ],
+      "output": [
+        1920,
+        1088
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 1,
+      "input": [
+        1920,
+        1088
+      ],
+      "output": [
+        1920,
+        1088
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 2,
+      "input": [
+        1920,
+        1088
+      ],
+      "output": [
+        960,
+        544
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 3,
+      "input": [
+        960,
+        544
+      ],
+      "output": [
+        960,
+        544
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 4,
+      "input": [
+        960,
+        544
+      ],
+      "output": [
+        480,
+        272
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 5,
+      "input": [
+        480,
+        272
+      ],
+      "output": [
+        480,
+        272
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 6,
+      "input": [
+        480,
+        272
+      ],
+      "output": [
+        240,
+        136
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 7,
+      "input": [
+        240,
+        136
+      ],
+      "output": [
+        240,
+        136
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 8,
+      "input": [
+        240,
+        136
+      ],
+      "output": [
+        120,
+        68
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 9,
+      "input": [
+        120,
+        68
+      ],
+      "output": [
+        120,
+        68
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 10,
+      "input": [
+        120,
+        68
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 11,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 12,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 13,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 14,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 15,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 16,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 17,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 18,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        60,
+        36
+      ],
+      "layer_count": 5
+    },
+    {
+      "block": 19,
+      "input": [
+        60,
+        36
+      ],
+      "output": [
+        120,
+        68
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 20,
+      "input": [
+        120,
+        68
+      ],
+      "output": [
+        120,
+        68
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 21,
+      "input": [
+        120,
+        68
+      ],
+      "output": [
+        120,
+        68
+      ],
+      "layer_count": 4
+    },
+    {
+      "block": 22,
+      "input": [
+        120,
+        68
+      ],
+      "output": [
+        240,
+        136
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 23,
+      "input": [
+        240,
+        136
+      ],
+      "output": [
+        240,
+        136
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 24,
+      "input": [
+        240,
+        136
+      ],
+      "output": [
+        480,
+        272
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 25,
+      "input": [
+        480,
+        272
+      ],
+      "output": [
+        480,
+        272
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 26,
+      "input": [
+        480,
+        272
+      ],
+      "output": [
+        960,
+        544
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 27,
+      "input": [
+        960,
+        544
+      ],
+      "output": [
+        960,
+        544
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 28,
+      "input": [
+        960,
+        544
+      ],
+      "output": [
+        1920,
+        1088
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 29,
+      "input": [
+        1920,
+        1088
+      ],
+      "output": [
+        1920,
+        1088
+      ],
+      "layer_count": 1
+    },
+    {
+      "block": 30,
+      "input": [
+        1920,
+        1088
+      ],
+      "output": [
+        3840,
+        2176
+      ],
+      "layer_count": 1
+    }
+  ]
+}

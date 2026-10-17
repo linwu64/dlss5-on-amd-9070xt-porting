@@ -1,0 +1,201 @@
+{
+  "dll": {
+    "path": "/home/lmxxf/work/ai-theorys-study/temp/20261017/nvngx_dlssnr.dll",
+    "bytes": 266424944,
+    "sha256": "2bc19bc09a7b89dd44f73e2ac0108fcc586e2154bdd0830f242f4f040e28789f",
+    "version": "310.9.16.0",
+    "pe": {
+      "image_base": 6442450944,
+      "sections": [
+        {
+          "name": ".text",
+          "rva": 4096,
+          "virtual_size": 873452,
+          "file_offset": 1024,
+          "file_size": 873472
+        },
+        {
+          "name": ".rdata",
+          "rva": 880640,
+          "virtual_size": 231038,
+          "file_offset": 874496,
+          "file_size": 231424
+        },
+        {
+          "name": ".data",
+          "rva": 1114112,
+          "virtual_size": 3771780,
+          "file_offset": 1105920,
+          "file_size": 3672576
+        },
+        {
+          "name": ".pdata",
+          "rva": 4886528,
+          "virtual_size": 39900,
+          "file_offset": 4778496,
+          "file_size": 39936
+        },
+        {
+          "name": "_RDATA",
+          "rva": 4927488,
+          "virtual_size": 244,
+          "file_offset": 4818432,
+          "file_size": 512
+        },
+        {
+          "name": ".rsrc",
+          "rva": 4931584,
+          "virtual_size": 261590224,
+          "file_offset": 4818944,
+          "file_size": 261590528
+        },
+        {
+          "name": ".reloc",
+          "rva": 266522624,
+          "virtual_size": 4932,
+          "file_offset": 266409472,
+          "file_size": 5120
+        }
+      ],
+      "resources": [
+        {
+          "path": "10/WEIGHTS_CC_SMALL_FP8/1033",
+          "rva": 152628464,
+          "file_offset": 152515824,
+          "size": 113893343,
+          "codepage": 0,
+          "sha256": "f743e8eb320f42bc9bdc992ee2bf51f7bb7c8688ced4ecf5ce6807ec4eef7962"
+        },
+        {
+          "path": "10/WEIGHTS_HT/1033",
+          "rva": 4933048,
+          "file_offset": 4820408,
+          "size": 147695410,
+          "codepage": 0,
+          "sha256": "836f445d06ecd2e59bb9f17b84b91c143396fd76ccda1c9dc7fe81d5edd548f4"
+        },
+        {
+          "path": "16/1/1033",
+          "rva": 4931856,
+          "file_offset": 4819216,
+          "size": 1188,
+          "codepage": 0,
+          "sha256": "b89fb80211edcc1a21acead8d07c54897d9318f70300ee81a56d11189bd302f6"
+        }
+      ]
+    }
+  },
+  "old_dll_sha256": "e16bcf15e16e13f527491cdf7845b2fe6521a738d8f7c9c721866a8496e1fc8e",
+  "old_resource_sha256": "836f445d06ecd2e59bb9f17b84b91c143396fd76ccda1c9dc7fe81d5edd548f4",
+  "old_resource_identical": true,
+  "counts": {
+    "blocks": 31,
+    "layers": 76,
+    "small_resource_records": 77,
+    "ht_resource_records": 153,
+    "small_pack_entries": 255,
+    "ht_pack_entries": 599
+  },
+  "small_resource": {
+    "path": "10/WEIGHTS_CC_SMALL_FP8/1033",
+    "rva": 152628464,
+    "file_offset": 152515824,
+    "size": 113893343,
+    "codepage": 0,
+    "sha256": "f743e8eb320f42bc9bdc992ee2bf51f7bb7c8688ced4ecf5ce6807ec4eef7962"
+  },
+  "small_pack": {
+    "bytes": 113917248,
+    "sha256": "7e966e2639dbec6596aa0bac3b8761137d2c40ca8cb4aca30df7ca10043c6e33"
+  },
+  "ht_pack": {
+    "bytes": 147756560,
+    "sha256": "2b41c888cf4155b8958c665ba64018ab0bd25c85fc71a2b6db86d0d04d1f7fbd"
+  },
+  "blends": [
+    {
+      "resource": "10/WEIGHTS_CC_SMALL_FP8/1033",
+      "name": "block30.layer0.blend_scale",
+      "file_offset": 262411818,
+      "bits": "0x3A23",
+      "value": 0.76708984375
+    },
+    {
+      "resource": "10/WEIGHTS_HT/1033",
+      "name": "block70.layer0.blend_scale",
+      "file_offset": 152226642,
+      "bits": "0x39EB",
+      "value": 0.73974609375
+    }
+  ],
+  "post_heads": [
+    {
+      "model": "old",
+      "live_rows": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "RGB_rows": [
+        0,
+        2,
+        4
+      ],
+      "history_row": 6,
+      "history_f16_sha256": "77c745c4e1d84a6227a2224291d83c37d1e9bd18d45e95add166b1174225ce8f",
+      "history_f16_bytes": 64
+    },
+    {
+      "model": "small",
+      "live_rows": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "RGB_rows": [
+        0,
+        2,
+        4
+      ],
+      "history_row": 6,
+      "history_f16_sha256": "c4c5f5189360756001e96abb43a482396ac8bde56f6ac4c7c19ae63db01d0980",
+      "history_f16_bytes": 64
+    }
+  ],
+  "records_equal_to_legacy_roles": [],
+  "role_mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 4,
+    "3": 5,
+    "4": 8,
+    "5": 9,
+    "6": 14,
+    "7": 15,
+    "8": 22,
+    "9": 23,
+    "10": 30,
+    "11": 31,
+    "12": 32,
+    "13": 33,
+    "14": 34,
+    "15": 35,
+    "16": 36,
+    "17": 37,
+    "18": 38,
+    "19": 39,
+    "20": 40,
+    "21": 47,
+    "22": 48,
+    "23": 55,
+    "24": 56,
+    "25": 61,
+    "26": 62,
+    "27": 65,
+    "28": 66,
+    "29": 69,
+    "30": 70
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "image_base": 6442450944,
+  "sections": [
+    {
+      "name": ".text",
+      "rva": 4096,
+      "virtual_size": 873452,
+      "file_offset": 1024,
+      "file_size": 873472
+    },
+    {
+      "name": ".rdata",
+      "rva": 880640,
+      "virtual_size": 231038,
+      "file_offset": 874496,
+      "file_size": 231424
+    },
+    {
+      "name": ".data",
+      "rva": 1114112,
+      "virtual_size": 3771780,
+      "file_offset": 1105920,
+      "file_size": 3672576
+    },
+    {
+      "name": ".pdata",
+      "rva": 4886528,
+      "virtual_size": 39900,
+      "file_offset": 4778496,
+      "file_size": 39936
+    },
+    {
+      "name": "_RDATA",
+      "rva": 4927488,
+      "virtual_size": 244,
+      "file_offset": 4818432,
+      "file_size": 512
+    },
+    {
+      "name": ".rsrc",
+      "rva": 4931584,
+      "virtual_size": 261590224,
+      "file_offset": 4818944,
+      "file_size": 261590528
+    },
+    {
+      "name": ".reloc",
+      "rva": 266522624,
+      "virtual_size": 4932,
+      "file_offset": 266409472,
+      "file_size": 5120
+    }
+  ],
+  "resources": [
+    {
+      "path": "10/WEIGHTS_CC_SMALL_FP8/1033",
+      "rva": 152628464,
+      "file_offset": 152515824,
+      "size": 113893343,
+      "codepage": 0,
+      "sha256": "f743e8eb320f42bc9bdc992ee2bf51f7bb7c8688ced4ecf5ce6807ec4eef7962"
+    },
+    {
+      "path": "10/WEIGHTS_HT/1033",
+      "rva": 4933048,
+      "file_offset": 4820408,
+      "size": 147695410,
+      "codepage": 0,
+      "sha256": "836f445d06ecd2e59bb9f17b84b91c143396fd76ccda1c9dc7fe81d5edd548f4"
+    },
+    {
+      "path": "16/1/1033",
+      "rva": 4931856,
+      "file_offset": 4819216,
+      "size": 1188,
+      "codepage": 0,
+      "sha256": "b89fb80211edcc1a21acead8d07c54897d9318f70300ee81a56d11189bd302f6"
+    }
+  ]
+}

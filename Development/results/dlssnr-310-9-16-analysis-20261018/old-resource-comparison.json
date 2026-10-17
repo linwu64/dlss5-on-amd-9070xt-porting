@@ -1,0 +1,26 @@
+[
+  {
+    "path": [
+      "10",
+      "WEIGHTS_HT",
+      "1033"
+    ],
+    "rva": 18240864,
+    "file_offset": 18129248,
+    "size": 147695410,
+    "codepage": 0,
+    "sha256": "836f445d06ecd2e59bb9f17b84b91c143396fd76ccda1c9dc7fe81d5edd548f4"
+  },
+  {
+    "path": [
+      "10",
+      "WEIGHTS_HT",
+      "1033"
+    ],
+    "rva": 4933048,
+    "file_offset": 4820408,
+    "size": 147695410,
+    "codepage": 0,
+    "sha256": "836f445d06ecd2e59bb9f17b84b91c143396fd76ccda1c9dc7fe81d5edd548f4"
+  }
+]
