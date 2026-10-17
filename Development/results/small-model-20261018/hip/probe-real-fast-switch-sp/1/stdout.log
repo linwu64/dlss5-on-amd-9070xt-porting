@@ -1,0 +1,10 @@
+SP_PLAN c=256 first=16 layers=6 tasks=893 initial=160 state_bytes=10732 w16=1
+SP_PLAN c=256 first=49 layers=6 tasks=893 initial=160 state_bytes=10732 w16=1
+frame=0 ms=1147.03
+frame=1 ms=10.98
+frame=2 ms=8.848
+frame=3 ms=8.589
+frame=4 ms=8.745
+frame=5 ms=8.599
+RESULT model=1 mean_ms=8.64433 median_ms=8.599
+SP_STATS runs=12 fallback=0 rollover=0 jobs=10716 disabled=0 errors=0

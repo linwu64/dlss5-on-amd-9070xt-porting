@@ -1,0 +1,17 @@
+frame=0 ms=829.798
+frame=1 ms=6.983
+frame=2 ms=6.433
+frame=3 ms=6.229
+frame=4 ms=6.159
+frame=5 ms=6.083
+frame=6 ms=5.999
+frame=7 ms=5.848
+frame=8 ms=5.644
+frame=9 ms=5.704
+frame=10 ms=5.799
+frame=11 ms=5.684
+frame=12 ms=5.729
+frame=13 ms=5.814
+frame=14 ms=5.772
+RESULT model=0.5 mean_ms=5.872 median_ms=5.814
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0

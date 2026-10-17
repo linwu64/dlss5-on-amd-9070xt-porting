@@ -449,6 +449,7 @@ hip_reference::Options RuntimeOptions(unsigned w, unsigned h, const std::wstring
                                       const std::wstring &weightsDir, std::string *note)
 {
     auto opt = LmxxfProductionOptions(w, h, Utf8(modulesDir), Utf8(weightsDir));
+    opt.integration.allow_small_model = NativeSelectedTemporalMode() == NativeTemporalMode::Off;
     // The bridge picks HIP\gfx1200 or HIP\gfx1201 by device when those folders exist; require the module in every
     // architecture folder present (conservative: off rather than a load failure), else in the folder itself.
     auto has = [&](const wchar_t *f) {
@@ -488,7 +489,7 @@ hip_reference::Options RuntimeOptions(unsigned w, unsigned h, const std::wstring
                       unsigned(requestedM32), unsigned(hip_reference::C512M32Compatible(opt)),
                       unsigned(requestedVit), unsigned(hip_reference::VitProjN64Compatible(opt)),
                       unsigned(opt.pdl), opt.skip_blocks.size());
-        *note = t + gates + " multi_pass=" + std::to_string(hip_reference::MultiPassFromEnvironment()) + " predict=" + std::to_string(unsigned(hip_reference::MultiPredictFromEnvironment())) + " skin=" + std::to_string(unsigned(hip_reference::MultiSkinFromEnvironment()));
+        *note = t + gates + " multi_pass=" + std::string(dlss5_mode::Name(dlss5_mode::Environment())) + " predict=" + std::to_string(unsigned(hip_reference::MultiPredictFromEnvironment())) + " skin=" + std::to_string(unsigned(hip_reference::MultiSkinFromEnvironment()));
     }
     return opt;
 }

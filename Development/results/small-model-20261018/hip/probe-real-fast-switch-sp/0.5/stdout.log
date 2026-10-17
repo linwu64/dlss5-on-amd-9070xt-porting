@@ -1,0 +1,18 @@
+frame=0 ms=866.132
+frame=1 ms=6.008
+frame=2 ms=5.608
+frame=3 ms=5.334
+frame=4 ms=5.357
+frame=5 ms=5.227
+SP_PLAN c=256 first=16 layers=6 tasks=893 initial=160 state_bytes=10732 w16=1
+SP_PLAN c=256 first=49 layers=6 tasks=893 initial=160 state_bytes=10732 w16=1
+SWITCH mode=1 effective=1 complete=1
+SP_PLAN c=256 first=16 layers=6 tasks=893 initial=160 state_bytes=10732 w16=1
+SP_PLAN c=256 first=49 layers=6 tasks=893 initial=160 state_bytes=10732 w16=1
+SWITCH mode=2 effective=2 complete=1
+SP_PLAN c=256 first=16 layers=6 tasks=893 initial=160 state_bytes=10732 w16=1
+SP_PLAN c=256 first=49 layers=6 tasks=893 initial=160 state_bytes=10732 w16=1
+SWITCH mode=3 effective=3 complete=1
+SWITCH mode=0.5 effective=0.5 complete=1
+RESULT model=0.5 mean_ms=5.306 median_ms=5.334
+SP_STATS runs=10 fallback=0 rollover=0 jobs=8930 disabled=0 errors=0

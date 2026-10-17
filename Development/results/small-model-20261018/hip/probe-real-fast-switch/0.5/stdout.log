@@ -1,0 +1,21 @@
+frame=0 ms=865.205
+frame=1 ms=6.069
+frame=2 ms=5.582
+frame=3 ms=5.424
+frame=4 ms=5.271
+frame=5 ms=5.242
+frame=6 ms=5.12
+frame=7 ms=5.047
+frame=8 ms=4.993
+frame=9 ms=5.061
+frame=10 ms=5.042
+frame=11 ms=5.121
+frame=12 ms=5.167
+frame=13 ms=5.107
+frame=14 ms=4.992
+SWITCH mode=1 effective=1 complete=1
+SWITCH mode=2 effective=2 complete=1
+SWITCH mode=3 effective=3 complete=1
+SWITCH mode=0.5 effective=0.5 complete=1
+RESULT model=0.5 mean_ms=5.13225 median_ms=5.12
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0

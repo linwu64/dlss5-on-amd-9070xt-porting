@@ -1,0 +1,14 @@
+test-hotkey.exe : DLSS5_MULTI_PASS_HOTKEY: native-game-flags.txt also sets DLSS5_MULTI_PASS (it overrides custom-config
+.txt); rewriting that line too
+At line:5 char:1
++ & "$d\test-hotkey.exe" 1> "$d\stdout.log" 2> "$d\stderr.log"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (DLSS5_MULTI_PAS...g that line too:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+DLSS5_MULTI_PASS_HOTKEY: native-game-flags.txt also sets DLSS5_MULTI_PASS (it overrides custom-config.txt); rewriting t
+hat line too
+DLSS5_MULTI_PASS_HOTKEY: native-game-flags.txt also sets DLSS5_MULTI_PASS (it overrides custom-config.txt); rewriting t
+hat line too
+DLSS5_MULTI_PASS_HOTKEY: native-game-flags.txt also sets DLSS5_MULTI_PASS (it overrides custom-config.txt); rewriting t
+hat line too

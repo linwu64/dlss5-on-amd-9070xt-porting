@@ -35,6 +35,9 @@ public:
  bool PdlActive()const{return network&&network->PdlCalls()!=0;}
  /* DLSS5_MULTI_PASS at run time (add-on hot reload / hotkey): 0 = query only. Returns the pass count in effect (0 = no network). */
  unsigned MultiPass(unsigned set=0){if(!network)return 0;if(set)network->SetMultiPass(set);return network->MultiPass();}
+ unsigned ModelMode()const{return network?network->ModelMode():1;}
+ unsigned EffectiveModelMode()const{return network?network->EffectiveModelMode():1;}
+ void SetModelMode(unsigned mode){if(network)network->SetModelMode(mode);}
  bool MultiPassSkinProtect()const{return network&&network->MultiPassSkinProtect();}
  void MultiPassSkinProtect(bool set){if(network)network->SetMultiPassSkinProtect(set);}
  bool MultiPassPredict()const{return network&&network->MultiPassPredict();}
@@ -222,6 +225,7 @@ probe.Check(probe.hipSetDevice(chosen),"select device");size_t total=0;if(probe.
    options.modules=root.u8string();
   }
   module_directory=options.modules;
+  if(direct_history||!post_auxiliary_row.empty())options.integration.allow_small_model=false; // Small native history remains a separate validation gate.
   network=new Network(std::move(options));auto&api=network->Runtime();
   if((direct_history||!post_auxiliary_row.empty())&&network->ExperimentalTemporalConfigured())throw std::runtime_error("direct history/auxiliary output cannot use experimental temporal layout");
   if(!post_auxiliary_row.empty()&&!network->NativeHistorySupported())throw std::runtime_error("auxiliary post unsupported network");

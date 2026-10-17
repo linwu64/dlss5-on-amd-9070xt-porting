@@ -1,0 +1,402 @@
+[
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "C3B01C905B7B20AC357FD97D1BAA9D6C4EA7616AF0431543B41617C7324CBFF8",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32_prefix_reference.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "4B02890CAAD85A42C185180CFD65B5051CD01D8402F8EC21536D9779BA3144D6",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\multihead-reference.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "C2779CDFF408360721E5CD1312D945AE1951CFFC955893821EFD75724C67852E",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\deep_reference.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "693547DEC3C6E47900ABA1E85F220304F2BFB19313F2B1D7403561F46CF3D6CF",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\boundary_reference.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "576AFA15B5E76B2FF10EEC95FF585E60AB8B7055F0F3EE3DF41478A3FEEF46A7",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32_wmma.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "8C1A097BFA170EBA0C0CE51E44CC8F6F7521E2B64D6EFF3E07230DEB64D419AD",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\multihead-wmma.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "6B708483D0A9FCEE96967862E92AA5895BE969AB2316749EB5860CFE39BE0AF1",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\deep_wmma.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1CFF01355F32152834286C303D38EFD05628757C6D4E0FD7F1C0A0F3DB9E701F",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\wave-pointwise.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "9A2B98313A62611FEE3AB230DCD44AC794C1CBB1A2CCCC3598939612CA8A995A",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32_tiled.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "10AA32A6735464D21F37E197423942E7D33333C667B035F8300B9819A8FCC88E",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\multihead-tiled.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "FFF987B9ADA5AF154B3862CC2D2B8B0474A2AA82C6271E7EA378FC473B2FF617",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32_fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "169DE549AA946CBBA505260DE2D7A0B228ED93F2E2806D005F874C4009C18B6C",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32_fast_attention.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "71AFC8157C410D849B57A9823FEB7A7107013306AE6F9ADB55C51EB2A5888C6F",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\boundary-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "2B66DEB6C8C17BDE5E27734F49D205DA2651222A860A9183D5F1B88B41F893A6",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32_fused_attention.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "911C7E6CCB0D9E879CD02C75AADDEA74AF01DE7B948FA7974F76C36ED6829BFE",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32_fused_ffn_attention.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "75229A63DDD075E2BA536B360BFB5C30AFF45EE1B12D579E4319ACE90AC1B66D",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32_fused_ffn_attention-packed.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "724CF9A7329B8FE2FF8846D0CDA97E51D01A775B2CDBEF90F2F67286294FFDB7",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\prefix_fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "04D80A8CF63D5B0D908ECFBC3D25D12A3E4087BE5FBC0ECB962D8E7FE8D6AEBA",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\multihead-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "266DB0F4F386C21590BCFA4C570AC3A1C5E99C7AEF25E1B0F3D4234560AE9328",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\multihead-fast-padded-wave.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "5B1CAD8F5B5061FBDF9D26C98C68785F4A57E359BFDAAB6B0A330E51F59DB10B",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\multihead_fused_attention.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "04164C98F481A03659778619556C5B9E921DAAC3F5604B5888D7901577D96097",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\deep_fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "2C26DD8CB251624F6AC11BBB2ECF7E0D46A3788B96D12B6A328539289CEED4E4",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\deep_fast-packed.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "8D602696B3D97D6DBAC759350951D744D4AA37578ABCDDE52BEE681EF68718C4",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\multihead-fast-packed.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "C9C4B021BE277801FBC9AF7C06012F68570B0E34124ECB398CABD11ACA4A5123",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\multihead-fast-padded-wave-packed.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "C082056F859F9A9129B328D886F8711036CBAE53A6BFC6F2F280A585C108CE74",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32-wave1.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "0BE2193A3D9F4EC0A4C552FA76DF023579BFFF15E33D808F73F9CDFCF8AEA3C0",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32-wave1-rtz.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "CB98C2FAD00CBF3C98D5ADBB3DA4D8269DBF241ED00D363399D40797E4436638",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c64-wave2.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "5B6D5D80E09BEFDF2F4AE9E211FEA2DE6F89BC2E6A3AB8923A3D1B06840EC3BE",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32-wave1-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "8BAA6C390005B2124A8EAEE3F57865E302A20B667CF5EF5FFDD5F84429ED672F",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c32-wave1-fast-norm900.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "DC10C540748AD40725A1EE7241DA69857A0680046099CCB121A951C0616705B3",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c64-wave2-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "43058688E04C11E84A1EC69D1EC24E059B99E8913A9FEC20377644D5CAA57E0A",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\deep_fast-packed-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "201B405C78ADE73E05A8EE827B84E9A3A04FF91F09F42389F91680C22E091189",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\vit-stream-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "F8881C1D9B38E230E1C95861DC05B388DF9B69E118CA065C88AAC5EDF36790C8",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c512-m32-mh.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "DB0201DC5D4E81E17058E3D1A545FC400F06BBF08E89537A31E3BA761747EF33",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\c512-m32-deep.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1C12309DDD8D74201D432CA977EE0561BCDC78EDE3A473B82F58C229EA3BD8DE",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\vit-stream.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "CA48690DA20F6920EB050BA385BC8918E498DC40A1360770E7432AE74B92EE79",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\vit-wide-deep.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "C33DCD30746F7DE2E7BD442322CADF183C87EAA29E6C086ACF8757767CD26C53",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\multi-pass-skin.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "68FA718EDD874CCFC14633FCABB57963F7EEA309896C60984B91C466A09BA2DC",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\multi-pass-predict.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "3BEA7EAF652890B74E2688AD949E81320E3624319B4ADA06F90AD4F5BE44FA39",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\swin-persistent.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "F56EDFAFC74CCA3EA7A793CF5E1AB8F2B31967A20096443AF34250B39784E00B",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1200\\swin-persistent-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "65103D0C3930DD22D7EC40E282E38285D68169C9C8860DF7D561A7C04FEF7640",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32_prefix_reference.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1CFA639E9F37B7872C69D738C7332B58EAAF0539CAF720CC29A844E770FC8CBE",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\multihead-reference.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "0D2E3E9658A8ABC53BE68B6FC108CE57594784D3ED56F237BEDD9766D86DB895",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\deep_reference.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "1B1A514743924D43542ED9AC30E4CA50EC6E84E62D2BAFAB1960AAF061E0ADC8",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\boundary_reference.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "4D239CA134400EE2B42C60F99DC24202F9A4FD38C21A471C01A98217DF04B294",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32_wmma.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "BFC99774435FCF89985A795EA6E1C20DE3335053097B40206839ADF687D0E226",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\multihead-wmma.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "B562C8986300B0517818AE54A46108E725E1ECC6C6B6C88A3B7FA14C749A5B2F",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\deep_wmma.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "5E65693DA46044B697218194BB17EC8453952FA4A4A684C6ECC59DF1CECF12AA",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\wave-pointwise.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "6E7DB748FBD492CD566F208A1AA3B7E48A42A9C0D8B31022148469BB46D01E8F",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32_tiled.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "3799AE40ECEC89796132BF6464A76FAF1ADFFFE65DF2F5E6406F47A86F67AA81",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\multihead-tiled.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "A639601561123594F6D8B335F884F4E229338875F460213AF1396BC2F28C90EC",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32_fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "B3ABD5620764F5A5BA4D86FB439E0A57688E346AFDD5945F6F1D9067DA6D032C",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32_fast_attention.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "40FA66062ECA6BBE654E480944783C27B9BD93970696E1FFCA9BBC8773CA9700",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\boundary-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "5091D35E5AC53E4A8D16DE2F5FB1C8C057159C72D6605FAEB5A5CA7DAA65AACD",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32_fused_attention.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "AEDB066C95A76AA60FE67C91443C2CF8189C5E4F8E849356695CB5CD9FDC9870",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32_fused_ffn_attention.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "C0634176BF9E0A79FFB0E28FB120DF310A646D4DEDCAAD69C34F7185718D2155",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32_fused_ffn_attention-packed.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "81B3FACDA5A1512AF3940D7A82C5A2F6F2E5CC7A0F2428194F4420FC8B68A57C",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\prefix_fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "3493FB0EDE45F233A5D09472BD7A76D7532387F1FD6B0C835D46C20C0D196C9A",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\multihead-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "85149EE55B0BB52365FC3F15AC0D7E8B54917D1610319B5D87E4E31866D070A7",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\multihead-fast-padded-wave.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "F7F23560D490868EACB161D7E49C958548FAAA1D61384014EA0859B5E8CEF1B9",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\multihead_fused_attention.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "A92CAB05B61A41985DB7294AE0A7B2043FB9B4C878F9B67BD5A3055177E3C257",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\deep_fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "30D4D5739C990F0EC7C9AE1050DC1201751C2138BD02079A6C3675EA9B5F5EBE",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\deep_fast-packed.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "31E258756683B9A60E455C1C315C7B22B9605D90AE784891073FB6C74BA8EAD7",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\multihead-fast-packed.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "71D2375CC719F151CA01C36CFD93D30574159D677F6C460C70E11ADF476FF2DA",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\multihead-fast-padded-wave-packed.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "4E6132A537447BFE7B29BA77597DA015D7866D7D9F3E9BDD91BA7919783D3D01",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32-wave1.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "5519BE636D94E97855E75665740AF3F2322494AE4797AD245903223310F08554",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32-wave1-rtz.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "3B5273ABC6AFC577BC4FD4FBBF7FEE6667F2288F2B9CB21AD9E4A288821AF69C",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c64-wave2.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "8A5D9DDC139CFD44C242ACADE1B684810AF6A40633A0EBC378209CD510818E83",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32-wave1-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "337A4E13C9A1242666E530CD43A49BBF278CD9927DF3FA0C792966EC5252DB85",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c32-wave1-fast-norm900.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "475F515FE8D5FA2D1DC679FC74017ADFD35B7BA38BE1FB6C56DC67F9CE7690E0",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c64-wave2-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "00E39349BC8A1A02E5A61B4606D1541D5ED1E4988DE8C17DB3CC5C8380C095CE",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\deep_fast-packed-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "8401ED6157F8ED840A1C070237F2DAE08762A84E04B7377F3E6ABB705B3DD2EE",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\vit-stream-fast.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "9AFA918BC6252AB1BEEE5BCD15ED6AB838C612CC8368D814B48E28B67A7079B4",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c512-m32-mh.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "A6866439FA89E770D2DE82EF683B3E61E31819F4CB3618D50999B2FF14159828",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\c512-m32-deep.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "7D570E3C92CC0F9D61E95D46D4651F11F3A562E84453E0B62DBDC93021B49E96",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\vit-stream.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "DADADB24EC212A592F41F0F74E777335929235996D84614D1AD76E1C808E2493",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\vit-wide-deep.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "5FF15F49135BEEF3BC68D744B9D33F615812CE293D13C0783C88B0A3D9AAA011",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\multi-pass-skin.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "133F0975E39E7E716E146DAB15F05573D6767C8C1C99E01528F3C11509293900",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\multi-pass-predict.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "AD4600C9F824762BAF6F898988225A2C1169CAF88EC57B1E9C25CA0B03039AB8",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\swin-persistent.hsaco"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "9B58CAB4E4859645AA79C61D67972906D8DD76EB4D94C9491894461AF6BBEC39",
+        "Path":  "D:\\DLSSNR-Lab\\five-final-20261017\\HIP\\gfx1201\\swin-persistent-fast.hsaco"
+    }
+]

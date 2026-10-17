@@ -1,0 +1,80 @@
+{
+  "base_commit": "3a04bcf0",
+  "recorded_utc": "2026-10-17T19:47:39.895070+00:00",
+  "scope": "1080 Small phase; source cold graph Gold + three ABBA rounds; final SP/predictor hot-switch proof; no deployment",
+  "source_sha256": {
+    "Development/HIP/hip_reference_network.h": "05875b558e951a1df004eff317c6df7f21bb0cd64a80c9e35747fba9b7a2f814",
+    "Development/HIP/hip_d3d12_bridge.h": "af4720a9dafce960621b4a2231874e1dabcf8c02ec82009a16ee96d2910c663b",
+    "Development/HIP/swin_persistent_network.h": "834fe38497fa810a822c71e1bf0754344f322f24d2c7ffed076fbfd87305a161",
+    "Development/HIP/small_model_assets.h": "3a0050b355b7284f6ab212b5f0ca57d51bf9f30081631d76e1c65e2def6279d8",
+    "src/native_model_mode.h": "2d7a024b2ae3135f005145c3a6c50f111c7caf6d1ee6fb5f25789db0350a7319",
+    "src/native_hot_flags.h": "002943a5714decf17c954c2c768fe97a000863d711ff95870a13972aead6d78e",
+    "src/native_hip_network.h": "97cb771a942cf9b29b8d3c25f8685edf584170e1a309b0281ac295cdb38568ee",
+    "src/LmxxfNrRuntime.cpp": "7de20b9c771585574e563574c497c747dc08c4aa5e9a684e00470debe1052552",
+    "Development/HIP/experiments/small-model/network_probe.cpp": "ff77bc1a3384fec22a5ce2bde041b9396f3d0f6044ee626e3de4b89a3813bf7f",
+    "Development/HIP/experiments/small-model/test_mode.cpp": "10bcb5143bcadb574963997980d7247c95f3d6fce5b5fb3a8229cb0fda37bc87",
+    "Development/HIP/experiments/small-model/ngx_oracle.cpp": "e249b0938a71db2a5efb105d25e4a9382f23a6ef2fccefe7bdfaf92ac7a7c23f",
+    "Development/HIP/experiments/small-model/run-oracle.ps1": "8bee867ca9498de6837c48923e91fe75af3a56da76352c03f0a931c247a99862",
+    "Development/HIP/experiments/small-model/test_hotkey.cpp": "92c4762f3e0c9ab238ae71bf06f47f9454f6e87e3c7b37f31d56609520b6d094",
+    "Development/HIP/experiments/small-model/run-frame.ps1": "34f86d8791e9f211001992f1bd8a1b3e666da9ec1266fae3a672e76f878eee7c",
+    "Development/HIP/experiments/small-model/run-hip.ps1": "6a08780308986ea9d8affda98a0b91c046b3288cc9ee2a74b1b6f0fafa1ccdfd",
+    "Development/HIP/experiments/small-model/collect.py": "9bc7f38354ca90f233674e0c35866673f571876e08ca0b57dfbc9ccea9538856",
+    "Development/HIP/experiments/small-model/capture_network.h": "8922ddd69ff1918cf605cc126f4e9086d191b296207ab17857ecbf0bb6cbbabf",
+    "Development/HIP/experiments/small-model/observe_parameters.h": "631eeaf008f83c4a92e35b31db019801328ce41756b3ccbdd483659a88492f6b",
+    "Development/HIP/experiments/small-model/convert_weights.py": "246f78e4e88eea78b3401f7c39fc079bb6b67160f55a56bb2538d527ea6d8c5f"
+  },
+  "binaries": {
+    "dlss5-amd-ready.addon64": {
+      "path": "/home/lmxxf/work/dlss5-small-build/dlss5-amd-ready.addon64",
+      "bytes": 4642810,
+      "sha256": "8279defa6dd7fb7008565260d6e3cd193f97a3b9df936049a5efad6ccb03b0f5"
+    },
+    "runtime-ready/LmxxfNrRuntime.dll": {
+      "path": "/home/lmxxf/work/dlss5-small-build/runtime-ready/LmxxfNrRuntime.dll",
+      "bytes": 4324929,
+      "sha256": "9b1d3ddd8569e4f5f324bd6b05b640bd5e04e58ba3ddf32bc9d45cc69a7ba038"
+    },
+    "frame-final.exe": {
+      "path": "/home/lmxxf/work/dlss5-small-build/frame-final.exe",
+      "bytes": 4670467,
+      "sha256": "f5c939ac208c9f9a9f1bc87fb2630e4bc107df41170b09f90b6079485ddd7495"
+    },
+    "frame-ready.exe": {
+      "path": "/home/lmxxf/work/dlss5-small-build/frame-ready.exe",
+      "bytes": 4665793,
+      "sha256": "b7597277e02f1498c1ec2003d269ec84a6442c5cc73345c8d3904760fd487958"
+    },
+    "network-probe-ready.exe": {
+      "path": "/home/lmxxf/work/dlss5-small-build/network-probe-ready.exe",
+      "bytes": 3690079,
+      "sha256": "c214c05e636ba08bcf40391eb295bd0929024afecc2abed92fb41799cc7dc02d"
+    },
+    "ngx-oracle.exe": {
+      "path": "/home/lmxxf/work/dlss5-small-build/ngx-oracle.exe",
+      "bytes": 2362529,
+      "sha256": "5ae66132537a40247f9d4fe89dca62fe5c4b48b506040be9886b332696a6d7c6"
+    },
+    "ngx-oracle-observe.exe": {
+      "path": "/home/lmxxf/work/dlss5-small-build/ngx-oracle-observe.exe",
+      "bytes": 2392874,
+      "sha256": "f419c771d1790bd0181b3dca856c9fdee4b6c9ea2a60f98565227bf4704c09c4"
+    },
+    "ngx-oracle-capture.exe": {
+      "path": "/home/lmxxf/work/dlss5-small-build/ngx-oracle-capture.exe",
+      "bytes": 2421828,
+      "sha256": "ca2d5d66a81bd6074549c1043d61e2e7b927a69b47adc8ce2475dcf952d93198"
+    }
+  },
+  "measured_frame_host": "frame-final.exe",
+  "final_cold_gold_host": "frame-ready.exe",
+  "final_switch_host": "network-probe-ready.exe",
+  "large_outputs_root": "/home/lmxxf/work/dlss5-small-build",
+  "new_dll_sha256": "2bc19bc09a7b89dd44f73e2ac0108fcc586e2154bdd0830f242f4f040e28789f",
+  "small_assets_readback_count": 93,
+  "unchanged_hsaco_count": 80,
+  "gpu_arch_tested": [
+    "gfx1201"
+  ],
+  "installed_games_modified": false,
+  "release_zips_modified": false
+}

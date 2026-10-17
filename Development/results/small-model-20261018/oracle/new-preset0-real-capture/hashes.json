@@ -1,0 +1,22 @@
+[
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "3551B404E23FDA443C2D309CAAD2735C6EA06D00AF830AFBD06CD8B634B445CC",
+        "Path":  "C:\\DLSSNR-Small-20261018\\new-preset0-real-capture\\8678-1.rgb32"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "3551B404E23FDA443C2D309CAAD2735C6EA06D00AF830AFBD06CD8B634B445CC",
+        "Path":  "C:\\DLSSNR-Small-20261018\\new-preset0-real-capture\\8678-2.rgb32"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "29917086D23CDE6675917995742B6271B3C107F7F89AC3C66826D092F61AD973",
+        "Path":  "C:\\DLSSNR-Small-20261018\\new-preset0-real-capture\\8680-1.rgb32"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "29917086D23CDE6675917995742B6271B3C107F7F89AC3C66826D092F61AD973",
+        "Path":  "C:\\DLSSNR-Small-20261018\\new-preset0-real-capture\\8680-2.rgb32"
+    }
+]

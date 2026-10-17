@@ -1,0 +1,8 @@
+frame=0 ms=1124.28
+frame=1 ms=9.863
+frame=2 ms=8.903
+frame=3 ms=8.628
+frame=4 ms=8.678
+frame=5 ms=8.801
+RESULT model=1 mean_ms=8.70233 median_ms=8.678
+SP_STATS runs=0 fallback=0 rollover=0 jobs=0 disabled=0 errors=0

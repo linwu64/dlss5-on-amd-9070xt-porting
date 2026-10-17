@@ -1,0 +1,57 @@
+{
+  "swin_run": 1,
+  "predict": 1,
+  "passes3_actual": 2,
+  "rows": [
+    {
+      "mode": "cold-1",
+      "bytes": 26542080,
+      "sha256": "d88152c8e44c570ef7ea72f2525d338413450830c729be2c616813140acb0af2",
+      "nonfinite": 0,
+      "min": 0.008878469467163086,
+      "max": 1.0
+    },
+    {
+      "mode": "before-small",
+      "bytes": 26542080,
+      "sha256": "f8780c70d57be0d253ac8983db923a5a6ef1f14f43a0f4da78642d1ea0a5d09f",
+      "nonfinite": 0,
+      "min": 0.04273766279220581,
+      "max": 1.0
+    },
+    {
+      "mode": "1",
+      "bytes": 26542080,
+      "sha256": "d88152c8e44c570ef7ea72f2525d338413450830c729be2c616813140acb0af2",
+      "nonfinite": 0,
+      "min": 0.008878469467163086,
+      "max": 1.0
+    },
+    {
+      "mode": "2",
+      "bytes": 26542080,
+      "sha256": "0c911fbbda32b957d3cf809a50713443cd4af4b9ae5eac0b0c060fca2b749d6b",
+      "nonfinite": 0,
+      "min": 0.0,
+      "max": 1.0
+    },
+    {
+      "mode": "3",
+      "bytes": 26542080,
+      "sha256": "a31fe18e4da2153ff480c93dfa70389967b1abbefc6f32625b5a0727a8d098bd",
+      "nonfinite": 0,
+      "min": 0.0,
+      "max": 1.0
+    },
+    {
+      "mode": "0.5",
+      "bytes": 26542080,
+      "sha256": "f8780c70d57be0d253ac8983db923a5a6ef1f14f43a0f4da78642d1ea0a5d09f",
+      "nonfinite": 0,
+      "min": 0.04273766279220581,
+      "max": 1.0
+    }
+  ],
+  "original_hot_vs_cold_bitdiff": 0,
+  "small_roundtrip_bitdiff": 0
+}

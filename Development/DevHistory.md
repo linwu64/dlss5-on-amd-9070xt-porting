@@ -674,3 +674,16 @@ D:\給網友打包三包：Magpie345297302B SHA b3450315de6bf23bfbbd550a56cc82d7
 - `10-14`（`be506729`，七场战役）：1080 档 `9.055 ms` mean / `9.049 ms` median（最佳单槽 `8.960 ms` mean / `8.945 ms` median）
 - `0.43`（`10982cf4`，含候选 1+3）：1080 档 **`9.121 ms`**（同批对照 `9.142 → 9.121 ms`，`-20.85 µs`）、900 档 **`6.535 ms`**（同批对照 `6.570 → 6.535 ms`，`-34.49 µs`）。
 
+
+
+### 2026-10-18：0.5x Small 的1080阶段接通（后续900/720未完成）
+
+Zero定名新31块模型为0.5x并作为默认，配置`DLSS5_MULTI_PASS=0.5`，F9顺序0.5→1→2→3→0.5；1/2/3保留旧71块单遍/叠层。模式与整数遍数分开，Small独立资产目录；缺资产/未支持几何或history合同记录requested/effective并回退1x。不是把0.5截断为0遍，也不让测试静默测成旧网。
+
+同一exact布局转换器先重解HT：184主图文件逐float bit对上既有资产，再导出Small 93文件/241214392B（92主图+history行6的64B），blend 0x3A23在manifest。5090真实NGX新Preset1=旧310.8、默认0=新Preset2，两张真实输入与合成重复稳定。加只读观察/原内部Post捕获后，API最终输出SHA仍不变。首轮把HIP网络RGB与API额外合成后的输出混比约25dB，改为内部Post FP16存储后展开的RGB比较；真实8678 Small FAST0 48.021703dB、FAST1 47.755055dB，不宣称NV逐位相同。
+
+HIP固定1080图31块/640 token，复用既有算子、改拓扑/shift/skip与模型资产身份，SP/Pulse/PDL/AE旧图资格不套Small。模型切换先drain，连SP计划的旧权重裸指针也一起清理，防止旧图重入用到已释放权重。9070实际0.5→1→2→3→0.5输出往返Small bit0，CPU F9配置写回及reload通过；缺Small回退与显式1x逐位同。Original首尾Gold `0900E489…0F4A`未变，新Small `65D71486…8FCB8`，Gold+3轮4-slot ABBA全同模型首尾逐位稳定/有限。
+
+完整frame.exe NET0/edges_only1，每槽240帧丢前80：同批1x **9.156154ms → 0.5x 5.553510ms/frame**（mean−39.347%，1.649×），Small median5.535300ms/p99 5.820500ms；三轮均正收益。0.43历史1x9.121ms保留，不把跨批差额当旧路径性能回归。驻留上传权重297609000→154793464B，不称整进程显存峰值。
+
+宿主add-on/runtime/frame已编译，既有80个双架构HSACO未改，未装游戏、未换0.43包、未发新版；gfx1200无Small真机声明。900/720/free逐层几何、跨尺寸热切、Small原生history/AE及游戏体验仍待下一阶段；runtime仍启动读配置，F9/热重载目前仅add-on，统一运行时热键也未结题。所有GPU实验守game-check、实验盘≥100GB、原子gpu.lock与15秒看门狗；5090 D盘余63GB，实验改放C盘（约777GB空闲），锁位置不变。完整源码/Oracle/CSV/Gold/模式切换回执见 [small-model-20261018](results/small-model-20261018/README.md)，当前排队只看WorkingPlan§2。

@@ -363,9 +363,11 @@ DLSS5_NETWORK_FREE_RES=0
 # EN: Default because with all 71 blocks it is only about 0.12 (900) / 0.19 (1080) ms slower than the old default
 # EN: (skip 42,43,46) for 44.26->47.55 dB vs NVIDIA (c32/c64-era numbers), ~3 dB less error than block skip on motion
 DLSS5_FAST_NUMERIC=1
-# 中：叠层：整个网络每帧跑 N 遍（1/2/3），上一遍的输出图当下一遍的输入；风格逐遍加强，网络耗时约 N 倍；默认 1
-# EN: Multi pass: run the whole network N times per frame (1/2/3), each pass fed the previous output; stronger style, ~N x network time; default 1
-DLSS5_MULTI_PASS=1
+# 中：默认 0.5x = 31 块 Small；1/2/3 = 旧 71 块单遍/叠层；Small 缺资产时日志回退 1x。
+# EN: Default 0.5x selects 31-block Small; 1/2/3 select Original (71 blocks); missing Small assets log a fallback to 1x.
+DLSS5_MULTI_PASS=0.5
+# 中：F9 顺序：0.5 -> 1 -> 2 -> 3 -> 0.5；当前 Small 首阶段只支持 1080 档。
+# EN: F9 cycles 0.5 -> 1 -> 2 -> 3 -> 0.5; initial Small integration supports the 1080 tier.
 # 中：肤色保护：叠层>1时肤色区域保留第一遍，其余用最终遍；肤色启发式非分割；默认0
 # EN: Skin protect at MULTI_PASS>1: skin uses pass 1, elsewhere final pass; color heuristic, not segmentation; default 0
 DLSS5_MULTI_PASS_SKIN_PROTECT=0

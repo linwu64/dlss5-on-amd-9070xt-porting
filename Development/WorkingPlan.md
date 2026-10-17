@@ -1,6 +1,6 @@
 # 当前工作计划（WorkingPlan）
 
-更新：2026-10-18（开发载荷源码 `10982cf4`；五项优化已结题，完整回执见 `results/five-final-20261017/`；本机双游戏已装 `10982cf4`；正式0.43本地三包已完成）。历史流水见 [DevHistory.md](DevHistory.md)，负账台账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-18（0.5x Small 的1080阶段已接通并完成Oracle/Gold/3轮ABBA，900/720仍待接入；正式包仍0.43；开发载荷源码 `10982cf4`；五项优化已结题，完整回执见 `results/five-final-20261017/`；本机双游戏已装 `10982cf4`；正式0.43本地三包已完成）。历史流水见 [DevHistory.md](DevHistory.md)，负账台账见 [failed-experiments.md](failed-experiments.md)。
 
 ---
 
@@ -37,26 +37,28 @@
 
 ---
 
-## 2. 新主线：310.9.16 CC_SMALL_FP8 接入（静态分析完成，HIP待实施）
+## 2. 新主线：0.5x Small（1080阶段已闭环；900/720/free待接入）
 
-**2026-10-18 已交付逆向报告**：[dlssnr-310-9-16-analysis-20261018](results/dlssnr-310-9-16-analysis-20261018/README.md)，含77/153记录、76层、291子区段、255导出项、31块与旧HIP逐块映射及实施阶段。只做CPU解析/提取与planner验证，未执行新DLL/NGX/GPU；未改生产代码、已装双游戏或正式0.43 ZIP。
+Zero 2026-10-18 定名：310.9.16 的31块新网络叫 **0.5x**，`DLSS5_MULTI_PASS=0.5` 为新的源码/三模板默认；`1` / `2` / `3` 分别为旧71块单遍/叠层，第三遍预测选项保留。add-on F9按 **0.5 → 1 → 2 → 3 → 0.5** 切换（runtime目前仍创建时读配置，运行时热键待扩展）。缺少Small资产时带requested/effective日志回退1x。
 
-### 已确定，不重复调查
+### 已完成（本轮1080阶段）
 
-- DLL310.9.16.0，266424944B，SHA `2bc19bc09a7b89dd44f73e2ac0108fcc586e2154bdd0830f242f4f040e28789f`；Preset1旧HT资源与310.8整段SHA完全相同，Preset2/default新增`WEIGHTS_CC_SMALL_FP8`。
-- Small31块/76层/77资源记录，正式255项pack113917248B，SHA `7e966e2639dbec6596aa0bac3b8761137d2c40ca8cb4aca30df7ca10043c6e33`；Python和指定C++源码的本机CPU构建提取逐字节一致。PR13是256项/另带blend条目，不能混用指纹。
-- ViT仍8块，边界11..18；Post30，blend half `0x3A23`=0.76708984375；按本仓布局的新history行6 SHA `c4c5f5189360756001e96abb43a482396ac8bde56f6ac4c7c19ae63db01d0980`。Model Preset与Style分开。
-- 六skip：19←10、22←8、24←6、26←4、28←2、30←0（前三位之外还要保正确pre-down/pre-pool输出）；真实层表skip ordinal见报告。
-- Small native工作域：1080→1920×1152/ViT640；900→1600×1024/448；720→1344×768/288。900的深层宽100→52→28，720有防整除宽轴补64；不是当前固定900/720几何，也不能只改H或ViT token常量。
+- [逆向报告](results/dlssnr-310-9-16-analysis-20261018/README.md)之后，实际提取转换与GPU回执见 **[small-model-20261018](results/small-model-20261018/README.md)**；该回执取代旧报告P1“保Original默认”的产品建议。
+- 310.9.16 DLL SHA `2bc19bc0…`；5090通过原NGX分别跑Preset1/2及默认0。新Preset1=旧310.8，默认0=Preset2；合成及真实8678/8680重复稳定。只读内部Post捕获前后API输出SHA不变，输入捕获与上传值一致。
+- 同一转换器重解HT的184个主图资产与现有HIP资产逐float bit一致。Small已导出93文件（92主图+64B history头），241214392B，独立`small/`目录及manifest，保留旧权重共存。blend `0x3A23` / 0.76708984375 与新history行6也已提取；**时序消费未接通**。
+- 31块执行图采用独立模型身份、legacy kernel-role资产映射与0/3→1/2 shift。1080固定1920×1152/640 token；不引入失败的C32 FP8 Up，不重编既有80个双架构算子模块。Small禁用旧图专用SP/Pulse/PDL提交及AE；切换drain并清理权重、SP计划引用和自适应状态。
+- 原网络Gold仍为`0900E489…0F4A`，Small新Gold为`65D71486…8FCB8`；Gold和3轮ABBA全部首尾有限/同模型逐位一致。模式0.5→1→2→3→0.5真GPU往返Small bit-diff=0；Windows CPU热键写回/优先级/reload通过；缺Small实际回退与显式1x逐位一致。
+- NVIDIA对账域是**内部Post FP16 surface展开的RGB**，不是API额外合成后的最终输出。真实8678：Small FAST0 **48.021703dB**、默认FAST1 **47.755055dB**；近似HIP算术不宣称NV 0 bit-diff，完整逐值指标在回执。
+- **完整frame.exe 1080稳态单帧耗时：0.5x `5.553510 ms`，同批1x `9.156154 ms`，减耗时 `39.347%`，速度比1.649×**。3轮4-slot ABBA每槽240帧/丢前80，NET0/edges_only1；每轮正收益。Small median5.535300ms/p99 5.820500ms。历史0.43 1x9.121ms继续保留，比较结论优先用同批数据。
+- add-on/runtime/frame宿主编译通过。正式0.43包与已装双游戏未动；这不是新的全分辨率发行包，也未做游戏实玩验收。
 
-### 顺序实施
+### 下一段，仍按顺序推进
 
-1. **P1模型/资产身份**：保Original默认与0.43行为；引入不可变ModelSpec（图、类型/shift/terminal、skip、ViT/Post边界、blend、几何/指纹）。逻辑31 ID与legacy kernel role、资产名分离；独立Small目录/缓存身份；模型切换drain/reset并重建，日志必须有requested/effective model，显式Small缺资产不能默默测旧网。
-2. **P2先固定1080正确性**：新权重用现有exact解码器生成本仓布局；可先RunSmall复用kernel roles。MP1/Style/seed明确，history/AE/skin/Sp/PDL/Pulse/graph先关；逐节点保存并对310.9.16 Preset2 oracle。先用已验F16 Up和明确中间张量，尤其不纳入已Gold失败的C32 FP8 Up候选。新Small另立gold；旧0900只保护Original。
-3. **P3几何与时序**：逐节点ceil-half/round4、skip恢复、有效尾/零填充/stride后再开900/720/free。新head/gate与blend独立参数化，不提前缩放historyStrength改变saturate语义；随后验证reset/MV/exposure/resize/模型切换、AE新gain、多遍与可选时域。
-4. **P4性能与产品**：Small同模型数值门后3轮ABBA及Zero游戏观感，再考虑单plain+DS/UPS的Sp策略及提交功能。旧full71性能资格不自动适用Small，不重开hipGraph/INT4。双架构编译/实际ELF目标核验与Original回归独立完成；现有GPU锁/看门狗规矩照旧。
+1. **900/720/free几何**：Small 900为1600×1024/448 token，720为1344×768/288；逐层ceil-half/round4、skip恢复、有效尾零填充/stride与外层D3D12/HIP缓冲必须一起改，热切模型需重建不兼容尺寸。当前这些档明确日志回退Original1x，不是假Small测速。
+2. **扩展Oracle与时序**：补900/720同输入NV逐节点/整网对账；Small history gate/0x3A23独立参数化、reset/MV/exposure/resize/模型切换、AE新gain，并把F9/热重载扩展到runtime。当前native-history专用消费者回退Original；不要因为新head文件已生成就打开它。
+3. **发布验收**：小模型上述档各自新Gold/3轮ABBA，Original回归、双架构实际ELF核验与gfx1200运行边界、完整宿主/API/游戏验证，再准备新的发行包；未经用户指令不安装或替换现装双游戏。
 
-当前不存在可用Small HIP开关或Small发行包；报告中的新配置/ModelSpec是实施建议，不代表0.43已支持。0.43本地三包与已装10982cf4保持；公开上传仍等用户指令。
+实验资产：Linux `/home/lmxxf/work/dlss5-small-build/small/`，9070 `D:\DLSSNR-Lab\small-model-20261018\assets\small\`；5090 Oracle在 `C:\DLSSNR-Small-20261018`。权重/原DLL/大原始输出留实验目录，不入Git。
 
 ---
 
