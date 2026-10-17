@@ -658,3 +658,13 @@ Gold0900逐位一致；3轮ABBA均值全部退步，pooled9.117309583→9.122855
 全部80个SHA及实际ELF目标核验中抓到远端旧D:\DLSSNR-Lab\rtc_compile.exe忽略gfx1200参数，初始COMGR gfx1200标签实际为gfx1201。用当前hip/rtc_compile.cpp在独立目录编译工具，只重构gfx1200；修后40+40实际ELF架构全部正确，已实测gfx1201的40个文件逐SHA未变。旧错target快照及失败台账保留，本轮未替换全局工具。gfx1200仅编译/ELF核验，不冒真机证据。hip/SHA256SUMS同步最终80项。
 
 正式addon/runtime构建完成，runtime API smoke先因测试目录缺native_codec_encode.hlsl失败，补齐当前shader测试资产后exit0；原失败日志仍留。最终产物本地/home/lmxxf/work/dlss5-five-build/final-payload，远端D:\DLSSNR-Lab\five-final-20261017。原始CSV/raw、模块/宿主SHA、source receipt、构建/修复与smoke日志见results/five-final-20261017。所有GPU/RTC持原子gpu.lock、game-check/≥100GB磁盘/15秒游戏看门狗，锁已释放。游戏安装、玩家配置、正式0.42 ZIP未动，未推送/发布；五项任务结题，待用户指定新版号后打包。
+
+### 2026-10-17：10982cf4双游戏安装回执入库与正式0.43本地三包
+
+鳩先行将10982cf4装入剑星/鬼武者：备份backup-20261017-233600、两宿主和双架构80模块逐SHA读回，鬼武者根/_storage_ runtime一致，个人default/custom/native配置字节未改，runtime-smoke exit0；回执results/game-install-20261017本次一并入库。剑星此前60fps属于10-14载荷历史观察，不作新版本FPS数据。
+
+用户授权正式0.43三包后，以已验证0.42完整包为底，复用five-final-20261017宿主/80模块，不重编内核、不复跑ABBA。每包44shader变体（共3组）、包内RE9 runtime-smoke（PrepareFrame/HIP rc0、errors0）与ZIP全文件SHA回读通过，独立核默认配置、80模块身份及源码附件/sidecar通过。正式默认MODE0/1x/SKIN0，PRED1仅3x生效；Magpie不冒新增时域消费者支持。GPL宿主保持原二进制/源码，源码附件刷新MIT核心与当前文档，源代码标识10982cf4。
+
+D:\給網友打包三包：Magpie345297302B SHA b3450315de6bf23bfbbd550a56cc82d7ed461e31b6a2c402e6baf1fefe3160ac；OptiScaler375495322B SHA e507a6b4fb4e8a80c92334f7509d40f81907095eb6b281190d8c09756e4e512e；OptiScaler-REFramework430517634B SHA 0ac552c469f7d4b88dbb0e3d7aa484e462a5fd4967d8f52b6d29adbc5257203f，均附.zip.sha256，载荷文件781/599/608个（另加总SHA清单）。
+
+准备阶段配置重复展开、PowerShell5无BOM中文路径解析失败在成包前修正并留原日志；metadata输出明确UTF8。打包GPU阶段持gpu.lock、game-check、≥100GB余量与15秒游戏看门狗，最终锁释放；本轮没有再次安装/修改玩家配置，没有改旧0.42 ZIP，也未公开上传/tag/push。README/双语CHANGELOG/六份package-notes/WorkingPlan同步；完整产物与验证回执见Development/releases/0.43。

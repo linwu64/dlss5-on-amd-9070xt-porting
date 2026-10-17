@@ -1,0 +1,46 @@
+At D:\DLSSNR-Lab\release-043\package-043.ps1:7 char:25
++ ... 友打�?;$lab='D:\DLSSNR-Lab\release-043';$utf8=New-Object Text.UTF8Enco ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unexpected token 'D:\DLSSNR-Lab\release-043';$utf8=New-Object Text.UTF8Encoding($false)
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$regularSha='2cefc60d50906d9a5dcf542f1c890819fcaa01b2d712047423d303b8f0475e5b'
+$hostSha='aa3761f2cdb0d9a4653732bd430019ff421b3ce9471fe3697b553dc6d71714a2'
+$runtimeSha='bc7b77049f828e1500bfe447d9f09c963b38b2c5584c104f65650e5127f8decd'
+$inputShaderSha='a9283bb7e710cec7b6115602c7135a6ca590c43dc32b40193f19b02977de80e0'
+$convertSha='35a1973fc558d7a934cc1190c91f026734405935113568c81e4c7b19c0627b90'
+$built="$lab\payload"
+$addonPath="$built\dlss5-amd.addon64";$runtimePath="$built\LmxxfNrRuntime.dll"
+$moduleRoot="$lab\HIP";$shaderSrc="$lab\source\shaders"
+function CheckHash($path,$sha){if((Get-FileHash $path).Hash -ne $sha){throw "HASH mismatch $path"}}
+function WriteUtf8($path,$text){[IO.File]::WriteAllText($path,$text,$utf8)}
+function HasLine($path,$line){Select-String -Path $path -Pattern ('^'+[regex]::Escape($line)+'\s*$') -Quiet}
+function SetIni($text,$section,$key,$value){
+ $pattern='' in expression or statement.
+At D:\DLSSNR-Lab\release-043\package-043.ps1:104 char:151
++ ... ch '^\[(.+)\]'){$section=$matches[1]}elseif($line -match '^([^;#][^=] ...
++                                                                  ~
+Missing type name after '['.
+At D:\DLSSNR-Lab\release-043\package-043.ps1:104 char:152
++ ... h '^\[(.+)\]'){$section=$matches[1]}elseif($line -match '^([^;#][^=]* ...
++                                                                  ~
+Missing closing ')' in expression.
+At D:\DLSSNR-Lab\release-043\package-043.ps1:107 char:4
++    }else{
++    ~
+Unexpected token '}' in expression or statement.
+At D:\DLSSNR-Lab\release-043\package-043.ps1:114 char:3
++   }else{
++   ~
+Unexpected token '}' in expression or statement.
+At D:\DLSSNR-Lab\release-043\package-043.ps1:153 char:2
++  }
++  ~
+Unexpected token '}' in expression or statement.
+At D:\DLSSNR-Lab\release-043\package-043.ps1:158 char:1
++ }
++ ~
+Unexpected token '}' in expression or statement.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedToken
+ 
+

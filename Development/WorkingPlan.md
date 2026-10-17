@@ -1,18 +1,17 @@
 # 当前工作计划（WorkingPlan）
 
-更新：2026-10-17（开发载荷源码 `10982cf4`；五项优化已结题，完整回执见 `results/five-final-20261017/`；本机已装载荷仍为 `be506729`）。历史流水见 [DevHistory.md](DevHistory.md)，负账台账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-17（开发载荷源码 `10982cf4`；五项优化已结题，完整回执见 `results/five-final-20261017/`；本机双游戏已装 `10982cf4`；正式0.43本地三包已完成）。历史流水见 [DevHistory.md](DevHistory.md)，负账台账见 [failed-experiments.md](failed-experiments.md)。
 
 ---
 
 ## 1. 当前基线与本机状态
 
-### 1.1 发行包基线（0.42，2026-10-13）
-- **正式三包**（位于 `D:\給網友打包`，载荷源码 `456b7e16`，构建归档 `88472e96`）：
-  - `Magpie-DLSS5-AMD-0.42.zip`（344,087,793 B）
-  - `OptiScaler-DLSS5-AMD-0.42.zip`（374,285,768 B）
-  - `OptiScaler-REFramework-DLSS5-AMD-0.42.zip`（429,238,298 B）
-- **公开镜像**：[夸克](https://pan.quark.cn/s/316704620069) · [Gofile](https://gofile.io/d/HNE20Ocp)，详见 [0.42 发布记录](releases/0.42/README.md) 与 [0.42 更新与使用说明](../0.42-更新与使用说明.md)。
-- **资源基线**：紧凑权重合计省 `216 MiB` 分配容量（ViT expand `96 MiB` + contract `96 MiB` + projection `24 MiB`，`weights_count=184, weights_bytes=297,609,000 B`），显式无 history 会话另省 `33.75 MiB` 共享缓冲。
+### 1.1 发行包基线（0.43，2026-10-17，本地正式三包）
+- 载荷源码 `10982cf4`；复用已验宿主/双架构80模块，不重跑模块编译或ABBA。
+- `D:\給網友打包`：Magpie `345,297,302 B`，通用OptiScaler `375,495,322 B`，OptiScaler-REFramework `430,517,634 B`，每个ZIP附.sha256。
+- 每包44项shader、RE9包内smoke、ZIP逐文件回读及独立默认/80模块/宿主检查通过；回执见 [releases/0.43](releases/0.43/README.md)。
+- 0.43尚无公开下载链接；[夸克](https://pan.quark.cn/s/316704620069) / [Gofile](https://gofile.io/d/HNE20Ocp)仍为旧0.42，旧ZIP保留。
+- 继承0.42资源优化：已验范围内216MiB持有权重容量与显式无history会话33.75MiB共享buffer容量节省，非驻留峰值。
 
 ### 1.2 开发主线（10-14 七场战役 + 10-17 收下候选1/3）
 在 0.42 之上完成 2026-10-14 全网 W16 权重分块、ISA 去分支与跨核 1B E4M3 字节流直连（1920×1152 Gold 首尾帧 SHA256 全程逐位锁定 `0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A`，`0 bit-diff`，`extra_vram_bytes=0`）：
@@ -28,12 +27,12 @@
 
 **2026-10-17 本轮结题**：五项按序完成，收1/3，停2/4/5。干净默认构建的1080/900 Gold逐帧一致；每档3轮ABBA的均值全部改善，pooled mean分别−20.846/−34.487µs，pooled p99−25.690/−32.351µs。1080 R2 p99+10.599µs原样留档，不称每轮尾都好。最终80模块逐SHA/实际ELF目标核验通过（旧RTC错误gfx1200标签已用当前源码工具修正，实测gfx1201字节未变）；gfx1200仅编译核验。addon/runtime构建与runtime API smoke通过，产物在 `D:\DLSSNR-Lab\five-final-20261017` 和本地 `/home/lmxxf/work/dlss5-five-build/final-payload/`。
 
-**下一步**：按用户后续指定版本号打包/发布；本轮未安装、未改玩家配置、未改已发布ZIP。详 `results/five-final-20261017/README.md`。
+**下一步**：0.43本地正式三包已完成；待用户提供公开上传/下载入口。本次打包未再次安装或修改玩家配置，旧公开0.42 ZIP未改。详 `releases/0.43/README.md`。
 
-### 1.3 本机游戏现装（2026-10-14 部署，2026-10-15 实玩确认）
-- **《剑星》**：已装 `dlss5-amd.addon64`（SHA256 `91d8147188b950367d40ed041588a0591ccbc0d4627ff70702b9a4e68eb0cd26`）+ 双架构 80 个 `.hsaco` 模块；配置保持 `MODE0/MP1/PRED0/SKIN0/1x`。**用户 2K AA（1080P DLSS5）Exact 实玩反馈：稳定 60 FPS**（此前 10-12 紧凑权重版为 58.2 FPS）。
-- **《鬼武者》**：已装 `LmxxfNrRuntime.dll`（SHA256 `50c3b80b730fce925c65c83a803c42406e6644f03e0fb0ae71535bbd88567844`）+ 双架构 80 个 `.hsaco` 模块；配置保持 `MODE1/MP1/PRED0/SKIN0`。
-- **回滚与回执**：`D:\DLSSNR-Lab\game-install-20261014\backup-20261014-233615`，详见 [game-install-20261014](results/game-install-20261014/README.md)。
+### 1.3 本机游戏现装（2026-10-17，鳩部署10982cf4）
+- **《剑星》**：addon SHA `2cefc60d50906d9a5dcf542f1c890819fcaa01b2d712047423d303b8f0475e5b`，80模块；配置MODE0/MP1/PRED1/SKIN0，个人配置文件字节未改。旧10-15“2K AA、1080P DLSS5 Exact稳定60fps”属于be506729历史观察，本次不新增FPS结论。
+- **《鬼武者》**：runtime根目录与_storage_均为 SHA `bc7b77049f828e1500bfe447d9f09c963b38b2c5584c104f65650e5127f8decd`，80模块；MODE1/MP1/PRED0/SKIN0，个人配置字节未改，API smoke exit0。
+- **备份/回滚**：`D:\DLSSNR-Lab\game-install-20261017\backup-20261017-233600`；详 [安装回执](results/game-install-20261017/README.md)。本次打包未再次触碰安装目录。
 
 ---
 

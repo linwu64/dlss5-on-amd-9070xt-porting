@@ -1,0 +1,10 @@
+PACKAGE_OWNER_PID=23132
+ACTUAL_EXIT_CODE=1
+LOCK_RELEASED
+build failed
+At D:\DLSSNR-Lab\release-043\run-package.ps1:13 char:403
++ ... XIT_CODE=$($p.ExitCode)";if($p.ExitCode){throw 'build failed'}}finall ...
++                                              ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (build failed:String) [], RuntimeException
+    + FullyQualifiedErrorId : build failed
+ 

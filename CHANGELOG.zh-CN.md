@@ -392,3 +392,15 @@ final RGB免最终copy，block4→C64边保留FP8字节；新增SP路径仅用�
 V末屏障、prefix NT、NoHi、C512少New及host QPC插桩均未进入产品。原生D3D12整网研究不是发行后端；研究原证保留在[开发历史](Development/DevHistory.md)及[负实验总账](Development/failed-experiments.md)。
 
 0.42现可从上述用户提供的公开镜像下载。网盘内容未独立核验；记录下载链接不表示执行了Git push、打tag或创建GitHub Release。
+
+## 0.43 · 2026-10-17
+
+三个本地正式完整包，载荷源码 `10982cf4`，复用已验宿主及双架构80模块；公开下载链接尚未提供，0.42镜像仍指向0.42。包名、完整SHA与校验回执见 [0.43发行记录](Development/releases/0.43/README.md)。
+
+- **权重与数据流**：纳入10-14已采纳的C512/C32/ViT W16权重布局、ISA清理、ViT/C512/Down字节直连；消除原8次ViT输入打包。原本在E4M3格点上的中间值直接以字节传递，保留累加与舍入边界。运行缓冲池在已测1080配置少1.1MiB，不作为显存驻留峰值结论。
+- **上下采样**：接通Block47→Up48字节边，Up39/48直接读取W16 FP8权重；Down8/14/22/30用字节LDS及W16 FP8矩阵路径。新旧权重布局以不同缓存标识保存，避免回落时混读。
+- **可选模式2/3**：有界64槽描述符/常量环替代逐帧创建及两处Flush；总体默认仍MODE0/1x/SKIN0，PRED1只在3x使用。
+- **验收**：900/1080固定Frame配置逐帧Gold一致；10-17最终组合3轮ABBA六轮均值全改善，pooled mean分别−34.487/−20.846µs、pooled p99分别−32.351/−25.690µs。1080第二轮p99+10.599µs原样保留，不称每轮尾都改善；这些数字是10-17两项增量相对同批对照，不是0.42→0.43总增幅或游戏FPS。详[完整回执](Development/results/five-final-20261017/README.md)。
+- **发行校验**：复用通过实际ELF目标核验的gfx1200/gfx1201各40模块，gfx1200仅编译核验；逐包44项shader编译、包内RE9 smoke和ZIP逐文件哈希回读。未采纳的gather折叠、C32 pool合波、融合Up FP8、hipGraph不进入产品。高光闪烁仍有未闭环场景。
+
+本机安装记录另见[10-17双游戏回执](Development/results/game-install-20261017/README.md)。本轮打包不再改游戏或玩家配置；旧0.42 ZIP保留，不执行上传、push或GitHub release/tag。

@@ -1,0 +1,54 @@
+{
+  "version": "0.43",
+  "payload_source": "10982cf4",
+  "baseline_version": "0.42",
+  "packaging_only": true,
+  "module_recompile": false,
+  "ABBA_rerun": false,
+  "shader_variants_per_package": 44,
+  "shader_passes": 3,
+  "re9_runtime_smoke_exit": 0,
+  "zip_per_file_readback": true,
+  "independent_defaults_modules_hosts_check": true,
+  "source_archive_and_sidecars_verified": true,
+  "modules_per_architecture": {
+    "gfx1200": 40,
+    "gfx1201": 40
+  },
+  "payload_validation": "Development/results/five-final-20261017",
+  "installation_receipt": "Development/results/game-install-20261017",
+  "addon_sha256": "2cefc60d50906d9a5dcf542f1c890819fcaa01b2d712047423d303b8f0475e5b",
+  "runtime_sha256": "bc7b77049f828e1500bfe447d9f09c963b38b2c5584c104f65650e5127f8decd",
+  "module_ledger_sha256": "2717f0b3ef7cebeab61e9b07a402cbe88c2703a165f180425aa8dc6fd809e31c",
+  "source_archive": {
+    "source_archive_sha256": "30c5421e7d6be87008ece64ee0c6715f878ff00fa64718217ec5a04ce98d488f",
+    "verified": true
+  },
+  "packages": [
+    {
+      "name": "Magpie-DLSS5-AMD-0.43",
+      "bytes": 345297302,
+      "sha256": "b3450315de6bf23bfbbd550a56cc82d7ed461e31b6a2c402e6baf1fefe3160ac",
+      "files": 781,
+      "verified": true
+    },
+    {
+      "name": "OptiScaler-DLSS5-AMD-0.43",
+      "bytes": 375495322,
+      "sha256": "e507a6b4fb4e8a80c92334f7509d40f81907095eb6b281190d8c09756e4e512e",
+      "files": 599,
+      "verified": true
+    },
+    {
+      "name": "OptiScaler-REFramework-DLSS5-AMD-0.43",
+      "bytes": 430517634,
+      "sha256": "0ac552c469f7d4b88dbb0e3d7aa484e462a5fd4967d8f52b6d29adbc5257203f",
+      "files": 608,
+      "verified": true
+    }
+  ],
+  "output_directory": "D:\\給網友打包",
+  "public_upload": false,
+  "git_push": false,
+  "game_installation_during_packaging": false
+}

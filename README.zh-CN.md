@@ -16,7 +16,7 @@ DLSS 5（DLSSNR）跑在 AMD RX 9070 XT / RDNA 4 上。
 | **Magpie**（便携） | 任何游戏，不需要游戏支持超分 | Magpie 抓游戏窗口；网络接在效果组的 FSR3_SR 一项里，之后 FSR4 放大到全屏（可选 XeSS 帧生成） |
 | **OptiScaler-REFramework**（只给 RE9） | 《生化危机 9》，常规路线切不开它的命令提交 | TheAutomatic 改的 OptiScaler 宿主 + 我们的 `LmxxfNrRuntime.dll`（成对使用，别和常规包混装） |
 
-**当前版本：0.42（2026-10-13）。** 三个完整包，包含已采纳数据流、可选时序接口及狭域分配节省。默认MODE0/1x/SKIN0，不承诺FPS提升。详见[更新日志](CHANGELOG.zh-CN.md)，下载：[夸克](https://pan.quark.cn/s/316704620069) · [Gofile 镜像](https://gofile.io/d/HNE20Ocp)（三个包）。
+**当前版本：0.43（2026-10-17，本地正式三包）。** 权重访问、字节直连和上下采样优化；默认MODE0/1x/SKIN0。[更新日志](CHANGELOG.zh-CN.md) · [包与校验回执](Development/releases/0.43/README.md)。0.43 尚无公开下载链接；[夸克](https://pan.quark.cn/s/316704620069) / [Gofile](https://gofile.io/d/HNE20Ocp) 仍为0.42。
 
 **新用户先看：[0.42更新与使用说明](0.42-更新与使用说明.md)**（选包、升级、custom配置、热键与MODE0／1／2／3）。
 
@@ -131,21 +131,21 @@ DLSS5_MULTI_PASS=2
 
 ## 编译
 
-### 当前 HIP 源码怎么编（0.40发布后、0.41）——每个发布文件从哪来
+### 当前 HIP 源码怎么编（0.43）——每个发布文件从哪来
 
 | 包里的文件 | 源码 | 编法 |
 |---|---|---|
 | `dlss5-amd.addon64`（Magpie / OptiScaler 包） | `src/native_submission_order_probe.cpp` + `src/*.h`、`Development/HIP/*.h`（桥） | Linux/WSL：`bash scripts/build-addon-oneclick.sh dlss5-amd.addon64 --hip`（自动把 MinHook 和 ReShade 6.8 头文件拉到 `third_party/`；需要 `g++-mingw-w64-x86-64`）。当前脚本固定image base并去PE时间戳；同编译器/依赖下核hash，另验行为，不承诺跨工具链hash相同 |
-| `DLSS5-AMD\native-game-tiled-assets\HIP\gfx120{0,1}\*.hsaco`（38/架构，共76） | `hip/build-modules.ps1`及其源文件 | 按下方混合编译流程；五个LLVM23模块/架构，其余33个COMGR21；必须用`-RowOpts -PrebuiltDir`复现生产配方 |
+| `DLSS5-AMD\native-game-tiled-assets\HIP\gfx120{0,1}\*.hsaco`（40/架构，共80） | `hip/build-modules.ps1`及其源文件 | 按下方混合编译流程；六个LLVM23模块/架构，其余34个驱动COMGR；必须用`-RowOpts -PrebuiltDir`复现生产配方 |
 | `shaders/*.hlsl` 那 12 个（编解码、屏幕文字、RGB 搬运、时序座标、帧检查） | `shaders/`（历史 DX12 网络链在 `shaders/dx12-network/`） | 直接以源码随包；运行时由系统 `d3dcompiler` 编（宿主按 `#define` 选 44 个变体） |
 | RE9 包：`dxgi.dll`（改过的 OptiScaler 宿主）+ `LmxxfNrRuntime.dll` | TheAutomatic 的 fork `release/1.9.0` @ `8f71f73` + 我们在 `Development/RE9/presr/` 的补丁 | `python3 Development/RE9/presr/prepare-host.py`（需要锁定版本的宿主源码：`git clone https://github.com/TheAutomatic/dlss-5-amd-project /tmp/re9-upstream-bridge-review && git -C /tmp/re9-upstream-bridge-review checkout 8f71f73`；重写宿主/runtime 源码并把 `src/`、`shaders/`、`hip/` 拷进 `third_party/lmxxf/`），再 `bash Development/RE9/presr/build-runtime.sh`（MinGW，编 runtime 和冒烟测试）和 Windows 上跑 `build-host.ps1`（Visual Studio 2022 Build Tools：MSVC v143 + Windows SDK 10.0.26100；用 vswhere 自动找，或 `-MSBuild <路径>`）。不用 Linux 也行：每个 RE9 包都带着准备好的源码 `sources\re9-presr-source.tar.gz`，`powershell -File Development\RE9\presr\build-host.ps1 -Root <工作目录> -Archive <那个 tar.gz>` 就能编出宿主（`<工作目录>\bin\OptiScaler.dll`，发布时改名 `dxgi.dll`；2026-09-26 用 0.32 包里的源码实测：91 秒，大小与发布的 `dxgi.dll` 相同，hash 因 MSVC 时间戳不同）。上游 clone 放别处就设 `RE9_UPSTREAM=<目录>`——见 `Development/RE9/presr/README.md`；同一套源码打成 `sources/re9-presr-source.tar.gz` 随包（`bundle-source.py`） |
 | 独立的 `LmxxfNrRuntime.dll`（接口 `include/LmxxfNrApi.h`，TheAutomatic 贡献） | `src/LmxxfNrRuntime.cpp` | Linux/WSL：`bash scripts/build-runtime.sh`；Windows：`scripts\build-runtime.cmd`（要 MSYS2 UCRT64 的 g++：`pacman -S mingw-w64-ucrt-x86_64-gcc`；用别的 g++ 就设 `LMXXF_GXX`） |
 | `DLSS5-AMD\default-config.txt`及`custom-config.template.txt` | [配置参考](scripts/CONFIGURATION.zh-CN.md)链接的三宿主模板及`scripts/custom-config.txt` | `Development/tools/stage-config-layers.ps1`复制；不打包玩家custom/native文件 |
 | 权重（`*.f16` / `*.f32`）、`noise.f32` | 不在仓库里（见"权重"） | 随包；新包从上一个完整包接着做 |
 
-打包入口目前是 `Development/tools/package-041.ps1`，用于0.41本地构建和已校验的0.40基础ZIP、框架及模型资产，不是从源码自动生成全部第三方资产；0.41包已完成发行校验；不能只改版本号就当发行验证完成。模板通过`stage-config-layers.ps1`进入default-config；该脚本不升级已安装游戏。
+打包入口为 `Development/tools/package-043.ps1`：以已校验0.42完整ZIP为底包，复用已验10982cf4宿主与双架构80模块，执行包内shader、RE9 smoke和ZIP逐文件回读。配置通过`stage-config-layers.ps1`进入default-config，不升级已安装游戏。
 
-发布前需核对双架构ELF目标和全部导出、76模块清单，以及当前同源正常19（normal/AE/roll）、相关多遍与RE9路径；数值改动开关另行标注。历史`validate-modules.ps1`及prod6脚本不覆盖所有新路径，不能当当前完整验收。
+发布前需核对双架构ELF目标和全部导出、80模块清单，以及当前同源正常19（normal/AE/roll）、相关多遍与RE9路径；数值改动开关另行标注。历史`validate-modules.ps1`及prod6脚本不覆盖所有新路径，不能当当前完整验收。
 
 内核的活是怎么组织的（给想接着做的人）：每个优化都是 `Development/HIP/experiments/<名字>/` 下的一个实验（`prepare.py` 把生产源码改成 `_pairN` 变体或模块集，`build.ps1`、`run.ps1`，有时还有 `analyze.py`），结果写在 `Development/results/<名字>-<日期>/README.md`；采用的改动变成源码里带默认值的 `HIP_*` 开关。`Development/WorkingPlan.md` 是现在在干什么，`Development/DevHistory.md` 是干过什么、为什么。
 
@@ -258,6 +258,7 @@ powershell -ExecutionPolicy Bypass -File scripts\deploy_fast.ps1 -Source <lab> -
 | 0.40 · 三个包（Magpie · OptiScaler · OptiScaler-REFramework，HIP）[夸克](https://pan.quark.cn/s/d38e0f653c5a) · [Gofile 镜像](https://gofile.io/d/moSf7cqf) | 10-03 | **默认输出变了**：全 71 块 + `DLSS5_FAST_NUMERIC=1`（对 NVIDIA 44.26 → 47.55 dB，+0.12/+0.19 ms）。叠层 `DLSS5_MULTI_PASS` + F9；三个配置文件（`default-config` → `custom-config` → `native-game-flags`，环境变量最高）；C32/C64 改 LLVM 23 等逐位提速。 |
 | 0.41 · [夸克](https://pan.quark.cn/s/dbda3e470f8f) · [Gofile 镜像](https://gofile.io/d/YAENU0ex) | 10-05 | 默认1x；选3x才默认两真实遍加预测。首帧/HIP设备修复、RE9强度、C256/ViT/C512及直接RGBA优化，76模块；[完整说明](CHANGELOG.zh-CN.md)。 |
 | 0.42 · [夸克](https://pan.quark.cn/s/316704620069) · [Gofile 镜像](https://gofile.io/d/HNE20Ocp) | 10-13 | 默认MODE0/1x/SKIN0；已采纳数据流、可选时序接口及狭域分配节省，80模块；不承诺FPS提升。[完整说明](CHANGELOG.zh-CN.md)。 |
+| 0.43 · [本地三包与SHA](Development/releases/0.43/README.md) | 10-17 | W16权重访问、跨核字节直连、上下采样与MODE2/3资源环优化；已验固定配置逐位一致，80模块。[完整说明](CHANGELOG.zh-CN.md)。 |
 
 
 ## 权重

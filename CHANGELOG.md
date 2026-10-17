@@ -390,3 +390,15 @@ Official recipes build80 modules (40 per architecture: six LLVM23.1.2 and34 driv
 V-tail barrier, prefix NT, NoHi, C512 allocation trials and host-QPC instrumentation are excluded. Native D3D12 whole-network research is not a released backend; research evidence remains in [DevHistory](Development/DevHistory.md) and [failed experiments](Development/failed-experiments.md).
 
 0.42 is available through the user-provided public mirrors above. The mirror contents have not been independently verified; recording these links does not imply a Git push, tag or GitHub Release publication.
+
+## 0.43 · 2026-10-17
+
+Three formal local complete packages use validated payload source `10982cf4` and the existing80 dual-architecture modules; no public0.43 URL has been supplied. Existing0.42 mirrors remain0.42. Names, full hashes and verification: [0.43 release receipt](Development/releases/0.43/README.md).
+
+- **Weights and data flow**: accepted October14 C512/C32/ViT W16 layouts, ISA cleanup and ViT/C512/Down byte-stream edges, eliminating all8 ViT input-pack dispatches. Already-quantized E4M3 values stay as bytes; accumulation/rounding boundaries are preserved. The tested1080 pool capacity drops1.1MiB, not a resident-peak claim.
+- **Up/downsampling**: Block47→Up48 byte edge, direct W16 FP8 reads in Up39/48, and byte LDS/W16 FP8 in Down8/14/22/30. Distinct cache identities prevent interpreting FP8 layouts as half fallback layouts.
+- **Optional modes2/3**: bounded64-slot descriptor/constant rings replace per-frame creation and two Flush calls. Defaults remain MODE0/1x/SKIN0; PRED1 applies only at3x.
+- **Validation**: fixed900/1080 Frame configurations pass per-frame Gold. October17 final-combination ABBA has six improving round means; pooled mean deltas−34.487/−20.846us and p99−32.351/−25.690us. 1080 round2 p99+10.599us is retained. These are the October17 increments against same-batch controls, not the total0.42→0.43 change or game FPS. [Evidence](Development/results/five-final-20261017/README.md).
+- **Packaging**: reuse40 modules per architecture with verified actual ELF targets; gfx1200 is compile-only verified.44 shader variants per package, staged RE9 smoke and per-file ZIP readback are required. Rejected gather folding, C32 pool consolidation, fused-Up FP8 and hipGraph are excluded. Specular-flicker cases remain unresolved.
+
+[October17 game installation receipt](Development/results/game-install-20261017/README.md) is separate. Packaging does not change installed games/personal settings, overwrite0.42 ZIPs, upload, push or create a GitHub release/tag.

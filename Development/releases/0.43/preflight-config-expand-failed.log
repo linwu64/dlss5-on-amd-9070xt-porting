@@ -1,0 +1,11 @@
+ExpandArchiveHelper : Failed to create file 'D:\DLSSNR-Lab\release-043\scripts\deploy_fast.ps1' while expanding the arc
+hive file 'D:\DLSSNR-Lab\release-043\config043.zip' contents as the file 'D:\DLSSNR-Lab\release-043\scripts\deploy_fast
+.ps1' already exists. Use the -Force parameter if you want to overwrite the existing directory 'D:\DLSSNR-Lab\release-0
+43\scripts\deploy_fast.ps1' contents when expanding the archive file.
+At C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Archive\Microsoft.PowerShell.Archive.psm1:40
+7 char:17
++ ...             ExpandArchiveHelper $resolvedSourcePaths $resolvedDestina ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (D:\DLSSNR-Lab\r...deploy_fast.ps1:String) [Write-Error], IOException
+    + FullyQualifiedErrorId : ExpandArchiveFileExists,ExpandArchiveHelper
+ 
