@@ -1,0 +1,22 @@
+[
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "D87160C7C8145A24B3DD3C14228E352E663AC91B76ACD1E5BE77C4AD94AAECBA",
+        "Path":  "C:\\DLSSNR-Small-20261018\\720\\new-preset1-barrier\\8678-1.rgb32"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "D87160C7C8145A24B3DD3C14228E352E663AC91B76ACD1E5BE77C4AD94AAECBA",
+        "Path":  "C:\\DLSSNR-Small-20261018\\720\\new-preset1-barrier\\8678-2.rgb32"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "7D1DDC7E7D6466D19AFB2B8C1537DEAC2727481616999497195A8599AD8992A1",
+        "Path":  "C:\\DLSSNR-Small-20261018\\720\\new-preset1-barrier\\8680-1.rgb32"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "7D1DDC7E7D6466D19AFB2B8C1537DEAC2727481616999497195A8599AD8992A1",
+        "Path":  "C:\\DLSSNR-Small-20261018\\720\\new-preset1-barrier\\8680-2.rgb32"
+    }
+]

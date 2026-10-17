@@ -1,0 +1,22 @@
+[
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "D3209FFCD12797746E25F2B127A042BFDB3A368320DEFD7386EAEC310B452FA8",
+        "Path":  "C:\\DLSSNR-Small-20261018\\900\\old-preset1-geometry\\8678-1.rgb32"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "D3209FFCD12797746E25F2B127A042BFDB3A368320DEFD7386EAEC310B452FA8",
+        "Path":  "C:\\DLSSNR-Small-20261018\\900\\old-preset1-geometry\\8678-2.rgb32"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "DD93D2001F220295B5503EEFAD6A7081CACC63E1A52D90671FEF05131ADC8556",
+        "Path":  "C:\\DLSSNR-Small-20261018\\900\\old-preset1-geometry\\8680-1.rgb32"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "DD93D2001F220295B5503EEFAD6A7081CACC63E1A52D90671FEF05131ADC8556",
+        "Path":  "C:\\DLSSNR-Small-20261018\\900\\old-preset1-geometry\\8680-2.rgb32"
+    }
+]

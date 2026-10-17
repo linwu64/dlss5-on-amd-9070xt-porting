@@ -1,0 +1,1 @@
+Windows child console emitted mixed code-page text for Chinese paths. Logs normalized to UTF-8 with replacement characters only in undecodable path text; numeric PASS/result JSON receipts retained. Original bytes remain on AMD9070 in D:\DLSSNR-Lab\release-044.

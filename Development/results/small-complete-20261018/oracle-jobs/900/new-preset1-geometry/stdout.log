@@ -1,0 +1,322 @@
+PRESET=1 reset=1 style=1 history=off
+NGX[1][32765] [2026-10-18 03:58:46] [ngx::util::openLogFileInPath:246] Logging to requested file (C:\DLSSNR-Small-20261018\900\new/nvngx.log) enabled successfully
+
+NGX[1][32765] [2026-10-18 03:58:46] [NGXSafeInitializeLog:139] App logging hooks successfully initialized
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXCheckArchitectureSupport:229] Found matching adapter with NVAPI physical GPU handle: 0x100 and LUID: { 0x0, 0xceec }
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXGetPathUsingQAI:475] Checking for path to NGX using QueryAdapterInfo
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXGetPathUsingQAI:512] Path to driverStore found using QAI: C:\WINDOWS\System32\DriverStore\FileRepository\nvmdi.inf_amd64_21e6b42b376b80b2
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXIsUpdaterEnabledBase:638] Disabling updater for WINE
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXDRSInit:182] NvAPI_DRS_FindApplicationByName -166
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXInitContext:245] called from module ngx-oracle.exe at C:\DLSSNR-Small-20261018\900
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXGetPath:1046] using path for models: C:\ProgramData\NVIDIA\NGX\models
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXLoadConfig:1145] [streamline-ota]
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXLoadConfig:1151] app_84D32F0=1
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dldenoiser, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dldenoiser.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXReportStatusFeedback:1103] Override shared memory was opened successfully
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXReportStatusFeedback:1115] Override shared memory was mapped successfully
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXReportStatusFeedback:1144] Override feedback found available slot 0
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlss, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlss.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlinpainting, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlinpainting.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlisr, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlisr.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlslowmo, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlslowmo.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlvsr, denial value 0 for Cms ID 2a2d8352
+
+[2026-10-18 03:58:46] [ngx::util::openLogFileInPath:246] Logging to requested file (C:\DLSSNR-Small-20261018\900\new/nvngx.log) enabled successfully
+[2026-10-18 03:58:46] [NGXSafeInitializeLog:139] App logging hooks successfully initialized
+[2026-10-18 03:58:47] [NGXCheckArchitectureSupport:229] Found matching adapter with NVAPI physical GPU handle: 0x100 and LUID: { 0x0, 0xceec }
+[2026-10-18 03:58:47] [NGXGetPathUsingQAI:475] Checking for path to NGX using QueryAdapterInfo
+[2026-10-18 03:58:47] [NGXGetPathUsingQAI:512] Path to driverStore found using QAI: C:\WINDOWS\System32\DriverStore\FileRepository\nvmdi.inf_amd64_21e6b42b376b80b2
+[2026-10-18 03:58:47] [NGXIsUpdaterEnabledBase:638] Disabling updater for WINE
+[2026-10-18 03:58:47] [NGXDRSInit:182] NvAPI_DRS_FindApplicationByName -166
+[2026-10-18 03:58:47] [NGXInitContext:245] called from module ngx-oracle.exe at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXGetPath:1046] using path for models: C:\ProgramData\NVIDIA\NGX\models
+[2026-10-18 03:58:47] [NGXLoadConfig:1145] [streamline-ota]
+[2026-10-18 03:58:47] [NGXLoadConfig:1151] app_84D32F0=1
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dldenoiser, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dldenoiser.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXReportStatusFeedback:1103] Override shared memory was opened successfully
+[2026-10-18 03:58:47] [NGXReportStatusFeedback:1115] Override shared memory was mapped successfully
+[2026-10-18 03:58:47] [NGXReportStatusFeedback:1144] Override feedback found available slot 0
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlss, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlss.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlinpainting, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlinpainting.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlisr, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlisr.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlslowmo, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlslowmo.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlvsr, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:5NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlvsr.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlcolorize, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlcolorize.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlstyletransfer, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlstyletransfer.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlvdenoiser, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlvdenoiser.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlisp, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlisp.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlresolve, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlresolve.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlssg, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlssg.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature deepdvc, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_deepdvc.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlssd, denial value 0 for Cms ID 2a2d8352
+
+8:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlvsr.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlcolorize, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlcolorize.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlstyletransfer, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlstyletransfer.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlvdenoiser, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlvdenoiser.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlisp, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlisp.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlresolve, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlresolve.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlssg, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlssg.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature deepdvc, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_deepdvc.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlssd, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anNGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlssd.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature truehdr, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_truehdr.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature latewarp, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_latewarp.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature vsr, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_vsr.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature fgx, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:48] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+
+NGX[2][32765] [2026-10-18 03:58:48] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+
+NGX[2][32765] [2026-10-18 03:58:48] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_fgx.dll doesn't exist in any of the search paths!
+
+NGX[1][32765] [2026-10-18 03:58:48] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlssnr, denial value 0 for Cms ID 2a2d8352
+
+NGX[2][32765] [2026-10-18 03:58:48] [NGXLoadLibrary:34] Loaded library from path (C:\DLSSNR-Small-20261018\900\new/nvngx_dlssnr.dll)
+
+NGX[2][32765] [2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1491] Validating snippet C:\DLSSNR-Small-20261018\900\new/nvngx_dlssnr.dll
+
+NGX[2][32765] [2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1493] NGX CORE API version : 0x15, Snippet requires at least : 0x13
+
+NGX[2][32765] [2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1495] GPU architecture : 0x1B0, Snippet expects at least : 0x1B0
+
+NGX[2][32765] [2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1509] Driver support flags : 0xF(SEAMLESS_OTA|LINUX_EXTENDED_DRIVER_VERSIONS|API_SPECIFIC_POPULATE_PARAMS|REQUIRE_CMSID), Snippet required flags : 0x0()
+
+NGX[2][32765] [2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1536] Driver version : 616.92, Snippet expects at least : 615.0
+
+NGX[2][32765] [2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1562] Snippet version : 310.9.16, Embedded app Id : E658703 (0)
+
+NGX[2][32765] [2026-10-18 03:58:48] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\WINDOWS\System32\DriverStore\FileRepository\nvmdi.inf_amd64_21e6b42b376b80b2
+
+NGX[1][32765] [2026-10-18 03:58:48] [NGXSecureLoadFeature:1499] app 2A2D8352 feature dlssnr snippet: C:\DLSSNR-Small-20261018\900\new/nvngx_dlssnr.dll version: 310.9.16
+
+NGX[2][32765] [2026-10-18 03:58:48] [NGXLoadFeature:1577] Setting telemetry callback for dlssnr [schema 3.0+]
+
+NGX[2][32765] [2026-10-18 03:58:48] [NGXLoadFeature:1582] Setting override status callback for dlssnr
+
+NGX[2][32765] [2026-10-18 03:58:48] [NGXNVAPITelemetryInit:102] warning: Telemetry not supported on Linux
+
+INIT=00000001
+CAPS=00000001 params=0000020e319e10f0
+FLOAT_ABI=00000001 value=0.3125
+NGX[1][32765] [2026-10-18 03:58:48] [NVSDK_NGX_CreateFeature_Validate:729] app id is 707625810
+
+CREATE18=00000001 handle=0000020da742b790
+CREATE_FENCE_WAIT=0
+RAW_CAPTURE surface=0 bind=0 dispatch=0 object=7fa00008801
+RAW_CAPTURE surface=1 bind=0 dispatch=0 object=8803
+EVAL frame=8678 repeat=1 result=00000001
+OUTPUT frame=8678 repeat=1 nonfinite=0
+RAW_CAPTURE surface=0 bind=0 dispatch=0 object=7fa00008801
+RAW_CAPTURE surface=1 bind=0 dispatch=0 object=8803
+EVAL frame=8678 repeat=2 result=00000001
+OUTPUT frame=8678 repeat=2 nonfinite=0
+RAW_CAPTURE surface=0 bind=0 dispatch=0 object=7fa00008801
+RAW_CAPTURE surface=1 bind=0 dispatch=0 object=8803
+EVAL frame=8680 repeat=1 result=00000001
+OUTPUT frame=8680 repeat=1 nonfinite=0
+RAW_CAPTURE surface=0 bind=0 dispatch=0 object=7fa00008801
+RAW_CAPTURE surface=1 bind=0 dispatch=0 object=8803
+EVAL frame=8680 repeat=2 result=00000001
+OUTPUT frame=8680 repeat=2 nonfinite=0
+onymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_dlssd.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature truehdr, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_truehdr.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature latewarp, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_latewarp.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature vsr, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:47] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:47] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_vsr.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:47] [NGXContextDenyListData::IsFeatureDenied:676] Feature fgx, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:48] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900\new
+[2026-10-18 03:58:48] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\DLSSNR-Small-20261018\900
+[2026-10-18 03:58:48] [NGXSecureLoadFeature:1286] warning: ModuleName - nvngx_fgx.dll doesn't exist in any of the search paths!
+[2026-10-18 03:58:48] [NGXContextDenyListData::IsFeatureDenied:676] Feature dlssnr, denial value 0 for Cms ID 2a2d8352
+[2026-10-18 03:58:48] [NGXLoadLibrary:34] Loaded library from path (C:\DLSSNR-Small-20261018\900\new/nvngx_dlssnr.dll)
+[2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1491] Validating snippet C:\DLSSNR-Small-20261018\900\new/nvngx_dlssnr.dll
+[2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1493] NGX CORE API version : 0x15, Snippet requires at least : 0x13
+[2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1495] GPU architecture : 0x1B0, Snippet expects at least : 0x1B0
+[2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1509] Driver support flags : 0xF(SEAMLESS_OTA|LINUX_EXTENDED_DRIVER_VERSIONS|API_SPECIFIC_POPULATE_PARAMS|REQUIRE_CMSID), Snippet required flags : 0x0()
+[2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1536] Driver version : 616.92, Snippet expects at least : 615.0
+[2026-10-18 03:58:48] [NGXValidateSnippetMetaData:1562] Snippet version : 310.9.16, Embedded app Id : E658703 (0)
+[2026-10-18 03:58:48] [`anonymous-namespace'::SnippetLocationInfo::load:716] Module not found at C:\WINDOWS\System32\DriverStore\FileRepository\nvmdi.inf_amd64_21e6b42b376b80b2
+[2026-10-18 03:58:48] [NGXSecureLoadFeature:1499] app 2A2D8352 feature dlssnr snippet: C:\DLSSNR-Small-20261018\900\new/nvngx_dlssnr.dll version: 310.9.16
+[2026-10-18 03:58:48] [NGXLoadFeature:1577] Setting telemetry callback for dlssnr [schema 3.0+]
+[2026-10-18 03:58:48] [NGXLoadFeature:1582] Setting override status callback for dlssnr
+[2026-10-18 03:58:48] [NGXNVAPITelemetryInit:102] warning: Telemetry not supported on Linux
+[2026-10-18 03:58:48] [NVSDK_NGX_CreateFeature_Validate:729] app id is 707625810

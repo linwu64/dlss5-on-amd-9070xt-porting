@@ -1,12 +1,18 @@
 # 当前工作计划（WorkingPlan）
 
-更新：2026-10-18（第三阶段：Small 1080/900/720/free、AE与MODE1已接通；900档3轮ABBA 4.377 ms/frame，−33.26%；0.44打包与双游戏部署验收中）。历史流水见 [DevHistory.md](DevHistory.md)。
+更新：2026-10-18（第三阶段完成：Small全档/AE/MODE1、900档4.377ms、正式0.44三包与双游戏默认0.5x部署均验收；源码b8f76238，安装备份与rollback齐全，GPU锁已释放）。
 
 ---
 
 ## 1. 当前基线与本机状态
 
-### 1.1 发行包基线（0.43，2026-10-17，公开三包已交付）
+### 1.1 当前发行与安装（0.44，2026-10-18，本地三包已交付）
+
+- 正式三包在 `D:\給網友打包`，附SHA256；每包44shader/80模块/93Small资产/ZIP全文件读回，RE9 smoke通过。[发行回执](releases/0.44/README.md)。公开镜像仍0.43。
+- 双游戏已装b8f76238载荷，三层MP0.5，F9循环；《剑星》MODE0、《鬼武者》MODE1保留。备份 `D:\DLSSNR-Lab\game-install-20261018\backup-20261018-050250` 与rollback齐备，安装smoke exit0。[安装回执](results/game-install-20261018/README.md)。
+- 当前Small单帧：1080 **5.554ms** / 900 **4.377ms**；原71块仍可F9选择1x/2x/3x。
+
+### 1.1a 历史发行包基线（0.43，2026-10-17，公开三包已交付）
 - 载荷源码 `10982cf4`；复用已验宿主/双架构80模块，不重跑模块编译或ABBA。
 - `D:\給網友打包`：Magpie `345,297,302 B`（SHA `b3450315…`），通用OptiScaler `375,495,322 B`（SHA `e507a6b4…`），OptiScaler-REFramework `430,517,634 B`（SHA `0ac552c4…`），每个ZIP附 `.zip.sha256`。
 - 每包44项shader、RE9包内smoke、ZIP逐文件回读及独立默认/80模块/宿主检查通过；回执见 [releases/0.43](releases/0.43/README.md)。
@@ -41,22 +47,22 @@
 
 Zero 2026-10-18 定名：310.9.16 的31块新网络叫 **0.5x**，`DLSS5_MULTI_PASS=0.5` 为新的源码/三模板默认；`1` / `2` / `3` 分别为旧71块单遍/叠层，第三遍预测选项保留。add-on F9按 **0.5 → 1 → 2 → 3 → 0.5** 切换（addon和runtime均支持；2x/3x暂挂MODE1，回到0.5x/1x自动恢复）。缺少Small资产时带requested/effective日志回退1x。
 
-### 已完成（本轮1080阶段）
+### 前阶段记录（1080阶段；后续进展见§6）
 
 - [逆向报告](results/dlssnr-310-9-16-analysis-20261018/README.md)之后，实际提取转换与GPU回执见 **[small-model-20261018](results/small-model-20261018/README.md)**；该回执取代旧报告P1“保Original默认”的产品建议。
 - 310.9.16 DLL SHA `2bc19bc0…`；5090通过原NGX分别跑Preset1/2及默认0。新Preset1=旧310.8，默认0=Preset2；合成及真实8678/8680重复稳定。只读内部Post捕获前后API输出SHA不变，输入捕获与上传值一致。
-- 同一转换器重解HT的184个主图资产与现有HIP资产逐float bit一致。Small已导出93文件（92主图+64B history头），241214392B，独立`small/`目录及manifest，保留旧权重共存。blend `0x3A23` / 0.76708984375 与新history行6也已提取；**时序消费未接通**。
-- 31块执行图采用独立模型身份、legacy kernel-role资产映射与0/3→1/2 shift。1080固定1920×1152/640 token；不引入失败的C32 FP8 Up，不重编既有80个双架构算子模块。Small禁用旧图专用SP/Pulse/PDL提交及AE；切换drain并清理权重、SP计划引用和自适应状态。
+- 同一转换器重解HT的184个主图资产与现有HIP资产逐float bit一致。Small已导出93文件（92主图+64B history头），241214392B，独立`small/`目录及manifest，保留旧权重共存。blend `0x3A23` / 0.76708984375 与新history行6也已提取；**该阶段时序未接通，第三阶段已接通**。
+- 31块执行图采用独立模型身份、legacy kernel-role资产映射与0/3→1/2 shift。1080固定1920×1152/640 token；不引入失败的C32 FP8 Up，不重编既有80个双架构算子模块。Small禁用旧图专用SP/Pulse/PDL提交；该阶段AE关闭，第三阶段已接通；切换drain并清理权重、SP计划引用和自适应状态。
 - 原网络Gold仍为`0900E489…0F4A`，Small新Gold为`65D71486…8FCB8`；Gold和3轮ABBA全部首尾有限/同模型逐位一致。模式0.5→1→2→3→0.5真GPU往返Small bit-diff=0；Windows CPU热键写回/优先级/reload通过；缺Small实际回退与显式1x逐位一致。
 - NVIDIA对账域是**内部Post FP16 surface展开的RGB**，不是API额外合成后的最终输出。真实8678：Small FAST0 **48.021703dB**、默认FAST1 **47.755055dB**；近似HIP算术不宣称NV 0 bit-diff，完整逐值指标在回执。
 - **完整frame.exe 1080稳态单帧耗时：0.5x `5.553510 ms`，同批1x `9.156154 ms`，减耗时 `39.347%`，速度比1.649×**。3轮4-slot ABBA每槽240帧/丢前80，NET0/edges_only1；每轮正收益。Small median5.535300ms/p99 5.820500ms。历史0.43 1x9.121ms继续保留，比较结论优先用同批数据。
 - add-on/runtime/frame宿主编译通过。正式0.43包与已装双游戏未动；这不是新的全分辨率发行包，也未做游戏实玩验收。
 
-### 下一段，仍按顺序推进
+### 第三阶段任务状态
 
-1. **900/720/free几何**：Small 900为1600×1024/448 token，720为1344×768/288；逐层ceil-half/round4、skip恢复、有效尾零填充/stride与外层D3D12/HIP缓冲必须一起改，热切模型需重建不兼容尺寸。当前这些档明确日志回退Original1x，不是假Small测速。
-2. **扩展Oracle与时序**：补900/720同输入NV逐节点/整网对账；Small history gate/0x3A23独立参数化、reset/MV/exposure/resize/模型切换、AE新gain，并把F9/热重载扩展到runtime。当前native-history专用消费者回退Original；不要因为新head文件已生成就打开它。
-3. **发布验收**：小模型上述档各自新Gold/3轮ABBA，Original回归、双架构实际ELF核验与gfx1200运行边界、完整宿主/API/游戏验证，再准备新的发行包；未经用户指令不安装或替换现装双游戏。
+1. **已完成900/720/free**：逐节点ceil-half/round4、尾部填充与stride；模型/尺寸切换重建缓冲，runtime四尺寸回环通过。
+2. **已完成Oracle/AE/MODE1/runtime F9**：900/720对账47.40/47.70dB，Small8个ViT gain，独立history gate和0x3A23；addon/runtime全模式回环通过。
+3. **发行与部署**：0.44正式三包与双游戏备份部署按本轮明确授权执行；最终精确回执见§6和releases/0.44。
 
 实验资产：Linux `/home/lmxxf/work/dlss5-small-build/small/`，9070 `D:\DLSSNR-Lab\small-model-20261018\assets\small\`；5090 Oracle在 `C:\DLSSNR-Small-20261018`。权重/原DLL/大原始输出留实验目录，不入Git。
 
@@ -139,4 +145,4 @@ Zero 2026-10-18 定名：310.9.16 的31块新网络叫 **0.5x**，`DLSS5_MULTI_P
 - 9070三轮4-slot ABBA：900 Original **6.558681** → Small **4.376946 ms/frame**（−33.2648%）；各960稳态样本，逐轮正收益。1080沿用前阶段 **5.553510 ms/frame**。
 - Small AE从8个ViT块11..18的权重计算gain；F8保留。MODE1使用Small独立history-head和0x3A23=0.76708984375；时序重置及F9模式回环通过。
 - 最终1080 Original Gold仍0900E489…，Small仍65D71486…；80模块逐SHA复用。详[第三阶段回执](results/small-complete-20261018/README.md)。
-- 下一步：正式0.44三包逐文件读回、双游戏备份部署与smoke，完成后补齐发行/安装回执。
+- **交付完成**：0.44正式三包与双游戏安装均通过；逐文件备份、回读、smoke、SHA和rollback回执见releases/0.44与results/game-install-20261018。下一步只待Zero实玩观感/是否上传公开镜像。

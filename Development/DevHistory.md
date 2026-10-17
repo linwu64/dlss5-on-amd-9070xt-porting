@@ -695,3 +695,11 @@ HIP固定1080图31块/640 token，复用既有算子、改拓扑/shift/skip与�
 9070三轮4-slot ABBA：900 Small **4.376946ms/frame**（median4.36715/p994.6548），同批Original6.558681，−33.2648%，每轮正收益；1080阶段二5.553510ms保留。正式宿主回归1080 Gold旧0900/Small65D7均逐位保持。Small AE按8个ViT层算gain；MODE1用独立history-head与0x3A23，GPU解析例、720时序reset、F9全模式回环、AE/free完整帧通过。runtime支持配置热键和切模式重建，2x/3x暂挂history再恢复。93 Small权重和旧模型共存，80模块复用。
 
 详[完整回执](results/small-complete-20261018/README.md)。用户本轮明确授权双游戏部署并把《剑星》custom MULTI_PASS改0.5；发行准备0.44三包，完成后追加安装/发行验收。
+
+### 2026-10-18 05:02 第三阶段交付：0.44三包与双游戏
+
+正式Magpie447,953,583B（57e6bd49…）、OptiScaler478,151,601B（45253828…）、REFramework533,119,059B（e501bbd3…）均在D:\給網友打包，附zip.sha256。每包44 shader编译、80模块/93Small权重、ZIP全文件回读及独立Small解压流SHA通过；RE9包smoke exit0，源包当前代码与压缩SHA校验通过。载荷源码b8f76238；公开镜像未上传。
+
+持锁+15秒看门狗部署双游戏。剑星addon0f4bcf62…；鬼武者根及_storage_runtime ced2df19…；各80模块、93Small权重与shader读回通过。custom/native两层MP0.5/HOT1/F9，剑星MODE0、鬼武者MODE1保留；原配置和全部文件逐位备份，rollback.ps1齐全。已安装鬼武者runtime smoke实际Small31块、exit0。备份D:\DLSSNR-Lab\game-install-20261018\backup-20261018-050250，GPU锁已释放。
+
+[正式发行回执](releases/0.44/README.md) · [双游戏安装/回滚](results/game-install-20261018/README.md)。没有代Zero启动游戏实玩。
