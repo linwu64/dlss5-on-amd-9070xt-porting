@@ -640,3 +640,7 @@ Down30写ViT序、Block38写decoder序，避免旧gin读取端打散。完整Fra
 ### 2026-10-17：候选3 grouped Down FP8 W16采纳
 
 Down8/14/22/30使用字节LDS池化值与W16 FP8权重，保K32后H(acc+sum)及原padding/池化顺序，缺export回half；复用@ds-frag容量。Gold0900全同；3轮ABBA mean−21.775/−17.083/−23.255µs，p99−34.692/−47.005/−10.743µs，pooled9.153535833→9.132831563ms(−20.704µs)，p99−27.539µs。候选2关闭、候选1为共同基线；gfx1200仅编译，双架构80模块manifest后续最终干净重构统一封存。详results/down-f8-w16-20261017，游戏与正式包未改。
+
+### 2026-10-17：候选4 C32 pool四列合波止负
+
+Gold0900逐位一致；3轮ABBA均值全部退步，pooled9.117309583→9.122855833ms(+5.546µs)。p99改善4.099µs不足通过均值门，STOP，生产保原四wave。详results/pool32-wave-w16-20261017与failed-experiments；候选5从已采纳1+3继续，不带候选2/4。

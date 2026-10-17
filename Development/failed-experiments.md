@@ -2676,3 +2676,7 @@ SKIN_PROTECT只多遍：原输入肤色启发式mask混y1/yN，不是原图/语�
 ### 2026-10-17｜候选2：ViT双写入端gather折叠｜Gold通过，性能负
 
 区别旧读取端gin：Down30写ViT顺序、Block38写raster顺序，Up39保持连续读取。1920×1152 Gold0900逐位同；以候选1(mode3)为共同基线，3轮ABBA mean +0.513/+1.659/+14.902µs，pooled +5.691µs；p99各+14.445/−37.833/+7.254µs，pooled−3.487µs。不收，保两个gather和旧生产代码，不刷轮。详results/vit-write-gather-20261017。
+
+### 2026-10-17｜候选4：C32 pool四列合波与W16｜Gold通过，性能负
+
+Down4每wave算64全列、W16权重、共享字节输入，保Hrtz(0+sum)并合并输出量化。Gold0900逐位同，候选1+3作共同基线，3轮ABBA mean +6.697/+4.832/+5.109µs，pooled+5.546µs；p99各−7.051/−9.417/−12.486µs、pooled−4.099µs。均值负，STOP不收，保旧四wave/行主序核。详results/pool32-wave-w16-20261017。

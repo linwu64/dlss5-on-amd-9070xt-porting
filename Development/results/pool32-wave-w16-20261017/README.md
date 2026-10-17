@@ -1,0 +1,3 @@
+# C32 pool four-column wave + W16 — STOP
+
+Down4 one wave handles all64 columns, reuses pooled input and uses W16 FP8 B fragments. Same Hrtz(0+sum) and single saturating byte conversion. Gold0900E489...0F4A matches. Candidate1+3 common baseline, gather folding disabled. 3-round ABBA240/slot discard80,960/arm: mean deltas+6.697/+4.832/+5.109us, pooled9.117309583->9.122855833ms(+5.546us); p99 -7.051/-9.417/-12.486us, pooled-4.099us. No mean gain; not adopted, original four waves remain. Original rows/hashes/module identities in evidence.json and remote c4-* directories. No installed game/archive writes.
