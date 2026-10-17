@@ -1,6 +1,6 @@
 # Decoder byte edge and W16 FP8 (2026-10-17)
 
-PASS: block47 -> Up48 byte edge, Up39/48 FP8 W16 weights, same K16 accumulation/part sums and wide epilogue. Default decoder mode 3; mode 0 retains previous path. Modules lacking the new exports fall back as a producer/consumer pair. Packed weights reuse @decoder-f16r without increasing capacity.
+PASS: block47 -> Up48 byte edge, Up39/48 FP8 W16 weights, same K16 accumulation/part sums and wide epilogue. Default decoder mode 3; mode 0 retains previous path. Modules lacking the new exports fall back as a producer/consumer pair. FP8 W16 weights use a layout-tagged @decoder-f8w16 cache, with the same allocation capacity in the measured fixed-mode session; half fallback uses its own key, preventing reinterpretation during mode transitions.
 
 1920x1152 full Frame, Style1 FAST1 full71 MP1 AE0 history off, seed0, original HDR input FA3C1873..., EagerAuto accepted 240/slot; all first/last raw hashes 0900E489...0F4A, finite/repeat pass. CPU host is benchmark_live_capture.cpp built O2/MinGW, candidate source at e8067a8c plus explicit new decoder launch geometry. CPU preparation for later candidates is dormant (all their switches zero); same host/modules on both arms.
 
