@@ -648,3 +648,13 @@ Gold0900逐位一致；3轮ABBA均值全部退步，pooled9.117309583→9.122855
 ### 2026-10-17：候选5融合Up W16 FP8结题，保原路径
 
 56/62新核Gold同但三轮pooled mean+3.555µs/p99+20.987µs。派发记录确认66未命中，CW_UP_LOW_BYTES0使原计划low-byte前提不成立。补齐65→66字节边后66新导出实际运行，full Gold首帧2,768,436 half值不同，停止且不跑性能。失败原数据全留，不当NV合同/FP8硬件反证。五项逐项结题：收1/3，停2/4/5；开始干净主线80模块重编及最终默认路径Gold。详results/upbody-f8-w16-20261017。
+
+### 2026-10-17：五项优化最终干净产物与双档验收完成
+
+生产只收候选1/3（载荷源码10982cf4），2/4/5已留负账，不把孤立收益相加。1/3新布局使用独立tag缓存键，防half回落布局混读；最终固定模式权重数量/容量未增加。正式O2 Frame默认路径不带NR_*覆盖，1920×1152与1600×960另跑每帧读回的3帧Gold：1080首尾0900E489...0F4A、两档全部3帧finite/repeat/对照逐位同。
+
+干净80模块同批各3轮4-slot ABBA（240弃80，960/arm/tier）：1080 mean9.142189167→9.121343438ms（−20.845729µs）、pooled p99−25.690µs；900 mean6.569911146→6.535424271ms（−34.486875µs）、pooled p99−32.351µs。六轮均值全改善；1080 R2 p99+10.599µs保留，不称每轮/每slot尾都好，不刷轮消反例，不从其它批次绝对值算FPS。
+
+全部80个SHA及实际ELF目标核验中抓到远端旧D:\DLSSNR-Lab\rtc_compile.exe忽略gfx1200参数，初始COMGR gfx1200标签实际为gfx1201。用当前hip/rtc_compile.cpp在独立目录编译工具，只重构gfx1200；修后40+40实际ELF架构全部正确，已实测gfx1201的40个文件逐SHA未变。旧错target快照及失败台账保留，本轮未替换全局工具。gfx1200仅编译/ELF核验，不冒真机证据。hip/SHA256SUMS同步最终80项。
+
+正式addon/runtime构建完成，runtime API smoke先因测试目录缺native_codec_encode.hlsl失败，补齐当前shader测试资产后exit0；原失败日志仍留。最终产物本地/home/lmxxf/work/dlss5-five-build/final-payload，远端D:\DLSSNR-Lab\five-final-20261017。原始CSV/raw、模块/宿主SHA、source receipt、构建/修复与smoke日志见results/five-final-20261017。所有GPU/RTC持原子gpu.lock、game-check/≥100GB磁盘/15秒游戏看门狗，锁已释放。游戏安装、玩家配置、正式0.42 ZIP未动，未推送/发布；五项任务结题，待用户指定新版号后打包。

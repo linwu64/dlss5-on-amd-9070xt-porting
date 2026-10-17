@@ -1,0 +1,28 @@
+CASE=final-1080-perframe-gold SLOT=baseline-A1 ROLE=baseline OWN_PID=12812
+ACTUAL_EXIT_CODE=0 SLOT=baseline-A1 ROLE=baseline
+SLOT=baseline-A1    mean=413.3616 med=1213.5310 p90=16.1337 p99=16.1337 [C512_W16_SUMMARY mode=2 w16_blocks=48 stock_blocks=0 ffn_mode=1 ffn_w16_blocks=48 ffn_stock_blocks=0 c32_mode=1 c32_w16_calls=30 c32_stock_calls=0 vit_mode=7 vit_w16_calls=24 vit_stock_calls=0 vit_contract_w16=1 vit_proj_w16=1 vit_inter_byte=15 vit_inter_byte_calls=81 weights_count=184 weights_bytes=297609000]
+CASE=final-1080-perframe-gold SLOT=candidate-B1 ROLE=candidate OWN_PID=7508
+ACTUAL_EXIT_CODE=0 SLOT=candidate-B1 ROLE=candidate
+SLOT=candidate-B1   mean=411.1516 med=1212.3849 p90=10.5968 p99=10.5968 [C512_W16_SUMMARY mode=2 w16_blocks=48 stock_blocks=0 ffn_mode=1 ffn_w16_blocks=48 ffn_stock_blocks=0 c32_mode=1 c32_w16_calls=30 c32_stock_calls=0 vit_mode=7 vit_w16_calls=24 vit_stock_calls=0 vit_contract_w16=1 vit_proj_w16=1 vit_inter_byte=15 vit_inter_byte_calls=81 weights_count=184 weights_bytes=297609000]
+CASE=final-1080-perframe-gold SLOT=candidate-B2 ROLE=candidate OWN_PID=17188
+ACTUAL_EXIT_CODE=0 SLOT=candidate-B2 ROLE=candidate
+SLOT=candidate-B2   mean=408.8856 med=1199.8545 p90=16.2561 p99=16.2561 [C512_W16_SUMMARY mode=2 w16_blocks=48 stock_blocks=0 ffn_mode=1 ffn_w16_blocks=48 ffn_stock_blocks=0 c32_mode=1 c32_w16_calls=30 c32_stock_calls=0 vit_mode=7 vit_w16_calls=24 vit_stock_calls=0 vit_contract_w16=1 vit_proj_w16=1 vit_inter_byte=15 vit_inter_byte_calls=81 weights_count=184 weights_bytes=297609000]
+CASE=final-1080-perframe-gold SLOT=baseline-A2 ROLE=baseline OWN_PID=21456
+ACTUAL_EXIT_CODE=0 SLOT=baseline-A2 ROLE=baseline
+SLOT=baseline-A2    mean=404.1859 med=1191.6675 p90=10.5817 p99=10.5817 [C512_W16_SUMMARY mode=2 w16_blocks=48 stock_blocks=0 ffn_mode=1 ffn_w16_blocks=48 ffn_stock_blocks=0 c32_mode=1 c32_w16_calls=30 c32_stock_calls=0 vit_mode=7 vit_w16_calls=24 vit_stock_calls=0 vit_contract_w16=1 vit_proj_w16=1 vit_inter_byte=15 vit_inter_byte_calls=81 weights_count=184 weights_bytes=297609000]
+ABBA_DONE_final-1080-perframe-gold
+LOCK_RELEASED
+CASE=final-900-perframe-gold SLOT=baseline-A1 ROLE=baseline OWN_PID=21368
+ACTUAL_EXIT_CODE=0 SLOT=baseline-A1 ROLE=baseline
+SLOT=baseline-A1    mean=412.8298 med=1221.8390 p90=8.7871 p99=8.7871 [C512_W16_SUMMARY mode=2 w16_blocks=48 stock_blocks=0 ffn_mode=1 ffn_w16_blocks=48 ffn_stock_blocks=0 c32_mode=1 c32_w16_calls=30 c32_stock_calls=0 vit_mode=7 vit_w16_calls=24 vit_stock_calls=0 vit_contract_w16=0 vit_proj_w16=0 vit_inter_byte=15 vit_inter_byte_calls=54 weights_count=192 weights_bytes=432883752]
+CASE=final-900-perframe-gold SLOT=candidate-B1 ROLE=candidate OWN_PID=14316
+ACTUAL_EXIT_CODE=0 SLOT=candidate-B1 ROLE=candidate
+SLOT=candidate-B1   mean=413.7914 med=1218.7493 p90=14.9408 p99=14.9408 [C512_W16_SUMMARY mode=2 w16_blocks=48 stock_blocks=0 ffn_mode=1 ffn_w16_blocks=48 ffn_stock_blocks=0 c32_mode=1 c32_w16_calls=30 c32_stock_calls=0 vit_mode=7 vit_w16_calls=24 vit_stock_calls=0 vit_contract_w16=0 vit_proj_w16=0 vit_inter_byte=15 vit_inter_byte_calls=54 weights_count=192 weights_bytes=432883752]
+CASE=final-900-perframe-gold SLOT=candidate-B2 ROLE=candidate OWN_PID=12788
+ACTUAL_EXIT_CODE=0 SLOT=candidate-B2 ROLE=candidate
+SLOT=candidate-B2   mean=426.5294 med=1262.7865 p90=9.0203 p99=9.0203 [C512_W16_SUMMARY mode=2 w16_blocks=48 stock_blocks=0 ffn_mode=1 ffn_w16_blocks=48 ffn_stock_blocks=0 c32_mode=1 c32_w16_calls=30 c32_stock_calls=0 vit_mode=7 vit_w16_calls=24 vit_stock_calls=0 vit_contract_w16=0 vit_proj_w16=0 vit_inter_byte=15 vit_inter_byte_calls=54 weights_count=192 weights_bytes=432883752]
+CASE=final-900-perframe-gold SLOT=baseline-A2 ROLE=baseline OWN_PID=14176
+ACTUAL_EXIT_CODE=0 SLOT=baseline-A2 ROLE=baseline
+SLOT=baseline-A2    mean=412.8809 med=1215.8447 p90=14.7461 p99=14.7461 [C512_W16_SUMMARY mode=2 w16_blocks=48 stock_blocks=0 ffn_mode=1 ffn_w16_blocks=48 ffn_stock_blocks=0 c32_mode=1 c32_w16_calls=30 c32_stock_calls=0 vit_mode=7 vit_w16_calls=24 vit_stock_calls=0 vit_contract_w16=0 vit_proj_w16=0 vit_inter_byte=15 vit_inter_byte_calls=54 weights_count=192 weights_bytes=432883752]
+ABBA_DONE_final-900-perframe-gold
+LOCK_RELEASED

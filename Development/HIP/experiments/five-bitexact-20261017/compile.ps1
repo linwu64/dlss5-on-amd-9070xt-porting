@@ -13,7 +13,7 @@ $owner=[IO.File]::Open('D:\DLSSNR-Lab\gpu.lock',[IO.FileMode]::CreateNew,[IO.Fil
 try {
  GameIdle
  foreach($arch in 'gfx1201','gfx1200') {
-  $psi=[Diagnostics.ProcessStartInfo]::new();$psi.FileName='D:\DLSSNR-Lab\rtc_compile.exe';$psi.Arguments="`"$r\HIP\$arch\$Module.hsaco`" `"$r\source\$Module.generated.hip`" comgr $arch";$psi.UseShellExecute=$false;$psi.RedirectStandardOutput=$true;$psi.RedirectStandardError=$true
+  $psi=[Diagnostics.ProcessStartInfo]::new();$psi.FileName='D:\DLSSNR-Lab\five-final-20261017\rtc_compile-current.exe';$psi.Arguments="`"$r\HIP\$arch\$Module.hsaco`" `"$r\source\$Module.generated.hip`" comgr $arch";$psi.UseShellExecute=$false;$psi.RedirectStandardOutput=$true;$psi.RedirectStandardError=$true
   $p=[Diagnostics.Process]::new();$p.StartInfo=$psi;if(!$p.Start()){throw 'RTC start failed'};$stdout=$p.StandardOutput.ReadToEndAsync();$stderr=$p.StandardError.ReadToEndAsync()
   try {while(!$p.HasExited){if(!$p.WaitForExit(15000)){GameIdle}};$p.WaitForExit();if($p.ExitCode -ne 0){throw "compile $arch exit=$($p.ExitCode)"}}finally{if(!$p.HasExited){$p.Kill();$p.WaitForExit()};$stdout.Result|Set-Content "$r\compile-$arch.log";$stderr.Result|Set-Content "$r\compile-$arch.err"}
  }

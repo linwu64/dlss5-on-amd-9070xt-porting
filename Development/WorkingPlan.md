@@ -1,6 +1,6 @@
 # 当前工作计划（WorkingPlan）
 
-更新：2026-10-17（基线提交 `3a1be68c` / 载荷源码 `be506729`）。历史流水见 [DevHistory.md](DevHistory.md)，负账台账见 [failed-experiments.md](failed-experiments.md)。
+更新：2026-10-17（开发载荷源码 `10982cf4`；五项优化已结题，完整回执见 `results/five-final-20261017/`；本机已装载荷仍为 `be506729`）。历史流水见 [DevHistory.md](DevHistory.md)，负账台账见 [failed-experiments.md](failed-experiments.md)。
 
 ---
 
@@ -14,7 +14,7 @@
 - **公开镜像**：[夸克](https://pan.quark.cn/s/316704620069) · [Gofile](https://gofile.io/d/HNE20Ocp)，详见 [0.42 发布记录](releases/0.42/README.md) 与 [0.42 更新与使用说明](../0.42-更新与使用说明.md)。
 - **资源基线**：紧凑权重合计省 `216 MiB` 分配容量（ViT expand `96 MiB` + contract `96 MiB` + projection `24 MiB`，`weights_count=184, weights_bytes=297,609,000 B`），显式无 history 会话另省 `33.75 MiB` 共享缓冲。
 
-### 1.2 开发主线最新基线（`be506729`，2026-10-14 七场战役合入）
+### 1.2 开发主线（10-14 七场战役 + 10-17 收下候选1/3）
 在 0.42 之上完成 2026-10-14 全网 W16 权重分块、ISA 去分支与跨核 1B E4M3 字节流直连（1920×1152 Gold 首尾帧 SHA256 全程逐位锁定 `0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A`，`0 bit-diff`，`extra_vram_bytes=0`）：
 1. **ReplayAuto 162 节点强 DAG 结题（STOP）**：修妥 ROCm 7.0.2 CLR `hipEventRecord` 流捕获缺陷并过 12 帧 Gold，但 3 轮 ABBA pooled `Δmean = -17.25 µs`、`Δp99 = +4.00 µs`（R3 双退步），hipGraph 全家桶在 RX 9070 XT 上彻底封板，生产保持 `EagerAuto`（`DLSS5_SUBMIT_PULSE=2, opt.graph=0`）。
 2. **C512 三核 W16（`HIP_C512_W16=2`）**：`split_projection_frag_w16`、`c512_qkv_attention_compact_w16`、`mh_attention_project_frag_c512_w16_u4` 改 16B `global_load_b128`，3 轮 ABBA `-16.7 µs` mean。
@@ -26,6 +26,10 @@
    - **1080p（`1920×1152`）整网 `frame.exe` 稳态耗时**：由 `9.6070 ms` 降至 **`9.0549 ms` pooled mean / `9.0485 ms` pooled median**（最佳单槽 **`8.9601 ms` mean / `8.9445 ms` median**，累计净降 **`-0.5812 ms` mean / `-0.6004 ms` median**）。
 8. **`NativeLowFrequencyTemporal`（MODE 2/3）64-Slot Ring 化**：消除 MODE 2/3 每帧 `CreateDescriptorHeap` 与 2 次 `r.submit.Flush()`，异步提交下 `-0.070 ms/frame`。
 
+**2026-10-17 本轮结题**：五项按序完成，收1/3，停2/4/5。干净默认构建的1080/900 Gold逐帧一致；每档3轮ABBA的均值全部改善，pooled mean分别−20.846/−34.487µs，pooled p99−25.690/−32.351µs。1080 R2 p99+10.599µs原样留档，不称每轮尾都好。最终80模块逐SHA/实际ELF目标核验通过（旧RTC错误gfx1200标签已用当前源码工具修正，实测gfx1201字节未变）；gfx1200仅编译核验。addon/runtime构建与runtime API smoke通过，产物在 `D:\DLSSNR-Lab\five-final-20261017` 和本地 `/home/lmxxf/work/dlss5-five-build/final-payload/`。
+
+**下一步**：按用户后续指定版本号打包/发布；本轮未安装、未改玩家配置、未改已发布ZIP。详 `results/five-final-20261017/README.md`。
+
 ### 1.3 本机游戏现装（2026-10-14 部署，2026-10-15 实玩确认）
 - **《剑星》**：已装 `dlss5-amd.addon64`（SHA256 `91d8147188b950367d40ed041588a0591ccbc0d4627ff70702b9a4e68eb0cd26`）+ 双架构 80 个 `.hsaco` 模块；配置保持 `MODE0/MP1/PRED0/SKIN0/1x`。**用户 2K AA（1080P DLSS5）Exact 实玩反馈：稳定 60 FPS**（此前 10-12 紧凑权重版为 58.2 FPS）。
 - **《鬼武者》**：已装 `LmxxfNrRuntime.dll`（SHA256 `50c3b80b730fce925c65c83a803c42406e6644f03e0fb0ae71535bbd88567844`）+ 双架构 80 个 `.hsaco` 模块；配置保持 `MODE1/MP1/PRED0/SKIN0`。
@@ -33,11 +37,14 @@
 
 ---
 
-## 2. 源码审计新发现的可优化候选（2026-10-17 梳理，全部属逐位无损 `0 bit-diff` 范畴）
+## 2. 2026-10-17 候选与实测结论（已全部结题：收1/3，停2/4/5）
 
-对当前 `be506729` 的 153-dispatch 执行图与 18 个活跃内核源码进行逐边审计后，定位出以下 **5 项尚未采纳、物理机制明确且逐位等价（`0 bit-diff`）的优化点**，按收益把握从高到低排列：
+以下保留基于 `be506729` 的原始五项审计提案；是否成立以各节实测状态为准，不能把提案中的逐位/收益假设当成验收结果。汇总见 `results/five-final-20261017/`。
 
 ### 候选 1：Block 47 → `Up(48)`（`512 → 256`）1B E4M3 字节边接通 + `Up(39)`/`Up(48)` W16 FP8 WMMA（`HIP_DEC_F8_W16`）
+
+**2026-10-17 已验收合入**：Gold 0 bit-diff；3轮ABBA均值全改善、p99全改善，pooled mean −17.398µs / p99 −23.962µs。默认 `DecoderF8W16Mode=3`；详 `results/decoder-f8-w16-20261017/`。下方原审计说明保留，下一项候选2。
+
 1. **Block 47 → `Up(48)` 1B E4M3 字节边（零核改动或仅宿主接通）**：
    - **现状病灶**：`hip_reference_network.h:1025` 在 C512 解码段 `for (U b=40; b<=47; b++)` 仅对 `b < 47` 开启 `byte_out`，导致 Block 47（`post=0`，输出原本就是精确 E4M3 格点值 `F(Hrtz(acc))`）仍写出 `4.42 MB` 的 4B FP32；紧接着 `Up(48)`（`512 → 256`，`60×36 → 120×72`）在 16 个输出列分片上把这 `4.42 MB` FP32 重复读取 16 遍（**`70.78 MB/帧`**，每 wave 发出 `256` 条标量 `global_load_b32` 并转 `_Float16`）。
    - **现成基础**：`hip/deep_fast.hip:541` 的 `decoder_project2x_h16w_byteout_w_bin` **已经编译进了 `if (inputs==512 && outputs==256)` 分支**，仅因 `hip_reference_network.h:903` 的 `byte_in` 检查写死 `ic==1024&&oc==512` 且 `line 1025/1035` 未传 `byte_out/byte_in` 而未生效。
@@ -49,6 +56,8 @@
      - 权重加载指令数减半（`128 → 64` / `64 → 32`）且从 16 路跨行散读变为 **100% 合并的 512B 全 wave 连续加载**。
 
 ### 候选 2：在写入端消除全网最后 2 次 `vit_gather_b8` 发射（发射数 `153 → 151`，释放 `5.0 MiB` `gather_maps` 显存）
+
+**2026-10-17 已结题 STOP**：Gold 0 bit-diff；三轮ABBA均值全非改善，pooled +5.691µs，保留生产两次gather。详 `results/vit-write-gather-20261017/`。
 - **现状病灶**：全网在 `Down(30)` 后与 `Block 38` 后各调 1 次 `vit_gather_b8`（共 2 次 launch），每次每个线程还要从显存读取 16B 的 `uint32_t indices[655,360]` 查找表（常驻占 **`5.0 MiB` VRAM**，每帧额外读 **`5.0 MiB`** 索引表 + **`1.31 MB`** 字节搬运）。
 - **为什么 2026-09-30 的 `HIP_VIT_GATHER_FOLD_HOST` 在 900p 变慢**：当时把逆重排塞进了**读取端 `Up(39)`（`decoder_project2x_h16w_gin`）**——不仅丢掉了 `_w` 宽尾优化，而且 `Up(39)` 对每个输入 token 要跨 32 个输出列分片**重复读取 32 遍**，在读取端做 `vg_cinv` 通道重排把 32 遍连续向量读全打碎成了标量散读。
 - **正确姿势（双写入端重排）**：
@@ -57,6 +66,8 @@
 - **物理收益**：全网每帧 kernel 发射数 **`153 → 151`**，释放 **`5.0 MiB`** `gather_maps` 显存（`gather_maps_MiB: 5.0 → 0.0`），每帧再省 **`6.4 MiB`** 显存流量，100% 逐位无损。
 
 ### 候选 3：`Down(8)`、`Down(14)`、`Down(22)`、`Down(30)`（`mh_pool_project_group_c{64,128,256,512}`）W16 FP8 WMMA + 池化去分支
+
+**2026-10-17 已验收合入**：Gold 0 bit-diff；三轮均值/p99全改善，pooled mean −20.704µs / p99 −27.539µs。池化有效性/顺序保留，采纳FP8字节LDS与W16矩阵路径。详 `results/down-f8-w16-20261017/`。
 - **历史误判纠正**：`2026-10-01 §9` 普查曾验证 `block{8,14,22}-ds.f32` 与 `head-matrix.f32` 权重 **100% 在 E4M3 格点上**，但误以为激活输入是 `raw`（`Hrtz`）而标为“不在格点”。实查 `mh_pool_project_group_body`（`hip/multihead_fast_padded.hip:415`）：
   `v = F(H(H(top + bottom) * .25f)); pooled[k*S + c] = (_Float16)v;`
   2×2 池化均值在写入 LDS `pooled` 之前 **已经过 `F()` 量化到了精确 E4M3 格点（且 `-0.0f` 已转 `+0.0f`）**！
@@ -66,10 +77,14 @@
   3. 顶部 `for (uint k=0; k<16; k++)` 池化循环对内部完整 tile（`first + 15 < M && !valid_width`）走无分支快路，消除现存的 16 个循环分支。
 
 ### 候选 4：`Down(4)`（`mh_pool_project_c32_b8_out8`，`480×288`）4 列分片合波（`34,560 → 8,640` waves）+ W16 权重
+
+**2026-10-17 已结题 STOP**：Gold 0 bit-diff；三轮均值全部退步，pooled +5.546µs，保留生产旧四wave。详 `results/pool32-wave-w16-20261017/`。
 - **现状病灶**：`mh_pool_project_c32_b8_out8`（`hip/multihead_fast_padded.hip:374`）每 wave 只算 16 列（`nt=4`），导致 `138,240` 个 token 发射多达 **`34,560` 个 wave**，每个 16-token 输入块被 4 个独立 wave 重复读取 4 遍，且权重 `(col+rc)*32 + half*16 + g*8` 是未分块 row-major（相邻 lane 跨 32B）；尾段还多做了一次无意义的 `acc[e] = Hrtz(0.f + sum[e])` 和双重 `q8(F(acc[e]))`（两次 `cvt_pk_fp8_f32`）。
 - **改造方案**：对齐 `mh_pool_project_group`，改为每 wave 负责 16 tokens × 64 全列（`nt=1`，总 wave 数砍至 **`8,640`**），输入 `pooled` 每 wave 只读 1 次，`@ds-cast` 原地用 `FragmentPackedMatrixW16` 打包为 100% 合并 `global_load_b128`，尾段直接 `fmed3f(Hrtz(sum[e]) + 0.f, -448.f, 448.f)` + 单次 `cvt_pk_fp8_f32` 写出。
 
 ### 候选 5：融合上采样块 `UpBody`（Block 56 `C128`、Block 62 `C64`、Block 66 `C32`）上采样投影段 W16 FP8 化
+
+**2026-10-17 已结题 STOP**：56/62 Gold同但pooled mean +3.555µs/p99 +20.987µs；独立派发发现66原路径缺字节low导出，补通65→66后完整Gold失败（2,768,436 half值差），未进入完整组合ABBA。生产保原路径，详 `results/upbody-f8-w16-20261017/`。
 - **现状病灶**：`swin_wave2_body<Up=true>`（`hip/wave_owned_mh.inc:328`）与 `cw_body<Up=true>`（`hip/wave_owned_c32.inc:223`）在 `LowByte=true` 时，仍用 8 条标量字节加载 + `cvt_f32_fp8` + `cvt_f16_f32` 构造 `h8 a`，并从**未分块 row-major `_Float16` `upw`**（跨 16 条 cache line）加载 `b` 跑 `wmma_f16`。
 - **改造方案**：`block{56,62,66}-weights.f32` 矩阵区同样 100% 在 E4M3 格点上。将 `in` 改为单条 8B `i2` 加载（零转换指令），`upw` 矩阵区原地按 `FragmentPackedMatrixW16` E4M3 排列并改用 `wmma_fp8_fp8`（尾部 `upw[IC*C + ...]` skip 缩放保持 f32 不变），消除标量拆字节与跨行散读。
 
