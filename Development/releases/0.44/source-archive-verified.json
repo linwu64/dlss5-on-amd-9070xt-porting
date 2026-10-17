@@ -1,0 +1,11 @@
+{
+  "archive_sha256": "2957ceaf06fd28326d4c542a340eb126681d59b4101185c010f4d7ad88605296",
+  "source_commit": "b8f762387ecac928f935f89a89461a41214b2421",
+  "verified_current_sources": [
+    "src/LmxxfNrRuntime.cpp",
+    "src/native_network_geometry.h",
+    "src/native_model_mode.h",
+    "Development/HIP/small_model_assets.h",
+    "Development/HIP/hip_reference_network.h"
+  ]
+}
