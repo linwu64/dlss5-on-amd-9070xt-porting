@@ -165,7 +165,7 @@ public:
  struct TemporalConfig {UINT motion_width{},motion_height{},render_width{},render_height{};bool experimental_ffx{};float motion_scale_x{},motion_scale_y{};};
 private:
  std::wstring recreate_directory;Microsoft::WRL::ComPtr<ID3D12Resource> recreate_temporal;std::optional<TemporalConfig> recreate_config;bool small_assets_ready{};NativeTemporalMode built_temporal=NativeTemporalMode::Off;
- Resources*resources{};bool ready{},failed{};std::mutex mutex;NativeTemporalFrameMetadata experimental_metadata{};
+ Resources*resources{};bool ready{},failed{},suppress_fps{};std::mutex mutex;NativeTemporalFrameMetadata experimental_metadata{};
 public:
  void ExperimentalFrameMetadata(const NativeTemporalFrameMetadata&m){std::lock_guard<std::mutex>g(mutex);experimental_metadata=m;}
  NativeGameFrame()=default;NativeGameFrame(const NativeGameFrame&)=delete;
@@ -261,7 +261,7 @@ private:
    if(resources->temporal&&!resources->experimental_temporal)resources->history_guard.Create(d,resources->sampler.Output(),resources->input.PostBase(),directory);
    resources->black.Create(d,resources->network.Output(),resources->geometry.valid_width*resources->geometry.valid_height,directory);
    if(resources->temporal&&!resources->experimental_temporal)resources->feed.BindNetworkOutput(resources->network.Output());
-   {const wchar_t*v=_wgetenv(L"DLSS5_SHOW_FPS");const wchar_t*n=_wgetenv(L"DLSS5_NOTICE");resources->show_fps=v&&wcstoul(v,nullptr,10)!=0&&(!n||wcstoul(n,nullptr,10)>=2);if(resources->show_fps)resources->fps_overlay.Prepare(source);}
+   {const wchar_t*v=_wgetenv(L"DLSS5_SHOW_FPS");const wchar_t*n=_wgetenv(L"DLSS5_NOTICE");resources->show_fps=!suppress_fps&&v&&wcstoul(v,nullptr,10)!=0&&(!n||wcstoul(n,nullptr,10)>=2);if(resources->show_fps)resources->fps_overlay.Prepare(source);}
    /* DLSS5_IO_FUSE=1 (2026-10-01, input-slim; bit-exact data movement): the decoder reads the network's f32 output buffer itself (same
       f32->f16 rounding the neural texture store did) and the neural pass is skipped. Plain sessions only (no temporal feed, no overlap),
       where nothing else reads the neural texture. Default 0. */
@@ -302,7 +302,10 @@ public:
   r.fps_tick=now;
  }
  /* Pre-upscale integration draws its overlay on the final output, never into the color fed to FSR. */
- void SuppressFps(){std::lock_guard<std::mutex>guard(mutex);if(resources){resources->show_fps=false;resources->fps_text[0]=0;}}
+#ifdef NATIVE_GAME_TILED_VERIFICATION
+ bool DiagnosticOverlaySuppressed()const{return suppress_fps&&resources&&!resources->show_fps;}
+#endif
+ void SuppressFps(){std::lock_guard<std::mutex>guard(mutex);suppress_fps=true;if(resources){resources->show_fps=false;resources->fps_text[0]=0;}}
  bool TemporalReady()const{return resources&&resources->temporal;}
  // Diagnostic: write the previous-output history buffer, the motion buffer and the current
  // encoded color (RGBA16F) to files so motion-vector sign/units can be checked offline.
@@ -406,7 +409,7 @@ public:
   NativePollRequestedModelMode(true);
   NativeSmallGeometryEnabled()=dlss5_mode::Requested()==0&&small_assets_ready&&hip_reference::FastPrefixFromEnvironment()&&!NativeOutputTemporalMode(NativeSelectedTemporalMode())&&!NativeTemporalExperimentRequested();
   {auto d=target->GetDesc();auto g=NativeResolveNetworkGeometry(unsigned(d.Width),d.Height);
-   if(g.processing_width!=resources->geometry.processing_width||g.processing_height!=resources->geometry.processing_height||g.small_model!=resources->geometry.small_model||built_temporal!=NativeSelectedTemporalMode()){
+   if(g.processing_width!=resources->geometry.processing_width||g.processing_height!=resources->geometry.processing_height||g.valid_width!=resources->geometry.valid_width||g.valid_height!=resources->geometry.valid_height||built_temporal!=NativeSelectedTemporalMode()){
     resources->submit.Flush();if(resources->overlap)resources->compute.Flush();
     auto*q=resources->queue;q->AddRef();target->AddRef();delete resources;resources=nullptr;ready=false;
     auto cfg=(NativeSelectedTemporalMode()==NativeTemporalMode::Off&&NativeConfiguredTemporalMode()!=NativeTemporalMode::Off)?nullptr:(recreate_config?&*recreate_config:nullptr);
@@ -417,6 +420,7 @@ public:
   }
 #endif
 #ifdef DLSS5_USE_HIP
+  resources->geometry=NativeCurrentNetworkGeometry();
   resources->network.SyncModelMode();
 #endif
   if(target==resources->original&&source_state!=target_state)throw std::runtime_error("aliased frame texture states disagree");

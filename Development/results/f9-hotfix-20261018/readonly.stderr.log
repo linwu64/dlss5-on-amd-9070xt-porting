@@ -1,0 +1,16 @@
+readonly-hotkey.exe : DLSS5_MULTI_PASS_HOTKEY: native-game-flags.txt also sets DLSS5_MULTI_PASS (it overrides custom-co
+nfig.txt); rewriting that line too
+At line:2 char:1
++ & D:\DLSSNR-Lab\small-model-20261018\readonly-hotkey.exe "$r\readonly ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (DLSS5_MULTI_PAS...g that line too:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+DLSS5_MULTI_PASS_HOTKEY: native-game-flags.txt also sets DLSS5_MULTI_PASS (it overrides custom-config.txt); rewriting t
+hat line too
+DLSS5_MULTI_PASS_HOTKEY: native-game-flags.txt also sets DLSS5_MULTI_PASS (it overrides custom-config.txt); rewriting t
+hat line too
+DLSS5_MULTI_PASS_HOTKEY: native-game-flags.txt also sets DLSS5_MULTI_PASS (it overrides custom-config.txt); rewriting t
+hat line too
+DLSS5_MULTI_PASS_HOTKEY: native-game-flags.txt also sets DLSS5_MULTI_PASS (it overrides custom-config.txt); rewriting t
+hat line too

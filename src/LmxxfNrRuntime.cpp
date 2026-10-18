@@ -398,7 +398,14 @@ void LoadFlagsFileOnce(const std::wstring &assets)
     std::call_once(once, [&] {
         // The config folder: DLSS5-AMD next to the DLL, else the assets directory and up to four parents; the first folder
         // that holds any of the three layers (default-config.txt, custom-config.txt, native-game-flags.txt) is used.
-        std::vector<std::wstring> candidates{JoinPath(DllDirectory(), L"DLSS5-AMD")};
+        std::vector<std::wstring> candidates;
+        // Xbox redirects Onimusha into a read-only WindowsApps identity at runtime.
+        // Its installed Content mirror holds the writable config shared with deployment.
+        wchar_t exe[MAX_PATH]{};GetModuleFileNameW(nullptr,exe,MAX_PATH);
+        const wchar_t*base=wcsrchr(exe,L'\\');base=base?base+1:exe;
+        if(!_wcsicmp(base,L"OnimushaWotS.exe"))
+            candidates.push_back(L"C:\\XboxGames\\Onimusha- Way of the Sword\\Content\\DLSS5-AMD");
+        candidates.push_back(JoinPath(DllDirectory(), L"DLSS5-AMD"));
         std::wstring dir = assets;
         for (int up = 0; up < 4 && !dir.empty(); ++up)
         {
