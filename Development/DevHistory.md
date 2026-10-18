@@ -703,3 +703,9 @@ HIP固定1080图31块/640 token，复用既有算子、改拓扑/shift/skip与�
 持锁+15秒看门狗部署双游戏。剑星addon0f4bcf62…；鬼武者根及_storage_runtime ced2df19…；各80模块、93Small权重与shader读回通过。custom/native两层MP0.5/HOT1/F9，剑星MODE0、鬼武者MODE1保留；原配置和全部文件逐位备份，rollback.ps1齐全。已安装鬼武者runtime smoke实际Small31块、exit0。备份D:\DLSSNR-Lab\game-install-20261018\backup-20261018-050250，GPU锁已释放。
 
 [正式发行回执](releases/0.44/README.md) · [双游戏安装/回滚](results/game-install-20261018/README.md)。没有代Zero启动游戏实玩。
+
+## 2026-10-18 F9实机回归缺口与紧急修复
+
+鳩按实机日志定位：剑星OneShot提前取DirectOutput，Process重建后返回悬垂纹理；同尺寸不应重建，权重清空又导致延迟producer wait之后同步上传死锁。鬼武者WindowsApps只读路径导致F9落盘失败/轮询覆盖内存。已按上述机制修复，补cold/warm/AE的未完成producer栅栏回归、1080/900 direct输出与overlay保留测试，以及只读配置即时/跨tick和外部编辑覆盖测试。
+
+工程失误另记：本次新GPU脚本Idle把game-check文字+bool作为返回数组，busy误判true，首轮GPU回归在后台鬼武者PID27916仍运行时误执行；没有修改游戏目录，作业已结束、锁已释放。已修Out-Host分离输出、实际busy验证WAIT且不拿锁，向Zero/鳩明确披露；初轮不计正式验收，等完全退出后-idle-r2重跑。

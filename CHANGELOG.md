@@ -413,3 +413,9 @@ RX9070XT full-frame replay: 1080 tier 5.554 ms/frame (-39.35%); 900 tier 4.377 m
 Small and Original weights coexist; all 80 modules are reused. F8 toggles AE/EXACT. MODE1 suspends for 2x/3x and resumes for 0.5x/1x. Personal overrides are preserved; remove an older MULTI_PASS=1 override or change it to 0.5 for the new default.
 
 [Validation / 验收](Development/results/small-complete-20261018/README.md) · [Packages / 三包](Development/releases/0.44/README.md)
+
+### 0.44 F9 hotfix · 2026-10-18
+
+Fix the direct-output lifetime after geometry changes, keep same-size model switches on existing D3D12 resources and preserve overlay suppression. Retain separate Small/Original weight caches and finish cold uploads before deferred producer waits. F9 applies in memory immediately even when WindowsApps configuration persistence fails; Onimusha prioritises its writable XboxGames Content configuration.
+
+修复F9切模型后的输出纹理悬垂引用和延迟producer下的权重上传死锁；同尺寸保留D3D12资源，两模型权重常驻。只读配置下F9先更新内存，落盘失败不撤销切换；鬼武者优先XboxGames可写配置。回归/部署/更新三包正在验收，见[回执](Development/results/f9-hotfix-20261018/README.md)。

@@ -146,3 +146,7 @@ Zero 2026-10-18 定名：310.9.16 的31块新网络叫 **0.5x**，`DLSS5_MULTI_P
 - Small AE从8个ViT块11..18的权重计算gain；F8保留。MODE1使用Small独立history-head和0x3A23=0.76708984375；时序重置及F9模式回环通过。
 - 最终1080 Original Gold仍0900E489…，Small仍65D71486…；80模块逐SHA复用。详[第三阶段回执](results/small-complete-20261018/README.md)。
 - **交付完成**：0.44正式三包与双游戏安装均通过；逐文件备份、回读、smoke、SHA和rollback回执见releases/0.44与results/game-install-20261018。下一步只待Zero实玩观感/是否上传公开镜像。
+
+## 7. 2026-10-18 F9紧急修复（进行中）
+
+Zero实玩暴露剑星direct输出UAF、同尺寸重建与producer wait之后懒上传死锁，鬼武者WindowsApps只读配置导致F9被旧磁盘值覆盖。已修调用后重新取输出、保留SuppressFps/同尺寸资源、两模型权重分表常驻和wait前冷预热，F9内存立即切换/写盘best effort，鬼武者优先XboxGames镜像。CPU编译与只读配置测试通过。等待鬼武者PID27916退出后，严格空闲重跑GPU门，再重装/更新0.44三包。首次GPU测试包装器混入stdout误判busy已纠正并披露，初次回执不作正式空闲验收，详results/f9-hotfix-20261018。

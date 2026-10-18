@@ -1,0 +1,12 @@
+{
+  "source_commit": "6794c379f82913745c6ec673160f9f3bed91af2f",
+  "archive_sha256": "fa951536f4d427cfe15b52bc13f893c15c0c01d7da5f3eedcec698458530d3f9",
+  "current_files_verified": [
+    "src/native_game_oneshot.h",
+    "src/native_game_frame.h",
+    "src/native_hot_flags.h",
+    "src/LmxxfNrRuntime.cpp",
+    "Development/HIP/hip_d3d12_bridge.h",
+    "Development/HIP/hip_reference_network.h"
+  ]
+}

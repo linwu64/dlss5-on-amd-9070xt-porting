@@ -415,3 +415,9 @@ RX9070XT整帧回放：1080档5.554 ms/frame（−39.35%）；900档4.377 ms/fra
 Small权重与旧权重共存；80个双架构模块复用。F8切AE/EXACT；2x/3x暂挂MODE1，回到0.5x/1x恢复。升级保留个人custom/native覆盖；要启用新默认请删除旧MULTI_PASS=1覆盖或改为0.5。
 
 [Validation / 验收](Development/results/small-complete-20261018/README.md) · [Packages / 三包](Development/releases/0.44/README.md)
+
+### 0.44 F9 hotfix · 2026-10-18
+
+Fix the direct-output lifetime after geometry changes, keep same-size model switches on existing D3D12 resources and preserve overlay suppression. Retain separate Small/Original weight caches and finish cold uploads before deferred producer waits. F9 applies in memory immediately even when WindowsApps configuration persistence fails; Onimusha prioritises its writable XboxGames Content configuration.
+
+修复F9切模型后的输出纹理悬垂引用和延迟producer下的权重上传死锁；同尺寸保留D3D12资源，两模型权重常驻。只读配置下F9先更新内存，落盘失败不撤销切换；鬼武者优先XboxGames可写配置。回归/部署/更新三包正在验收，见[回执](Development/results/f9-hotfix-20261018/README.md)。
