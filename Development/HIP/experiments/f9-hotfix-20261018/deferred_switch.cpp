@@ -7,13 +7,13 @@
 #include <condition_variable>
 #include <set>
 int main(int argc,char**argv)try{
- Require(argc==3||argc==4,"assets modules [cold]");if(argc==4)_putenv("DLSS5_MULTI_PASS=3");Gpu g(true);constexpr unsigned W=1920,H=1152;const size_t pixels=size_t(W)*H;
+ Require(argc==3||argc==4,"assets modules [cold]");const bool post=argc==4&&!strcmp(argv[3],"history");if(argc==4&&!post)_putenv("DLSS5_MULTI_PASS=3");Gpu g(true);constexpr unsigned W=1920,H=1152;const size_t pixels=size_t(W)*H;
  auto input=g.Buffer(pixels*16);std::vector<float>v(pixels*4,.35f);for(size_t i=3;i<v.size();i+=4)v[i]=1;g.Upload(input.Get(),v);
  auto o=LmxxfProductionOptions(W,H,argv[2],argv[1]);o.small_geometry=true;
- hip_reference::D3D12Bridge b;b.RequestNeverHistory();b.Create(g.queue.Get(),o,{});
+ hip_reference::D3D12Bridge b;if(post){b.RequestDirectHistory();b.RequestPostAuxiliary(hip_reference::ReadWeights(std::string(argv[1])+"/small/post70-history-head.f32"));}else b.RequestNeverHistory();b.Create(g.queue.Get(),o,{});
  ComPtr<ID3D12Fence> gate;Check(g.device->CreateFence(0,D3D12_FENCE_FLAG_NONE,IID_PPV_ARGS(&gate)),"gate");
  std::map<unsigned,std::vector<float>>answers;std::set<unsigned>warmed;UINT64 ticket=0;
- for(unsigned mode:{0u,1u,2u,3u,0u,1u,0u}){
+ for(unsigned mode:post?std::vector<unsigned>{0,1,0,1,0}:std::vector<unsigned>{0,1,2,3,0,1,0}){
   auto before=b.DiagnosticNetwork().WeightUploads();auto start=std::chrono::steady_clock::now();b.SetModelMode(mode);
   Check(g.allocator->Reset(),"reset allocator");Check(g.list->Reset(g.allocator.Get(),nullptr),"reset list");b.RecordInputCopy(g.list.Get(),input.Get());Check(g.list->Close(),"producer close");
   Check(g.queue->Wait(gate.Get(),++ticket),"withhold producer gate");ID3D12CommandList*lists[]={g.list.Get()};g.queue->ExecuteCommandLists(1,lists);
@@ -24,7 +24,7 @@ int main(int argc,char**argv)try{
   const bool withheld=gate->GetCompletedValue()<ticket;Check(gate->Signal(ticket),"submit producer gate");
   Require(!released&&withheld,"enqueue waited for unsubmitted producer (rescue released own fence)");
   g.Run([&](auto*c){b.RecordOutputReadable(c);});b.NotifyOutputSubmitted(g.queue.Get());
-  auto result=g.Read(b.Output());for(float x:result)Require(std::isfinite(x),"nonfinite output");
+  auto result=g.Read(b.Output());result.resize(pixels*3);if(post){auto row=b.DiagnosticNetwork().DiagnosticPostRow();auto expected=hip_reference::ReadWeights(std::string(argv[1])+(mode==0?"/small/":"/")+"post70-history-head.f32");Require(row==expected,"post-history row belongs to wrong model");printf("PASS active history row model=%s exact_coefficients=32\n",dlss5_mode::Name(mode));}for(float x:result)Require(std::isfinite(x),"nonfinite output");
   if(answers.count(mode))Require(result==answers[mode],"same-model round-trip bit diff");else answers[mode]=result;
   const auto after=b.DiagnosticNetwork().WeightUploads();if(warmed.count(mode))Require(after==before,"warm model switch uploaded again");warmed.insert(mode);
   printf("PASS deferred mode=%s producer_withheld_at_return=1 uploads=%llu delta=%llu wall_ms=%.3f\n",dlss5_mode::Name(mode),after,after-before,std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-start).count());fflush(stdout);

@@ -37,6 +37,8 @@ public:
   parameters.viewWidth=w;parameters.viewHeight=h;parameters.renderWidth=rw;parameters.renderHeight=rh;
   parameters.logitOffset=UINT(offset/4);enabled=true;std::fprintf(stderr,"history model=%s blend=%.11f processing_width=%u valid_width=%u\n",match&&g.small_model?"Small":"Original",match&&g.small_model?.76708984375:.73974609375,pw,w);
  }
+ // Same-size model switches keep the D3D resources but start a fresh history sequence.
+ void SetModel(bool small){if(!enabled)return;const float blend=small?.76708984375f:.73974609375f;std::memcpy(&parameters.reserved[1],&blend,4);prior=false;seed=0;std::fprintf(stderr,"history model switch=%s blend=%.11f reset=1\n",small?"Small":"Original",blend);}
  // No depth-direction guess: FFX context flags are not carried by this addon.
  // Without both declarations the opt-in uses explicit screen-coordinate history.
  static int DepthDirection(){

@@ -46,6 +46,7 @@ int wmain(int argc,wchar_t**argv){try{
  {NativeGameFrame frame;NativeGameFrame::TemporalConfig tc{W,H,W,H};frame.Create(q,target,noise,assets,nullptr,&tc);if(std::getenv("SMALL_FRAME_DIRECT_TEST"))frame.SuppressFps();noise.clear();noise.shrink_to_fit();FILE*csv=_wfopen((prefix+L".csv").c_str(),L"wb");if(!csv)throw std::runtime_error("CSV open");fprintf(csv,"frame,reset,wall_ms,invalid,rgb_min,rgb_max,luma_mean,roi_luma_mean,dark_pixels,roi_dark_pixels,changed_half_values_from_first,maxabs_from_first,checked\n");
  for(UINT i=0;i<N;i++){
 #ifdef DLSS5_USE_HIP
+ if(std::getenv("SMALL_FRAME_HISTORY_TEST")){if(i==6)dlss5_mode::Request(1);if(i==12)dlss5_mode::Request(0);}
  if(std::getenv("SMALL_FRAME_SWITCH")){if(i==2)dlss5_mode::Request(1);if(i==4)dlss5_mode::Request(2);if(i==6)dlss5_mode::Request(3);if(i==8)dlss5_mode::Request(0);}
 #endif
 // Restore the SAME original HDR texture; never process the previous output recursively.

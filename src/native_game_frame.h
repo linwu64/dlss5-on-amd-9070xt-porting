@@ -416,7 +416,7 @@ public:
     try{CreateUnlocked(q,target,{},recreate_directory,recreate_temporal.Get(),cfg);}catch(...){target->Release();q->Release();throw;}
     target->Release();q->Release();reset=true;
     NativeGameFrameStep("model/geometry rebuild completed");
-   }
+   }else if(g.small_model!=resources->geometry.small_model){resources->fast_history.SetModel(g.small_model);reset=true;}
   }
 #endif
 #ifdef DLSS5_USE_HIP
