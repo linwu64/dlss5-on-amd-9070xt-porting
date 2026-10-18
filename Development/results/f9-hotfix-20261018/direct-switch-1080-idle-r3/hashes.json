@@ -1,0 +1,72 @@
+[
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "65D71486636715598EE1994166D5186A52D5F53230DBD7F8F03E514E3EC8FCB8",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-first.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "65D71486636715598EE1994166D5186A52D5F53230DBD7F8F03E514E3EC8FCB8",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-0.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "65D71486636715598EE1994166D5186A52D5F53230DBD7F8F03E514E3EC8FCB8",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-1.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-2.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "0900E489A397302B93074A878C694B9C3E7C3400CFE2DFDD3CC727ABE1050F4A",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-3.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "5B1061153FB330074F3D6DA7CC4D02738E99116772BE90AB48F46C8179275FE5",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-4.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "5B1061153FB330074F3D6DA7CC4D02738E99116772BE90AB48F46C8179275FE5",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-5.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "7E4E1F3A9AACB567269F390063BAFB44A6D27A22F4F2B3B7210DBFD178B73A29",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-6.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "7E4E1F3A9AACB567269F390063BAFB44A6D27A22F4F2B3B7210DBFD178B73A29",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-7.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "65D71486636715598EE1994166D5186A52D5F53230DBD7F8F03E514E3EC8FCB8",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-8.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "65D71486636715598EE1994166D5186A52D5F53230DBD7F8F03E514E3EC8FCB8",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-9.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "65D71486636715598EE1994166D5186A52D5F53230DBD7F8F03E514E3EC8FCB8",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-10.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "65D71486636715598EE1994166D5186A52D5F53230DBD7F8F03E514E3EC8FCB8",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out-frame-11.f16"
+    },
+    {
+        "Algorithm":  "SHA256",
+        "Hash":  "65D71486636715598EE1994166D5186A52D5F53230DBD7F8F03E514E3EC8FCB8",
+        "Path":  "D:\\DLSSNR-Lab\\f9-hotfix-20261018\\direct-switch-1080-idle-r3\\out.f16"
+    }
+]

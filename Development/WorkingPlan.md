@@ -1,6 +1,6 @@
 # 当前工作计划（WorkingPlan）
 
-更新：2026-10-18（第三阶段完成：Small全档/AE/MODE1、900档4.377ms、正式0.44三包与双游戏默认0.5x部署均验收；源码b8f76238，安装备份与rollback齐全，GPU锁已释放）。
+更新：2026-10-18（0.44 F9最终热修4764e4f1：剑星/鬼武者已重装、严格空闲回归与三包全部校验完成；备份与rollback齐全，GPU锁已释放）。
 
 ---
 
@@ -9,7 +9,7 @@
 ### 1.1 当前发行与安装（0.44，2026-10-18，本地三包已交付）
 
 - 正式三包在 `D:\給網友打包`，附SHA256；每包44shader/80模块/93Small资产/ZIP全文件读回，RE9 smoke通过。[发行回执](releases/0.44/README.md)。公开镜像仍0.43。
-- 双游戏已装b8f76238载荷，三层MP0.5，F9循环；《剑星》MODE0、《鬼武者》MODE1保留。备份 `D:\DLSSNR-Lab\game-install-20261018\backup-20261018-050250` 与rollback齐备，安装smoke exit0。[安装回执](results/game-install-20261018/README.md)。
+- 双游戏已装F9最终4764e4f1载荷，三层MP0.5，F9循环；《剑星》MODE0、《鬼武者》MODE1保留。备份 `D:\DLSSNR-Lab\game-install-20261018\backup-20261018-050250` 与rollback齐备，安装smoke exit0。[安装回执](results/game-install-20261018/README.md)。
 - 当前Small单帧：1080 **5.554ms** / 900 **4.377ms**；原71块仍可F9选择1x/2x/3x。
 
 ### 1.1a 历史发行包基线（0.43，2026-10-17，公开三包已交付）
@@ -147,6 +147,16 @@ Zero 2026-10-18 定名：310.9.16 的31块新网络叫 **0.5x**，`DLSS5_MULTI_P
 - 最终1080 Original Gold仍0900E489…，Small仍65D71486…；80模块逐SHA复用。详[第三阶段回执](results/small-complete-20261018/README.md)。
 - **交付完成**：0.44正式三包与双游戏安装均通过；逐文件备份、回读、smoke、SHA和rollback回执见releases/0.44与results/game-install-20261018。下一步只待Zero实玩观感/是否上传公开镜像。
 
-## 7. 2026-10-18 F9紧急修复（进行中）
+## 7. 2026-10-18 F9紧急修复（最终4764e4f1全部交付）
 
 Zero实玩暴露剑星direct输出UAF、同尺寸重建与producer wait之后懒上传死锁，鬼武者WindowsApps只读配置导致F9被旧磁盘值覆盖。已修调用后重新取输出、保留SuppressFps/同尺寸资源、两模型权重分表常驻和wait前冷预热，F9内存立即切换/写盘best effort，鬼武者优先XboxGames镜像。CPU编译与只读配置测试通过。等待鬼武者PID27916退出后，严格空闲重跑GPU门，再重装/更新0.44三包。首次GPU测试包装器混入stdout误判busy已纠正并披露，初次回执不作正式空闲验收，详results/f9-hotfix-20261018。
+
+### F9最终载荷4764e4f1
+
+- 空闲-idle-r3的cold/warm/AE deferred、1080/900 direct输出与SuppressFps、Gold、runtime切换与XboxGames路径均通过；只读配置CPU即时/跨tick回归通过。
+- 追加同尺寸MODE1的两模型history head缓存交换、blend更新和reset；GPU读回32系数逐项与相应模型一致，history输出与冷启动对照逐位一致。
+- 已重装4764e4f1，安装smoke0，备份D:\DLSSNR-Lab\game-install-20261018-f9fix-r3\backup-20261018-102323。最终0.44三包压缩/回读进行中，旧ZIP已移history保留。
+
+### F9交付完成
+
+最终4764e4f1已补齐同尺寸MODE1 head/blend/reset并重跑-idle-r3全部回归；双游戏最终重装smoke0。正式三包更新完成（Magpie cf812fe7… / Opti40b4021a… / REFramework0f10b06a…），44shader/80模块/93Small权重/ZIP全文件回读与独立复验通过。备份game-install-20261018-f9fix-r3/backup-20261018-102323；旧正式包与6794中间包均留history。详releases/0.44/README.md。当前只待Zero进行游戏操作实玩确认；公开镜像未上传。

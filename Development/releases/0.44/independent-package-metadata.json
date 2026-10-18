@@ -10,8 +10,8 @@
                         "modules":  80,
                         "small_weights":  93,
                         "default_mode":  "0.5",
-                        "source_commit":  "b8f762387ecac928f935f89a89461a41214b2421",
-                        "regular_addon_sha256":  "0f4bcf62cf99dcc992f52372d941168ad1085b4aa1d27f722c760d12536046f5",
+                        "source_commit":  "4764e4f1a24f5234b8e29952dc41f493b2d77c90",
+                        "regular_addon_sha256":  "4dc97d0640e0e22e54988dcca0a07d8d278165c068ce284ca975d25f35457637",
                         "host_sha256":  null,
                         "runtime_sha256":  null,
                         "input_shader_sha256":  "b871dfc5d49c9803f43e11679a770f2b9290a1a5d96cb1a7ea18daf02099d20b",
@@ -21,8 +21,9 @@
                         "bit_exact_scope":  "Original MP1 1080 Gold preserved; Small is a different trained model with separate Oracle and Gold",
                         "modules_reused":  true,
                         "payload_reused":  false,
-                        "payload_validation":  "Development/results/small-complete-20261018",
-                        "note":  "310.9.16 Small default; 1080/900/720/free geometry; Small AE and MODE1 0x3A23; F9 mode changes rebuild buffers and suspend history in 2x/3x; 93 Small weights coexist with Original assets"
+                        "payload_validation":  "Development/results/f9-hotfix-20261018",
+                        "hotfix":  "20261018-F9",
+                        "note":  "F9 hotfix: fresh direct output after process, persistent overlay suppression, dual resident weight tables, cold preparation before external waits, in-memory F9 with best-effort persistence, writable Xbox config priority; 310.9.16 Small default; 1080/900/720/free geometry; Small AE and MODE1 0x3A23; F9 mode changes rebuild buffers and suspend history in 2x/3x; 93 Small weights coexist with Original assets"
                     },
         "version":  "0.44",
         "entries":  876,
@@ -109,8 +110,8 @@
                         "DLSS5-AMD/native-game-tiled-assets/HIP/gfx1200/vit-stream-fast.hsaco"
                     ],
         "runtime_sha256":  null,
-        "bytes":  447953583,
-        "addon_sha256":  "0f4bcf62cf99dcc992f52372d941168ad1085b4aa1d27f722c760d12536046f5",
+        "bytes":  447952711,
+        "addon_sha256":  "4dc97d0640e0e22e54988dcca0a07d8d278165c068ce284ca975d25f35457637",
         "module_sums":  {
                             "gfx1200/c32_wmma.hsaco":  "576afa15b5e76b2ff10eec95ff585e60ab8b7055f0f3ee3df41478a3feef46a7",
                             "gfx1200/vit-stream.hsaco":  "1c12309ddd8d74201d432ca977ee0561bcdc78ede3a473b82f58c229ea3bd8de",
@@ -1073,8 +1074,8 @@
                             "Updater.exe"
                         ],
         "package":  "Magpie-DLSS5-AMD-0.44",
-        "source_commit":  "b8f762387ecac928f935f89a89461a41214b2421",
-        "sha256":  "57e6bd49d0becffe0929f5a5e5c7e1e64deacbec5fa20f9a7c3082715df23cf9"
+        "source_commit":  "4764e4f1a24f5234b8e29952dc41f493b2d77c90",
+        "sha256":  "cf812fe7909fbd53b38f54da8abd584698525f81f7ea71cab19ba14bab48e030"
     },
     {
         "release":  {
@@ -1087,8 +1088,8 @@
                         "modules":  80,
                         "small_weights":  93,
                         "default_mode":  "0.5",
-                        "source_commit":  "b8f762387ecac928f935f89a89461a41214b2421",
-                        "regular_addon_sha256":  "0f4bcf62cf99dcc992f52372d941168ad1085b4aa1d27f722c760d12536046f5",
+                        "source_commit":  "4764e4f1a24f5234b8e29952dc41f493b2d77c90",
+                        "regular_addon_sha256":  "4dc97d0640e0e22e54988dcca0a07d8d278165c068ce284ca975d25f35457637",
                         "host_sha256":  null,
                         "runtime_sha256":  null,
                         "input_shader_sha256":  "b871dfc5d49c9803f43e11679a770f2b9290a1a5d96cb1a7ea18daf02099d20b",
@@ -1098,8 +1099,9 @@
                         "bit_exact_scope":  "Original MP1 1080 Gold preserved; Small is a different trained model with separate Oracle and Gold",
                         "modules_reused":  true,
                         "payload_reused":  false,
-                        "payload_validation":  "Development/results/small-complete-20261018",
-                        "note":  "310.9.16 Small default; 1080/900/720/free geometry; Small AE and MODE1 0x3A23; F9 mode changes rebuild buffers and suspend history in 2x/3x; 93 Small weights coexist with Original assets"
+                        "payload_validation":  "Development/results/f9-hotfix-20261018",
+                        "hotfix":  "20261018-F9",
+                        "note":  "F9 hotfix: fresh direct output after process, persistent overlay suppression, dual resident weight tables, cold preparation before external waits, in-memory F9 with best-effort persistence, writable Xbox config priority; 310.9.16 Small default; 1080/900/720/free geometry; Small AE and MODE1 0x3A23; F9 mode changes rebuild buffers and suspend history in 2x/3x; 93 Small weights coexist with Original assets"
                     },
         "version":  "0.44",
         "entries":  694,
@@ -1186,8 +1188,8 @@
                         "DLSS5-AMD/native-game-tiled-assets/HIP/gfx1200/vit-stream-fast.hsaco"
                     ],
         "runtime_sha256":  null,
-        "bytes":  478151601,
-        "addon_sha256":  "0f4bcf62cf99dcc992f52372d941168ad1085b4aa1d27f722c760d12536046f5",
+        "bytes":  478150706,
+        "addon_sha256":  "4dc97d0640e0e22e54988dcca0a07d8d278165c068ce284ca975d25f35457637",
         "module_sums":  {
                             "gfx1200/c32_wmma.hsaco":  "576afa15b5e76b2ff10eec95ff585e60ab8b7055f0f3ee3df41478a3feef46a7",
                             "gfx1200/vit-stream.hsaco":  "1c12309ddd8d74201d432ca977ee0561bcdc78ede3a473b82f58c229ea3bd8de",
@@ -1968,8 +1970,8 @@
                             "sources/configuration/hip-re9-flags.txt"
                         ],
         "package":  "OptiScaler-DLSS5-AMD-0.44",
-        "source_commit":  "b8f762387ecac928f935f89a89461a41214b2421",
-        "sha256":  "452538281833634a71b530423ef440436e7644aca8f821ec91ecf9d09f8939e7"
+        "source_commit":  "4764e4f1a24f5234b8e29952dc41f493b2d77c90",
+        "sha256":  "40b4021ad162992ab9a4c587035ed1e821a6bd3cca7d92482514aec66218fee9"
     },
     {
         "release":  {
@@ -1982,10 +1984,10 @@
                         "modules":  80,
                         "small_weights":  93,
                         "default_mode":  "0.5",
-                        "source_commit":  "b8f762387ecac928f935f89a89461a41214b2421",
+                        "source_commit":  "4764e4f1a24f5234b8e29952dc41f493b2d77c90",
                         "regular_addon_sha256":  null,
                         "host_sha256":  "aa3761f2cdb0d9a4653732bd430019ff421b3ce9471fe3697b553dc6d71714a2",
-                        "runtime_sha256":  "ced2df192ab7d433da26f1c4f5160e312547e49b73529bd1adeff92832a486dd",
+                        "runtime_sha256":  "c10d827f20864c59926df7b5b8636b1d73178a0c76cc8ddcb53b5b485fead490",
                         "input_shader_sha256":  "b871dfc5d49c9803f43e11679a770f2b9290a1a5d96cb1a7ea18daf02099d20b",
                         "gpu_smoke":  "passed in staged package",
                         "fit_large":  true,
@@ -1993,8 +1995,9 @@
                         "bit_exact_scope":  "Original MP1 1080 Gold preserved; Small is a different trained model with separate Oracle and Gold",
                         "modules_reused":  true,
                         "payload_reused":  false,
-                        "payload_validation":  "Development/results/small-complete-20261018",
-                        "note":  "310.9.16 Small default; 1080/900/720/free geometry; Small AE and MODE1 0x3A23; F9 mode changes rebuild buffers and suspend history in 2x/3x; 93 Small weights coexist with Original assets"
+                        "payload_validation":  "Development/results/f9-hotfix-20261018",
+                        "hotfix":  "20261018-F9",
+                        "note":  "F9 hotfix: fresh direct output after process, persistent overlay suppression, dual resident weight tables, cold preparation before external waits, in-memory F9 with best-effort persistence, writable Xbox config priority; 310.9.16 Small default; 1080/900/720/free geometry; Small AE and MODE1 0x3A23; F9 mode changes rebuild buffers and suspend history in 2x/3x; 93 Small weights coexist with Original assets"
                     },
         "version":  "0.44",
         "entries":  706,
@@ -2080,8 +2083,8 @@
                         "DLSS5-AMD/native-game-tiled-assets/HIP/gfx1201/c32_fused_ffn_attention.hsaco",
                         "DLSS5-AMD/native-game-tiled-assets/HIP/gfx1200/vit-stream-fast.hsaco"
                     ],
-        "runtime_sha256":  "ced2df192ab7d433da26f1c4f5160e312547e49b73529bd1adeff92832a486dd",
-        "bytes":  533119059,
+        "runtime_sha256":  "c10d827f20864c59926df7b5b8636b1d73178a0c76cc8ddcb53b5b485fead490",
+        "bytes":  533121864,
         "addon_sha256":  null,
         "module_sums":  {
                             "gfx1200/c32_wmma.hsaco":  "576afa15b5e76b2ff10eec95ff585e60ab8b7055f0f3ee3df41478a3feef46a7",
@@ -2875,7 +2878,7 @@
                             "UPSTREAM-CREDITS.txt"
                         ],
         "package":  "OptiScaler-REFramework-DLSS5-AMD-0.44",
-        "source_commit":  "b8f762387ecac928f935f89a89461a41214b2421",
-        "sha256":  "e501bbd3323b8fadea1819c301e1843a672a57d2a4f88548015e98eaef1316cd"
+        "source_commit":  "4764e4f1a24f5234b8e29952dc41f493b2d77c90",
+        "sha256":  "0f10b06a73d1b683a7d95e0e3174d6c2cca1ff43c9d215a0929bf934f042927f"
     }
 ]

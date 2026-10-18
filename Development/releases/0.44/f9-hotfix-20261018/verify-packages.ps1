@@ -9,7 +9,7 @@ foreach($name in 'Magpie-DLSS5-AMD-0.44','OptiScaler-DLSS5-AMD-0.44','OptiScaler
   $entries=@{};foreach($e in $z.Entries){$key=$e.FullName.Replace('\','/');if($entries.ContainsKey($key)){throw 'duplicate'};$entries[$key]=$e}
   function ReadText($key){$rr=[IO.StreamReader]::new($entries[$key].Open());try{return $rr.ReadToEnd()}finally{$rr.Dispose()}}
   $meta=ReadText 'release.json'|ConvertFrom-Json
-  if($meta.version -ne '0.44' -or $meta.source_commit -ne '6794c379f82913745c6ec673160f9f3bed91af2f' -or $meta.modules -ne 80){throw 'version/source'}
+  if($meta.version -ne '0.44' -or $meta.source_commit -ne '4764e4f1a24f5234b8e29952dc41f493b2d77c90' -or $meta.modules -ne 80){throw 'version/source'}
   $flags=ReadText 'DLSS5-AMD/default-config.txt'
   foreach($line in 'DLSS5_MULTI_PASS=0.5','DLSS5_MULTI_PASS_PREDICT=1','DLSS5_MULTI_PASS_SKIN_PROTECT=0','DLSS5_TEMPORAL_MODE=0','DLSS5_TEMPORAL_ENHANCE_STRENGTH=1'){if($flags -notmatch ('(?m)^'+[regex]::Escape($line)+'
 ?$')){throw "default $line"}}

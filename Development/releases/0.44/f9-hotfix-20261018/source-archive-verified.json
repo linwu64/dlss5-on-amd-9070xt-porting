@@ -1,10 +1,11 @@
 {
-  "source_commit": "6794c379f82913745c6ec673160f9f3bed91af2f",
-  "archive_sha256": "fa951536f4d427cfe15b52bc13f893c15c0c01d7da5f3eedcec698458530d3f9",
+  "source_commit": "4764e4f1a24f5234b8e29952dc41f493b2d77c90",
+  "archive_sha256": "74e6de7ffcecc6d63bec82a8280a91d38ccd8e82357f3f6d9a5826ef69a95e90",
   "current_files_verified": [
     "src/native_game_oneshot.h",
     "src/native_game_frame.h",
     "src/native_hot_flags.h",
+    "src/native_addon_fast_history.h",
     "src/LmxxfNrRuntime.cpp",
     "Development/HIP/hip_d3d12_bridge.h",
     "Development/HIP/hip_reference_network.h"

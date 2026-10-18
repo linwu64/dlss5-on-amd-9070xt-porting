@@ -709,3 +709,15 @@ HIP固定1080图31块/640 token，复用既有算子、改拓扑/shift/skip与�
 鳩按实机日志定位：剑星OneShot提前取DirectOutput，Process重建后返回悬垂纹理；同尺寸不应重建，权重清空又导致延迟producer wait之后同步上传死锁。鬼武者WindowsApps只读路径导致F9落盘失败/轮询覆盖内存。已按上述机制修复，补cold/warm/AE的未完成producer栅栏回归、1080/900 direct输出与overlay保留测试，以及只读配置即时/跨tick和外部编辑覆盖测试。
 
 工程失误另记：本次新GPU脚本Idle把game-check文字+bool作为返回数组，busy误判true，首轮GPU回归在后台鬼武者PID27916仍运行时误执行；没有修改游戏目录，作业已结束、锁已释放。已修Out-Host分离输出、实际busy验证WAIT且不拿锁，向Zero/鳩明确披露；初轮不计正式验收，等完全退出后-idle-r2重跑。
+
+### F9空闲正式回归与最终部署4764e4f1
+
+后台鬼武者退出后，-idle-r2严格重验通过；补齐同尺寸MODE1需同时切换head/blend后，4764e4f1再跑-idle-r3全门通过。受控producer栅栏验证返回时producer未完成；预热两模型的首次0.5→1与回环Upload增量0。1080保留D3D输出，900重建后新取DirectOutput并实际复制/读回；Small回环逐位一致，Overlay抑制保持。
+
+新增history-row-cache实际GPU32系数匹配、1080 MODE1 0.5→1→0.5与冷启动seed1输出逐位一致，blend从0.76708984375→0.73974609375→0.76708984375。最终Original0900/Small65D7 Gold不变，runtime模式循环与Onimusha镜像配置路径通过。已重装4764e4f1并smoke0，备份game-install-20261018-f9fix-r3/backup-20261018-102323，三包最终回读中。
+
+### 0.44 F9最终交付4764e4f1
+
+同尺寸MODE1需一起换head和blend，已补缓存两模型head、切换系数并reset，GPU32系数与冷启动history图像逐位回环通过。最终-idle-r3 cold/warm/AE/deferred/direct/history/Gold/runtime/Xbox路径全部通过，源码4764e4f1；addon4dc97d06…、runtimec10d827f…。最终双游戏重装与smoke0，备份game-install-20261018-f9fix-r3/backup-20261018-102323，rollback齐全。
+
+最终三包447,952,711B（cf812fe7…）、478,150,706B（40b4021a…）、533,121,864B（0f10b06a…），附zip.sha256；每包44shader、80模块/93Small资产、ZIP全文件回读及独立复验、RE9smoke0和源包核对通过。旧包与中间构建保留history，未公开上传；GPU锁释放。详releases/0.44/README.md。初轮门禁错误已经披露修复，最终验收不采纳busy首轮数据。

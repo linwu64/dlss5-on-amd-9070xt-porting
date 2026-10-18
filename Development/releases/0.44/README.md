@@ -1,29 +1,39 @@
-# 0.44 · 2026-10-18
+# 0.44 F9热修 · 2026-10-18
 
-**正式三包已完成并校验，双游戏已部署默认0.5x。** 载荷源码 `b8f762387ecac928f935f89a89461a41214b2421`（功能提交8e8ff1f4）；实际80模块来自已验10982cf4，逐SHA复用。
+**最终载荷4764e4f1已装入双游戏，三包全部校验完成。** 修复《剑星》F9切模型的DirectOutput悬垂引用和deferred producer等待之后的同步上传死锁；《鬼武者》优先XboxGames配置镜像，F9立即改变内存模式，落盘失败不撤销。
 
-Small 31块新模型支持1080/900/720/free，AE按8个ViT块算gain，MODE1使用新head及0x3A23。F9按0.5→1→2→3→0.5循环，2x/3x暂挂MODE1再恢复；缺Small资产记录日志回退1x。93个Small权重与旧71块资产共存。
+同工作/有效尺寸、同时序模式保留D3D12/bridge资源；两套GPU权重与gain常驻，默认1080初始化预热Small/Original。冷模式在producer wait前预热，wait之后禁止同步Upload。SuppressFps跨重建保留；同尺寸MODE1也同时交换两模型history head、切换blend并reset。
 
-RX9070XT完整帧回放：1080档 **5.553510ms/frame**（前阶段三轮，−39.35%）；900档 **4.376946ms/frame**（本阶段三轮，同批1x6.558681，−33.26%）。Small是不同训练模型，默认输出改变；900/720对5090内部Post为47.40/47.70dB，不称NV逐位一致。[全部数值/性能/时序回执](../../results/small-complete-20261018/README.md)。
+默认0.5x、F9按0.5→1→2→3→0.5；Small的1080/900/720/free、AE和MODE1保留。80双架构模块逐SHA复用，93Small资产与旧模型共存。此前0.44的1080/900耗时5.554/4.377ms是模型基线数据，本热修不重复ABBA、不宣称新增提速。
 
-## 正式包
+## 正式三包
 
-位置 `D:\給網友打包`，每包附同名`.zip.sha256`。公开上传尚未执行。
+位置 `D:\給網友打包`，附`.zip.sha256`，文件名仍0.44，**按下面的新SHA辨认热修**。公开镜像未上传。
 
-| ZIP | 字节 | SHA256 | 包内文件（不含SHA256SUMS.txt） |
+| ZIP | 字节 | SHA256 | 文件数（不含SHA256SUMS.txt） |
 |---|---:|---|---:|
-| Magpie-DLSS5-AMD-0.44.zip | 447,953,583 | `57e6bd49d0becffe0929f5a5e5c7e1e64deacbec5fa20f9a7c3082715df23cf9` | 875 |
-| OptiScaler-DLSS5-AMD-0.44.zip | 478,151,601 | `452538281833634a71b530423ef440436e7644aca8f821ec91ecf9d09f8939e7` | 693 |
-| OptiScaler-REFramework-DLSS5-AMD-0.44.zip | 533,119,059 | `e501bbd3323b8fadea1819c301e1843a672a57d2a4f88548015e98eaef1316cd` | 705 |
+| Magpie-DLSS5-AMD-0.44.zip | 447,952,711 | `cf812fe7909fbd53b38f54da8abd584698525f81f7ea71cab19ba14bab48e030` | 875 |
+| OptiScaler-DLSS5-AMD-0.44.zip | 478,150,706 | `40b4021ad162992ab9a4c587035ed1e821a6bd3cca7d92482514aec66218fee9` | 693 |
+| OptiScaler-REFramework-DLSS5-AMD-0.44.zip | 533,121,864 | `0f10b06a73d1b683a7d95e0e3174d6c2cca1ff43c9d215a0929bf934f042927f` | 705 |
 
-每包44项生产D3DCompiler shader编译、全ZIP逐文件回读、80模块及93 Small权重SHA检查全部通过；独立再次检查默认0.5/F9/HOT、无个人配置混入、Small逐文件解压流SHA。REFramework包内runtime GPU smoke exit0。GPL宿主未改，配套源包已刷新当前MIT核/runtime，压缩源包逐SHA核验通过。Shader保留既有EffectivePaperWhite编译警告；未产生编译失败。
+每包44项shader编译、80模块与93Small资产、ZIP逐文件回读；独立再查默认0.5/F9/HOT、Small解压流SHA、无个人配置混入；RE9包内runtime smoke exit0。GPL宿主保持aa3761f2…，配套MIT源包刷新4764e4f1并核对当前源码与ZIP内源包SHA。gfx1200继承静态模块核验，实测为gfx1201。
 
-- [正式结果](results.json) / [发行回执](receipt.json) / [独立包内元数据](independent-package-metadata.json)。
-- [源包当前源码核验](source-archive-verified.json) / [ZIP内源包核验](zip-source-verified.json)。
-- 原始Windows混合代码页控制台日志留远端，本仓日志转UTF8；乱码只涉及控制台路径，数值与JSON回执独立保存。
+[当前结果](results.json) · [完整回执](receipt.json) · [源包核验](source-archive-verified.json) · [独立包内元数据](independent-package-metadata.json)。
 
-## 双游戏安装
+旧正式0.44保留在 `D:\給網友打包\history\0.44-before-f9-20261018`，旧[回执](pre-f9-20261018/README.md)保留；中间6794构建保留history/0.44-f9-build1-6794c379。
 
-《剑星》addon SHA `0f4bcf62cf99dcc992f52372d941168ad1085b4aa1d27f722c760d12536046f5`；《鬼武者》根目录及_storage_ runtime SHA `ced2df192ab7d433da26f1c4f5160e312547e49b73529bd1adeff92832a486dd`。两者各80模块/93 Small权重，配置三层MP均0.5；custom/native均HOT1/F9。《剑星》保持MODE0，《鬼武者》保持MODE1。更新与备份逐文件读回；已安装鬼武者runtime实际执行Small且smoke exit0。没有替Zero启动游戏实玩。
+## GPU与配置回归
 
-备份 `D:\DLSSNR-Lab\game-install-20261018\backup-20261018-050250`；回滚脚本 `D:\DLSSNR-Lab\game-install-20261018\rollback.ps1`。每个修改/新增文件都有manifest记录，回滚逐文件恢复原字节或删除新文件。原子gpu.lock与15秒game-check全程启用，最终锁已释放。[安装回执及回滚](../../results/game-install-20261018/receipt.json)。
+严格空闲-idle-r3的cold/warm/AE三组受控producer栅栏测试通过，Enqueue返回时producer仍未完成；默认1080首次0.5→1与后续回环的同步Upload增量0。1080保持同一个direct输出，900重建后重新取得并实际使用新输出；全帧finite与Small往返逐位一致，SuppressFps保持。
+
+MODE1同尺寸切换的GPU32系数与对应模型逐项一致，blend0.76708984375/0.73974609375正确切换；含history的输出与冷启动对照逐位相同。Original0900E489…与Small65D71486… Gold不变。CPU只读配置下即时和跨一秒轮询的F9循环保持，后续外部修改仍覆盖；runtime全模式与Onimusha别名进程选XboxGames镜像通过。
+
+初轮新包装器误把game-check stdout+bool数组判真，在后台游戏仍运行时执行了测试；已立即披露、修正门禁，初轮不计验收，最终全部重新在空闲下通过。调试层不可用，验证采用真实栅栏、资源使用/读回和字节回环。[全部原始回执](../../results/f9-hotfix-20261018/README.md)。
+
+## 双游戏部署与回滚
+
+- 《剑星》addon SHA `4dc97d0640e0e22e54988dcca0a07d8d278165c068ce284ca975d25f35457637`。
+- 《鬼武者》根目录与_storage_ runtime SHA `c10d827f20864c59926df7b5b8636b1d73178a0c76cc8ddcb53b5b485fead490`。
+- 各80模块/93Small资产与shader逐文件读回；默认MP0.5/HOT1/F9，剑星MODE0、鬼武者MODE1保留。已安装runtime smoke exit0。没有代Zero进行游戏操作实玩。
+
+最终备份 `D:\DLSSNR-Lab\game-install-20261018-f9fix-r3\backup-20261018-102323`；回滚 `D:\DLSSNR-Lab\game-install-20261018-f9fix-r3\rollback.ps1`。上一轮修复前完整备份仍在game-install-20261018-f9fix/backup-20261018-100728；需要回到该轮之前可用它的rollback。所有安装/测试/打包锁已释放。[最终安装回执](../../results/game-install-20261018-f9fix-r3/receipt.json)。

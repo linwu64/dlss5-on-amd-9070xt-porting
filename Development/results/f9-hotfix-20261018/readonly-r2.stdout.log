@@ -1,0 +1,6 @@
+PASS readonly immediate+next-tick mode=1 disk=0.5
+PASS readonly immediate+next-tick mode=2 disk=0.5
+PASS readonly immediate+next-tick mode=3 disk=0.5
+PASS readonly immediate+next-tick mode=0.5 disk=0.5
+PASS readonly immediate+next-tick mode=1 disk=0.5
+PASS subsequent external config edit takes effect

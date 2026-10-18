@@ -1,6 +1,6 @@
 ﻿param([Parameter(Mandatory=$true)][string]$SourceCommit)
 $ErrorActionPreference='Stop';$ProgressPreference='SilentlyContinue'
-$root='D:\DLSSNR-Lab\game-install-20261018-f9fix';$release='D:\DLSSNR-Lab\release-044-f9fix';$out='D:\給網友打包';$sourceCommit=$SourceCommit
+$root='D:\DLSSNR-Lab\game-install-20261018-f9fix-r3';$release='D:\DLSSNR-Lab\release-044-f9fix';$out='D:\給網友打包';$sourceCommit=$SourceCommit
 $games=@('C:\Program Files (x86)\Steam\steamapps\common\StellarBlade\SB\Binaries\Win64','C:\XboxGames\Onimusha- Way of the Sword\Content')
 $lock=$null;$child=$null;$manifest=@();$next=[DateTime]::MinValue;$utf8=[Text.UTF8Encoding]::new($false)
 function Idle {& D:\DLSSNR-Lab\game-check.ps1 'SB-Win64 Onimusha re9.exe SandFall Magpie';if($LASTEXITCODE -ne 1){throw 'game busy/check failed'};if((Get-PSDrive D).Free -lt 100GB){throw 'disk below100GB'}}

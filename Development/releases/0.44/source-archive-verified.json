@@ -1,11 +1,13 @@
 {
-  "archive_sha256": "2957ceaf06fd28326d4c542a340eb126681d59b4101185c010f4d7ad88605296",
-  "source_commit": "b8f762387ecac928f935f89a89461a41214b2421",
-  "verified_current_sources": [
+  "source_commit": "4764e4f1a24f5234b8e29952dc41f493b2d77c90",
+  "archive_sha256": "74e6de7ffcecc6d63bec82a8280a91d38ccd8e82357f3f6d9a5826ef69a95e90",
+  "current_files_verified": [
+    "src/native_game_oneshot.h",
+    "src/native_game_frame.h",
+    "src/native_hot_flags.h",
+    "src/native_addon_fast_history.h",
     "src/LmxxfNrRuntime.cpp",
-    "src/native_network_geometry.h",
-    "src/native_model_mode.h",
-    "Development/HIP/small_model_assets.h",
+    "Development/HIP/hip_d3d12_bridge.h",
     "Development/HIP/hip_reference_network.h"
   ]
 }

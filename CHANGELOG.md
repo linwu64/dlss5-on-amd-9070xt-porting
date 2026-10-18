@@ -418,4 +418,6 @@ Small and Original weights coexist; all 80 modules are reused. F8 toggles AE/EXA
 
 Fix the direct-output lifetime after geometry changes, keep same-size model switches on existing D3D12 resources and preserve overlay suppression. Retain separate Small/Original weight caches and finish cold uploads before deferred producer waits. F9 applies in memory immediately even when WindowsApps configuration persistence fails; Onimusha prioritises its writable XboxGames Content configuration.
 
-修复F9切模型后的输出纹理悬垂引用和延迟producer下的权重上传死锁；同尺寸保留D3D12资源，两模型权重常驻。只读配置下F9先更新内存，落盘失败不撤销切换；鬼武者优先XboxGames可写配置。回归/部署/更新三包正在验收，见[回执](Development/results/f9-hotfix-20261018/README.md)。
+修复F9切模型后的输出纹理悬垂引用和延迟producer下的权重上传死锁；同尺寸保留D3D12资源，两模型权重常驻。只读配置下F9先更新内存，落盘失败不撤销切换；鬼武者优先XboxGames可写配置。最终4764e4f1回归、双游戏部署和三包校验全部完成，见[回执](Development/results/f9-hotfix-20261018/README.md)。
+
+同尺寸MODE1还会交换缓存的两模型history head、更新blend并reset，保持既有时序语义；GPU逐系数与图像回环已验证。

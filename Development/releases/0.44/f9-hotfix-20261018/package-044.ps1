@@ -6,9 +6,9 @@ $ErrorActionPreference='Stop'
 if(!$SourceCommit){throw 'SourceCommit required'}
 $out='D:\給網友打包';$lab='D:\DLSSNR-Lab\release-044-f9fix';$utf8=New-Object Text.UTF8Encoding($false)
 Add-Type -AssemblyName System.IO.Compression.FileSystem
-$regularSha='315eae41025f9e46b578a6a6996b1df0829107157bdebaaa5729618679ef4fdb'
+$regularSha='4dc97d0640e0e22e54988dcca0a07d8d278165c068ce284ca975d25f35457637'
 $hostSha='aa3761f2cdb0d9a4653732bd430019ff421b3ce9471fe3697b553dc6d71714a2'
-$runtimeSha='015d96115a30a709220bce3b2b812a4a90383b17d76cf3d36727972b5293b1b9'
+$runtimeSha='c10d827f20864c59926df7b5b8636b1d73178a0c76cc8ddcb53b5b485fead490'
 $inputShaderSha='b871dfc5d49c9803f43e11679a770f2b9290a1a5d96cb1a7ea18daf02099d20b'
 $convertSha='35a1973fc558d7a934cc1190c91f026734405935113568c81e4c7b19c0627b90'
 $built="$lab\payload"

@@ -1,0 +1,15 @@
+D3D12 debug layer unavailable; numerical/synchronization tests still execute
+PASS active history row model=0.5 exact_coefficients=32
+PASS deferred mode=0.5 producer_withheld_at_return=1 uploads=96 delta=94 wall_ms=909.407
+SP_PLAN c=256 first=16 layers=6 tasks=893 initial=160 state_bytes=10732 w16=1
+SP_PLAN c=256 first=49 layers=6 tasks=893 initial=160 state_bytes=10732 w16=1
+PASS active history row model=1 exact_coefficients=32
+PASS deferred mode=1 producer_withheld_at_return=1 uploads=280 delta=184 wall_ms=1178.673
+PASS active history row model=0.5 exact_coefficients=32
+PASS deferred mode=0.5 producer_withheld_at_return=1 uploads=280 delta=0 wall_ms=22.683
+PASS active history row model=1 exact_coefficients=32
+PASS deferred mode=1 producer_withheld_at_return=1 uploads=280 delta=0 wall_ms=25.871
+PASS active history row model=0.5 exact_coefficients=32
+PASS deferred mode=0.5 producer_withheld_at_return=1 uploads=280 delta=0 wall_ms=22.977
+PASS full 0.5->1->2->3->0.5, retained weights, repeat bit-exact
+SP_STATS runs=6 fallback=0 rollover=0 jobs=5358 disabled=0 errors=0

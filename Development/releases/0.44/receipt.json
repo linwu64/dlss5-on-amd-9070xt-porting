@@ -1,33 +1,39 @@
 {
-  "source_commit": "b8f762387ecac928f935f89a89461a41214b2421",
   "version": "0.44",
-  "zip_full_file_readback": true,
-  "independent_small_sha_readback": true,
+  "hotfix": "20261018-F9-final",
+  "source_commit": "4764e4f1a24f5234b8e29952dc41f493b2d77c90",
+  "regular_addon_sha256": "4dc97d0640e0e22e54988dcca0a07d8d278165c068ce284ca975d25f35457637",
+  "runtime_sha256": "c10d827f20864c59926df7b5b8636b1d73178a0c76cc8ddcb53b5b485fead490",
   "shader_variants_per_package": 44,
   "shader_packages": 3,
-  "re9_runtime_smoke_exit": 0,
+  "zip_full_file_readback": true,
+  "independent_verification": true,
+  "re9_smoke_exit": 0,
   "modules_per_package": 80,
   "small_weights_per_package": 93,
+  "gpu_lock_released": true,
+  "initial_gate_incident_disclosed": true,
+  "formal_gpu_gates": "idle-r3",
   "public_upload": false,
   "packages": [
     {
       "name": "Magpie-DLSS5-AMD-0.44",
-      "bytes": 447953583,
-      "sha256": "57e6bd49d0becffe0929f5a5e5c7e1e64deacbec5fa20f9a7c3082715df23cf9",
+      "bytes": 447952711,
+      "sha256": "cf812fe7909fbd53b38f54da8abd584698525f81f7ea71cab19ba14bab48e030",
       "files": 875,
       "verified": true
     },
     {
       "name": "OptiScaler-DLSS5-AMD-0.44",
-      "bytes": 478151601,
-      "sha256": "452538281833634a71b530423ef440436e7644aca8f821ec91ecf9d09f8939e7",
+      "bytes": 478150706,
+      "sha256": "40b4021ad162992ab9a4c587035ed1e821a6bd3cca7d92482514aec66218fee9",
       "files": 693,
       "verified": true
     },
     {
       "name": "OptiScaler-REFramework-DLSS5-AMD-0.44",
-      "bytes": 533119059,
-      "sha256": "e501bbd3323b8fadea1819c301e1843a672a57d2a4f88548015e98eaef1316cd",
+      "bytes": 533121864,
+      "sha256": "0f10b06a73d1b683a7d95e0e3174d6c2cca1ff43c9d215a0929bf934f042927f",
       "files": 705,
       "verified": true
     }
