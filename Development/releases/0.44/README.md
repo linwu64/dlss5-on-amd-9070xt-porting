@@ -8,7 +8,8 @@
 
 ## 正式三包
 
-位置 `D:\給網友打包`，附`.zip.sha256`，文件名仍0.44，**按下面的新SHA辨认热修**。公开镜像未上传。
+位置 `D:\給網友打包`，附`.zip.sha256`，文件名仍0.44，**按下面的新SHA辨认热修**。
+公开镜像：[夸克](https://pan.quark.cn/s/ea87c0ffd257) · [Gofile](https://gofile.io/d/YCNT57JP)。
 
 | ZIP | 字节 | SHA256 | 文件数（不含SHA256SUMS.txt） |
 |---|---:|---|---:|
@@ -34,6 +35,6 @@ MODE1同尺寸切换的GPU32系数与对应模型逐项一致，blend0.767089843
 
 - 《剑星》addon SHA `4dc97d0640e0e22e54988dcca0a07d8d278165c068ce284ca975d25f35457637`。
 - 《鬼武者》根目录与_storage_ runtime SHA `c10d827f20864c59926df7b5b8636b1d73178a0c76cc8ddcb53b5b485fead490`。
-- 各80模块/93Small资产与shader逐文件读回；默认MP0.5/HOT1/F9，剑星MODE0、鬼武者MODE1保留。已安装runtime smoke exit0。没有代Zero进行游戏操作实玩。
+- 各80模块/93Small资产与shader逐文件读回；默认MP0.5/HOT1/F9，剑星MODE0、鬼武者MODE1保留。已安装runtime smoke exit0。Zero 实玩验证通过（《剑星》与《鬼武者》游戏内按 F9 切换均正常生效）。
 
 最终备份 `D:\DLSSNR-Lab\game-install-20261018-f9fix-r3\backup-20261018-102323`；回滚 `D:\DLSSNR-Lab\game-install-20261018-f9fix-r3\rollback.ps1`。上一轮修复前完整备份仍在game-install-20261018-f9fix/backup-20261018-100728；需要回到该轮之前可用它的rollback。所有安装/测试/打包锁已释放。[最终安装回执](../../results/game-install-20261018-f9fix-r3/receipt.json)。

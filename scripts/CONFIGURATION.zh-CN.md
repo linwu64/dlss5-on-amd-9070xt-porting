@@ -93,32 +93,16 @@ Development/native-game-flags.txt是早期测试配置，scripts/game-flags.txt�
 
 这是独立的近似时序策略：FP32反馈、深度/颜色/黑输出有效性启发式与原版及0.41-a参考实验不同，开启后会改变输出，可能产生拖影。已有数值测试不等于游戏观感验收；新路径成本尚未实测，不能套用参考实验的耗时。开启时整段会禁用近似ViT复用，但不会重写用户偏好。
 
-Fast History currently admits motion textures whose mip-zero dimensions exactly
-match the active render width/height. Padded or display-resolution motion
-layouts are unsupported: their missing context/active-extent contract resets
-history and uses current-frame NR. Depth may be padded because sampling uses
-the declared render extent.
-
 当前 Fast History 只接收 mip0 尺寸恰等于实际 render 区域的运动纹理；带padding或显示分辨率MV缺少上下文/有效区域合同，会重置历史并用本帧NR，不猜测采样区域。深度按声明的render区域采样，可保留分配padding。
 
-## Single temporal mode selector / 统一时域模式
+## 统一时域模式（Single temporal mode selector）
 
-`DLSS5_TEMPORAL_MODE=0` is the default: unchanged NR output with no new temporal resources. `1` selects TheAutomatic Fast History (the existing approximate PR12 implementation, row/logit exports required; undeclared motion/depth uses explicit static fallback); `2` selects independently implemented low-frequency residual EMA; `3` additionally strengthens low/high corrections (see MODE3 below), neither requires a row or new NN exports. All active modes require MP1 and cannot combine with `DLSS5_TEMPORAL_HISTORY_EXPERIMENT=1`. Restart to change modes. An explicit MODE value, including0, wins over legacy `DLSS5_FAST_HISTORY`; only absent MODE maps legacy FAST_HISTORY1 to mode1. Invalid/empty MODE is rejected.
+唯一主开关 `DLSS5_TEMPORAL_MODE`：0关闭（默认）、1原TheAutomatic Fast History、2独立低频时域滤波、3低高频残差增强。显式MODE含0压过旧FAST_HISTORY；缺MODE才兼容旧1。所有开启档都要求MP1，不能与reference实验叠用，切档需重启；非法/空值拒绝。Mode2在NR编码工作域而非显示HDR域，仅平滑低频修正、高频留本帧（低频约80ms历史记忆）。可信声明的MV可补偿，否则明确用屏幕坐标静态颜色门，可能拖影，不伪造运动/深度合同。当前同步原型优先资源安全；观感/游戏性能需实际试用，旧History耗时不能套用。
 
-Mode2 operates in the codec's encoded NR working domain, not Magpie's display RGB. It retains this frame's high-frequency residual and smooths only guided low-frequency residual over approximately80ms. With a declared valid render-sized unjittered MV it may compensate motion; otherwise it explicitly uses screen coordinates plus conservative original-colour rejection (no invented zero-MV validity, no depth guess). Ghosting/quality and real-game cost remain experimental. The first implementation is synchronous to protect buffer/control lifetimes. It gates approximate ViT reuse for the session without rewriting preference. Runtime input identity is unknown: no duplicate-frame skipping is inferred.
+## 模式3：单遍低、高频残差增强（MODE3）
 
-唯一主开关 `DLSS5_TEMPORAL_MODE`：0关闭（默认）、1原TheAutomatic Fast History、2独立低频时域滤波、3低高频残差增强。显式MODE含0压过旧FAST_HISTORY；缺MODE才兼容旧1。所有开启档都要求MP1，不能与reference实验叠用，切档需重启；非法/空值拒绝。Mode2在NR编码工作域而非显示HDR域，仅平滑低频修正、高频留本帧。可信声明的MV可补偿，否则明确用屏幕坐标静态颜色门，可能拖影，不伪造运动/深度合同。当前同步原型优先资源安全；观感/游戏性能需实际试用，旧History耗时不能套用。
-
-## MODE3: independent low/high residual enhancement
-
-`DLSS5_TEMPORAL_MODE=3` uses one NN evaluation and strengthens its output correction in the existing codec encoded domain. Let original=x, NN output=y, residual=r=y−x. Existing guided reconstruction splits r into low and current high=r−low; only low is temporally smoothed. With `DLSS5_TEMPORAL_ENHANCE_STRENGTH=s` (default1, finite0..2), the extra correction is s*(0.5*stableLow+currentHigh). Thus small unsaturated corrections at s1 have approximately1.5x low-frequency and2x high-frequency gain. It is not equivalent to evaluating NN twice, nor an objective image-quality guarantee. Cold/reset frames immediately apply spatial enhancement; reset only discards history. Strength0 bypasses all output changes, including history, with original NN bit identity. Restart after changing mode/strength.
-
-Only the new increment is soft-compressed using its maximum RGB magnitude: above encoded magnitude0.04, the excess is divided by1+excess/0.12. A single headroom scale then keeps the complete RGB correction direction within the codec0..1 range; an already-out-of-range NN pixel is left unchanged. These are independent encoded-domain heuristics, not the reference implementation's Oklab thresholds or SDR conversion. Unknown MV uses the same explicitly logged screen-coordinate fallback as mode2 and can ghost. Mode3 requires MP1, history/reference exclusivity, stable geometry/reset rules and no graph/overlap; it requires no learned row/new NN export. Mode0 remains default, and existing0/1/2 output math is unchanged.
-
-模式3是在单次NN输出后增强低、高频残差，不增加第二遍网络。强度键 `DLSS5_TEMPORAL_ENHANCE_STRENGTH` 默认1、范围0～2：小幅修正时低频约1.5倍、高频约2倍；0严格返回本帧原NN输出。冷帧也立即增强，reset只清历史。新增增量有软压缩和统一RGB余量保护；这仍可能放大假纹理、锐化或拖影，需要观感验收，不能宣称“一次等于两次NN”。未知MV只用屏幕坐标历史，不冒充运动补偿。当前模式1玩家配置和发行包不因实现模式3自动改变。
-
-Algorithm reference: [SAOG0721/Magpie](https://github.com/SAOG0721/Magpie/tree/2fceab5e241bc9f8ded001ab3266762f1f8bc51e), residual gain and local compression concepts. The AMD shader and host logic are independently written; no GPL source expressions are copied.
+模式3（`DLSS5_TEMPORAL_MODE=3`）是在单次NN输出后于编码域增强低、高频残差，不增加第二遍网络。强度键 `DLSS5_TEMPORAL_ENHANCE_STRENGTH` 默认1、范围0～2：额外修正为 `s × (0.5 × 稳定低频 + 当前高频)`，小幅未饱和修正时低频约1.5倍、高频约2倍；0严格返回本帧原NN输出（连同历史修正一并旁路）。冷帧也立即增强，reset只清历史。新增增量超过编码域幅度0.04后按 `1 + excess / 0.12` 软压缩，再用统一RGB余量比例保护色彩方向不越界；这仍可能放大假纹理、锐化或拖影，需要观感验收，不能宣称“一次等于两次NN”。未知MV只用屏幕坐标历史，不冒充运动补偿。当前模式1玩家配置和发行包不因实现模式3自动改变。算法思路参考 [SAOG0721/Magpie](https://github.com/SAOG0721/Magpie/tree/2fceab5e241bc9f8ded001ab3266762f1f8bc51e) 的残差增益与局部压缩概念，AMD shader 与宿主逻辑为独立实现，未复制 GPL 源码。
 
 ## 0.44 Small / 0.5x
 
-`DLSS5_MULTI_PASS=0.5` 默认/default：310.9.16 的31块 Small；1/2/3保留Original 71块网络。Addon和runtime均支持F9循环0.5→1→2→3→0.5及配置层热重载。Small权重缺失时日志回退1x。Small支持1080/900/720/free；F8切换AE/EXACT。MODE1使用Small独立history head及0x3A23，2x/3x临时关闭时序，回到单遍后恢复；MODE2/3继续原有模型兼容边界。Small与Original是不同训练模型，输出不同。Runtime新增HOT_RELOAD/MULTI_PASS_HOTKEY/VIT_ADAPTIVE/VIT_REUSE_HOTKEY配置白名单；其余非热配置仍需重启。
+`DLSS5_MULTI_PASS=0.5` 为新默认值：启用 `310.9.16.0` 的 31 块 Small 模型；`1`/`2`/`3` 保留原 71 块网络。Addon 和 runtime 均支持 F9 循环（`0.5 → 1 → 2 → 3 → 0.5`）及配置层热重载（即使在只读虚拟挂载下 F9 也会立即在内存中生效）。Small 权重缺失时记录日志并回退 `1x`。Small 支持 1080/900/720/free 档位；F8 切换 AE/EXACT。MODE1 使用 Small 独立 history head 及 `0x3A23`（`0.76708984375`），切到 `2x`/`3x` 时临时挂起时序，回到 `0.5x`/`1x` 后恢复；MODE2/3 继续原有模型兼容边界。Small 与原模型是不同训练模型，输出不同。Runtime 新增 `DLSS5_HOT_RELOAD`、`DLSS5_MULTI_PASS_HOTKEY`、`DLSS5_VIT_ADAPTIVE`、`DLSS5_VIT_REUSE_HOTKEY` 配置白名单；其余非热配置仍需重启。

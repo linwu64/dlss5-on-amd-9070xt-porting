@@ -406,18 +406,18 @@ Download: [Quark](https://pan.quark.cn/s/3b19c0403e3f) · [Gofile mirror](https:
 
 ## 0.44 · 2026-10-18
 
+Download: [Quark](https://pan.quark.cn/s/ea87c0ffd257) · [Gofile mirror](https://gofile.io/d/YCNT57JP) (three complete packages, final F9 hotfix payload source `4764e4f1`, 80 dual-architecture modules + 93 Small weight assets; names, full hashes and verification: [0.44 release receipt](Development/releases/0.44/README.md)).
+
 0.44 defaults to the 31-block Small model from 310.9.16 (0.5x), with 1080/900/720/free geometry, Small adaptive ViT reuse and MODE1 history. F9 cycles 0.5 -> 1 -> 2 -> 3; missing Small assets log a fallback to 1x.
 
 RX9070XT full-frame replay: 1080 tier 5.554 ms/frame (-39.35%); 900 tier 4.377 ms/frame (same-batch 1x 6.559, -33.26%). This is a different trained model and changes default output. Original 71-block 1x remains available. Small vs RTX5090 internal Post: 47.40/47.70 dB at 900/720; not NVIDIA bit-exact.
 
 Small and Original weights coexist; all 80 modules are reused. F8 toggles AE/EXACT. MODE1 suspends for 2x/3x and resumes for 0.5x/1x. Personal overrides are preserved; remove an older MULTI_PASS=1 override or change it to 0.5 for the new default.
 
-[Validation / 验收](Development/results/small-complete-20261018/README.md) · [Packages / 三包](Development/releases/0.44/README.md)
+[Validation](Development/results/small-complete-20261018/README.md) · [Packages](Development/releases/0.44/README.md)
 
 ### 0.44 F9 hotfix · 2026-10-18
 
 Fix the direct-output lifetime after geometry changes, keep same-size model switches on existing D3D12 resources and preserve overlay suppression. Retain separate Small/Original weight caches and finish cold uploads before deferred producer waits. F9 applies in memory immediately even when WindowsApps configuration persistence fails; Onimusha prioritises its writable XboxGames Content configuration.
 
-修复F9切模型后的输出纹理悬垂引用和延迟producer下的权重上传死锁；同尺寸保留D3D12资源，两模型权重常驻。只读配置下F9先更新内存，落盘失败不撤销切换；鬼武者优先XboxGames可写配置。最终4764e4f1回归、双游戏部署和三包校验全部完成，见[回执](Development/results/f9-hotfix-20261018/README.md)。
-
-同尺寸MODE1还会交换缓存的两模型history head、更新blend并reset，保持既有时序语义；GPU逐系数与图像回环已验证。
+Same-size MODE1 switching also swaps the cached history heads of both models, updates `blend_scale` and resets temporal history to preserve existing temporal semantics; verified by GPU per-coefficient readback and image round-trips. Final `4764e4f1` idle-GPU regression, dual-game deployment (live F9 switching verified in Stellar Blade and Onimusha) and three-package verification are complete; see [receipt](Development/results/f9-hotfix-20261018/README.md).

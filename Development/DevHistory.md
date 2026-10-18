@@ -718,6 +718,6 @@ HIP固定1080图31块/640 token，复用既有算子、改拓扑/shift/skip与�
 
 ### 0.44 F9最终交付4764e4f1
 
-同尺寸MODE1需一起换head和blend，已补缓存两模型head、切换系数并reset，GPU32系数与冷启动history图像逐位回环通过。最终-idle-r3 cold/warm/AE/deferred/direct/history/Gold/runtime/Xbox路径全部通过，源码4764e4f1；addon4dc97d06…、runtimec10d827f…。最终双游戏重装与smoke0，备份game-install-20261018-f9fix-r3/backup-20261018-102323，rollback齐全。
+同尺寸MODE1需一起换head和blend，已补缓存两模型head、切换系数并reset，GPU32系数与冷启动history图像逐位回环通过。最终-idle-r3 cold/warm/AE/deferred/direct/history/Gold/runtime/Xbox路径全部通过，源码4764e4f1；addon4dc97d06…、runtimec10d827f…。最终双游戏重装与smoke0，Zero 实玩确认《剑星》与《鬼武者》内按 F9 切换均正常生效；备份game-install-20261018-f9fix-r3/backup-20261018-102323，rollback齐全。
 
-最终三包447,952,711B（cf812fe7…）、478,150,706B（40b4021a…）、533,121,864B（0f10b06a…），附zip.sha256；每包44shader、80模块/93Small资产、ZIP全文件回读及独立复验、RE9smoke0和源包核对通过。旧包与中间构建保留history，未公开上传；GPU锁释放。详releases/0.44/README.md。初轮门禁错误已经披露修复，最终验收不采纳busy首轮数据。
+最终三包447,952,711B（cf812fe7…）、478,150,706B（40b4021a…）、533,121,864B（0f10b06a…），附zip.sha256；每包44shader、80模块/93Small资产、ZIP全文件回读及独立复验、RE9smoke0和源包核对通过。旧包与中间构建保留history，GPU锁释放。用户随后上传 0.44 公开镜像：[夸克](https://pan.quark.cn/s/ea87c0ffd257) · [Gofile](https://gofile.io/d/YCNT57JP)，README/CHANGELOG/releases/WorkingPlan已同步更新；详releases/0.44/README.md。初轮门禁错误已经披露修复，最终验收不采纳busy首轮数据。

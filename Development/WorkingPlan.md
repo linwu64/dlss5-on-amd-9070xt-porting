@@ -1,15 +1,16 @@
 # 当前工作计划（WorkingPlan）
 
-更新：2026-10-18（0.44 F9最终热修4764e4f1：剑星/鬼武者已重装、严格空闲回归与三包全部校验完成；备份与rollback齐全，GPU锁已释放）。
+更新：2026-10-18（0.44 F9最终热修4764e4f1：剑星/鬼武者已重装并经Zero实玩确认F9切换正常；严格空闲回归、三包校验与公开镜像 [夸克](https://pan.quark.cn/s/ea87c0ffd257) / [Gofile](https://gofile.io/d/YCNT57JP) 全部闭环）。
 
 ---
 
 ## 1. 当前基线与本机状态
 
-### 1.1 当前发行与安装（0.44，2026-10-18，本地三包已交付）
+### 1.1 当前发行与安装（0.44，2026-10-18，公开三包已交付）
 
-- 正式三包在 `D:\給網友打包`，附SHA256；每包44shader/80模块/93Small资产/ZIP全文件读回，RE9 smoke通过。[发行回执](releases/0.44/README.md)。公开镜像仍0.43。
-- 双游戏已装F9最终4764e4f1载荷，三层MP0.5，F9循环；《剑星》MODE0、《鬼武者》MODE1保留。备份 `D:\DLSSNR-Lab\game-install-20261018\backup-20261018-050250` 与rollback齐备，安装smoke exit0。[安装回执](results/game-install-20261018/README.md)。
+- 正式三包在 `D:\給網友打包`，附SHA256；每包44shader/80模块/93Small资产/ZIP全文件读回，RE9 smoke通过。[发行回执](releases/0.44/README.md)。
+- **0.44 公开镜像**：[夸克](https://pan.quark.cn/s/ea87c0ffd257) · [Gofile](https://gofile.io/d/YCNT57JP)（0.43 旧镜像 [夸克](https://pan.quark.cn/s/3b19c0403e3f) / [Gofile](https://gofile.io/d/hz5cDOPF) 保留）。
+- 双游戏已装F9最终4764e4f1载荷，三层MP0.5，F9循环；《剑星》MODE0、《鬼武者》MODE1保留，Zero 实玩确认《剑星》与《鬼武者》内按 F9 切换均正常生效。备份 `D:\DLSSNR-Lab\game-install-20261018-f9fix-r3\backup-20261018-102323` 与rollback齐备，安装smoke exit0。[安装回执](results/game-install-20261018-f9fix-r3/receipt.json)。
 - 当前Small单帧：1080 **5.554ms** / 900 **4.377ms**；原71块仍可F9选择1x/2x/3x。
 
 ### 1.1a 历史发行包基线（0.43，2026-10-17，公开三包已交付）
@@ -159,4 +160,4 @@ Zero实玩暴露剑星direct输出UAF、同尺寸重建与producer wait之后懒
 
 ### F9交付完成
 
-最终4764e4f1已补齐同尺寸MODE1 head/blend/reset并重跑-idle-r3全部回归；双游戏最终重装smoke0。正式三包更新完成（Magpie cf812fe7… / Opti40b4021a… / REFramework0f10b06a…），44shader/80模块/93Small权重/ZIP全文件回读与独立复验通过。备份game-install-20261018-f9fix-r3/backup-20261018-102323；旧正式包与6794中间包均留history。详releases/0.44/README.md。当前只待Zero进行游戏操作实玩确认；公开镜像未上传。
+最终4764e4f1已补齐同尺寸MODE1 head/blend/reset并重跑-idle-r3全部回归；双游戏最终重装smoke0，Zero 实玩确认《剑星》与《鬼武者》内按 F9 切换均正常生效。正式三包更新完成（Magpie cf812fe7… / Opti40b4021a… / REFramework0f10b06a…），44shader/80模块/93Small权重/ZIP全文件回读与独立复验通过。备份game-install-20261018-f9fix-r3/backup-20261018-102323；旧正式包与6794中间包均留history。公开镜像已上传：[夸克](https://pan.quark.cn/s/ea87c0ffd257) · [Gofile](https://gofile.io/d/YCNT57JP)。详releases/0.44/README.md。

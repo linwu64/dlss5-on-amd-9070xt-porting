@@ -408,18 +408,18 @@ V末屏障、prefix NT、NoHi、C512少New及host QPC插桩均未进入产品。
 
 ## 0.44 · 2026-10-18
 
+下载：[夸克](https://pan.quark.cn/s/ea87c0ffd257) · [Gofile 镜像](https://gofile.io/d/YCNT57JP)（三个完整包，最终 F9 热修载荷源码 `4764e4f1`，双架构 80 模块 + 93 Small 权重资产；包名、完整 SHA 与校验回执见 [0.44 发行记录](Development/releases/0.44/README.md)）。
+
 0.44 默认改为 310.9.16 的31块 Small（0.5x）；1080/900/720/free几何、Small自适应ViT复用与MODE1时序已接通。F9按0.5→1→2→3循环，缺少Small权重会记录日志并回退1x。
 
 RX9070XT整帧回放：1080档5.554 ms/frame（−39.35%）；900档4.377 ms/frame（同批1x 6.559，−33.26%）。这是不同训练模型，默认输出会改变；旧71块1x仍保留。Small对5090内部Post的900/720对账为47.40/47.70dB，非NV逐位一致。
 
 Small权重与旧权重共存；80个双架构模块复用。F8切AE/EXACT；2x/3x暂挂MODE1，回到0.5x/1x恢复。升级保留个人custom/native覆盖；要启用新默认请删除旧MULTI_PASS=1覆盖或改为0.5。
 
-[Validation / 验收](Development/results/small-complete-20261018/README.md) · [Packages / 三包](Development/releases/0.44/README.md)
+[验收记录](Development/results/small-complete-20261018/README.md) · [三包回执](Development/releases/0.44/README.md)
 
-### 0.44 F9 hotfix · 2026-10-18
+### 0.44 F9 热修 · 2026-10-18
 
-Fix the direct-output lifetime after geometry changes, keep same-size model switches on existing D3D12 resources and preserve overlay suppression. Retain separate Small/Original weight caches and finish cold uploads before deferred producer waits. F9 applies in memory immediately even when WindowsApps configuration persistence fails; Onimusha prioritises its writable XboxGames Content configuration.
-
-修复F9切模型后的输出纹理悬垂引用和延迟producer下的权重上传死锁；同尺寸保留D3D12资源，两模型权重常驻。只读配置下F9先更新内存，落盘失败不撤销切换；鬼武者优先XboxGames可写配置。最终4764e4f1回归、双游戏部署和三包校验全部完成，见[回执](Development/results/f9-hotfix-20261018/README.md)。
+修复F9切模型后的输出纹理悬垂引用和延迟producer下的权重上传死锁；同尺寸保留D3D12资源并保持FPS叠加层抑制状态，两套模型权重分表常驻并在producer wait前完成冷预热。只读配置（WindowsApps）下F9先立即更新内存态，落盘失败不撤销切换；《鬼武者》优先选择XboxGames可写配置目录。最终 `4764e4f1` 回归、双游戏部署（《剑星》《鬼武者》实机 F9 切换已验证）和三包校验全部完成，见[回执](Development/results/f9-hotfix-20261018/README.md)。
 
 同尺寸MODE1还会交换缓存的两模型history head、更新blend并reset，保持既有时序语义；GPU逐系数与图像回环已验证。
