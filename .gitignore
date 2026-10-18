@@ -13,5 +13,6 @@ Development/deployments/**/*.addon64
 Development/deployments/**/*.hsaco
 Development/deployments/**/*.dll
 Development/HIP/experiments/**/*.exe
-
 /-build/
+Development/5090临时要玩一下游戏/**/nvngx_dlssnr.dll
+Development/5090临时要玩一下游戏/*.zip
