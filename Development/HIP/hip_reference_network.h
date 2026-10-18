@@ -1235,15 +1235,15 @@ if(wave_owned_active)HasFn("c32_wave1","c32_wave1_post_b8_rgba");if(multi_predic
   if(prepared_input_profiles.count(profile))return;
   if(external_input_wait)throw std::runtime_error("model preparation after producer wait");
   Synchronize();void*scratch=nullptr;const size_t pixels=size_t(W)*H,bytes=pixels*(temporal?44:28);
-  api.Check(api.hipMalloc(&scratch,bytes),"cold model scratch");const bool saved_adaptive=adaptive_allowed;
+  api.Check(api.hipMalloc(&scratch,bytes),"cold model scratch");const bool saved_adaptive=adaptive_allowed,saved_user_disabled=adaptive_user_disabled,saved_hotkey=opt.integration.allow_vit_hotkey;adaptive_user_disabled=false;opt.integration.allow_vit_hotkey=false;
   try{
    api.Check(api.hipMemsetAsync(scratch,0,bytes,stream),"cold model zero");
    auto*out=static_cast<char*>(scratch)+pixels*16;auto*hist=temporal?static_cast<char*>(scratch)+pixels*28:nullptr;
    Enqueue(scratch,hist,out,0);Synchronize();
    if(saved_adaptive&&ae&&strcmp(ae,"0")){SetAdaptiveReuseAllowed(false);Enqueue(scratch,hist,out,0);Synchronize();SetAdaptiveReuseAllowed(saved_adaptive);}
-   InvalidateExperimentalHistory();adaptive_dirty=true;prepared_input_profiles.insert(profile);
+   InvalidateExperimentalHistory();adaptive_dirty=true;adaptive_user_disabled=saved_user_disabled;opt.integration.allow_vit_hotkey=saved_hotkey;prepared_input_profiles.insert(profile);
    std::fprintf(stderr,"model_prepared mode=%s profile=%u uploads=%llu active_weights=%zu retained_weights=%zu before_producer_wait=1\n",dlss5_mode::Name(requested_mode),profile,weight_uploads,weights.size(),inactive_model_weights.size());
-  }catch(...){SetAdaptiveReuseAllowed(saved_adaptive);api.hipStreamSynchronize(stream);api.hipFree(scratch);throw;}
+  }catch(...){SetAdaptiveReuseAllowed(saved_adaptive);adaptive_user_disabled=saved_user_disabled;opt.integration.allow_vit_hotkey=saved_hotkey;api.hipStreamSynchronize(stream);api.hipFree(scratch);throw;}
   api.Check(api.hipFree(scratch),"cold model scratch free");
  }
  void SetExternalInputWait(bool queued){external_input_wait=queued;}
