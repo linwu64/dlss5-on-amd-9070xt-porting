@@ -18,7 +18,7 @@ DLSS 5（DLSSNR）跑在 AMD RX 9070 XT / RDNA 4 上。
 
 **当前版本：0.44（2026-10-18）。** 默认 0.5x Small：1080 档 **5.554 ms/frame**，900 档 **4.377 ms/frame**；1080/900/720/free、AE、MODE1 及 F9 切换（`0.5 → 1 → 2 → 3 → 0.5`）。下载：[夸克](https://pan.quark.cn/s/ea87c0ffd257) · [Gofile 镜像](https://gofile.io/d/YCNT57JP) · [三包与验收](Development/releases/0.44/README.md)。含 F9 热修 `4764e4f1`（修复《剑星》切模型悬垂输出/延迟 producer 上传死锁与《鬼武者》只读配置 F9 不生效，《剑星》《鬼武者》实玩验证通过）。旧 0.43：[夸克](https://pan.quark.cn/s/3b19c0403e3f) · [Gofile](https://gofile.io/d/hz5cDOPF)。
 
-**新用户先看：[0.42更新与使用说明](0.42-更新与使用说明.md)**（选包、升级、custom配置、热键与MODE0／1／2／3）。
+**📖 使用与调参必看：[使用与参数配置完整说明（选包、custom-config.txt 写哪、F6～F9 热键、全部参数与抄作业配方）](使用与参数配置说明.md)**（底层全量字典见 [scripts/CONFIGURATION.zh-CN.md](scripts/CONFIGURATION.zh-CN.md)）。
 
 **历史版本：0.40（2026-10-03）。** **默认输出变了**：全 71 块 + fast 数值（`DLSS5_SKIP_BLOCKS=` 空值、`DLSS5_FAST_NUMERIC=1`），对 NVIDIA 44.26 → 47.55 dB、偏色消失，每帧慢约 0.12 / 0.19 ms（900 / 1080）；写 `DLSS5_SKIP_BLOCKS=42,43,46` + `DLSS5_FAST_NUMERIC=0` 就逐位回到 0.39。新东西：叠层 `DLSS5_MULTI_PASS=1/2/3`（风格更浓，耗时约 N 倍；游戏里 F9 轮换，《剑星》2K 57 / 37 / 27 fps）、三个配置文件（`default-config.txt` → `custom-config.txt` → `native-game-flags.txt`，环境变量最高；包里不再带你的文件）、逐位提速（C32/C64 改 LLVM 23 编，1080 约 −0.2 ms）。下载：[夸克](https://pan.quark.cn/s/d38e0f653c5a) · [Gofile 镜像](https://gofile.io/d/moSf7cqf)。0.39：[夸克](https://pan.quark.cn/s/dea9c0ef2f95) · [Gofile 镜像](https://gofile.io/d/iqtFTSpS)。
 
